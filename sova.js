@@ -200,7 +200,7 @@
         const delayMs = 2000;
         
         async function processDetailPage() {
-            // Pokud chainMode je aktivní, neprovádíme kontrolu, zda byla stránka již zpracována.
+            // V chainMode přeskočíme kontrolu, zda byla stránka již zpracována.
             const chainMode = GM_getValue("sova:chainMode", "false");
             if (chainMode !== "true") {
                 let lastProcessedUrl = GM_getValue("lastProcessedUrl", null);
@@ -317,6 +317,7 @@
             log("Tabulka byla přeuspořádána a původní hodnoty priority[] byly doplněny.");
             await sleep(delayMs);
     
+            // Zvýšení čítače před kliknutím na Uložit
             let processedCount = GM_getValue("processedCount", 0);
             processedCount++;
             GM_setValue("processedCount", processedCount);
@@ -332,7 +333,7 @@
             }
             await sleep(delayMs);
             
-            // --- Nová logika: načtení dalšího parametru v tom samém okně ---
+            // --- Načtení dalšího parametru v tom samém okně ---
             log("Hledám další parametr k řazení...");
             let storedList = GM_getValue("paramsList", null);
             if (storedList) {
@@ -345,7 +346,7 @@
                     window.location.href = nextParam.url;
                 } else {
                     log("Všechny parametry byly zpracovány.");
-                    // Volitelně můžete zavřít okno: window.close();
+                    // Volitelně můžete okno uzavřít: window.close();
                 }
             } else {
                 log("Seznam parametrů není dostupný.");
@@ -354,7 +355,7 @@
     
         if (window.location.href.indexOf("parametry-pro-filtrovani-vypis") !== -1 &&
             window.location.href.indexOf("parametry-pro-filtrovani-detail") === -1) {
-            await processListingPage();
+            await processListingPageForNewWindow();
         } else if (window.location.href.indexOf("parametry-pro-filtrovani-detail") !== -1) {
             await processDetailPage();
         }
@@ -365,9 +366,9 @@
         // Na výpisové stránce pouze injektujeme tlačítko SOVA
         injectSOVAButton();
     } else if (isDetailPage) {
-        // Na detailní stránce spouštíme dílčí skript (chain mode aktivní, pokud byl spuštěn z výpisové stránky)
+        // Na detailní stránce spouštíme řadící skript (chain mode)
         runSortingRobot();
     }
 
-    // --- Konec sova.js ---
+    // --- Konec sova.js nv---
 })();
