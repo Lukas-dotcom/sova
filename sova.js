@@ -94,7 +94,6 @@
 
     // --- SOVA: Injektování tlačítka na stránkách s výpisem filtrů ---
     function injectSOVAButton() {
-        // URL univerzálního CSV mappingu – upravte dle potřeby (např. z Google Sheets)
         const universalCsvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRufx0-X2OdjDVG1KAKx1QhC38JMxDj10hOYDGTBi6te9jYRXrBfRYazSpFHXglSKmcaQEs7tdvTOKV/pub?gid=775097961&single=true&output=csv";
         fetchUniversalCSV(universalCsvUrl)
             .then(mapping => {
@@ -105,7 +104,7 @@
                 }
                 GM_setValue("sovaMapping", JSON.stringify(mapping));
                 let contentButtons = document.querySelector("p.content-buttons");
-                if (contentButtons) {
+                if(contentButtons) {
                     let btn = document.createElement("a");
                     btn.href = "#";
                     btn.title = "Seřadit parametry 🦉";
@@ -118,13 +117,13 @@
                         let mappingStr = GM_getValue("sovaMapping", "{}");
                         let mapping = JSON.parse(mappingStr);
                         log("Kliknuto, načtený mapping: " + JSON.stringify(mapping));
-                        if (mapping["Shoptet Parameter Sorting Robot"]) {
+                        if(mapping["Shoptet Parameter Sorting Robot"]) {
                             let scriptCsvUrl = mapping["Shoptet Parameter Sorting Robot"];
                             GM_setValue("sova:SPSortingCSV", scriptCsvUrl);
                             log("CSV URL pro řazení filtrů uloženo: " + scriptCsvUrl);
-                            // Nastavíme chainMode pro postupné řazení v novém okně
+                            // Nastavíme chainMode
                             GM_setValue("sova:chainMode", "true");
-                            // Na stránce výpisu vyfiltrujeme detailní URL a nastavíme čítač na 0
+                            // Zpracujeme výpis a uložíme seznam detailních URL; čítač nastavíme na 0
                             processListingPageForNewWindow();
                         } else {
                             console.error("Mapping pro 'Shoptet Parameter Sorting Robot' nebyl nalezen.");
@@ -183,10 +182,11 @@
         log(`Nalezeno ${paramsList.length} parametrů ke zpracování.`);
         GM_setValue("paramsList", JSON.stringify(paramsList));
         GM_setValue("sova:processedCount", 0);
+        // Uložíme první parametr jako currentParam
         let currentParam = paramsList.shift();
         GM_setValue("paramsList", JSON.stringify(paramsList));
         GM_setValue("currentParam", JSON.stringify(currentParam));
-        log(`Otevírám detail prvního parametru: ${currentParam.name}`);
+        log(`Čítač = 0. První parametr: ${currentParam.name}, URL: ${currentParam.url}`);
         window.open(currentParam.url, '_blank', 'width=1200,height=800');
     }
 
@@ -194,8 +194,8 @@
     async function runSortingRobot() {
         log("Spouštím Shoptet Parameter Sorting Robot (dílčí skript).");
         const delayMs = 2000;
-        
-        // Před spuštěním zpracování detailu ověříme, zda aktuální URL odpovídá URL uložené v currentParam.
+
+        // Nejprve ověříme, zda aktuální URL (bez dotazů) odpovídá URL uložené v currentParam.
         let currentParamStr = GM_getValue("currentParam", null);
         if (!currentParamStr) {
             console.error("Nebyl nalezen aktuální parametr. Ujistěte se, že stránka byla otevřena přes SOVA tlačítko.");
@@ -204,6 +204,7 @@
         let currentParam = JSON.parse(currentParamStr);
         const currentBase = new URL(window.location.href).origin + new URL(window.location.href).pathname;
         const expectedBase = new URL(currentParam.url).origin + new URL(currentParam.url).pathname;
+        log(`Čítač = ${GM_getValue("sova:processedCount", 0)}. Očekávaná URL: ${expectedBase}`);
         if (currentBase !== expectedBase) {
             log("Aktuální URL (" + currentBase + ") se neshoduje s očekávanou (" + expectedBase + "). Přesměrovávám...");
             window.location.href = currentParam.url;
@@ -332,7 +333,7 @@
                 window.location.href = nextParam.url;
             } else {
                 log("Všechny parametry byly zpracovány. Čítač = " + GM_getValue("sova:processedCount", 0));
-                // Volitelně můžete okno uzavřít: window.close();
+                // Možnost: window.close();
             }
         } else {
             log("Seznam parametrů není dostupný.");
@@ -346,5 +347,5 @@
         runSortingRobot();
     }
 
-    // --- Konec sova.js nvv ---
+    // --- Konec sova.js ---
 })();
