@@ -353,5 +353,5 @@ async function runSortingRobot() {
         runSortingRobot();
     }
 
-    // --- Konec sova.js nvc---
+    // --- Konec sova.js nvd---
 })();
