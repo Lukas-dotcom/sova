@@ -12,12 +12,16 @@
 // @connect      doc-0k-3s-sheets.googleusercontent.com
 // ==/UserScript==
 
-(function() {
+(async function() {
     'use strict';
 
-    // Kontrola query parametru – spustit skript pouze, pokud URL obsahuje "sova_run=1"
-    if (!window.location.search.includes("sova_run=1")) {
-        console.log("[SPSorting] Query parametr 'sova_run=1' není přítomen. Skript se nespustí.");
+    // Pokud jsme na detailní stránce a URL neobsahuje query parametr "sova_run=1",
+    // přesměrujeme na stejnou URL s tímto parametrem.
+    if (window.location.href.indexOf("parametry-pro-filtrovani-detail") !== -1 &&
+        !window.location.search.includes("sova_run=1")) {
+        let newUrl = window.location.href + (window.location.href.indexOf('?') === -1 ? '?' : '&') + "sova_run=1";
+        console.log("[SPSorting] Přesměrovávám na URL s query parametrem: " + newUrl);
+        window.location.href = newUrl;
         return;
     }
 
@@ -73,10 +77,10 @@
         log("Zpracovávám stránku s výpisem parametrů...");
         let storedList = GM_getValue("paramsList", null);
         if (!storedList) {
-            // Načteme CSV URL z GM_setValue, které nastavila SOVA skript
+            // CSV URL pro tento skript získáme z GM_setValue, kterou nastavila SOVA skript
             const csvUrl = GM_getValue("sova:SPSortingCSV", "XXXXXXXX");
             if (!csvUrl || csvUrl === "XXXXXXXX") {
-                console.error("CSV URL pro Shoptet Parameter Sorting Robot není nastaveno.");
+                console.error("CSV URL pro Shoptet Parameter Sorting Robot není nastaveno (používá se placeholder 'XXXXXXXX').");
                 return;
             }
             try {
@@ -263,6 +267,7 @@
         window.location.href = "/admin/parametry-pro-filtrovani-vypis/";
     }
     
+    // Rozlišíme mezi výpisovou a detailní stránkou
     if (window.location.href.indexOf("parametry-pro-filtrovani-vypis") !== -1 &&
         window.location.href.indexOf("parametry-pro-filtrovani-detail") === -1) {
         await processListingPage();
