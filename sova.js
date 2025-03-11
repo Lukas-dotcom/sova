@@ -2,7 +2,7 @@
 // Tento soubor obsahuje kompletní SOVA logiku i dílčí skript "Shoptet Parameter Sorting Robot".
 // Aktualizujte tento soubor v repozitáři a Tampermonkey loader načte vždy nejnovější verzi.
 
-(function() {
+(function() { 
     'use strict';
 
     // --- Debug logování URL a režimu ---
