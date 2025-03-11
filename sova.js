@@ -1,7 +1,6 @@
 // sova.js
 // Tento soubor obsahuje kompletní SOVA logiku i dílčí skript "Shoptet Parameter Sorting Robot".
-// Aktualizujte tento soubor v repozitáři a Tampermonkey loader načte vždy nejnovější verzi.
-
+// Aktualizace provedete pouze úpravou tohoto souboru v GITu.
 (function() {
     'use strict';
 
@@ -57,7 +56,7 @@
         });
     }
 
-    // --- Funkce pro načtení CSV definice filtrů pro řazení ---
+    // --- Funkce pro načtení CSV definice filtrů pro řazení --- 
     function fetchSortingCSV(url) {
         return new Promise((resolve, reject) => {
             GM_xmlhttpRequest({
@@ -73,8 +72,8 @@
                             for (let i = 1; i < lines.length; i++) {
                                 let cols = lines[i].split(',');
                                 if (cols.length >= 2) {
-                                    let paramName = cols[i].trim(); // opraveno: použijeme cols[0]
-                                    paramName = cols[0].trim();
+                                    // Opraveno: použijeme cols[0] a cols[1]
+                                    let paramName = cols[0].trim();
                                     let oddelovacValue = cols[1].trim();
                                     result[paramName] = { oddelovac: oddelovacValue };
                                 }
@@ -126,7 +125,7 @@
                             let scriptCsvUrl = mapping["Shoptet Parameter Sorting Robot"];
                             GM_setValue("sova:SPSortingCSV", scriptCsvUrl);
                             log("CSV URL pro řazení filtrů uloženo: " + scriptCsvUrl);
-                            // Vybereme první parametr z výpisu a uložíme currentParam
+                            // Vybereme první parametr z výpisu a otevřeme jeho detail v novém okně
                             processListingPageForNewWindow();
                         } else {
                             console.error("Mapping pro 'Shoptet Parameter Sorting Robot' nebyl nalezen.");
@@ -143,9 +142,9 @@
             });
     }
 
-    // --- Funkce pro zpracování výpisové stránky a výběr prvního parametru, otevření v novém okně ---
+    // --- Funkce pro zpracování výpisové stránky a otevření detailu v novém okně ---
     async function processListingPageForNewWindow() {
-        log("Zpracovávám stránku s výpisem parametrů (pro nové okno)...");
+        log("Zpracovávám stránku s výpisem filtrů (pro nové okno)...");
         let rows = document.querySelectorAll("table.table tbody tr");
         if (!rows || rows.length === 0) {
             log("Na stránce nebyly nalezeny žádné řádky.");
@@ -188,8 +187,7 @@
         let currentParam = paramsList.shift();
         GM_setValue("paramsList", JSON.stringify(paramsList));
         GM_setValue("currentParam", JSON.stringify(currentParam));
-        log(`Přecházím na detail parametru: ${currentParam.name}`);
-        // Otevřeme detailní stránku v novém okně/tabu
+        log(`Otevírám detail parametru v novém okně: ${currentParam.name}`);
         window.open(currentParam.url, '_blank', 'width=1200,height=800');
     }
 
@@ -325,13 +323,12 @@
                 console.error("Tlačítko Uložit nebylo nalezeno.");
             }
             await sleep(delayMs);
-            log("Řazení dokončeno. Nové okno zůstává na detailní stránce.");
-            // Neprovádíme přesměrování zpět na výpis – nové okno zůstane s výsledky.
+            log("Řazení dokončeno. Okno zůstává na detailní stránce se seřazenými filtry.");
         }
     
         if (window.location.href.indexOf("parametry-pro-filtrovani-vypis") !== -1 &&
             window.location.href.indexOf("parametry-pro-filtrovani-detail") === -1) {
-            await processListingPage();
+            await processListingPageForNewWindow();
         } else if (window.location.href.indexOf("parametry-pro-filtrovani-detail") !== -1) {
             await processDetailPage();
         }
@@ -339,7 +336,7 @@
 
     // --- Spuštění podle typu stránky ---
     if (isListingPage) {
-        // Na výpisové stránce pouze injektujeme tlačítko
+        // Na výpisové stránce injektujeme tlačítko
         injectSOVAButton();
     } else if (isDetailPage) {
         // Na detailní stránce spouštíme dílčí skript
