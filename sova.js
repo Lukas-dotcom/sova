@@ -202,19 +202,20 @@ async function runSortingRobot() {
         return;
     }
     let currentParam = JSON.parse(currentParamStr);
-    // Získáme kompletní aktuální URL (bez případného hashe)
-    const currentUrl = window.location.href.split('#')[0];
-    // Vytvoříme objekt URL pro očekávanou URL a získáme kompletní URL (včetně query)
-    const expectedUrlObj = new URL(currentParam.url);
-    const expectedUrl = expectedUrlObj.origin + expectedUrlObj.pathname + expectedUrlObj.search;
-    log(`Čítač = ${GM_getValue("sova:processedCount", 0)}. Očekávaná URL: ${expectedUrl}`);
+    const currentUrlObj = new URL(window.location.href);
+    const currentFullUrl = currentUrlObj.origin + currentUrlObj.pathname + currentUrlObj.search;
     
-    if (currentUrl !== expectedUrl) {
-        log("Aktuální URL (" + currentUrl + ") se neshoduje s očekávanou (" + expectedUrl + "). Přesměrovávám...");
+    const expectedUrlObj = new URL(currentParam.url);
+    const expectedFullUrl = expectedUrlObj.origin + expectedUrlObj.pathname + expectedUrlObj.search;
+    
+    log(`Čítač = ${GM_getValue("sova:processedCount", 0)}. Očekávaná URL: ${expectedFullUrl}`);
+    
+    if (currentFullUrl !== expectedFullUrl) {
+        log("Aktuální URL (" + currentFullUrl + ") se neshoduje s očekávanou (" + expectedFullUrl + "). Přesměrovávám...");
         window.location.href = currentParam.url;
         return;
     } else {
-        log("Aktuální URL odpovídá očekávané. Očekávaná URL: " + expectedUrl + " | Aktuální URL: " + currentUrl);
+        log("Aktuální URL odpovídá očekávané. Očekávaná URL: " + expectedFullUrl + " | Aktuální URL: " + currentFullUrl);
     }
 
     let paramRules = JSON.parse(GM_getValue("paramRules", "{}"));
@@ -353,5 +354,5 @@ async function runSortingRobot() {
         runSortingRobot();
     }
 
-    // --- Konec sova.js nva---
+    // --- Konec sova.js nvb---
 })();
