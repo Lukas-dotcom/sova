@@ -169,7 +169,7 @@
                 let url = link.href;
                 let paramRules = JSON.parse(GM_getValue("paramRules", "{}"));
                 if (paramRules[paramName] && paramRules[paramName].oddelovac.toLowerCase() === "neradit") {
-                    log(Přeskakuji parametr '${paramName}' (nastaveno "neradit").);
+                    log(`Přeskakuji parametr '${paramName}' (nastaveno "neradit").`);
                 } else {
                     paramsList.push({ name: paramName, url: url });
                 }
@@ -179,7 +179,7 @@
             log("Nebyl nalezen žádný parametr k zpracování.");
             return;
         }
-        log(Nalezeno ${paramsList.length} parametrů ke zpracování.);
+        log(`Nalezeno ${paramsList.length} parametrů ke zpracování.`);
         // Přidáme čítač pro každý parametr, počínaje od 0
         paramsList.forEach((param, index) => {
             param.counter = index;
@@ -193,13 +193,10 @@
         let currentParam = paramsList[0];
 															  
         GM_setValue("currentParam", JSON.stringify(currentParam));
-        log(Čítač = 0. První parametr: ${currentParam.name}, URL: ${currentParam.url});
+        log(`Čítač = 0. První parametr: ${currentParam.name}, URL: ${currentParam.url}`);
 																				
         window.open(currentParam.url, "sovaSortingWindow", "width=1200,height=800");
     }
-	 
-					 
-  
 
     // --- Dílčí skript: Shoptet Parameter Sorting Robot (chain mode) ---
     async function runSortingRobot() {
@@ -222,19 +219,19 @@
         let expectedParam = fullParamsList[processedCount];
         let expectedUrl = expectedParam.url;
         let currentUrl = window.location.href;
-        log(Čítač = ${processedCount}. Očekávaná URL: ${expectedUrl});
+        log(`Čítač = ${processedCount}. Očekávaná URL: ${expectedUrl}`);
         
         if (currentUrl !== expectedUrl) {
-            log(Aktuální URL (${currentUrl}) se neshoduje s očekávanou (${expectedUrl}). Přesměrovávám...);
+            log(`Aktuální URL (${currentUrl}) se neshoduje s očekávanou (${expectedUrl}). Přesměrovávám...`);
             window.location.href = expectedUrl;
             return;
         } else {
-            log(Aktuální URL odpovídá očekávané. Očekávaná URL: ${expectedUrl} | Aktuální URL: ${currentUrl});
+            log(`Aktuální URL odpovídá očekávané. Očekávaná URL: ${expectedUrl} | Aktuální URL: ${currentUrl}`);
         }
 
         let paramRules = JSON.parse(GM_getValue("paramRules", "{}"));
         let currentParam = JSON.parse(GM_getValue("currentParam", "{}"));
-        log(Zpracovávám detail parametru: ${currentParam.name});
+        log(`Zpracovávám detail parametru: ${currentParam.name}`);
         await sleep(delayMs);
 
         let table = document.querySelector("table.table");
@@ -258,7 +255,7 @@
 
         if (paramRules[currentParam.name] && paramRules[currentParam.name].oddelovac.toLowerCase() !== "neradit") {
             let oddelovac = paramRules[currentParam.name].oddelovac;
-            log(Řazení s použitím oddělovače '${oddelovac}');
+            log(`Řazení s použitím oddělovače '${oddelovac}'`);
             rowsData.forEach(item => {
                 let parts = item.text.split(oddelovac);
                 if (parts.length === 2) {
@@ -325,26 +322,19 @@
 
         // --- Zvýšení čítače před kliknutím na Uložit ---
 																   
-	   
         log("Před zvýšením čítače: " + processedCount);
         processedCount++;
         GM_setValue("sova:processedCount", processedCount);
         GM_setValue("lastProcessedUrl", window.location.href);
-        log(Zpracováno parametrů (po zvýšení čítače): ${processedCount});
+        log(`Zpracováno parametrů (po zvýšení čítače): ${processedCount}`);
         log("Aktuální URL: " + window.location.href);
 
         let saveButton = document.querySelector("a.btn-action.submit-js[rel='saveAndStay']");
         if (saveButton) {
             log("Klikám na tlačítko Uložit.");
             saveButton.click();
-
-											 
-																	  
-											 
-																	  
         } else {
             console.error("Tlačítko Uložit nebylo nalezeno.");
-						   
         }
         await sleep(delayMs);
 
@@ -357,7 +347,7 @@
                 let nextParam = paramsList.shift();
                 GM_setValue("paramsList", JSON.stringify(paramsList));
                 GM_setValue("currentParam", JSON.stringify(nextParam));
-                log(Čítač = ${processedCount}. Následuje parametr: ${nextParam.name}, URL: ${nextParam.url});
+                log(`Čítač = ${processedCount}. Následuje parametr: ${nextParam.name}, URL: ${nextParam.url}`);
                 await sleep(delayMs);
                 window.location.href = nextParam.url;
             } else {
@@ -366,8 +356,6 @@
             }
         } else {
             log("Seznam parametrů není dostupný.");
-																			   
-						   
         }
     }
 
