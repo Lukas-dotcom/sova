@@ -179,6 +179,9 @@
             log("Nebyl nalezen žádný parametr k zpracování.");
             return;
         }
+        // Přiřazení čítače (indexu) ke každému parametru, začínáme od 0
+        paramsList = paramsList.map((param, index) => ({ ...param, counter: index }));
+        
         log(`Nalezeno ${paramsList.length} parametrů ke zpracování.`);
         GM_setValue("paramsList", JSON.stringify(paramsList));
         GM_setValue("sova:processedCount", 0);
@@ -186,7 +189,7 @@
         let currentParam = paramsList.shift();
         GM_setValue("paramsList", JSON.stringify(paramsList));
         GM_setValue("currentParam", JSON.stringify(currentParam));
-        log(`Čítač = 0. První parametr: ${currentParam.name}, URL: ${currentParam.url}`);
+        log(`Čítač = ${currentParam.counter}. První parametr: ${currentParam.name}, URL: ${currentParam.url}`);
         window.open(currentParam.url, '_blank', 'width=1200,height=800');
     }
 
@@ -195,27 +198,23 @@ async function runSortingRobot() {
     log("Spouštím Shoptet Parameter Sorting Robot (dílčí skript).");
     const delayMs = 2000;
 
-    // Nejprve ověříme, zda aktuální URL (včetně query stringu) odpovídá URL uložené v currentParam.
     let currentParamStr = GM_getValue("currentParam", null);
     if (!currentParamStr) {
         console.error("Nebyl nalezen aktuální parametr. Ujistěte se, že stránka byla otevřena přes SOVA tlačítko.");
         return;
     }
     let currentParam = JSON.parse(currentParamStr);
-    const currentUrlObj = new URL(window.location.href);
-    const currentFullUrl = currentUrlObj.origin + currentUrlObj.pathname + currentUrlObj.search;
+    // Použijeme celou URL včetně dotazové části
+    const currentFullUrl = window.location.href;
+    const expectedUrl = currentParam.url;
+    log(`Čítač = ${currentParam.counter}. Očekávaná URL: ${expectedUrl}`);
     
-    const expectedUrlObj = new URL(currentParam.url);
-    const expectedFullUrl = expectedUrlObj.origin + expectedUrlObj.pathname + expectedUrlObj.search;
-    
-    log(`Čítač = ${GM_getValue("sova:processedCount", 0)}. Očekávaná URL: ${expectedFullUrl}`);
-    
-    if (currentFullUrl !== expectedFullUrl) {
-        log("Aktuální URL (" + currentFullUrl + ") se neshoduje s očekávanou (" + expectedFullUrl + "). Přesměrovávám...");
-        window.location.href = currentParam.url;
+    if (currentFullUrl !== expectedUrl) {
+        log("Aktuální URL (" + currentFullUrl + ") se neshoduje s očekávanou (" + expectedUrl + "). Přesměrovávám...");
+        window.location.href = expectedUrl;
         return;
     } else {
-        log("Aktuální URL odpovídá očekávané. Očekávaná URL: " + expectedFullUrl + " | Aktuální URL: " + currentFullUrl);
+        log("Aktuální URL odpovídá očekávané. Očekávaná URL: " + expectedUrl + " | Aktuální URL: " + currentFullUrl);
     }
 
     let paramRules = JSON.parse(GM_getValue("paramRules", "{}"));
