@@ -1,6 +1,7 @@
-// sova.js 
+// sova.js
 // Tento soubor obsahuje kompletní SOVA logiku i dílčí skript "Shoptet Parameter Sorting Robot".
-// Aktualizace provedete pouze úpravou tohoto souboru v GITu.
+// Aktualizace provedete pouze úpravou tohoto souboru v GIT repozitáři.
+
 (function() {
     'use strict';
 
@@ -56,7 +57,7 @@
         });
     }
 
-    // --- Funkce pro načtení CSV definice filtrů pro řazení --- 
+    // --- Funkce pro načtení CSV definice filtrů pro řazení ---
     function fetchSortingCSV(url) {
         return new Promise((resolve, reject) => {
             GM_xmlhttpRequest({
@@ -72,7 +73,6 @@
                             for (let i = 1; i < lines.length; i++) {
                                 let cols = lines[i].split(',');
                                 if (cols.length >= 2) {
-                                    // Opraveno: použijeme cols[0] a cols[1]
                                     let paramName = cols[0].trim();
                                     let oddelovacValue = cols[1].trim();
                                     result[paramName] = { oddelovac: oddelovacValue };
@@ -142,9 +142,9 @@
             });
     }
 
-    // --- Funkce pro zpracování výpisové stránky a otevření detailu v novém okně ---
+    // --- Funkce pro zpracování výpisové stránky a výběr parametrů (otevření v novém okně) ---
     async function processListingPageForNewWindow() {
-        log("Zpracovávám stránku s výpisem filtrů (pro nové okno)...");
+        log("Zpracovávám stránku s výpisem parametrů (pro nové okno)...");
         let rows = document.querySelectorAll("table.table tbody tr");
         if (!rows || rows.length === 0) {
             log("Na stránce nebyly nalezeny žádné řádky.");
@@ -183,19 +183,20 @@
         }
         log(`Nalezeno ${paramsList.length} parametrů ke zpracování.`);
         GM_setValue("paramsList", JSON.stringify(paramsList));
-        // Vybereme první parametr a uložíme jako currentParam
+        // Vybereme první parametr a uložíme jej jako currentParam, poté otevřeme jeho detail v novém okně
         let currentParam = paramsList.shift();
         GM_setValue("paramsList", JSON.stringify(paramsList));
         GM_setValue("currentParam", JSON.stringify(currentParam));
-        log(`Otevírám detail parametru v novém okně: ${currentParam.name}`);
+        log(`Otevírám detail parametru: ${currentParam.name}`);
         window.open(currentParam.url, '_blank', 'width=1200,height=800');
     }
 
-    // --- Dílčí skript: Shoptet Parameter Sorting Robot ---
+    // --- Dílčí skript: Shoptet Parameter Sorting Robot ---  
     // Tento kód se spouští na detailní stránce, kde se očekává, že GM_setValue("currentParam") obsahuje objekt s informací o parametru.
     async function runSortingRobot() {
         log("Spouštím Shoptet Parameter Sorting Robot (dílčí skript).");
         const delayMs = 2000;
+        
         async function processDetailPage() {
             let lastProcessedUrl = GM_getValue("lastProcessedUrl", null);
             if (lastProcessedUrl && window.location.href === lastProcessedUrl) {
@@ -323,25 +324,45 @@
                 console.error("Tlačítko Uložit nebylo nalezeno.");
             }
             await sleep(delayMs);
-            log("Řazení dokončeno. Okno zůstává na detailní stránce se seřazenými filtry.");
+            
+            // --- Nová logika: načtení dalšího parametru v novém okně ---
+            log("Hledám další parametr k řazení...");
+            let storedList = GM_getValue("paramsList", null);
+            if (storedList) {
+                let paramsList = JSON.parse(storedList);
+                if (paramsList.length > 0) {
+                    let nextParam = paramsList.shift();
+                    GM_setValue("paramsList", JSON.stringify(paramsList));
+                    GM_setValue("currentParam", JSON.stringify(nextParam));
+                    log(`Následuje parametr: ${nextParam.name}`);
+                    // Přesměrujeme aktuální okno (nové okno) na detail dalšího parametru
+                    window.location.href = nextParam.url;
+                } else {
+                    log("Všechny parametry byly zpracovány.");
+                    // Možnost: zavřít okno, pokud je otevřeno pomocí window.open()
+                    // window.close();
+                }
+            } else {
+                log("Seznam parametrů není dostupný.");
+            }
         }
     
         if (window.location.href.indexOf("parametry-pro-filtrovani-vypis") !== -1 &&
             window.location.href.indexOf("parametry-pro-filtrovani-detail") === -1) {
-            await processListingPageForNewWindow();
+            await processListingPage();
         } else if (window.location.href.indexOf("parametry-pro-filtrovani-detail") !== -1) {
             await processDetailPage();
         }
     }
 
-    // --- Spuštění podle typu stránky ---
+    // --- Hlavní vstupní bod ---
     if (isListingPage) {
-        // Na výpisové stránce injektujeme tlačítko
+        // Na výpisové stránce pouze injektujeme tlačítko SOVA
         injectSOVAButton();
     } else if (isDetailPage) {
-        // Na detailní stránce spouštíme dílčí skript
+        // Na detailní stránce spouštíme dílčí skript, který zpracovává parametry a následně načítá další
         runSortingRobot();
     }
 
-    // --- Konec sova.js ---
+    // --- Konec sova.js nov---
 })();
