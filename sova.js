@@ -1,4 +1,4 @@
-// sova.js
+// sova.js 
 // Tento soubor obsahuje kompletní SOVA logiku i dílčí skript "Shoptet Parameter Sorting Robot".
 // Aktualizace provedete pouze úpravou tohoto souboru v GITu.
 (function() {
