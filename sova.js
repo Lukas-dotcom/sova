@@ -125,6 +125,8 @@
                             let scriptCsvUrl = mapping["Shoptet Parameter Sorting Robot"];
                             GM_setValue("sova:SPSortingCSV", scriptCsvUrl);
                             log("CSV URL pro řazení filtrů uloženo: " + scriptCsvUrl);
+                            // Nastavíme chainMode, abychom věděli, že chceme řadit postupně v novém okně.
+                            GM_setValue("sova:chainMode", "true");
                             // Vybereme první parametr z výpisu a otevřeme jeho detail v novém okně
                             processListingPageForNewWindow();
                         } else {
@@ -191,17 +193,22 @@
         window.open(currentParam.url, '_blank', 'width=1200,height=800');
     }
 
-    // --- Dílčí skript: Shoptet Parameter Sorting Robot ---  
+    // --- Dílčí skript: Shoptet Parameter Sorting Robot ---
     // Tento kód se spouští na detailní stránce, kde se očekává, že GM_setValue("currentParam") obsahuje objekt s informací o parametru.
     async function runSortingRobot() {
         log("Spouštím Shoptet Parameter Sorting Robot (dílčí skript).");
         const delayMs = 2000;
         
         async function processDetailPage() {
-            let lastProcessedUrl = GM_getValue("lastProcessedUrl", null);
-            if (lastProcessedUrl && window.location.href === lastProcessedUrl) {
-                log("Tato stránka již byla zpracována.");
-                return;
+            // Pokud chainMode je aktivní, neprovádíme kontrolu, zda byla stránka již zpracována.
+            const chainMode = GM_getValue("sova:chainMode", "false");
+            if (chainMode !== "true") {
+                let lastProcessedUrl = GM_getValue("lastProcessedUrl", null);
+                if (lastProcessedUrl && window.location.href === lastProcessedUrl) {
+                    log("Tato stránka již byla zpracována.");
+                    window.location.href = "/admin/parametry-pro-filtrovani-vypis/";
+                    return;
+                }
             }
             let currentParamStr = GM_getValue("currentParam", null);
             if (!currentParamStr) {
@@ -325,7 +332,7 @@
             }
             await sleep(delayMs);
             
-            // --- Nová logika: načtení dalšího parametru v novém okně ---
+            // --- Nová logika: načtení dalšího parametru v tom samém okně ---
             log("Hledám další parametr k řazení...");
             let storedList = GM_getValue("paramsList", null);
             if (storedList) {
@@ -335,12 +342,10 @@
                     GM_setValue("paramsList", JSON.stringify(paramsList));
                     GM_setValue("currentParam", JSON.stringify(nextParam));
                     log(`Následuje parametr: ${nextParam.name}`);
-                    // Přesměrujeme aktuální okno (nové okno) na detail dalšího parametru
                     window.location.href = nextParam.url;
                 } else {
                     log("Všechny parametry byly zpracovány.");
-                    // Možnost: zavřít okno, pokud je otevřeno pomocí window.open()
-                    // window.close();
+                    // Volitelně můžete zavřít okno: window.close();
                 }
             } else {
                 log("Seznam parametrů není dostupný.");
@@ -355,14 +360,14 @@
         }
     }
 
-    // --- Hlavní vstupní bod ---
+    // --- Hlavní vstupní bod skriptu ---
     if (isListingPage) {
         // Na výpisové stránce pouze injektujeme tlačítko SOVA
         injectSOVAButton();
     } else if (isDetailPage) {
-        // Na detailní stránce spouštíme dílčí skript, který zpracovává parametry a následně načítá další
+        // Na detailní stránce spouštíme dílčí skript (chain mode aktivní, pokud byl spuštěn z výpisové stránky)
         runSortingRobot();
     }
 
-    // --- Konec sova.js nov---
+    // --- Konec sova.js ---
 })();
