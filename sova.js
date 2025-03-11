@@ -190,30 +190,33 @@
         window.open(currentParam.url, '_blank', 'width=1200,height=800');
     }
 
-    // --- Dílčí skript: Shoptet Parameter Sorting Robot (chain mode) ---
-    async function runSortingRobot() {
-        log("Spouštím Shoptet Parameter Sorting Robot (dílčí skript).");
-        const delayMs = 2000;
+// --- Dílčí skript: Shoptet Parameter Sorting Robot (chain mode) ---
+async function runSortingRobot() {
+    log("Spouštím Shoptet Parameter Sorting Robot (dílčí skript).");
+    const delayMs = 2000;
 
-        // Nejprve ověříme, zda aktuální URL (bez dotazů) odpovídá URL uložené v currentParam.
-        let currentParamStr = GM_getValue("currentParam", null);
-        if (!currentParamStr) {
-            console.error("Nebyl nalezen aktuální parametr. Ujistěte se, že stránka byla otevřena přes SOVA tlačítko.");
-            return;
-        }
-        let currentParam = JSON.parse(currentParamStr);
-        const currentBase = new URL(window.location.href).origin + new URL(window.location.href).pathname;
-        const expectedBase = new URL(currentParam.url).origin + new URL(currentParam.url).pathname;
-        log(`Čítač = ${GM_getValue("sova:processedCount", 0)}. Očekávaná URL: ${expectedBase}`);
-        if (currentBase !== expectedBase) {
-            log("Aktuální URL (" + currentBase + ") se neshoduje s očekávanou (" + expectedBase + "). Přesměrovávám...");
-            window.location.href = currentParam.url;
-            return;
-        }
-        
-        let paramRules = JSON.parse(GM_getValue("paramRules", "{}"));
-        log(`Zpracovávám detail parametru: ${currentParam.name}`);
-        await sleep(delayMs);
+    // Nejprve ověříme, zda aktuální URL (bez dotazů) odpovídá URL uložené v currentParam.
+    let currentParamStr = GM_getValue("currentParam", null);
+    if (!currentParamStr) {
+        console.error("Nebyl nalezen aktuální parametr. Ujistěte se, že stránka byla otevřena přes SOVA tlačítko.");
+        return;
+    }
+    let currentParam = JSON.parse(currentParamStr);
+    const currentBase = new URL(window.location.href).origin + new URL(window.location.href).pathname;
+    const expectedBase = new URL(currentParam.url).origin + new URL(currentParam.url).pathname;
+    log(`Čítač = ${GM_getValue("sova:processedCount", 0)}. Očekávaná URL: ${expectedBase}`);
+    
+    if (currentBase !== expectedBase) {
+        log("Aktuální URL (" + currentBase + ") se neshoduje s očekávanou (" + expectedBase + "). Přesměrovávám...");
+        window.location.href = currentParam.url;
+        return;
+    } else {
+        log("Aktuální URL odpovídá očekávané. Očekávaná URL: " + expectedBase + " | Aktuální URL: " + currentBase);
+    }
+
+    let paramRules = JSON.parse(GM_getValue("paramRules", "{}"));
+    log(`Zpracovávám detail parametru: ${currentParam.name}`);
+    await sleep(delayMs);
 
         let table = document.querySelector("table.table");
         if (!table) {
