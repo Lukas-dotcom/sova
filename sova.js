@@ -366,5 +366,5 @@
         runSortingRobot();
     }
 
-    // --- Konec sova.js NOVB ---
+    // --- Konec sova.js NOVAC ---
 })();
