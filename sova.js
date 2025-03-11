@@ -320,4 +320,31 @@
             let saveButton = document.querySelector("a.btn-action.submit-js[rel='saveAndStay']");
             if (saveButton) {
                 log("Klikám na tlačítko Uložit.");
-                sav
+                saveButton.click();
+            } else {
+                console.error("Tlačítko Uložit nebylo nalezeno.");
+            }
+            await sleep(delayMs);
+            log("Řazení dokončeno. Nové okno zůstává na detailní stránce.");
+            // Neprovádíme přesměrování zpět na výpis – nové okno zůstane s výsledky.
+        }
+    
+        if (window.location.href.indexOf("parametry-pro-filtrovani-vypis") !== -1 &&
+            window.location.href.indexOf("parametry-pro-filtrovani-detail") === -1) {
+            await processListingPage();
+        } else if (window.location.href.indexOf("parametry-pro-filtrovani-detail") !== -1) {
+            await processDetailPage();
+        }
+    }
+
+    // --- Spuštění podle typu stránky ---
+    if (isListingPage) {
+        // Na výpisové stránce pouze injektujeme tlačítko
+        injectSOVAButton();
+    } else if (isDetailPage) {
+        // Na detailní stránce spouštíme dílčí skript
+        runSortingRobot();
+    }
+
+    // --- Konec sova.js ---
+})();
