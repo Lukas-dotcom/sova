@@ -179,47 +179,51 @@
             log("Nebyl nalezen žádný parametr k zpracování.");
             return;
         }
-        // Přiřazení čítače (indexu) ke každému parametru, začínáme od 0
-        paramsList = paramsList.map((param, index) => ({ ...param, counter: index }));
-        
         log(`Nalezeno ${paramsList.length} parametrů ke zpracování.`);
-        GM_setValue("paramsList", JSON.stringify(paramsList));
+        // Přidáme čítač pro každý parametr, počínaje od 0
+        paramsList.forEach((param, index) => {
+            param.counter = index;
+        });
+        // Uložíme kompletní seznam parametrů
+        GM_setValue("fullParamsList", JSON.stringify(paramsList));
+        // Uložíme zbytek parametrů kromě prvního
+        GM_setValue("paramsList", JSON.stringify(paramsList.slice(1)));
         GM_setValue("sova:processedCount", 0);
-        // Uložíme první parametr jako currentParam
-        let currentParam = paramsList.shift();
-        GM_setValue("paramsList", JSON.stringify(paramsList));
+        let currentParam = paramsList[0];
         GM_setValue("currentParam", JSON.stringify(currentParam));
-        log(`Čítač = ${currentParam.counter}. První parametr: ${currentParam.name}, URL: ${currentParam.url}`);
+        log(`Čítač = 0. První parametr: ${currentParam.name}, URL: ${currentParam.url}`);
         window.open(currentParam.url, '_blank', 'width=1200,height=800');
     }
 
-// --- Dílčí skript: Shoptet Parameter Sorting Robot (chain mode) ---
-async function runSortingRobot() {
-    log("Spouštím Shoptet Parameter Sorting Robot (dílčí skript).");
-    const delayMs = 2000;
+    // --- Dílčí skript: Shoptet Parameter Sorting Robot (chain mode) ---
+    async function runSortingRobot() {
+        log("Spouštím Shoptet Parameter Sorting Robot (dílčí skript).");
+        const delayMs = 2000;
 
-    let currentParamStr = GM_getValue("currentParam", null);
-    if (!currentParamStr) {
-        console.error("Nebyl nalezen aktuální parametr. Ujistěte se, že stránka byla otevřena přes SOVA tlačítko.");
-        return;
-    }
-    let currentParam = JSON.parse(currentParamStr);
-    // Použijeme celou URL včetně dotazové části
-    const currentFullUrl = window.location.href;
-    const expectedUrl = currentParam.url;
-    log(`Čítač = ${currentParam.counter}. Očekávaná URL: ${expectedUrl}`);
-    
-    if (currentFullUrl !== expectedUrl) {
-        log("Aktuální URL (" + currentFullUrl + ") se neshoduje s očekávanou (" + expectedUrl + "). Přesměrovávám...");
-        window.location.href = expectedUrl;
-        return;
-    } else {
-        log("Aktuální URL odpovídá očekávané. Očekávaná URL: " + expectedUrl + " | Aktuální URL: " + currentFullUrl);
-    }
+        // Určíme očekávanou URL podle aktuálního počtu zpracovaných parametrů (sova:processedCount)
+        let processedCount = GM_getValue("sova:processedCount", 0);
+        let fullParamsList = JSON.parse(GM_getValue("fullParamsList", "[]"));
+        if(fullParamsList.length <= processedCount) {
+            console.error("Plný seznam parametrů je prázdný nebo nedostačující.");
+            return;
+        }
+        let expectedParam = fullParamsList[processedCount];
+        let expectedUrl = expectedParam.url;
+        let currentUrl = window.location.href;
+        log(`Čítač = ${processedCount}. Očekávaná URL: ${expectedUrl}`);
+        
+        if (currentUrl !== expectedUrl) {
+            log(`Aktuální URL (${currentUrl}) se neshoduje s očekávanou (${expectedUrl}). Přesměrovávám...`);
+            window.location.href = expectedUrl;
+            return;
+        } else {
+            log(`Aktuální URL odpovídá očekávané. Očekávaná URL: ${expectedUrl} | Aktuální URL: ${currentUrl}`);
+        }
 
-    let paramRules = JSON.parse(GM_getValue("paramRules", "{}"));
-    log(`Zpracovávám detail parametru: ${currentParam.name}`);
-    await sleep(delayMs);
+        let paramRules = JSON.parse(GM_getValue("paramRules", "{}"));
+        let currentParam = JSON.parse(GM_getValue("currentParam", "{}"));
+        log(`Zpracovávám detail parametru: ${currentParam.name}`);
+        await sleep(delayMs);
 
         let table = document.querySelector("table.table");
         if (!table) {
@@ -308,7 +312,6 @@ async function runSortingRobot() {
         await sleep(delayMs);
 
         // --- Zvýšení čítače před kliknutím na Uložit ---
-        let processedCount = GM_getValue("sova:processedCount", 0);
         log("Před zvýšením čítače: " + processedCount);
         processedCount++;
         GM_setValue("sova:processedCount", processedCount);
@@ -334,11 +337,11 @@ async function runSortingRobot() {
                 let nextParam = paramsList.shift();
                 GM_setValue("paramsList", JSON.stringify(paramsList));
                 GM_setValue("currentParam", JSON.stringify(nextParam));
-                log(`Čítač = ${GM_getValue("sova:processedCount", 0)}. Následuje parametr: ${nextParam.name}, URL: ${nextParam.url}`);
+                log(`Čítač = ${processedCount}. Následuje parametr: ${nextParam.name}, URL: ${nextParam.url}`);
                 await sleep(delayMs);
                 window.location.href = nextParam.url;
             } else {
-                log("Všechny parametry byly zpracovány. Čítač = " + GM_getValue("sova:processedCount", 0));
+                log("Všechny parametry byly zpracovány. Čítač = " + processedCount);
                 // Možnost: window.close();
             }
         } else {
@@ -353,5 +356,5 @@ async function runSortingRobot() {
         runSortingRobot();
     }
 
-    // --- Konec sova.js nvd---
+    // --- Konec sova.js NOV---
 })();
