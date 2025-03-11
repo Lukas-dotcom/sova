@@ -1,6 +1,6 @@
 // sova.js
 // Tento soubor obsahuje kompletní SOVA logiku i dílčí skript "Shoptet Parameter Sorting Robot".
-// Aktualizujte tento soubor v repozitáři a Tampermonkey loader ho automaticky načte při refreshi.
+// Aktualizujte tento soubor v repozitáři a Tampermonkey loader načte vždy nejnovější verzi.
 
 (function() {
     'use strict';
@@ -13,137 +13,23 @@
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-    // --- Rozlišení režimu ---
-    // Pokud URL obsahuje "parametry-pro-filtrovani-detail", jedná se o detailní stránku.
+    // --- Rozlišení stránek ---
     const isDetailPage = window.location.href.indexOf("parametry-pro-filtrovani-detail") !== -1;
     const isListingPage = window.location.href.indexOf("parametry-pro-filtrovani-vypis") !== -1;
 
-    // --- Režim dílčího skriptu (Shoptet Parameter Sorting Robot) ---
-    // Pro spuštění dílčí logiky chceme mít v URL query parametr "sova_run=1".
-    if (isDetailPage) {
+    // --- Dílčí skript: Shoptet Parameter Sorting Robot --- 
+    // Tento kód se spustí pouze na detailní stránce, pokud URL obsahuje query parametr "sova_run=1".
+    async function runSortingRobot() {
+        // Pokud query parametr chybí, přesměrujeme
         if (!window.location.search.includes("sova_run=1")) {
-            // Pokud query parametr chybí, přesměrujeme na stejnou URL s přidaným "sova_run=1".
             let newUrl = window.location.href + (window.location.href.indexOf('?') === -1 ? '?' : '&') + "sova_run=1";
-            log("Přesměrovávám detailní stránku s query parametrem: " + newUrl);
+            log("Detailní stránka bez 'sova_run=1'. Přesměrovávám na: " + newUrl);
             window.location.href = newUrl;
             return;
         }
-        // Pokud jsme zde, znamená to, že jsme v režimu dílčího skriptu.
-        runSortingRobot();
-        return;
-    }
-
-    // --- Režim SOVA injekce tlačítek (na stránkách s výpisem parametrů) ---
-    if (isListingPage) {
-        injectSOVAButton();
-    }
-
-    // --------------------------
-    // SOVA funkce – injektování tlačítka
-    // --------------------------
-    function injectSOVAButton() {
-        // URL univerzálního CSV mappingu (máte jej nastavený v GIT nebo v jiné službě)
-        const universalCsvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRufx0-X2OdjDVG1KAKx1QhC38JMxDj10hOYDGTBi6te9jYRXrBfRYazSpFHXglSKmcaQEs7tdvTOKV/pub?gid=775097961&single=true&output=csv";
-
-        // Funkce pro načtení CSV mappingu
-        function fetchUniversalCSV(url) {
-            return new Promise((resolve, reject) => {
-                GM_xmlhttpRequest({
-                    method: "GET",
-                    url: url,
-                    onload: function(response) {
-                        if(response.status === 200) {
-                            try {
-                                let data = response.responseText;
-                                let lines = data.split('\n').filter(line => line.trim() !== '');
-                                let mapping = {};
-                                // Předpokládáme, že první řádek obsahuje hlavičky – data začínají od druhého řádku.
-                                for (let i = 1; i < lines.length; i++) {
-                                    let cols = lines[i].split(',');
-                                    if (cols.length >= 2) {
-                                        let scriptName = cols[0].trim();
-                                        let scriptCsvUrl = cols[1].trim();
-                                        mapping[scriptName] = scriptCsvUrl;
-                                    }
-                                }
-                                resolve(mapping);
-                            } catch(e) {
-                                reject(e);
-                            }
-                        } else {
-                            reject(new Error("HTTP error " + response.status));
-                        }
-                    },
-                    onerror: function(err) {
-                        reject(err);
-                    }
-                });
-            });
-        }
-
-        // Načteme mapping a poté injektujeme tlačítko
-        fetchUniversalCSV(universalCsvUrl).then(mapping => {
-            log("Univerzální CSV mapping načteno: " + JSON.stringify(mapping));
-            // Pokud mapping neobsahuje klíč "Shoptet Parameter Sorting Robot", nastavíme jej ručně.
-            if (!mapping["Shoptet Parameter Sorting Robot"]) {
-                log("Mapping neobsahuje 'Shoptet Parameter Sorting Robot'. Nastavuji ručně.");
-                mapping["Shoptet Parameter Sorting Robot"] = "https://raw.githubusercontent.com/Lukas-dotcom/sova/main/shoptet_parameter_sorting_robot.js";
-            }
-            GM_setValue("sovaMapping", JSON.stringify(mapping));
-            // Injektujeme tlačítko do elementu p.content-buttons
-            let contentButtons = document.querySelector("p.content-buttons");
-            if(contentButtons) {
-                let btn = document.createElement("a");
-                btn.href = "#";
-                btn.title = "Seřadit parametry 🦉";
-                btn.className = "btn btn-sm btn-primary";
-                btn.target = "_blank";
-                btn.textContent = "Seřadit parametry 🦉";
-                btn.style.marginLeft = "10px";
-                btn.addEventListener("click", function(e) {
-                    e.preventDefault();
-                    let mappingStr = GM_getValue("sovaMapping", "{}");
-                    let mapping = JSON.parse(mappingStr);
-                    log("Kliknuto, načtený mapping: " + JSON.stringify(mapping));
-                    if (mapping["Shoptet Parameter Sorting Robot"]) {
-                        // Uložíme CSV URL pro dílčí skript do GM_setValue
-                        let scriptCsvUrl = mapping["Shoptet Parameter Sorting Robot"];
-                        GM_setValue("sova:SPSortingCSV", scriptCsvUrl);
-                        log("Spouštím Shoptet Parameter Sorting Robot s CSV URL: " + scriptCsvUrl);
-                        // Přesměrujeme stránku na stejnou URL s query parametrem "sova_run=1"
-                        let newUrl = window.location.href;
-                        if(newUrl.indexOf('?') === -1) {
-                            newUrl += "?sova_run=1";
-                        } else if(newUrl.indexOf("sova_run=1") === -1) {
-                            newUrl += "&sova_run=1";
-                        }
-                        // Prodleva, aby uživatel viděl logy
-                        setTimeout(() => {
-                            window.location.href = newUrl;
-                        }, 3000);
-                    } else {
-                        console.error("Mapping pro 'Shoptet Parameter Sorting Robot' nebyl nalezen.");
-                    }
-                });
-                contentButtons.appendChild(btn);
-                log("Injektováno tlačítko 'Seřadit parametry 🦉'.");
-            } else {
-                log("Element p.content-buttons nebyl nalezen.");
-            }
-        }).catch(err => {
-            console.error("Chyba při načítání univerzálního CSV mappingu:", err);
-        });
-    }
-
-    // --------------------------
-    // Dílčí skript – Shoptet Parameter Sorting Robot
-    // --------------------------
-    // Tato funkce se spouští, pokud jsme na detailní stránce a URL obsahuje query parametr "sova_run=1".
-    async function runSortingRobot() {
         log("Spouštím Shoptet Parameter Sorting Robot (dílčí skript).");
         const delayMs = 2000;
-
-        // Funkce pro načtení CSV pro řazení (máme CSV URL uloženou pod klíčem "sova:SPSortingCSV")
+        
         async function fetchCSV(url) {
             return new Promise((resolve, reject) => {
                 GM_xmlhttpRequest({
@@ -155,7 +41,7 @@
                                 let data = response.responseText;
                                 let lines = data.split('\n').filter(line => line.trim() !== '');
                                 let result = {};
-                                // Data začínají od druhého řádku
+                                // Data začínají od druhého řádku (první řádek jsou hlavičky)
                                 for (let i = 1; i < lines.length; i++) {
                                     let cols = lines[i].split(',');
                                     if (cols.length >= 2) {
@@ -180,15 +66,15 @@
                 });
             });
         }
-
-        // --- Zpracování stránek ---
+        
+        // Pokud jsme na výpisové stránce, sestavíme seznam parametrů
         async function processListingPage() {
             log("Zpracovávám stránku s výpisem parametrů...");
             let storedList = GM_getValue("paramsList", null);
             if (!storedList) {
                 const csvUrl = GM_getValue("sova:SPSortingCSV", "XXXXXXXX");
                 if (!csvUrl || csvUrl === "XXXXXXXX") {
-                    console.error("CSV URL pro Shoptet Parameter Sorting Robot není nastaveno (používá se placeholder 'XXXXXXXX').");
+                    console.error("CSV URL pro Sorting Robot není nastaveno (používá se placeholder 'XXXXXXXX').");
                     return;
                 }
                 try {
@@ -382,4 +268,12 @@
             await processDetailPage();
         }
     }
+
+    // --- Spuštění dílčího skriptu ---
+    // Pokud jsme na detailní stránce, spustíme sorting robot
+    if (isDetailPage) {
+        runSortingRobot();
+    }
+
+    // --- Konec sova.js ---
 })();
