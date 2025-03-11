@@ -195,23 +195,26 @@ async function runSortingRobot() {
     log("Spouštím Shoptet Parameter Sorting Robot (dílčí skript).");
     const delayMs = 2000;
 
-    // Nejprve ověříme, zda aktuální URL (bez dotazů) odpovídá URL uložené v currentParam.
+    // Nejprve ověříme, zda aktuální URL (včetně query stringu) odpovídá URL uložené v currentParam.
     let currentParamStr = GM_getValue("currentParam", null);
     if (!currentParamStr) {
         console.error("Nebyl nalezen aktuální parametr. Ujistěte se, že stránka byla otevřena přes SOVA tlačítko.");
         return;
     }
     let currentParam = JSON.parse(currentParamStr);
-    const currentBase = new URL(window.location.href).origin + new URL(window.location.href).pathname;
-    const expectedBase = new URL(currentParam.url).origin + new URL(currentParam.url).pathname;
-    log(`Čítač = ${GM_getValue("sova:processedCount", 0)}. Očekávaná URL: ${expectedBase}`);
+    // Získáme kompletní aktuální URL (bez případného hashe)
+    const currentUrl = window.location.href.split('#')[0];
+    // Vytvoříme objekt URL pro očekávanou URL a získáme kompletní URL (včetně query)
+    const expectedUrlObj = new URL(currentParam.url);
+    const expectedUrl = expectedUrlObj.origin + expectedUrlObj.pathname + expectedUrlObj.search;
+    log(`Čítač = ${GM_getValue("sova:processedCount", 0)}. Očekávaná URL: ${expectedUrl}`);
     
-    if (currentBase !== expectedBase) {
-        log("Aktuální URL (" + currentBase + ") se neshoduje s očekávanou (" + expectedBase + "). Přesměrovávám...");
+    if (currentUrl !== expectedUrl) {
+        log("Aktuální URL (" + currentUrl + ") se neshoduje s očekávanou (" + expectedUrl + "). Přesměrovávám...");
         window.location.href = currentParam.url;
         return;
     } else {
-        log("Aktuální URL odpovídá očekávané. Očekávaná URL: " + expectedBase + " | Aktuální URL: " + currentBase);
+        log("Aktuální URL odpovídá očekávané. Očekávaná URL: " + expectedUrl + " | Aktuální URL: " + currentUrl);
     }
 
     let paramRules = JSON.parse(GM_getValue("paramRules", "{}"));
@@ -350,5 +353,5 @@ async function runSortingRobot() {
         runSortingRobot();
     }
 
-    // --- Konec sova.js ---
+    // --- Konec sova.js nva---
 })();
