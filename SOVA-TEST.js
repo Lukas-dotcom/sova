@@ -77,35 +77,40 @@
             .catch(error => console.error("Nepodařilo se načíst HTML:", error));
      }
 
-        // --- Přidání odkazu do navigace ---
-        document.addEventListener("DOMContentLoaded", function () {
-            var navMenus = document.querySelectorAll("ul.headerNavigation[role='navigation']");
-            navMenus.forEach(function (navMenu) {
-                // Zkontrolujeme, zda už odkaz existuje
-                if (!navMenu.querySelector(".sova-nav-link")) {
-                    var sovaLink = document.createElement("li");
-                    sovaLink.classList.add("sova-nav-link");
-                    sovaLink.innerHTML = `
-                        <a class="headerNavigation__link" href="/admin/sova/" role="button" aria-label="SOVA administrace" aria-expanded="false" style="
-                            display: flex;
-                            align-items: center;
-                            gap: 8px;
-                        ">
-                            <span style="
-                                display: inline-block;
-                                width: 24px;
-                                height: 24px;
-                                background-image: url('https://raw.githubusercontent.com/Lukas-dotcom/sova/refs/heads/main/owl-icon-mala.png');
-                                background-repeat: no-repeat;
-                                background-size: contain;
-                            "></span>
-                            <span class="headerNavigation__title"><b>SOVA<br>administrace</b></span>
-                        </a>
-                    `;
-                    navMenu.appendChild(sovaLink);
-                    console.log("[SOVA] Odkaz na SOVA administraci byl přidán do navigace.");
+         // --- Přidání odkazu do navigace ---
+        var navMenus = document.querySelectorAll("ul.headerNavigation[role='navigation']");
+        navMenus.forEach(function (navMenu) {
+            // Zkontrolujeme, zda už odkaz existuje
+            if (!navMenu.querySelector(".sova-nav-link")) {
+                var sovaNavItem = document.createElement("li");
+                sovaNavItem.classList.add("sova-nav-link");
+                sovaNavItem.innerHTML = `
+                    <a class="headerNavigation__link" href="/admin/sova/" role="button" aria-label="SOVA administrace" aria-expanded="false" style="
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+                    ">
+                        <span style="
+                            display: inline-block;
+                            width: 24px;
+                            height: 24px;
+                            background-image: url('https://raw.githubusercontent.com/Lukas-dotcom/sova/refs/heads/main/owl-icon-mala.png');
+                            background-repeat: no-repeat;
+                            background-size: contain;
+                        "></span>
+                        <span class="headerNavigation__title"><b>SOVA<br>administrace</b></span>
+                    </a>
+                `;
+                
+                // Přidání na první místo v navigaci
+                if (navMenu.firstChild) {
+                    navMenu.insertBefore(sovaNavItem, navMenu.firstChild);
+                } else {
+                    navMenu.appendChild(sovaNavItem);
                 }
-            });
+                
+                console.log("Odkaz na SOVA administraci byl přidán na první místo v navigaci.");
+            }
         });
         
 
