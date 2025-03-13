@@ -114,7 +114,7 @@
             }
         });
         
-        // --- Přidání fixního upozornění do všech oken SOVA ---
+        // --- Přidání fixního upozornění do všech oken SOVA  ---
         if (window.name && window.name.startsWith("sova")) {
             console.log("[SOVA] Okno detekováno: " + window.name);
             document.addEventListener("DOMContentLoaded", function () {
