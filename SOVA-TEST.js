@@ -118,24 +118,24 @@
         if (window.name && window.name.startsWith("sova")) {
             console.log("[SOVA] Okno detekováno: " + window.name);
         
-            function insertSovaAlert() {
-                if (!document.getElementById("sova-alert")) {
-                    console.log("[SOVA] Vkládám upozornění do okna...");
+            function insertPersistentAlert() {
+                if (!window.top.document.getElementById("sova-alert")) {
+                    console.log("[SOVA] Vkládám upozornění na úroveň okna...");
         
-                    var alertDiv = document.createElement("div");
+                    var alertDiv = window.top.document.createElement("div");
                     alertDiv.id = "sova-alert";
                     alertDiv.style.position = "fixed";
                     alertDiv.style.top = "0";
                     alertDiv.style.left = "0";
                     alertDiv.style.width = "100%";
-                    alertDiv.style.zIndex = "9999";
+                    alertDiv.style.zIndex = "99999";
                     alertDiv.style.backgroundColor = "#f90";
                     alertDiv.style.display = "flex";
                     alertDiv.style.alignItems = "center";
                     alertDiv.style.padding = "16px";
                     alertDiv.style.boxShadow = "0 2px 5px rgba(0, 0, 0, 0.2)";
         
-                    var img = document.createElement("img");
+                    var img = window.top.document.createElement("img");
                     img.src = "https://github.com/Lukas-dotcom/sova/blob/main/Owl%20icon%20alert.png?raw=true";
                     img.alt = "Sova Alert Icon";
                     img.style.width = "60px";
@@ -143,7 +143,7 @@
                     img.style.marginRight = "16px";
                     img.style.marginLeft = "20px";
         
-                    var textDiv = document.createElement("div");
+                    var textDiv = window.top.document.createElement("div");
                     textDiv.style.color = "#333";
                     textDiv.style.fontSize = "1rem";
                     textDiv.style.lineHeight = "1.2";
@@ -152,26 +152,25 @@
         
                     alertDiv.appendChild(img);
                     alertDiv.appendChild(textDiv);
-                    document.body.insertBefore(alertDiv, document.body.firstChild);
+                    window.top.document.body.insertBefore(alertDiv, window.top.document.body.firstChild);
         
-                    console.log("[SOVA] Fixní upozornění bylo vloženo do okna: " + window.name);
+                    console.log("[SOVA] Fixní upozornění bylo vloženo do hlavního okna.");
                 }
             }
         
-            // Kontrola každých 500 ms, aby se přidalo i při změně URL
-            var checkBodyInterval = setInterval(function () {
-                if (document.body) {
-                    clearInterval(checkBodyInterval);
-                    insertSovaAlert();
-                }
-            }, 100);
-        
-            // Znovu vložíme upozornění při každé změně URL
+            // Upozornění se znovu zobrazí při každém reloadu hlavního okna
             window.addEventListener("load", function () {
                 console.log("[SOVA] Stránka byla znovu načtena, kontroluji upozornění...");
-                insertSovaAlert();
+                insertPersistentAlert();
+            });
+        
+            // Pokud se URL změní, upozornění zůstane
+            window.addEventListener("popstate", function () {
+                console.log("[SOVA] URL byla změněna, kontroluji upozornění...");
+                insertPersistentAlert();
             });
         }
+        
         
         
         
