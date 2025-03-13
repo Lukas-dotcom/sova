@@ -34,6 +34,53 @@
         if (window.location.href.includes("parametry-pro-filtrovani-detail") && window.name === "sovaParametrSortingWindow") {
             paramSorting();
         }
+
+ // --- Načtení externího HTML obsahu pro stránku admin/sova ---
+        if (window.location.href.includes("admin/sova")) {
+            const sectionToRemove = document.querySelector(".section.section-424");
+            if (sectionToRemove) {
+                sectionToRemove.remove();
+            }
+
+            fetch("https://raw.githubusercontent.com/Lukas-dotcom/sova/refs/heads/main/sova-admin.html")
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Chyba při načítání HTML souboru");
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    const newSection = document.createElement("div");
+                    newSection.classList.add("section");
+                    newSection.innerHTML = data;
+                    document.body.appendChild(newSection);
+                })
+                .catch(error => console.error("Nepodařilo se načíst HTML:", error));
+        }
+
+
+         // --- Načtení externího HTML obsahu pro stránku admin/sova ---
+         if (window.location.href.includes("admin/sova")) {
+            const sectionToRemove = document.querySelector(".section.section-424");
+            if (sectionToRemove) {
+                sectionToRemove.remove();
+            }
+
+            fetch("https://raw.githubusercontent.com/Lukas-dotcom/sova/refs/heads/main/sova-admin.html")
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Chyba při načítání HTML souboru");
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    const newSection = document.createElement("div");
+                    newSection.classList.add("section");
+                    newSection.innerHTML = data;
+                    document.body.appendChild(newSection);
+                })
+                .catch(error => console.error("Nepodařilo se načíst HTML:", error));
+        }
     }
 
     // --- Univerzální funkce pro vkládání tlačítek (upravená verze) ---
