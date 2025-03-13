@@ -35,48 +35,77 @@
             paramSorting();
         }
 
-// --- Načtení externího HTML obsahu pro stránku admin/sova ---
-if (window.location.href.includes("admin/sova")) {
-    const sectionToRemove = document.querySelector(".section.section-424");
-    if (sectionToRemove) {
-        sectionToRemove.remove();
-    }
+    // --- Načtení externího HTML obsahu pro stránku admin/sova ---
+    if (window.location.href.includes("admin/sova")) {
+        const sectionToRemove = document.querySelector(".section.section-424");
+        if (sectionToRemove) {
+            sectionToRemove.remove();
+        }
 
-    // 1 Najdeme kontejner pageGrid__content
-    const pageGridContent = document.querySelector(".pageGrid__content");
-    if (!pageGridContent) {
-        console.error("Element .pageGrid__content nebyl nalezen.");
-        return;
-    }
+        // 1 Najdeme kontejner pageGrid__content
+        const pageGridContent = document.querySelector(".pageGrid__content");
+        if (!pageGridContent) {
+            console.error("Element .pageGrid__content nebyl nalezen.");
+            return;
+        }
 
-    // 2 Vytvoříme nový <div class="section">
-    const newSection = document.createElement("div");
-    newSection.classList.add("section");
-    
-    // 3 Vložíme nový <div class="section"> jako třetí element uvnitř pageGrid__content
-    if (pageGridContent.children.length >= 2) {
-        pageGridContent.insertBefore(newSection, pageGridContent.children[2]);
-    } else {
-        pageGridContent.appendChild(newSection);
-    }
+        // 2 Vytvoříme nový <div class="section">
+        const newSection = document.createElement("div");
+        newSection.classList.add("section");
+        
+        // 3 Vložíme nový <div class="section"> jako třetí element uvnitř pageGrid__content
+        if (pageGridContent.children.length >= 2) {
+            pageGridContent.insertBefore(newSection, pageGridContent.children[2]);
+        } else {
+            pageGridContent.appendChild(newSection);
+        }
 
-    log("Nový <div class='section'> byl vytvořen jako třetí v .pageGrid__content.");
+        log("Nový <div class='section'> byl vytvořen jako třetí v .pageGrid__content.");
 
-    // 4 Pak do něj vložíme externí HTML obsah
-    fetch("https://raw.githubusercontent.com/Lukas-dotcom/sova/refs/heads/main/sova-admin.html")
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Chyba při načítání HTML souboru");
-            }
-            return response.text();
-        })
-        .then(data => {
-            newSection.innerHTML = data;
-            log("Externí HTML byl úspěšně načten a vložen.");
-        })
-        .catch(error => console.error("Nepodařilo se načíst HTML:", error));
-}
+        // 4 Pak do něj vložíme externí HTML obsah
+        fetch("https://raw.githubusercontent.com/Lukas-dotcom/sova/refs/heads/main/sova-admin.html")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Chyba při načítání HTML souboru");
+                }
+                return response.text();
+            })
+            .then(data => {
+                newSection.innerHTML = data;
+                log("Externí HTML byl úspěšně načten a vložen.");
+            })
+            .catch(error => console.error("Nepodařilo se načíst HTML:", error));
+     }
 
+        // --- Přidání odkazu do navigace ---
+        document.addEventListener("DOMContentLoaded", function () {
+            const navMenus = document.querySelectorAll("ul.headerNavigation[role='navigation']");
+            navMenus.forEach(navMenu => {
+                const sovaLink = document.createElement("li");
+                sovaLink.innerHTML = `
+                    <a class="headerNavigation__link" href="/admin/sova/" role="button" aria-label="SOVA administrace" aria-expanded="false" style="
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+                    ">
+                        <span style="
+                            display: inline-block;
+                            width: 24px;
+                            height: 24px;
+                            background-image: url('https://raw.githubusercontent.com/Lukas-dotcom/sova/refs/heads/main/owl-icon-mala.png');
+                            background-repeat: no-repeat;
+                            background-size: contain;
+                        "></span>
+                        <span class="headerNavigation__title"><b>SOVA<br>administrace</b></span>
+                    </a>
+                `;
+                navMenu.appendChild(sovaLink);
+                log("Odkaz na SOVA administraci byl přidán do navigace.");
+            });
+        });
+
+
+     
     }
 
     // --- Univerzální funkce pro vkládání tlačítek (upravená verze) ---
