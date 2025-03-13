@@ -42,25 +42,31 @@
                 sectionToRemove.remove();
             }
 
-            // 1️⃣ Nejprve vytvoříme nový <div class="section">
+            // 1 Nejprve vytvoříme nový <div class="section">
             const newSection = document.createElement("div");
             newSection.classList.add("section");
             document.body.appendChild(newSection);
             log("Nový <div class='section'> byl vytvořen.");
 
-            // 2️⃣ Pak do něj vložíme externí HTML obsah
+            // 2 Pak do něj vložíme externí HTML obsah
             fetch("https://raw.githubusercontent.com/Lukas-dotcom/sova/refs/heads/main/sova-admin.html")
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error("Chyba při načítání HTML souboru");
-                    }
-                    return response.text();
-                })
-                .then(data => {
-                    newSection.innerHTML = data;
-                    log("Externí HTML obsah byl úspěšně vložen do <div class='section'>.");
-                })
-                .catch(error => console.error("Nepodařilo se načíst HTML:", error));
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Chyba při načítání HTML souboru");
+                }
+                return response.text();
+            })
+            .then(data => {
+                const targetElement = document.querySelector(".section"); // Místo, kam vkládáme
+                if (targetElement) {
+                    targetElement.innerHTML = data;
+                    console.log("Externí HTML byl úspěšně načten a vložen.");
+                } else {
+                    console.error("Cílový element '.section' nebyl nalezen.");
+                }
+            })
+            .catch(error => console.error("Nepodařilo se načíst HTML:", error));
+
         }
     }
 
