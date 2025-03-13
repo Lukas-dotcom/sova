@@ -3,7 +3,7 @@
 (function() {
     'use strict';
 
-    const log = (msg) => console.log([SOVA] ${msg});
+    const log = (msg) => console.log(`[SOVA] ${msg}`);
     const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
     // --- Inicializace SOVA skriptu ---
@@ -43,15 +43,15 @@
 
         const btn = document.createElement("a");
         btn.href = "#";
-        btn.title = ${buttonText} 🦉;
+        btn.title = `${buttonText} 🦉`;
         btn.className = "btn btn-sm btn-primary";
         btn.target = "_blank";
         btn.style = "order: -1; margin-left: 15px; margin-right: auto;";
-        btn.textContent = ${buttonText} 🦉;
+        btn.textContent = `${buttonText} 🦉`;
         btn.onclick = (e) => { e.preventDefault(); onClick(); };
 
         container.appendChild(btn);
-        log(Tlačítko '${buttonText}' vloženo.);
+        log(`Tlačítko '${buttonText}' vloženo.`);
     }
 
 
@@ -77,9 +77,9 @@
                             if (featureName) {
                                 const rulesUrl = mapping[featureName];
                                 if (!rulesUrl) {
-                                    return reject(new Error(Nenalezen mapping pro '${featureName}'.));
+                                    return reject(new Error(`Nenalezen mapping pro '${featureName}'.`));
                                 }
-                                GM_setValue(sova:${featureName}RulesUrl, rulesUrl);
+                                GM_setValue(`sova:${featureName}RulesUrl`, rulesUrl);
                                 resolve(rulesUrl);
                             } else {
                                 resolve(mapping);
@@ -144,7 +144,7 @@
     
         try {
             const rulesUrl = await fetchFeatureRules("raditHodnotyFiltru");
-            log(Načítám pravidla z: ${rulesUrl});
+            log(`Načítám pravidla z: ${rulesUrl}`);
     
             let paramRules = await fetchSortingCSV(rulesUrl);
             log("CSV definice filtrů načtena: " + JSON.stringify(paramRules));
@@ -162,7 +162,7 @@
                 let url = link.href;
                 let paramRules = JSON.parse(GM_getValue("paramRules", "{}"));
                 if (paramRules[paramName] && paramRules[paramName].oddelovac.toLowerCase() === "neradit") {
-                    log(Přeskakuji parametr '${paramName}' (nastaveno "neradit").);
+                    log(`Přeskakuji parametr '${paramName}' (nastaveno "neradit").`);
                 } else {
                     paramsList.push({ name: paramName, url: url });
                 }
@@ -173,7 +173,7 @@
             log("Nebyl nalezen žádný parametr k zpracování.");
             return;
         }
-        log(Nalezeno ${paramsList.length} parametrů ke zpracování.);
+        log(`Nalezeno ${paramsList.length} parametrů ke zpracování.`);
     
         paramsList.forEach((param, index) => param.counter = index);
     
@@ -184,7 +184,7 @@
         let currentParam = paramsList[0];
         GM_setValue("currentParam", JSON.stringify(currentParam));
     
-        log(Čítač = 0. První parametr: ${currentParam.name}, URL: ${currentParam.url});
+        log(`Čítač = 0. První parametr: ${currentParam.name}, URL: ${currentParam.url}`);
     
         window.open(currentParam.url, "sovaSortingWindow", "width=1200,height=800");
     }
@@ -207,19 +207,19 @@
         let expectedParam = fullParamsList[processedCount];
         let expectedUrl = expectedParam.url;
         let currentUrl = window.location.href;
-        log(Čítač = ${processedCount}. Očekávaná URL: ${expectedUrl});
+        log(`Čítač = ${processedCount}. Očekávaná URL: ${expectedUrl}`);
         
         if (currentUrl !== expectedUrl) {
-            log(Aktuální URL (${currentUrl}) se neshoduje s očekávanou (${expectedUrl}). Přesměrovávám...);
+            log(`Aktuální URL (${currentUrl}) se neshoduje s očekávanou (${expectedUrl}). Přesměrovávám...`);
             window.location.href = expectedUrl;
             return;
         } else {
-            log(Aktuální URL odpovídá očekávané. Očekávaná URL: ${expectedUrl} | Aktuální URL: ${currentUrl});
+            log(`Aktuální URL odpovídá očekávané. Očekávaná URL: ${expectedUrl} | Aktuální URL: ${currentUrl}`);
         }
 
         let paramRules = JSON.parse(GM_getValue("paramRules", "{}"));
         let currentParam = JSON.parse(GM_getValue("currentParam", "{}"));
-        log(Zpracovávám detail parametru: ${currentParam.name});
+        log(`Zpracovávám detail parametru: ${currentParam.name}`);
         await sleep(delayMs);
 
         let table = document.querySelector("table.table");
@@ -243,7 +243,7 @@
 
         if (paramRules[currentParam.name] && paramRules[currentParam.name].oddelovac.toLowerCase() !== "neradit") {
             let oddelovac = paramRules[currentParam.name].oddelovac;
-            log(Řazení s použitím oddělovače '${oddelovac}');
+            log(`Řazení s použitím oddělovače '${oddelovac}'`);
             rowsData.forEach(item => {
                 let parts = item.text.split(oddelovac);
                 if (parts.length === 2) {
@@ -312,9 +312,9 @@
 																   
         log("Před zvýšením čítače: " + processedCount);
         processedCount++;
-        GM_setValue(sova:ProcessedCount, processedCount);
-        GM_setValue(sova:lastProcessedUrl, window.location.href);
-        log(Zpracováno parametrů (po zvýšení čítače): ${processedCount});
+        GM_setValue(`sova:ProcessedCount`, processedCount);
+        GM_setValue(`sova:lastProcessedUrl`, window.location.href);
+        log(`Zpracováno parametrů (po zvýšení čítače): ${processedCount}`);
         log("Aktuální URL: " + window.location.href);
 
         let saveButton = document.querySelector("a.btn-action.submit-js[rel='saveAndStay']");
@@ -335,7 +335,7 @@
                 let nextParam = paramsList.shift();
                 GM_setValue("paramsList", JSON.stringify(paramsList));
                 GM_setValue("currentParam", JSON.stringify(nextParam));
-                log(Čítač = ${processedCount}. Následuje parametr: ${nextParam.name}, URL: ${nextParam.url});
+                log(`Čítač = ${processedCount}. Následuje parametr: ${nextParam.name}, URL: ${nextParam.url}`);
                 await sleep(delayMs);
                 window.location.href = nextParam.url;
             } else {
