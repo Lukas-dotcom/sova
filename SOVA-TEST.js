@@ -114,12 +114,14 @@
             }
         });
         
-        // --- Přidání fixního upozornění do všech oken SOVA  ---
+        // --- Přidání fixního upozornění do všech oken SOVA ---
         if (window.name && window.name.startsWith("sova")) {
+            console.log("[SOVA] Okno detekováno: " + window.name);
             document.addEventListener("DOMContentLoaded", function () {
                 var checkBodyInterval = setInterval(function () {
                     if (document.body) {
                         clearInterval(checkBodyInterval); // Zastavíme kontrolu, jakmile existuje body
+                        console.log("[SOVA] document.body existuje, vkládám upozornění.");
                         var alertDiv = document.createElement("div");
                         alertDiv.style.position = "fixed";
                         alertDiv.style.top = "0";
@@ -151,10 +153,14 @@
                         alertDiv.appendChild(textDiv);
 
                         document.body.insertBefore(alertDiv, document.body.firstChild);
-                        console.log("Fixní upozornění bylo úspěšně vloženo do okna SOVA.");
+                        console.log("[SOVA] Fixní upozornění bylo úspěšně vloženo do okna: " + window.name);
+                    } else {
+                        console.log("[SOVA] document.body zatím neexistuje, čekám...");
                     }
                 }, 100);
             });
+        } else {
+            console.log("[SOVA] Toto okno není cílové (window.name: " + window.name + ")");
         }
 
      
