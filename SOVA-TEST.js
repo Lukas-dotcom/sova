@@ -77,13 +77,14 @@
             .catch(error => console.error("Nepodařilo se načíst HTML:", error));
      }
 
-         // --- Přidání odkazu do navigace ---
+        // --- Přidání odkazu do navigace ---
         var navMenus = document.querySelectorAll("ul.headerNavigation[role='navigation']");
         navMenus.forEach(function (navMenu) {
             // Zkontrolujeme, zda už odkaz existuje
             if (!navMenu.querySelector(".sova-nav-link")) {
                 var sovaNavItem = document.createElement("li");
                 sovaNavItem.classList.add("sova-nav-link");
+                sovaNavItem.style.listStyle = "none"; // Odstranění ::marker
                 sovaNavItem.innerHTML = `
                     <a class="headerNavigation__link" href="/admin/sova/" role="button" aria-label="SOVA administrace" aria-expanded="false" style="
                         display: flex;
