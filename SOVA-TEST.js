@@ -186,7 +186,7 @@
     
         log(`Čítač = 0. První parametr: ${currentParam.name}, URL: ${currentParam.url}`);
     
-        window.open(currentParam.url, "sovaSortingWindow", "width=1200,height=800");
+        window.open(currentParam.url, "sovaParametrSortingWindow", "width=1200,height=800");
     }
     
     
@@ -312,7 +312,7 @@
 																   
         log("Před zvýšením čítače: " + processedCount);
         processedCount++;
-        GM_setValue(`sova:ProcessedCount`, processedCount);
+        GM_setValue(`sova:processedCount`, processedCount);
         GM_setValue(`sova:lastProcessedUrl`, window.location.href);
         log(`Zpracováno parametrů (po zvýšení čítače): ${processedCount}`);
         log("Aktuální URL: " + window.location.href);
