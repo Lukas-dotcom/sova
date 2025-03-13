@@ -76,12 +76,14 @@
             })
             .catch(error => console.error("Nepodařilo se načíst HTML:", error));
      }
-
+++
         // --- Přidání odkazu do navigace ---
-        document.addEventListener("DOMContentLoaded", function () {
-            const navMenus = document.querySelectorAll("ul.headerNavigation[role='navigation']");
-            navMenus.forEach(navMenu => {
+        const navMenus = document.querySelectorAll("ul.headerNavigation[role='navigation']");
+        navMenus.forEach(navMenu => {
+            // Zkontrolujeme, zda už odkaz existuje
+            if (!navMenu.querySelector(".sova-nav-link")) {
                 const sovaLink = document.createElement("li");
+                sovaLink.classList.add("sova-nav-link");
                 sovaLink.innerHTML = `
                     <a class="headerNavigation__link" href="/admin/sova/" role="button" aria-label="SOVA administrace" aria-expanded="false" style="
                         display: flex;
@@ -101,7 +103,7 @@
                 `;
                 navMenu.appendChild(sovaLink);
                 log("Odkaz na SOVA administraci byl přidán do navigace.");
-            });
+            }
         });
 
 
