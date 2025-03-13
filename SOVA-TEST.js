@@ -35,39 +35,48 @@
             paramSorting();
         }
 
-         // --- Načtení externího HTML obsahu pro stránku admin/sova ---
-        if (window.location.href.includes("admin/sova")) {
-            const sectionToRemove = document.querySelector(".section.section-424");
-            if (sectionToRemove) {
-                sectionToRemove.remove();
+// --- Načtení externího HTML obsahu pro stránku admin/sova ---
+if (window.location.href.includes("admin/sova")) {
+    const sectionToRemove = document.querySelector(".section.section-424");
+    if (sectionToRemove) {
+        sectionToRemove.remove();
+    }
+
+    // 1 Najdeme kontejner pageGrid__content
+    const pageGridContent = document.querySelector(".pageGrid__content");
+    if (!pageGridContent) {
+        console.error("Element .pageGrid__content nebyl nalezen.");
+        return;
+    }
+
+    // 2 Vytvoříme nový <div class="section">
+    const newSection = document.createElement("div");
+    newSection.classList.add("section");
+    
+    // 3 Vložíme nový <div class="section"> jako třetí element uvnitř pageGrid__content
+    if (pageGridContent.children.length >= 2) {
+        pageGridContent.insertBefore(newSection, pageGridContent.children[2]);
+    } else {
+        pageGridContent.appendChild(newSection);
+    }
+
+    log("Nový <div class='section'> byl vytvořen jako třetí v .pageGrid__content.");
+
+    // 4 Pak do něj vložíme externí HTML obsah
+    fetch("https://raw.githubusercontent.com/Lukas-dotcom/sova/refs/heads/main/sova-admin.html")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Chyba při načítání HTML souboru");
             }
+            return response.text();
+        })
+        .then(data => {
+            newSection.innerHTML = data;
+            log("Externí HTML byl úspěšně načten a vložen.");
+        })
+        .catch(error => console.error("Nepodařilo se načíst HTML:", error));
+}
 
-            // 1 Nejprve vytvoříme nový <div class="section">
-            const newSection = document.createElement("div");
-            newSection.classList.add("section");
-            document.body.appendChild(newSection);
-            log("Nový <div class='section'> byl vytvořen.");
-
-            // 2 Pak do něj vložíme externí HTML obsah
-            fetch("https://raw.githubusercontent.com/Lukas-dotcom/sova/refs/heads/main/sova-admin.html")
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error("Chyba při načítání HTML souboru");
-                }
-                return response.text();
-            })
-            .then(data => {
-                const targetElement = document.querySelector(".section"); // Místo, kam vkládáme
-                if (targetElement) {
-                    targetElement.innerHTML = data;
-                    console.log("Externí HTML byl úspěšně načten a vložen.");
-                } else {
-                    console.error("Cílový element '.section' nebyl nalezen.");
-                }
-            })
-            .catch(error => console.error("Nepodařilo se načíst HTML:", error));
-
-        }
     }
 
     // --- Univerzální funkce pro vkládání tlačítek (upravená verze) ---
