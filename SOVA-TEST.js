@@ -313,7 +313,7 @@
     async function paramSorting() {
 	 // Provedeme řazení pouze v okně, které bylo otevřeno skriptem
         log("Spouštím Shoptet Parameter Sorting Robot (dílčí skript).");
-        const delayMs = 5000;
+        const delayMs = 5000; 
 
         // Určíme očekávanou URL podle aktuálního počtu zpracovaných parametrů (sova:processedCount)
         let processedCount = GM_getValue("sova:processedCount", 0);
