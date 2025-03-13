@@ -59,13 +59,20 @@
         }
 
 
-         // --- Načtení externího HTML obsahu pro stránku admin/sova ---
-         if (window.location.href.includes("admin/sova")) {
+        // --- Načtení externího HTML obsahu pro stránku admin/sova ---
+        if (window.location.href.includes("admin/sova")) {
             const sectionToRemove = document.querySelector(".section.section-424");
             if (sectionToRemove) {
                 sectionToRemove.remove();
             }
 
+            // 1️⃣ Nejprve vytvoříme nový <div class="section">
+            const newSection = document.createElement("div");
+            newSection.classList.add("section");
+            document.body.appendChild(newSection);
+            log("Nový <div class='section'> byl vytvořen.");
+
+            // 2️⃣ Pak do něj vložíme externí HTML obsah
             fetch("https://raw.githubusercontent.com/Lukas-dotcom/sova/refs/heads/main/sova-admin.html")
                 .then(response => {
                     if (!response.ok) {
@@ -74,10 +81,8 @@
                     return response.text();
                 })
                 .then(data => {
-                    const newSection = document.createElement("div");
-                    newSection.classList.add("section");
                     newSection.innerHTML = data;
-                    document.body.appendChild(newSection);
+                    log("Externí HTML obsah byl úspěšně vložen do <div class='section'>.");
                 })
                 .catch(error => console.error("Nepodařilo se načíst HTML:", error));
         }
