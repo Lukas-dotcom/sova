@@ -76,7 +76,7 @@
             })
             .catch(error => console.error("Nepodařilo se načíst HTML:", error));
      }
-++
+
         // --- Přidání odkazu do navigace ---
         const navMenus = document.querySelectorAll("ul.headerNavigation[role='navigation']");
         navMenus.forEach(navMenu => {
