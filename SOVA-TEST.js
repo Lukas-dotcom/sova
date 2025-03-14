@@ -119,62 +119,60 @@
             console.log("[SOVA] Okno detekováno: " + window.name);
         
             function insertPersistentAlert() {
-                if (sessionStorage.getItem("sovaAlertInserted")) {
-                    console.log("[SOVA] Upozornění již bylo vloženo, nebudu vkládat znovu.");
-                    return;
+                try {
+                    if (!window.top.document.getElementById("sova-alert")) {
+                        console.log("[SOVA] Vkládám upozornění na úroveň hlavního okna...");
+        
+                        var alertDiv = window.top.document.createElement("div");
+                        alertDiv.id = "sova-alert";
+                        alertDiv.style.position = "fixed";
+                        alertDiv.style.top = "0";
+                        alertDiv.style.left = "0";
+                        alertDiv.style.width = "100%";
+                        alertDiv.style.zIndex = "99999";
+                        alertDiv.style.backgroundColor = "#f90";
+                        alertDiv.style.display = "flex";
+                        alertDiv.style.alignItems = "center";
+                        alertDiv.style.padding = "16px";
+                        alertDiv.style.boxShadow = "0 2px 5px rgba(0, 0, 0, 0.2)";
+        
+                        var img = window.top.document.createElement("img");
+                        img.src = "https://github.com/Lukas-dotcom/sova/blob/main/Owl%20icon%20alert.png?raw=true";
+                        img.alt = "Sova Alert Icon";
+                        img.style.width = "60px";
+                        img.style.height = "auto";
+                        img.style.marginRight = "16px";
+                        img.style.marginLeft = "20px";
+        
+                        var textDiv = window.top.document.createElement("div");
+                        textDiv.style.color = "#333";
+                        textDiv.style.fontSize = "1rem";
+                        textDiv.style.lineHeight = "1.2";
+                        textDiv.style.marginLeft = "30px";
+                        textDiv.innerHTML = "Toto okno můžete minimalizovat. Po dokončení úlohy se samo zavře.<br><b>Okno sami nezavírejte!</b>";
+        
+                        alertDiv.appendChild(img);
+                        alertDiv.appendChild(textDiv);
+                        window.top.document.body.insertBefore(alertDiv, window.top.document.body.firstChild);
+        
+                        console.log("[SOVA] Fixní upozornění bylo vloženo do hlavního okna.");
+                    } else {
+                        console.log("[SOVA] Upozornění již existuje, nevkládám znovu.");
+                    }
+                } catch (error) {
+                    console.error("[SOVA] Chyba při vkládání upozornění:", error);
                 }
-        
-                console.log("[SOVA] Vkládám upozornění na úroveň okna...");
-        
-                var alertDiv = document.createElement("div");
-                alertDiv.id = "sova-alert";
-                alertDiv.style.position = "fixed";
-                alertDiv.style.top = "0";
-                alertDiv.style.left = "0";
-                alertDiv.style.width = "100%";
-                alertDiv.style.zIndex = "99999";
-                alertDiv.style.backgroundColor = "#f90";
-                alertDiv.style.display = "flex";
-                alertDiv.style.alignItems = "center";
-                alertDiv.style.padding = "16px";
-                alertDiv.style.boxShadow = "0 2px 5px rgba(0, 0, 0, 0.2)";
-        
-                var img = document.createElement("img");
-                img.src = "https://github.com/Lukas-dotcom/sova/blob/main/Owl%20icon%20alert.png?raw=true";
-                img.alt = "Sova Alert Icon";
-                img.style.width = "60px";
-                img.style.height = "auto";
-                img.style.marginRight = "16px";
-                img.style.marginLeft = "20px";
-        
-                var textDiv = document.createElement("div");
-                textDiv.style.color = "#333";
-                textDiv.style.fontSize = "1rem";
-                textDiv.style.lineHeight = "1.2";
-                textDiv.style.marginLeft = "30px";
-                textDiv.innerHTML = "Toto okno můžete minimalizovat. Po dokončení úlohy se samo zavře.<br><b>Okno sami nezavírejte!</b>";
-        
-                alertDiv.appendChild(img);
-                alertDiv.appendChild(textDiv);
-                document.body.insertBefore(alertDiv, document.body.firstChild);
-        
-                sessionStorage.setItem("sovaAlertInserted", "true");
-                console.log("[SOVA] Fixní upozornění bylo vloženo do hlavního okna.");
             }
         
-            // Upozornění se vloží pouze jednou
-            window.addEventListener("load", function () {
-                insertPersistentAlert();
-            });
+            // Vloží upozornění ihned při prvním načtení
+            insertPersistentAlert();
         
-            // Pokud se URL změní, upozornění zůstane beze změny
+            // Pokud se URL změní, upozornění zůstane
             window.addEventListener("popstate", function () {
                 insertPersistentAlert();
             });
         }
-        
-        
-        
+    
         
         
 
