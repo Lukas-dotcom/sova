@@ -1,4 +1,4 @@
-// sova.js
+// sova.js 
 // Modulární základ skriptu SOVA s podporou rozšiřování o další funkce.
 (function() {
     'use strict';
@@ -418,6 +418,6 @@ async function paramSorting() {
 
 
     // --- Spuštění inicializace SOVA ---
-    initSova();
+    initSova();  
 
 })();
