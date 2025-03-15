@@ -262,59 +262,70 @@
         });
     }
 
-async function raditHodnotyFiltru() {
-    log("Zpracovávám stránku s výpisem filtrů (pro nové okno)...");
-    let rows = document.querySelectorAll("table.table tbody tr");
-    if (!rows || rows.length === 0) {
-        log("Na stránce nebyly nalezeny žádné řádky.");
-        return;
-    }
-
-    try {
-        const rulesUrl = await fetchFeatureRules("raditHodnotyFiltru");
-        log(`Načítám pravidla z: ${rulesUrl}`);
-
-        let paramRules = await fetchSortingCSV(rulesUrl);
-        log("CSV definice filtrů načtena: " + JSON.stringify(paramRules));
-        GM_setValue("paramRules", JSON.stringify(paramRules));
-    } catch (e) {
-        console.error("Chyba při načítání CSV definice filtrů:", e);
-        return;
-    }
-
-    let paramsList = [];
-    rows.forEach(row => {
-        let link = row.querySelector("a.table__detailLink");
-        if (link) {
-            let paramName = link.textContent.trim();
-            let url = link.href;
-            let paramRules = JSON.parse(GM_getValue("paramRules", "{}"));
-            if (paramRules[paramName] && paramRules[paramName].oddelovac.toLowerCase() === "neradit") {
-                log(`Přeskakuji parametr '${paramName}' (nastaveno \"neradit\").`);
-            } else {
-                paramsList.push({ name: paramName, url: url });
-            }
+    async function raditHodnotyFiltru() {
+        log("Zpracovávám stránku s výpisem filtrů (pro nové okno)...");
+        let rows = document.querySelectorAll("table.table tbody tr");
+        if (!rows || rows.length === 0) {
+            log("Na stránce nebyly nalezeny žádné řádky.");
+            return;
         }
-    });
-
-    if (paramsList.length === 0) {
-        log("Nebyl nalezen žádný parametr k zpracování.");
-        return;
+    
+        try {
+            const rulesUrl = await fetchFeatureRules("raditHodnotyFiltru");
+            log(`Načítám pravidla z: ${rulesUrl}`);
+    
+            let paramRules = await fetchSortingCSV(rulesUrl);
+            log("CSV definice filtrů načtena: " + JSON.stringify(paramRules));
+            GM_setValue("paramRules", JSON.stringify(paramRules));
+        } catch (e) {
+            console.error("Chyba při načítání CSV definice filtrů:", e);
+            return;
+        }
+    
+        let paramsList = [];
+        const paramRules = JSON.parse(GM_getValue("paramRules", "{}"));
+    
+        rows.forEach(row => {
+            let link = row.querySelector("a.table__detailLink");
+            if (link) {
+                let paramName = link.textContent.trim();
+                let url = link.href;
+                let pravidlo = paramRules[paramName];
+                if (pravidlo && pravidlo.oddelovac.toLowerCase() === "neradit") {
+                    log(`Přeskakuji parametr '${paramName}' (nastaveno "neradit").`);
+                } else {
+                    paramsList.push({ 
+                        name: paramName, 
+                        url: url,
+                        oddelovac: pravidlo ? pravidlo.oddelovac : "", // nový oddělovač
+                        zpracovano: false // výchozí stav: nezpracováno
+                    });
+                }
+            }
+        });
+    
+        if (paramsList.length === 0) {
+            log("Nebyl nalezen žádný parametr k zpracování.");
+            return;
+        }
+    
+        log(`Nalezeno ${paramsList.length} parametrů ke zpracování.`);
+    
+        GM_setValue("fullParamsList", JSON.stringify(paramsList));
+    
+        let firstUnprocessedParam = paramsList.find(p => !p.zpracovano);
+        if (!firstUnprocessedParam) {
+            log("Všechny parametry jsou již zpracované.");
+            return;
+        }
+    
+        GM_setValue("currentParam", JSON.stringify(firstUnprocessedParam));
+    
+        log(`První nezpracovaný parametr: ${firstUnprocessedParam.name}, URL: ${firstUnprocessedParam.url}`);
+    
+        window.open(firstUnprocessedParam.url, "sovaParametrSortingWindow", "width=1200,height=800");
     }
-    log(`Nalezeno ${paramsList.length} parametrů ke zpracování.`);
-
-    paramsList.forEach((param, index) => param.counter = index);
-
-    GM_setValue("fullParamsList", JSON.stringify(paramsList));
-    GM_setValue("sova:processedCount", 0);
-
-    let currentParam = paramsList[0];
-    GM_setValue("currentParam", JSON.stringify(currentParam));
-
-    log(`Čítač = 0. První parametr: ${currentParam.name}, URL: ${currentParam.url}`);
-
-    window.open(currentParam.url, "sovaParametrSortingWindow", "width=1200,height=800");
-}
+    
 
 
 
@@ -323,79 +334,86 @@ async function paramSorting() {
     log("Spouštím Shoptet Parameter Sorting Robot (dílčí skript).");
     const delayMs = 500; 
 
-    let processedCount = GM_getValue("sova:processedCount", 0);
     let fullParamsList = JSON.parse(GM_getValue("fullParamsList", "[]"));
-    if(fullParamsList.length <= processedCount) {
-        console.error("Plný seznam parametrů je prázdný nebo nedostačující.");
-        return;
-    }
-    let expectedParam = fullParamsList[processedCount];
-    let expectedUrl = expectedParam.url;
     let currentUrl = window.location.href;
-    log(`Čítač = ${processedCount}. Očekávaná URL: ${expectedUrl}`);
 
-    if (currentUrl !== expectedUrl) {
-        log(`Aktuální URL (${currentUrl}) se neshoduje s očekávanou (${expectedUrl}). Přesměrovávám...`);
-        window.location.href = expectedUrl;
-        return;
+    let currentParam = fullParamsList.find(param => param.url === currentUrl);
+
+    if (!currentParam) {
+        log(`Aktuální URL (${currentUrl}) nenalezeno v seznamu parametrů. Načítám další parametr.`);
+    } else if (currentParam.zpracovano) {
+        log(`Parametr "${currentParam.name}" již byl zpracován. Hledám další.`);
     } else {
-        log(`Aktuální URL odpovídá očekávané. Očekávaná URL: ${expectedUrl} | Aktuální URL: ${currentUrl}`);
-    }
+        log(`Zpracovávám parametr: ${currentParam.name}`);
+        await sleep(delayMs);
 
-    let paramRules = JSON.parse(GM_getValue("paramRules", "{}"));
-    let currentParam = JSON.parse(GM_getValue("currentParam", "{}"));
-    log(`Zpracovávám detail parametru: ${currentParam.name}`);
-    await sleep(delayMs);
-
-    let table = document.querySelector("table.table");
-    if (!table) {
-        console.error("Nebyla nalezena tabulka s hodnotami.");
-        return;
-    }
-    let tbody = table.querySelector("tbody");
-    if (!tbody) {
-        console.error("Nebyl nalezen obsah tabulky.");
-        return;
-    }
-    let rows = Array.from(tbody.querySelectorAll("tr"));
-    let rowsData = rows.map(row => {
-        let a = row.querySelector("td:nth-child(2) a.table__detailLink");
-        let text = a ? a.textContent.trim() : "";
-        let input = row.querySelector("td.table__cell--actions input[name='priority[]']");
-        let origValue = input ? input.value : null;
-        return { row, text, origValue };
-    });
-
-    // Zachováno původní logiku řazení dle oddělovače nebo standardní logiky.
-
-    tbody.innerHTML = "";
-    rowsData.forEach(item => {
-        let input = item.row.querySelector("td.table__cell--actions input[name='priority[]']");
-        if (input && item.origValue !== null) {
-            input.value = item.origValue;
+        let table = document.querySelector("table.table");
+        if (!table) {
+            console.error("Nebyla nalezena tabulka s hodnotami.");
+            return;
         }
-        tbody.appendChild(item.row);
-    });
-    log("Tabulka byla přeuspořádána a původní hodnoty priority[] byly doplněny.");
-    await sleep(delayMs);
+        let tbody = table.querySelector("tbody");
+        if (!tbody) {
+            console.error("Nebyl nalezen obsah tabulky.");
+            return;
+        }
+        let rows = Array.from(tbody.querySelectorAll("tr"));
+        let rowsData = rows.map(row => {
+            let a = row.querySelector("td:nth-child(2) a.table__detailLink");
+            let text = a ? a.textContent.trim() : "";
+            let input = row.querySelector("td.table__cell--actions input[name='priority[]']");
+            let origValue = input ? input.value : null;
+            return { row, text, origValue };
+        });
 
-    processedCount++;
-    GM_setValue(`sova:processedCount`, processedCount);
-    GM_setValue(`sova:lastProcessedUrl`, window.location.href);
+        if (currentParam.oddelovac) {
+            log(`Řazení pomocí oddělovače: '${currentParam.oddelovac}'`);
+            rowsData.forEach(item => {
+                let parts = item.text.split(currentParam.oddelovac);
+                if (parts.length === 2) {
+                    let part1 = parseFloat(parts[0].trim().replace(/\s/g, ""));
+                    let part2 = parseFloat(parts[1].trim().replace(/\s/g, ""));
+                    item.valid = !(isNaN(part1) || isNaN(part2));
+                    item.num1 = part1;
+                    item.num2 = part2;
+                } else {
+                    item.valid = false;
+                }
+            });
+            rowsData.sort((a, b) => {
+                if (a.valid && b.valid) {
+                    return a.num1 !== b.num1 ? a.num1 - b.num1 : a.num2 - b.num2;
+                }
+                return a.valid ? -1 : b.valid ? 1 : 0;
+            });
+        } else {
+            log("Standardní řazení.");
+            rowsData.sort((a, b) => a.text.localeCompare(b.text));
+        }
 
-    let saveButton = document.querySelector("a.btn-action.submit-js[rel='saveAndStay']");
-    if (saveButton) saveButton.click();
-    await sleep(delayMs);
+        tbody.innerHTML = "";
+        rowsData.forEach(item => tbody.appendChild(item.row));
+        log("Tabulka byla přeuspořádána.");
+        await sleep(delayMs);
 
-    if (fullParamsList.length > processedCount) {
-        let nextParam = fullParamsList[processedCount];
+        currentParam.zpracovano = true; // označení jako zpracováno
+        GM_setValue("fullParamsList", JSON.stringify(fullParamsList)); // uložení aktualizace
+
+        let saveButton = document.querySelector("a.btn-action.submit-js[rel='saveAndStay']");
+        if (saveButton) saveButton.click();
+        await sleep(delayMs);
+    }
+
+    let nextParam = fullParamsList.find(param => !param.zpracovano);
+    if (nextParam) {
         GM_setValue("currentParam", JSON.stringify(nextParam));
         window.location.href = nextParam.url;
     } else {
-        log("Všechny parametry byly zpracovány.");
-        // window.close();
+        log("✅ Všechny parametry byly zpracovány.");
+        window.close(); // volitelné
     }
 }
+
 
 
 
