@@ -18,6 +18,15 @@
                     // Inicializace seznamu parametrů a otevření prvního URL
                     raditHodnotyFiltru(); 
                 }
+            },
+
+            {
+                buttonText: "Seřadit parametry",
+                urlPattern: /parametry-pro-filtrovani-detail/,
+                onClick: () => {
+                    log("Spouštím proces řazení parametrů.");
+                    paramSortingSingle(); 
+                }
             }
         ];
 
@@ -383,13 +392,13 @@ async function paramSorting() {
         return { row, text, origValue };
     });
 
-        // Přidáme logování celého fullParamsList:
+       /* // Přidáme logování celého fullParamsList:
     let fullList = JSON.parse(GM_getValue("fullParamsList", "[]"));
     log(`FullParamsList: ${JSON.stringify(fullList, null, 2)}`);
 
     // Logování currentParam:
     let currParam = JSON.parse(GM_getValue("currentParam", "{}"));
-    log(`CurrentParam: ${JSON.stringify(currParam, null, 2)}`);
+    log(`CurrentParam: ${JSON.stringify(currParam, null, 2)}`); */
 
     // Rozhodujeme se, kterou logiku řazení použít podle vlastnosti oddelovac uložené v currentParam.
     if (currentParam.oddelovac) {
@@ -488,6 +497,127 @@ async function paramSorting() {
     }
 }
 
+async function paramSortingSingle() {
+    log("Spouštím řazení hodnot aktuálního parametru (jediný parametr) v aktuálním okně.");
+    const delayMs = 500;
+
+    // Vytáhneme název parametru z nadpisu – předpokládáme strukturu:
+    // <div class="section section-1358"> <h1>Upravit parametr <strong>Rozlišení</strong></h1> ... </div>
+    const paramHeadingEl = document.querySelector("div.section.section-1358 h1 strong");
+    if (!paramHeadingEl) {
+        console.error("Není možné najít název parametru ve stránce.");
+        return;
+    }
+    const paramName = paramHeadingEl.textContent.trim();
+    log(`Aktuální parametr: ${paramName}`);
+
+    // Načteme pravidla řazení z CSV
+    try {
+        const rulesUrl = await fetchFeatureRules("raditHodnotyFiltru");
+        log(`Načítám pravidla z: ${rulesUrl}`);
+        const allParamRules = await fetchSortingCSV(rulesUrl);
+        log("CSV definice filtrů načtena: " + JSON.stringify(allParamRules));
+        
+        // Získáme pravidlo pro aktuální parametr – pokud není nalezeno, použijeme výchozí (tj. standardní řazení)
+        const currentRule = allParamRules[paramName];
+        let oddelovac = null;
+        if (currentRule && currentRule.oddelovac.toLowerCase() !== "neradit") {
+            oddelovac = currentRule.oddelovac;
+        }
+        // Vytvoříme objekt aktuálního parametru
+        const currentParam = { name: paramName, oddelovac: oddelovac };
+        log(`Použiji parametr: ${JSON.stringify(currentParam)}`);
+        
+        // Nyní provedeme řazení hodnot v tabulce
+        const table = document.querySelector("table.table");
+        if (!table) {
+            console.error("Nebyla nalezena tabulka s hodnotami.");
+            return;
+        }
+        const tbody = table.querySelector("tbody");
+        if (!tbody) {
+            console.error("Nebyl nalezen obsah tabulky.");
+            return;
+        }
+        const rows = Array.from(tbody.querySelectorAll("tr"));
+        const rowsData = rows.map(row => {
+            const a = row.querySelector("td:nth-child(2) a.table__detailLink");
+            const text = a ? a.textContent.trim() : "";
+            const input = row.querySelector("td.table__cell--actions input[name='priority[]']");
+            const origValue = input ? input.value : null;
+            return { row, text, origValue };
+        });
+        
+        // Rozhodneme, kterou logiku řazení použít podle vlastnosti oddělovače aktuálního parametru
+        if (currentParam.oddelovac) {
+            log(`Řazení s použitím oddělovače '${currentParam.oddelovac}'`);
+            rowsData.forEach(item => {
+                let parts = item.text.split(currentParam.oddelovac);
+                if (parts.length === 2) {
+                    let part1 = parseFloat(parts[0].trim().replace(/\s/g, ""));
+                    let part2 = parseFloat(parts[1].trim().replace(/\s/g, ""));
+                    if (isNaN(part1) || isNaN(part2)) {
+                        item.valid = false;
+                    } else {
+                        item.valid = true;
+                        item.num1 = part1;
+                        item.num2 = part2;
+                    }
+                } else {
+                    item.valid = false;
+                }
+            });
+            rowsData.sort((a, b) => {
+                if (a.valid && b.valid) {
+                    return a.num1 !== b.num1 ? a.num1 - b.num1 : a.num2 - b.num2;
+                }
+                return a.valid ? -1 : b.valid ? 1 : 0;
+            });
+        } else {
+            log("Standardní řazení (rozdělení podle čísla a písmena).");
+            rowsData.forEach(item => {
+                let text = item.text;
+                if (text === "NE" || text === "-") {
+                    item.sortKey = { group: 3, key: text };
+                } else if (/^\d/.test(text)) {
+                    let match = text.match(/^([\d\s.,]+)/);
+                    if (match) {
+                        let numStr = match[1].replace(/\s/g, "").replace(/,/g, ".");
+                        let numVal = parseFloat(numStr);
+                        item.sortKey = { group: 1, key: isNaN(numVal) ? Infinity : numVal };
+                    } else {
+                        item.sortKey = { group: 1, key: Infinity };
+                    }
+                } else if (/^[A-Za-z]/.test(text)) {
+                    item.sortKey = { group: 2, key: text.toLowerCase() };
+                } else {
+                    item.sortKey = { group: 3, key: text };
+                }
+            });
+            rowsData.sort((a, b) => {
+                if (a.sortKey.group !== b.sortKey.group) {
+                    return a.sortKey.group - b.sortKey.group;
+                }
+                return a.sortKey.key < b.sortKey.key ? -1 : a.sortKey.key > b.sortKey.key ? 1 : 0;
+            });
+        }
+        log("Seřazené hodnoty: " + JSON.stringify(rowsData.map(item => item.text)));
+        await sleep(delayMs);
+        
+        // Obnovíme obsah tabulky s novým pořadím řádků
+        tbody.innerHTML = "";
+        rowsData.forEach(item => {
+            const input = item.row.querySelector("td.table__cell--actions input[name='priority[]']");
+            if (input && item.origValue !== null) {
+                input.value = item.origValue;
+            }
+            tbody.appendChild(item.row);
+        });
+        log("Tabulka byla přeuspořádána. Řazení proběhlo úspěšně.");
+    } catch (e) {
+        console.error("Chyba při načítání CSV pravidel:", e);
+    }
+}
 
 
 
