@@ -383,6 +383,14 @@ async function paramSorting() {
         return { row, text, origValue };
     });
 
+        // Přidáme logování celého fullParamsList:
+    let fullList = JSON.parse(GM_getValue("fullParamsList", "[]"));
+    log(`FullParamsList: ${JSON.stringify(fullList, null, 2)}`);
+
+    // Logování currentParam:
+    let currParam = JSON.parse(GM_getValue("currentParam", "{}"));
+    log(`CurrentParam: ${JSON.stringify(currParam, null, 2)}`);
+
     // Rozhodujeme se, kterou logiku řazení použít podle vlastnosti oddelovac uložené v currentParam.
     if (currentParam.oddelovac) {
         log(`Řazení s použitím oddělovače '${currentParam.oddelovac}'`);
