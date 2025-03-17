@@ -629,6 +629,8 @@ async function paramSortingSingle() {
 }
 
 async function upnutiVerzi() {
+    log("Spouštím proces upnout verzi.");
+
     function increaseVersion(version) {
         return version.replace(/(\d+)(\D*)$/, function(match, num, suffix) {
             return (parseFloat(num) + 0.0001).toFixed(4) + suffix;
@@ -636,51 +638,67 @@ async function upnutiVerzi() {
     }
 
     function updateVersions() {
-        var editor = document.getElementById("header-code-block");
+        let editor = document.getElementById("header-code-block");
         if (!editor) {
-            console.error("Editor nebyl nalezen.");
-            return;
-        }
-        
-        var content = editor.value;
-        var startTag = "<!-- Luke: START -->";
-        var stopTag = "<!-- Luke: STOP -->";
-
-        var startIndex = content.indexOf(startTag);
-        var stopIndex = content.indexOf(stopTag);
-
-        if (startIndex === -1 || stopIndex === -1 || startIndex > stopIndex) {
-            console.error("Nepodařilo se najít správné hranice pro úpravu verzí.");
+            console.error("[SOVA] Editor nebyl nalezen.");
             return;
         }
 
-        var lukeContent = content.substring(startIndex, stopIndex);
+        // Získání obsahu z CodeMirror, pokud existuje
+        let cmInstance = editor.closest(".v2FormField__codeEditor")?.querySelector(".CodeMirror");
+        let cm = cmInstance?.CodeMirror;
+        let content = cm ? cm.getValue() : editor.value;
 
-        var updatedLukeContent = lukeContent.replace(/(src|href)=("|')([^"']+?\?v=)([\d.]+)([^"'#]*)(#DEBUG_TIMESTAMP#)?("|')/g, function(match, attr, quoteStart, url, version, suffix, debug, quoteEnd) {
-            return attr + "=" + quoteStart + url + increaseVersion(version) + suffix + (debug || "") + quoteEnd;
-        });
+        let startTag = "<!-- Luke: START -->";
+        let stopTag = "<!-- Luke: STOP -->";
 
-        var newContent = content.substring(0, startIndex) + updatedLukeContent + content.substring(stopIndex);
+        let startIndex = content.indexOf(startTag);
+        let stopIndex = content.indexOf(stopTag) + stopTag.length; // Aby stop tag zůstal
+
+        if (startIndex === -1 || stopIndex === -1 || startIndex < startTag.length) {
+            console.error("[SOVA] Nepodařilo se najít správné hranice pro úpravu verzí.");
+            return;
+        }
+
+        let lukeContent = content.substring(startIndex, stopIndex);
+
+        // Aktualizace verzí
+        let updatedLukeContent = lukeContent.replace(
+            /(src|href)=("|')([^"']+?\?v=)([\d.]+)([^"'#]*)(#DEBUG_TIMESTAMP#)?("|')/g,
+            function (match, attr, quoteStart, url, version, suffix, debug, quoteEnd) {
+                return attr + "=" + quoteStart + url + increaseVersion(version) + suffix + (debug || "") + quoteEnd;
+            }
+        );
+
+        let newContent = content.substring(0, startIndex) + updatedLukeContent + content.substring(stopIndex);
 
         if (newContent !== content) {
-            editor.value = newContent;
-            console.log("Verze souborů úspěšně aktualizovány.");
-           // let saveButton = document.querySelector("a.btn-action.submit-js[rel='saveAndStay']");
-           // if (saveButton) {
-           //     log("Klikám na tlačítko Uložit.");
-           //     saveButton.click();
-           // } else {
-           //     console.error("Tlačítko Uložit nebylo nalezeno.");
-           // }
-
-
+            if (cm) {
+                cm.setValue(newContent);
+            } else {
+                editor.value = newContent;
+            }
+            log("Verze souborů úspěšně aktualizovány.");
         } else {
-            console.log("Žádné změny nebyly provedeny.");
+            log("Žádné změny nebyly provedeny.");
         }
     }
 
-    
+    updateVersions();
+
+    // Zakomentované uložení
+    /*
+    let saveButton = document.querySelector("a.btn-action.submit-js[rel='saveAndStay']");
+    if (saveButton) {
+        log("Klikám na tlačítko Uložit.");
+        saveButton.click();
+    } else {
+        console.error("[SOVA] Tlačítko Uložit nebylo nalezeno.");
+    }
+    */
+
 };
+
 
 
 
