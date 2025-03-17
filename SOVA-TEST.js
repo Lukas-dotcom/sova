@@ -632,10 +632,18 @@ async function upnutiVerzi() {
     log("Spouštím proces upnout verzi.");
 
     function increaseVersion(version) {
-        return version.replace(/(\d+)(\D*)$/, function(match, num, suffix) {
-            return (parseFloat(num) + 0.0001).toFixed(4) + suffix;
+        return version.replace(/(\d+(\.\d+)?)/, function(match, num) {
+            let parts = num.split('.');
+            if (parts.length === 1) {
+                return (parseInt(parts[0]) + 1).toString();
+            } else {
+                let whole = parts[0];
+                let decimal = (parseFloat("0." + parts[1]) + 0.0001).toFixed(4).substring(2);
+                return whole + "." + decimal;
+            }
         });
     }
+    
 
     function updateVersions() {
         let editor = document.getElementById("header-code-block");
