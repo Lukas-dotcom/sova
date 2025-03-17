@@ -671,9 +671,8 @@ async function upnutiVerzi() {
         let cm = cmInstance?.CodeMirror;
         let content = cm ? cm.getValue() : editor.value;
 
-        // Najdeme všechny bloky mezi <!-- Luke: START --> a <!-- Luke: STOP -->
-        let startTag = "<!-- Luke: START -->";
-        let stopTag = "<!-- Luke: STOP -->";
+        let startTag = "<!-- SOVA:UP:START -->";
+        let stopTag = "<!-- SOVA:UP:STOP -->";
         
         // `([\\s\\S]*?)` – lazy kvantifikátor, který zachytí vše mezi startTag a stopTag
         // s `g` – projde i více výskytů
