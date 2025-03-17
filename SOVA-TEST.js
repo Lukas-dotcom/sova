@@ -680,7 +680,7 @@ async function upnutiVerzi() {
     }
 
     
-}();
+};
 
 
 
