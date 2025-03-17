@@ -663,14 +663,12 @@ async function upnutiVerzi() {
         let lukeContent = content.substring(startIndex, stopIndex);
 
         // Aktualizace verzí
-        let updatedLukeContent = lukeContent.replace(
-            /(src|href)=("|')([^"'>]+?\?v=)(\d+\.\d+)([^"'>]*)(#DEBUG_TIMESTAMP#)?("|')/g, 
-            function(match, attr, quoteStart, url, version, suffix, debug, quoteEnd) {
-                let newVersion = increaseVersion(version);
-                console.log(`[SOVA] Aktualizace: ${version} → ${newVersion}`);
-                return `${attr}=${quoteStart}${url}${newVersion}${suffix}${debug || ""}${quoteEnd}`;
+        var updatedLukeContent = lukeContent.replace(
+            /(<!--\s*neco\s*)(\d+\.\d+)(\s*-->)/g,
+            function(match, prefix, version, suffix) {
+                return prefix + increaseVersion(version) + suffix;
             }
-          );
+        );
           
           
 
