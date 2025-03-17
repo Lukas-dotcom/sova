@@ -638,7 +638,7 @@ async function upnutiVerzi() {
             return (parseInt(parts[0]) + 1).toString();
         } else {
             let whole = parseInt(parts[0]); // Celé číslo jako integer
-            let decimal = (parseInt(parts[1]) + 1).toString().padStart(parts[1].length, '0'); // Zvýšení desetinné části
+            let decimal = (parseInt(parts[1]) + 1).toString();
     
             // Pokud se desetinná část přetočí na "0000", zvýšíme celé číslo
             if (decimal.length > parts[1].length) {
@@ -646,7 +646,7 @@ async function upnutiVerzi() {
                 decimal = "0000"; // Resetujeme desetinnou část
             }
     
-            return "." + decimal;
+            return whole + "." + decimal;
         }
     }
     
