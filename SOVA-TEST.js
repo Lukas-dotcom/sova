@@ -33,7 +33,7 @@
                 buttonText: "Upnout scripty",
                 urlPattern: /html-kody/,
                 onClick: () => {
-                    log("Spouštím proces řazení parametrů.");
+                    log("Spouštím proces upnout verzi.");
                     upnutiVerzi(); 
                 }
             }
@@ -628,7 +628,7 @@ async function paramSortingSingle() {
     }
 }
 
-(async function upnutiVerzi() {
+async function upnutiVerzi() {
     function increaseVersion(version) {
         return version.replace(/(\d+)(\D*)$/, function(match, num, suffix) {
             return (parseFloat(num) + 0.0001).toFixed(4) + suffix;
@@ -680,7 +680,7 @@ async function paramSortingSingle() {
     }
 
     
-})();
+}();
 
 
 
