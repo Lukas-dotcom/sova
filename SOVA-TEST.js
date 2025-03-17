@@ -629,20 +629,22 @@ async function paramSortingSingle() {
 }
 
 async function upnutiVerzi() {
-    log("Spouštím proces upnout verzi.");
 
     function increaseVersion(version) {
-        return version.replace(/(\d+(\.\d+)?)/, function(match, num) {
+        return version.replace(/^\d+(\.\d+)?$/, function(num) {
             let parts = num.split('.');
+    
             if (parts.length === 1) {
+                // Pokud je to celé číslo, zvýšíme ho o 1
                 return (parseInt(parts[0]) + 1).toString();
             } else {
                 let whole = parseInt(parts[0]); // Celé číslo jako integer
-                let decimal = (parseFloat("0." + parts[1]) + 0.0001).toFixed(4).substring(2);
-                
-                // Pokud desetinná část přetekla (např. "0000"), zvýšíme celé číslo
-                if (decimal === "0000") {
+                let decimal = (parseInt(parts[1]) + 1).toString().padStart(parts[1].length, '0'); // Zvýšení desetinné části
+    
+                // Pokud se desetinná část přetočí na "0000", zvýšíme celé číslo
+                if (decimal.replace(/^0+/, '') === '') {
                     whole += 1;
+                    decimal = "0000";
                 }
     
                 return whole + "." + decimal;
@@ -650,44 +652,41 @@ async function upnutiVerzi() {
         });
     }
     
-
     function updateVersions() {
         let editor = document.getElementById("header-code-block");
         if (!editor) {
             console.error("[SOVA] Editor nebyl nalezen.");
             return;
         }
-
+    
         // Získání obsahu z CodeMirror, pokud existuje
         let cmInstance = editor.closest(".v2FormField__codeEditor")?.querySelector(".CodeMirror");
         let cm = cmInstance?.CodeMirror;
         let content = cm ? cm.getValue() : editor.value;
-
+    
         let startTag = "<!-- Luke: START -->";
         let stopTag = "<!-- Luke: STOP -->";
-
+    
         let startIndex = content.indexOf(startTag);
         let stopIndex = content.indexOf(stopTag) + stopTag.length; // Aby stop tag zůstal
-
+    
         if (startIndex === -1 || stopIndex === -1 || startIndex < startTag.length) {
             console.error("[SOVA] Nepodařilo se najít správné hranice pro úpravu verzí.");
             return;
         }
-
+    
         let lukeContent = content.substring(startIndex, stopIndex);
-
-        // Aktualizace verzí
+    
+        // ✅ Opravený regulární výraz pro aktualizaci verzí
         var updatedLukeContent = lukeContent.replace(
-            /(\?v)(\d+(\.\d+)?)([^"'#]*)(#DEBUG_TIMESTAMP#)?/g,
-            function(match, prefix, version, suffix) {
-                return prefix + increaseVersion(version) + suffix;
+            /(\?v=?)(\d+(\.\d+)?)([^"'#]*)(#DEBUG_TIMESTAMP#)?/g,
+            function(match, prefix, version, suffix, debugTimestamp) {
+                return prefix + increaseVersion(version) + (suffix || "") + (debugTimestamp || "");
             }
         );
-          
-          
-
+    
         let newContent = content.substring(0, startIndex) + updatedLukeContent + content.substring(stopIndex);
-
+    
         if (newContent !== content) {
             if (cm) {
                 cm.setValue(newContent);
@@ -701,9 +700,9 @@ async function upnutiVerzi() {
             console.log("[SOVA] Start index:", startIndex);
             console.log("[SOVA] Stop index:", stopIndex);
             console.log("[SOVA] Výřez obsahu pro úpravy:", lukeContent);
-
         }
     }
+    
 
     updateVersions();
 
