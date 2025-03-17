@@ -631,26 +631,25 @@ async function paramSortingSingle() {
 async function upnutiVerzi() {
 
     function increaseVersion(version) {
-        return version.replace(/^\d+(\.\d+)?$/, function(num) {
-            let parts = num.split('.');
+        let parts = version.split('.');
     
-            if (parts.length === 1) {
-                // Pokud je to celé číslo, zvýšíme ho o 1
-                return (parseInt(parts[0]) + 1).toString();
-            } else {
-                let whole = parseInt(parts[0]); // Celé číslo jako integer
-                let decimal = (parseInt(parts[1]) + 1).toString().padStart(parts[1].length, '0'); // Zvýšení desetinné části
+        if (parts.length === 1) {
+            // Pokud je to celé číslo, zvýšíme ho o 1
+            return (parseInt(parts[0]) + 1).toString();
+        } else {
+            let whole = parseInt(parts[0]); // Celé číslo jako integer
+            let decimal = (parseInt(parts[1]) + 1).toString().padStart(parts[1].length, '0'); // Zvýšení desetinné části
     
-                // Pokud se desetinná část přetočí na "0000", zvýšíme celé číslo
-                if (decimal.replace(/^0+/, '') === '') {
-                    whole += 1;
-                    decimal = "0000";
-                }
-    
-                return whole + "." + decimal;
+            // Pokud se desetinná část přetočí na "0000", zvýšíme celé číslo
+            if (decimal.length > parts[1].length) {
+                whole += 1;
+                decimal = "0000"; // Resetujeme desetinnou část
             }
-        });
+    
+            return whole + "." + decimal;
+        }
     }
+    
     
     function updateVersions() {
         let editor = document.getElementById("header-code-block");
