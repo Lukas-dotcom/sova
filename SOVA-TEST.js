@@ -637,8 +637,14 @@ async function upnutiVerzi() {
             if (parts.length === 1) {
                 return (parseInt(parts[0]) + 1).toString();
             } else {
-                let whole = parts[0];
+                let whole = parseInt(parts[0]); // Celé číslo jako integer
                 let decimal = (parseFloat("0." + parts[1]) + 0.0001).toFixed(4).substring(2);
+                
+                // Pokud desetinná část přetekla (např. "0000"), zvýšíme celé číslo
+                if (decimal === "0000") {
+                    whole += 1;
+                }
+    
                 return whole + "." + decimal;
             }
         });
