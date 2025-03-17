@@ -635,30 +635,29 @@ async function upnutiVerzi() {
         
         // Pokud je to celé číslo (bez tečky)
         if (parts.length === 1) {
-          return (parseInt(parts[0]) + 1).toString();
+            return (parseInt(parts[0]) + 1).toString();
         } else {
-          // Část před tečkou, část za tečkou
-          let whole = parseInt(parts[0]);
-          let decimals = parts[1];
-      
-          // Zvýšíme desetinnou část o 1
-          let numericDecimal = parseInt(decimals, 10) + 1; 
-          let decimalStr = numericDecimal.toString();
-      
-          // Pokud dojde k přetečení (např. `9999 + 1 = 10000` a původní délka byla 4)
-          if (decimalStr.length > decimals.length) {
-            whole += 1; // Zvýšíme celé číslo
-            // Všechny desetinné cifry budou "0"
-            decimalStr = "0".repeat(decimals.length);
-          } else {
-            // Jinak doplníme zleva nuly do původní délky
-            decimalStr = decimalStr.padStart(decimals.length, "0");
-          }
-      
-          return whole + "." + decimalStr;
+            // Část před tečkou, část za tečkou
+            let whole = parseInt(parts[0]);
+            let decimals = parts[1];
+        
+            // Zvýšíme desetinnou část o 1
+            let numericDecimal = parseInt(decimals, 10) + 1; 
+            let decimalStr = numericDecimal.toString();
+        
+            // Pokud dojde k přetečení (např. `9999 + 1 = 10000` a původní délka byla 4)
+            if (decimalStr.length > decimals.length) {
+                // Znamená to, že jsme přešli z např. 9999 → 10000
+                whole += 1; // Zvýšíme celé číslo
+                decimalStr = "0".repeat(decimals.length); // Reset na samé nuly
+            } else {
+                // Jinak doplníme zleva nuly do původní délky
+                decimalStr = decimalStr.padStart(decimals.length, "0");
+            }
+        
+            return whole + "." + decimalStr;
         }
     }
-    
     
     function updateVersions() {
         let editor = document.getElementById("header-code-block");
@@ -666,66 +665,62 @@ async function upnutiVerzi() {
             console.error("[SOVA] Editor nebyl nalezen.");
             return;
         }
-    
+
         // Získání obsahu z CodeMirror, pokud existuje
         let cmInstance = editor.closest(".v2FormField__codeEditor")?.querySelector(".CodeMirror");
         let cm = cmInstance?.CodeMirror;
         let content = cm ? cm.getValue() : editor.value;
-    
+
+        // Najdeme všechny bloky mezi <!-- Luke: START --> a <!-- Luke: STOP -->
         let startTag = "<!-- Luke: START -->";
         let stopTag = "<!-- Luke: STOP -->";
-    
-        let startIndex = content.indexOf(startTag);
-        let stopIndex = content.indexOf(stopTag) + stopTag.length; // Aby stop tag zůstal
-    
-        if (startIndex === -1 || stopIndex === -1 || startIndex < startTag.length) {
-            console.error("[SOVA] Nepodařilo se najít správné hranice pro úpravu verzí.");
-            return;
-        }
-    
-        let lukeContent = content.substring(startIndex, stopIndex);
-    
-        // ✅ Opravený regulární výraz pro aktualizaci verzí
-        var updatedLukeContent = lukeContent.replace(
-            /(\?v=?)(\d+(?:\.\d+)?)([^"'#]*)(#DEBUG_TIMESTAMP#)?/g,
-            function(match, prefix, version, suffix, debugTimestamp) {
-                return prefix + increaseVersion(version) + (suffix || "") + (debugTimestamp || "");
-            }
-        );
-    
-        let newContent = content.substring(0, startIndex) + updatedLukeContent + content.substring(stopIndex);
-    
+        
+        // `([\\s\\S]*?)` – lazy kvantifikátor, který zachytí vše mezi startTag a stopTag
+        // s `g` – projde i více výskytů
+        let blocksRegex = new RegExp(`${startTag}([\\s\\S]*?)${stopTag}`, "g");
+
+        // Pro každý blok mezi startTag a stopTag
+        let newContent = content.replace(blocksRegex, (fullMatch, blockContent) => {
+            // Uvnitř bloku (lukeContent) vyhledáme a zvýšíme verze
+            let updatedBlockContent = blockContent.replace(
+                /(\?v=?)(\d+(?:\.\d+)?)([^"'#]*)(#DEBUG_TIMESTAMP#)?/g,
+                function(match, prefix, version, suffix, debugTimestamp) {
+                    return prefix + increaseVersion(version) + (suffix || "") + (debugTimestamp || "");
+                }
+            );
+            // Vrátíme zpět: startTag + upravený obsah + stopTag
+            return startTag + updatedBlockContent + stopTag;
+        });
+
         if (newContent !== content) {
+            // Uložíme změny do editoru
             if (cm) {
                 cm.setValue(newContent);
             } else {
                 editor.value = newContent;
             }
+
             log("Verze souborů úspěšně aktualizovány.");
+            
+            // Po úpravě verzí klikneme na tlačítko Uložit (saveAndStay)
+            let saveButton = document.querySelector("a.btn-action.submit-js[rel='saveAndStay']");
+            if (saveButton) {
+                log("Klikám na tlačítko Uložit.");
+                saveButton.click();
+            } else {
+                console.error("[SOVA] Tlačítko Uložit nebylo nalezeno.");
+            }
+
         } else {
             log("Žádné změny nebyly provedeny.");
-            console.log("[SOVA] Obsah editoru:", content);
-            console.log("[SOVA] Start index:", startIndex);
-            console.log("[SOVA] Stop index:", stopIndex);
-            console.log("[SOVA] Výřez obsahu pro úpravy:", lukeContent);
         }
     }
-    
 
+    // Spustíme aktualizaci verzí
     updateVersions();
 
-    // Zakomentované uložení
-    /*
-    let saveButton = document.querySelector("a.btn-action.submit-js[rel='saveAndStay']");
-    if (saveButton) {
-        log("Klikám na tlačítko Uložit.");
-        saveButton.click();
-    } else {
-        console.error("[SOVA] Tlačítko Uložit nebylo nalezeno.");
-    }
-    */
-
 };
+
 
 
 
