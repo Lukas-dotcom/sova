@@ -681,6 +681,11 @@ async function upnutiVerzi() {
             log("Verze souborů úspěšně aktualizovány.");
         } else {
             log("Žádné změny nebyly provedeny.");
+            console.log("[SOVA] Obsah editoru:", content);
+            console.log("[SOVA] Start index:", startIndex);
+            console.log("[SOVA] Stop index:", stopIndex);
+            console.log("[SOVA] Výřez obsahu pro úpravy:", lukeContent);
+
         }
     }
 
