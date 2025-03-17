@@ -672,7 +672,7 @@ async function upnutiVerzi() {
 
         // Aktualizace verzí
         var updatedLukeContent = lukeContent.replace(
-            /(\?v=)(\d+(\.\d+)?)([^"'#]*)(#DEBUG_TIMESTAMP#)?/g,
+            /(\?v)(\d+(\.\d+)?)([^"'#]*)(#DEBUG_TIMESTAMP#)?/g,
             function(match, prefix, version, suffix) {
                 return prefix + increaseVersion(version) + suffix;
             }
