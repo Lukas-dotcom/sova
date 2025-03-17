@@ -646,7 +646,7 @@ async function upnutiVerzi() {
                 decimal = "0000"; // Resetujeme desetinnou část
             }
     
-            return whole + "." + decimal;
+            return "." + decimal;
         }
     }
     
