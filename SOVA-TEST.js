@@ -27,6 +27,15 @@
                     log("Spouštím proces řazení parametrů.");
                     paramSortingSingle(); 
                 }
+            },
+
+            {
+                buttonText: "Upnout scripty",
+                urlPattern: /html-kody/,
+                onClick: () => {
+                    log("Spouštím proces řazení parametrů.");
+                    upnutiVerzi(); 
+                }
             }
         ];
 
@@ -618,6 +627,61 @@ async function paramSortingSingle() {
         console.error("Chyba při načítání CSV pravidel:", e);
     }
 }
+
+(async function upnutiVerzi() {
+    function increaseVersion(version) {
+        return version.replace(/(\d+)(\D*)$/, function(match, num, suffix) {
+            return (parseFloat(num) + 0.0001).toFixed(4) + suffix;
+        });
+    }
+
+    function updateVersions() {
+        var editor = document.getElementById("header-code-block");
+        if (!editor) {
+            console.error("Editor nebyl nalezen.");
+            return;
+        }
+        
+        var content = editor.value;
+        var startTag = "<!-- Luke: START -->";
+        var stopTag = "<!-- Luke: STOP -->";
+
+        var startIndex = content.indexOf(startTag);
+        var stopIndex = content.indexOf(stopTag);
+
+        if (startIndex === -1 || stopIndex === -1 || startIndex > stopIndex) {
+            console.error("Nepodařilo se najít správné hranice pro úpravu verzí.");
+            return;
+        }
+
+        var lukeContent = content.substring(startIndex, stopIndex);
+
+        var updatedLukeContent = lukeContent.replace(/(src|href)=("|')([^"']+?\?v=)([\d.]+)([^"'#]*)(#DEBUG_TIMESTAMP#)?("|')/g, function(match, attr, quoteStart, url, version, suffix, debug, quoteEnd) {
+            return attr + "=" + quoteStart + url + increaseVersion(version) + suffix + (debug || "") + quoteEnd;
+        });
+
+        var newContent = content.substring(0, startIndex) + updatedLukeContent + content.substring(stopIndex);
+
+        if (newContent !== content) {
+            editor.value = newContent;
+            console.log("Verze souborů úspěšně aktualizovány.");
+           // let saveButton = document.querySelector("a.btn-action.submit-js[rel='saveAndStay']");
+           // if (saveButton) {
+           //     log("Klikám na tlačítko Uložit.");
+           //     saveButton.click();
+           // } else {
+           //     console.error("Tlačítko Uložit nebylo nalezeno.");
+           // }
+
+
+        } else {
+            console.log("Žádné změny nebyly provedeny.");
+        }
+    }
+
+    
+})();
+
 
 
 
