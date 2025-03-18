@@ -207,7 +207,7 @@
     // --- Hlavní část scriptu pro řazení hodnot filtrů - vyčítání URL a pravidel
     async function getRulesFor(featureName) {
         // Předpokládáme, že rulesList je uložen jako JSON na dané URL, např.:
-        const rulesUrl = "https://drive.google.com/uc?export=download&id=1LCozsShGjTFPGHJXqk5IDc2e3YUDeJz3"  // URL, kde je uložený rulesList.json
+        const rulesUrl = "https://raw.githubusercontent.com/Lukas-dotcom/sova/main/sova-setting.json"  // URL, kde je uložený rulesList.json
         const response = await fetch(rulesUrl);
         if (!response.ok) throw new Error("Nelze načíst rulesList");
         const rulesList = await response.json();
