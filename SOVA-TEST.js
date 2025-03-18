@@ -203,145 +203,83 @@
     }
 
 
-    // --- Funkce pro načtení CSV mappingu z univerzálního CSV ---
-    function fetchFeatureRules(featureName = null) {
-        const universalCsvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRufx0-X2OdjDVG1KAKx1QhC38JMxDj10hOYDGTBi6te9jYRXrBfRYazSpFHXglSKmcaQEs7tdvTOKV/pub?gid=775097961&single=true&output=csv";
-    
-        return new Promise((resolve, reject) => {
-            GM_xmlhttpRequest({
-                method: "GET",
-                url: universalCsvUrl,
-                onload: (response) => {
-                    if (response.status === 200) {
-                        try {
-                            const mapping = {};
-                            const lines = response.responseText.split('\n').filter(line => line.trim() !== '');
-    
-                            lines.slice(1).forEach(line => {
-                                const [scriptName, scriptCsvUrl] = line.split(',').map(col => col.trim());
-                                mapping[scriptName] = scriptCsvUrl;
-                            });
-    
-                            if (featureName) {
-                                const rulesUrl = mapping[featureName];
-                                if (!rulesUrl) {
-                                    return reject(new Error(`Nenalezen mapping pro '${featureName}'.`));
-                                }
-                                GM_setValue(`sova:${featureName}RulesUrl`, rulesUrl);
-                                resolve(rulesUrl);
-                            } else {
-                                resolve(mapping);
-                            }
-                        } catch (e) {
-                            reject(e);
-                        }
-                    } else {
-                        reject(new Error("HTTP chyba: " + response.status));
-                    }
-                },
-                onerror: (err) => reject(err)
-            });
-        });
-    }
-    
+   
     // --- Hlavní část scriptu pro řazení hodnot filtrů - vyčítání URL a pravidel
-    function fetchSortingCSV(url) {
-        return new Promise((resolve, reject) => {
-            GM_xmlhttpRequest({
-                method: "GET",
-                url: url,
-                onload: function(response) {
-                    if (response.status === 200) {
-                        try {
-                            let data = response.responseText;
-                            let lines = data.split('\n').filter(line => line.trim() !== '');
-                            let result = {};
-                            // Data začínají od 2. řádku (první řádek jsou hlavičky)
-                            for (let i = 1; i < lines.length; i++) {
-                                let cols = lines[i].split(',');
-                                if (cols.length >= 2) {
-                                    let paramName = cols[0].trim();
-                                    let oddelovacValue = cols[1].trim();
-                                    result[paramName] = { oddelovac: oddelovacValue };
-                                }
-                            }
-                            resolve(result);
-                        } catch (e) {
-                            reject(e);
-                        }
-                    } else {
-                        reject(new Error("HTTP error " + response.status));
-                    }
-                },
-                onerror: function(err) {
-                    reject(err);
-                }
-            });
-        });
-    }
+    async function getRulesFor(featureName) {
+        // Předpokládáme, že rulesList je uložen jako JSON na dané URL, např.:
+        const rulesUrl = "https://docs.google.com/..."  // URL, kde je uložený rulesList.json
+        const response = await fetch(rulesUrl);
+        if (!response.ok) throw new Error("Nelze načíst rulesList");
+        const rulesList = await response.json();
+        return rulesList[featureName] ? rulesList[featureName].rules : null;
+      }
+      
 
 // --- Funkce, která spouští zpracování na stránce s výpisem filtrů (otevře nové okno) ---
 async function raditHodnotyFiltru() {
     log("Zpracovávám stránku s výpisem filtrů (pro nové okno)...");
     let rows = document.querySelectorAll("table.table tbody tr");
     if (!rows || rows.length === 0) {
-        log("Na stránce nebyly nalezeny žádné řádky.");
-        return;
+      log("Na stránce nebyly nalezeny žádné řádky.");
+      return;
     }
-
+  
     try {
-        const rulesUrl = await fetchFeatureRules("raditHodnotyFiltru");
-        log(`Načítám pravidla z: ${rulesUrl}`);
-
-        let paramRules = await fetchSortingCSV(rulesUrl);
-        log("CSV definice filtrů načtena: " + JSON.stringify(paramRules));
-        GM_setValue("paramRules", JSON.stringify(paramRules));
+      // Načteme pravidla pomocí nové funkce getRulesFor
+      let rules = await getRulesFor("raditHodnotyFiltru");
+      if (!rules) {
+        throw new Error("Pravidla nejsou dostupná.");
+      }
+      log("Pravidla načtena: " + JSON.stringify(rules));
+      // Uložíme získaná pravidla do GM storage (jako JSON)
+      GM_setValue("paramRules", JSON.stringify(rules));
     } catch (e) {
-        console.error("Chyba při načítání CSV definice filtrů:", e);
-        return;
+      console.error("Chyba při načítání pravidel:", e);
+      return;
     }
-
+  
     let paramsList = [];
     rows.forEach(row => {
-        let link = row.querySelector("a.table__detailLink");
-        if (link) {
-            let paramName = link.textContent.trim();
-            let url = link.href;
-            let paramRules = JSON.parse(GM_getValue("paramRules", "{}"));
-            if (paramRules[paramName] && paramRules[paramName].oddelovac.toLowerCase() === "neradit") {
-                log(`Přeskakuji parametr '${paramName}' (nastaveno "neradit").`);
-            } else {
-                // Pokud jsou v CSV pravidlech informace o oddělovači, použijeme je, jinak bude oddělovač null
-                let separator = (paramRules[paramName] && paramRules[paramName].oddelovac.toLowerCase() !== "neradit")
-                                ? paramRules[paramName].oddelovac
-                                : null;
-                // Nově přidáváme vlastnosti oddelovac a processed (false = zatím nezpracován)
-                paramsList.push({ name: paramName, url: url, oddelovac: separator, processed: false });
-            }
+      let link = row.querySelector("a.table__detailLink");
+      if (link) {
+        let paramName = link.textContent.trim();
+        let url = link.href;
+        // Načteme uložená pravidla
+        let paramRules = JSON.parse(GM_getValue("paramRules", "{}"));
+        if (paramRules[paramName] && paramRules[paramName].oddelovac.toLowerCase() === "neradit") {
+          log(`Přeskakuji parametr '${paramName}' (nastaveno "neradit").`);
+        } else {
+          // Pokud jsou v pravidlech informace o oddělovači, použijeme je, jinak bude separator null
+          let separator = (paramRules[paramName] && paramRules[paramName].oddelovac.toLowerCase() !== "neradit")
+                            ? paramRules[paramName].oddelovac
+                            : null;
+          // Přidáváme vlastnosti oddelovac a processed (false = zatím nezpracován)
+          paramsList.push({ name: paramName, url: url, oddelovac: separator, processed: false });
         }
+      }
     });
-
+  
     if (paramsList.length === 0) {
-        log("Nebyl nalezen žádný parametr k zpracování.");
-        return;
+      log("Nebyl nalezen žádný parametr k zpracování.");
+      return;
     }
     log(`Nalezeno ${paramsList.length} parametrů ke zpracování.`);
-
+  
     // Uložíme kompletní seznam parametrů (včetně nových vlastností) do fullParamsList
     GM_setValue("fullParamsList", JSON.stringify(paramsList));
-
+  
     // Vybereme první nezpracovaný parametr
     let currentParam = paramsList.find(p => !p.processed);
     if (!currentParam) {
-        log("Všechny parametry již byly zpracovány.");
-        return;
+      log("Všechny parametry již byly zpracovány.");
+      return;
     }
     GM_setValue("currentParam", JSON.stringify(currentParam));
-
+  
     log(`První parametr: ${currentParam.name}, URL: ${currentParam.url}`);
-
+  
     window.open(currentParam.url, "sovaParametrSortingWindow", "width=1200,height=800");
-}
+  }
 
 
 
@@ -520,19 +458,15 @@ async function paramSortingSingle() {
     const paramName = paramHeadingEl.textContent.trim();
     log(`Aktuální parametr: ${paramName}`);
 
-    // Načteme pravidla řazení z CSV
+    // Načteme pravidla řazení z rulesList.json
     try {
-        const rulesUrl = await fetchFeatureRules("raditHodnotyFiltru");
-        log(`Načítám pravidla z: ${rulesUrl}`);
-        const allParamRules = await fetchSortingCSV(rulesUrl);
-        log("CSV definice filtrů načtena: " + JSON.stringify(allParamRules));
+        const allParamRules = await getRulesFor("raditHodnotyFiltru");
+        log("Načtená pravidla z rulesList: " + JSON.stringify(allParamRules));
         
         // Získáme pravidlo pro aktuální parametr – pokud není nalezeno, použijeme výchozí (tj. standardní řazení)
-        const currentRule = allParamRules[paramName];
-        let oddelovac = null;
-        if (currentRule && currentRule.oddelovac.toLowerCase() !== "neradit") {
-            oddelovac = currentRule.oddelovac;
-        }
+        const currentRule = allParamRules ? allParamRules.find(rule => rule.Parametr === paramName) : null;
+        let oddelovac = currentRule && currentRule.Oddelovac !== "neradit" ? currentRule.Oddelovac : null;
+
         // Vytvoříme objekt aktuálního parametru
         const currentParam = { name: paramName, oddelovac: oddelovac };
         log(`Použiji parametr: ${JSON.stringify(currentParam)}`);
@@ -624,9 +558,10 @@ async function paramSortingSingle() {
         });
         log("Tabulka byla přeuspořádána. Řazení proběhlo úspěšně.");
     } catch (e) {
-        console.error("Chyba při načítání CSV pravidel:", e);
+        console.error("Chyba při načítání pravidel z rulesList:", e);
     }
 }
+
 
 async function upnutiVerzi() {
 
