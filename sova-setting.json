@@ -1,1 +1,140 @@
-
+{
+  "pridatStitikyvPrehledu": {
+    "columns": [
+      "N?zev",
+      "ID",
+      "Zobrazovat"
+    ],
+    "rules": [
+      {
+        "N?zev": 1,
+        "ID": "Akce",
+        "Zobrazovat": "NE"
+      },
+      {
+        "N?zev": 59,
+        "ID": "Akce dne",
+        "Zobrazovat": "NE"
+      },
+      {
+        "N?zev": 693,
+        "ID": "BLACK FRIDAY",
+        "Zobrazovat": "ANO"
+      },
+      {
+        "N?zev": 668,
+        "ID": "FUJITSPU DAYS - 500 K?",
+        "Zobrazovat": "NE"
+      },
+      {
+        "N?zev": 56,
+        "ID": "Hlavn? akce dne",
+        "Zobrazovat": "NE"
+      },
+      {
+        "N?zev": 703,
+        "ID": "Jarn? ?klid - v?prodej",
+        "Zobrazovat": "NE"
+      },
+      {
+        "N?zev": 745,
+        "ID": "MASAKR CEN",
+        "Zobrazovat": "ANO"
+      },
+      {
+        "N?zev": 2,
+        "ID": "Novinka",
+        "Zobrazovat": "NE"
+      },
+      {
+        "N?zev": 3,
+        "ID": "Tip",
+        "Zobrazovat": "NE"
+      },
+      {
+        "N?zev": 687,
+        "ID": "Upgrade W11",
+        "Zobrazovat": "NE"
+      },
+      {
+        "N?zev": 53,
+        "ID": "V?no?n? v?prodej",
+        "Zobrazovat": "NE"
+      }
+    ]
+  },
+  "raditHodnotyFiltru": {
+    "columns": [
+      "Parametr",
+      "Oddelovac"
+    ],
+    "rules": [
+      {
+        "Parametr": "Rozli?en?",
+        "Oddelovac": "x"
+      },
+      {
+        "Parametr": "Pom?r stran",
+        "Oddelovac": ":"
+      },
+      {
+        "Parametr": "Typ produktu",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "Opera?n? syst?m",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "P?ipojen?",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "Typ pevn?ho disku",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "Stav produktu",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "Modem",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "Typ panelu",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "opt_insurance",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "#CENA",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "#TAG",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "Popis kosmetick? vady",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "Syst?m",
+        "Oddelovac": "neradit"
+      }
+    ]
+  },
+  "testik": {
+    "columns": [
+      "HAHA"
+    ],
+    "rules": [
+      {
+        "HAHA": 1
+      }
+    ]
+  }
+}
