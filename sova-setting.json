@@ -1,64 +1,64 @@
 {
   "pridatStitikyvPrehledu": {
     "columns": [
-      "N?zev",
+      "Název",
       "ID",
       "Zobrazovat"
     ],
     "rules": [
       {
-        "N?zev": 1,
+        "Název": 1,
         "ID": "Akce",
         "Zobrazovat": "NE"
       },
       {
-        "N?zev": 59,
+        "Název": 59,
         "ID": "Akce dne",
         "Zobrazovat": "NE"
       },
       {
-        "N?zev": 693,
+        "Název": 693,
         "ID": "BLACK FRIDAY",
         "Zobrazovat": "ANO"
       },
       {
-        "N?zev": 668,
-        "ID": "FUJITSPU DAYS - 500 K?",
+        "Název": 668,
+        "ID": "FUJITSPU DAYS - 500 Kč",
         "Zobrazovat": "NE"
       },
       {
-        "N?zev": 56,
-        "ID": "Hlavn? akce dne",
+        "Název": 56,
+        "ID": "Hlavní akce dne",
         "Zobrazovat": "NE"
       },
       {
-        "N?zev": 703,
-        "ID": "Jarn? ?klid - v?prodej",
+        "Název": 703,
+        "ID": "Jarní úklid - výprodej",
         "Zobrazovat": "NE"
       },
       {
-        "N?zev": 745,
+        "Název": 745,
         "ID": "MASAKR CEN",
         "Zobrazovat": "ANO"
       },
       {
-        "N?zev": 2,
+        "Název": 2,
         "ID": "Novinka",
         "Zobrazovat": "NE"
       },
       {
-        "N?zev": 3,
+        "Název": 3,
         "ID": "Tip",
         "Zobrazovat": "NE"
       },
       {
-        "N?zev": 687,
+        "Název": 687,
         "ID": "Upgrade W11",
         "Zobrazovat": "NE"
       },
       {
-        "N?zev": 53,
-        "ID": "V?no?n? v?prodej",
+        "Název": 53,
+        "ID": "Vánoční výprodej",
         "Zobrazovat": "NE"
       }
     ]
@@ -70,11 +70,11 @@
     ],
     "rules": [
       {
-        "Parametr": "Rozli?en?",
+        "Parametr": "Rozlišení",
         "Oddelovac": "x"
       },
       {
-        "Parametr": "Pom?r stran",
+        "Parametr": "Poměr stran",
         "Oddelovac": ":"
       },
       {
@@ -82,15 +82,15 @@
         "Oddelovac": "neradit"
       },
       {
-        "Parametr": "Opera?n? syst?m",
+        "Parametr": "Operační systém",
         "Oddelovac": "neradit"
       },
       {
-        "Parametr": "P?ipojen?",
+        "Parametr": "Připojení",
         "Oddelovac": "neradit"
       },
       {
-        "Parametr": "Typ pevn?ho disku",
+        "Parametr": "Typ pevného disku",
         "Oddelovac": "neradit"
       },
       {
@@ -118,11 +118,11 @@
         "Oddelovac": "neradit"
       },
       {
-        "Parametr": "Popis kosmetick? vady",
+        "Parametr": "Popis kosmetické vady",
         "Oddelovac": "neradit"
       },
       {
-        "Parametr": "Syst?m",
+        "Parametr": "Systém",
         "Oddelovac": "neradit"
       }
     ]
