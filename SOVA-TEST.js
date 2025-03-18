@@ -30,7 +30,7 @@
             },
 
             {
-                buttonText: "Upnout scripty",
+                buttonText: "Upnout kódy",
                 urlPattern: /html-kody/,
                 onClick: () => {
                     log("Spouštím proces upnout verzi.");
