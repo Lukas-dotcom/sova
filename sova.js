@@ -186,6 +186,7 @@
         if (window.location.href.includes("/admin/ceny/")){
         pridatStitikyvPrehledu ()
         pridatParametry()
+        sidebarHide()
         }
         
 
