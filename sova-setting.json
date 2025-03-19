@@ -1,5 +1,5 @@
 {
-  "pridatStitikyvPrehledu": {
+  "pridatPriznaky": {
     "columns": [
       "Název",
       "ID",
@@ -60,6 +60,11 @@
         "Název": "Vánoční výprodej",
         "ID": 53,
         "Zobrazovat": "NE"
+      },
+      {
+        "Název": "",
+        "ID": "",
+        "Zobrazovat": "ne"
       }
     ]
   },
