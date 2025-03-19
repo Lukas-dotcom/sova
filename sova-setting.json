@@ -7,58 +7,63 @@
     ],
     "rules": [
       {
-        "Název": 1,
-        "ID": "Akce",
+        "Název": "Akce",
+        "ID": 1,
         "Zobrazovat": "NE"
       },
       {
-        "Název": 59,
-        "ID": "Akce dne",
+        "Název": "Akce dne",
+        "ID": 59,
         "Zobrazovat": "NE"
       },
       {
-        "Název": 693,
-        "ID": "BLACK FRIDAY",
+        "Název": "BLACK FRIDAY",
+        "ID": 693,
         "Zobrazovat": "ANO"
       },
       {
-        "Název": 668,
-        "ID": "FUJITSPU DAYS - 500 Kč",
+        "Název": "FUJITSPU DAYS - 500 Kč",
+        "ID": 668,
         "Zobrazovat": "NE"
       },
       {
-        "Název": 56,
-        "ID": "Hlavní akce dne",
+        "Název": "Hlavní akce dne",
+        "ID": 56,
         "Zobrazovat": "NE"
       },
       {
-        "Název": 703,
-        "ID": "Jarní úklid - výprodej",
+        "Název": "Jarní úklid - výprodej",
+        "ID": 703,
         "Zobrazovat": "NE"
       },
       {
-        "Název": 745,
-        "ID": "MASAKR CEN",
+        "Název": "MASAKR CEN",
+        "ID": 745,
         "Zobrazovat": "ANO"
       },
       {
-        "Název": 2,
-        "ID": "Novinka",
+        "Název": "Novinka",
+        "ID": 2,
         "Zobrazovat": "NE"
       },
       {
-        "Název": 3,
-        "ID": "Tip",
+        "Název": "Tip",
+        "ID": 3,
         "Zobrazovat": "NE"
       },
       {
-        "Název": 687,
-        "ID": "Upgrade W11",
+        "Název": "Upgrade W11",
+        "ID": 687,
         "Zobrazovat": "NE"
       },
       {
-        "Název": 53,
-        "ID": "Vánoční výprodej",
+        "Název": "Vánoční výprodej",
+        "ID": 53,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "Vánoční výprodej",
+        "ID": 53,
         "Zobrazovat": "NE"
       }
     ]
