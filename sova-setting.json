@@ -63,6 +63,16 @@
       }
     ]
   },
+  "pridatParametry": {
+    "columns": [
+      "Parametr"
+    ],
+    "rules": [
+      {
+        "Parametr": "\t\r\nTyp produktu"
+      }
+    ]
+  },
   "raditHodnotyFiltru": {
     "columns": [
       "Parametr",
