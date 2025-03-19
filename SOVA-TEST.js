@@ -53,8 +53,8 @@
             paramSorting();
         }
 
-    // --- Načtení externího HTML obsahu pro stránku admin/sova ---
-    if (window.location.href.includes("admin/sova")) {
+      // --- Načtení externího HTML obsahu pro stránku admin/sova ---
+          if (window.location.href.includes("admin/sova")) {
         const sectionToRemove = document.querySelector(".section.section-424");
         if (sectionToRemove) {
             sectionToRemove.remove();
@@ -93,7 +93,7 @@
                 log("Externí HTML byl úspěšně načten a vložen.");
             })
             .catch(error => console.error("Nepodařilo se načíst HTML:", error));
-     }
+        }
 
         // --- Přidání odkazu do navigace ---
         var navMenus = document.querySelectorAll("ul.headerNavigation[role='navigation']");
@@ -177,12 +177,14 @@
             setInterval(ensureSovaAlert, 3000);
         }
         
-    
+        sidebarHide();
+
         if (window.location.href.includes("/admin/ceny/")){
         pridatStitikyvPrehledu ()
         pridatParametry()
         }
         
+
 
      
     }
@@ -1005,6 +1007,88 @@ async function pridatStitikyvPrehledu () {
     }, 2); // Počkáme 2 ms na asynchronní načtení stránky
 
 };
+
+
+async function sidebarHide() {
+    'use strict';
+    console.log("✅ sidebarHide() spuštěn");
+
+    const sidebar = document.querySelector('.pageGrid__sidebar.sidebar.js-drawer[data-drawer-id="menu"]');
+    const navigation = document.querySelector('.navigation');
+    const pageGrid = document.querySelector('.pageGrid');
+
+    if (!sidebar) {
+        console.log("❌ Sidebar nebyl nalezen.");
+        return;
+    }
+    if (!navigation) {
+        console.log("❌ Navigation nebyla nalezena.");
+        return;
+    }
+    if (!pageGrid) {
+        console.log("❌ pageGrid nebyl nalezen.");
+        return;
+    }
+
+    console.log("✅ Všechny klíčové prvky nalezeny.");
+
+    // Zkontrolovat, zda tlačítko už existuje
+    let toggleButton = document.getElementById('toggleSidebar');
+    if (toggleButton) {
+        console.log("⚠️ Tlačítko už existuje, nebudeme přidávat znovu.");
+        return;
+    }
+
+    // Vytvořit tlačítko
+    toggleButton = document.createElement('div');
+    toggleButton.id = 'toggleSidebar';
+    toggleButton.style.position = 'absolute';
+    toggleButton.style.top = '50px';
+    toggleButton.style.padding = '5px 10px';
+    toggleButton.style.background = '#ffffff';
+    toggleButton.style.borderRadius = '3px';
+    toggleButton.style.cursor = 'pointer';
+    toggleButton.style.fontSize = '18px';
+    toggleButton.style.zIndex = '1000';
+    toggleButton.style.boxShadow = 'var(--effect-box-shadow-shadow-down)';
+    toggleButton.style.minHeight = '40px';
+    toggleButton.style.fontWeight = 'bold';
+    toggleButton.style.maxWidth = '45px';
+
+    sidebar.appendChild(toggleButton);
+    console.log("✅ Tlačítko přidáno do sidebaru.");
+
+    // Načíst stav sidebaru z LocalStorage
+    let isSidebarHidden = localStorage.getItem('sidebarState') === 'hidden';
+    console.log(`🔄 Načtený stav sidebaru z LocalStorage: ${isSidebarHidden ? 'skrytý' : 'viditelný'}`);
+
+    function updateSidebar() {
+        if (isSidebarHidden) {
+            console.log("🔽 Skrývám sidebar...");
+            navigation.style.display = 'none';
+            pageGrid.style.gridTemplateColumns = '0px 1fr';
+            toggleButton.style.left = '0px';
+            toggleButton.innerHTML = '&gt;&gt;'; // Ikona pro sbalený sidebar
+        } else {
+            console.log("🔼 Zobrazuji sidebar...");
+            navigation.style.display = 'block';
+            pageGrid.style.gridTemplateColumns = '250px 1fr';
+            toggleButton.style.left = '210px';
+            toggleButton.innerHTML = '&lt;&lt;'; // Ikona pro rozbalený sidebar
+        }
+    }
+
+    // Nastavit správný stav po načtení stránky
+    updateSidebar();
+
+    // Přidat event listener na tlačítko
+    toggleButton.addEventListener('click', function() {
+        isSidebarHidden = !isSidebarHidden; // Přepnout stav
+        localStorage.setItem('sidebarState', isSidebarHidden ? 'hidden' : 'visible'); // Uložit stav
+        console.log(`🆕 Nový stav sidebaru: ${isSidebarHidden ? 'skrytý' : 'viditelný'}`);
+        updateSidebar(); // Aktualizovat styl
+    });
+}
 
 
 
