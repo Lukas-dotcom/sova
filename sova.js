@@ -1013,75 +1013,60 @@ async function pridatStitikyvPrehledu () {
 function sidebarHide() {
     'use strict';
 
-    // Funkce pro přidání tlačítka do sidebaru
-    function addToggleButton() {
-        'use strict';
-    
-        function addToggleButton() {
-            const sidebar = document.querySelector('.pageGrid__sidebar.sidebar.js-drawer[data-drawer-id="menu"]');
-            const navigation = document.querySelector('.navigation');
-            const pageGrid = document.querySelector('.pageGrid');
-    
-            if (!sidebar || !navigation || !pageGrid) return;
-    
-            // Zkontrolovat, zda tlačítko už existuje
-            let toggleButton = document.getElementById('toggleSidebar');
-            if (toggleButton) return;
-    
-            // Vytvořit tlačítko
-            toggleButton = document.createElement('div');
-            toggleButton.id = 'toggleSidebar';
-            toggleButton.style.position = 'absolute';
-            toggleButton.style.top = '50px';
-            toggleButton.style.padding = '5px 10px';
-            toggleButton.style.background = '#ffffff';
-            toggleButton.style.borderRadius = '3px';
-            toggleButton.style.cursor = 'pointer';
-            toggleButton.style.fontSize = '18px';
-            toggleButton.style.zIndex = '1000';
-            toggleButton.style.boxShadow = 'var(--effect-box-shadow-shadow-down)';
-            toggleButton.style.minHeight = '40px';
-            toggleButton.style.fontWeight = 'bold';
-            toggleButton.style.maxWidth = '45px';
-    
-            sidebar.appendChild(toggleButton);
-    
-            // Načíst stav sidebaru z LocalStorage
-            let isSidebarHidden = localStorage.getItem('sidebarState') === 'hidden';
-    
-            function updateSidebar() {
-                if (isSidebarHidden) {
-                    navigation.style.display = 'none';
-                    pageGrid.style.gridTemplateColumns = '0px 1fr';
-                    toggleButton.style.left = '0px';
-                    toggleButton.innerHTML = '&gt;&gt;'; // Ikona pro sbalený sidebar
-                } else {
-                    navigation.style.display = 'block';
-                    pageGrid.style.gridTemplateColumns = '250px 1fr';
-                    toggleButton.style.left = '210px';
-                    toggleButton.innerHTML = '&lt;&lt;'; // Ikona pro rozbalený sidebar
-                }
-            }
-    
-            // Nastavit správný stav po načtení stránky
-            updateSidebar();
-    
-            // Přidat event listener na tlačítko
-            toggleButton.addEventListener('click', function() {
-                isSidebarHidden = !isSidebarHidden; // Přepnout stav
-                localStorage.setItem('sidebarState', isSidebarHidden ? 'hidden' : 'visible'); // Uložit stav
-                updateSidebar(); // Aktualizovat styl
-            });
+    const sidebar = document.querySelector('.pageGrid__sidebar.sidebar.js-drawer[data-drawer-id="menu"]');
+    const navigation = document.querySelector('.navigation');
+    const pageGrid = document.querySelector('.pageGrid');
+
+    if (!sidebar || !navigation || !pageGrid) return;
+
+    // Zkontrolovat, zda tlačítko už existuje
+    let toggleButton = document.getElementById('toggleSidebar');
+    if (toggleButton) return;
+
+    // Vytvořit tlačítko
+    toggleButton = document.createElement('div');
+    toggleButton.id = 'toggleSidebar';
+    toggleButton.style.position = 'absolute';
+    toggleButton.style.top = '50px';
+    toggleButton.style.padding = '5px 10px';
+    toggleButton.style.background = '#ffffff';
+    toggleButton.style.borderRadius = '3px';
+    toggleButton.style.cursor = 'pointer';
+    toggleButton.style.fontSize = '18px';
+    toggleButton.style.zIndex = '1000';
+    toggleButton.style.boxShadow = 'var(--effect-box-shadow-shadow-down)';
+    toggleButton.style.minHeight = '40px';
+    toggleButton.style.fontWeight = 'bold';
+    toggleButton.style.maxWidth = '45px';
+
+    sidebar.appendChild(toggleButton);
+
+    // Načíst stav sidebaru z LocalStorage
+    let isSidebarHidden = localStorage.getItem('sidebarState') === 'hidden';
+
+    function updateSidebar() {
+        if (isSidebarHidden) {
+            navigation.style.display = 'none';
+            pageGrid.style.gridTemplateColumns = '0px 1fr';
+            toggleButton.style.left = '0px';
+            toggleButton.innerHTML = '&gt;&gt;'; // Ikona pro sbalený sidebar
+        } else {
+            navigation.style.display = 'block';
+            pageGrid.style.gridTemplateColumns = '250px 1fr';
+            toggleButton.style.left = '210px';
+            toggleButton.innerHTML = '&lt;&lt;'; // Ikona pro rozbalený sidebar
         }
-    
-        // Po načtení stránky přidat tlačítko
-        window.addEventListener('load', addToggleButton);
-    
     }
 
-    // Po načtení stránky přidat tlačítko
-    window.addEventListener('load', addToggleButton);
+    // Nastavit správný stav po načtení stránky
+    updateSidebar();
 
+    // Přidat event listener na tlačítko
+    toggleButton.addEventListener('click', function() {
+        isSidebarHidden = !isSidebarHidden; // Přepnout stav
+        localStorage.setItem('sidebarState', isSidebarHidden ? 'hidden' : 'visible'); // Uložit stav
+        updateSidebar(); // Aktualizovat styl
+    });
 }
 
 
