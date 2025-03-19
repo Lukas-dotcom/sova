@@ -180,6 +180,7 @@
     
         if (window.location.href.includes("/admin/ceny/")){
         pridatStitikyvPrehledu ()
+        pridatParametry()
         }
         
 
@@ -652,6 +653,137 @@ async function upnutiVerzi() {
 
 };
 
+
+async function pridatParametry() {
+    'use strict';
+
+    console.log("📌 Spuštěn skript pro přidání parametrů!");
+
+    // 1️⃣ Funkce pro načtení pravidel z JSON
+    async function nacistPravidla() {
+        try {
+            let pravidlaData = await getRulesFor("pridatParametry");
+
+            if (!pravidlaData || !Array.isArray(pravidlaData)) {
+                throw new Error("❌ Neplatný formát pravidel.");
+            }
+
+            // Vracíme seznam parametrů, které se mají zobrazovat
+            let pravidla = pravidlaData.map(rule => rule.Parametr);
+            console.log("📌 Načtené parametry:", pravidla);
+            return pravidla;
+        } catch (error) {
+            console.error("❌ Chyba při načítání pravidel:", error);
+            return [];
+        }
+    }
+
+    // 2️⃣ Funkce pro načtení parametrů z detailu produktu
+    async function zjistitParametry(productId, sledovaneParametry) {
+        try {
+            let response = await fetch(`/admin/produkty-detail/?id=${productId}`);
+            let htmlText = await response.text();
+            let parser = new DOMParser();
+            let doc = parser.parseFromString(htmlText, "text/html");
+
+            let parametry = {};
+            let rows = doc.querySelectorAll("#information-parameters-tbody tr");
+
+            rows.forEach(row => {
+                let nazevInput = row.querySelector('input[name="informationParameterName[]"]');
+                let hodnotaInput = row.querySelector('input[name^="informationParameterValue"]');
+
+                if (nazevInput && hodnotaInput) {
+                    let nazev = nazevInput.value.trim();
+                    let hodnota = hodnotaInput.value.trim();
+
+                    if (sledovaneParametry.includes(nazev)) {
+                        parametry[nazev] = hodnota;
+                    }
+                }
+            });
+
+            return parametry;
+        } catch (error) {
+            console.error(`❌ Chyba při načítání parametrů pro produkt ${productId}:`, error);
+            return {};
+        }
+    }
+
+    // 3️⃣ Funkce pro přidání sloupců do tabulky
+    function pridatSloupce(parametry) {
+        let table = document.querySelector(".table.checkbox-table");
+        if (!table) {
+            console.warn("❌ Tabulka nebyla nalezena.");
+            return;
+        }
+
+        let headerRow = table.querySelector("thead tr");
+        let nameColumn = headerRow.querySelector("th:nth-child(4)");
+
+        parametry.forEach(parametr => {
+            if (!document.querySelector(`.table__cell--parametr-${parametr.replace(/\s+/g, "-")}`)) {
+                let newHeader = document.createElement("th");
+                newHeader.className = `table__cell--actions table__cell--parametr-${parametr.replace(/\s+/g, "-")}`;
+                newHeader.innerText = parametr;
+                nameColumn.insertAdjacentElement("afterend", newHeader);
+
+                let rows = table.querySelectorAll("tbody tr");
+                rows.forEach(row => {
+                    let newCell = document.createElement("td");
+                    newCell.className = `table__cell--actions table__cell--parametr-${parametr.replace(/\s+/g, "-")}`;
+                    newCell.innerText = "..."; // Dočasně, hodnoty doplníme později
+                    let nameCol = row.querySelector("td:nth-child(4)");
+                    if (nameCol) {
+                        nameCol.insertAdjacentElement("afterend", newCell);
+                    }
+                });
+            }
+        });
+
+        console.log("✅ Sloupce pro parametry přidány.");
+    }
+
+    // 4️⃣ Funkce pro doplnění hodnot parametrů do tabulky
+    async function aktualizovatParametry(parametry) {
+        let rows = document.querySelectorAll(".table.checkbox-table tbody tr");
+        let allPromises = [];
+
+        rows.forEach(row => {
+            let productIdElement = row.querySelector('input[name^="productId"]');
+            if (!productIdElement) return;
+            let productId = productIdElement.value;
+
+            let promise = zjistitParametry(productId, parametry).then(stavy => {
+                parametry.forEach(parametr => {
+                    let cell = row.querySelector(`.table__cell--parametr-${parametr.replace(/\s+/g, "-")}`);
+                    if (!cell) return;
+
+                    cell.innerText = stavy[parametr] || "-";
+                });
+            });
+
+            allPromises.push(promise);
+        });
+
+        await Promise.all(allPromises);
+        console.log("✅ Hodnoty parametrů byly doplněny.");
+    }
+
+    // 🚀 Spustíme skript
+    setTimeout(async () => {
+        console.log("⏰ Začínám načítat parametry...");
+        let parametry = await nacistPravidla();  // 1️⃣ Zjistit, které parametry zobrazovat
+        pridatSloupce(parametry);               // 2️⃣ Přidat sloupce do tabulky
+        await aktualizovatParametry(parametry); // 3️⃣ Načíst hodnoty a vložit je do tabulky
+    }, 30);
+}
+
+
+
+
+
+
 async function pridatStitikyvPrehledu () {
     'use strict';
 
@@ -862,7 +994,7 @@ async function pridatStitikyvPrehledu () {
         pridatSloupce(pravidla);               // 2) Propsat je do tabulky
         document.body.addEventListener("click", nastavZmenuStavu); // 4) Po kliknutí odešle AJAX
         await aktualizovatTlacitka(pravidla);  // 3) Zjistit aktivní příznaky a vložit stav
-    }, 32);
+    }, 2); // Počkáme 2 ms na asynchronní načtení stránky
 
 };
 
