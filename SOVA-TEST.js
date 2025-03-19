@@ -216,72 +216,78 @@
       
 
 // --- Funkce, která spouští zpracování na stránce s výpisem filtrů (otevře nové okno) ---
+// --- Funkce, která spouští zpracování na stránce s výpisem filtrů (otevře nové okno) ---
 async function raditHodnotyFiltru() {
     log("Zpracovávám stránku s výpisem filtrů (pro nové okno)...");
     let rows = document.querySelectorAll("table.table tbody tr");
     if (!rows || rows.length === 0) {
-      log("Na stránce nebyly nalezeny žádné řádky.");
-      return;
+        log("Na stránce nebyly nalezeny žádné řádky.");
+        return;
     }
-  
+
     try {
-      // Načteme pravidla pomocí nové funkce getRulesFor
-      let rules = await getRulesFor("raditHodnotyFiltru");
-      if (!rules) {
-        throw new Error("Pravidla nejsou dostupná.");
-      }
-      log("Pravidla načtena: " + JSON.stringify(rules));
-      // Uložíme získaná pravidla do GM storage (jako JSON)
-      GM_setValue("paramRules", JSON.stringify(rules));
+        // Načteme pravidla pomocí nové funkce getRulesFor
+        let rules = await getRulesFor("raditHodnotyFiltru");
+        if (!rules) {
+            throw new Error("Pravidla nejsou dostupná.");
+        }
+        log("Pravidla načtena z rulesList: " + JSON.stringify(rules));
+
+        // Převod z pole do objektu pro rychlejší přístup
+        let paramRules = {};
+        rules.forEach(rule => {
+            paramRules[rule.Parametr] = rule.Oddelovac;
+        });
+
+        // Uložíme objekt do GM storage
+        GM_setValue("paramRules", JSON.stringify(paramRules));
     } catch (e) {
-      console.error("Chyba při načítání pravidel:", e);
-      return;
+        console.error("Chyba při načítání pravidel:", e);
+        return;
     }
-  
+
     let paramsList = [];
     rows.forEach(row => {
-      let link = row.querySelector("a.table__detailLink");
-      if (link) {
-        let paramName = link.textContent.trim();
-        let url = link.href;
-        // Načteme uložená pravidla
-        let paramRules = JSON.parse(GM_getValue("paramRules", "{}"));
-        if (paramRules[paramName] && paramRules[paramName].oddelovac.toLowerCase() === "neradit") {
-          log(`Přeskakuji parametr '${paramName}' (nastaveno "neradit").`);
-        } else {
-          // Pokud jsou v pravidlech informace o oddělovači, použijeme je, jinak bude separator null
-          let separator = (paramRules[paramName] && paramRules[paramName].oddelovac.toLowerCase() !== "neradit")
-                            ? paramRules[paramName].oddelovac
+        let link = row.querySelector("a.table__detailLink");
+        if (link) {
+            let paramName = link.textContent.trim();
+            let url = link.href;
+
+            // Načteme uložená pravidla
+            let paramRules = JSON.parse(GM_getValue("paramRules", "{}"));
+            let separator = paramRules[paramName] && paramRules[paramName].toLowerCase() !== "neradit"
+                            ? paramRules[paramName]
                             : null;
-          // Přidáváme vlastnosti oddelovac a processed (false = zatím nezpracován)
-          paramsList.push({ name: paramName, url: url, oddelovac: separator, processed: false });
+
+            if (separator === null && paramRules[paramName] === "neradit") {
+                log(`Přeskakuji parametr '${paramName}' (nastaveno "neradit").`);
+            } else {
+                paramsList.push({ name: paramName, url: url, oddelovac: separator, processed: false });
+            }
         }
-      }
     });
-  
+
     if (paramsList.length === 0) {
-      log("Nebyl nalezen žádný parametr k zpracování.");
-      return;
+        log("Nebyl nalezen žádný parametr k zpracování.");
+        return;
     }
     log(`Nalezeno ${paramsList.length} parametrů ke zpracování.`);
-  
+
     // Uložíme kompletní seznam parametrů (včetně nových vlastností) do fullParamsList
     GM_setValue("fullParamsList", JSON.stringify(paramsList));
-  
+
     // Vybereme první nezpracovaný parametr
     let currentParam = paramsList.find(p => !p.processed);
     if (!currentParam) {
-      log("Všechny parametry již byly zpracovány.");
-      return;
+        log("Všechny parametry již byly zpracovány.");
+        return;
     }
     GM_setValue("currentParam", JSON.stringify(currentParam));
-  
+
     log(`První parametr: ${currentParam.name}, URL: ${currentParam.url}`);
-  
+
     window.open(currentParam.url, "sovaParametrSortingWindow", "width=1200,height=800");
-  }
-
-
+}
 
 // --- Funkce spuštěná v novém okně, která zpracovává (řadí) hodnoty parametru ---
 async function paramSorting() {
@@ -292,7 +298,6 @@ async function paramSorting() {
     let fullParamsList = JSON.parse(GM_getValue("fullParamsList", "[]"));
     let currentParam = JSON.parse(GM_getValue("currentParam", "{}"));
 
-    // Pokud už byl aktuální parametr zpracován, najdeme další nezpracovaný a přesměrujeme na něj
     if (currentParam.processed) {
         let nextParam = fullParamsList.find(p => !p.processed);
         if (nextParam) {
@@ -317,6 +322,8 @@ async function paramSorting() {
     }
 
     let paramRules = JSON.parse(GM_getValue("paramRules", "{}"));
+    let oddelovac = paramRules[currentParam.name] || null;
+
     log(`Zpracovávám detail parametru: ${currentParam.name}`);
     await sleep(delayMs);
 
@@ -339,26 +346,15 @@ async function paramSorting() {
         return { row, text, origValue };
     });
 
-       /* // Přidáme logování celého fullParamsList:
-    let fullList = JSON.parse(GM_getValue("fullParamsList", "[]"));
-    log(`FullParamsList: ${JSON.stringify(fullList, null, 2)}`);
-
-    // Logování currentParam:
-    let currParam = JSON.parse(GM_getValue("currentParam", "{}"));
-    log(`CurrentParam: ${JSON.stringify(currParam, null, 2)}`); */
-
-    // Rozhodujeme se, kterou logiku řazení použít podle vlastnosti oddelovac uložené v currentParam.
-    if (currentParam.oddelovac) {
-        log(`Řazení s použitím oddělovače '${currentParam.oddelovac}'`);
+    if (oddelovac && oddelovac.toLowerCase() !== "neradit") {
+        log(`Řazení s použitím oddělovače '${oddelovac}'`);
         rowsData.forEach(item => {
-            let parts = item.text.split(currentParam.oddelovac);
+            let parts = item.text.split(oddelovac);
             if (parts.length === 2) {
                 let part1 = parseFloat(parts[0].trim().replace(/\s/g, ""));
                 let part2 = parseFloat(parts[1].trim().replace(/\s/g, ""));
-                if (isNaN(part1) || isNaN(part2)) {
-                    item.valid = false;
-                } else {
-                    item.valid = true;
+                item.valid = !(isNaN(part1) || isNaN(part2));
+                if (item.valid) {
                     item.num1 = part1;
                     item.num2 = part2;
                 }
@@ -400,6 +396,7 @@ async function paramSorting() {
             return a.sortKey.key < b.sortKey.key ? -1 : a.sortKey.key > b.sortKey.key ? 1 : 0;
         });
     }
+
     log("Seřazené hodnoty: " + JSON.stringify(rowsData.map(item => item.text)));
     await sleep(delayMs);
 
@@ -414,9 +411,7 @@ async function paramSorting() {
     log("Tabulka byla přeuspořádána a původní hodnoty priority[] byly doplněny.");
     await sleep(delayMs);
 
-    // Po dokončení řazení označíme aktuální parametr jako zpracovaný...
     currentParam.processed = true;
-    // ... a uložíme tuto změnu do fullParamsList i do currentParam.
     let index = fullParamsList.findIndex(p => p.name === currentParam.name);
     if (index !== -1) {
         fullParamsList[index] = currentParam;
@@ -433,16 +428,16 @@ async function paramSorting() {
     }
     await sleep(delayMs);
 
-    // Najdeme další nezpracovaný parametr a přesměrujeme na jeho URL
     let nextParam = fullParamsList.find(p => !p.processed);
     if (nextParam) {
         GM_setValue("currentParam", JSON.stringify(nextParam));
         window.location.href = nextParam.url;
     } else {
         log("Všechny parametry byly zpracovány.");
-        // Případně: window.close();
+        window.close();
     }
 }
+
 
 async function paramSortingSingle() {
     log("Spouštím řazení hodnot aktuálního parametru (jediný parametr) v aktuálním okně.");
