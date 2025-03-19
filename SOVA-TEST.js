@@ -659,7 +659,12 @@ async function pridatParametry() {
 
     console.log("📌 Spuštěn skript pro přidání parametrů!");
 
-    // 1️⃣ Funkce pro načtení pravidel z JSON
+    // 1️⃣ Funkce pro sanitizaci názvu parametru pro CSS selektor
+    function sanitizeSelector(name) {
+        return name.replace(/[^a-zA-Z0-9_-]/g, "-");
+    }
+
+    // 2️⃣ Funkce pro načtení pravidel z JSON
     async function nacistPravidla() {
         try {
             let pravidlaData = await getRulesFor("pridatParametry");
@@ -678,7 +683,7 @@ async function pridatParametry() {
         }
     }
 
-    // 2️⃣ Funkce pro načtení parametrů z detailu produktu
+    // 3️⃣ Funkce pro načtení parametrů z detailu produktu
     async function zjistitParametry(productId, sledovaneParametry) {
         try {
             let response = await fetch(`/admin/produkty-detail/?id=${productId}`);
@@ -710,7 +715,7 @@ async function pridatParametry() {
         }
     }
 
-    // 3️⃣ Funkce pro přidání sloupců do tabulky
+    // 4️⃣ Funkce pro přidání sloupců do tabulky
     function pridatSloupce(parametry) {
         let table = document.querySelector(".table.checkbox-table");
         if (!table) {
@@ -722,16 +727,17 @@ async function pridatParametry() {
         let nameColumn = headerRow.querySelector("th:nth-child(4)");
 
         parametry.forEach(parametr => {
-            if (!document.querySelector(`.table__cell--parametr-${parametr.replace(/\s+/g, "-")}`)) {
+            let sanitizedParam = sanitizeSelector(parametr);
+            if (!document.querySelector(`.table__cell--parametr-${sanitizedParam}`)) {
                 let newHeader = document.createElement("th");
-                newHeader.className = `table__cell--actions table__cell--parametr-${parametr.replace(/\s+/g, "-")}`;
+                newHeader.className = `table__cell--actions table__cell--parametr-${sanitizedParam}`;
                 newHeader.innerText = parametr;
                 nameColumn.insertAdjacentElement("afterend", newHeader);
 
                 let rows = table.querySelectorAll("tbody tr");
                 rows.forEach(row => {
                     let newCell = document.createElement("td");
-                    newCell.className = `table__cell--actions table__cell--parametr-${parametr.replace(/\s+/g, "-")}`;
+                    newCell.className = `table__cell--actions table__cell--parametr-${sanitizedParam}`;
                     newCell.innerText = "..."; // Dočasně, hodnoty doplníme později
                     let nameCol = row.querySelector("td:nth-child(4)");
                     if (nameCol) {
@@ -744,7 +750,7 @@ async function pridatParametry() {
         console.log("✅ Sloupce pro parametry přidány.");
     }
 
-    // 4️⃣ Funkce pro doplnění hodnot parametrů do tabulky
+    // 5️⃣ Funkce pro doplnění hodnot parametrů do tabulky
     async function aktualizovatParametry(parametry) {
         let rows = document.querySelectorAll(".table.checkbox-table tbody tr");
         let allPromises = [];
@@ -756,7 +762,8 @@ async function pridatParametry() {
 
             let promise = zjistitParametry(productId, parametry).then(stavy => {
                 parametry.forEach(parametr => {
-                    let cell = row.querySelector(`.table__cell--parametr-${parametr.replace(/\s+/g, "-")}`);
+                    let sanitizedParam = sanitizeSelector(parametr);
+                    let cell = row.querySelector(`.table__cell--parametr-${sanitizedParam}`);
                     if (!cell) return;
 
                     cell.innerText = stavy[parametr] || "-";
@@ -778,6 +785,7 @@ async function pridatParametry() {
         await aktualizovatParametry(parametry); // 3️⃣ Načíst hodnoty a vložit je do tabulky
     }, 30);
 }
+
 
 
 
