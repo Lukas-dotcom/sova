@@ -65,17 +65,25 @@
   },
   "pridatParametry": {
     "columns": [
-      "Parametr"
+      "Parametr",
+      ""
     ],
     "rules": [
       {
-        "Parametr": "Typ produktu"
+        "Parametr": "Typ produktu",
+        "": ""
       },
       {
-        "Parametr": "Model procesoru"
+        "Parametr": "Model procesoru",
+        "": ""
       },
       {
-        "Parametr": "Rozlišení"
+        "Parametr": "",
+        "": "Kapacita disku"
+      },
+      {
+        "Parametr": "",
+        "": "Rozlišení"
       }
     ]
   },
