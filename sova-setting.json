@@ -65,29 +65,23 @@
   },
   "pridatParametry": {
     "columns": [
-      "Parametr",
-      ""
+      "Parametr"
     ],
     "rules": [
       {
-        "Parametr": "Typ produktu",
-        "": ""
+        "Parametr": "Typ produktu"
       },
       {
-        "Parametr": "Model procesoru",
-        "": ""
+        "Parametr": "Model procesoru"
       },
       {
-        "Parametr": "Velikost operační paměti",
-        "": ""
+        "Parametr": "Velikost operační paměti"
       },
       {
-        "Parametr": "Kapacita disku",
-        "": ""
+        "Parametr": "Kapacita disku"
       },
       {
-        "Parametr": "",
-        "": "Rozlišení"
+        "Parametr": "Dedikovaná grafická karta (GPU)"
       }
     ]
   },
