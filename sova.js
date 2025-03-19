@@ -53,8 +53,8 @@
             paramSorting();
         }
 
-    // --- Načtení externího HTML obsahu pro stránku admin/sova ---
-    if (window.location.href.includes("admin/sova")) {
+      // --- Načtení externího HTML obsahu pro stránku admin/sova ---
+          if (window.location.href.includes("admin/sova")) {
         const sectionToRemove = document.querySelector(".section.section-424");
         if (sectionToRemove) {
             sectionToRemove.remove();
@@ -93,7 +93,7 @@
                 log("Externí HTML byl úspěšně načten a vložen.");
             })
             .catch(error => console.error("Nepodařilo se načíst HTML:", error));
-     }
+        }
 
         // --- Přidání odkazu do navigace ---
         var navMenus = document.querySelectorAll("ul.headerNavigation[role='navigation']");
@@ -177,7 +177,8 @@
             setInterval(ensureSovaAlert, 3000);
         }
         
-        sidebarHide()
+        window.addEventListener('load', sidebarHide);
+
 
         if (window.location.href.includes("/admin/ceny/")){
         pridatStitikyvPrehledu ()
