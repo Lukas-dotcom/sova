@@ -177,16 +177,11 @@
             setInterval(ensureSovaAlert, 3000);
         }
         
-        // ✅ Spustit `sidebarHide()` až po načtení stránky
-        window.addEventListener('load', () => {
-            console.log("🚀 Spouštím sidebarHide() po načtení stránky...");
-            sidebarHide();
-        });
+        sidebarHide();
 
         if (window.location.href.includes("/admin/ceny/")){
         pridatStitikyvPrehledu ()
         pridatParametry()
-        sidebarHide()
         }
         
 
@@ -1014,7 +1009,7 @@ async function pridatStitikyvPrehledu () {
 };
 
 
-function sidebarHide() {
+async function sidebarHide() {
     'use strict';
     console.log("✅ sidebarHide() spuštěn");
 
