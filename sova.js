@@ -178,7 +178,10 @@
         }
         
     
-        
+        if (window.location.href.includes("/admin/ceny/")){
+        pridatStitikyvPrehledu ()
+        pridatParametry()
+        }
         
 
      
@@ -203,83 +206,19 @@
     }
 
 
-    // --- Funkce pro načtení CSV mappingu z univerzálního CSV ---
-    function fetchFeatureRules(featureName = null) {
-        const universalCsvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRufx0-X2OdjDVG1KAKx1QhC38JMxDj10hOYDGTBi6te9jYRXrBfRYazSpFHXglSKmcaQEs7tdvTOKV/pub?gid=775097961&single=true&output=csv";
-    
-        return new Promise((resolve, reject) => {
-            GM_xmlhttpRequest({
-                method: "GET",
-                url: universalCsvUrl,
-                onload: (response) => {
-                    if (response.status === 200) {
-                        try {
-                            const mapping = {};
-                            const lines = response.responseText.split('\n').filter(line => line.trim() !== '');
-    
-                            lines.slice(1).forEach(line => {
-                                const [scriptName, scriptCsvUrl] = line.split(',').map(col => col.trim());
-                                mapping[scriptName] = scriptCsvUrl;
-                            });
-    
-                            if (featureName) {
-                                const rulesUrl = mapping[featureName];
-                                if (!rulesUrl) {
-                                    return reject(new Error(`Nenalezen mapping pro '${featureName}'.`));
-                                }
-                                GM_setValue(`sova:${featureName}RulesUrl`, rulesUrl);
-                                resolve(rulesUrl);
-                            } else {
-                                resolve(mapping);
-                            }
-                        } catch (e) {
-                            reject(e);
-                        }
-                    } else {
-                        reject(new Error("HTTP chyba: " + response.status));
-                    }
-                },
-                onerror: (err) => reject(err)
-            });
-        });
-    }
-    
+   
     // --- Hlavní část scriptu pro řazení hodnot filtrů - vyčítání URL a pravidel
-    function fetchSortingCSV(url) {
-        return new Promise((resolve, reject) => {
-            GM_xmlhttpRequest({
-                method: "GET",
-                url: url,
-                onload: function(response) {
-                    if (response.status === 200) {
-                        try {
-                            let data = response.responseText;
-                            let lines = data.split('\n').filter(line => line.trim() !== '');
-                            let result = {};
-                            // Data začínají od 2. řádku (první řádek jsou hlavičky)
-                            for (let i = 1; i < lines.length; i++) {
-                                let cols = lines[i].split(',');
-                                if (cols.length >= 2) {
-                                    let paramName = cols[0].trim();
-                                    let oddelovacValue = cols[1].trim();
-                                    result[paramName] = { oddelovac: oddelovacValue };
-                                }
-                            }
-                            resolve(result);
-                        } catch (e) {
-                            reject(e);
-                        }
-                    } else {
-                        reject(new Error("HTTP error " + response.status));
-                    }
-                },
-                onerror: function(err) {
-                    reject(err);
-                }
-            });
-        });
-    }
+    async function getRulesFor(featureName) {
+        // Předpokládáme, že rulesList je uložen jako JSON na dané URL, např.:
+        const rulesUrl = "https://raw.githubusercontent.com/Lukas-dotcom/sova/main/sova-setting.json"  // URL, kde je uložený rulesList.json
+        const response = await fetch(rulesUrl);
+        if (!response.ok) throw new Error("Nelze načíst rulesList");
+        const rulesList = await response.json();
+        return rulesList[featureName] ? rulesList[featureName].rules : null;
+      }
+      
 
+// --- Funkce, která spouští zpracování na stránce s výpisem filtrů (otevře nové okno) ---
 // --- Funkce, která spouští zpracování na stránce s výpisem filtrů (otevře nové okno) ---
 async function raditHodnotyFiltru() {
     log("Zpracovávám stránku s výpisem filtrů (pro nové okno)...");
@@ -290,14 +229,23 @@ async function raditHodnotyFiltru() {
     }
 
     try {
-        const rulesUrl = await fetchFeatureRules("raditHodnotyFiltru");
-        log(`Načítám pravidla z: ${rulesUrl}`);
+        // Načteme pravidla pomocí nové funkce getRulesFor
+        let rules = await getRulesFor("raditHodnotyFiltru");
+        if (!rules) {
+            throw new Error("Pravidla nejsou dostupná.");
+        }
+        log("Pravidla načtena z rulesList: " + JSON.stringify(rules));
 
-        let paramRules = await fetchSortingCSV(rulesUrl);
-        log("CSV definice filtrů načtena: " + JSON.stringify(paramRules));
+        // Převod z pole do objektu pro rychlejší přístup
+        let paramRules = {};
+        rules.forEach(rule => {
+            paramRules[rule.Parametr] = rule.Oddelovac;
+        });
+
+        // Uložíme objekt do GM storage
         GM_setValue("paramRules", JSON.stringify(paramRules));
     } catch (e) {
-        console.error("Chyba při načítání CSV definice filtrů:", e);
+        console.error("Chyba při načítání pravidel:", e);
         return;
     }
 
@@ -307,15 +255,16 @@ async function raditHodnotyFiltru() {
         if (link) {
             let paramName = link.textContent.trim();
             let url = link.href;
+
+            // Načteme uložená pravidla
             let paramRules = JSON.parse(GM_getValue("paramRules", "{}"));
-            if (paramRules[paramName] && paramRules[paramName].oddelovac.toLowerCase() === "neradit") {
+            let separator = paramRules[paramName] && paramRules[paramName].toLowerCase() !== "neradit"
+                            ? paramRules[paramName]
+                            : null;
+
+            if (separator === null && paramRules[paramName] === "neradit") {
                 log(`Přeskakuji parametr '${paramName}' (nastaveno "neradit").`);
             } else {
-                // Pokud jsou v CSV pravidlech informace o oddělovači, použijeme je, jinak bude oddělovač null
-                let separator = (paramRules[paramName] && paramRules[paramName].oddelovac.toLowerCase() !== "neradit")
-                                ? paramRules[paramName].oddelovac
-                                : null;
-                // Nově přidáváme vlastnosti oddelovac a processed (false = zatím nezpracován)
                 paramsList.push({ name: paramName, url: url, oddelovac: separator, processed: false });
             }
         }
@@ -343,8 +292,6 @@ async function raditHodnotyFiltru() {
     window.open(currentParam.url, "sovaParametrSortingWindow", "width=1200,height=800");
 }
 
-
-
 // --- Funkce spuštěná v novém okně, která zpracovává (řadí) hodnoty parametru ---
 async function paramSorting() {
     log("Spouštím Shoptet Parameter Sorting Robot (dílčí skript).");
@@ -354,7 +301,6 @@ async function paramSorting() {
     let fullParamsList = JSON.parse(GM_getValue("fullParamsList", "[]"));
     let currentParam = JSON.parse(GM_getValue("currentParam", "{}"));
 
-    // Pokud už byl aktuální parametr zpracován, najdeme další nezpracovaný a přesměrujeme na něj
     if (currentParam.processed) {
         let nextParam = fullParamsList.find(p => !p.processed);
         if (nextParam) {
@@ -379,6 +325,8 @@ async function paramSorting() {
     }
 
     let paramRules = JSON.parse(GM_getValue("paramRules", "{}"));
+    let oddelovac = paramRules[currentParam.name] || null;
+
     log(`Zpracovávám detail parametru: ${currentParam.name}`);
     await sleep(delayMs);
 
@@ -401,26 +349,15 @@ async function paramSorting() {
         return { row, text, origValue };
     });
 
-       /* // Přidáme logování celého fullParamsList:
-    let fullList = JSON.parse(GM_getValue("fullParamsList", "[]"));
-    log(`FullParamsList: ${JSON.stringify(fullList, null, 2)}`);
-
-    // Logování currentParam:
-    let currParam = JSON.parse(GM_getValue("currentParam", "{}"));
-    log(`CurrentParam: ${JSON.stringify(currParam, null, 2)}`); */
-
-    // Rozhodujeme se, kterou logiku řazení použít podle vlastnosti oddelovac uložené v currentParam.
-    if (currentParam.oddelovac) {
-        log(`Řazení s použitím oddělovače '${currentParam.oddelovac}'`);
+    if (oddelovac && oddelovac.toLowerCase() !== "neradit") {
+        log(`Řazení s použitím oddělovače '${oddelovac}'`);
         rowsData.forEach(item => {
-            let parts = item.text.split(currentParam.oddelovac);
+            let parts = item.text.split(oddelovac);
             if (parts.length === 2) {
                 let part1 = parseFloat(parts[0].trim().replace(/\s/g, ""));
                 let part2 = parseFloat(parts[1].trim().replace(/\s/g, ""));
-                if (isNaN(part1) || isNaN(part2)) {
-                    item.valid = false;
-                } else {
-                    item.valid = true;
+                item.valid = !(isNaN(part1) || isNaN(part2));
+                if (item.valid) {
                     item.num1 = part1;
                     item.num2 = part2;
                 }
@@ -462,6 +399,7 @@ async function paramSorting() {
             return a.sortKey.key < b.sortKey.key ? -1 : a.sortKey.key > b.sortKey.key ? 1 : 0;
         });
     }
+
     log("Seřazené hodnoty: " + JSON.stringify(rowsData.map(item => item.text)));
     await sleep(delayMs);
 
@@ -476,9 +414,7 @@ async function paramSorting() {
     log("Tabulka byla přeuspořádána a původní hodnoty priority[] byly doplněny.");
     await sleep(delayMs);
 
-    // Po dokončení řazení označíme aktuální parametr jako zpracovaný...
     currentParam.processed = true;
-    // ... a uložíme tuto změnu do fullParamsList i do currentParam.
     let index = fullParamsList.findIndex(p => p.name === currentParam.name);
     if (index !== -1) {
         fullParamsList[index] = currentParam;
@@ -495,16 +431,16 @@ async function paramSorting() {
     }
     await sleep(delayMs);
 
-    // Najdeme další nezpracovaný parametr a přesměrujeme na jeho URL
     let nextParam = fullParamsList.find(p => !p.processed);
     if (nextParam) {
         GM_setValue("currentParam", JSON.stringify(nextParam));
         window.location.href = nextParam.url;
     } else {
         log("Všechny parametry byly zpracovány.");
-        // Případně: window.close();
+        window.close();
     }
 }
+
 
 async function paramSortingSingle() {
     log("Spouštím řazení hodnot aktuálního parametru (jediný parametr) v aktuálním okně.");
@@ -520,19 +456,15 @@ async function paramSortingSingle() {
     const paramName = paramHeadingEl.textContent.trim();
     log(`Aktuální parametr: ${paramName}`);
 
-    // Načteme pravidla řazení z CSV
+    // Načteme pravidla řazení z rulesList.json
     try {
-        const rulesUrl = await fetchFeatureRules("raditHodnotyFiltru");
-        log(`Načítám pravidla z: ${rulesUrl}`);
-        const allParamRules = await fetchSortingCSV(rulesUrl);
-        log("CSV definice filtrů načtena: " + JSON.stringify(allParamRules));
+        const allParamRules = await getRulesFor("raditHodnotyFiltru");
+        log("Načtená pravidla z rulesList: " + JSON.stringify(allParamRules));
         
         // Získáme pravidlo pro aktuální parametr – pokud není nalezeno, použijeme výchozí (tj. standardní řazení)
-        const currentRule = allParamRules[paramName];
-        let oddelovac = null;
-        if (currentRule && currentRule.oddelovac.toLowerCase() !== "neradit") {
-            oddelovac = currentRule.oddelovac;
-        }
+        const currentRule = allParamRules ? allParamRules.find(rule => rule.Parametr === paramName) : null;
+        let oddelovac = currentRule && currentRule.Oddelovac !== "neradit" ? currentRule.Oddelovac : null;
+
         // Vytvoříme objekt aktuálního parametru
         const currentParam = { name: paramName, oddelovac: oddelovac };
         log(`Použiji parametr: ${JSON.stringify(currentParam)}`);
@@ -624,9 +556,10 @@ async function paramSortingSingle() {
         });
         log("Tabulka byla přeuspořádána. Řazení proběhlo úspěšně.");
     } catch (e) {
-        console.error("Chyba při načítání CSV pravidel:", e);
+        console.error("Chyba při načítání pravidel z rulesList:", e);
     }
 }
+
 
 async function upnutiVerzi() {
 
@@ -721,6 +654,357 @@ async function upnutiVerzi() {
 };
 
 
+async function pridatParametry() {
+    'use strict';
+
+    console.log("📌 Spuštěn skript pro přidání parametrů!");
+
+    // 1️⃣ Funkce pro sanitizaci názvu parametru pro CSS selektor
+    function sanitizeSelector(name) {
+        return name.replace(/[^a-zA-Z0-9_-]/g, "-");
+    }
+
+    // 2️⃣ Funkce pro načtení pravidel z JSON
+    async function nacistPravidla() {
+        try {
+            let pravidlaData = await getRulesFor("pridatParametry");
+
+            if (!pravidlaData || !Array.isArray(pravidlaData)) {
+                throw new Error("❌ Neplatný formát pravidel.");
+            }
+
+            // Vracíme seznam parametrů, které se mají zobrazovat
+            let pravidla = pravidlaData.map(rule => rule.Parametr);
+            console.log("📌 Načtené parametry:", pravidla);
+            return pravidla;
+        } catch (error) {
+            console.error("❌ Chyba při načítání pravidel:", error);
+            return [];
+        }
+    }
+
+    // 3️⃣ Funkce pro načtení parametrů z detailu produktu
+    async function zjistitParametry(productId, sledovaneParametry) {
+        try {
+            let response = await fetch(`/admin/produkty-detail/?id=${productId}`);
+            let htmlText = await response.text();
+            let parser = new DOMParser();
+            let doc = parser.parseFromString(htmlText, "text/html");
+
+            let parametry = {};
+            let rows = doc.querySelectorAll("#information-parameters-tbody tr");
+
+            rows.forEach(row => {
+                let nazevInput = row.querySelector('input[name="informationParameterName[]"]');
+                let hodnotaInput = row.querySelector('input[name^="informationParameterValue"]');
+
+                if (nazevInput && hodnotaInput) {
+                    let nazev = nazevInput.value.trim();
+                    let hodnota = hodnotaInput.value.trim();
+
+                    if (sledovaneParametry.includes(nazev)) {
+                        parametry[nazev] = hodnota;
+                    }
+                }
+            });
+
+            return parametry;
+        } catch (error) {
+            console.error(`❌ Chyba při načítání parametrů pro produkt ${productId}:`, error);
+            return {};
+        }
+    }
+
+    // 4️⃣ Funkce pro přidání sloupců do tabulky
+    function pridatSloupce(parametry) {
+        let table = document.querySelector(".table.checkbox-table");
+        if (!table) {
+            console.warn("❌ Tabulka nebyla nalezena.");
+            return;
+        }
+
+        let headerRow = table.querySelector("thead tr");
+        let nameColumn = headerRow.querySelector("th:nth-child(4)");
+
+        parametry.forEach(parametr => {
+            let sanitizedParam = sanitizeSelector(parametr);
+            if (!document.querySelector(`.table__cell--parametr-${sanitizedParam}`)) {
+                let newHeader = document.createElement("th");
+                newHeader.className = `table__cell--actions table__cell--parametr-${sanitizedParam}`;
+                newHeader.innerText = parametr;
+                nameColumn.insertAdjacentElement("afterend", newHeader);
+
+                let rows = table.querySelectorAll("tbody tr");
+                rows.forEach(row => {
+                    let newCell = document.createElement("td");
+                    newCell.className = `table__cell--actions table__cell--parametr-${sanitizedParam}`;
+                    newCell.innerText = "..."; // Dočasně, hodnoty doplníme později
+                    let nameCol = row.querySelector("td:nth-child(4)");
+                    if (nameCol) {
+                        nameCol.insertAdjacentElement("afterend", newCell);
+                    }
+                });
+            }
+        });
+
+        console.log("✅ Sloupce pro parametry přidány.");
+    }
+
+    // 5️⃣ Funkce pro doplnění hodnot parametrů do tabulky
+    async function aktualizovatParametry(parametry) {
+        let rows = document.querySelectorAll(".table.checkbox-table tbody tr");
+        let allPromises = [];
+
+        rows.forEach(row => {
+            let productIdElement = row.querySelector('input[name^="productId"]');
+            if (!productIdElement) return;
+            let productId = productIdElement.value;
+
+            let promise = zjistitParametry(productId, parametry).then(stavy => {
+                parametry.forEach(parametr => {
+                    let sanitizedParam = sanitizeSelector(parametr);
+                    let cell = row.querySelector(`.table__cell--parametr-${sanitizedParam}`);
+                    if (!cell) return;
+
+                    cell.innerText = stavy[parametr] || "-";
+                });
+            });
+
+            allPromises.push(promise);
+        });
+
+        await Promise.all(allPromises);
+        console.log("✅ Hodnoty parametrů byly doplněny.");
+    }
+
+    // 🚀 Spustíme skript
+    setTimeout(async () => {
+        console.log("⏰ Začínám načítat parametry...");
+        let parametry = await nacistPravidla();  // 1️⃣ Zjistit, které parametry zobrazovat
+        pridatSloupce(parametry);               // 2️⃣ Přidat sloupce do tabulky
+        await aktualizovatParametry(parametry); // 3️⃣ Načíst hodnoty a vložit je do tabulky
+    }, 30);
+}
+
+
+
+
+
+
+
+async function pridatStitikyvPrehledu () {
+    'use strict';
+
+    console.log("📌 Spuštěn skript pro přidání příznaků!");
+
+    // 1) Funkce pro kontrolu platnosti příznaku podle dat "Od" a "Do"
+    function jePriznakPlatny(od, doData) {
+        let dnes = new Date();
+        // Pro porovnání jen datum, bez hodin
+        dnes.setHours(0, 0, 0, 0);
+
+        let datumOd = od ? new Date(od.split(".").reverse().join("-")) : null;
+        let datumDo = doData ? new Date(doData.split(".").reverse().join("-")) : null;
+
+        // Pokud "Od" je v budoucnu, zatím neplatí
+        if (datumOd && datumOd > dnes) return false;
+        // Pokud "Do" je v minulosti, skončilo
+        if (datumDo && datumDo < dnes) return false;
+
+        return true;
+    }
+
+    // 3) Funkce pro načtení pravidel (ID, Název, Zobrazovat) z JSON rulesList
+    async function nacistPravidla() {
+        try {
+            // Načteme pravidla z rulesList pro "pridatPriznaky"
+            let pravidlaData = await getRulesFor("pridatPriznaky");
+            
+            if (!pravidlaData || !Array.isArray(pravidlaData)) {
+                throw new Error("Neplatný formát pravidel.");
+            }
+
+            // Filtrovat pouze pravidla, kde "Zobrazovat" je "ANO"
+            let pravidla = pravidlaData
+                .filter(rule => rule.Zobrazovat === "ANO")
+                .map(rule => ({ id: rule.ID, nazev: rule.Název }));
+
+            console.log("📌 Načtená pravidla:", pravidla);
+            return pravidla;
+        } catch (error) {
+            console.error("❌ Chyba při načítání pravidel:", error);
+            return [];
+        }
+    }
+
+
+
+    // 4) Funkce pro načtení stavu příznaků z detailu produktu
+    //    - projde všechna ID, najde checkbox, zjistí datum
+    //    - vrátí objekt, např. { "1": true/false, "59": true/false, ... }
+    async function zjistitStavyPriznaku(productId, sledovanePriznaky) {
+        try {
+            let response = await fetch(`/admin/produkty-detail/?id=${productId}`);
+            let htmlText = await response.text();
+            let parser = new DOMParser();
+            let doc = parser.parseFromString(htmlText, "text/html");
+
+            let stavy = {};
+            sledovanePriznaky.forEach(priznak => {
+                let checkbox = doc.querySelector(`input[name="doubledot[${priznak.id}]"]`);
+                let inputOd = doc.querySelector(`input[name="doubledotValidFrom[${priznak.id}]"]`);
+                let inputDo = doc.querySelector(`input[name="doubledotDate[${priznak.id}]"]`);
+
+                let datumOd = inputOd && inputOd.value ? inputOd.value : null;
+                let datumDo = inputDo && inputDo.value ? inputDo.value : null;
+                // Je checkbox a je zaškrtnutý?
+                let isActive = checkbox && checkbox.hasAttribute("checked");
+
+                // Pokud je zaškrtnutý, ještě zkontrolujeme datum
+                if (isActive && !jePriznakPlatny(datumOd, datumDo)) {
+                    isActive = false;
+                }
+
+                // Uložíme do stavy s klíčem = ID
+                stavy[priznak.id] = isActive;
+            });
+
+            return stavy;
+        } catch (error) {
+            console.error(`❌ Chyba při načítání příznaků pro produkt ${productId}:`, error);
+            return {};
+        }
+    }
+
+    // 5) Funkce pro přidání sloupců do tabulky podle pravidel
+    function pridatSloupce(pravidla) {
+        let table = document.querySelector(".table.checkbox-table");
+        if (!table) {
+            console.warn("❌ Tabulka nebyla nalezena.");
+            return;
+        }
+
+        // Najdeme řádek s hlavičkou
+        let headerRow = table.querySelector("thead tr");
+        // 4. sloupec je "Název" => vkládáme ZA něj
+        let nameColumn = headerRow.querySelector("th:nth-child(4)");
+
+        pravidla.forEach(priznak => {
+            // Třída .table__cell--actions-ID => identifikujeme sloupec
+            if (!document.querySelector(`.table__cell--actions-${priznak.id}`)) {
+                let newHeader = document.createElement("th");
+                newHeader.className = `table__cell--actions table__cell--actions-${priznak.id}`;
+                newHeader.innerText = priznak.nazev;
+                nameColumn.insertAdjacentElement("afterend", newHeader);
+
+                // Do každého řádku v <tbody> přidáme nový <td>
+                let rows = table.querySelectorAll("tbody tr");
+                rows.forEach(row => {
+                    let newCell = document.createElement("td");
+                    newCell.className = `table__cell--actions table__cell--actions-${priznak.id}`;
+                    // Zatím disable => skutečný stav nastavíme později
+                    newCell.innerHTML = '<a href="#" class="csrf-post-js disabled bool-property shoptet-icon">&nbsp;</a>';
+                    let nameCol = row.querySelector("td:nth-child(4)");
+                    if (nameCol) {
+                        nameCol.insertAdjacentElement("afterend", newCell);
+                    }
+                });
+            }
+        });
+
+        console.log("✅ Sloupce pro příznaky přidány.");
+    }
+
+    // 6) Funkce pro aktualizaci tlačítek v tabulce podle stavu příznaků
+    async function aktualizovatTlacitka(pravidla) {
+        let rows = document.querySelectorAll(".table.checkbox-table tbody tr");
+        // Pro každý řádek (produkt) zjistíme ID produktu a stavy příznaků
+        let allPromises = [];
+
+        rows.forEach(row => {
+            let productIdElement = row.querySelector('input[name^="productId"]');
+            if (!productIdElement) return;
+            let productId = productIdElement.value;
+
+            // Zavoláme zjistitStavyPriznaku pro daný productId
+            let promise = zjistitStavyPriznaku(productId, pravidla).then(stavy => {
+                // stavy je např. { "1": true/false, "59": true/false, ... }
+
+                // Teď projdeme všechna pravidla
+                pravidla.forEach(priznak => {
+                    let cell = row.querySelector(`.table__cell--actions-${priznak.id}`);
+                    if (!cell) return;
+
+                    let button = cell.querySelector("a");
+                    if (!button) return;
+
+                    // Je aktivní?
+                    let isActive = stavy[priznak.id];
+                    // Nastavíme třídu enabled/disabled
+                    button.className = `csrf-post-js csrf-post-ajax-js ${isActive ? "enabled" : "disabled"} bool-property shoptet-icon`;
+                    // Nastavíme title
+                    button.title = isActive ? `Deaktivovat ${priznak.nazev}` : `Aktivovat ${priznak.nazev}`;
+                    // Nastavíme parametry pro AJAX
+                    // paramId = priznak.id, productId
+                    button.setAttribute("data-url", "/admin/produkty/?action=setParameter");
+                    button.setAttribute("data-names", "enabled,parameterId,productId");
+                    // pokud je aktivní => data-values= 0,ID,productId (protože 0 = vypnout)
+                    // jinak => 1,ID,productId (zapnout)
+                    button.setAttribute("data-values", `${isActive ? "0" : "1"},${priznak.id},${productId}`);
+                });
+            });
+
+            allPromises.push(promise);
+        });
+
+        await Promise.all(allPromises);
+        console.log("✅ Tlačítka byla aktualizována dle stavu příznaků.");
+    }
+
+    // 7) Funkce pro nastavení změny stavu kliknutím (odeslání AJAX)
+    function nastavZmenuStavu(e) {
+        if (e.target && e.target.classList.contains("csrf-post-js")) {
+            e.preventDefault();
+
+            let button = e.target;
+            let url = button.getAttribute("data-url");
+            let values = button.getAttribute("data-values"); // např. "0,1,83915"
+            let [enabled, paramId, productId] = values.split(",");
+
+            console.log("Klik -> měním příznak:", { enabled, paramId, productId });
+
+            // Odešleme POST
+            fetch(url, {
+                method: "POST",
+                credentials: "include",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: `enabled=${enabled}&parameterId=${paramId}&productId=${productId}`
+            })
+            .then(() => {
+                // Lokální přepnutí stavu
+                button.classList.toggle("enabled");
+                button.classList.toggle("disabled");
+                // Otočíme param enabled
+                let newEnabled = button.classList.contains("enabled") ? "0" : "1";
+                button.setAttribute("data-values", `${newEnabled},${paramId},${productId}`);
+                button.title = button.classList.contains("enabled") ? "Deaktivovat" : "Aktivovat";
+            })
+            .catch(err => console.error("AJAX chyba:", err));
+        }
+    }
+
+    // 8) Spuštění skriptu
+    setTimeout(async () => {
+        console.log("⏰ Začínám načítat pravidla příznaků...");
+        let pravidla = await nacistPravidla(); // 1) Zjistíme, jaké sloupce propisovat
+        pridatSloupce(pravidla);               // 2) Propsat je do tabulky
+        document.body.addEventListener("click", nastavZmenuStavu); // 4) Po kliknutí odešle AJAX
+        await aktualizovatTlacitka(pravidla);  // 3) Zjistit aktivní příznaky a vložit stav
+    }, 2); // Počkáme 2 ms na asynchronní načtení stránky
+
+};
 
 
 
