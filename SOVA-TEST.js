@@ -178,7 +178,9 @@
         }
         
     
-        
+        if (window.location.href.includes("/admin/ceny/")){
+        pridatStitikyvPrehledu ()
+        }
         
 
      
@@ -650,7 +652,219 @@ async function upnutiVerzi() {
 
 };
 
+async function pridatStitikyvPrehledu () {
+    'use strict';
 
+    console.log("📌 Spuštěn skript pro přidání příznaků!");
+
+    // 1) Funkce pro kontrolu platnosti příznaku podle dat "Od" a "Do"
+    function jePriznakPlatny(od, doData) {
+        let dnes = new Date();
+        // Pro porovnání jen datum, bez hodin
+        dnes.setHours(0, 0, 0, 0);
+
+        let datumOd = od ? new Date(od.split(".").reverse().join("-")) : null;
+        let datumDo = doData ? new Date(doData.split(".").reverse().join("-")) : null;
+
+        // Pokud "Od" je v budoucnu, zatím neplatí
+        if (datumOd && datumOd > dnes) return false;
+        // Pokud "Do" je v minulosti, skončilo
+        if (datumDo && datumDo < dnes) return false;
+
+        return true;
+    }
+
+    // 3) Funkce pro načtení pravidel (ID, Název, Zobrazovat) z JSON rulesList
+    async function nacistPravidla() {
+        try {
+            // Načteme pravidla z rulesList pro "pridatPriznaky"
+            let pravidlaData = await getRulesFor("pridatPriznaky");
+            
+            if (!pravidlaData || !Array.isArray(pravidlaData)) {
+                throw new Error("Neplatný formát pravidel.");
+            }
+
+            // Filtrovat pouze pravidla, kde "Zobrazovat" je "ANO"
+            let pravidla = pravidlaData
+                .filter(rule => rule.Zobrazovat === "ANO")
+                .map(rule => ({ id: rule.ID, nazev: rule.Název }));
+
+            console.log("📌 Načtená pravidla:", pravidla);
+            return pravidla;
+        } catch (error) {
+            console.error("❌ Chyba při načítání pravidel:", error);
+            return [];
+        }
+    }
+
+
+
+    // 4) Funkce pro načtení stavu příznaků z detailu produktu
+    //    - projde všechna ID, najde checkbox, zjistí datum
+    //    - vrátí objekt, např. { "1": true/false, "59": true/false, ... }
+    async function zjistitStavyPriznaku(productId, sledovanePriznaky) {
+        try {
+            let response = await fetch(`/admin/produkty-detail/?id=${productId}`);
+            let htmlText = await response.text();
+            let parser = new DOMParser();
+            let doc = parser.parseFromString(htmlText, "text/html");
+
+            let stavy = {};
+            sledovanePriznaky.forEach(priznak => {
+                let checkbox = doc.querySelector(`input[name="doubledot[${priznak.id}]"]`);
+                let inputOd = doc.querySelector(`input[name="doubledotValidFrom[${priznak.id}]"]`);
+                let inputDo = doc.querySelector(`input[name="doubledotDate[${priznak.id}]"]`);
+
+                let datumOd = inputOd && inputOd.value ? inputOd.value : null;
+                let datumDo = inputDo && inputDo.value ? inputDo.value : null;
+                // Je checkbox a je zaškrtnutý?
+                let isActive = checkbox && checkbox.hasAttribute("checked");
+
+                // Pokud je zaškrtnutý, ještě zkontrolujeme datum
+                if (isActive && !jePriznakPlatny(datumOd, datumDo)) {
+                    isActive = false;
+                }
+
+                // Uložíme do stavy s klíčem = ID
+                stavy[priznak.id] = isActive;
+            });
+
+            return stavy;
+        } catch (error) {
+            console.error(`❌ Chyba při načítání příznaků pro produkt ${productId}:`, error);
+            return {};
+        }
+    }
+
+    // 5) Funkce pro přidání sloupců do tabulky podle pravidel
+    function pridatSloupce(pravidla) {
+        let table = document.querySelector(".table.checkbox-table");
+        if (!table) {
+            console.warn("❌ Tabulka nebyla nalezena.");
+            return;
+        }
+
+        // Najdeme řádek s hlavičkou
+        let headerRow = table.querySelector("thead tr");
+        // 4. sloupec je "Název" => vkládáme ZA něj
+        let nameColumn = headerRow.querySelector("th:nth-child(4)");
+
+        pravidla.forEach(priznak => {
+            // Třída .table__cell--actions-ID => identifikujeme sloupec
+            if (!document.querySelector(`.table__cell--actions-${priznak.id}`)) {
+                let newHeader = document.createElement("th");
+                newHeader.className = `table__cell--actions table__cell--actions-${priznak.id}`;
+                newHeader.innerText = priznak.nazev;
+                nameColumn.insertAdjacentElement("afterend", newHeader);
+
+                // Do každého řádku v <tbody> přidáme nový <td>
+                let rows = table.querySelectorAll("tbody tr");
+                rows.forEach(row => {
+                    let newCell = document.createElement("td");
+                    newCell.className = `table__cell--actions table__cell--actions-${priznak.id}`;
+                    // Zatím disable => skutečný stav nastavíme později
+                    newCell.innerHTML = '<a href="#" class="csrf-post-js disabled bool-property shoptet-icon">&nbsp;</a>';
+                    let nameCol = row.querySelector("td:nth-child(4)");
+                    if (nameCol) {
+                        nameCol.insertAdjacentElement("afterend", newCell);
+                    }
+                });
+            }
+        });
+
+        console.log("✅ Sloupce pro příznaky přidány.");
+    }
+
+    // 6) Funkce pro aktualizaci tlačítek v tabulce podle stavu příznaků
+    async function aktualizovatTlacitka(pravidla) {
+        let rows = document.querySelectorAll(".table.checkbox-table tbody tr");
+        // Pro každý řádek (produkt) zjistíme ID produktu a stavy příznaků
+        let allPromises = [];
+
+        rows.forEach(row => {
+            let productIdElement = row.querySelector('input[name^="productId"]');
+            if (!productIdElement) return;
+            let productId = productIdElement.value;
+
+            // Zavoláme zjistitStavyPriznaku pro daný productId
+            let promise = zjistitStavyPriznaku(productId, pravidla).then(stavy => {
+                // stavy je např. { "1": true/false, "59": true/false, ... }
+
+                // Teď projdeme všechna pravidla
+                pravidla.forEach(priznak => {
+                    let cell = row.querySelector(`.table__cell--actions-${priznak.id}`);
+                    if (!cell) return;
+
+                    let button = cell.querySelector("a");
+                    if (!button) return;
+
+                    // Je aktivní?
+                    let isActive = stavy[priznak.id];
+                    // Nastavíme třídu enabled/disabled
+                    button.className = `csrf-post-js csrf-post-ajax-js ${isActive ? "enabled" : "disabled"} bool-property shoptet-icon`;
+                    // Nastavíme title
+                    button.title = isActive ? `Deaktivovat ${priznak.nazev}` : `Aktivovat ${priznak.nazev}`;
+                    // Nastavíme parametry pro AJAX
+                    // paramId = priznak.id, productId
+                    button.setAttribute("data-url", "/admin/produkty/?action=setParameter");
+                    button.setAttribute("data-names", "enabled,parameterId,productId");
+                    // pokud je aktivní => data-values= 0,ID,productId (protože 0 = vypnout)
+                    // jinak => 1,ID,productId (zapnout)
+                    button.setAttribute("data-values", `${isActive ? "0" : "1"},${priznak.id},${productId}`);
+                });
+            });
+
+            allPromises.push(promise);
+        });
+
+        await Promise.all(allPromises);
+        console.log("✅ Tlačítka byla aktualizována dle stavu příznaků.");
+    }
+
+    // 7) Funkce pro nastavení změny stavu kliknutím (odeslání AJAX)
+    function nastavZmenuStavu(e) {
+        if (e.target && e.target.classList.contains("csrf-post-js")) {
+            e.preventDefault();
+
+            let button = e.target;
+            let url = button.getAttribute("data-url");
+            let values = button.getAttribute("data-values"); // např. "0,1,83915"
+            let [enabled, paramId, productId] = values.split(",");
+
+            console.log("Klik -> měním příznak:", { enabled, paramId, productId });
+
+            // Odešleme POST
+            fetch(url, {
+                method: "POST",
+                credentials: "include",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: `enabled=${enabled}&parameterId=${paramId}&productId=${productId}`
+            })
+            .then(() => {
+                // Lokální přepnutí stavu
+                button.classList.toggle("enabled");
+                button.classList.toggle("disabled");
+                // Otočíme param enabled
+                let newEnabled = button.classList.contains("enabled") ? "0" : "1";
+                button.setAttribute("data-values", `${newEnabled},${paramId},${productId}`);
+                button.title = button.classList.contains("enabled") ? "Deaktivovat" : "Aktivovat";
+            })
+            .catch(err => console.error("AJAX chyba:", err));
+        }
+    }
+
+    // 8) Spuštění skriptu
+    setTimeout(async () => {
+        console.log("⏰ Začínám načítat pravidla příznaků...");
+        let pravidla = await nacistPravidla(); // 1) Zjistíme, jaké sloupce propisovat
+        pridatSloupce(pravidla);               // 2) Propsat je do tabulky
+        document.body.addEventListener("click", nastavZmenuStavu); // 4) Po kliknutí odešle AJAX
+        await aktualizovatTlacitka(pravidla);  // 3) Zjistit aktivní příznaky a vložit stav
+    }, 32);
+
+};
 
 
 
