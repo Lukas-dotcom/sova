@@ -177,8 +177,11 @@
             setInterval(ensureSovaAlert, 3000);
         }
         
-        window.addEventListener('load', sidebarHide);
-
+        // ✅ Spustit `sidebarHide()` až po načtení stránky
+        window.addEventListener('load', () => {
+            console.log("🚀 Spouštím sidebarHide() po načtení stránky...");
+            sidebarHide();
+        });
 
         if (window.location.href.includes("/admin/ceny/")){
         pridatStitikyvPrehledu ()
@@ -1012,16 +1015,33 @@ async function pridatStitikyvPrehledu () {
 
 function sidebarHide() {
     'use strict';
+    console.log("✅ sidebarHide() spuštěn");
 
     const sidebar = document.querySelector('.pageGrid__sidebar.sidebar.js-drawer[data-drawer-id="menu"]');
     const navigation = document.querySelector('.navigation');
     const pageGrid = document.querySelector('.pageGrid');
 
-    if (!sidebar || !navigation || !pageGrid) return;
+    if (!sidebar) {
+        console.log("❌ Sidebar nebyl nalezen.");
+        return;
+    }
+    if (!navigation) {
+        console.log("❌ Navigation nebyla nalezena.");
+        return;
+    }
+    if (!pageGrid) {
+        console.log("❌ pageGrid nebyl nalezen.");
+        return;
+    }
+
+    console.log("✅ Všechny klíčové prvky nalezeny.");
 
     // Zkontrolovat, zda tlačítko už existuje
     let toggleButton = document.getElementById('toggleSidebar');
-    if (toggleButton) return;
+    if (toggleButton) {
+        console.log("⚠️ Tlačítko už existuje, nebudeme přidávat znovu.");
+        return;
+    }
 
     // Vytvořit tlačítko
     toggleButton = document.createElement('div');
@@ -1040,17 +1060,21 @@ function sidebarHide() {
     toggleButton.style.maxWidth = '45px';
 
     sidebar.appendChild(toggleButton);
+    console.log("✅ Tlačítko přidáno do sidebaru.");
 
     // Načíst stav sidebaru z LocalStorage
     let isSidebarHidden = localStorage.getItem('sidebarState') === 'hidden';
+    console.log(`🔄 Načtený stav sidebaru z LocalStorage: ${isSidebarHidden ? 'skrytý' : 'viditelný'}`);
 
     function updateSidebar() {
         if (isSidebarHidden) {
+            console.log("🔽 Skrývám sidebar...");
             navigation.style.display = 'none';
             pageGrid.style.gridTemplateColumns = '0px 1fr';
             toggleButton.style.left = '0px';
             toggleButton.innerHTML = '&gt;&gt;'; // Ikona pro sbalený sidebar
         } else {
+            console.log("🔼 Zobrazuji sidebar...");
             navigation.style.display = 'block';
             pageGrid.style.gridTemplateColumns = '250px 1fr';
             toggleButton.style.left = '210px';
@@ -1065,9 +1089,13 @@ function sidebarHide() {
     toggleButton.addEventListener('click', function() {
         isSidebarHidden = !isSidebarHidden; // Přepnout stav
         localStorage.setItem('sidebarState', isSidebarHidden ? 'hidden' : 'visible'); // Uložit stav
+        console.log(`🆕 Nový stav sidebaru: ${isSidebarHidden ? 'skrytý' : 'viditelný'}`);
         updateSidebar(); // Aktualizovat styl
     });
 }
+
+
+
 
 
     // --- Spuštění inicializace SOVA ---
