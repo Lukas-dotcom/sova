@@ -178,6 +178,7 @@
         }
         
         sidebarHide();
+        rychleOdkazy();
 
         if (window.location.href.includes("/admin/ceny/")){
         pridatStitikyvPrehledu ()
@@ -1007,6 +1008,72 @@ async function pridatStitikyvPrehledu () {
     }, 2); // Počkáme 2 ms na asynchronní načtení stránky
 
 };
+
+async function rychleOdkazy() {
+    const featureName = "rychleOdkazy";
+
+    try {
+        const rules = await getRulesFor(featureName);
+        if (!rules || rules.length === 0) {
+            console.warn(`[SOVA] Nebyla nalezena žádná pravidla pro ${featureName}.`);
+            return;
+        }
+
+        const wrapper = document.querySelector(".header__searchForm");
+        if (!wrapper) {
+            console.error("[SOVA] Element .header__searchForm nebyl nalezen.");
+            return;
+        }
+
+        // Zamezíme duplicitnímu přidání
+        if (document.getElementById("sova-rychle-odkazy")) return;
+
+        // Vytvoříme kontejner pro tlačítka
+        const container = document.createElement("div");
+        container.id = "sova-rychle-odkazy";
+        container.style.marginLeft = "30px";
+
+        // Vygenerujeme tlačítka
+        rules.forEach(rule => {
+            const a = document.createElement("a");
+            a.href = rule["Odkaz"];
+            a.title = rule["Název"];
+            a.textContent = rule["Název"];
+            a.style.marginLeft = "3px";
+            a.style.padding = "7px";
+            a.style.color = "white";
+            a.style.fontWeight = "bold";
+            a.style.textDecoration = "none";
+            a.style.transition = "filter 0.2s ease";
+            a.style.cursor = "pointer";
+
+            if (rule["Barvička"] && rule["Barvička"].trim() !== "") {
+                a.style.background = rule["Barvička"];
+            } else {
+                a.style.border = "solid 1px";
+            }
+
+            container.appendChild(a);
+        });
+
+        // Vložíme tlačítka do stránky
+        wrapper.appendChild(container);
+
+        // Přidáme CSS hover efekt
+        const style = document.createElement("style");
+        style.textContent = `
+            #sova-rychle-odkazy a:hover {
+                text-decoration: none !important;
+                filter: brightness(0.9);
+            }
+        `;
+        document.head.appendChild(style);
+
+        console.log("[SOVA] ✅ Rychlé odkazy byly přidány.");
+    } catch (e) {
+        console.error("[SOVA] ❌ Chyba při vykreslování rychlých odkazů:", e);
+    }
+}
 
 
 async function sidebarHide() {
