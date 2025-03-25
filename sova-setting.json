@@ -1,4 +1,28 @@
 {
+  "rychleOdkazy": {
+    "columns": [
+      "Název",
+      "Odkaz",
+      "Barvička"
+    ],
+    "rules": [
+      {
+        "Název": "Html",
+        "Odkaz": "",
+        "Barvička": ""
+      },
+      {
+        "Název": "Produkty",
+        "Odkaz": "",
+        "Barvička": ""
+      },
+      {
+        "Název": "Objednávky",
+        "Odkaz": "",
+        "Barvička": ""
+      }
+    ]
+  },
   "pridatPriznaky": {
     "columns": [
       "Název",
