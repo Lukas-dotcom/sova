@@ -1039,6 +1039,7 @@ async function rychleOdkazy() {
             a.href = rule["Odkaz"];
             a.title = rule["Název"];
             a.textContent = rule["Název"];
+            a.classList.add("sova-odkazy");
             a.style.marginLeft = "3px";
             a.style.padding = "7px";
             a.style.color = "white";
@@ -1062,10 +1063,31 @@ async function rychleOdkazy() {
         // Přidáme CSS hover efekt
         const style = document.createElement("style");
         style.textContent = `
-            #sova-rychle-odkazy a:hover {
-                text-decoration: none !important;
-                filter: brightness(0.9);
+            #sova-rychle-odkazy a.sova-odkazy {
+            border: solid 1px;
+            position: relative;
+            overflow: hidden;
+            z-index: 0;
             }
+
+            /* Neviditelná vrstva pro ztmavení */
+            #sova-rychle-odkazy a.sova-odkazy::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            opacity: 0;
+            transition: opacity 0.2s;
+            z-index: -1; /* pod obsahem */
+            }
+
+            /* Hover efekt = ztmavení pozadí */
+            #sova-rychle-odkazy a.sova-odkazy:hover::before {
+            opacity: 0.1;
+            }
+
         `;
         document.head.appendChild(style);
 
