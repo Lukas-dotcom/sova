@@ -1039,6 +1039,7 @@ async function rychleOdkazy() {
             a.href = rule["Odkaz"];
             a.title = rule["Název"];
             a.textContent = rule["Název"];
+            a.classList.add("sova-odkazy");
             a.style.marginLeft = "3px";
             a.style.padding = "7px";
             a.style.color = "white";
