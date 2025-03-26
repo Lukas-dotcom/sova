@@ -104,6 +104,11 @@
         "Název": "Vánoční výprodej",
         "ID": 53,
         "Zobrazovat": "NE"
+      },
+      {
+        "Název": "Výprodej",
+        "ID": "",
+        "Zobrazovat": ""
       }
     ]
   },
