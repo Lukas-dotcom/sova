@@ -201,6 +201,25 @@
       }
     ]
   },
+  "FEzvyrazneniVyprodej": {
+    "columns": [
+      "jmena"
+    ],
+    "rules": [
+      {
+        "jmena": "Veronika Esslerová"
+      },
+      {
+        "jmena": "Ondřej Sopek"
+      },
+      {
+        "jmena": "Lukáš Tejral"
+      },
+      {
+        "jmena": "Barbora Grygarová"
+      }
+    ]
+  },
   "testik": {
     "columns": [
       "HAHA"
