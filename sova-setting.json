@@ -201,6 +201,16 @@
       }
     ]
   },
+  "FEzvyrazneniVyprodej": {
+    "columns": [
+      "jmena"
+    ],
+    "rules": [
+      {
+        "jmena": "Lukáš Tejral"
+      }
+    ]
+  },
   "testik": {
     "columns": [
       "HAHA"
