@@ -10,6 +10,11 @@
         "nazev": "sidePanel",
         "predText": "",
         "zaText": ""
+      },
+      {
+        "nazev": "sidep",
+        "predText": "",
+        "zaText": ""
       }
     ]
   },
