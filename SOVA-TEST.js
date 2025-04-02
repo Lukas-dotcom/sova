@@ -198,34 +198,39 @@
     (function injectSovaButtonStyles() {
         const style = document.createElement('style');
         style.textContent = `
-            p.content-buttons > a.btn.btn-sm.btn-primary:first-of-type {
+            p.content-buttons > a.sova-btn:first-of-type {
                 margin-left: 15px !important;
             }
-            p.content-buttons > a.btn.btn-sm.btn-primary:last-of-type {
+            p.content-buttons > a.sova-btn:last-of-type {
                 margin-right: auto !important;
+            }
+            p.content-buttons > a.sova-btn {
+                margin-left: 1px;
+                order: -1;
             }
         `;
         document.head.appendChild(style);
     })();
+    
 
     // --- Funkce ---
     function injectSovaButton({ buttonText, onClick }) {
         const container = document.querySelector("p.content-buttons");
         if (!container) return log("Nenalezen kontejner tlačítek.");
-
+    
         const btn = document.createElement("a");
         btn.href = "#";
         btn.title = `${buttonText} 🦉`;
-        btn.className = "btn btn-sm btn-primary";
+        btn.className = "btn btn-sm btn-primary sova-btn"; // <<< přidána třída sova-btn
         btn.target = "_blank";
         btn.textContent = `${buttonText} 🦉`;
-        btn.style = "order: -1; margin-left: 1px;";  // pevně
-
+        btn.style = "order: -1; margin-left: 1px;";  // default margin, který CSS upraví u first/last
+    
         btn.onclick = (e) => { e.preventDefault(); onClick(); };
-
+    
         container.appendChild(btn);
-        log(`Tlačítko '${buttonText}' vloženo.`);
     }
+    
 
 
 
