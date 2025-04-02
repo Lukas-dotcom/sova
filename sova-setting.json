@@ -8,12 +8,12 @@
     "rules": [
       {
         "nazev": "Side panel",
-        "predText": "",
+        "predText": "<div class=\"content-wrapper-in-article\" style=\"display: flex;\"><main id=\"content\" class=\"content\" style=\"flex: 1;\">",
         "zaText": ""
       },
       {
         "nazev": "Side panel hry",
-        "predText": "",
+        "predText": "<div class=\"content-wrapper-in-article\" style=\"display: flex;\"><main id=\"content\" class=\"content\" style=\"flex: 1;\">",
         "zaText": ""
       }
     ]
