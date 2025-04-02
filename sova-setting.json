@@ -1,4 +1,18 @@
 {
+  "sablonyClanky": {
+    "columns": [
+      "nazev",
+      "predText",
+      "zaText"
+    ],
+    "rules": [
+      {
+        "nazev": "sidePanel",
+        "predText": "",
+        "zaText": ""
+      }
+    ]
+  },
   "rychleOdkazy": {
     "columns": [
       "Název",
