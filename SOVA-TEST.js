@@ -194,7 +194,21 @@
      
     }
 
-    // --- Univerzální funkce pro vkládání tlačítek (upravená verze) ---
+    // --- Načte CSS pravidlo jen jednou ---
+    (function injectSovaButtonStyles() {
+        const style = document.createElement('style');
+        style.textContent = `
+            p.content-buttons > a.btn.btn-sm.btn-primary:first-of-type {
+                margin-left: 15px !important;
+            }
+            p.content-buttons > a.btn.btn-sm.btn-primary:last-of-type {
+                margin-right: auto !important;
+            }
+        `;
+        document.head.appendChild(style);
+    })();
+
+    // --- Funkce ---
     function injectSovaButton({ buttonText, onClick }) {
         const container = document.querySelector("p.content-buttons");
         if (!container) return log("Nenalezen kontejner tlačítek.");
@@ -204,13 +218,15 @@
         btn.title = `${buttonText} 🦉`;
         btn.className = "btn btn-sm btn-primary";
         btn.target = "_blank";
-        btn.style = "order: -1; margin-left: 15px; margin-right: auto;";
         btn.textContent = `${buttonText} 🦉`;
+        btn.style = "order: -1; margin-left: 1px;";  // pevně
+
         btn.onclick = (e) => { e.preventDefault(); onClick(); };
 
         container.appendChild(btn);
         log(`Tlačítko '${buttonText}' vloženo.`);
     }
+
 
 
    
