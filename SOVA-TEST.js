@@ -578,11 +578,7 @@ async function sablonyClanky() {
             onClick: async () => {
                 log(`Používám šablonu: ${rule.nazev}`);
 
-                // --- 1) Uložit článek ---
-                const saveButton = document.querySelector('a[title="Uložit"]');
-                if (!saveButton) return alert("Nelze najít tlačítko Uložit");
-                saveButton.click();
-                log("Kliknuto na Uložit, čekám na načtení...");
+                
 
                 // --- 2) Počkat na reload ---
                 await waitForIframe();
@@ -601,8 +597,7 @@ async function sablonyClanky() {
 
                 body.innerHTML = predText + existingHTML + zaText;
 
-                log("Šablona vložena.");
-                alert(`Šablona '${rule.nazev}' byla vložena.`);
+
             }
         });
     });
