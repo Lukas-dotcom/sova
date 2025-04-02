@@ -186,6 +186,10 @@
         }
         
 
+        if (window.location.href.includes("/admin/clanek-rubrika-detail/")){
+            sablonyClanky ()
+            }
+        
 
      
     }
@@ -562,6 +566,64 @@ async function paramSortingSingle() {
         console.error("Chyba při načítání pravidel z rulesList:", e);
     }
 }
+
+
+async function sablonyClanky() {
+    const rules = await getRulesFor("sablonyClanky");
+    if (!rules) return log("Nenalezeny žádné šablony článků.");
+
+    rules.forEach(rule => {
+        injectSovaButton({
+            buttonText: rule.nazev,
+            onClick: async () => {
+                log(`Používám šablonu: ${rule.nazev}`);
+
+                // --- 1) Uložit článek ---
+                const saveButton = document.querySelector('a[title="Uložit"]');
+                if (!saveButton) return alert("Nelze najít tlačítko Uložit");
+                saveButton.click();
+                log("Kliknuto na Uložit, čekám na načtení...");
+
+                // --- 2) Počkat na reload ---
+                await waitForIframe();
+
+                // --- 3) Vložit šablonu ---
+                const iframe = document.querySelector('#description_ifr');
+                if (!iframe) return alert("Nenalezen iframe editoru");
+
+                const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                const body = iframeDoc.querySelector('body');
+                if (!body) return alert("Nenalezeno <body> v editoru");
+
+                const existingHTML = body.innerHTML.trim();
+                const predText = rule.predText || '';
+                const zaText = rule.zaText || '';
+
+                body.innerHTML = predText + existingHTML + zaText;
+
+                log("Šablona vložena.");
+                alert(`Šablona '${rule.nazev}' byla vložena.`);
+            }
+        });
+    });
+}
+
+// --- Pomocná funkce na čekání ---
+// čeká, až iframe bude dostupný a plně načtený
+function waitForIframe() {
+    return new Promise(resolve => {
+        const check = () => {
+            const iframe = document.querySelector('#description_ifr');
+            if (iframe && iframe.contentDocument && iframe.contentDocument.readyState === 'complete') {
+                resolve();
+            } else {
+                setTimeout(check, 300);
+            }
+        };
+        check();
+    });
+}
+
 
 
 async function upnutiVerzi() {
