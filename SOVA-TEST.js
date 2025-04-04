@@ -241,15 +241,17 @@
 
 
    
-    // --- Hlavní část scriptu pro řazení hodnot filtrů - vyčítání URL a pravidel
-    async function getRulesFor(featureName) {
-        // Předpokládáme, že rulesList je uložen jako JSON na dané URL, např.:
-        const rulesUrl = "https://raw.githubusercontent.com/Lukas-dotcom/sova/main/sova-setting.json"  // URL, kde je uložený rulesList.json
+    // --- Hlavní část scriptu - vyčítání URL a pravidel
+    async function getRulesFor(featureName, settingSource = "BE") {
+        const rulesUrl = `https://raw.githubusercontent.com/Lukas-dotcom/sova/main/${settingSource}-settings.json`;
+    
         const response = await fetch(rulesUrl);
-        if (!response.ok) throw new Error("Nelze načíst rulesList");
+        if (!response.ok) throw new Error(`Nelze načíst ${settingSource}-settings.json`);
+    
         const rulesList = await response.json();
         return rulesList[featureName] ? rulesList[featureName].rules : null;
-      }
+    }
+    
       
 
 // --- Funkce, která spouští zpracování na stránce s výpisem filtrů (otevře nové okno) ---
@@ -596,7 +598,7 @@ async function paramSortingSingle() {
 
 
 async function sablonyClanky() {
-    const rules = await getRulesFor("sablonyClanky");
+    const rules = await getRulesFor("sablonyClanky", "BE-L");
     if (!rules) return log("Nenalezeny žádné šablony článků.");
 
     rules.forEach(rule => {
@@ -604,8 +606,6 @@ async function sablonyClanky() {
             buttonText: rule.nazev,
             onClick: async () => {
                 log(`Používám šablonu: ${rule.nazev}`);
-
-                
 
                 // --- 2) Počkat na reload ---
                 await waitForIframe();
@@ -623,12 +623,11 @@ async function sablonyClanky() {
                 const zaText = rule.zaText || '';
 
                 body.innerHTML = predText + existingHTML + zaText;
-
-
             }
         });
     });
 }
+
 
 // --- Pomocná funkce na čekání ---
 // čeká, až iframe bude dostupný a plně načtený
