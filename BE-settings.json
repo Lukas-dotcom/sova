@@ -1,0 +1,204 @@
+{
+  "rychleOdkazy": {
+    "columns": [
+      "Název",
+      "Odkaz",
+      "Barvička"
+    ],
+    "rules": [
+      {
+        "Název": "Html",
+        "Odkaz": "/admin/html-kody/",
+        "Barvička": ""
+      },
+      {
+        "Název": "Soubory",
+        "Odkaz": "/admin/spravce-souboru/",
+        "Barvička": ""
+      },
+      {
+        "Název": "Produkty",
+        "Odkaz": "/admin/ceny/",
+        "Barvička": ""
+      },
+      {
+        "Název": "Objednávky",
+        "Odkaz": "/admin/prehled-objednavek/",
+        "Barvička": ""
+      },
+      {
+        "Název": "Export PR",
+        "Odkaz": "/admin/sablona-exportu-zbozi-detail/?id=301",
+        "Barvička": ""
+      },
+      {
+        "Název": "Export OBJ",
+        "Odkaz": "/admin/sablona-exportu-objednavky/?id=315",
+        "Barvička": ""
+      },
+      {
+        "Název": "FV editor",
+        "Odkaz": "https://shoptet.fvstudio.cz/",
+        "Barvička": "000"
+      }
+    ]
+  },
+  "pridatPriznaky": {
+    "columns": [
+      "Název",
+      "ID",
+      "Zobrazovat"
+    ],
+    "rules": [
+      {
+        "Název": "Akce",
+        "ID": 1,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "Akce dne",
+        "ID": 59,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "BLACK FRIDAY",
+        "ID": 693,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "FUJITSPU DAYS - 500 Kč",
+        "ID": 668,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "Hlavní akce dne",
+        "ID": 56,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "Jarní úklid - výprodej",
+        "ID": 703,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "MASAKR CEN",
+        "ID": 745,
+        "Zobrazovat": "ANO"
+      },
+      {
+        "Název": "Novinka",
+        "ID": 2,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "Tip",
+        "ID": 3,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "Upgrade W11",
+        "ID": 687,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "Vánoční výprodej",
+        "ID": 53,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "Výprodej",
+        "ID": 902,
+        "Zobrazovat": "ANO"
+      }
+    ]
+  },
+  "pridatParametry": {
+    "columns": [
+      "Parametr"
+    ],
+    "rules": [
+      {
+        "Parametr": "Typ produktu"
+      },
+      {
+        "Parametr": "Model procesoru"
+      },
+      {
+        "Parametr": "Velikost operační paměti"
+      },
+      {
+        "Parametr": "Kapacita disku"
+      },
+      {
+        "Parametr": "Dedikovaná grafická karta (GPU)"
+      },
+      {
+        "Parametr": "Rozlišení"
+      }
+    ]
+  },
+  "raditHodnotyFiltru": {
+    "columns": [
+      "Parametr",
+      "Oddelovac"
+    ],
+    "rules": [
+      {
+        "Parametr": "Rozlišení",
+        "Oddelovac": "x"
+      },
+      {
+        "Parametr": "Poměr stran",
+        "Oddelovac": ":"
+      },
+      {
+        "Parametr": "Typ produktu",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "Operační systém",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "Připojení",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "Typ pevného disku",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "Stav produktu",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "Modem",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "Typ panelu",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "opt_insurance",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "#CENA",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "#TAG",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "Popis kosmetické vady",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "Systém",
+        "Oddelovac": "neradit"
+      }
+    ]
+  }
+}
