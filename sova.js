@@ -186,11 +186,33 @@
         }
         
 
+        if (window.location.href.includes("/admin/clanek-rubrika-detail/")){
+            sablonyClanky ()
+            }
+        
 
      
     }
 
-    // --- Univerzální funkce pro vkládání tlačítek (upravená verze) ---
+    // --- Načte CSS pravidlo jen jednou ---
+    (function injectSovaButtonStyles() {
+        const style = document.createElement('style');
+        style.textContent = `
+            p.content-buttons > a.sova-btn {
+                margin-left: 1px;
+                order: -1;
+            }
+            p.content-buttons > a.sova-btn.sova-first {
+                margin-left: 15px !important;
+            }
+            p.content-buttons > a.sova-btn:last-of-type {
+                margin-right: auto !important;
+            }
+        `;
+        document.head.appendChild(style);
+    })();
+
+    // --- Funkce ---
     function injectSovaButton({ buttonText, onClick }) {
         const container = document.querySelector("p.content-buttons");
         if (!container) return log("Nenalezen kontejner tlačítek.");
@@ -198,27 +220,38 @@
         const btn = document.createElement("a");
         btn.href = "#";
         btn.title = `${buttonText} 🦉`;
-        btn.className = "btn btn-sm btn-primary";
+        btn.className = "btn btn-sm btn-primary sova-btn";
         btn.target = "_blank";
-        btn.style = "order: -1; margin-left: 15px; margin-right: auto;";
         btn.textContent = `${buttonText} 🦉`;
-        btn.onclick = (e) => { e.preventDefault(); onClick(); };
+        btn.style = "order: -1;"; // žádný margin-left inline!
 
+        btn.onclick = (e) => { e.preventDefault(); onClick(); };
         container.appendChild(btn);
-        log(`Tlačítko '${buttonText}' vloženo.`);
+
+        // -- Označit první SOVA tlačítko jako .sova-first --
+        const allSovaButtons = container.querySelectorAll("a.sova-btn");
+        allSovaButtons.forEach(btn => btn.classList.remove("sova-first"));
+        if (allSovaButtons.length > 0) {
+            allSovaButtons[0].classList.add("sova-first");
+        }
     }
+
+    
+
 
 
    
-    // --- Hlavní část scriptu pro řazení hodnot filtrů - vyčítání URL a pravidel
-    async function getRulesFor(featureName) {
-        // Předpokládáme, že rulesList je uložen jako JSON na dané URL, např.:
-        const rulesUrl = "https://raw.githubusercontent.com/Lukas-dotcom/sova/main/sova-setting.json"  // URL, kde je uložený rulesList.json
+    // --- Hlavní část scriptu - vyčítání URL a pravidel
+    async function getRulesFor(featureName, settingSource = "BE") {
+        const rulesUrl = `https://raw.githubusercontent.com/Lukas-dotcom/sova/main/${settingSource}-settings.json`;
+    
         const response = await fetch(rulesUrl);
-        if (!response.ok) throw new Error("Nelze načíst rulesList");
+        if (!response.ok) throw new Error(`Nelze načíst ${settingSource}-settings.json`);
+    
         const rulesList = await response.json();
         return rulesList[featureName] ? rulesList[featureName].rules : null;
-      }
+    }
+    
       
 
 // --- Funkce, která spouští zpracování na stránce s výpisem filtrů (otevře nové okno) ---
@@ -562,6 +595,56 @@ async function paramSortingSingle() {
         console.error("Chyba při načítání pravidel z rulesList:", e);
     }
 }
+
+
+async function sablonyClanky() {
+    const rules = await getRulesFor("sablonyClanky", "BE-L");
+    if (!rules) return log("Nenalezeny žádné šablony článků.");
+
+    rules.forEach(rule => {
+        injectSovaButton({
+            buttonText: rule.nazev,
+            onClick: async () => {
+                log(`Používám šablonu: ${rule.nazev}`);
+
+                // --- 2) Počkat na reload ---
+                await waitForIframe();
+
+                // --- 3) Vložit šablonu ---
+                const iframe = document.querySelector('#description_ifr');
+                if (!iframe) return alert("Nenalezen iframe editoru");
+
+                const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                const body = iframeDoc.querySelector('body');
+                if (!body) return alert("Nenalezeno <body> v editoru");
+
+                const existingHTML = body.innerHTML.trim();
+                const predText = rule.predText || '';
+                const zaText = rule.zaText || '';
+
+                body.innerHTML = predText + existingHTML + zaText;
+            }
+        });
+    });
+}
+
+
+// --- Pomocná funkce na čekání ---
+// čeká, až iframe bude dostupný a plně načtený
+function waitForIframe() {
+    return new Promise(resolve => {
+        const check = () => {
+            const iframe = document.querySelector('#description_ifr');
+            if (iframe && iframe.contentDocument && iframe.contentDocument.readyState === 'complete') {
+                resolve();
+            } else {
+                setTimeout(check, 300);
+            }
+        };
+        check();
+    });
+}
+
 
 
 async function upnutiVerzi() {
