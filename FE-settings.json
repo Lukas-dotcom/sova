@@ -1,0 +1,12 @@
+{
+  "Dopravci": {
+    "columns": [
+      "Dopravce"
+    ],
+    "rules": [
+      {
+        "Dopravce": 1
+      }
+    ]
+  }
+}
