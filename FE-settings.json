@@ -2,12 +2,14 @@
   "Dopravci": {
     "columns": [
       "shippingIds",
-      "exactCodes"
+      "exactCodes",
+      "startsWithCodes"
     ],
     "rules": [
       {
         "shippingIds": 1,
-        "exactCodes": ""
+        "exactCodes": "",
+        "startsWithCodes": ""
       }
     ]
   }
