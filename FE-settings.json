@@ -24,8 +24,8 @@
       },
       {
         "shippingIds": "65, 140",
-        "exactCodes": "",
-        "startsWithCodes": "",
+        "exactCodes": "\"KOL0001\",\"KOL0002\"",
+        "startsWithCodes": "\"PRT\"",
         "startsWithUrl": "",
         "containsName": ""
       }
