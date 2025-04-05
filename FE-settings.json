@@ -9,7 +9,7 @@
     ],
     "rules": [
       {
-        "shippingIds": 1,
+        "shippingIds": "29, 104",
         "exactCodes": "",
         "startsWithCodes": "",
         "startsWithUrl": "",
