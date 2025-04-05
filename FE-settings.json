@@ -31,8 +31,8 @@
       },
       {
         "shippingIds": "48, 123",
-        "exactCodes": "",
-        "startsWithCodes": "",
+        "exactCodes": "\"KOL0001\",\"KOL0002\"",
+        "startsWithCodes": "\"PRT\"",
         "startsWithUrl": "",
         "containsName": ""
       }
