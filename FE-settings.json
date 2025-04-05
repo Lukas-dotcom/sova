@@ -10,7 +10,7 @@
     "rules": [
       {
         "shippingIds": "29, 104",
-        "exactCodes": "",
+        "exactCodes": "\"KOL0001\",\"KOL0002\"",
         "startsWithCodes": "",
         "startsWithUrl": "",
         "containsName": ""
