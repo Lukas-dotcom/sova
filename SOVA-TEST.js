@@ -316,16 +316,25 @@ async function getRulesFor(featureName, settingSource = "BE") {
 
                 console.group("🔁 Funkce ke spuštění:");
                 for (const feature of Object.keys(freshJson)) {
-                    if (typeof window[feature] === "function") {
-                        try {
-                            console.log(`▶ Spouštím '${feature}()'`);
-                            window[feature]();
-                        } catch (err) {
-                            console.warn(`⚠️ Chyba ve funkci '${feature}':`, err);
+                    try {
+                        // Pokud není funkce globálně dostupná, zkus ji najít pomocí eval a zaregistrovat
+                        if (typeof window[feature] !== "function") {
+                            const possibleFunc = eval(feature);
+                            if (typeof possibleFunc === "function") {
+                                window[feature] = possibleFunc;
+                                console.log(`🌍 '${feature}' bylo zaregistrováno do window`);
+                            } else {
+                                console.log(`⏭ '${feature}' není funkce ani po eval – přeskočeno`);
+                                return;
+                            }
                         }
-                    } else {
-                        console.log(`⏭ Přeskakuji '${feature}' – není jako funkce`);
+                    
+                        console.log(`▶ Spouštím '${feature}()'`);
+                        window[feature]();
+                    } catch (err) {
+                        console.warn(`⚠️ Chyba při zpracování '${feature}':`, err);
                     }
+                    
                 }
                 console.groupEnd();
             });
