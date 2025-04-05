@@ -13,7 +13,7 @@
         "exactCodes": "\"KOL0001\",\"KOL0002\"",
         "startsWithCodes": "\"PRT\"",
         "startsWithUrl": "\"/monitory/\", \"/tiskarny/\"",
-        "containsName": ""
+        "containsName": "\"AIO\",\"IMAC\",\"AiO\",\"iMAC\""
       }
     ]
   }
