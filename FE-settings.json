@@ -1,11 +1,13 @@
 {
   "Dopravci": {
     "columns": [
-      "Dopravce"
+      "shippingIds",
+      "exactCodes"
     ],
     "rules": [
       {
-        "Dopravce": 1
+        "shippingIds": 1,
+        "exactCodes": ""
       }
     ]
   }
