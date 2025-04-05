@@ -4,14 +4,16 @@
       "shippingIds",
       "exactCodes",
       "startsWithCodes",
-      "startsWithUrl"
+      "startsWithUrl",
+      "containsName"
     ],
     "rules": [
       {
         "shippingIds": 1,
         "exactCodes": "",
         "startsWithCodes": "",
-        "startsWithUrl": ""
+        "startsWithUrl": "",
+        "containsName": ""
       }
     ]
   }
