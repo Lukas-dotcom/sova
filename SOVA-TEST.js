@@ -243,34 +243,58 @@
    
     // --- Hlavní část scriptu - vyčítání URL a pravidel
     async function getRulesFor(featureName, settingSource = "BE") {
-        const rulesUrl = `https://raw.githubusercontent.com/Lukas-dotcom/sova/main/${settingSource}-settings.json`;
+        const storageKey = `${settingSource}-sha`;
+        const rulesUrlBase = `https://raw.githubusercontent.com/Lukas-dotcom/sova/main/${settingSource}-settings.json`;
     
-        const response = await fetch(rulesUrl);
-        if (!response.ok) throw new Error(`Nelze načíst ${settingSource}-settings.json`);
+        // --- 1. RYCHLÝ FETCH z cache (klidně "zastaralý", ale ihned dostupný) ---
+        const quickFetch = fetch(rulesUrlBase)
+            .then(res => res.ok ? res.json() : null)
+            .catch(() => null);
     
-        const rulesList = await response.json();
-        const allRules = rulesList[featureName] ? rulesList[featureName].rules : null;
+        // --- 2. PARALELNÍ fetch SHA z GitHub API ---
+        const shaCheck = getLatestSha(settingSource).then(currentSha => {
+            const cachedSha = localStorage.getItem(storageKey);
+            if (currentSha && currentSha !== cachedSha) {
+                localStorage.setItem(storageKey, currentSha);
+                // SHA se změnilo – force reload s cache bust
+                const bustUrl = `${rulesUrlBase}?cb=${Date.now()}`;
+                return fetch(bustUrl)
+                    .then(res => res.ok ? res.json() : null)
+                    .catch(() => null);
+            }
+            return null;
+        });
     
+        // --- 3. Čekáme na první dostupný JSON (rychlý nebo nový) ---
+        const quickJson = await quickFetch;
+        let rulesList = quickJson;
+    
+        // --- 4. Pokud se později načte aktualizovaná verze, přepíšeme ---
+        shaCheck.then(freshJson => {
+            if (freshJson) {
+                console.log(`🔄 Aktualizace pravidel z ${settingSource}-settings.json`);
+                rulesList = freshJson;
+            }
+        });
+    
+        if (!rulesList || !rulesList[featureName]) return null;
+    
+        const allRules = rulesList[featureName].rules;
         if (!allRules) return null;
     
+        // --- 5. UŽIVATELSKÁ FILTRACE ---
         const rulesWithKdo = allRules.filter(r => r.Kdo && r.Kdo.trim() !== "");
     
-        // --- 🚀 Zrychlení: pokud žádný záznam nemá "Kdo", vrať rovnou vše bez čekání ---
-        if (rulesWithKdo.length === 0) {
-            return allRules;
-        }
+        if (rulesWithKdo.length === 0) return allRules;
     
-        // --- ⏳ Pokud existuje alespoň jeden "Kdo", čekáme na jméno uživatele ---
         const userName = await getUserName();
         const rulesForUser = rulesWithKdo.filter(r => r.Kdo.trim() === userName);
     
-        if (rulesForUser.length > 0) {
-            return rulesForUser;
-        } else {
-            // pokud pro uživatele nic není → vrátíme pravidla bez "Kdo"
-            return allRules.filter(r => !r.Kdo || r.Kdo.trim() === "");
-        }
+        return rulesForUser.length > 0
+            ? rulesForUser
+            : allRules.filter(r => !r.Kdo || r.Kdo.trim() === "");
     }
+    
     
     async function getUserName(retries = 10, delay = 300) {
         for (let i = 0; i < retries; i++) {
@@ -284,6 +308,20 @@
         return ""; // fallback: žádné jméno = pravidla bez "Kdo"
     }
     
+    async function getLatestSha(settingSource = "BE") {
+        const apiUrl = `https://api.github.com/repos/Lukas-dotcom/sova/contents/${settingSource}-settings.json`;
+    
+        const response = await fetch(apiUrl, {
+            headers: {
+                Accept: "application/vnd.github.v3+json"
+            }
+        });
+    
+        if (!response.ok) return null;
+    
+        const json = await response.json();
+        return json.sha;
+    }
       
 
 // --- Funkce, která spouští zpracování na stránce s výpisem filtrů (otevře nové okno) ---
