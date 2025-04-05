@@ -297,16 +297,27 @@
     
     
     async function getUserName(retries = 10, delay = 300) {
+        // --- 1. Zkus načíst z dataLayer ---
+        const user = window.dataLayer?.[0]?.user;
+        if (user && user.name && user.surname) {
+            const fullName = `${user.name.trim()} ${user.surname.trim()}`;
+            return fullName;
+        }
+    
+        // --- 2. Fallback: čekání na DOM ---
         for (let i = 0; i < retries; i++) {
             const el = document.querySelector(".headerNavigation__userName");
             if (el && el.textContent.trim()) {
-                return el.textContent.trim();
+                const name = el.textContent.trim();
+                return name;
             }
             await new Promise(resolve => setTimeout(resolve, delay));
         }
-        console.warn("⚠️ Nepodařilo se zjistit jméno uživatele z DOMu.");
-        return ""; // fallback: žádné jméno = pravidla bez "Kdo"
+    
+        console.warn("⚠️ Nepodařilo se zjistit jméno uživatele z dataLayer ani z DOMu.");
+        return "";
     }
+    
     
     async function getLatestSha(settingSource = "BE") {
         const apiUrl = `https://api.github.com/repos/Lukas-dotcom/sova/contents/${settingSource}-settings.json`;
