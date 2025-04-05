@@ -3,43 +3,59 @@
     "columns": [
       "Název",
       "Odkaz",
-      "Barvička"
+      "Barvička",
+      "NovOkno",
+      "Kdo"
     ],
     "rules": [
       {
         "Název": "Html",
         "Odkaz": "/admin/html-kody/",
-        "Barvička": ""
+        "Barvička": "",
+        "NovOkno": "",
+        "Kdo": "Lukáš Tejral"
       },
       {
         "Název": "Soubory",
         "Odkaz": "/admin/spravce-souboru/",
-        "Barvička": ""
+        "Barvička": "",
+        "NovOkno": "",
+        "Kdo": ""
       },
       {
         "Název": "Produkty",
         "Odkaz": "/admin/ceny/",
-        "Barvička": ""
+        "Barvička": "",
+        "NovOkno": "",
+        "Kdo": ""
       },
       {
         "Název": "Objednávky",
         "Odkaz": "/admin/prehled-objednavek/",
-        "Barvička": ""
+        "Barvička": "",
+        "NovOkno": "",
+        "Kdo": ""
       },
       {
         "Název": "Export PR",
         "Odkaz": "/admin/sablona-exportu-zbozi-detail/?id=301",
-        "Barvička": ""
+        "Barvička": "",
+        "NovOkno": "",
+        "Kdo": ""
       },
       {
         "Název": "Export OBJ",
         "Odkaz": "/admin/sablona-exportu-objednavky/?id=315",
-        "Barvička": ""
+        "Barvička": "",
+        "NovOkno": "",
+        "Kdo": ""
       },
       {
         "Název": "FV editor",
         "Odkaz": "https://shoptet.fvstudio.cz/",
-        "Barvička": "000"
+        "Barvička": "000",
+        "NovOkno": "ANO",
+        "Kdo": "Lukáš Tejral"
       }
     ]
   },
