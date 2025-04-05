@@ -11,7 +11,7 @@
       {
         "shippingIds": "29, 104",
         "exactCodes": "\"KOL0001\",\"KOL0002\"",
-        "startsWithCodes": "",
+        "startsWithCodes": "\"PRT\"",
         "startsWithUrl": "",
         "containsName": ""
       }
