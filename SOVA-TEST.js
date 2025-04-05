@@ -249,7 +249,39 @@
         if (!response.ok) throw new Error(`Nelze načíst ${settingSource}-settings.json`);
     
         const rulesList = await response.json();
-        return rulesList[featureName] ? rulesList[featureName].rules : null;
+        const allRules = rulesList[featureName] ? rulesList[featureName].rules : null;
+    
+        if (!allRules) return null;
+    
+        const rulesWithKdo = allRules.filter(r => r.Kdo && r.Kdo.trim() !== "");
+    
+        // --- 🚀 Zrychlení: pokud žádný záznam nemá "Kdo", vrať rovnou vše bez čekání ---
+        if (rulesWithKdo.length === 0) {
+            return allRules;
+        }
+    
+        // --- ⏳ Pokud existuje alespoň jeden "Kdo", čekáme na jméno uživatele ---
+        const userName = await getUserName();
+        const rulesForUser = rulesWithKdo.filter(r => r.Kdo.trim() === userName);
+    
+        if (rulesForUser.length > 0) {
+            return rulesForUser;
+        } else {
+            // pokud pro uživatele nic není → vrátíme pravidla bez "Kdo"
+            return allRules.filter(r => !r.Kdo || r.Kdo.trim() === "");
+        }
+    }
+    
+    async function getUserName(retries = 10, delay = 300) {
+        for (let i = 0; i < retries; i++) {
+            const el = document.querySelector(".headerNavigation__userName");
+            if (el && el.textContent.trim()) {
+                return el.textContent.trim();
+            }
+            await new Promise(resolve => setTimeout(resolve, delay));
+        }
+        console.warn("⚠️ Nepodařilo se zjistit jméno uživatele z DOMu.");
+        return ""; // fallback: žádné jméno = pravidla bez "Kdo"
     }
     
       
