@@ -28,6 +28,13 @@
         "startsWithCodes": "\"PRT\"",
         "startsWithUrl": "\"/monitory/\", \"/tiskarny/\"",
         "containsName": "\"AIO\",\"IMAC\",\"AiO\",\"iMAC\""
+      },
+      {
+        "shippingIds": "48, 123",
+        "exactCodes": "",
+        "startsWithCodes": "",
+        "startsWithUrl": "",
+        "containsName": ""
       }
     ]
   }
