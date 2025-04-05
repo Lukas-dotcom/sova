@@ -242,90 +242,93 @@
 
    
     // --- Hlavní část scriptu - vyčítání URL a pravidel
+// --- Načte pravidla pro konkrétní funkci (featureName) z nastavení ---
     async function getRulesFor(featureName, settingSource = "BE") {
         const storageKey = `${settingSource}-sha`;
         const rulesUrlBase = `https://raw.githubusercontent.com/Lukas-dotcom/sova/main/${settingSource}-settings.json`;
-    
-        // --- 1. RYCHLÝ FETCH z cache (klidně "zastaralý", ale ihned dostupný) ---
+
+        // --- 1. RYCHLÝ FETCH z cache (ihned použitelné) ---
         const quickFetch = fetch(rulesUrlBase)
             .then(res => res.ok ? res.json() : null)
             .catch(() => null);
-    
-        // --- 2. PARALELNÍ fetch SHA z GitHub API ---
-        const shaCheck = getLatestSha(settingSource).then(currentSha => {
-            const cachedSha = localStorage.getItem(storageKey);
-            if (currentSha && currentSha !== cachedSha) {
-                localStorage.setItem(storageKey, currentSha);
-                // SHA se změnilo – force reload s cache bust
-                const bustUrl = `${rulesUrlBase}?cb=${Date.now()}`;
-                return fetch(bustUrl)
-                    .then(res => res.ok ? res.json() : null)
-                    .catch(() => null);
-            }
-            return null;
-        });
-    
-        // --- 3. Čekáme na první dostupný JSON (rychlý nebo nový) ---
-        const quickJson = await quickFetch;
-        let rulesList = quickJson;
-    
-        // --- 4. Pokud se později načte aktualizovaná verze, přepíšeme ---
-        shaCheck.then(freshJson => {
-            if (freshJson) {
-                console.log(`🔄 Aktualizace pravidel z ${settingSource}-settings.json`);
-                rulesList = freshJson;
-            }
-        });
-    
-        if (!rulesList || !rulesList[featureName]) return null;
-    
-        const allRules = rulesList[featureName].rules;
+
+        // --- 2. PARALELNÍ SHA kontrola ---
+        const shaFetch = getLatestSha(settingSource);
+
+        const [quickJson, currentSha] = await Promise.all([quickFetch, shaFetch]);
+        if (!quickJson || !quickJson[featureName]) return null;
+
+        const allRules = quickJson[featureName].rules;
         if (!allRules) return null;
-    
-        // --- 5. UŽIVATELSKÁ FILTRACE ---
+
+        // --- 3. Použij quick data pro danou funkci ---
         const rulesWithKdo = allRules.filter(r => r.Kdo && r.Kdo.trim() !== "");
-    
         if (rulesWithKdo.length === 0) return allRules;
-    
+
         const userName = await getUserName();
         const rulesForUser = rulesWithKdo.filter(r => r.Kdo.trim() === userName);
-    
-        return rulesForUser.length > 0
+
+        const resolvedRules = rulesForUser.length > 0
             ? rulesForUser
             : allRules.filter(r => !r.Kdo || r.Kdo.trim() === "");
+
+        // --- 4. SHA aktualizace paralelně ---
+        const cachedSha = localStorage.getItem(storageKey);
+        if (currentSha && currentSha !== cachedSha) {
+            localStorage.setItem(storageKey, currentSha);
+            const freshUrl = `${rulesUrlBase}?cb=${Date.now()}`;
+
+            fetch(freshUrl)
+                .then(res => res.ok ? res.json() : null)
+                .then(async freshJson => {
+                    if (!freshJson) return;
+                    console.log(`🔄 SHA změněna – přenačítám všechny funkce ze '${settingSource}-settings.json'`);
+
+                    for (const feature of Object.keys(freshJson)) {
+                        if (typeof window[feature] === "function") {
+                            try {
+                                console.log(`🔁 Spouštím funkci '${feature}'`);
+                                window[feature]();
+                            } catch (err) {
+                                console.warn(`⚠️ Chyba při spuštění '${feature}':`, err);
+                            }
+                        }
+                    }
+                });
+        }
+
+        return resolvedRules;
     }
+
     
     
     async function getUserName(retries = 10, delay = 300) {
         // --- 1. Zkus načíst z dataLayer ---
         const user = window.dataLayer?.[0]?.user;
         if (user && user.name && user.surname) {
-            const fullName = `${user.name.trim()} ${user.surname.trim()}`;
-            return fullName;
+            return `${user.name.trim()} ${user.surname.trim()}`;
         }
-    
+
         // --- 2. Fallback: čekání na DOM ---
         for (let i = 0; i < retries; i++) {
             const el = document.querySelector(".headerNavigation__userName");
             if (el && el.textContent.trim()) {
-                const name = el.textContent.trim();
-                return name;
+                return el.textContent.trim();
             }
             await new Promise(resolve => setTimeout(resolve, delay));
         }
-    
+
         console.warn("⚠️ Nepodařilo se zjistit jméno uživatele z dataLayer ani z DOMu.");
         return "";
     }
+
     
     
     async function getLatestSha(settingSource = "BE") {
         const apiUrl = `https://api.github.com/repos/Lukas-dotcom/sova/contents/${settingSource}-settings.json`;
     
         const response = await fetch(apiUrl, {
-            headers: {
-                Accept: "application/vnd.github.v3+json"
-            }
+            headers: { Accept: "application/vnd.github.v3+json" }
         });
     
         if (!response.ok) return null;
@@ -333,7 +336,7 @@
         const json = await response.json();
         return json.sha;
     }
-      
+    
 
 // --- Funkce, která spouští zpracování na stránce s výpisem filtrů (otevře nové okno) ---
 // --- Funkce, která spouští zpracování na stránce s výpisem filtrů (otevře nové okno) ---
