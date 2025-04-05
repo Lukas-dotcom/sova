@@ -242,17 +242,63 @@
 
    
     // --- Hlavní část scriptu - vyčítání URL a pravidel
-    async function getRulesFor(featureName, settingSource = "BE") {
-        const rulesUrl = `https://raw.githubusercontent.com/Lukas-dotcom/sova/main/${settingSource}-settings.json`;
-    
-        const response = await fetch(rulesUrl);
-        if (!response.ok) throw new Error(`Nelze načíst ${settingSource}-settings.json`);
-    
-        const rulesList = await response.json();
-        return rulesList[featureName] ? rulesList[featureName].rules : null;
+// --- Načte pravidla pro konkrétní funkci (featureName) z nastavení ---
+async function getRulesFor(featureName, settingSource = "BE") {
+    const rulesUrl = `https://raw.githubusercontent.com/Lukas-dotcom/sova/main/${settingSource}-settings.json`;
+
+    const response = await fetch(rulesUrl);
+    if (!response.ok) throw new Error(`Nelze načíst ${settingSource}-settings.json`);
+
+    const rulesList = await response.json();
+    const allRules = rulesList[featureName] ? rulesList[featureName].rules : null;
+
+    if (!allRules) return null;
+
+    const rulesWithKdo = allRules.filter(r => r.Kdo && r.Kdo.trim() !== "");
+
+    // --- 🚀 Zrychlení: pokud žádný záznam nemá "Kdo", vrať rovnou vše bez čekání ---
+    if (rulesWithKdo.length === 0) {
+        return allRules;
     }
+
+    // --- ⏳ Pokud existuje alespoň jeden "Kdo", čekáme na jméno uživatele ---
+    const userName = await getUserName();
+    const rulesForUser = rulesWithKdo.filter(r => r.Kdo.trim() === userName);
+
+    if (rulesForUser.length > 0) {
+        return rulesForUser;
+    } else {
+        // pokud pro uživatele nic není → vrátíme pravidla bez "Kdo"
+        return allRules.filter(r => !r.Kdo || r.Kdo.trim() === "");
+    }
+}
+
+
     
-      
+    async function getUserName(retries = 10, delay = 300) {
+        // --- 1. Zkus načíst z dataLayer ---
+        const user = window.dataLayer?.[0]?.user;
+        if (user && user.name && user.surname) {
+            return `${user.name.trim()} ${user.surname.trim()}`;
+        }
+
+        // --- 2. Fallback: čekání na DOM ---
+        for (let i = 0; i < retries; i++) {
+            const el = document.querySelector(".headerNavigation__userName");
+            if (el && el.textContent.trim()) {
+                return el.textContent.trim();
+            }
+            await new Promise(resolve => setTimeout(resolve, delay));
+        }
+
+        console.warn("⚠️ Nepodařilo se zjistit jméno uživatele z dataLayer ani z DOMu.");
+        return "";
+    }
+
+    
+    
+
+    
 
 // --- Funkce, která spouští zpracování na stránce s výpisem filtrů (otevře nové okno) ---
 // --- Funkce, která spouští zpracování na stránce s výpisem filtrů (otevře nové okno) ---
