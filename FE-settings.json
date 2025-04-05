@@ -3,13 +3,15 @@
     "columns": [
       "shippingIds",
       "exactCodes",
-      "startsWithCodes"
+      "startsWithCodes",
+      "startsWithUrl"
     ],
     "rules": [
       {
         "shippingIds": 1,
         "exactCodes": "",
-        "startsWithCodes": ""
+        "startsWithCodes": "",
+        "startsWithUrl": ""
       }
     ]
   }
