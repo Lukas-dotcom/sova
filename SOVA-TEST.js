@@ -243,62 +243,100 @@
    
     // --- Hlavní část scriptu - vyčítání URL a pravidel
 // --- Načte pravidla pro konkrétní funkci (featureName) z nastavení ---
-    async function getRulesFor(featureName, settingSource = "BE") {
-        const storageKey = `${settingSource}-sha`;
-        const rulesUrlBase = `https://raw.githubusercontent.com/Lukas-dotcom/sova/main/${settingSource}-settings.json`;
+async function getRulesFor(featureName, settingSource = "BE") {
+    const storageKey = `${settingSource}-sha`;
+    const rulesUrlBase = `https://raw.githubusercontent.com/Lukas-dotcom/sova/main/${settingSource}-settings.json`;
 
-        // --- 1. RYCHLÝ FETCH z cache (ihned použitelné) ---
-        const quickFetch = fetch(rulesUrlBase)
-            .then(res => res.ok ? res.json() : null)
-            .catch(() => null);
+    console.groupCollapsed(`🦉 getRulesFor('${featureName}', '${settingSource}')`);
 
-        // --- 2. PARALELNÍ SHA kontrola ---
-        const shaFetch = getLatestSha(settingSource);
+    // --- 1. RYCHLÝ FETCH z cache ---
+    console.time("⏱ quickFetch");
+    const quickFetch = fetch(rulesUrlBase)
+        .then(res => res.ok ? res.json() : null)
+        .catch(err => {
+            console.warn("❌ Chyba při načítání quickJson", err);
+            return null;
+        });
+    
+    // --- 2. Paralelně SHA ---
+    const shaFetch = getLatestSha(settingSource);
 
-        const [quickJson, currentSha] = await Promise.all([quickFetch, shaFetch]);
-        if (!quickJson || !quickJson[featureName]) return null;
+    const [quickJson, currentSha] = await Promise.all([quickFetch, shaFetch]);
+    console.timeEnd("⏱ quickFetch");
 
-        const allRules = quickJson[featureName].rules;
-        if (!allRules) return null;
+    if (!quickJson) {
+        console.warn("❌ Nelze načíst JSON");
+        console.groupEnd();
+        return null;
+    }
 
-        // --- 3. Použij quick data pro danou funkci ---
-        const rulesWithKdo = allRules.filter(r => r.Kdo && r.Kdo.trim() !== "");
-        if (rulesWithKdo.length === 0) return allRules;
+    if (!quickJson[featureName]) {
+        console.warn(`⚠️ Funkce '${featureName}' není v ${settingSource}-settings.json`);
+        console.groupEnd();
+        return null;
+    }
 
+    const allRules = quickJson[featureName].rules;
+    if (!allRules) {
+        console.warn(`⚠️ '${featureName}' neobsahuje žádná pravidla`);
+        console.groupEnd();
+        return null;
+    }
+
+    // --- 3. UŽIVATELSKÁ FILTRACE ---
+    const rulesWithKdo = allRules.filter(r => r.Kdo && r.Kdo.trim() !== "");
+    let finalRules;
+
+    if (rulesWithKdo.length === 0) {
+        finalRules = allRules;
+    } else {
         const userName = await getUserName();
         const rulesForUser = rulesWithKdo.filter(r => r.Kdo.trim() === userName);
-
-        const resolvedRules = rulesForUser.length > 0
+        finalRules = rulesForUser.length > 0
             ? rulesForUser
             : allRules.filter(r => !r.Kdo || r.Kdo.trim() === "");
-
-        // --- 4. SHA aktualizace paralelně ---
-        const cachedSha = localStorage.getItem(storageKey);
-        if (currentSha && currentSha !== cachedSha) {
-            localStorage.setItem(storageKey, currentSha);
-            const freshUrl = `${rulesUrlBase}?cb=${Date.now()}`;
-
-            fetch(freshUrl)
-                .then(res => res.ok ? res.json() : null)
-                .then(async freshJson => {
-                    if (!freshJson) return;
-                    console.log(`🔄 SHA změněna – přenačítám všechny funkce ze '${settingSource}-settings.json'`);
-
-                    for (const feature of Object.keys(freshJson)) {
-                        if (typeof window[feature] === "function") {
-                            try {
-                                console.log(`🔁 Spouštím funkci '${feature}'`);
-                                window[feature]();
-                            } catch (err) {
-                                console.warn(`⚠️ Chyba při spuštění '${feature}':`, err);
-                            }
-                        }
-                    }
-                });
-        }
-
-        return resolvedRules;
     }
+
+    console.log(`✅ Načtena pravidla pro '${featureName}' (${finalRules.length} záznamů)`);
+
+    // --- 4. SHA detekce a případné přenačtení ---
+    const cachedSha = localStorage.getItem(storageKey);
+    if (currentSha && currentSha !== cachedSha) {
+        console.log("🔄 SHA se změnila – přenačítám nové funkce");
+        localStorage.setItem(storageKey, currentSha);
+
+        const freshUrl = `${rulesUrlBase}?cb=${Date.now()}`;
+        fetch(freshUrl)
+            .then(res => res.ok ? res.json() : null)
+            .then(async freshJson => {
+                if (!freshJson) {
+                    console.warn("❌ Nepodařilo se načíst fresh JSON");
+                    return;
+                }
+
+                console.group("🔁 Funkce ke spuštění:");
+                for (const feature of Object.keys(freshJson)) {
+                    if (typeof window[feature] === "function") {
+                        try {
+                            console.log(`▶ Spouštím '${feature}()'`);
+                            window[feature]();
+                        } catch (err) {
+                            console.warn(`⚠️ Chyba ve funkci '${feature}':`, err);
+                        }
+                    } else {
+                        console.log(`⏭ Přeskakuji '${feature}' – není jako funkce`);
+                    }
+                }
+                console.groupEnd();
+            });
+    } else {
+        console.log("✅ SHA je aktuální – funkce se nespouští znovu");
+    }
+
+    console.groupEnd();
+    return finalRules;
+}
+
 
     
     
