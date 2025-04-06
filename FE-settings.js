@@ -1,3 +1,9 @@
+window.LadzoSklad = [
+  {
+    "LIC0004": "LIC0005"
+  }
+];
+
 window.shippingHideRules = [
   {
     "shippingIds": [
