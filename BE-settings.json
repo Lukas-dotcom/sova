@@ -46,7 +46,7 @@
       {
         "Název": "Export OBJ",
         "Odkaz": "/admin/sablona-exportu-objednavky/?id=315",
-        "Barvička": null,
+        "Barvička": "#eeeee4",
         "NovOkno": null,
         "Kdo": "Lukáš Tejral"
       },
