@@ -14,7 +14,20 @@ window.expedice = [
     "zobrazit": true,
     "test": false,
     "cas_expedice": "Sat Dec 30 1899 14:50:39 GMT+0100 (Central European Standard Time)",
-    "statni_svatky": "#ERROR!",
+    "statni_svatky": [
+      "1.1.",
+      1.5,
+      "8.5.",
+      "5.7.",
+      "6.7.",
+      "28.9.",
+      "28.10.",
+      "17.11.",
+      "24.12.",
+      "25.12.",
+      "26.12.",
+      "31.12."
+    ],
     "velikonocni_pondeli": null
   }
 ];
