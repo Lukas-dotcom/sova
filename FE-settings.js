@@ -1,1 +1,1 @@
-window.test = []
+window.testovaciPromenna = "ahoj";
