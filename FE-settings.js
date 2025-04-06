@@ -13,7 +13,7 @@ window.expedice = [
   {
     "zobrazit": true,
     "test": false,
-    "cas_expedice": "14:00",
+    "cas_expedice": 0.5833333333333334,
     "statni_svatky": null,
     "velikonocni_pondeli": null
   }
