@@ -30,7 +30,7 @@
         "containsName": "AIO,IMAC,AiO,iMAC"
       },
       {
-        "shippingIds": "48, 123",
+        "shippingIds": "[48, 123]",
         "exactCodes": "[KOL0001,KOL0002]",
         "startsWithCodes": "[PRT]",
         "startsWithUrl": "/pocitace/, /monitory/, /tiskarny/",
