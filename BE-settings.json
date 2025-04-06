@@ -40,7 +40,7 @@
         "Název": "Export PR",
         "Odkaz": "/admin/sablona-exportu-zbozi-detail/?id=301",
         "Barvička": null,
-        "NovOkno": null,
+        "NovOkno": true,
         "Kdo": "Lukáš Tejral"
       },
       {
