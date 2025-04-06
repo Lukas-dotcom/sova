@@ -9,6 +9,16 @@ window.LadzoSklad = [
   }
 ];
 
+window.expedice = [
+  {
+    "zobrazit": true,
+    "test": false,
+    "cas_expedice": null,
+    "statni_svatky": null,
+    "velikonocni_pondeli": null
+  }
+];
+
 window.shippingHideRules = [
   {
     "shippingIds": [
