@@ -16,7 +16,7 @@ window.expedice = [
     "cas_expedice": "Sat Dec 30 1899 14:50:39 GMT+0100 (Central European Standard Time)",
     "statni_svatky": [
       "1.1.",
-      1.5,
+      "1.5.",
       "8.5.",
       "5.7.",
       "6.7.",
