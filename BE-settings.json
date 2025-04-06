@@ -11,162 +11,162 @@
       {
         "Název": "Html",
         "Odkaz": "/admin/html-kody/",
-        "Barvička": "",
-        "NovOkno": "",
+        "Barvička": null,
+        "NovOkno": null,
         "Kdo": "Lukáš Tejral"
       },
       {
         "Název": "Soubory",
         "Odkaz": "/admin/spravce-souboru/",
-        "Barvička": "",
-        "NovOkno": "",
+        "Barvička": null,
+        "NovOkno": null,
         "Kdo": "Lukáš Tejral"
       },
       {
         "Název": "Produkty",
         "Odkaz": "/admin/ceny/",
-        "Barvička": "",
-        "NovOkno": "",
+        "Barvička": null,
+        "NovOkno": null,
         "Kdo": "Lukáš Tejral"
       },
       {
         "Název": "Objednávky",
         "Odkaz": "/admin/prehled-objednavek/",
-        "Barvička": "",
-        "NovOkno": "",
+        "Barvička": null,
+        "NovOkno": null,
         "Kdo": "Lukáš Tejral"
       },
       {
         "Název": "Export PR",
         "Odkaz": "/admin/sablona-exportu-zbozi-detail/?id=301",
-        "Barvička": "",
-        "NovOkno": "",
+        "Barvička": null,
+        "NovOkno": null,
         "Kdo": "Lukáš Tejral"
       },
       {
         "Název": "Export OBJ",
         "Odkaz": "/admin/sablona-exportu-objednavky/?id=315",
-        "Barvička": "",
-        "NovOkno": "",
+        "Barvička": null,
+        "NovOkno": null,
         "Kdo": "Lukáš Tejral"
       },
       {
         "Název": "FV editor",
         "Odkaz": "https://shoptet.fvstudio.cz/",
-        "Barvička": "000",
+        "Barvička": 0,
         "NovOkno": "ANO",
         "Kdo": "Lukáš Tejral"
       },
       {
         "Název": "Zde si",
         "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
-        "Barvička": "",
-        "NovOkno": "",
+        "Barvička": null,
+        "NovOkno": null,
         "Kdo": "Jan Kalmus"
       },
       {
         "Název": "nastav svoje",
         "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
-        "Barvička": "",
-        "NovOkno": "",
+        "Barvička": null,
+        "NovOkno": null,
         "Kdo": "Jan Kalmus"
       },
       {
         "Název": "rychlá tlačítka",
         "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
-        "Barvička": "",
-        "NovOkno": "",
+        "Barvička": null,
+        "NovOkno": null,
         "Kdo": "Jan Kalmus"
       },
       {
         "Název": "Honzo",
         "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
-        "Barvička": "",
-        "NovOkno": "",
+        "Barvička": null,
+        "NovOkno": null,
         "Kdo": "Jan Kalmus"
       },
       {
         "Název": "Zde si",
         "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
-        "Barvička": "",
-        "NovOkno": "",
+        "Barvička": null,
+        "NovOkno": null,
         "Kdo": "Tomáš Netopil"
       },
       {
         "Název": "nastav svoje",
         "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
-        "Barvička": "",
-        "NovOkno": "",
+        "Barvička": null,
+        "NovOkno": null,
         "Kdo": "Tomáš Netopil"
       },
       {
         "Název": "rychlá tlačítka",
         "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
-        "Barvička": "",
-        "NovOkno": "",
+        "Barvička": null,
+        "NovOkno": null,
         "Kdo": "Tomáš Netopil"
       },
       {
         "Název": "Tome",
         "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
-        "Barvička": "",
-        "NovOkno": "",
+        "Barvička": null,
+        "NovOkno": null,
         "Kdo": "Tomáš Netopil"
       },
       {
         "Název": "Zde si",
         "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
-        "Barvička": "",
-        "NovOkno": "",
+        "Barvička": null,
+        "NovOkno": null,
         "Kdo": "Petr Kropáček"
       },
       {
         "Název": "nastav svoje",
         "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
-        "Barvička": "",
-        "NovOkno": "",
+        "Barvička": null,
+        "NovOkno": null,
         "Kdo": "Petr Kropáček"
       },
       {
         "Název": "rychlá tlačítka",
         "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
-        "Barvička": "",
-        "NovOkno": "",
+        "Barvička": null,
+        "NovOkno": null,
         "Kdo": "Petr Kropáček"
       },
       {
         "Název": "Peťo",
         "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
-        "Barvička": "",
-        "NovOkno": "",
+        "Barvička": null,
+        "NovOkno": null,
         "Kdo": "Petr Kropáček"
       },
       {
         "Název": "Zde si",
         "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
-        "Barvička": "",
-        "NovOkno": "",
+        "Barvička": null,
+        "NovOkno": null,
         "Kdo": "Dominik Němčanský"
       },
       {
         "Název": "nastav svoje",
         "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
-        "Barvička": "",
-        "NovOkno": "",
+        "Barvička": null,
+        "NovOkno": null,
         "Kdo": "Dominik Němčanský"
       },
       {
         "Název": "rychlá tlačítka",
         "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
-        "Barvička": "",
-        "NovOkno": "",
+        "Barvička": null,
+        "NovOkno": null,
         "Kdo": "Dominik Němčanský"
       },
       {
         "Název": "Domčo",
         "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
-        "Barvička": "",
-        "NovOkno": "",
+        "Barvička": null,
+        "NovOkno": null,
         "Kdo": "Dominik Němčanský"
       }
     ]
