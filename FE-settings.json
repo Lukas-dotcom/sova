@@ -12,7 +12,7 @@
         "shippingIds": "29, 104",
         "exactCodes": "[KOL0001,KOL0002]",
         "startsWithCodes": "[PRT]",
-        "startsWithUrl": "/monitory/, /tiskarny/",
+        "startsWithUrl": "[/monitory/, /tiskarny/]",
         "containsName": "[AIO,IMAC,AiO,iMAC]"
       },
       {
