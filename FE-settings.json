@@ -17,7 +17,7 @@
       },
       {
         "shippingIds": "37, 112",
-        "exactCodes": "KOL0001,KOL0002",
+        "exactCodes": "[KOL0001,KOL0002]",
         "startsWithCodes": "",
         "startsWithUrl": "",
         "containsName": ""
