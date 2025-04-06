@@ -1,9 +1,11 @@
 window.LadzoSklad = [
   {
-    "LIC0004": "LIC0005"
+    "LIC0004": "LIC0005",
+    "true": null
   },
   {
-    "LIC0004": "LIC0010"
+    "LIC0004": "LIC0010",
+    "true": null
   }
 ];
 
