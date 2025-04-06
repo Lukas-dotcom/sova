@@ -23,7 +23,7 @@
         "containsName": ""
       },
       {
-        "shippingIds": "65, 140",
+        "shippingIds": "[65, 140]",
         "exactCodes": "[KOL0001,KOL0002]",
         "startsWithCodes": "[PRT]",
         "startsWithUrl": "/monitory/, /tiskarny/",
