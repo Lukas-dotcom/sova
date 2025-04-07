@@ -46,14 +46,14 @@
       {
         "Název": "Export OBJ",
         "Odkaz": "/admin/sablona-exportu-objednavky/?id=315",
-        "Barvička": "#eeeee4",
+        "Barvička": null,
         "NovOkno": true,
         "Kdo": "Lukáš Tejral"
       },
       {
         "Název": "FV editor",
         "Odkaz": "https://shoptet.fvstudio.cz/",
-        "Barvička": "000",
+        "Barvička": null,
         "NovOkno": "ANO",
         "Kdo": "Lukáš Tejral"
       },
