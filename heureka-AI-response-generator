@@ -1,0 +1,169 @@
+(function () {
+    'use strict';
+
+    const SETTINGS_URL = 'https://raw.githubusercontent.com/Lukas-dotcom/sova/refs/heads/main/HE-sova-settings.json';
+    const OPENAI_API_KEY = '';
+
+    let promptRules = [];
+
+    console.log('🦉 Skript spusten na strance:', window.location.href);
+
+    // KROK 1: Nacteni konfigurace
+    function fetchSettings() {
+        console.log('📥 Nacitam nastaveni z:', SETTINGS_URL);
+        GM_xmlhttpRequest({
+            method: "GET",
+            url: SETTINGS_URL,
+            onload: function (response) {
+                try {
+                    const json = JSON.parse(response.responseText);
+                    const rules = json?.hodnoceniAi?.rules;
+                    if (rules?.length) {
+                        promptRules = rules;
+                        console.log('✅ Nactena pravidla:', promptRules);
+                        startScript();
+                    } else {
+                        console.error("⚠️ Nenalezena zadna pravidla v JSON.");
+                    }
+                } catch (e) {
+                    console.error("❌ Chyba pri parsovani JSON:", e);
+                }
+            }
+        });
+    }
+
+    // KROK 2: Otevri vsechny skryte sekce "Reagovat"
+    function expandAllResponses() {
+        const buttons = document.querySelectorAll("button.js-accordion__toggle");
+        console.log(`🔧 Oteviram ${buttons.length} sekci „Reagovat“`);
+        buttons.forEach((btn) => {
+            const acc = btn.closest('.js-accordion');
+            if (acc && !acc.classList.contains('is-active')) {
+                btn.click();
+            }
+        });
+    }
+
+    // KROK 3: Pridani tlacitek ke kazde recenzi
+    function injectButtons() {
+        const posts = document.querySelectorAll("li.c-box-list__item.c-post");
+        console.log(`🧩 Nalezeno ${posts.length} recenzi`);
+
+        posts.forEach((post) => {
+            const toggleBtn = post.querySelector(".js-accordion__toggle");
+            if (!toggleBtn) return;
+
+            const container = toggleBtn.parentElement;
+
+            promptRules.forEach((rule, index) => {
+                const id = `ai-btn-${index}`;
+                if (container.querySelector(`.${id}`)) return;
+
+                const newBtn = document.createElement("button");
+                newBtn.textContent = `${rule.tlaciko} 🦉`;
+                newBtn.className = `e-button e-button--simple ai-generate-btn ${id}`;
+                newBtn.style.marginLeft = '0.5em';
+                newBtn.addEventListener("click", () =>
+                    handleGenerate(
+                        post,
+                        rule.promt,
+                        rule.model || "gpt-4-turbo",
+                        parseFloat(rule.temperature) || 0.7
+                    )
+                );
+                container.appendChild(newBtn);
+            });
+        });
+    }
+
+    // KROK 4: Generovani odpovedi na zaklade kliknuti
+    async function handleGenerate(post, promptTemplate, model, temperature) {
+        try {
+            console.log("🟡 Generuji odpoved pro recenzi:", post.id);
+
+            const HEtextRecenze = post.querySelector("p.c-post__summary")?.innerText?.trim() || "";
+            const HEpros = Array.from(post.querySelectorAll(".c-attributes-list--pros li")).map(el => el.innerText).join(", ") || "nic";
+            const HEcons = Array.from(post.querySelectorAll(".c-attributes-list--cons li")).map(el => el.innerText).join(", ") || "nic";
+
+            console.log("📝 HEtextRecenze:", HEtextRecenze);
+            console.log("👍 HEpros:", HEpros);
+            console.log("👎 HEcons:", HEcons);
+            console.log("📦 Model:", model, "| 🎛️ Teplota:", temperature);
+
+            const textarea = post.querySelector("textarea[name='text']");
+            if (textarea) {
+                textarea.value = "🕐 Generuji odpoved...";
+                textarea.disabled = true;
+
+                try {
+                    const finalResponse = await generateReply(promptTemplate, HEtextRecenze, HEpros, HEcons, model, temperature);
+                    console.log("✅ Odpoved od AI:", finalResponse);
+                    textarea.value = finalResponse;
+                } catch (e) {
+                    textarea.value = "❌ Chyba pri generovani odpovedi.";
+                    console.error("❌ Chyba pri volani OpenAI API:", e);
+                } finally {
+                    textarea.disabled = false;
+                    textarea.scrollIntoView({ behavior: "smooth", block: "center" });
+                    textarea.focus();
+                }
+            } else {
+                console.warn("⚠️ Nebylo nalezeno zadne textarea pole pro odpoved.");
+            }
+        } catch (e) {
+            console.error("❌ Chyba handleGenerate:", e);
+        }
+    }
+
+    // KROK 5: Volani OpenAI API
+    async function generateReply(promptTemplate, HEtextRecenze, HEpros, HEcons, model, temperature) {
+        const prompt = promptTemplate
+            .replace("{HEtextRecenze}", HEtextRecenze)
+            .replace("{HEpros}", HEpros)
+            .replace("{HEcons}", HEcons);
+
+        console.log(`📤 Odesilam prompt na OpenAI (model: ${model}, temperature: ${temperature}):`, prompt);
+
+        const res = await fetch("https://api.openai.com/v1/chat/completions", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${OPENAI_API_KEY}`,
+            },
+            body: JSON.stringify({
+                model: model,
+                messages: [
+                    {
+                        role: "user",
+                        content: prompt
+                    }
+                ],
+                temperature: temperature
+            })
+        });
+
+        const data = await res.json();
+        return data.choices?.[0]?.message?.content?.trim() || "[⚠️ Odpoved se nepodarilo ziskat]";
+    }
+
+    // START
+    function startScript() {
+        expandAllResponses();
+        safeInjectButtons(); // ← TADY SE MÁ ZAVOLAT
+    }
+
+    // Retry verze injectButtons
+    function safeInjectButtons(retries = 6, delay = 200) {
+        const posts = document.querySelectorAll("li.c-box-list__item.c-post");
+        if (posts.length > 0) {
+            injectButtons();
+        } else if (retries > 0) {
+            console.log(`⏳ Čekám na DOM... zbývá pokusů: ${retries}`);
+            setTimeout(() => safeInjectButtons(retries - 1, delay), delay);
+        } else {
+            console.warn("⚠️ Nepodařilo se najít recenze, tlačítka nebyla injektována.");
+        }
+    }
+
+    fetchSettings();
+})();
