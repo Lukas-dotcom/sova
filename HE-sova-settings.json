@@ -3,18 +3,21 @@
     "columns": [
       "tlaciko",
       "promt",
-      "model"
+      "model",
+      "temperature"
     ],
     "rules": [
       {
         "tlaciko": "Generuj odpověď",
         "promt": "Toto je text recenze zákazníka: {HEtextRecenze}. Toto je co zákanzík na e-shopu chválí: {HEpros}. Toto je co zákazníkovi na e-shopu vadilo: {HEcons}. Vytvoř odpověď na zákaznickou recenzi. Buď při tom vždy zdvořilý, hodný a vřelý. Káždá odpověď by měla být unikátní. Můžeš při tom v závislosti na obsahu recenze využít jedno nebo více z následujících témat (můžeš užít i další, použij vlastní jinou formulaci, následnými texty se jen velmi volně inspiruj): „Naši kolegové na expedici neznají nic jiného než bleskové odesílání.“, „Děkujeme za Vaši krásnou recenzi“, „Těšíme se na Váš další nákup“, „Děkujeme, že jste u nás nakoupil už několikrát“, „Vážíme si Vaší loajality“, „Poměr cena/výkon je pro nás číslo jedna“, „Nabízíme výborný stav i za zlomek ceny nového“, „Faktura je zasílána e-mailem, zkontrolujte složku spam.V případě potřeby ji můžeme kdykoliv znovu zaslat.“, „Při nákupu na IČO za zákona platí záruka 1 rok.“, „Zboží kategorie B může nést drobné známky používání. Každý kus prochází kontrolou, ale drobné oděrky jsou v souladu s popisem.“, „Notebook nelze upgradovat na Win11 z důvodu chybějící TPM podpory. Návod nebo pomoc s přechodem rádi poskytneme.“, „Parametry odpovídají realitě, popis je uveden u každého produktu. Na vyžádání rádi zasíláme fotografie zařízení.“, \"Originální obal není u předváděcí techniky vždy k dispozici. Příslušenství dodáváme podle popisu u produktu.“, „Mrzí nás, že balení neobsahovalo adaptér, který měl být součástí. Obratem zasíláme obratem náhradní.“, „Pokud zboží neodpovídá popisu, máte nárok na výměnu nebo vrácení. Za chybu se vemi omlouváme, předáme kolegům k důkladnější kontrole.“, „V případě problémů s Office klíčem nás kontaktujte, pomůžeme s instalací nebo zašleme nový klíč.“, „Mylně jsme Vás informovali: moc se omlouváme a hned nabídneme řešení, případně slevu.“, „Slevový kód se někdy nedoručí – rádi jej uznáme dodatečně nebo nabídneme kompenzaci.“, „Reklamace řešíme rychle a férově – stačí nás kontaktovat.\" Nakonec přidej podpis: “Zdraví Verča z POČÍTÁRNA.CZ“",
-        "model": null
+        "model": null,
+        "temperature": null
       },
       {
         "tlaciko": "FU zákazníku",
         "promt": "Toto je text recenze zákazníka: {HEtextRecenze}. Toto je co zákanzík na e-shopu chválí: {HEpros}. Toto je co zákazníkovi na e-shopu vadilo: {HEcons}. Vytvoř vtipnou odpověď na zákaznickou recenzi. Buď při tom vždy nezdvořilý. Káždá odpověď by měla být unikátní. Vytvoř odpověď ve stylu „ buď rád, že jsme ti vůbec něco poslali nebo na balík plnej cihel dobrý ne? (můžeš užít i další, použij vlastní jinou formulaci, popsanými texty se jen velmi volně inspiruj). Nakonec přidej podpis: “Zdraví Verča z POČÍTÁRNA.CZ“",
-        "model": null
+        "model": null,
+        "temperature": null
       }
     ]
   }
