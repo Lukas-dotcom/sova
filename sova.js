@@ -244,10 +244,10 @@
     // --- Hlavní část scriptu - vyčítání URL a pravidel
 // --- Načte pravidla pro konkrétní funkci (featureName) z nastavení ---
 async function getRulesFor(featureName, settingSource = "BE") {
-    const rulesUrl = `https://raw.githubusercontent.com/Lukas-dotcom/sova/main/${settingSource}-settings.json`;
+    const rulesUrl = `https://raw.githubusercontent.com/Lukas-dotcom/sova/main/${settingSource}-sova-settings.json`;
 
     const response = await fetch(rulesUrl);
-    if (!response.ok) throw new Error(`Nelze načíst ${settingSource}-settings.json`);
+    if (!response.ok) throw new Error(`Nelze načíst ${settingSource}-sova-settings.json`);
 
     const rulesList = await response.json();
     const allRules = rulesList[featureName] ? rulesList[featureName].rules : null;
