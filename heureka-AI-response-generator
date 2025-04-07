@@ -2,7 +2,7 @@
     'use strict';
 
     const SETTINGS_URL = 'https://raw.githubusercontent.com/Lukas-dotcom/sova/refs/heads/main/HE-sova-settings.json';
-    const OPENAI_API_KEY = 
+    const OPENAI_API_KEY = window.__OPENAI_API_KEY || "";
 
     let promptRules = [];
 
