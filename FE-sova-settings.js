@@ -76,8 +76,8 @@ window.shippingHideRules = [
   },
   {
     "shippingIds": [
-      48,
-      123
+      65,
+      140
     ],
     "exactCodes": [
       "KOL0001",
@@ -87,11 +87,16 @@ window.shippingHideRules = [
       "PRT"
     ],
     "startsWithUrl": [
-      "/pocitace/",
       "/monitory/",
       "/tiskarny/"
     ],
-    "containsName": []
+    "containsName": [
+      "AIO",
+      "IMAC",
+      "AiO",
+      "iMAC",
+      "iMac"
+    ]
   },
   {
     "shippingIds": [
