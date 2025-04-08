@@ -199,25 +199,31 @@
     (function injectSovaButtonStyles() {
         const style = document.createElement('style');
         style.textContent = `
-            p.content-buttons > a.sova-btn {
+            p.content-buttons > a.sova-btn,
+            div.content-buttons > a.sova-btn {
                 margin-left: 1px;
                 order: -1;
             }
-            p.content-buttons > a.sova-btn.sova-first {
+    
+            p.content-buttons > a.sova-btn.sova-first,
+            div.content-buttons > a.sova-btn.sova-first {
                 margin-left: 15px !important;
             }
-            p.content-buttons > a.sova-btn:last-of-type {
+    
+            p.content-buttons > a.sova-btn:last-of-type,
+            div.content-buttons > a.sova-btn:last-of-type {
                 margin-right: auto !important;
             }
         `;
         document.head.appendChild(style);
     })();
+    
 
     // --- Funkce ---
     function injectSovaButton({ buttonText, onClick }) {
-        const container = document.querySelector("p.content-buttons");
+        const container = document.querySelector("p.content-buttons, div.content-buttons");
         if (!container) return log("Nenalezen kontejner tlačítek.");
-
+    
         const btn = document.createElement("a");
         btn.href = "#";
         btn.title = `${buttonText} 🦉`;
@@ -225,10 +231,10 @@
         btn.target = "_blank";
         btn.textContent = `${buttonText} 🦉`;
         btn.style = "order: -1;"; // žádný margin-left inline!
-
+    
         btn.onclick = (e) => { e.preventDefault(); onClick(); };
         container.appendChild(btn);
-
+    
         // -- Označit první SOVA tlačítko jako .sova-first --
         const allSovaButtons = container.querySelectorAll("a.sova-btn");
         allSovaButtons.forEach(btn => btn.classList.remove("sova-first"));
@@ -236,6 +242,7 @@
             allSovaButtons[0].classList.add("sova-first");
         }
     }
+    
 
     
 
