@@ -179,6 +179,7 @@
         
         sidebarHide();
         rychleOdkazy();
+        odkazyKdekoliv();
 
         if (window.location.href.includes("/admin/ceny/")){
         pridatStitikyvPrehledu ()
@@ -1229,6 +1230,55 @@ async function rychleOdkazy() {
         console.error("[SOVA] ❌ Chyba při vykreslování rychlých odkazů:", e);
     }
 }
+
+async function odkazyKdekoliv() {
+    const featureName = "odkazyKdekoliv";
+
+    try {
+        const rules = await getRulesFor(featureName);
+        if (!rules || rules.length === 0) {
+            console.warn(`[SOVA] Nebyla nalezena žádná pravidla pro ${featureName}.`);
+            return;
+        }
+
+        const currentPath = window.location.pathname;
+
+        rules.forEach(rule => {
+            const targetPath = rule["kde"];
+            if (!targetPath || currentPath !== targetPath) return;
+
+            const href = rule["Odkaz"];
+            const title = rule["Název"];
+            const newTab = rule["NovOkno"] === true || rule["NovOkno"] === "true";
+            const barva = rule["Barvička"];
+
+            injectSovaButton({
+                buttonText: title,
+                onClick: () => {
+                    if (!href) return;
+                    if (newTab) {
+                        window.open(href, "_blank");
+                    } else {
+                        window.location.href = href;
+                    }
+                }
+            });
+
+            // Přidání barvy, pokud existuje
+            const posledniBtn = document.querySelector("p.content-buttons a.sova-btn:last-child");
+            if (barva && posledniBtn) {
+                posledniBtn.style.background = barva;
+                posledniBtn.style.border = "none";
+            }
+        });
+
+        console.log("[SOVA] ✅ Tlačítka odkazyKdekoliv byla přidána.");
+    } catch (e) {
+        console.error("[SOVA] ❌ Chyba při vykreslování odkazyKdekoliv:", e);
+    }
+}
+
+
 
 
 async function sidebarHide() {
