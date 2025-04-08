@@ -1183,6 +1183,10 @@ async function rychleOdkazy() {
                 a.style.border = "solid 1px";
             }
 
+            if (rule["NovOkno"] === true || rule["NovOkno"] === "true") {
+                a.target = "_blank";
+            }
+
             container.appendChild(a);
         });
 
