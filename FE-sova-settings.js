@@ -40,7 +40,7 @@ window.expedice = [
   }
 ];
 
-window.shippingHideRules =
+window.shippingHideRules = [
   {
     "shippingIds": [
       29,
@@ -75,7 +75,8 @@ window.shippingHideRules =
     ],
     "startsWithCodes": null,
     "startsWithUrl": [
-      "/pocitace/"
+      "/monitory/",
+      "/tiskarny/"
     ],
     "containsName": null
   },
@@ -121,5 +122,6 @@ window.shippingHideRules =
       "/tiskarny/"
     ],
     "containsName": null
-  };
+  }
+];
 
