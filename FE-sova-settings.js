@@ -87,7 +87,6 @@ window.shippingHideRules = [
       "PRT"
     ],
     "startsWithUrl": [
-      "/pocitace/",
       "/monitory/",
       "/tiskarny/"
     ],
