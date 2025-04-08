@@ -199,29 +199,32 @@
     (function injectSovaButtonStyles() {
         const style = document.createElement('style');
         style.textContent = `
-            p.content-buttons > a.sova-btn,
-            div.content-buttons > a.sova-btn {
+            .content-buttons > a.sova-btn {
                 margin-left: 1px;
                 order: -1;
+                transition: filter 0.2s ease;
             }
     
-            p.content-buttons > a.sova-btn.sova-first,
-            div.content-buttons > a.sova-btn.sova-first {
+            .content-buttons > a.sova-btn.sova-first {
                 margin-left: 15px !important;
             }
     
-            p.content-buttons > a.sova-btn:last-of-type,
-            div.content-buttons > a.sova-btn:last-of-type {
+            .content-buttons > a.sova-btn:last-of-type {
                 margin-right: auto !important;
+            }
+    
+            a.sova-btn:hover {
+                filter: brightness(0.85);
             }
         `;
         document.head.appendChild(style);
     })();
     
+    
 
     // --- Funkce ---
     function injectSovaButton({ buttonText, onClick }) {
-        const container = document.querySelector("p.content-buttons, div.content-buttons");
+        const container = document.querySelector(".content-buttons");
         if (!container) return log("Nenalezen kontejner tlačítek.");
     
         const btn = document.createElement("a");
@@ -1272,10 +1275,9 @@ async function odkazyKdekoliv() {
             });
 
             // Přidání barvy, pokud existuje
-            const posledniBtn = document.querySelector("p.content-buttons a.sova-btn:last-child");
+            const posledniBtn = document.querySelector(".content-buttons a.sova-btn:last-child");
             if (barva && posledniBtn) {
                 posledniBtn.style.background = barva;
-                posledniBtn.style.border = "none";
             }
         });
 
