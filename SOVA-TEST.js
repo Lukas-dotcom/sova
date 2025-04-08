@@ -1292,9 +1292,10 @@ async function odkazyKdekoliv() {
             });
 
             if (barva && btn) {
-                btn.style.background = barva;
+                btn.style.backgroundColor = barva;
                 btn.classList.add("sova-has-bg");
             }
+            
         });
 
         console.log("[SOVA] ✅ Tlačítka odkazyKdekoliv byla přidána.");
