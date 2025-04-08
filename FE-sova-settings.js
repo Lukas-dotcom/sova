@@ -71,10 +71,7 @@ window.shippingHideRules = [
       "KOL0002"
     ],
     "startsWithCodes": [],
-    "startsWithUrl": [
-      "/monitory/",
-      "/tiskarny/"
-    ],
+    "startsWithUrl": [],
     "containsName": []
   },
   {
