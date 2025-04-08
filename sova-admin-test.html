@@ -25,102 +25,165 @@
 </div>
 <hr>
 <div class="tableWrapper sova-funkce">
-    <table class="table checkbox-table">
-        <thead>
-            <tr>
-                <th class="table__cell--sorting">Shoptet</th>
-                <th class="table__cell--sorting">Vysvětlivka</th>
-                <th class="table__cell--sorting">Spreadsheet</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="table__cell--medium">
-                    <a href="/admin/parametry-pro-filtrovani-vypis/" target="_blank"><b>Řazení hodnot filtrů</b></a>
-                </td>
-                <td class="table__cell--large">
-                    <span>neradit: neřadí; jiný znak je oddělovač: řadí se prvně část před odddělovačem a poté za; není oddělovač ani neradit: pokud začíná na číslo, pak numericky, pokud na písmeno, pak abecedně</span>
-                </td>
-                <td class="table__cell--medium">
-                    <a href="https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?gid=0#gid=0" target="_blank">Nastavení</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="table__cell--medium">
-                    <a href="/admin/html-kody/" target="_blank"><b>Upování kódů</b></a>
-                </td>
-                <td class="table__cell--large">
-                    <span>Upne verzi / verze odkazu na styly / scripty obalené v &lt;!-- SOVA:UP:START --&gt; a &lt;!-- SOVA:UP:STOP --&gt; může být i vecekrát. Za verzí nesmí nic být (krom #DEBUG_TIMESTAMP#) vše ostatní maže</span>
-                </td>
-                <td class="table__cell--medium">
-                    <span></span>
-                </td>
-            </tr>
-            <tr>
-                <td class="table__cell--medium">
-                    <a href="/admin/ceny/" target="_blank"><b>Přidávání štítků do produkty -> ceny</b></a>
-                </td>
-                <td class="table__cell--large">
-                    <span>Přidává štítky do produkty -> ceny. Dokáže i měnit štítky stejně jako v produkty -> Přehled </span>
-                </td>
-                <td class="table__cell--medium">
-                    <a href="https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?gid=658229106#gid=658229106" target="_blank">Nastavení</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="table__cell--medium">
-                    <a href="/admin/ceny/" target="_blank"><b>Přidávání parametrů do produkty -> ceny</b></a>
-                </td>
-                <td class="table__cell--large">
-                    <span>Přidává vybrané parametry pro přehled do produkty -> ceny</span>
-                </td>
-                <td class="table__cell--medium">
-                    <a href="https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?gid=1279399405#gid=1279399405" target="_blank">Nastavení</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="table__cell--medium">
-                    <a href="/admin/ceny/" target="_blank"><b>Tlačítko na srkývání Sidebaru</b></a>
-                </td>
-                <td class="table__cell--large">
-                    <span>Máte na ploše málo místa? Už Vás nebaví ošklivý Shopteťácký sidebar? Odpoutává Vaši pozornost? Vlevo nahoře pro Vás máme řešení!</span>
-                </td>
-                <td class="table__cell--medium">
-                    <span></span>
-                </td>
-            </tr>
-            <tr>
-                <td class="table__cell--medium">
-                    <b>Rychlá tlačítka v horní liště</b>
-                </td>
-                <td class="table__cell--large">
-                    <span>Chcete se rychle někam rychle prokliknout? Nastavte si URL kamkoliv na webu nebo i mimo něj</span>
-                </td>
-                <td class="table__cell--medium">
-                    <a href="https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?gid=1511314482#gid=1511314482" target="_blank">Nastavení</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="table__cell--medium">
-                    <a href="https://www.pocitarna.cz/" target="_blank"><b>Zvýraznění výprodeje na Frontendu pro vybrané adminy</b></a>
-                </td>
-                <td class="table__cell--large">
-                    <span>Vybraným jménům adminů se na Frontendu zvýrazní produkty se štítkem "Výprodej" (kvůli provizím)</span>
-                </td>
-                <td class="table__cell--medium">
-                    <a href="https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?gid=360268320#gid=360268320" target="_blank">Nastavení</a>
-                </td>
-            </tr>
-            
-
-        </tbody>
-    </table>
+  <table class="table checkbox-table">
+    <thead>
+      <tr>
+        <th class="table__cell--medium bold">Shoptet</th>
+        <th class="table__cell--large">Vysvětlivka</th>
+        <th class="table__cell--medium">Spreadsheet</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="table__cell--medium bold"><b>Řazení hodnot filtrů</b></td>
+        <td class="table__cell--large"><b>neradit: neřadí; jiný znak je oddělovač: řadí se prvně část před odddělovačem a poté za; není oddělovač ani neradit: pokud začíná na číslo, pak numericky, pokud na písmeno, pak abecedně</b></td>
+        <td class="table__cell--medium"><b>Nastavení</b></td>
+      </tr>
+      <tr>
+        <td class="table__cell--medium bold"><b>Upování kódů</b></td>
+        <td class="table__cell--large"><b>Upne verzi / verze odkazu na styly / scripty obalené v &lt;!-- SOVA:UP:START --&gt; a &lt;!-- SOVA:UP:STOP --&gt; může být i vecekrát. Za verzí nesmí nic být (krom #DEBUG_TIMESTAMP#) vše ostatní maže</b></td>
+        <td class="table__cell--medium"><b>Nastavení</b></td>
+      </tr>
+      <tr>
+        <td class="table__cell--medium bold"><b>Přidávání štítků do produkty -> ceny</b></td>
+        <td class="table__cell--large"><b>Přidává štítky do produkty -> ceny. Dokáže i měnit štítky stejně jako v produkty -> Přehled </b></td>
+        <td class="table__cell--medium"><b>Nastavení</b></td>
+      </tr>
+      <tr>
+        <td class="table__cell--medium bold"><b>Přidávání parametrů do produkty -> ceny<</b></td>
+        <td class="table__cell--large"><b>Přidává vybrané parametry pro přehled do produkty -> ceny</b></td>
+        <td class="table__cell--medium"><b>Nastavení</b></td>
+      </tr>
+      <tr>
+        <td class="table__cell--medium bold"><b>Tlačítko na srkývání Sidebaru</b></td>
+        <td class="table__cell--large"><b>Máte na ploše málo místa? Už Vás nebaví ošklivý Shopteťácký sidebar? Odpoutává Vaši pozornost? Vlevo nahoře pro Vás máme řešení!</b></td>
+        <td class="table__cell--medium"><b>Nastavení</b></td>
+      </tr>
+      <tr>
+        <td class="table__cell--medium bold"><b>Rychlá tlačítka v horní liště</b></td>
+        <td class="table__cell--large"><b>Chcete se rychle někam rychle prokliknout? Nastavte si URL kamkoliv na webu nebo i mimo něj</b></td>
+        <td class="table__cell--medium"><b>Nastavení</b></td>
+      </tr>
+      <tr>
+        <td class="table__cell--medium bold"><b>Zvýraznění výprodeje na Frontendu pro vybrané adminy</b></td>
+        <td class="table__cell--large"><b>Vybraným jménům adminů se na Frontendu zvýrazní produkty se štítkem "Výprodej" (kvůli provizím)</b></td>
+        <td class="table__cell--medium"><b>Nastavení</b></td>
+      </tr>
+      <tr>
+        <td class="table__cell--medium bold"><span></span></td>
+        <td class="table__cell--large"><span></span></td>
+        <td class="table__cell--medium"><span></span></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 <hr>
 <div class="tableWrapper sova-funkce">
+  <table class="table checkbox-table">
+    <thead>
+      <tr>
+        <th class="table__cell--medium bold">Shoptet</th>
+        <th class="table__cell--large">Vysvětlivka</th>
+        <th class="table__cell--medium">Spreadsheet</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="table__cell--medium bold"><b>Řazení hodnot filtrů</b></td>
+        <td class="table__cell--large"><b>neradit: neřadí; jiný znak je oddělovač: řadí se prvně část před odddělovačem a poté za; není oddělovač ani neradit: pokud začíná na číslo, pak numericky, pokud na písmeno, pak abecedně</b></td>
+        <td class="table__cell--medium"><b>Nastavení</b></td>
+      </tr>
+      <tr>
+        <td class="table__cell--medium bold"><b>Upování kódů</b></td>
+        <td class="table__cell--large"><b>Upne verzi / verze odkazu na styly / scripty obalené v &lt;!-- SOVA:UP:START --&gt; a &lt;!-- SOVA:UP:STOP --&gt; může být i vecekrát. Za verzí nesmí nic být (krom #DEBUG_TIMESTAMP#) vše ostatní maže</b></td>
+        <td class="table__cell--medium"><b>Nastavení</b></td>
+      </tr>
+      <tr>
+        <td class="table__cell--medium bold"><b>Přidávání štítků do produkty -> ceny</b></td>
+        <td class="table__cell--large"><b>Přidává štítky do produkty -> ceny. Dokáže i měnit štítky stejně jako v produkty -> Přehled </b></td>
+        <td class="table__cell--medium"><b>Nastavení</b></td>
+      </tr>
+      <tr>
+        <td class="table__cell--medium bold"><b>Přidávání parametrů do produkty -> ceny<</b></td>
+        <td class="table__cell--large"><b>Přidává vybrané parametry pro přehled do produkty -> ceny</b></td>
+        <td class="table__cell--medium"><b>Nastavení</b></td>
+      </tr>
+      <tr>
+        <td class="table__cell--medium bold"><b>Tlačítko na srkývání Sidebaru</b></td>
+        <td class="table__cell--large"><b>Máte na ploše málo místa? Už Vás nebaví ošklivý Shopteťácký sidebar? Odpoutává Vaši pozornost? Vlevo nahoře pro Vás máme řešení!</b></td>
+        <td class="table__cell--medium"><b>Nastavení</b></td>
+      </tr>
+      <tr>
+        <td class="table__cell--medium bold"><b>Rychlá tlačítka v horní liště</b></td>
+        <td class="table__cell--large"><b>Chcete se rychle někam rychle prokliknout? Nastavte si URL kamkoliv na webu nebo i mimo něj</b></td>
+        <td class="table__cell--medium"><b>Nastavení</b></td>
+      </tr>
+      <tr>
+        <td class="table__cell--medium bold"><b>Zvýraznění výprodeje na Frontendu pro vybrané adminy</b></td>
+        <td class="table__cell--large"><b>Vybraným jménům adminů se na Frontendu zvýrazní produkty se štítkem "Výprodej" (kvůli provizím)</b></td>
+        <td class="table__cell--medium"><b>Nastavení</b></td>
+      </tr>
+      <tr>
+        <td class="table__cell--medium bold"><span></span></td>
+        <td class="table__cell--large"><span></span></td>
+        <td class="table__cell--medium"><span></span></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 <hr>
 <div class="tableWrapper sova-funkce">
+  <table class="table checkbox-table">
+    <thead>
+      <tr>
+        <th class="table__cell--medium bold">Shoptet</th>
+        <th class="table__cell--large">Vysvětlivka</th>
+        <th class="table__cell--medium">Spreadsheet</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="table__cell--medium bold"><b>Řazení hodnot filtrů</b></td>
+        <td class="table__cell--large"><b>neradit: neřadí; jiný znak je oddělovač: řadí se prvně část před odddělovačem a poté za; není oddělovač ani neradit: pokud začíná na číslo, pak numericky, pokud na písmeno, pak abecedně</b></td>
+        <td class="table__cell--medium"><b>Nastavení</b></td>
+      </tr>
+      <tr>
+        <td class="table__cell--medium bold"><b>Upování kódů</b></td>
+        <td class="table__cell--large"><b>Upne verzi / verze odkazu na styly / scripty obalené v &lt;!-- SOVA:UP:START --&gt; a &lt;!-- SOVA:UP:STOP --&gt; může být i vecekrát. Za verzí nesmí nic být (krom #DEBUG_TIMESTAMP#) vše ostatní maže</b></td>
+        <td class="table__cell--medium"><b>Nastavení</b></td>
+      </tr>
+      <tr>
+        <td class="table__cell--medium bold"><b>Přidávání štítků do produkty -> ceny</b></td>
+        <td class="table__cell--large"><b>Přidává štítky do produkty -> ceny. Dokáže i měnit štítky stejně jako v produkty -> Přehled </b></td>
+        <td class="table__cell--medium"><b>Nastavení</b></td>
+      </tr>
+      <tr>
+        <td class="table__cell--medium bold"><b>Přidávání parametrů do produkty -> ceny<</b></td>
+        <td class="table__cell--large"><b>Přidává vybrané parametry pro přehled do produkty -> ceny</b></td>
+        <td class="table__cell--medium"><b>Nastavení</b></td>
+      </tr>
+      <tr>
+        <td class="table__cell--medium bold"><b>Tlačítko na srkývání Sidebaru</b></td>
+        <td class="table__cell--large"><b>Máte na ploše málo místa? Už Vás nebaví ošklivý Shopteťácký sidebar? Odpoutává Vaši pozornost? Vlevo nahoře pro Vás máme řešení!</b></td>
+        <td class="table__cell--medium"><b>Nastavení</b></td>
+      </tr>
+      <tr>
+        <td class="table__cell--medium bold"><b>Rychlá tlačítka v horní liště</b></td>
+        <td class="table__cell--large"><b>Chcete se rychle někam rychle prokliknout? Nastavte si URL kamkoliv na webu nebo i mimo něj</b></td>
+        <td class="table__cell--medium"><b>Nastavení</b></td>
+      </tr>
+      <tr>
+        <td class="table__cell--medium bold"><b>Zvýraznění výprodeje na Frontendu pro vybrané adminy</b></td>
+        <td class="table__cell--large"><b>Vybraným jménům adminů se na Frontendu zvýrazní produkty se štítkem "Výprodej" (kvůli provizím)</b></td>
+        <td class="table__cell--medium"><b>Nastavení</b></td>
+      </tr>
+      <tr>
+        <td class="table__cell--medium bold"><span></span></td>
+        <td class="table__cell--large"><span></span></td>
+        <td class="table__cell--medium"><span></span></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 
