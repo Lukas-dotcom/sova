@@ -1279,7 +1279,7 @@ async function odkazyKdekoliv() {
             const newTab = rule["NovOkno"] === true || rule["NovOkno"] === "true";
             const barva = rule["Barvička"];
 
-            injectSovaButton({
+            const btn = injectSovaButton({
                 buttonText: title,
                 onClick: () => {
                     if (!href) return;
@@ -1291,23 +1291,18 @@ async function odkazyKdekoliv() {
                 }
             });
 
-            // Přidání barvy, pokud existuje
-            const posledniBtn = document.querySelector(".content-buttons a.sova-btn:last-child");
-            if (barva && posledniBtn) {
-                posledniBtn.style.background = barva;
-            }
-
             if (barva && btn) {
                 btn.style.background = barva;
                 btn.classList.add("sova-has-bg");
-            }          
-
+            }
         });
 
+        console.log("[SOVA] ✅ Tlačítka odkazyKdekoliv byla přidána.");
     } catch (e) {
         console.error("[SOVA] ❌ Chyba při vykreslování odkazyKdekoliv:", e);
     }
 }
+
 
 
 
