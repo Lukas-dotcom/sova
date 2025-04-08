@@ -183,7 +183,7 @@
     "rules": [
       {
         "Název": "Html",
-        "kde": null,
+        "kde": "/admin/ceny/",
         "Odkaz": "/admin/html-kody/",
         "Barvička": null,
         "NovOkno": null,
@@ -191,7 +191,7 @@
       },
       {
         "Název": "Produkty",
-        "kde": null,
+        "kde": "/admin/html-kody/",
         "Odkaz": "/admin/ceny/",
         "Barvička": null,
         "NovOkno": null,
