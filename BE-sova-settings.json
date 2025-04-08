@@ -202,7 +202,7 @@
         "kde": "/admin/prehled-objednavek/",
         "Odkaz": "/admin/prehled-objednavek/",
         "Barvička": null,
-        "NovOkno": null,
+        "NovOkno": true,
         "Kdo": "Lukáš Tejral"
       }
     ]
