@@ -81,7 +81,7 @@
         log("Nový <div class='section'> byl vytvořen jako třetí v .pageGrid__content.");
 
         // 4 Pak do něj vložíme externí HTML obsah
-        fetch("https://raw.githubusercontent.com/Lukas-dotcom/sova/refs/heads/main/sova-admin.html")
+        fetch("https://raw.githubusercontent.com/Lukas-dotcom/sova/refs/heads/main/sova-admin-test.html")
             .then(response => {
                 if (!response.ok) {
                     throw new Error("Chyba při načítání HTML souboru");
