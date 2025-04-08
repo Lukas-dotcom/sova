@@ -199,26 +199,43 @@
     (function injectSovaButtonStyles() {
         const style = document.createElement('style');
         style.textContent = `
-            .content-buttons > a.sova-btn {
+            :is(p, div).content-buttons > a.sova-btn {
                 margin-left: 1px;
                 order: -1;
-                transition: filter 0.2s ease;
+                position: relative;
+                overflow: hidden;
+                transition: background 0.2s ease;
+                z-index: 0;
             }
     
-            .content-buttons > a.sova-btn.sova-first {
+            :is(p, div).content-buttons > a.sova-btn.sova-first {
                 margin-left: 15px !important;
             }
     
-            .content-buttons > a.sova-btn:last-of-type {
+            :is(p, div).content-buttons > a.sova-btn:last-of-type {
                 margin-right: auto !important;
             }
     
-            a.sova-btn:hover {
-                filter: brightness(0.85);
+            /* Překryv pro ztmavení pozadí jen u tlačítek, která mají background */
+            a.sova-btn.sova-has-bg::before {
+                content: "";
+                position: absolute;
+                top: 0; left: 0;
+                width: 100%;
+                height: 100%;
+                background: black;
+                opacity: 0;
+                transition: opacity 0.2s;
+                z-index: -1;
+            }
+    
+            a.sova-btn.sova-has-bg:hover::before {
+                opacity: 0.1;
             }
         `;
         document.head.appendChild(style);
     })();
+    
     
     
 
