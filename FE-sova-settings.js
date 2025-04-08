@@ -70,7 +70,9 @@ window.shippingHideRules = [
       "KOL0002"
     ],
     "startsWithCodes": null,
-    "startsWithUrl": null,
+    "startsWithUrl": [
+      "/pocitace/"
+    ],
     "containsName": null
   },
   {
