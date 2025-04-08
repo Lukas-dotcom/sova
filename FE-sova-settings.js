@@ -98,7 +98,8 @@ window.shippingHideRules = [
       "AIO",
       "IMAC",
       "AiO",
-      "iMAC"
+      "iMAC",
+      "iMac"
     ]
   },
   {
