@@ -38,9 +38,9 @@ jobs:
 
           if [ -n "$FILES" ]; then
             echo "Nahrávám soubory: $FILES"
-            sshpass -p "${{ secrets.FTP_PASS }}" \
+            sshpass -p "${{ secrets.FTP_PASS_TEST }}" \
               scp -P 22 -o StrictHostKeyChecking=no $FILES \
-              ${{ secrets.FTP_USER }}@${{ secrets.FTP_HOST }}:/upload/sova
+              ${{ secrets.FTP_USER_TEST }}@${{ secrets.FTP_HOST_TEST }}:/upload/sova
           else
             echo "Žádné z cílových souborů neexistují, nic se nenahrává."
           fi
