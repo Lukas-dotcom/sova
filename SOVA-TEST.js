@@ -261,6 +261,9 @@
         if (allSovaButtons.length > 0) {
             allSovaButtons[0].classList.add("sova-first");
         }
+        
+        return btn;
+
     }
     
 
@@ -1279,7 +1282,7 @@ async function odkazyKdekoliv() {
             const newTab = rule["NovOkno"] === true || rule["NovOkno"] === "true";
             const barva = rule["Barvička"];
 
-            injectSovaButton({
+            const btn = injectSovaButton({
                 buttonText: title,
                 onClick: () => {
                     if (!href) return;
@@ -1290,12 +1293,10 @@ async function odkazyKdekoliv() {
                     }
                 }
             });
-
-            // Přidání barvy, pokud existuje
-            const posledniBtn = document.querySelector("p.content-buttons a.sova-btn:last-child");
-            if (barva && posledniBtn) {
-                posledniBtn.style.background = barva;
-                posledniBtn.style.border = "none";
+            
+            if (barva && btn) {
+                btn.style.backgroundColor = barva;
+                btn.classList.add("sova-has-bg");
             }
 			
         });
