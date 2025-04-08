@@ -190,14 +190,6 @@
         "Kdo": "Lukáš Tejral"
       },
       {
-        "Název": "Soubory",
-        "kde": null,
-        "Odkaz": "/admin/spravce-souboru/",
-        "Barvička": null,
-        "NovOkno": null,
-        "Kdo": "Lukáš Tejral"
-      },
-      {
         "Název": "Produkty",
         "kde": null,
         "Odkaz": "/admin/ceny/",
