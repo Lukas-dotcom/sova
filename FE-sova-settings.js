@@ -10,7 +10,7 @@ window.expedice = [
   {
     "zobrazit": true,
     "test": false,
-    "cas_expedice": "14:30",
+    "cas_expedice": "6:00",
     "statni_svatky": [
       "1.1.",
       "1.5.",
