@@ -25,9 +25,9 @@ jobs:
           echo "mkdir /upload/sova" > sftp_mkdir.txt
           echo "bye" >> sftp_mkdir.txt
 
-          sshpass -p "${{ secrets.FTP_PASS }}" \
+          sshpass -p "${{ secrets.FTP_PASS_TEST }}" \
             sftp -P 22 -o StrictHostKeyChecking=no \
-            ${{ secrets.FTP_USER }}@${{ secrets.FTP_HOST }} < sftp_mkdir.txt
+            ${{ secrets.FTP_USER_TEST }}@${{ secrets.FTP_HOST_TEST }} < sftp_mkdir.txt
 
       # Nahrání pouze těch souborů, které v repozitáři existují
       - name: Upload selected files if they exist
