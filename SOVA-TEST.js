@@ -1291,7 +1291,7 @@ async function odkazyKdekoliv() {
                 }
             });
 
-            if (barva && sova-btn) {
+            if (barva) {
                 btn.style.backgroundColor = barva;
                 btn.classList.add("sova-has-bg");
             }
