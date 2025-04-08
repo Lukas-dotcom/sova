@@ -54,7 +54,7 @@
         "Název": "FV editor",
         "Odkaz": "https://shoptet.fvstudio.cz/",
         "Barvička": null,
-        "NovOkno": "ANO",
+        "NovOkno": true,
         "Kdo": "Lukáš Tejral"
       },
       {
