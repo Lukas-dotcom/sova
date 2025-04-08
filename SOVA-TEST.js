@@ -1296,9 +1296,14 @@ async function odkazyKdekoliv() {
             if (barva && posledniBtn) {
                 posledniBtn.style.background = barva;
             }
+
+            if (barva && btn) {
+                btn.style.background = barva;
+                btn.classList.add("sova-has-bg");
+            }          
+
         });
 
-        console.log("[SOVA] ✅ Tlačítka odkazyKdekoliv byla přidána.");
     } catch (e) {
         console.error("[SOVA] ❌ Chyba při vykreslování odkazyKdekoliv:", e);
     }
