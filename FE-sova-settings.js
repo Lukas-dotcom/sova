@@ -123,5 +123,6 @@ window.shippingHideRules = [
     ],
     "containsName": []
   }
+  
 ];
 
