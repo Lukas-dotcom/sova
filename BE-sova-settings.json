@@ -193,7 +193,7 @@
         "Název": "Produkty",
         "kde": "/admin/html-kody/",
         "Odkaz": "/admin/ceny/",
-        "Barvička": null,
+        "Barvička": "red",
         "NovOkno": null,
         "Kdo": "Lukáš Tejral"
       },
@@ -201,7 +201,7 @@
         "Název": "Objednávky",
         "kde": "/admin/prehled-objednavek/",
         "Odkaz": "/admin/prehled-objednavek/",
-        "Barvička": null,
+        "Barvička": "black",
         "NovOkno": true,
         "Kdo": "Lukáš Tejral"
       }
