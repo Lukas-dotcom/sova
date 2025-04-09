@@ -81,7 +81,7 @@
         log("Nový <div class='section'> byl vytvořen jako třetí v .pageGrid__content.");
 
         // 4 Pak do něj vložíme externí HTML obsah
-        fetch("https://raw.githubusercontent.com/Lukas-dotcom/sova/refs/heads/main/sova-admin.html")
+        fetch("https://raw.githubusercontent.com/Lukas-dotcom/sova/refs/heads/main/sova-admin-test.html")
             .then(response => {
                 if (!response.ok) {
                     throw new Error("Chyba při načítání HTML souboru");
@@ -179,6 +179,7 @@
         
         sidebarHide();
         rychleOdkazy();
+        odkazyKdekoliv();
 
         if (window.location.href.includes("/admin/ceny/")){
         pridatStitikyvPrehledu ()
@@ -198,25 +199,51 @@
     (function injectSovaButtonStyles() {
         const style = document.createElement('style');
         style.textContent = `
-            p.content-buttons > a.sova-btn {
+            :is(p, div).content-buttons > a.sova-btn {
                 margin-left: 1px;
                 order: -1;
+                position: relative;
+                overflow: hidden;
+                transition: background 0.2s ease;
+                z-index: 0;
             }
-            p.content-buttons > a.sova-btn.sova-first {
+    
+            :is(p, div).content-buttons > a.sova-btn.sova-first {
                 margin-left: 15px !important;
             }
-            p.content-buttons > a.sova-btn:last-of-type {
+    
+            :is(p, div).content-buttons > a.sova-btn:last-of-type {
                 margin-right: auto !important;
+            }
+    
+            /* Překryv pro ztmavení pozadí jen u tlačítek, která mají background */
+            a.sova-btn.sova-has-bg::before {
+                content: "";
+                position: absolute;
+                top: 0; left: 0;
+                width: 100%;
+                height: 100%;
+                background: black;
+                opacity: 0;
+                transition: opacity 0.2s;
+                z-index: -1;
+            }
+    
+            a.sova-btn.sova-has-bg:hover::before {
+                opacity: 0.1;
             }
         `;
         document.head.appendChild(style);
     })();
+    
+    
+    
 
     // --- Funkce ---
     function injectSovaButton({ buttonText, onClick }) {
-        const container = document.querySelector("p.content-buttons");
+        const container = document.querySelector(".content-buttons");
         if (!container) return log("Nenalezen kontejner tlačítek.");
-
+    
         const btn = document.createElement("a");
         btn.href = "#";
         btn.title = `${buttonText} 🦉`;
@@ -224,17 +251,21 @@
         btn.target = "_blank";
         btn.textContent = `${buttonText} 🦉`;
         btn.style = "order: -1;"; // žádný margin-left inline!
-
+    
         btn.onclick = (e) => { e.preventDefault(); onClick(); };
         container.appendChild(btn);
-
+    
         // -- Označit první SOVA tlačítko jako .sova-first --
         const allSovaButtons = container.querySelectorAll("a.sova-btn");
         allSovaButtons.forEach(btn => btn.classList.remove("sova-first"));
         if (allSovaButtons.length > 0) {
             allSovaButtons[0].classList.add("sova-first");
         }
+        
+        return btn;
+
     }
+    
 
     
 
@@ -1185,7 +1216,7 @@ async function rychleOdkazy() {
 
             if (rule["NovOkno"] === true || rule["NovOkno"] === "true") {
                 a.target = "_blank";
-            }            
+            }
 
             container.appendChild(a);
         });
@@ -1229,6 +1260,55 @@ async function rychleOdkazy() {
         console.error("[SOVA] ❌ Chyba při vykreslování rychlých odkazů:", e);
     }
 }
+
+async function odkazyKdekoliv() {
+    const featureName = "odkazyKdekoliv";
+
+    try {
+        const rules = await getRulesFor(featureName);
+        if (!rules || rules.length === 0) {
+            console.warn(`[SOVA] Nebyla nalezena žádná pravidla pro ${featureName}.`);
+            return;
+        }
+
+        const currentPath = window.location.pathname;
+
+        rules.forEach(rule => {
+            const targetPath = rule["kde"];
+            if (!targetPath || currentPath !== targetPath) return;
+
+            const href = rule["Odkaz"];
+            const title = rule["Název"];
+            const newTab = rule["NovOkno"] === true || rule["NovOkno"] === "true";
+            const barva = rule["Barvička"];
+
+            const btn = injectSovaButton({
+                buttonText: title,
+                onClick: () => {
+                    if (!href) return;
+                    if (newTab) {
+                        window.open(href, "_blank");
+                    } else {
+                        window.location.href = href;
+                    }
+                }
+            });
+            
+            if (barva && btn) {
+                btn.style.backgroundColor = barva;
+                btn.classList.add("sova-has-bg");
+            }
+			
+        });
+
+        console.log("[SOVA] ✅ Tlačítka odkazyKdekoliv byla přidána.");
+    } catch (e) {
+        console.error("[SOVA] ❌ Chyba při vykreslování odkazyKdekoliv:", e);
+    }
+}
+
+
+
 
 
 async function sidebarHide() {
