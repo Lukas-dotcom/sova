@@ -1192,6 +1192,10 @@ async function rychleOdkazy() {
         const container = document.createElement("div");
         container.id = "sova-rychle-odkazy";
         container.style.marginLeft = "30px";
+        container.style.display = 'inline-block';
+        container.style.whiteSpace = 'nowrap';
+        container.style.overflow = 'hidden';
+        container.style.maxWidth = '100%';
 
         // Vygenerujeme tlačítka
         rules.forEach(rule => {
@@ -1200,13 +1204,14 @@ async function rychleOdkazy() {
             a.title = rule["Název"];
             a.textContent = rule["Název"];
             a.classList.add("sova-odkazy");
-            a.style.marginLeft = "3px";
+            a.style.marginLeft = "1px";
             a.style.padding = "7px";
             a.style.color = "white";
             a.style.fontWeight = "bold";
             a.style.textDecoration = "none";
             a.style.transition = "filter 0.2s ease";
             a.style.cursor = "pointer";
+            a.style.line-height = "1.2";
 
             if (rule["Barvička"] && rule["Barvička"].trim() !== "") {
                 a.style.background = rule["Barvička"];
