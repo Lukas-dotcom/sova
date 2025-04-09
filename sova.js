@@ -1211,7 +1211,6 @@ async function rychleOdkazy() {
             a.style.textDecoration = "none";
             a.style.transition = "filter 0.2s ease";
             a.style.cursor = "pointer";
-            a.style.lineHeight = "1.2";
 
             if (rule["Barvička"] && rule["Barvička"].trim() !== "") {
                 a.style.background = rule["Barvička"];
