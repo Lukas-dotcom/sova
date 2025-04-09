@@ -1204,14 +1204,14 @@ async function rychleOdkazy() {
             a.title = rule["Název"];
             a.textContent = rule["Název"];
             a.classList.add("sova-odkazy");
-            a.style.marginLeft = "1px";
+            a.style.marginLeft = "3px";
             a.style.padding = "7px";
             a.style.color = "white";
             a.style.fontWeight = "bold";
             a.style.textDecoration = "none";
             a.style.transition = "filter 0.2s ease";
             a.style.cursor = "pointer";
-            a.style.lineHeight = "1.2";
+            a.style.lineHeight = "3";
 
 
             if (rule["Barvička"] && rule["Barvička"].trim() !== "") {
