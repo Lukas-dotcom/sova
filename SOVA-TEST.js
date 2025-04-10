@@ -1319,91 +1319,196 @@ async function odkazyKdekoliv() {
 }
 
 async function kuponAplikator() {
-    const COUPON_KEY = 'kupon';
-    const CART_WAS_EMPTY_KEY = 'kosik-byl-prazdny';
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const urlCoupon = urlParams.get('kupon');
-
-    if (urlCoupon) {
-        sessionStorage.setItem(COUPON_KEY, urlCoupon);
-        console.log(`🎟️ Kupón ${urlCoupon} uložen do sessionStorage.`);
-    }
-
-    const COUPON_CODE = sessionStorage.getItem(COUPON_KEY);
-    if (!COUPON_CODE) {
-        console.log('ℹ️ Kupón není k dispozici, skript se ukončuje.');
-        return;
-    }
-
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            const cartEl = document.querySelector('[data-testid="headerCartPrice"]');
-            if (!cartEl) return;
-
-            const rawText = cartEl.textContent || '';
-            const cartText = rawText.replace(/\s+/g, ' ').trim().toLowerCase();
-
-            const isCartEmpty = (
-                cartText === 'prázdný košík' ||
-                (cartText.includes('prázdný') && cartText.includes('košík'))
-            );
-
-            if (isCartEmpty) {
-                sessionStorage.setItem(CART_WAS_EMPTY_KEY, 'true');
-            } else {
-                sessionStorage.removeItem(CART_WAS_EMPTY_KEY);
-            }
-        }, 1000);
-    });
-
-    document.addEventListener('click', function (e) {
-        const btn = e.target.closest('button.add-to-cart-button');
-        if (!btn) return;
-
-        setTimeout(() => {
-            const csrfInput = document.querySelector('input[name="__csrf__"]');
-            const csrfToken = csrfInput?.value;
-            if (!csrfToken) return;
-            applyCoupon(csrfToken);
-        }, 1000);
-    });
-
-    function applyCoupon(csrfToken) {
-        const params = new URLSearchParams();
-        params.append('discountCouponCode', COUPON_CODE);
-        params.append('__csrf__', csrfToken);
-
-        fetch('/action/Cart/addDiscountCoupon/', {
-            method: 'POST',
-            credentials: 'include',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-                'x-requested-with': 'XMLHttpRequest',
-                'x-shoptet-xhr': 'Shoptet_Coo7ai'
-            },
-            body: params.toString()
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.code === 200 && data.message?.includes('úspěšně')) {
-                    sessionStorage.removeItem(COUPON_KEY);
-
-                    const wasEmpty = sessionStorage.getItem(CART_WAS_EMPTY_KEY);
-                    if (wasEmpty) {
-                        const priceEl = document.querySelector('[data-testid="headerCartPrice"]');
-                        if (priceEl) {
-                            priceEl.innerHTML = 'Kupón <br>aktivní';
-                            priceEl.style = 'line-height: 1.0; text-align: right;';
-                        }
-                        sessionStorage.removeItem(CART_WAS_EMPTY_KEY);
-                    }
+        // 1. Rozšíření obsahu
+        const contentBlock = document.querySelector('.pageGrid__content');
+        if (contentBlock) {
+            contentBlock.style.maxWidth = 'calc(var(--spacing-xl) + 1500px + var(--spacing-xl))';
+        }
+    
+        // 2. Injektuj input pro základní URL
+        const menu = document.querySelector('ul.dropdown-ready');
+        let input = null;
+    
+        if (menu) {
+            menu.style.display = 'flex';
+            menu.style.alignItems = 'center';
+    
+            const baseUrl = window.location.origin + '/';
+    
+            const li = document.createElement('li');
+            li.style.marginLeft = 'auto';
+            li.style.display = 'flex';
+            li.style.alignItems = 'center';
+            li.style.paddingLeft = '20px';
+    
+            const strong = document.createElement('strong');
+            strong.textContent = 'URL pro generování slevové URL:';
+            strong.style.marginRight = '10px';
+    
+            const divInput = document.createElement('div');
+            divInput.className = 'v2FormField__input';
+    
+            input = document.createElement('input');
+            input.type = 'text';
+            input.name = 'discountTill';
+            input.className = 'numberField xs';
+            input.style.minWidth = '300px';
+            input.value = baseUrl;
+    
+            divInput.appendChild(input);
+            li.appendChild(strong);
+            li.appendChild(divInput);
+            menu.appendChild(li);
+        }
+    
+        // 3. Přidání sloupce s ikonou
+        const table = document.querySelector('table.checkbox-table');
+        if (!table) return;
+    
+        const theadRow = table.querySelector('thead tr');
+        if (theadRow) {
+            const th = document.createElement('th');
+            const tooltipId = 'shoptet-kupon-url-tooltip';
+    
+            th.innerHTML = `
+                URL
+                <span
+                    class="show-tooltip tooltip-icon"
+                    data-tooltip="#${tooltipId}"
+                    data-align="top center"
+                    style="margin-left: 4px; cursor: help;"
+                ></span>
+            `;
+    
+            // Tooltip HTML
+            const tooltip = document.createElement('div');
+            tooltip.id = tooltipId;
+            tooltip.className = 'tooltip center tooltip--enhanced';
+            tooltip.style.display = 'none';
+            tooltip.innerHTML = `
+                <div class="tooltip-header"></div>
+                <div class="tooltip-content-wrapper">
+                    <div class="tooltip-content" data-testid="tooltipText">
+                        URL přes kterou, když zákazník přijde, automaticky se mu přidá slevový kupón do košíku. Můžete užít např. v emailu.
+                    </div>
+                </div>
+                <div class="tooltip-footer"></div>
+            `;
+            document.body.appendChild(tooltip);
+    
+            theadRow.insertBefore(th, theadRow.lastElementChild);
+    
+            // 🧠 Vlastní výpočet pozice
+            function showTooltipForIcon(iconElement) {
+                const tooltipSelector = iconElement.getAttribute('data-tooltip');
+                if (!tooltipSelector) return;
+    
+                const tooltip = document.querySelector(tooltipSelector);
+                if (!tooltip) return;
+    
+                // Přidej do body (pokud tam ještě není)
+                if (!document.body.contains(tooltip)) {
+                    document.body.appendChild(tooltip);
                 }
-            })
-            .catch(err => {
-                console.error('❌ Chyba při fetchi kupónu:', err);
+    
+                const iconRect = iconElement.getBoundingClientRect();
+                const scrollTop = window.scrollY || document.documentElement.scrollTop;
+                const scrollLeft = window.scrollX || document.documentElement.scrollLeft;
+    
+                // Potřebujeme znát velikost tooltipu
+                tooltip.style.visibility = 'hidden';
+                tooltip.style.display = 'block';
+                const tooltipWidth = tooltip.offsetWidth;
+                const tooltipHeight = tooltip.offsetHeight;
+                tooltip.style.display = 'none';
+                tooltip.style.visibility = '';
+    
+                const top = iconRect.top + scrollTop - tooltipHeight - 8;
+                const left = iconRect.left + scrollLeft + (iconRect.width / 2) - (tooltipWidth / 2);
+    
+                tooltip.style.position = 'absolute';
+                tooltip.style.top = `${top}px`;
+                tooltip.style.left = `${left}px`;
+                tooltip.style.zIndex = '9999';
+                tooltip.style.display = 'block';
+            }
+    
+            function hideTooltip(tooltipSelector) {
+                const tooltip = document.querySelector(tooltipSelector);
+                if (tooltip) {
+                    tooltip.style.display = 'none';
+                }
+            }
+    
+            // Bind událostí na ikonku
+            const tooltipIcon = th.querySelector('.tooltip-icon');
+            if (tooltipIcon) {
+                tooltipIcon.addEventListener('mouseenter', () => showTooltipForIcon(tooltipIcon));
+                tooltipIcon.addEventListener('mouseleave', () => hideTooltip('#' + tooltipId));
+            }
+        }
+    
+        const rows = table.querySelectorAll('tbody tr');
+        rows.forEach(row => {
+            const codeCell = row.querySelector('td[data-testid="tableCellCode"] strong');
+            if (!codeCell) return;
+    
+            const couponCode = codeCell.textContent.trim();
+            const td = document.createElement('td');
+            td.style.textAlign = 'center';
+    
+    
+            const icon = document.createElement('a');
+            icon.href = '#';
+            icon.setAttribute('style', `
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        color: gray;
+        transition: transform 0.2s ease, color 0.2s ease;
+        cursor: pointer;
+    `);
+    
+            icon.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg"
+             width="20" height="20"
+             viewBox="0 0 24 24"
+             style="vertical-align: middle;">
+            <path d="M0 0h24v24H0V0z" fill="none"/>
+            <path fill="currentColor" d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v16h14c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 18H8V7h11v16z"/>
+        </svg>
+    `;
+    
+    
+    
+    
+            // Hover efekt
+            icon.addEventListener('mouseenter', () => {
+                icon.style.color = 'black';
             });
-    }
+    
+            icon.addEventListener('mouseleave', () => {
+                icon.style.color = 'gray';
+            });
+    
+            // Kliknutí – kopírování + animace
+            icon.addEventListener('click', (e) => {
+                e.preventDefault();
+                let base = input?.value?.trim() || '';
+                if (!base.endsWith('/')) base += '/';
+                const finalUrl = `${base}?kupon=${couponCode}`;
+    
+                navigator.clipboard.writeText(finalUrl).then(() => {
+                    icon.style.transform = 'scale(1.3)';
+                    setTimeout(() => {
+                        icon.style.transform = 'scale(1)';
+                    }, 200);
+                });
+            });
+    
+            td.appendChild(icon);
+            row.insertBefore(td, row.lastElementChild);
+        });
 }
 
 
