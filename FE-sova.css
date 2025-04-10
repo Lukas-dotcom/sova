@@ -1,0 +1,32 @@
+.p-bottom.single-button [data-micro="offer"] .p-desc {
+    position: relative !important;
+}
+
+.kupon {
+    display: none;
+    position: absolute;
+    bottom: -52px;
+    left: 0;
+    right: 0;
+    background-color: #e3f6f5;
+    padding: 12px;
+    border-radius: 12px 12px 0 0;
+    display: none;
+    z-index: 10;
+}
+
+.kupon-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    font-weight: bold;
+}
+
+.kupon-code {
+    cursor: pointer;
+    text-decoration: underline;
+    color: #007a7a;
+}
+
+
