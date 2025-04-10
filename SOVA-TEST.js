@@ -190,8 +190,13 @@
         if (window.location.href.includes("/admin/clanek-rubrika-detail/")){
             sablonyClanky ()
             }
-        
 
+
+        if (window.location.href.includes("/admin/slevove-kupony/")){
+            kuponAplikator ()
+            }
+        
+            
      
     }
 
@@ -1313,6 +1318,93 @@ async function odkazyKdekoliv() {
     }
 }
 
+async function kuponAplikator() {
+    const COUPON_KEY = 'kupon';
+    const CART_WAS_EMPTY_KEY = 'kosik-byl-prazdny';
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlCoupon = urlParams.get('kupon');
+
+    if (urlCoupon) {
+        sessionStorage.setItem(COUPON_KEY, urlCoupon);
+        console.log(`🎟️ Kupón ${urlCoupon} uložen do sessionStorage.`);
+    }
+
+    const COUPON_CODE = sessionStorage.getItem(COUPON_KEY);
+    if (!COUPON_CODE) {
+        console.log('ℹ️ Kupón není k dispozici, skript se ukončuje.');
+        return;
+    }
+
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            const cartEl = document.querySelector('[data-testid="headerCartPrice"]');
+            if (!cartEl) return;
+
+            const rawText = cartEl.textContent || '';
+            const cartText = rawText.replace(/\s+/g, ' ').trim().toLowerCase();
+
+            const isCartEmpty = (
+                cartText === 'prázdný košík' ||
+                (cartText.includes('prázdný') && cartText.includes('košík'))
+            );
+
+            if (isCartEmpty) {
+                sessionStorage.setItem(CART_WAS_EMPTY_KEY, 'true');
+            } else {
+                sessionStorage.removeItem(CART_WAS_EMPTY_KEY);
+            }
+        }, 1000);
+    });
+
+    document.addEventListener('click', function (e) {
+        const btn = e.target.closest('button.add-to-cart-button');
+        if (!btn) return;
+
+        setTimeout(() => {
+            const csrfInput = document.querySelector('input[name="__csrf__"]');
+            const csrfToken = csrfInput?.value;
+            if (!csrfToken) return;
+            applyCoupon(csrfToken);
+        }, 1000);
+    });
+
+    function applyCoupon(csrfToken) {
+        const params = new URLSearchParams();
+        params.append('discountCouponCode', COUPON_CODE);
+        params.append('__csrf__', csrfToken);
+
+        fetch('/action/Cart/addDiscountCoupon/', {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                'x-requested-with': 'XMLHttpRequest',
+                'x-shoptet-xhr': 'Shoptet_Coo7ai'
+            },
+            body: params.toString()
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.code === 200 && data.message?.includes('úspěšně')) {
+                    sessionStorage.removeItem(COUPON_KEY);
+
+                    const wasEmpty = sessionStorage.getItem(CART_WAS_EMPTY_KEY);
+                    if (wasEmpty) {
+                        const priceEl = document.querySelector('[data-testid="headerCartPrice"]');
+                        if (priceEl) {
+                            priceEl.innerHTML = 'Kupón <br>aktivní';
+                            priceEl.style = 'line-height: 1.0; text-align: right;';
+                        }
+                        sessionStorage.removeItem(CART_WAS_EMPTY_KEY);
+                    }
+                }
+            })
+            .catch(err => {
+                console.error('❌ Chyba při fetchi kupónu:', err);
+            });
+    }
+}
 
 
 
