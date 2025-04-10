@@ -34,6 +34,7 @@ jobs:
         run: |
           FILES=""
           [ -f FE-sova.js ] && FILES="$FILES FE-sova.js"
+          [ -f FE-sova.css ] && FILES="$FILES FE-sova.css"
           [ -f FE-sova-settings.js ] && FILES="$FILES FE-sova-settings.js"
 
           if [ -n "$FILES" ]; then
