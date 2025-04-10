@@ -151,12 +151,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 //zobrazení DIVů s kupóny
-document.addEventListener("DOMContentLoaded", function () {
+window.addEventListener("DOMContentLoaded", function () {
     const kuponValue = sessionStorage.getItem("kupon");
+
+    // Pokud kupon existuje a není prázdný
     if (kuponValue && kuponValue.trim() !== "") {
-        const kuponElement = document.querySelector(".sova-kupon");
-        if (kuponElement) {
-            kuponElement.style.display = "block";
-        }
+        document.querySelectorAll(".sova-kupon").forEach(el => {
+            el.style.display = "block"; 
+        });
     }
 });
+
