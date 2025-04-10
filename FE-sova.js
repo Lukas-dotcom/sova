@@ -1,35 +1,37 @@
-//zvýraznění výprodej jen pro některé adminy
+// ==========================================
+// 🔶 1. ZVÝRAZNĚNÍ VÝPRODEJE PRO VYBRANÉ ADMINY
+// ==========================================
 document.addEventListener("DOMContentLoaded", function () {
     const body = document.body;
-  
+
     if (!body.classList.contains("admin-logged")) return;
-  
+
     fetch("https://raw.githubusercontent.com/Lukas-dotcom/sova/main/BE-sova-settings.json")
-      .then(response => response.json())
-      .then(data => {
-        const allowedNames = data?.FEzvyrazneniVyprodej?.rules?.map(item => item.jmena) || [];
-        console.log("✅ Načtena jména:", allowedNames);
-  
-        // hledáme jméno kdekoliv v .admin-bar
-        const adminBarText = document.querySelector('.admin-bar')?.innerText || '';
-  
-        // pokusíme se najít shodu
-        const matchedName = allowedNames.find(name => adminBarText.includes(name));
-  
-        if (matchedName) {
-          body.classList.add("vyprodej-zvyrazneni-show");
-          console.log("✅ Přidána třída vyprodej-zvyrazneni-show pro uživatele:", matchedName);
-        } else {
-          console.log("❌ Žádné oprávněné jméno nenalezeno v .admin-bar");
-        }
-      })
-      .catch(err => {
-        console.error("❌ Nepodařilo se načíst BE-sova-settings.json", err);
-      });
-  });
+        .then(response => response.json())
+        .then(data => {
+            const allowedNames = data?.FEzvyrazneniVyprodej?.rules?.map(item => item.jmena) || [];
+            console.log("✅ Načtena jména:", allowedNames);
+
+            const adminBarText = document.querySelector('.admin-bar')?.innerText || '';
+            const matchedName = allowedNames.find(name => adminBarText.includes(name));
+
+            if (matchedName) {
+                body.classList.add("vyprodej-zvyrazneni-show");
+                console.log("✅ Přidána třída vyprodej-zvyrazneni-show pro uživatele:", matchedName);
+            } else {
+                console.log("❌ Žádné oprávněné jméno nenalezeno v .admin-bar");
+            }
+        })
+        .catch(err => {
+            console.error("❌ Nepodařilo se načíst BE-sova-settings.json", err);
+        });
+});
 
 
-  (function () {
+// ==========================================
+// 🎟️ 2. AUTOMATICKÉ UPLATNĚNÍ KUPÓNU
+// ==========================================
+(function () {
     const COUPON_KEY = 'kupon';
     const CART_WAS_EMPTY_KEY = 'kosik-byl-prazdny';
 
@@ -145,5 +147,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.error('❌ Chyba při fetchi kupónu:', err);
             });
     }
-
 })();
+
+
+//zobrazení DIVů s kupóny
+document.addEventListener("DOMContentLoaded", function () {
+    const kuponValue = sessionStorage.getItem("kupon");
+    if (kuponValue && kuponValue.trim() !== "") {
+        const kuponElement = document.querySelector(".sova-kupon");
+        if (kuponElement) {
+            kuponElement.style.display = "block";
+        }
+    }
+});
