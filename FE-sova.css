@@ -8,9 +8,8 @@
     left: 0;
     right: 0;
     background-color: #e3f6f5;
-    padding: 1px;
+    padding: 9px;
     border-radius: 12px 12px 0 0;
-    display: none;
     z-index: 10;
 }
 
