@@ -50,7 +50,9 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    // --- 2. Zjisti, zda byl košík prázdný (až po 1s delay) ---
+    console.log(`🎯 Kupón ${COUPON_CODE} připraven.`);
+
+    // --- 2. Po načtení stránky zjisti stav košíku ---
     window.addEventListener('load', () => {
         setTimeout(() => {
             const cartEl = document.querySelector('[data-testid="headerCartPrice"]');
@@ -74,13 +76,12 @@ document.addEventListener("DOMContentLoaded", function () {
             } else {
                 sessionStorage.removeItem(CART_WAS_EMPTY_KEY);
                 console.log('🧺 Košík už po načtení obsahoval položky.');
+                tryAddCouponDirectly();
             }
         }, 1000);
     });
 
-    console.log(`🎯 Kupón ${COUPON_CODE} připraven. Čekám na přidání do košíku...`);
-
-    // --- 3. Sleduj kliknutí na tlačítko "Do košíku" ---
+    // --- 3. Sleduj kliknutí na "Do košíku" ---
     document.addEventListener('click', function (e) {
         const btn = e.target.closest('button.add-to-cart-button');
         if (!btn) return;
@@ -101,7 +102,41 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 1000);
     });
 
-    // --- 4. Aplikuj kupón ---
+    // --- 4. Pokus o přidání kupónu po načtení stránky ---
+    function tryAddCouponDirectly() {
+        fetch('/action/Cart/GetExtendedOrder/', {
+            method: 'GET',
+            credentials: 'include',
+            headers: {
+                'x-requested-with': 'XMLHttpRequest',
+                'x-shoptet-xhr': 'Shoptet_Coo7ai'
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            const currentCoupon = data?.payload?.discountCoupon?.code;
+            if (currentCoupon && currentCoupon === COUPON_CODE) {
+                console.log('🛑 Kupón už je v košíku, nebude znovu přidáván.');
+                return;
+            }
+
+            const csrfInput = document.querySelector('input[name="__csrf__"]');
+            const csrfToken = csrfInput?.value;
+
+            if (!csrfToken) {
+                console.warn('⚠️ CSRF token chybí pro přímé přidání kupónu.');
+                return;
+            }
+
+            console.log('🚀 Přidávám kupón po načtení, nebyl nalezen v GetExtendedOrder...');
+            applyCoupon(csrfToken);
+        })
+        .catch(err => {
+            console.warn('⚠️ Chyba při kontrole kupónu v košíku:', err);
+        });
+    }
+
+    // --- 5. Aplikuj kupón ---
     function applyCoupon(csrfToken) {
         const params = new URLSearchParams();
         params.append('discountCouponCode', COUPON_CODE);
@@ -119,35 +154,36 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             body: params.toString()
         })
-            .then(res => res.json())
-            .then(data => {
-                if (data.code === 200 && data.message?.includes('úspěšně')) {
-                    console.log('✅ Kupón byl úspěšně uplatněn.');
-                    sessionStorage.removeItem(COUPON_KEY);
+        .then(res => res.json())
+        .then(data => {
+            if (data.code === 200 && data.message?.includes('úspěšně')) {
+                console.log('✅ Kupón byl úspěšně uplatněn.');
+                sessionStorage.removeItem(COUPON_KEY);
 
-                    const wasEmpty = sessionStorage.getItem(CART_WAS_EMPTY_KEY);
-                    if (wasEmpty) {
-                        const priceEl = document.querySelector('[data-testid="headerCartPrice"]');
-                        if (priceEl) {
-                            priceEl.innerHTML = 'Kupón <br>aktivní';
-                            priceEl.style = 'line-height: 1.0; text-align: right;';
-                            console.log('🎨 Košík byl prázdný → upraveno vizuálně.');
-                        } else {
-                            console.warn('⚠️ Element pro košík nebyl nalezen pro vizuální úpravu.');
-                        }
-                        sessionStorage.removeItem(CART_WAS_EMPTY_KEY);
+                const wasEmpty = sessionStorage.getItem(CART_WAS_EMPTY_KEY);
+                if (wasEmpty) {
+                    const priceEl = document.querySelector('[data-testid="headerCartPrice"]');
+                    if (priceEl) {
+                        priceEl.innerHTML = 'Kupón <br>aktivní';
+                        priceEl.style = 'line-height: 1.0; text-align: right;';
+                        console.log('🎨 Košík byl prázdný → upraveno vizuálně.');
                     } else {
-                        console.log('🎨 Košík nebyl prázdný → žádná vizuální úprava.');
+                        console.warn('⚠️ Element pro košík nebyl nalezen pro vizuální úpravu.');
                     }
+                    sessionStorage.removeItem(CART_WAS_EMPTY_KEY);
                 } else {
-                    console.warn('❌ Kupón se nepodařilo uplatnit:', data);
+                    console.log('🎨 Košík nebyl prázdný → žádná vizuální úprava.');
                 }
-            })
-            .catch(err => {
-                console.error('❌ Chyba při fetchi kupónu:', err);
-            });
+            } else {
+                console.warn('❌ Kupón se nepodařilo uplatnit:', data);
+            }
+        })
+        .catch(err => {
+            console.error('❌ Chyba při fetchi kupónu:', err);
+        });
     }
 })();
+
 
 
 //zobrazení DIVů s kupóny
