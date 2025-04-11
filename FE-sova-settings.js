@@ -5,7 +5,7 @@ window.LadzoSklad = {
 };
 
 window.expedice = {
-  "zobrazit": false,
+  "zobrazit": true,
   "test": false,
   "cas_expedice": "8:00",
   "statni_svatky": [
