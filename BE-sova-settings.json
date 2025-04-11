@@ -211,68 +211,85 @@
     "columns": [
       "Název",
       "ID",
-      "Zobrazovat"
+      "Zobrazovat",
+      "",
+      "",
+      "",
+      "",
+      ""
     ],
     "rules": [
       {
         "Název": "Akce",
         "ID": 1,
-        "Zobrazovat": "NE"
+        "Zobrazovat": "NE",
+        "": null
       },
       {
         "Název": "Akce dne",
         "ID": 59,
-        "Zobrazovat": "NE"
+        "Zobrazovat": "NE",
+        "": null
       },
       {
         "Název": "BLACK FRIDAY",
         "ID": 693,
-        "Zobrazovat": "NE"
+        "Zobrazovat": "NE",
+        "": null
       },
       {
         "Název": "FUJITSPU DAYS - 500 Kč",
         "ID": 668,
-        "Zobrazovat": "NE"
+        "Zobrazovat": "NE",
+        "": null
       },
       {
         "Název": "Hlavní akce dne",
         "ID": 56,
-        "Zobrazovat": "NE"
+        "Zobrazovat": "NE",
+        "": null
       },
       {
         "Název": "Jarní úklid - výprodej",
         "ID": 703,
-        "Zobrazovat": "NE"
+        "Zobrazovat": "NE",
+        "": null
       },
       {
         "Název": "MASAKR CEN",
         "ID": 745,
-        "Zobrazovat": "ANO"
+        "Zobrazovat": "ANO",
+        "": null
       },
       {
         "Název": "Novinka",
         "ID": 2,
-        "Zobrazovat": "NE"
+        "Zobrazovat": "NE",
+        "": null
       },
       {
         "Název": "Tip",
         "ID": 3,
-        "Zobrazovat": "NE"
+        "Zobrazovat": "NE",
+        "": null
       },
       {
         "Název": "Upgrade W11",
         "ID": 687,
-        "Zobrazovat": "NE"
+        "Zobrazovat": "NE",
+        "": "Fri Apr 11 2025 16:10:00 GMT+0200 (Central European Summer Time)"
       },
       {
         "Název": "Vánoční výprodej",
         "ID": 53,
-        "Zobrazovat": "NE"
+        "Zobrazovat": "NE",
+        "": null
       },
       {
         "Název": "Výprodej",
         "ID": 902,
-        "Zobrazovat": "ANO"
+        "Zobrazovat": "ANO",
+        "": null
       }
     ]
   },
