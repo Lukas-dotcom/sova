@@ -216,6 +216,8 @@
       "",
       "",
       "",
+      "",
+      "",
       ""
     ],
     "rules": [
@@ -253,7 +255,7 @@
         "Název": "Jarní úklid - výprodej",
         "ID": 703,
         "Zobrazovat": "NE",
-        "": "Fri Apr 11 2025 00:00:00 GMT+0200 (Central European Summer Time)"
+        "": "#N/A"
       },
       {
         "Název": "MASAKR CEN",
