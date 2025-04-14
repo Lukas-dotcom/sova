@@ -124,6 +124,8 @@
         }
         prompt = `Vytvoř odpověď na zákaznickou recenzi. ` + prompt;
 
+        console.log("📤 Prompt pro API:", prompt);
+
         const res = await fetch("https://api.openai.com/v1/chat/completions", {
             method: "POST",
             headers: {
@@ -150,6 +152,7 @@
             globalBtn.textContent = `${rule.tlaciko} (vše) 🦉`;
             globalBtn.className = `e-button e-button--simple ai-generate-all-btn`;
             globalBtn.style.marginLeft = '1em';
+            globalBtn.style.background = '#c8e4ff';
             globalBtn.addEventListener("click", () => generateAllReplies(rule));
             const li = document.createElement("li");
             li.className = "c-tabs__item";
@@ -162,14 +165,25 @@
         const posts = document.querySelectorAll("li.c-box-list__item.c-post");
         for (const post of posts) {
             const reviewId = post.id.replace("id-", "");
+            const textarea = post.querySelector("textarea[name='text']");
+            if (textarea) {
+                textarea.value = "🕐 Generuji odpoved...";
+                textarea.disabled = true;
+            }
+
             const HEtextRecenze = post.querySelector("p.c-post__summary")?.innerText?.trim() || "";
             const HEpros = Array.from(post.querySelectorAll(".c-attributes-list--pros li")).map(el => el.innerText.trim()).filter(Boolean).join(", ");
             const HEcons = Array.from(post.querySelectorAll(".c-attributes-list--cons li")).map(el => el.innerText.trim()).filter(Boolean).join(", ");
 
             const response = await generateReply(rule.promt, HEtextRecenze, HEpros, HEcons, rule.model || "gpt-4-turbo", parseFloat(rule.temperature) || 0.7);
+            console.log(`💾 Ukladam odpoved pro review ID ${reviewId}:`, response);
             sessionStorage.setItem(`he-ai-reply-${reviewId}`, response);
+
+            if (textarea) {
+                textarea.value = response;
+                textarea.disabled = false;
+            }
         }
-        applyStoredReplies();
     }
 
     function applyStoredReplies() {
