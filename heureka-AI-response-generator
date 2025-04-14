@@ -92,11 +92,22 @@
 
             const textarea = post.querySelector("textarea[name='text']");
             if (textarea) {
+                const existingResponse = textarea.value?.trim();
+                const isPrewritten = existingResponse && existingResponse !== "🕐 Generuji odpoved...";
+
                 textarea.value = "🕐 Generuji odpoved...";
                 textarea.disabled = true;
 
                 try {
-                    const finalResponse = await generateReply(promptTemplate, HEtextRecenze, HEpros, HEcons, model, temperature);
+                    const finalResponse = await generateReply(
+                        promptTemplate,
+                        HEtextRecenze,
+                        HEpros,
+                        HEcons,
+                        model,
+                        temperature,
+                        isPrewritten ? existingResponse : ""
+                    );
                     console.log("✅ Odpoved od AI:", finalResponse);
                     textarea.value = finalResponse;
                 } catch (e) {
@@ -116,11 +127,15 @@
     }
 
     // KROK 5: Volani OpenAI API
-    async function generateReply(promptTemplate, HEtextRecenze, HEpros, HEcons, model, temperature) {
-        const prompt = promptTemplate
+    async function generateReply(promptTemplate, HEtextRecenze, HEpros, HEcons, model, temperature, priorResponse = "") {
+        let prompt = promptTemplate
             .replace("{HEtextRecenze}", HEtextRecenze)
             .replace("{HEpros}", HEpros)
             .replace("{HEcons}", HEcons);
+
+        if (priorResponse) {
+            prompt += `\n\nPri tvorbe se rid se obsahem odpovedi: ${priorResponse}`;
+        }
 
         console.log(`📤 Odesilam prompt na OpenAI (model: ${model}, temperature: ${temperature}):`, prompt);
 
@@ -149,7 +164,7 @@
     // START
     function startScript() {
         expandAllResponses();
-        safeInjectButtons(); // ← TADY SE MÁ ZAVOLAT
+        safeInjectButtons();
     }
 
     // Retry verze injectButtons
@@ -158,10 +173,10 @@
         if (posts.length > 0) {
             injectButtons();
         } else if (retries > 0) {
-            console.log(`⏳ Čekám na DOM... zbývá pokusů: ${retries}`);
+            console.log(`⏳ Cekam na DOM... zbyva pokusu: ${retries}`);
             setTimeout(() => safeInjectButtons(retries - 1, delay), delay);
         } else {
-            console.warn("⚠️ Nepodařilo se najít recenze, tlačítka nebyla injektována.");
+            console.warn("⚠️ Nepodarilo se najit recenze, tlacitka nebyla injektovana.");
         }
     }
 
