@@ -8,7 +8,6 @@
 
     console.log('🦉 Skript spusten na strance:', window.location.href);
 
-    // KROK 1: Nacteni konfigurace
     function fetchSettings() {
         console.log('📥 Nacitam nastaveni z:', SETTINGS_URL);
         GM_xmlhttpRequest({
@@ -32,7 +31,6 @@
         });
     }
 
-    // KROK 2: Otevri vsechny skryte sekce "Reagovat"
     function expandAllResponses() {
         const buttons = document.querySelectorAll("button.js-accordion__toggle");
         console.log(`🔧 Oteviram ${buttons.length} sekci „Reagovat“`);
@@ -44,7 +42,6 @@
         });
     }
 
-    // KROK 3: Pridani tlacitek ke kazde recenzi
     function injectButtons() {
         const posts = document.querySelectorAll("li.c-box-list__item.c-post");
         console.log(`🧩 Nalezeno ${posts.length} recenzi`);
@@ -76,27 +73,13 @@
         });
     }
 
-    // KROK 4: Generovani odpovedi na zaklade kliknuti
     async function handleGenerate(post, promptTemplate, model, temperature) {
         try {
             console.log("🟡 Generuji odpoved pro recenzi:", post.id);
 
             const HEtextRecenze = post.querySelector("p.c-post__summary")?.innerText?.trim() || "";
-            const HEpros = Array.from(post.querySelectorAll(".c-attributes-list--pros li"))
-                .map(el => el.innerText.trim())
-                .filter(Boolean)
-                .join(", ");
-            
-            const HEcons = Array.from(post.querySelectorAll(".c-attributes-list--cons li"))
-                .map(el => el.innerText.trim())
-                .filter(Boolean)
-                .join(", "); 
-            
-
-            console.log("📝 HEtextRecenze:", HEtextRecenze);
-            console.log("👍 HEpros:", HEpros);
-            console.log("👎 HEcons:", HEcons);
-            console.log("📦 Model:", model, "| 🎛️ Teplota:", temperature);
+            const HEpros = Array.from(post.querySelectorAll(".c-attributes-list--pros li")).map(el => el.innerText.trim()).filter(Boolean).join(", ");
+            const HEcons = Array.from(post.querySelectorAll(".c-attributes-list--cons li")).map(el => el.innerText.trim()).filter(Boolean).join(", ");
 
             const textarea = post.querySelector("textarea[name='text']");
             if (textarea) {
@@ -108,60 +91,38 @@
 
                 try {
                     const finalResponse = await generateReply(
-                        promptTemplate,
-                        HEtextRecenze,
-                        HEpros,
-                        HEcons,
-                        model,
-                        temperature,
-                        isPrewritten ? existingResponse : ""
+                        promptTemplate, HEtextRecenze, HEpros, HEcons, model, temperature, isPrewritten ? existingResponse : ""
                     );
-                    console.log("✅ Odpoved od AI:", finalResponse);
                     textarea.value = finalResponse;
                 } catch (e) {
                     textarea.value = "❌ Chyba pri generovani odpovedi.";
-                    console.error("❌ Chyba pri volani OpenAI API:", e);
                 } finally {
                     textarea.disabled = false;
                     textarea.scrollIntoView({ behavior: "smooth", block: "center" });
                     textarea.focus();
                 }
-            } else {
-                console.warn("⚠️ Nebylo nalezeno zadne textarea pole pro odpoved.");
             }
         } catch (e) {
             console.error("❌ Chyba handleGenerate:", e);
         }
     }
 
-    // KROK 5: Volani OpenAI API
     async function generateReply(promptTemplate, HEtextRecenze, HEpros, HEcons, model, temperature, priorResponse = "") {
         let prompt = promptTemplate;
 
         if (priorResponse) {
             prompt = `Při tvorbě se řiď obsahem této odpovědi: ${priorResponse}. ` + prompt;
         }
-        
         if (HEcons) {
             prompt = `Toto je co zákazníkovi vadilo: ${HEcons}. ` + prompt;
         }
-        
         if (HEpros) {
             prompt = `Toto je co zákazník na e-shopu chválí: ${HEpros}. ` + prompt;
         }
-        
         if (HEtextRecenze) {
             prompt = `Toto je text recenze zákazníka: ${HEtextRecenze}. ` + prompt;
         }
-        
         prompt = `Vytvoř odpověď na zákaznickou recenzi. ` + prompt;
-        
-
- 
-
-
-
-        console.log(`📤 Odesilam prompt na OpenAI (model: ${model}, temperature: ${temperature}):`, prompt);
 
         const res = await fetch("https://api.openai.com/v1/chat/completions", {
             method: "POST",
@@ -171,12 +132,7 @@
             },
             body: JSON.stringify({
                 model: model,
-                messages: [
-                    {
-                        role: "user",
-                        content: prompt
-                    }
-                ],
+                messages: [{ role: "user", content: prompt }],
                 temperature: temperature
             })
         });
@@ -185,13 +141,58 @@
         return data.choices?.[0]?.message?.content?.trim() || "[⚠️ Odpoved se nepodarilo ziskat]";
     }
 
-    // START
+    function injectGlobalButtons() {
+        const tabList = document.querySelector(".c-tabs__list");
+        if (!tabList) return;
+
+        promptRules.forEach((rule, index) => {
+            const globalBtn = document.createElement("button");
+            globalBtn.textContent = `${rule.tlaciko} (vše) 🦉`;
+            globalBtn.className = `e-button e-button--simple ai-generate-all-btn`;
+            globalBtn.style.marginLeft = '1em';
+            globalBtn.addEventListener("click", () => generateAllReplies(rule));
+            const li = document.createElement("li");
+            li.className = "c-tabs__item";
+            li.appendChild(globalBtn);
+            tabList.appendChild(li);
+        });
+    }
+
+    async function generateAllReplies(rule) {
+        const posts = document.querySelectorAll("li.c-box-list__item.c-post");
+        for (const post of posts) {
+            const reviewId = post.id.replace("id-", "");
+            const HEtextRecenze = post.querySelector("p.c-post__summary")?.innerText?.trim() || "";
+            const HEpros = Array.from(post.querySelectorAll(".c-attributes-list--pros li")).map(el => el.innerText.trim()).filter(Boolean).join(", ");
+            const HEcons = Array.from(post.querySelectorAll(".c-attributes-list--cons li")).map(el => el.innerText.trim()).filter(Boolean).join(", ");
+
+            const response = await generateReply(rule.promt, HEtextRecenze, HEpros, HEcons, rule.model || "gpt-4-turbo", parseFloat(rule.temperature) || 0.7);
+            sessionStorage.setItem(`he-ai-reply-${reviewId}`, response);
+        }
+        applyStoredReplies();
+    }
+
+    function applyStoredReplies() {
+        const posts = document.querySelectorAll("li.c-box-list__item.c-post");
+        posts.forEach(post => {
+            const reviewId = post.id.replace("id-", "");
+            const savedReply = sessionStorage.getItem(`he-ai-reply-${reviewId}`);
+            if (savedReply) {
+                const textarea = post.querySelector("textarea[name='text']");
+                if (textarea && !textarea.value.trim()) {
+                    textarea.value = savedReply;
+                }
+            }
+        });
+    }
+
     function startScript() {
         expandAllResponses();
         safeInjectButtons();
+        injectGlobalButtons();
+        setTimeout(applyStoredReplies, 1000);
     }
 
-    // Retry verze injectButtons
     function safeInjectButtons(retries = 6, delay = 200) {
         const posts = document.querySelectorAll("li.c-box-list__item.c-post");
         if (posts.length > 0) {
