@@ -90,7 +90,7 @@
             const HEcons = Array.from(post.querySelectorAll(".c-attributes-list--cons li"))
                 .map(el => el.innerText.trim())
                 .filter(Boolean)
-                .join(", ");
+                .join(", "); 
             
 
             console.log("📝 HEtextRecenze:", HEtextRecenze);
