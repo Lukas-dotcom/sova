@@ -148,7 +148,7 @@
             `Při tvorbě se řiď obsahem této odpovědi: ${priorResponse} `+=prompt;
         }
 
-
+ 
 
 
 
