@@ -133,19 +133,19 @@
         `Vytvoř odpověď na zákaznickou recenzi. `+=prompt;
 
         if (HEtextRecenze) {
-             `Toto je text recenze zákazníka: ${HEtextRecenze}`+=prompt;
+             `Toto je text recenze zákazníka: ${HEtextRecenze} `+=prompt;
        }
 
         if (HEpros) {
-            `Toto je co zákanzík na e-shopu chválí: ${HEpros}`+=prompt;
+            `Toto je co zákanzík na e-shopu chválí: ${HEpros} `+=prompt;
           }
 
         if (HEcons) {
-              `Toto je co zákazníkovi na e-shopu vadilo: ${HEcons}`+=prompt;
+              `Toto je co zákazníkovi na e-shopu vadilo: ${HEcons} `+=prompt;
           }    
 
         if (priorResponse) {
-            `Pri tvorbe se rid se obsahem odpovedi: ${priorResponse} `+=prompt;
+            `Při tvorbě se řiď obsahem této odpovědi: ${priorResponse} `+=prompt;
         }
 
 
