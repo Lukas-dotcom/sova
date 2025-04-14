@@ -139,19 +139,19 @@
         let prompt = promptTemplate;
 
         if (priorResponse) {
-            prompt = `Při tvorbě se řiď obsahem této odpovědi: ${priorResponse} ` + prompt;
+            prompt = `Při tvorbě se řiď obsahem této odpovědi: ${priorResponse}. ` + prompt;
         }
         
         if (HEcons) {
-            prompt = `Toto je co zákazníkovi vadilo: ${HEcons} ` + prompt;
+            prompt = `Toto je co zákazníkovi vadilo: ${HEcons}. ` + prompt;
         }
         
         if (HEpros) {
-            prompt = `Toto je co zákazník na e-shopu chválí: ${HEpros} ` + prompt;
+            prompt = `Toto je co zákazník na e-shopu chválí: ${HEpros}. ` + prompt;
         }
         
         if (HEtextRecenze) {
-            prompt = `Toto je text recenze zákazníka: ${HEtextRecenze} ` + prompt;
+            prompt = `Toto je text recenze zákazníka: ${HEtextRecenze}. ` + prompt;
         }
         
         prompt = `Vytvoř odpověď na zákaznickou recenzi. ` + prompt;
