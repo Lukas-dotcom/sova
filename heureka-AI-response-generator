@@ -82,8 +82,16 @@
             console.log("🟡 Generuji odpoved pro recenzi:", post.id);
 
             const HEtextRecenze = post.querySelector("p.c-post__summary")?.innerText?.trim() || "";
-            const HEpros = Array.from(post.querySelectorAll(".c-attributes-list--pros li")).map(el => el.innerText).join(", ") || "nic";
-            const HEcons = Array.from(post.querySelectorAll(".c-attributes-list--cons li")).map(el => el.innerText).join(", ") || "nic";
+            const HEpros = Array.from(post.querySelectorAll(".c-attributes-list--pros li"))
+                .map(el => el.innerText.trim())
+                .filter(Boolean)
+                .join(", ");
+            
+            const HEcons = Array.from(post.querySelectorAll(".c-attributes-list--cons li"))
+                .map(el => el.innerText.trim())
+                .filter(Boolean)
+                .join(", ");
+            
 
             console.log("📝 HEtextRecenze:", HEtextRecenze);
             console.log("👍 HEpros:", HEpros);
