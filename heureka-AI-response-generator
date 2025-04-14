@@ -128,25 +128,26 @@
 
     // KROK 5: Volani OpenAI API
     async function generateReply(promptTemplate, HEtextRecenze, HEpros, HEcons, model, temperature, priorResponse = "") {
-        let prompt = promptTemplate
-
-        `Vytvoř odpověď na zákaznickou recenzi. `+=prompt;
-
-        if (HEtextRecenze) {
-             `Toto je text recenze zákazníka: ${HEtextRecenze} `+=prompt;
-       }
-
-        if (HEpros) {
-            `Toto je co zákanzík na e-shopu chválí: ${HEpros} `+=prompt;
-          }
-
-        if (HEcons) {
-              `Toto je co zákazníkovi na e-shopu vadilo: ${HEcons} `+=prompt;
-          }    
+        let prompt = promptTemplate;
 
         if (priorResponse) {
-            `Při tvorbě se řiď obsahem této odpovědi: ${priorResponse} `+=prompt;
+            prompt = `Při tvorbě se řiď obsahem této odpovědi: ${priorResponse} ` + prompt;
         }
+        
+        if (HEcons) {
+            prompt = `Toto je co zákazníkovi vadilo: ${HEcons} ` + prompt;
+        }
+        
+        if (HEpros) {
+            prompt = `Toto je co zákazník na e-shopu chválí: ${HEpros} ` + prompt;
+        }
+        
+        if (HEtextRecenze) {
+            prompt = `Toto je text recenze zákazníka: ${HEtextRecenze} ` + prompt;
+        }
+        
+        prompt = `Vytvoř odpověď na zákaznickou recenzi. ` + prompt;
+        
 
  
 
