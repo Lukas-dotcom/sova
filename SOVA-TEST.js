@@ -36,6 +36,14 @@
                     log("Spouštím proces upnout verzi.");
                     upnutiVerzi(); 
                 }
+            },
+            {
+                buttonText: "Export kategorií s obrázky",
+                urlPattern: /export-kategorii/,
+                onClick: () => {
+                    log("Spouštím proces exportu kategorií s obrázky.");
+                    sovaExportCategoryImagesMaster(); 
+                }
             }
         ];
 
@@ -499,6 +507,77 @@ async function paramSortingHandler(currentParam, fullParamsList) {
     }
 }
 
+// === 1. MASTER FUNKCE: Spustí načítání a řízení slave oken ===
+async function sovaExportCategoryImagesMaster() {
+    const csvUrl = 'https://www.pocitarna.cz/export/categories.csv?partnerId=20&patternId=-31&hash=c03ee1fc2e02334005b73e0f82db7358644b58d37181503aca07d83ca99a6f8d';
+    log('Stahuji CSV kategorií...');
+    const csvText = await (await fetch(csvUrl)).text();
+    const rows = sovaParseCsv(csvText);
+    
+    const header = rows[0];
+    const idIndex = header.indexOf('id');
+    if (idIndex === -1) return log('Sloupec "id" nebyl nalezen.');
+
+    const urls = rows.slice(1).map(r => `https://www.pocitarna.cz/admin/kategorie-detail/?id=${r[idIndex]}`);
+    
+    const results = [];
+    await sovaRunQueueMaster({
+        name: 'category-image-fetcher',
+        urls,
+        windowName: 'sovawindow',
+        handler: async () => {}, // placeholder
+        onSlaveResult: (url, data) => {
+            const id = new URL(url).searchParams.get('id');
+            results.push({ id, urlObr: data.url });
+        },
+        done: () => {
+            log('Získávání obrázků dokončeno, generuji CSV...');
+            const mergedCsv = sovaJoinCsvWithImageUrls(rows, results);
+            sovaDownloadCsv(mergedCsv, 'kategorie-obrazky.csv');
+        }
+    });
+}
+
+// === 2. SLAVE FUNKCE: Běží v otevřeném okně a vyčítá obrázek ===
+async function sovaCategoryImageWorker() {
+    await sleep(500);
+    const img = document.querySelector('.product-image-gallery img');
+    if (!img) return sovaPostResultToMaster({ url: '' });
+    const absoluteUrl = location.origin + img.getAttribute('src');
+    sovaPostResultToMaster({ url: absoluteUrl });
+}
+
+// === 3. POMOCNÉ FUNKCE ===
+function sovaParseCsv(csvText) {
+    return csvText.trim().split('\n').map(line => line.split(';').map(v => v.replace(/^"|"$/g, '')));
+}
+
+function sovaJoinCsvWithImageUrls(rows, imageResults) {
+    const header = rows[0];
+    const idIndex = header.indexOf('id');
+    const extendedHeader = [...header, 'url-obr'];
+
+    const data = rows.slice(1).map(row => {
+        const id = row[idIndex];
+        const match = imageResults.find(r => r.id === id);
+        return [...row, match ? match.urlObr : ''];
+    });
+    return [extendedHeader, ...data].map(r => r.map(v => `"${v}"`).join(';')).join('\n');
+}
+
+function sovaDownloadCsv(csv, filename) {
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+
+
+
 // --- Automatický hook na základě URL a názvu okna ---
 
 sovaRunQueueWorker({
@@ -506,6 +585,13 @@ sovaRunQueueWorker({
     windowName: "sovaParametrSortingWindow",
     handler: paramSortingHandler
 });
+
+sovaRunQueueWorker({
+    matchUrl: url => url.includes("admin/kategorie-detail"),
+    windowName: "sovawindow",
+    handler: sovaCategoryImageWorker
+});
+
 
 
 
