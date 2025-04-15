@@ -888,7 +888,7 @@ async function upnutiVerzi() {
             console.error("[SOVA] Editor nebyl nalezen.");
             return;
         }
-
+ 
         // Získání obsahu z CodeMirror, pokud existuje
         let cmInstance = editor.closest(".v2FormField__codeEditor")?.querySelector(".CodeMirror");
         let cm = cmInstance?.CodeMirror;
@@ -944,7 +944,7 @@ async function upnutiVerzi() {
 };
 
 
-async function pridatParametry() {
+async function pridatParametry() { 
     'use strict';
 
     console.log("📌 Spuštěn skript pro přidání parametrů!");
