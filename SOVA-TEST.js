@@ -360,164 +360,70 @@ async function getRulesFor(featureName, settingSource = "BE") {
 // --- Funkce, která spouští zpracování na stránce s výpisem filtrů (otevře nové okno) ---
 // --- Obecné univerzální funkce ---
 
-async function sovaOpenQueueExecutor(list, windowName) {
-    if (!list || list.length === 0) return;
-    const currentItem = list.find(item => !item.processed);
-    if (!currentItem) return;
-
-    await GM_setValue("currentItem", JSON.stringify(currentItem));
-    await GM_setValue("fullQueue", JSON.stringify(list));
-
-    window.open(currentItem.url, windowName, "width=1200,height=800");
-}
-
 
 // === UNIVERZÁLNÍ MASTER ===
-async function sovaRunQueueMaster({ name, urls, windowName, handler, onSlaveResult, done }) {
+async function sovaRunQueueMaster({ name, urls, windowName }) {
     const queueKey = `queue--${name}`;
-    const resultsKey = `results--${name}`;
     const currentKey = `current--${name}`;
 
     const queue = urls.map(url => ({ url, processed: false }));
     GM_setValue(queueKey, JSON.stringify(queue));
-    GM_setValue(resultsKey, JSON.stringify([]));
     GM_setValue(currentKey, JSON.stringify(queue[0]));
 
-    await sleep(300); // ← zpomalíme otevření okna
+    await sleep(300); // krátké zpoždění před otevřením okna
 
     window.open(queue[0].url, windowName, "width=1200,height=800");
-
-    const interval = setInterval(() => {
-        let queue = JSON.parse(GM_getValue(queueKey, "[]"));
-        let results = JSON.parse(GM_getValue(resultsKey, "[]"));
-        let next = queue.find(i => !i.processed);
-
-        // === 📦 LOGUJEME AKTUÁLNÍ STAV VÝSLEDKŮ ===
-        console.log(`[SOVA][MASTER][${name}] ✅ ${results.length} výsledků načteno z`, resultsKey);
-        results.forEach((r, i) => {
-            const id = r.id || '❌';
-            const url = r.urlObr || r['url-obr'] || '⚠️ žádný obrázek';
-            console.log(`[SOVA][MASTER][${name}] [${i + 1}] ID: ${id} → ${url}`);
-        });
-
-        if (!next) {
-            clearInterval(interval);
-            done?.(results);
-        }
-    }, 1000);
 }
+
 
 
 
 // === UNIVERZÁLNÍ SLAVE ===
 async function sovaRunQueueWorker({ name, matchUrl, windowName, handler }) {
-    if (!matchUrl(window.location.href) || window.name !== windowName) return;
+    if (!matchUrl(location.href) || window.name !== windowName) return;
 
     const queueKey = `queue--${name}`;
-    const currentKey = `current--${name}`;
-
-    
-    console.log("window.name:", window.name);
-    console.log("currentKey:", currentKey);
-    console.log("currentItem RAW:", GM_getValue(currentKey));
-
     let queue = JSON.parse(GM_getValue(queueKey, "[]"));
-    let currentItem = JSON.parse(GM_getValue(currentKey, "{}"));
-    
-    if (!currentItem?.url) {
-        log("❌ currentItem je prázdný – čekám 300ms a reloaduji stránku.");
-        setTimeout(() => location.reload(), 300);
-        return;
-    }
-    
+    let currentItem = queue.find(item => !item.processed);
 
-    if (currentItem.processed) {
-        const nextItem = queue.find(i => !i.processed);
-        if (nextItem) {
-            log("✅ Přecházím na další položku.");
-            GM_setValue(currentKey, JSON.stringify(nextItem));
-            window.location.href = nextItem.url;
-        } else {
-            log("🎉 Všechny položky zpracovány.");
-            
-        }
+    if (!currentItem) {
+        // Vše zpracováno – zavoláme finální handler bez parametrů
+        await handler(null);
+        log("🎉 Všechny položky hotové, zavírám okno.");
+        window.close();
         return;
     }
 
-    if (window.location.href !== currentItem.url) {
-        log("↪️ Přesměrování na správnou URL...");
-        window.location.href = currentItem.url;
+    if (location.href !== currentItem.url) {
+        location.href = currentItem.url;
         return;
     }
 
-    // === Spuštění handleru
     const result = await handler(currentItem) || {};
 
-    // === Označení jako processed
     currentItem.processed = true;
-    queue = queue.map(i => i.url === currentItem.url ? currentItem : i);
     GM_setValue(queueKey, JSON.stringify(queue));
-    GM_setValue(currentKey, JSON.stringify(currentItem));
 
-    // === Kliknutí na "Uložit", pokud je třeba
     if (result.shouldSave) {
-        log("💾 Klikám na Uložit (očekávám reload).");
         const saveButton = document.querySelector("a.btn-action.submit-js[rel='saveAndStay']");
         if (saveButton) {
             saveButton.click();
+            return;
         } else {
-            log("⚠️ Tlačítko uložit nenalezeno – přecházím ručně na další.");
-            const nextItem = queue.find(i => !i.processed);
-            if (nextItem) {
-                GM_setValue(currentKey, JSON.stringify(nextItem));
-                window.location.href = nextItem.url;
-            } else {
-            }
+            log("⚠️ Nenalezeno tlačítko uložit, pokračuji dál bez uložení.");
         }
-        return;
     }
 
-    // === Přechod na další URL, pokud není potřeba reload
     const nextItem = queue.find(i => !i.processed);
     if (nextItem) {
-        log("➡️ Přecházím na další bez reloadu.");
-        GM_setValue(currentKey, JSON.stringify(nextItem));
-        window.location.href = nextItem.url;
+        location.href = nextItem.url;
     } else {
-        log("🏁 Hotovo, zavírám okno.");
+        // Fronta dokončena
+        await handler(null);
+        log("🎉 Všechny položky hotové, zavírám okno.");
+        window.close();
     }
 }
-
-
-
-// === SLAVE -> MASTER: POSLÁNÍ VÝSLEDKU ===
-function sovaPostResultToMaster(data, taskName = window.name.replace(/^sova/, "").toLowerCase()) {
-    const queueKey = `queue--${taskName}`;
-    const resultsKey = `results--${taskName}`;
-    const currentKey = `current--${taskName}`;
-
-    let queue = JSON.parse(GM_getValue(queueKey, "[]"));
-    let currentItem = JSON.parse(GM_getValue(currentKey, "{}"));
-
-    currentItem.processed = true;
-    GM_setValue(currentKey, JSON.stringify(currentItem));
-
-    queue = queue.map(i => i.url === currentItem.url ? currentItem : i);
-    GM_setValue(queueKey, JSON.stringify(queue));
-
-    let results = JSON.parse(GM_getValue(resultsKey, "[]"));
-
-    const id = new URL(currentItem.url).searchParams.get("id");
-    const merged = { id, url: currentItem.url, ...data }; // <– doplněno ID i URL
-
-    results.push(merged);
-    GM_setValue(resultsKey, JSON.stringify(results));
-
-    console.log(`[SOVA][SLAVE→MASTER] Přidávám výsledek:`, merged);
-}
-
-
-
 
 
 // --- Řazení parametrů (master funkce) ---
@@ -636,40 +542,47 @@ async function sovaExportCategoryImagesMaster() {
     const rows = sovaParseCsv(csvText);
     const header = rows[0];
     const idIndex = header.indexOf('id');
+
     if (idIndex === -1) return log('Sloupec "id" nebyl nalezen.');
+
     const urls = rows.slice(1).map(r => `https://644482.myshoptet.com/admin/kategorie-detail/?id=${r[idIndex]}`);
 
     await sovaRunQueueMaster({
         name: 'category-image-fetcher',
         urls,
-        windowName: 'sovawindow',
-        handler: () => {},
-        done: () => {
-            log('Získávání obrázků dokončeno, generuji CSV...');
-            const results = JSON.parse(GM_getValue("results--category-image-fetcher", "[]"));
-            const mergedCsv = sovaJoinCsvWithImageUrls(rows, results);
-            sovaDownloadCsv(mergedCsv, 'kategorie-obrazky.csv');
-        }
+        windowName: 'sovawindow'
     });
 }
+
  
 
 // === 2. SLAVE FUNKCE: Běží v otevřeném okně a vyčítá obrázek ===
 async function sovaCategoryImageWorker(currentItem) {
-    await sleep(500);
-    const img = document.querySelector('.product-image-gallery img');
-    const id = new URLSearchParams(window.location.search).get("id");
-
-    let absoluteUrl = img ? location.origin + img.getAttribute('src') : '';
-    if (absoluteUrl.includes('/productImageMissingDetail.svg')) {
-        absoluteUrl = ''; // Ignorujeme placeholder
+    if (!currentItem) {
+        // Fronta dokončena – export CSV výsledku
+        const results = JSON.parse(GM_getValue('category-image-results', '[]'));
+        const rows = [['id', 'url-obr'], ...results.map(({ id, urlObr }) => [id, urlObr])];
+        const csvContent = rows.map(r => r.join(';')).join('\r\n');
+        sovaDownloadCsv(csvContent, 'kategorie-obrazky.csv');
+        return;
     }
 
-    console.log(`[SOVA][Obrázek] Kategorie ID: ${id} → ${absoluteUrl || '⚠️ žádný obrázek nenalezen'}`);
+    await sleep(500);
+    const img = document.querySelector('.product-image-gallery img');
+    const id = new URLSearchParams(location.search).get("id");
 
-    sovaPostResultToMaster({ id, urlObr: absoluteUrl });
+    let absoluteUrl = img ? location.origin + img.getAttribute('src') : '';
+    if (absoluteUrl.includes('/productImageMissingDetail.svg')) absoluteUrl = '';
+
+    let results = JSON.parse(GM_getValue('category-image-results', '[]'));
+    results.push({ id, urlObr: absoluteUrl });
+    GM_setValue('category-image-results', JSON.stringify(results));
+
+    log(`[SOVA] Kategorie ID: ${id} → ${absoluteUrl || '⚠️ žádný obrázek nenalezen'}`);
+
     return { shouldSave: false };
 }
+
 
 
 
