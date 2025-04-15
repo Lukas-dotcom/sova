@@ -486,7 +486,7 @@ async function raditHodnotyFiltruMaster() {
 
     if (!paramsList.length) return log("Žádné parametry k řazení.");
 
-    GM_setValue("paramRules--raditHodnotyFiltruMaster", JSON.stringify(paramRules));
+    GM_setValue("paramRules", JSON.stringify(paramRules));
 
     await sovaRunQueueMaster({
         name: "raditHodnotyFiltruMaster",
