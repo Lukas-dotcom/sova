@@ -513,10 +513,15 @@ async function sovaParamSortingWorker(currentItem) {
     log(`🔍 Název parametru vyčtený ze stránky: "${paramName}"`);
     let oddelovac = paramRules[paramName] || null;
 
-    let tbody = document.querySelector("table.table tbody");
+    let table = document.querySelector("table.table");
+    if (!table) {
+        console.error("Nebyla nalezena tabulka s hodnotami.");
+        return;
+    }
+    let tbody = table.querySelector("tbody");
     if (!tbody) {
-        log("⚠️ Nebyla nalezena tabulka parametrů.");
-        return { shouldSave: false };
+        console.error("Nebyl nalezen obsah tabulky.");
+        return;
     }
 
     let rows = Array.from(tbody.querySelectorAll("tr"));
@@ -524,16 +529,18 @@ async function sovaParamSortingWorker(currentItem) {
         let a = row.querySelector("td:nth-child(2) a.table__detailLink");
         let text = a ? a.textContent.trim() : "";
         let input = row.querySelector("td.table__cell--actions input[name='priority[]']");
-        return { row, text, origValue: input ? input.value : "" };
+        let origValue = input ? input.value : null;
+        return { row, text, origValue };
     });
 
     if (oddelovac && oddelovac.toLowerCase() !== "neradit") {
-        log(`↔️ Řazení parametru "${paramName}" podle oddělovače "${oddelovac}"`);
+        log(`Řazení s použitím oddělovače '${oddelovac}'`);
 
         rowsData.forEach(item => {
             let parts = item.text.split(oddelovac);
             if (parts.length === 2) {
-                let [part1, part2] = parts.map(p => parseFloat(p.replace(/\s/g, "").replace(",", ".")));
+                let part1 = parseFloat(parts[0].trim().replace(/\s/g, ""));
+                let part2 = parseFloat(parts[1].trim().replace(/\s/g, ""));
                 item.valid = !(isNaN(part1) || isNaN(part2));
                 if (item.valid) {
                     item.num1 = part1;
@@ -543,31 +550,38 @@ async function sovaParamSortingWorker(currentItem) {
                 item.valid = false;
             }
         });
-
+		
         rowsData.sort((a, b) => {
             if (a.valid && b.valid) {
                 return a.num1 !== b.num1 ? a.num1 - b.num1 : a.num2 - b.num2;
             }
             return a.valid ? -1 : b.valid ? 1 : 0;
         });
-
     } else {
-        log(`↔️ Standardní řazení parametru "${paramName}"`);
-
+        log("Standardní řazení (rozdělení podle čísla a písmena).");
         rowsData.forEach(item => {
-            const text = item.text;
+            let text = item.text;
             if (text === "NE" || text === "-") {
                 item.sortKey = { group: 3, key: text };
             } else if (/^\d/.test(text)) {
-                const numStr = text.match(/^([\d\s.,]+)/)?.[1]?.replace(/\s/g, "").replace(",", ".") || "";
-                const numVal = parseFloat(numStr);
-                item.sortKey = { group: 1, key: isNaN(numVal) ? Infinity : numVal };
+                let match = text.match(/^([\d\s.,]+)/);
+                if (match) {
+                    let numStr = match[1].replace(/\s/g, "").replace(/,/g, ".");
+                    let numVal = parseFloat(numStr);
+                    item.sortKey = { group: 1, key: isNaN(numVal) ? Infinity : numVal };
+                } else {
+                    item.sortKey = { group: 1, key: Infinity };
+                }
             } else if (/^[A-Za-z]/.test(text)) {
                 item.sortKey = { group: 2, key: text.toLowerCase() };
             } else {
                 item.sortKey = { group: 3, key: text };
             }
         });
+
+
+
+
 
         rowsData.sort((a, b) => {
             if (a.sortKey.group !== b.sortKey.group) {
@@ -577,11 +591,16 @@ async function sovaParamSortingWorker(currentItem) {
         });
     }
 
-    // Přeuspořádání DOM tabulky
+    log("Seřazené hodnoty: " + JSON.stringify(rowsData.map(item => item.text)));
+    await sleep(delayMs);
+
+
     tbody.innerHTML = "";
-    rowsData.forEach((item, index) => {
+    rowsData.forEach(item => {
         let input = item.row.querySelector("td.table__cell--actions input[name='priority[]']");
-        if (input) input.value = (index + 1) * 10; // Nastavení nové priority
+        if (input && item.origValue !== null) {
+            input.value = item.origValue;
+        }
         tbody.appendChild(item.row);
     });
 
