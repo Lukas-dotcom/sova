@@ -647,7 +647,7 @@ async function sovaCategoryImageWorker(currentItem) {
 
 
 // === 3. POMOCNÉ FUNKCE ===
-function sovaParseCsv(csvText) {
+function sovaParseCsv(csvText) { 
     const lines = csvText.trim().split('\n');
     return lines.map((line, index) => {
         const parsed = parseCsvLine(line).map(cell => cell.replace(/^"|"$/g, ''));
