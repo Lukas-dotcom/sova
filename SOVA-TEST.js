@@ -498,7 +498,7 @@ async function sovaParamSortingWorker(currentItem) {
     // Získáme jméno parametru z nadpisu stránky
     let paramNameElem = null;
     for (let i = 0; i < 20; i++) {
-        paramNameElem = document.querySelector(".content-header h1 strong");
+        paramNameElem = document.querySelector("h1 strong");
         if (paramNameElem) break;
         await sleep(200); // čeká max 4 sekundy celkem
     }
