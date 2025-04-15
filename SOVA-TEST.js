@@ -644,14 +644,16 @@ async function sovaExportCategoryImagesMaster() {
 
 
 // === 2. SLAVE FUNKCE: Běží v otevřeném okně a vyčítá obrázek ===
-async function sovaCategoryImageWorker() {
+async function sovaCategoryImageWorker(currentItem) {
     await sleep(500);
     const img = document.querySelector('.product-image-gallery img');
-    if (!img) return sovaPostResultToMaster({ url: '' });
-    const absoluteUrl = location.origin + img.getAttribute('src');
-    sovaPostResultToMaster({ url: absoluteUrl });
-    return { shouldSave: false }
+    const absoluteUrl = img ? location.origin + img.getAttribute('src') : '';
+    const id = new URLSearchParams(window.location.search).get("id");
+
+    sovaPostResultToMaster({ id, urlObr: absoluteUrl });
+    return { shouldSave: false };
 }
+
 
 // === 3. POMOCNÉ FUNKCE ===
 function sovaParseCsv(csvText) {
