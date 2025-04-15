@@ -607,7 +607,7 @@ async function paramSortingHandler(currentParam) {
 
     return { shouldSave: true };
 }
-
+ 
 
 async function sovaExportCategoryImagesMaster() {
     const csvUrl = 'https://644482.myshoptet.com/user/documents/upload/categories-test.csv';
