@@ -360,14 +360,17 @@ async function getRulesFor(featureName, settingSource = "BE") {
 // --- Funkce, která spouští zpracování na stránce s výpisem filtrů (otevře nové okno) ---
 // --- Obecné univerzální funkce ---
 
-function sovaOpenQueueExecutor(list, windowName) {
+async function sovaOpenQueueExecutor(list, windowName) {
     if (!list || list.length === 0) return;
     const currentItem = list.find(item => !item.processed);
     if (!currentItem) return;
-    GM_setValue("currentItem", JSON.stringify(currentItem));
-    GM_setValue("fullQueue", JSON.stringify(list));
+
+    await GM_setValue("currentItem", JSON.stringify(currentItem));
+    await GM_setValue("fullQueue", JSON.stringify(list));
+
     window.open(currentItem.url, windowName, "width=1200,height=800");
 }
+
 
 // === UNIVERZÁLNÍ MASTER ===
 async function sovaRunQueueMaster({ name, urls, windowName, handler, onSlaveResult, done }) {
