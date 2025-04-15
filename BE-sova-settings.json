@@ -301,7 +301,7 @@
       }
     ]
   },
-  "raditHodnotyFiltru": {
+  "raditHodnotyFiltruMaster": {
     "columns": [
       "Parametr",
       "Oddelovac"
