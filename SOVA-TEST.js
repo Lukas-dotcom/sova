@@ -496,13 +496,19 @@ async function sovaParamSortingWorker(currentItem) {
     let paramRules = JSON.parse(GM_getValue("paramSortingRules", "{}"));
 
     // Získáme jméno parametru z nadpisu stránky
-    await sleep(300);
-    let paramNameElem = document.querySelector(".content-header h1 strong");
-    log(`🔍 Název parametru vyčtený ze stránky raw: "${paramNameElem}"`); 
+    let paramNameElem = null;
+    for (let i = 0; i < 20; i++) {
+        paramNameElem = document.querySelector(".content-header h1 strong");
+        if (paramNameElem) break;
+        await sleep(200); // čeká max 4 sekundy celkem
+    }
+    log(`🔍 Název parametru vyčtený ze stránky raw: "${paramNameElem}"`);
+    
     if (!paramNameElem) {
-        log("⚠️ Nenalezen nadpis parametru.");
+        log("⚠️ Nenalezen nadpis parametru ani po čekání.");
         return { shouldSave: false };
     }
+    
     let paramName = paramNameElem.textContent.trim();
     log(`🔍 Název parametru vyčtený ze stránky: "${paramName}"`);
     let oddelovac = paramRules[paramName] || null;
