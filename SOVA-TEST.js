@@ -714,17 +714,32 @@ function sovaJoinCsvWithImageUrls(rows, imageResults) {
     const extendedHeader = [...header, 'url-obr'];
 
     const data = rows.slice(1).map(row => {
-        const id = row[idIndex].replace(/^"|"$/g, ''); // očistíme případné uvozovky
-        const match = imageResults.find(r => `${r.id}` === id);
-        return [...row, match ? match.urlObr : ''];
+        const csvId = row[idIndex].replace(/^"|"$/g, ''); // odstranění uvozovek kolem ID
+        const match = imageResults.find(r => `${r.id}` === csvId);
+        const imageUrl = match?.urlObr || '';
+        return [...row, imageUrl];
     });
 
-    return [extendedHeader, ...data].map(r => r.map(v => `"${v}"`).join(';')).join('\n');
+    const escape = (val) => {
+        if (val == null) return '';
+        val = String(val);
+        const needsEscape = val.includes(';') || val.includes('"') || val.includes('\n') || val.includes('\r');
+        if (needsEscape) {
+            val = val.replace(/"/g, '""'); // escapovat uvozovky
+            return `"${val}"`;
+        }
+        return val;
+    };
+
+    const allRows = [extendedHeader, ...data];
+    return allRows.map(r => r.map(escape).join(';')).join('\r\n');
 }
 
 
+
 function sovaDownloadCsv(csv, filename) {
-    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const BOM = '\uFEFF'; // Byte Order Mark pro Excel
+    const blob = new Blob([BOM + csv], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
     link.download = filename;
@@ -732,6 +747,7 @@ function sovaDownloadCsv(csv, filename) {
     link.click();
     document.body.removeChild(link);
 }
+
 
 
 
