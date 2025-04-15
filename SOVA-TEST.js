@@ -758,7 +758,7 @@ function sovaDownloadCsv(csvContent, filename) {
 
 
 
-
+ 
 async function paramSortingSingle() {
     log("Spouštím řazení hodnot aktuálního parametru (jediný parametr) v aktuálním okně.");
     const delayMs = 500;
