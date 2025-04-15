@@ -502,6 +502,7 @@ async function sovaParamSortingWorker(currentItem) {
         return { shouldSave: false };
     }
     let paramName = paramNameElem.textContent.trim();
+    log(`🔍 Název parametru vyčtený ze stránky: "${paramName}"`);
     let oddelovac = paramRules[paramName] || null;
 
     let tbody = document.querySelector("table.table tbody");
