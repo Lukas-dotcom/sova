@@ -426,7 +426,7 @@ async function sovaRunQueueWorker({ name, matchUrl, windowName, handler }) {
             window.location.href = nextItem.url;
         } else {
             log("🎉 Všechny položky zpracovány.");
-            window.close();
+            
         }
         return;
     }
@@ -459,7 +459,6 @@ async function sovaRunQueueWorker({ name, matchUrl, windowName, handler }) {
                 GM_setValue(currentKey, JSON.stringify(nextItem));
                 window.location.href = nextItem.url;
             } else {
-                window.close();
             }
         }
         return;
@@ -473,7 +472,6 @@ async function sovaRunQueueWorker({ name, matchUrl, windowName, handler }) {
         window.location.href = nextItem.url;
     } else {
         log("🏁 Hotovo, zavírám okno.");
-        window.close();
     }
 }
 
