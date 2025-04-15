@@ -632,7 +632,7 @@ async function sovaExportCategoryImagesMaster() {
         }
     });
 }
-
+ 
 
 // === 2. SLAVE FUNKCE: Běží v otevřeném okně a vyčítá obrázek ===
 async function sovaCategoryImageWorker(currentItem) {
