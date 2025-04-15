@@ -713,8 +713,20 @@ function sovaJoinCsvWithImageUrls(rows, imageResults) {
     const idIndex = header.indexOf('id');
     const extendedHeader = [...header, 'url-obr'];
 
+    const csvIds = rows.slice(1).map(row => row[idIndex].replace(/^"|"$/g, ''));
+    const resultIds = imageResults.map(r => String(r.id));
+
+    // Log pro kontrolu ID
+    console.log('[SOVA][ID][CSV]', csvIds);
+    console.log('[SOVA][ID][RESULTS]', resultIds);
+
+    const unmatched = csvIds.filter(id => !resultIds.includes(id));
+    if (unmatched.length) {
+        console.warn('[SOVA][ID][UNMATCHED]', unmatched);
+    }
+
     const data = rows.slice(1).map(row => {
-        const csvId = row[idIndex].replace(/^"|"$/g, ''); // odstranění uvozovek kolem ID
+        const csvId = row[idIndex].replace(/^"|"$/g, '');
         const match = imageResults.find(r => `${r.id}` === csvId);
         const imageUrl = match?.urlObr || '';
         return [...row, imageUrl];
@@ -725,7 +737,7 @@ function sovaJoinCsvWithImageUrls(rows, imageResults) {
         val = String(val);
         const needsEscape = val.includes(';') || val.includes('"') || val.includes('\n') || val.includes('\r');
         if (needsEscape) {
-            val = val.replace(/"/g, '""'); // escapovat uvozovky
+            val = val.replace(/"/g, '""');
             return `"${val}"`;
         }
         return val;
@@ -737,9 +749,13 @@ function sovaJoinCsvWithImageUrls(rows, imageResults) {
 
 
 
-function sovaDownloadCsv(csv, filename) {
-    const BOM = '\uFEFF'; // Byte Order Mark pro Excel
-    const blob = new Blob([BOM + csv], { type: 'text/csv;charset=utf-8;' });
+
+function sovaDownloadCsv(csvContent, filename) {
+    // Převod UTF-8 na Windows-1252
+    const encoder = new TextEncoder('windows-1252', { NONSTANDARD_allowLegacyEncoding: true });
+    const encoded = encoder.encode(csvContent);
+
+    const blob = new Blob([encoded], { type: 'text/csv;charset=windows-1252;' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
     link.download = filename;
@@ -747,6 +763,7 @@ function sovaDownloadCsv(csv, filename) {
     link.click();
     document.body.removeChild(link);
 }
+
 
 
 
