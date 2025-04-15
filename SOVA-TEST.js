@@ -388,12 +388,22 @@ async function sovaRunQueueMaster({ name, urls, windowName, handler, onSlaveResu
         let queue = JSON.parse(GM_getValue(queueKey, "[]"));
         let results = JSON.parse(GM_getValue(resultsKey, "[]"));
         let next = queue.find(i => !i.processed);
+
+        // === 📦 LOGUJEME AKTUÁLNÍ STAV VÝSLEDKŮ ===
+        console.log(`[SOVA][MASTER][${name}] ✅ ${results.length} výsledků načteno z`, resultsKey);
+        results.forEach((r, i) => {
+            const id = r.id || '❌';
+            const url = r.urlObr || r['url-obr'] || '⚠️ žádný obrázek';
+            console.log(`[SOVA][MASTER][${name}] [${i + 1}] ID: ${id} → ${url}`);
+        });
+
         if (!next) {
             clearInterval(interval);
             done?.(results);
         }
     }, 1000);
 }
+
 
 
 // === UNIVERZÁLNÍ SLAVE ===
