@@ -506,10 +506,13 @@ function sovaPostResultToMaster(data, taskName = window.name.replace(/^sova/, ""
     GM_setValue(queueKey, JSON.stringify(queue));
 
     let results = JSON.parse(GM_getValue(resultsKey, "[]"));
-    results.push({ url: currentItem.url, ...data });
+    const merged = { url: currentItem.url, ...data };
+    results.push(merged);
     GM_setValue(resultsKey, JSON.stringify(results));
 
+    console.log(`[SOVA][SLAVE→MASTER] Přidávám výsledek:`, merged);
 }
+
 
 
 
