@@ -58,7 +58,7 @@
 
         // === SLAVE PRO ŘAZENÍ PARAMETRŮ ===
         sovaRunQueueWorker({
-            name: "sovaParamSortingMaster",
+            name: "param-sorting",
             matchUrl: url => url.includes("parametry-pro-filtrovani-detail"),
             windowName: "sovaParamSortingWindow",
             handler: sovaParamSortingWorker
