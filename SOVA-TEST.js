@@ -16,7 +16,7 @@
                 onClick: () => {
                     log("Spouštím proces řazení parametrů.");
                     // Inicializace seznamu parametrů a otevření prvního URL
-                    raditHodnotyFiltru(); 
+                    raditHodnotyFiltruMaster(); 
                 }
             },
 
@@ -56,12 +56,22 @@
             }
         });
 
-        // Pokud jde o detail parametru, automaticky spusť logiku řazení
+        // === SLAVE PRO ŘAZENÍ PARAMETRŮ ===
         sovaRunQueueWorker({
+            name: "raditHodnotyFiltruMaster",
             matchUrl: url => url.includes("parametry-pro-filtrovani-detail"),
             windowName: "sovaParametrSortingWindow",
             handler: paramSortingHandler
         });
+
+        // === SLAVE PRO EXPORT OBRÁZKŮ KATEGORIÍ ===
+        sovaRunQueueWorker({
+            name: "category-image-fetcher",
+            matchUrl: url => url.includes("admin/kategorie-detail"),
+            windowName: "sovawindow",
+            handler: sovaCategoryImageWorker
+        });
+
         
 
       // --- Načtení externího HTML obsahu pro stránku admin/sova ---
@@ -359,67 +369,132 @@ function sovaOpenQueueExecutor(list, windowName) {
     window.open(currentItem.url, windowName, "width=1200,height=800");
 }
 
+// === UNIVERZÁLNÍ MASTER ===
+async function sovaRunQueueMaster({ name, urls, windowName, handler, onSlaveResult, done }) {
+    const queueKey = `queue--${name}`;
+    const resultsKey = `results--${name}`;
+    const currentKey = `current--${name}`;
+
+    const queue = urls.map(url => ({ url, processed: false }));
+    GM_setValue(queueKey, JSON.stringify(queue));
+    GM_setValue(resultsKey, JSON.stringify([]));
+    GM_setValue(currentKey, JSON.stringify(queue[0]));
+
+    window.open(queue[0].url, windowName, "width=1200,height=800");
+
+    // Slave okenní logika pak vyčítá postupně a volá onSlaveResult
+    const interval = setInterval(() => {
+        let queue = JSON.parse(GM_getValue(queueKey, "[]"));
+        let results = JSON.parse(GM_getValue(resultsKey, "[]"));
+        let next = queue.find(i => !i.processed);
+        if (!next) {
+            clearInterval(interval);
+            done?.(results);
+        }
+    }, 1000);
+}
+
+// === UNIVERZÁLNÍ SLAVE ===
 async function sovaRunQueueWorker({ matchUrl, windowName, handler }) {
     if (!matchUrl(window.location.href) || window.name !== windowName) return;
 
-    let fullQueue = JSON.parse(GM_getValue("fullQueue", "[]"));
-    let currentItem = JSON.parse(GM_getValue("currentItem", "{}"));
+    const currentTask = window.name.replace(/^sova/, "").toLowerCase();
+    const queueKey = `queue--${currentTask}`;
+    const currentKey = `current--${currentTask}`;
+
+    let queue = JSON.parse(GM_getValue(queueKey, "[]"));
+    let currentItem = JSON.parse(GM_getValue(currentKey, "{}"));
 
     if (currentItem.processed) {
-        const nextItem = fullQueue.find(i => !i.processed);
+        const nextItem = queue.find(i => !i.processed);
         if (nextItem) {
-            GM_setValue("currentItem", JSON.stringify(nextItem));
+            GM_setValue(currentKey, JSON.stringify(nextItem));
             window.location.href = nextItem.url;
         } else {
-            log("Všechny položky byly zpracovány.");
+            log("Všechny položky zpracovány.");
             window.close();
         }
         return;
     }
 
     if (window.location.href !== currentItem.url) {
-        log("Přesměrovávám na očekávanou URL...");
+        log("Přesměrování na správnou URL...");
         window.location.href = currentItem.url;
         return;
     }
 
-    await handler(currentItem, fullQueue);
+    await handler(currentItem);
 }
+
+// === SLAVE -> MASTER: POSLÁNÍ VÝSLEDKU ===
+function sovaPostResultToMaster(data, taskName = window.name.replace(/^sova/, "").toLowerCase()) {
+    const queueKey = `queue--${taskName}`;
+    const resultsKey = `results--${taskName}`;
+    const currentKey = `current--${taskName}`;
+
+    let queue = JSON.parse(GM_getValue(queueKey, "[]"));
+    let currentItem = JSON.parse(GM_getValue(currentKey, "{}"));
+
+    currentItem.processed = true;
+    GM_setValue(currentKey, JSON.stringify(currentItem));
+
+    queue = queue.map(i => i.url === currentItem.url ? currentItem : i);
+    GM_setValue(queueKey, JSON.stringify(queue));
+
+    let results = JSON.parse(GM_getValue(resultsKey, "[]"));
+    results.push({ url: currentItem.url, ...data });
+    GM_setValue(resultsKey, JSON.stringify(results));
+
+    const next = queue.find(i => !i.processed);
+    if (next) {
+        GM_setValue(currentKey, JSON.stringify(next));
+        window.location.href = next.url;
+    } else {
+        window.close();
+    }
+}
+
 
 // --- Řazení parametrů (master funkce) ---
 
-async function raditHodnotyFiltru() {
+async function raditHodnotyFiltruMaster() {
     log("Zpracovávám stránku s výpisem filtrů (pro nové okno)...");
-    let rows = document.querySelectorAll("table.table tbody tr");
+    const rows = document.querySelectorAll("table.table tbody tr");
     if (!rows.length) return log("Na stránce nebyly nalezeny žádné řádky.");
 
-    let rules = await getRulesFor("raditHodnotyFiltru");
+    const rules = await getRulesFor("raditHodnotyFiltruMaster");
     if (!rules) return log("Pravidla nejsou dostupná.");
 
-    let paramRules = {};
+    const paramRules = {};
     rules.forEach(rule => {
         paramRules[rule.Parametr] = rule.Oddelovac;
     });
-    GM_setValue("paramRules", JSON.stringify(paramRules));
 
-    let paramsList = [];
+    const paramsList = [];
     rows.forEach(row => {
-        let link = row.querySelector("a.table__detailLink");
+        const link = row.querySelector("a.table__detailLink");
         if (!link) return;
-
-        let paramName = link.textContent.trim();
-        let url = link.href;
-        let separator = paramRules[paramName];
-
-        if (separator && separator.toLowerCase() === "neradit") {
-            log(`Přeskakuji parametr '${paramName}' (nastaveno "neradit").`);
+        const paramName = link.textContent.trim();
+        const url = link.href;
+        const separator = paramRules[paramName];
+        if (separator?.toLowerCase() !== "neradit") {
+            paramsList.push({ name: paramName, url, oddelovac: separator });
         } else {
-            paramsList.push({ name: paramName, url, oddelovac: separator, processed: false });
+            log(`Přeskakuji parametr '${paramName}' (nastaveno \"neradit\").`);
         }
     });
 
     if (!paramsList.length) return log("Žádné parametry k řazení.");
-    sovaOpenQueueExecutor(paramsList, "sovaParametrSortingWindow");
+
+    GM_setValue("paramRules--raditHodnotyFiltruMaster", JSON.stringify(paramRules));
+
+    await sovaRunQueueMaster({
+        name: "raditHodnotyFiltruMaster",
+        urls: paramsList.map(p => p.url),
+        windowName: "sovaParametrSortingWindow",
+        handler: () => {},
+        done: () => log("Všechny parametry byly úspěšně seřazeny.")
+    });
 }
 
 
@@ -507,25 +582,22 @@ async function paramSortingHandler(currentParam, fullParamsList) {
     }
 }
 
-// === 1. MASTER FUNKCE: Spustí načítání a řízení slave oken ===
 async function sovaExportCategoryImagesMaster() {
     const csvUrl = 'https://644482.myshoptet.com/export/categories.csv?partnerId=14&patternId=-31&hash=81eee7188564ba1c6556ed1722a4114f2935bea871f3dd17f820eefe080b57a1';
     log('Stahuji CSV kategorií...');
     const csvText = await (await fetch(csvUrl)).text();
     const rows = sovaParseCsv(csvText);
-    
     const header = rows[0];
     const idIndex = header.indexOf('id');
     if (idIndex === -1) return log('Sloupec "id" nebyl nalezen.');
-
-    const urls = rows.slice(1).map(r => `https://www.pocitarna.cz/admin/kategorie-detail/?id=${r[idIndex]}`);
-    
+    const urls = rows.slice(1).map(r => `https://644482.myshoptet.com/admin/kategorie-detail/?id=${r[idIndex]}`);
     const results = [];
+
     await sovaRunQueueMaster({
         name: 'category-image-fetcher',
         urls,
         windowName: 'sovawindow',
-        handler: async () => {}, // placeholder
+        handler: () => {},
         onSlaveResult: (url, data) => {
             const id = new URL(url).searchParams.get('id');
             results.push({ id, urlObr: data.url });
@@ -577,24 +649,6 @@ function sovaDownloadCsv(csv, filename) {
 
 
 
-
-// --- Automatický hook na základě URL a názvu okna ---
-
-sovaRunQueueWorker({
-    matchUrl: url => url.includes("parametry-pro-filtrovani-detail"),
-    windowName: "sovaParametrSortingWindow",
-    handler: paramSortingHandler
-});
-
-sovaRunQueueWorker({
-    matchUrl: url => url.includes("admin/kategorie-detail"),
-    windowName: "sovawindow",
-    handler: sovaCategoryImageWorker
-});
-
-
-
-
 async function paramSortingSingle() {
     log("Spouštím řazení hodnot aktuálního parametru (jediný parametr) v aktuálním okně.");
     const delayMs = 500;
@@ -611,7 +665,7 @@ async function paramSortingSingle() {
 
     // Načteme pravidla řazení z rulesList.json
     try {
-        const allParamRules = await getRulesFor("raditHodnotyFiltru");
+        const allParamRules = await getRulesFor("raditHodnotyFiltruMaster");
         log("Načtená pravidla z rulesList: " + JSON.stringify(allParamRules));
         
         // Získáme pravidlo pro aktuální parametr – pokud není nalezeno, použijeme výchozí (tj. standardní řazení)
