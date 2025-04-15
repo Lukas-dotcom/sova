@@ -648,8 +648,38 @@ async function sovaCategoryImageWorker(currentItem) {
 
 // === 3. POMOCNÉ FUNKCE ===
 function sovaParseCsv(csvText) {
-    return csvText.trim().split('\n').map(line => line.split(';').map(v => v.replace(/^"|"$/g, '')));
+    const lines = csvText.trim().split('\n');
+    return lines.map(parseCsvLine);
 }
+
+function parseCsvLine(line) {
+    const result = [];
+    let current = '';
+    let insideQuotes = false;
+
+    for (let i = 0; i < line.length; i++) {
+        const char = line[i];
+        const next = line[i + 1];
+
+        if (char === '"') {
+            if (insideQuotes && next === '"') {
+                current += '"'; // Escapovaná uvozovka
+                i++;
+            } else {
+                insideQuotes = !insideQuotes;
+            }
+        } else if (char === ';' && !insideQuotes) {
+            result.push(current);
+            current = '';
+        } else {
+            current += char;
+        }
+    }
+    result.push(current); // poslední sloupec
+
+    return result;
+}
+
 
 function sovaJoinCsvWithImageUrls(rows, imageResults) {
     const header = rows[0];
