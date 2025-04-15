@@ -16,7 +16,7 @@
                 onClick: () => {
                     log("Spouštím proces řazení parametrů.");
                     // Inicializace seznamu parametrů a otevření prvního URL
-                    raditHodnotyFiltruMaster(); 
+                    sovaParamSortingMaster(); 
                 }
             },
 
@@ -58,7 +58,7 @@
 
         // === SLAVE PRO ŘAZENÍ PARAMETRŮ ===
         sovaRunQueueWorker({
-            name: "raditHodnotyFiltruMaster",
+            name: "sovaParamSortingMaster",
             matchUrl: url => url.includes("parametry-pro-filtrovani-detail"),
             windowName: "sovaParametrSortingWindow",
             handler: paramSortingHandler
@@ -428,111 +428,159 @@ async function sovaRunQueueWorker({ name, matchUrl, windowName, handler }) {
 
 // --- Řazení parametrů (master funkce) ---
 
-async function raditHodnotyFiltruMaster() {
-    log("Zpracovávám stránku s výpisem filtrů (pro nové okno)...");
-    const rows = document.querySelectorAll("table.table tbody tr");
-    if (!rows.length) return log("Na stránce nebyly nalezeny žádné řádky.");
+async function sovaParamSortingMaster() {
+    log("Načítám URL parametrů ke zpracování...");
 
-    const rules = await getRulesFor("raditHodnotyFiltruMaster");
-    if (!rules) return log("Pravidla nejsou dostupná.");
+    let rows = document.querySelectorAll("table.table tbody tr");
+    if (!rows.length) {
+        log("⚠️ Nenalezeny žádné řádky s parametry.");
+        return;
+    }
 
-    const paramRules = {};
+    // Načteme pravidla pomocí funkce getRulesFor
+    let rules = await getRulesFor("sovaParamSortingMaster");
+    if (!rules) {
+        log("⚠️ Pravidla nejsou dostupná.");
+        return;
+    }
+
+    // Převod pravidel na objekt { parametr: oddelovac }
+    let paramRules = {};
     rules.forEach(rule => {
         paramRules[rule.Parametr] = rule.Oddelovac;
     });
 
-    const paramsList = [];
+    let urls = [];
+
     rows.forEach(row => {
-        const link = row.querySelector("a.table__detailLink");
-        if (!link) return;
-        const paramName = link.textContent.trim();
-        const url = link.href;
-        const separator = paramRules[paramName];
-        if (separator?.toLowerCase() !== "neradit") {
-            paramsList.push({ name: paramName, url, oddelovac: separator });
-        } else {
-            log(`Přeskakuji parametr '${paramName}' (nastaveno \"neradit\").`);
+        let link = row.querySelector("a.table__detailLink");
+        if (link) {
+            let paramName = link.textContent.trim();
+            let url = link.href;
+            if (paramRules[paramName] && paramRules[paramName].toLowerCase() === "neradit") {
+                log(`⏩ Parametr '${paramName}' vynechán (nastaveno "neradit").`);
+                return;
+            }
+            urls.push(url);
         }
     });
 
-    if (!paramsList.length) return log("Žádné parametry k řazení.");
+    if (!urls.length) {
+        log("⚠️ Žádné parametry ke zpracování.");
+        return;
+    }
 
-    GM_setValue("paramRules", JSON.stringify(paramRules));
+    // Uložení pravidel do GM storage pro použití workerem
+    GM_setValue("paramSortingRules", JSON.stringify(paramRules));
 
+    // Spustíme univerzální master
     await sovaRunQueueMaster({
-        name: "raditHodnotyFiltruMaster",
-        urls: paramsList.map(p => p.url),
-        windowName: "sovaParametrSortingWindow",
-        handler: () => {},
-        done: () => log("Všechny parametry byly úspěšně seřazeny.")
+        name: 'param-sorting',
+        urls,
+        windowName: 'sovaParamSortingWindow'
     });
 }
 
 
-async function paramSortingHandler(currentParam) {
-    const delay = 500;
-    let paramRules = JSON.parse(GM_getValue("paramRules", "{}"));
-    let oddelovac = paramRules[currentParam.name] || null;
 
-    await sleep(delay);
+async function sovaParamSortingWorker(currentItem) {
+    if (!currentItem) {
+        log("✅ Všechny parametry byly seřazeny.");
+        return;
+    }
 
-    let table = document.querySelector("table.table");
-    if (!table) return log("Chybí tabulka.");
-    let tbody = table.querySelector("tbody");
-    if (!tbody) return log("Chybí tbody.");
+    await sleep(500);
+    log(`Zpracovávám parametr na URL: ${currentItem.url}`);
+
+    // Načteme pravidla z GM storage
+    let paramRules = JSON.parse(GM_getValue("paramSortingRules", "{}"));
+
+    // Získáme jméno parametru z nadpisu stránky
+    let paramNameElem = document.querySelector(".content-header h1");
+    if (!paramNameElem) {
+        log("⚠️ Nenalezen nadpis parametru.");
+        return { shouldSave: false };
+    }
+    let paramName = paramNameElem.textContent.trim();
+    let oddelovac = paramRules[paramName] || null;
+
+    let tbody = document.querySelector("table.table tbody");
+    if (!tbody) {
+        log("⚠️ Nebyla nalezena tabulka parametrů.");
+        return { shouldSave: false };
+    }
 
     let rows = Array.from(tbody.querySelectorAll("tr"));
     let rowsData = rows.map(row => {
         let a = row.querySelector("td:nth-child(2) a.table__detailLink");
+        let text = a ? a.textContent.trim() : "";
         let input = row.querySelector("td.table__cell--actions input[name='priority[]']");
-        return {
-            row,
-            text: a ? a.textContent.trim() : "",
-            origValue: input ? input.value : null
-        };
+        return { row, text, origValue: input ? input.value : "" };
     });
 
-    // --- řazení ---
     if (oddelovac && oddelovac.toLowerCase() !== "neradit") {
+        log(`↔️ Řazení parametru "${paramName}" podle oddělovače "${oddelovac}"`);
+
         rowsData.forEach(item => {
             let parts = item.text.split(oddelovac);
             if (parts.length === 2) {
-                let [p1, p2] = parts.map(p => parseFloat(p.trim().replace(/\s/g, "")));
-                item.valid = !(isNaN(p1) || isNaN(p2));
-                if (item.valid) [item.num1, item.num2] = [p1, p2];
-            } else item.valid = false;
+                let [part1, part2] = parts.map(p => parseFloat(p.replace(/\s/g, "").replace(",", ".")));
+                item.valid = !(isNaN(part1) || isNaN(part2));
+                if (item.valid) {
+                    item.num1 = part1;
+                    item.num2 = part2;
+                }
+            } else {
+                item.valid = false;
+            }
         });
+
         rowsData.sort((a, b) => {
-            if (a.valid && b.valid) return a.num1 - b.num1 || a.num2 - b.num2;
+            if (a.valid && b.valid) {
+                return a.num1 !== b.num1 ? a.num1 - b.num1 : a.num2 - b.num2;
+            }
             return a.valid ? -1 : b.valid ? 1 : 0;
         });
+
     } else {
+        log(`↔️ Standardní řazení parametru "${paramName}"`);
+
         rowsData.forEach(item => {
-            let t = item.text;
-            if (t === "NE" || t === "-") item.sortKey = { group: 3, key: t };
-            else if (/^\d/.test(t)) {
-                let match = t.match(/^([\d\s.,]+)/);
-                let num = match ? parseFloat(match[1].replace(/\s/g, "").replace(/,/g, ".")) : Infinity;
-                item.sortKey = { group: 1, key: isNaN(num) ? Infinity : num };
-            } else if (/^[A-Za-z]/.test(t)) {
-                item.sortKey = { group: 2, key: t.toLowerCase() };
-            } else item.sortKey = { group: 3, key: t };
+            const text = item.text;
+            if (text === "NE" || text === "-") {
+                item.sortKey = { group: 3, key: text };
+            } else if (/^\d/.test(text)) {
+                const numStr = text.match(/^([\d\s.,]+)/)?.[1]?.replace(/\s/g, "").replace(",", ".") || "";
+                const numVal = parseFloat(numStr);
+                item.sortKey = { group: 1, key: isNaN(numVal) ? Infinity : numVal };
+            } else if (/^[A-Za-z]/.test(text)) {
+                item.sortKey = { group: 2, key: text.toLowerCase() };
+            } else {
+                item.sortKey = { group: 3, key: text };
+            }
         });
-        rowsData.sort((a, b) => a.sortKey.group - b.sortKey.group || (a.sortKey.key < b.sortKey.key ? -1 : 1));
+
+        rowsData.sort((a, b) => {
+            if (a.sortKey.group !== b.sortKey.group) {
+                return a.sortKey.group - b.sortKey.group;
+            }
+            return a.sortKey.key < b.sortKey.key ? -1 : a.sortKey.key > b.sortKey.key ? 1 : 0;
+        });
     }
 
-    log("Seřazeno: " + JSON.stringify(rowsData.map(x => x.text)));
-    await sleep(delay);
-
+    // Přeuspořádání DOM tabulky
     tbody.innerHTML = "";
-    rowsData.forEach(item => {
+    rowsData.forEach((item, index) => {
         let input = item.row.querySelector("td.table__cell--actions input[name='priority[]']");
-        if (input && item.origValue !== null) input.value = item.origValue;
+        if (input) input.value = (index + 1) * 10; // Nastavení nové priority
         tbody.appendChild(item.row);
     });
 
+    log(`✅ Parametr "${paramName}" úspěšně seřazen.`);
+
     return { shouldSave: true };
 }
+
  
 
 async function sovaExportCategoryImagesMaster() {
@@ -727,7 +775,7 @@ async function paramSortingSingle() {
 
     // Načteme pravidla řazení z rulesList.json
     try {
-        const allParamRules = await getRulesFor("raditHodnotyFiltruMaster");
+        const allParamRules = await getRulesFor("sovaParamSortingMaster");
         log("Načtená pravidla z rulesList: " + JSON.stringify(allParamRules));
         
         // Získáme pravidlo pro aktuální parametr – pokud není nalezeno, použijeme výchozí (tj. standardní řazení)
