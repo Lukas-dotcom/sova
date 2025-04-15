@@ -509,7 +509,7 @@ async function paramSortingHandler(currentParam, fullParamsList) {
 
 // === 1. MASTER FUNKCE: Spustí načítání a řízení slave oken ===
 async function sovaExportCategoryImagesMaster() {
-    const csvUrl = 'https://www.pocitarna.cz/export/categories.csv?partnerId=20&patternId=-31&hash=c03ee1fc2e02334005b73e0f82db7358644b58d37181503aca07d83ca99a6f8d';
+    const csvUrl = 'https://644482.myshoptet.com/export/categories.csv?partnerId=14&patternId=-31&hash=81eee7188564ba1c6556ed1722a4114f2935bea871f3dd17f820eefe080b57a1';
     log('Stahuji CSV kategorií...');
     const csvText = await (await fetch(csvUrl)).text();
     const rows = sovaParseCsv(csvText);
