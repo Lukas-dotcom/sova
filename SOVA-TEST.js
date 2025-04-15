@@ -501,7 +501,6 @@ function sovaPostResultToMaster(data, taskName = window.name.replace(/^sova/, ""
         GM_setValue(currentKey, JSON.stringify(next));
         window.location.href = next.url;
     } else {
-        window.close();
     }
 
 }
