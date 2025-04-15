@@ -649,7 +649,11 @@ async function sovaCategoryImageWorker(currentItem) {
 // === 3. POMOCNÉ FUNKCE ===
 function sovaParseCsv(csvText) {
     const lines = csvText.trim().split('\n');
-    return lines.map(parseCsvLine);
+    return lines.map((line, index) => {
+        const parsed = parseCsvLine(line).map(cell => cell.replace(/^"|"$/g, ''));
+        console.log(`[CSV][Řádek ${index + 1}]`, parsed);
+        return parsed;
+    });
 }
 
 function parseCsvLine(line) {
@@ -675,10 +679,11 @@ function parseCsvLine(line) {
             current += char;
         }
     }
-    result.push(current); // poslední sloupec
 
+    result.push(current); // poslední sloupec
     return result;
 }
+
 
 
 function sovaJoinCsvWithImageUrls(rows, imageResults) {
