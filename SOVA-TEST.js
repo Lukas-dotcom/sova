@@ -61,7 +61,7 @@
             name: "sovaParamSortingMaster",
             matchUrl: url => url.includes("parametry-pro-filtrovani-detail"),
             windowName: "sovaParametrSortingWindow",
-            handler: paramSortingHandler
+            handler: sovaParamSortingWorker
         });
 
         // === SLAVE PRO EXPORT OBRÁZKŮ KATEGORIÍ ===
