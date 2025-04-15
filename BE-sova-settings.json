@@ -301,7 +301,7 @@
       }
     ]
   },
-  "raditHodnotyFiltruMaster": {
+  "sovaParamSortingMaster": {
     "columns": [
       "Parametr",
       "Oddelovac"
