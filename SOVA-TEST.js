@@ -647,42 +647,56 @@ async function sovaCategoryImageWorker(currentItem) {
 
 
 // === 3. POMOCNÉ FUNKCE ===
-function sovaParseCsv(csvText) { 
-    const lines = csvText.trim().split('\n');
-    return lines.map((line, index) => {
-        const parsed = parseCsvLine(line).map(cell => cell.replace(/^"|"$/g, ''));
-        console.log(`[CSV][Řádek ${index + 1}]`, parsed);
-        return parsed;
-    });
-}
-
-function parseCsvLine(line) {
-    const result = [];
-    let current = '';
+function sovaParseCsv(csvText) {
+    const rows = [];
+    let currentRow = [];
+    let currentCell = '';
     let insideQuotes = false;
+    let i = 0;
 
-    for (let i = 0; i < line.length; i++) {
-        const char = line[i];
-        const next = line[i + 1];
+    while (i < csvText.length) {
+        const char = csvText[i];
+        const nextChar = csvText[i + 1];
 
         if (char === '"') {
-            if (insideQuotes && next === '"') {
-                current += '"'; // Escapovaná uvozovka
+            if (insideQuotes && nextChar === '"') {
+                currentCell += '"'; // escapovaná uvozovka
                 i++;
             } else {
                 insideQuotes = !insideQuotes;
             }
         } else if (char === ';' && !insideQuotes) {
-            result.push(current);
-            current = '';
+            currentRow.push(currentCell);
+            currentCell = '';
+        } else if ((char === '\n' || char === '\r') && !insideQuotes) {
+            if (currentCell || currentRow.length) {
+                currentRow.push(currentCell);
+                rows.push(currentRow);
+                currentRow = [];
+                currentCell = '';
+            }
+            // přeskočit \r\n
+            if (char === '\r' && nextChar === '\n') i++;
         } else {
-            current += char;
+            currentCell += char;
         }
+
+        i++;
     }
 
-    result.push(current); // poslední sloupec
-    return result;
+    // poslední buňka/řádek na konci souboru
+    if (currentCell || currentRow.length) {
+        currentRow.push(currentCell);
+        rows.push(currentRow);
+    }
+
+    // Log
+    rows.forEach((r, idx) => console.log(`[CSV][Řádek ${idx + 1}]`, r));
+    return rows;
 }
+
+
+
 
 
 
