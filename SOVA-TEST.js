@@ -60,7 +60,7 @@
         sovaRunQueueWorker({
             name: "sovaParamSortingMaster",
             matchUrl: url => url.includes("parametry-pro-filtrovani-detail"),
-            windowName: "sovaParametrSortingWindow",
+            windowName: "sovaParamSortingWindow",
             handler: sovaParamSortingWorker
         });
 
