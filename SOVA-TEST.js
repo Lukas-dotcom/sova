@@ -496,7 +496,7 @@ async function sovaParamSortingWorker(currentItem) {
     let paramRules = JSON.parse(GM_getValue("paramSortingRules", "{}"));
 
     // Získáme jméno parametru z nadpisu stránky
-    let paramNameElem = document.querySelector(".content-header h1");
+    let paramNameElem = document.querySelector(".content-header h1 strong");
     if (!paramNameElem) {
         log("⚠️ Nenalezen nadpis parametru.");
         return { shouldSave: false };
