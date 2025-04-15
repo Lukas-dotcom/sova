@@ -610,7 +610,7 @@ async function paramSortingHandler(currentParam) {
 
 
 async function sovaExportCategoryImagesMaster() {
-    const csvUrl = 'https://644482.myshoptet.com/export/categories.csv?partnerId=14&patternId=-31&hash=81eee7188564ba1c6556ed1722a4114f2935bea871f3dd17f820eefe080b57a1';
+    const csvUrl = 'https://644482.myshoptet.com/user/documents/upload/categories-test.csv';
     log('Stahuji CSV kategorií...');
     const csvText = await (await fetch(csvUrl)).text();
     const rows = sovaParseCsv(csvText);
@@ -638,14 +638,19 @@ async function sovaExportCategoryImagesMaster() {
 async function sovaCategoryImageWorker(currentItem) {
     await sleep(500);
     const img = document.querySelector('.product-image-gallery img');
-    const absoluteUrl = img ? location.origin + img.getAttribute('src') : '';
     const id = new URLSearchParams(window.location.search).get("id");
+
+    let absoluteUrl = img ? location.origin + img.getAttribute('src') : '';
+    if (absoluteUrl.includes('/productImageMissingDetail.svg')) {
+        absoluteUrl = ''; // Ignorujeme placeholder
+    }
 
     console.log(`[SOVA][Obrázek] Kategorie ID: ${id} → ${absoluteUrl || '⚠️ žádný obrázek nenalezen'}`);
 
     sovaPostResultToMaster({ id, urlObr: absoluteUrl });
     return { shouldSave: false };
 }
+
 
 
 
@@ -709,12 +714,14 @@ function sovaJoinCsvWithImageUrls(rows, imageResults) {
     const extendedHeader = [...header, 'url-obr'];
 
     const data = rows.slice(1).map(row => {
-        const id = row[idIndex];
-        const match = imageResults.find(r => r.id === id);
+        const id = row[idIndex].replace(/^"|"$/g, ''); // očistíme případné uvozovky
+        const match = imageResults.find(r => `${r.id}` === id);
         return [...row, match ? match.urlObr : ''];
     });
+
     return [extendedHeader, ...data].map(r => r.map(v => `"${v}"`).join(';')).join('\n');
 }
+
 
 function sovaDownloadCsv(csv, filename) {
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
