@@ -360,7 +360,7 @@ async function getRulesFor(featureName, settingSource = "BE") {
 // --- Funkce, která spouští zpracování na stránce s výpisem filtrů (otevře nové okno) ---
 // --- Obecné univerzální funkce ---
 
-delayMs = 200
+let delayMs = 200;
 
 // === UNIVERZÁLNÍ MASTER ===
 async function sovaRunQueueMaster({ name, urls, windowName }) {
