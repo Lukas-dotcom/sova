@@ -398,20 +398,27 @@ async function sovaRunQueueMaster({ name, urls, windowName, handler, onSlaveResu
 
 // === UNIVERZÁLNÍ SLAVE ===
 async function sovaRunQueueWorker({ matchUrl, windowName, handler }) {
+
+
     if (!matchUrl(window.location.href) || window.name !== windowName) return;
 
     const currentTask = window.name.replace(/^sova/, "").toLowerCase();
     const queueKey = `queue--${currentTask}`;
     const currentKey = `current--${currentTask}`;
+    
+    console.log("window.name:", window.name);
+    console.log("currentKey:", currentKey);
+    console.log("currentItem RAW:", GM_getValue(currentKey));
 
     let queue = JSON.parse(GM_getValue(queueKey, "[]"));
     let currentItem = JSON.parse(GM_getValue(currentKey, "{}"));
-
+    
     if (!currentItem?.url) {
         log("❌ currentItem je prázdný – čekám 300ms a reloaduji stránku.");
         setTimeout(() => location.reload(), 300);
         return;
     }
+    
 
     if (currentItem.processed) {
         const nextItem = queue.find(i => !i.processed);
