@@ -538,16 +538,16 @@ async function paramSortingHandler(currentParam) {
 async function sovaExportCategoryImagesMaster() {
     const csvUrl = 'https://644482.myshoptet.com/user/documents/upload/categories-test.csv';
     log('Stahuji CSV kategorií...');
-    const csvText = await (await fetch(csvUrl)).text();
-    const rows = sovaParseCsv(csvText);
+    
+    const rows = await sovaFetchAndParseCsv(csvUrl);  // ZDE SPRÁVNĚ
+    
     const header = rows[0];
     const idIndex = header.indexOf('id');
-
     if (idIndex === -1) return log('Sloupec "id" nebyl nalezen.');
 
     const urls = rows.slice(1).map(r => `https://644482.myshoptet.com/admin/kategorie-detail/?id=${r[idIndex]}`);
 
-    GM_setValue('original-category-csv', JSON.stringify(rows));  // ← ZDE uloženo celé původní CSV!
+    GM_setValue('original-category-csv', JSON.stringify(rows));
 
     await sovaRunQueueMaster({
         name: 'category-image-fetcher',
@@ -555,6 +555,7 @@ async function sovaExportCategoryImagesMaster() {
         windowName: 'sovawindow'
     });
 }
+
 
 
  
@@ -594,6 +595,14 @@ async function sovaCategoryImageWorker(currentItem) {
 
 
 // === 3. POMOCNÉ FUNKCE ===
+async function sovaFetchAndParseCsv(url) {
+    const response = await fetch(url);
+    const buffer = await response.arrayBuffer();
+    const decoder = new TextDecoder('windows-1250'); // správné kódování
+    const csvText = decoder.decode(buffer);
+    return sovaParseCsv(csvText);
+}
+
 function sovaParseCsv(csvText) {
     const rows = [];
     let currentRow = [];
@@ -607,7 +616,7 @@ function sovaParseCsv(csvText) {
 
         if (char === '"') {
             if (insideQuotes && nextChar === '"') {
-                currentCell += '"'; // escapovaná uvozovka
+                currentCell += '"';
                 i++;
             } else {
                 insideQuotes = !insideQuotes;
@@ -622,25 +631,21 @@ function sovaParseCsv(csvText) {
                 currentRow = [];
                 currentCell = '';
             }
-            // přeskočit \r\n
             if (char === '\r' && nextChar === '\n') i++;
         } else {
             currentCell += char;
         }
-
         i++;
     }
 
-    // poslední buňka/řádek na konci souboru
     if (currentCell || currentRow.length) {
         currentRow.push(currentCell);
         rows.push(currentRow);
     }
 
-    // Log
-    rows.forEach((r, idx) => console.log(`[CSV][Řádek ${idx + 1}]`, r));
     return rows;
 }
+
 
 
 
@@ -690,11 +695,7 @@ function sovaJoinCsvWithImageUrls(rows, imageResults) {
 
 
 function sovaDownloadCsv(csvContent, filename) {
-    // Převod UTF-8 na Windows-1252
-    const encoder = new TextEncoder('windows-1252', { NONSTANDARD_allowLegacyEncoding: true });
-    const encoded = encoder.encode(csvContent);
-
-    const blob = new Blob([encoded], { type: 'text/csv;charset=windows-1252;' });
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=windows-1250;' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
     link.download = filename;
@@ -702,6 +703,7 @@ function sovaDownloadCsv(csvContent, filename) {
     link.click();
     document.body.removeChild(link);
 }
+
 
 
 
