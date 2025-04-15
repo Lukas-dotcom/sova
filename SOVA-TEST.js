@@ -496,14 +496,8 @@ function sovaPostResultToMaster(data, taskName = window.name.replace(/^sova/, ""
     results.push({ url: currentItem.url, ...data });
     GM_setValue(resultsKey, JSON.stringify(results));
 
-    const next = queue.find(i => !i.processed);
-    if (next) {
-        GM_setValue(currentKey, JSON.stringify(next));
-        window.location.href = next.url;
-    } else {
-    }
-
 }
+
 
 
 // --- Řazení parametrů (master funkce) ---
@@ -888,7 +882,7 @@ async function upnutiVerzi() {
             console.error("[SOVA] Editor nebyl nalezen.");
             return;
         }
- 
+
         // Získání obsahu z CodeMirror, pokud existuje
         let cmInstance = editor.closest(".v2FormField__codeEditor")?.querySelector(".CodeMirror");
         let cm = cmInstance?.CodeMirror;
@@ -944,7 +938,7 @@ async function upnutiVerzi() {
 };
 
 
-async function pridatParametry() { 
+async function pridatParametry() {
     'use strict';
 
     console.log("📌 Spuštěn skript pro přidání parametrů!");
