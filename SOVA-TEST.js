@@ -28,7 +28,7 @@
                     paramSortingSingle(); 
                 }
             },
-
+ 
             {
                 buttonText: "Upnout kódy",
                 urlPattern: /html-kody/,
