@@ -675,19 +675,33 @@ async function sovaCategoryImageWorker(currentItem) {
 async function sovaFetchAndParseCsv(url) {
     const response = await fetch(url);
     const buffer = await response.arrayBuffer();
-
-    let csvText;
-    try {
-        const decoder = new TextDecoder('windows-1250'); // Pokud je podporováno
-        csvText = decoder.decode(buffer);
-    } catch (e) {
-        console.warn('[SOVA] TextDecoder windows-1250 není podporován, fallback na UTF-8');
-        const decoder = new TextDecoder('utf-8');
-        csvText = decoder.decode(buffer);
-    }
-
+    const csvText = decodeWindows1250(new Uint8Array(buffer)); // vlastní dekodér
     return sovaParseCsv(csvText);
 }
+
+// Dekodér Windows-1250 (omezený jen na běžné znaky pro češtinu)
+function decodeWindows1250(bytes) {
+    const map = {
+        0x8A: 'Š', 0x8C: 'Ś', 0x8D: 'Ť', 0x8E: 'Ž', 0x8F: 'Ź',
+        0x9A: 'š', 0x9C: 'ś', 0x9D: 'ť', 0x9E: 'ž', 0x9F: 'ź',
+        0xA1: 'ˇ', 0xA9: 'š', 0xAB: '«', 0xAE: '®',
+        0xB9: 'ś', 0xBB: '»', 0xC1: 'Á', 0xC2: 'Â', 0xC4: 'Ä',
+        0xC8: 'Č', 0xC9: 'É', 0xCA: 'Ě', 0xCC: 'Í', 0xCD: 'Ď', 0xCE: 'Ň', 0xCF: 'Ó',
+        0xD2: 'Ô', 0xD8: 'Ř', 0xD9: 'Ů', 0xDA: 'Ú', 0xDD: 'Ý',
+        0xE1: 'á', 0xE2: 'â', 0xE4: 'ä', 0xE8: 'č', 0xE9: 'é',
+        0xEA: 'ě', 0xEC: 'í', 0xED: 'ď', 0xEE: 'ň', 0xEF: 'ó',
+        0xF2: 'ô', 0xF8: 'ř', 0xF9: 'ů', 0xFA: 'ú', 0xFD: 'ý',
+        0xFF: 'ž'
+        // ... můžeš rozšířit o další znaky podle potřeby
+    };
+
+    return Array.from(bytes).map(b => {
+        if (b >= 0x20 && b <= 0x7E) return String.fromCharCode(b); // standardní ASCII
+        if (b in map) return map[b];
+        return String.fromCharCode(b); // fallback (lepší než �)
+    }).join('');
+}
+
 
 
 function sovaParseCsv(csvText) {
