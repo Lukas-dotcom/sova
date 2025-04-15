@@ -380,9 +380,10 @@ async function sovaRunQueueMaster({ name, urls, windowName, handler, onSlaveResu
     GM_setValue(resultsKey, JSON.stringify([]));
     GM_setValue(currentKey, JSON.stringify(queue[0]));
 
+    await sleep(300); // ← zpomalíme otevření okna
+
     window.open(queue[0].url, windowName, "width=1200,height=800");
 
-    // Slave okenní logika pak vyčítá postupně a volá onSlaveResult
     const interval = setInterval(() => {
         let queue = JSON.parse(GM_getValue(queueKey, "[]"));
         let results = JSON.parse(GM_getValue(resultsKey, "[]"));
@@ -393,6 +394,7 @@ async function sovaRunQueueMaster({ name, urls, windowName, handler, onSlaveResu
         }
     }, 1000);
 }
+
 
 // === UNIVERZÁLNÍ SLAVE ===
 async function sovaRunQueueWorker({ matchUrl, windowName, handler }) {
@@ -405,26 +407,35 @@ async function sovaRunQueueWorker({ matchUrl, windowName, handler }) {
     let queue = JSON.parse(GM_getValue(queueKey, "[]"));
     let currentItem = JSON.parse(GM_getValue(currentKey, "{}"));
 
+    if (!currentItem?.url) {
+        log("❌ currentItem je prázdný – čekám 300ms a reloaduji stránku.");
+        setTimeout(() => location.reload(), 300);
+        return;
+    }
+
+    log(`📥 Aktuální položka: ${JSON.stringify(currentItem)}`);
+
     if (currentItem.processed) {
         const nextItem = queue.find(i => !i.processed);
         if (nextItem) {
             GM_setValue(currentKey, JSON.stringify(nextItem));
             window.location.href = nextItem.url;
         } else {
-            log("Všechny položky zpracovány.");
+            log("✅ Všechny položky zpracovány.");
             window.close();
         }
         return;
     }
 
     if (window.location.href !== currentItem.url) {
-        log("Přesměrování na správnou URL...");
+        log("↪️ Přesměrování na správnou URL...");
         window.location.href = currentItem.url;
         return;
     }
 
     await handler(currentItem);
 }
+
 
 // === SLAVE -> MASTER: POSLÁNÍ VÝSLEDKU ===
 function sovaPostResultToMaster(data, taskName = window.name.replace(/^sova/, "").toLowerCase()) {
@@ -452,6 +463,7 @@ function sovaPostResultToMaster(data, taskName = window.name.replace(/^sova/, ""
     } else {
         window.close();
     }
+
 }
 
 
@@ -591,24 +603,21 @@ async function sovaExportCategoryImagesMaster() {
     const idIndex = header.indexOf('id');
     if (idIndex === -1) return log('Sloupec "id" nebyl nalezen.');
     const urls = rows.slice(1).map(r => `https://644482.myshoptet.com/admin/kategorie-detail/?id=${r[idIndex]}`);
-    const results = [];
 
     await sovaRunQueueMaster({
         name: 'category-image-fetcher',
         urls,
         windowName: 'sovawindow',
         handler: () => {},
-        onSlaveResult: (url, data) => {
-            const id = new URL(url).searchParams.get('id');
-            results.push({ id, urlObr: data.url });
-        },
         done: () => {
             log('Získávání obrázků dokončeno, generuji CSV...');
+            const results = JSON.parse(GM_getValue("results--category-image-fetcher", "[]"));
             const mergedCsv = sovaJoinCsvWithImageUrls(rows, results);
             sovaDownloadCsv(mergedCsv, 'kategorie-obrazky.csv');
         }
     });
 }
+
 
 // === 2. SLAVE FUNKCE: Běží v otevřeném okně a vyčítá obrázek ===
 async function sovaCategoryImageWorker() {
