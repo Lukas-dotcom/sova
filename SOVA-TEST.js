@@ -397,14 +397,12 @@ async function sovaRunQueueMaster({ name, urls, windowName, handler, onSlaveResu
 
 
 // === UNIVERZÁLNÍ SLAVE ===
-async function sovaRunQueueWorker({ matchUrl, windowName, handler }) {
-
-
+async function sovaRunQueueWorker({ name, matchUrl, windowName, handler }) {
     if (!matchUrl(window.location.href) || window.name !== windowName) return;
 
-    const currentTask = window.name.replace(/^sova/, "").toLowerCase();
-    const queueKey = `queue--${currentTask}`;
-    const currentKey = `current--${currentTask}`;
+    const queueKey = `queue--${name}`;
+    const currentKey = `current--${name}`;
+
     
     console.log("window.name:", window.name);
     console.log("currentKey:", currentKey);
