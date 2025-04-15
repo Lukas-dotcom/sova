@@ -641,9 +641,12 @@ async function sovaCategoryImageWorker(currentItem) {
     const absoluteUrl = img ? location.origin + img.getAttribute('src') : '';
     const id = new URLSearchParams(window.location.search).get("id");
 
+    console.log(`[SOVA][Obrázek] Kategorie ID: ${id} → ${absoluteUrl || '⚠️ žádný obrázek nenalezen'}`);
+
     sovaPostResultToMaster({ id, urlObr: absoluteUrl });
     return { shouldSave: false };
 }
+
 
 
 // === 3. POMOCNÉ FUNKCE ===
