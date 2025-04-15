@@ -547,6 +547,8 @@ async function sovaExportCategoryImagesMaster() {
 
     const urls = rows.slice(1).map(r => `https://644482.myshoptet.com/admin/kategorie-detail/?id=${r[idIndex]}`);
 
+    GM_setValue('original-category-csv', JSON.stringify(rows));  // ← ZDE uloženo celé původní CSV!
+
     await sovaRunQueueMaster({
         name: 'category-image-fetcher',
         urls,
@@ -554,16 +556,19 @@ async function sovaExportCategoryImagesMaster() {
     });
 }
 
+
  
 
 // === 2. SLAVE FUNKCE: Běží v otevřeném okně a vyčítá obrázek ===
 async function sovaCategoryImageWorker(currentItem) {
     if (!currentItem) {
         // Fronta dokončena – export CSV výsledku
-        const results = JSON.parse(GM_getValue('category-image-results', '[]'));
-        const rows = [['id', 'url-obr'], ...results.map(({ id, urlObr }) => [id, urlObr])];
-        const csvContent = rows.map(r => r.join(';')).join('\r\n');
-        sovaDownloadCsv(csvContent, 'kategorie-obrazky.csv');
+        const originalCsvRows = JSON.parse(GM_getValue('original-category-csv', '[]'));
+        const imageResults = JSON.parse(GM_getValue('category-image-results', '[]'));
+
+        const mergedCsv = sovaJoinCsvWithImageUrls(originalCsvRows, imageResults);  // ← použijeme existující pomocnou funkci
+
+        sovaDownloadCsv(mergedCsv, 'kategorie-obrazky.csv');
         return;
     }
 
@@ -582,6 +587,7 @@ async function sovaCategoryImageWorker(currentItem) {
 
     return { shouldSave: false };
 }
+
 
 
 
