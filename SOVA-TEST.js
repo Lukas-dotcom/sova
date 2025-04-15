@@ -675,8 +675,17 @@ async function sovaCategoryImageWorker(currentItem) {
 async function sovaFetchAndParseCsv(url) {
     const response = await fetch(url);
     const buffer = await response.arrayBuffer();
-    const decoder = new TextDecoder('utf-8');  // ← zde musí být UTF-8!
-    const csvText = decoder.decode(buffer);
+
+    let csvText;
+    try {
+        const decoder = new TextDecoder('windows-1250'); // Pokud je podporováno
+        csvText = decoder.decode(buffer);
+    } catch (e) {
+        console.warn('[SOVA] TextDecoder windows-1250 není podporován, fallback na UTF-8');
+        const decoder = new TextDecoder('utf-8');
+        csvText = decoder.decode(buffer);
+    }
+
     return sovaParseCsv(csvText);
 }
 
@@ -725,11 +734,6 @@ function sovaParseCsv(csvText) {
 }
 
 
-
-
-
-
-
 function sovaJoinCsvWithImageUrls(rows, imageResults) {
     const header = rows[0];
     const idIndex = header.indexOf('id');
@@ -738,7 +742,6 @@ function sovaJoinCsvWithImageUrls(rows, imageResults) {
     const csvIds = rows.slice(1).map(row => row[idIndex].replace(/^"|"$/g, ''));
     const resultIds = imageResults.map(r => String(r.id));
 
-    // Log pro kontrolu ID
     console.log('[SOVA][ID][CSV]', csvIds);
     console.log('[SOVA][ID][RESULTS]', resultIds);
 
@@ -770,10 +773,11 @@ function sovaJoinCsvWithImageUrls(rows, imageResults) {
 }
 
 
-
-
 function sovaDownloadCsv(csvContent, filename) {
-    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    // Přidáme UTF-8 BOM, aby Excel správně rozpoznal češtinu
+    const bom = '\uFEFF';
+    const blob = new Blob([bom + csvContent], { type: 'text/csv;charset=utf-8;' });
+
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
     link.download = filename;
@@ -781,6 +785,7 @@ function sovaDownloadCsv(csvContent, filename) {
     link.click();
     document.body.removeChild(link);
 }
+
 
 
 
