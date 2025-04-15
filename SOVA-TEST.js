@@ -360,6 +360,7 @@ async function getRulesFor(featureName, settingSource = "BE") {
 // --- Funkce, která spouští zpracování na stránce s výpisem filtrů (otevře nové okno) ---
 // --- Obecné univerzální funkce ---
 
+delayMs = 200
 
 // === UNIVERZÁLNÍ MASTER ===
 async function sovaRunQueueMaster({ name, urls, windowName }) {
@@ -789,7 +790,6 @@ function sovaDownloadCsv(csvContent, filename) {
  
 async function paramSortingSingle() {
     log("Spouštím řazení hodnot aktuálního parametru (jediný parametr) v aktuálním okně.");
-    const delayMs = 500;
 
     // Vytáhneme název parametru z nadpisu – předpokládáme strukturu:
     // <div class="section section-1358"> <h1>Upravit parametr <strong>Rozlišení</strong></h1> ... </div>
