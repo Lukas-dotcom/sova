@@ -413,15 +413,14 @@ async function sovaRunQueueWorker({ matchUrl, windowName, handler }) {
         return;
     }
 
-    log(`📥 Aktuální položka: ${JSON.stringify(currentItem)}`);
-
     if (currentItem.processed) {
         const nextItem = queue.find(i => !i.processed);
         if (nextItem) {
+            log("✅ Přecházím na další položku.");
             GM_setValue(currentKey, JSON.stringify(nextItem));
             window.location.href = nextItem.url;
         } else {
-            log("✅ Všechny položky zpracovány.");
+            log("🎉 Všechny položky zpracovány.");
             window.close();
         }
         return;
@@ -433,8 +432,46 @@ async function sovaRunQueueWorker({ matchUrl, windowName, handler }) {
         return;
     }
 
-    await handler(currentItem);
+    // === Spuštění handleru
+    const result = await handler(currentItem) || {};
+
+    // === Označení jako processed
+    currentItem.processed = true;
+    queue = queue.map(i => i.url === currentItem.url ? currentItem : i);
+    GM_setValue(queueKey, JSON.stringify(queue));
+    GM_setValue(currentKey, JSON.stringify(currentItem));
+
+    // === Kliknutí na "Uložit", pokud je třeba
+    if (result.shouldSave) {
+        log("💾 Klikám na Uložit (očekávám reload).");
+        const saveButton = document.querySelector("a.btn-action.submit-js[rel='saveAndStay']");
+        if (saveButton) {
+            saveButton.click();
+        } else {
+            log("⚠️ Tlačítko uložit nenalezeno – přecházím ručně na další.");
+            const nextItem = queue.find(i => !i.processed);
+            if (nextItem) {
+                GM_setValue(currentKey, JSON.stringify(nextItem));
+                window.location.href = nextItem.url;
+            } else {
+                window.close();
+            }
+        }
+        return;
+    }
+
+    // === Přechod na další URL, pokud není potřeba reload
+    const nextItem = queue.find(i => !i.processed);
+    if (nextItem) {
+        log("➡️ Přecházím na další bez reloadu.");
+        GM_setValue(currentKey, JSON.stringify(nextItem));
+        window.location.href = nextItem.url;
+    } else {
+        log("🏁 Hotovo, zavírám okno.");
+        window.close();
+    }
 }
+
 
 
 // === SLAVE -> MASTER: POSLÁNÍ VÝSLEDKU ===
@@ -510,7 +547,7 @@ async function raditHodnotyFiltruMaster() {
 }
 
 
-async function paramSortingHandler(currentParam, fullParamsList) {
+async function paramSortingHandler(currentParam) {
     const delay = 500;
     let paramRules = JSON.parse(GM_getValue("paramRules", "{}"));
     let oddelovac = paramRules[currentParam.name] || null;
@@ -533,7 +570,7 @@ async function paramSortingHandler(currentParam, fullParamsList) {
         };
     });
 
-    // řazení
+    // --- řazení ---
     if (oddelovac && oddelovac.toLowerCase() !== "neradit") {
         rowsData.forEach(item => {
             let parts = item.text.split(oddelovac);
@@ -572,27 +609,9 @@ async function paramSortingHandler(currentParam, fullParamsList) {
         tbody.appendChild(item.row);
     });
 
-    currentParam.processed = true;
-    let i = fullParamsList.findIndex(p => p.name === currentParam.name);
-    if (i !== -1) fullParamsList[i] = currentParam;
-
-    GM_setValue("fullQueue", JSON.stringify(fullParamsList));
-    GM_setValue("currentItem", JSON.stringify(currentParam));
-
-    let saveButton = document.querySelector("a.btn-action.submit-js[rel='saveAndStay']");
-    if (saveButton) saveButton.click();
-    else log("Tlačítko uložit nenalezeno.");
-
-    await sleep(delay);
-
-    const next = fullParamsList.find(p => !p.processed);
-    if (next) {
-        GM_setValue("currentItem", JSON.stringify(next));
-        window.location.href = next.url;
-    } else {
-        window.close();
-    }
+    return { shouldSave: true };
 }
+
 
 async function sovaExportCategoryImagesMaster() {
     const csvUrl = 'https://644482.myshoptet.com/export/categories.csv?partnerId=14&patternId=-31&hash=81eee7188564ba1c6556ed1722a4114f2935bea871f3dd17f820eefe080b57a1';
@@ -626,6 +645,7 @@ async function sovaCategoryImageWorker() {
     if (!img) return sovaPostResultToMaster({ url: '' });
     const absoluteUrl = location.origin + img.getAttribute('src');
     sovaPostResultToMaster({ url: absoluteUrl });
+    return { shouldSave: false }
 }
 
 // === 3. POMOCNÉ FUNKCE ===
