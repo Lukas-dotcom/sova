@@ -627,7 +627,7 @@ async function sovaExportCategoryImagesMaster() {
     const idIndex = header.indexOf('id');
     if (idIndex === -1) return log('Sloupec "id" nebyl nalezen.');
 
-    const urls = rows.slice(1).map(r => `https://644482.myshoptet.com/admin/kategorie-detail/?id=${r[idIndex]}`);
+    const urls = rows.slice(1).map(r => `/admin/kategorie-detail/?id=${r[idIndex]}`);
 
     GM_setValue('original-category-csv', JSON.stringify(rows));
 
