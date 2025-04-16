@@ -381,14 +381,29 @@ async function sovaRunQueueMaster({ name, urls, windowName }) {
 
 // === UNIVERZÁLNÍ SLAVE ===
 async function sovaRunQueueWorker({ name, matchUrl, windowName, handler }) {
-    if (!matchUrl(location.href) || window.name !== windowName) return;
+    log(`🧠 [SOVA][WORKER] Spouštím sovaRunQueueWorker pro: "${name}"`);
+    log(`🌐 Aktuální URL: ${location.href}`);
+    log(`🪟 Název okna: ${window.name}`);
+
+    if (!matchUrl(location.href)) {
+        log("⛔ matchUrl vrací false – nespouštím.");
+        return;
+    }
+
+    if (window.name !== windowName) {
+        log(`⛔ window.name !== "${windowName}" – aktuální: "${window.name}"`);
+        return;
+    }
 
     const queueKey = `queue--${name}`;
     let queue = JSON.parse(GM_getValue(queueKey, "[]"));
+    log(`📦 Načteno ${queue.length} položek z queue "${queueKey}"`);
+
     let currentItem = queue.find(item => !item.processed);
+    log(`🔍 Aktuální item: ${currentItem ? currentItem.url : "žádný (vše hotovo)"}`);
 
     if (!currentItem) {
-        // Vše zpracováno – zavoláme finální handler bez parametrů
+        log("✅ Žádné další položky – volám handler(null)");
         await handler(null);
         log("🎉 Všechny položky hotové, zavírám okno.");
         window.close();
@@ -396,35 +411,49 @@ async function sovaRunQueueWorker({ name, matchUrl, windowName, handler }) {
     }
 
     if (location.href !== currentItem.url) {
+        log(`↪️ URL nesedí – přecházím na správnou: ${currentItem.url}`);
         location.href = currentItem.url;
         return;
     }
 
+    log(`🛠 Spouštím handler pro: ${currentItem.url}`);
     const result = await handler(currentItem) || {};
+    log(`🧾 Výsledek handleru: shouldSave=${result.shouldSave}`);
 
     currentItem.processed = true;
+
+    // 🔁 Upravíme queue, aby se currentItem promítl
+    queue = queue.map(item => {
+        if (item.url === currentItem.url) {
+            return currentItem;
+        }
+        return item;
+    });
     GM_setValue(queueKey, JSON.stringify(queue));
+    log(`✅ Označeno jako processed: ${currentItem.url}`);
 
     if (result.shouldSave) {
         const saveButton = document.querySelector("a.btn-action.submit-js[rel='saveAndStay']");
         if (saveButton) {
+            log("💾 Klikám na Uložit → očekávám reload.");
             saveButton.click();
             return;
         } else {
-            log("⚠️ Nenalezeno tlačítko uložit, pokračuji dál bez uložení.");
+            log("⚠️ Tlačítko Uložit nenalezeno – pokračuji dál.");
         }
     }
 
     const nextItem = queue.find(i => !i.processed);
     if (nextItem) {
+        log(`➡️ Přecházím na další URL: ${nextItem.url}`);
         location.href = nextItem.url;
     } else {
-        // Fronta dokončena
+        log("✅ Všechny položky hotové – volám handler(null) a zavírám.");
         await handler(null);
-        log("🎉 Všechny položky hotové, zavírám okno.");
         window.close();
     }
 }
+
 
 
 // --- Řazení parametrů (master funkce) ---
