@@ -658,9 +658,9 @@ async function sovaExportCategoryImagesMaster() {
     const idIndex = header.indexOf('id');
     if (idIndex === -1) return log('Sloupec "id" nebyl nalezen.');
 
+    const urls = rows.slice(1).map(r => `/admin/kategorie-detail/?id=${r[idIndex]}`);
 
-    log(`📋 Načteno ${urls.length} URL z CSV:`);
-    urls.forEach((url, i) => log(`[${i + 1}] ${url}`));
+
 
 
     GM_setValue('original-category-csv', JSON.stringify(rows));
