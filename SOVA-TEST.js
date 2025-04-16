@@ -410,11 +410,13 @@ async function sovaRunQueueWorker({ name, matchUrl, windowName, handler }) {
         return;
     }
 
-    if (location.href !== currentItem.url) {
-        log(`↪️ URL nesedí – přecházím na správnou: ${currentItem.url}`);
+    const currentUrlRelative = location.pathname + location.search;
+    if (currentUrlRelative !== currentItem.url) {
+        log(`↪️ URL nesedí – aktuální: ${currentUrlRelative}, očekávaná: ${currentItem.url} → přecházím.`);
         location.href = currentItem.url;
         return;
     }
+    
 
     log(`🛠 Spouštím handler pro: ${currentItem.url}`);
     const result = await handler(currentItem) || {};
