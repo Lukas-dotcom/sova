@@ -613,8 +613,13 @@ async function sovaParamSortingWorker(currentItem) {
  
 
 async function sovaExportCategoryImagesMaster() {
-    const csvUrl = 'https://644482.myshoptet.com/user/documents/upload/categories-test.csv';
-    log('Stahuji CSV kategorií...');
+    const linkElem = document.querySelector("#perm-link a");
+    if (!linkElem) {
+        log("❌ Trvalý odkaz exportu (perm-link) nebyl nalezen.");
+        return;
+    }
+    const csvUrl = linkElem.href;
+    log(`📎 Načten permanentní odkaz exportu: ${csvUrl}`);
     
     const rows = await sovaFetchAndParseCsv(csvUrl);  // ZDE SPRÁVNĚ
     
