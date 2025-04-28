@@ -67,10 +67,7 @@ window.shippingHideRules = [
       37,
       112
     ],
-    "exactCodes": [
-      "KOL0001",
-      "KOL0002"
-    ],
+    "exactCodes": [],
     "startsWithCodes": [],
     "startsWithUrl": [],
     "containsName": []
