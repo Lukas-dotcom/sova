@@ -119,7 +119,7 @@ window.odpocetHome = {
 };
 
 window.akcniProduktyLevySloupec = {
-  "zobrazit": true,
+  "zobrazit": false,
   "test": false
 };
 
