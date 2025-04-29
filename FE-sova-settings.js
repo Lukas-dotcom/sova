@@ -113,3 +113,8 @@ window.shippingHideRules = [
   }
 ];
 
+window.odpocetHome = {
+  "zobrazit": true,
+  "test": false
+};
+
