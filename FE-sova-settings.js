@@ -137,8 +137,16 @@ window.navstivene = {
 window.dvojbalikyNechat = {
   "dvojbaliky": true,
   "maloobchod": [
-    "KOL0001",
-    "KOL0002"
+    240,
+    280,
+    222,
+    259
+  ],
+  "velkoobchod": [
+    240,
+    280,
+    222,
+    259
   ]
 };
 
