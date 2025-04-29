@@ -143,10 +143,10 @@ window.dvojbalikyNechat = {
     259
   ],
   "velkoobchod": [
-    240,
-    280,
-    222,
-    259
+    262,
+    271,
+    274,
+    277
   ]
 };
 
