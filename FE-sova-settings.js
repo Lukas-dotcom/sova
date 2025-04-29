@@ -7,7 +7,7 @@ window.LadzoSklad = {
 window.expedice = {
   "zobrazit": true,
   "test": false,
-  "cas_expedice": "16:00",
+  "cas_expedice": "14:00",
   "statni_svatky": [
     "1.1.",
     "1.5.",
