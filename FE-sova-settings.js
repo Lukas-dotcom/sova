@@ -124,7 +124,7 @@ window.akcniProduktyLevySloupec = {
 };
 
 window.navstivene = {
-  "zobrazit": true,
+  "zobrazit": false,
   "test": false
 };
 
