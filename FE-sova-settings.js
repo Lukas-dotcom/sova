@@ -123,3 +123,8 @@ window.akcniProduktyLevySloupec = {
   "test": false
 };
 
+window.navstivene = {
+  "zobrazit": true,
+  "test": false
+};
+
