@@ -100,7 +100,6 @@ window.shippingHideRules = [
   },
   {
     "shippingIds": [
-      48,
       347,
       123
     ],
