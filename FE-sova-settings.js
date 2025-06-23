@@ -116,26 +116,7 @@ window.shippingHideRules = [
       "/tiskarny/"
     ],
     "containsName": []
-  },
-  {
-      "shippingIds": [
-        347,
-        350
-      ],
-      "exactCodes": [
-        "KOL0001",
-        "KOL0002"
-      ],
-      "startsWithCodes": [
-        "PRT"
-      ],
-      "startsWithUrl": [
-        "/pocitace/",
-        "/monitory/",
-        "/tiskarny/"
-      ],
-      "containsName": []
-    }
+  }
 ];
 
 window.odpocetHome = {
