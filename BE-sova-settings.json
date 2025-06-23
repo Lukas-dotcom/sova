@@ -279,6 +279,11 @@
         "Název": "Výprodej",
         "ID": 902,
         "Zobrazovat": "ANO"
+      },
+      {
+        "Název": "Aukro - nabídka",
+        "ID": 929,
+        "Zobrazovat": "ANO"
       }
     ]
   },
