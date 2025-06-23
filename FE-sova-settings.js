@@ -47,7 +47,8 @@ window.shippingHideRules = [
       "KOL0002"
     ],
     "startsWithCodes": [
-      "PRT"
+      "PRT",
+      "AIO"
     ],
     "startsWithUrl": [
       "/monitory/",
@@ -84,7 +85,8 @@ window.shippingHideRules = [
       "KOL0002"
     ],
     "startsWithCodes": [
-      "PRT"
+      "PRT",
+      "AIO"
     ],
     "startsWithUrl": [
       "/monitory/",
