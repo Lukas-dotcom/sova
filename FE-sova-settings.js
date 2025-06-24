@@ -218,6 +218,76 @@ window.shippingHideRules = [
       "iMAC",
       "iMac"
     ]
+  },
+  {
+    "shippingIds": [
+      371,
+      413
+    ],
+    "exactCodes": [
+      "KOL0001",
+      "KOL0002"
+    ],
+    "startsWithCodes": [],
+    "startsWithUrl": [],
+    "containsName": []
+  },
+  {
+    "shippingIds": [
+      380,
+      419
+    ],
+    "exactCodes": [
+      "KOL0001",
+      "KOL0002"
+    ],
+    "startsWithCodes": [],
+    "startsWithUrl": [],
+    "containsName": []
+  },
+  {
+    "shippingIds": [
+      374,
+      661
+    ],
+    "exactCodes": [
+      "KOL0001",
+      "KOL0002"
+    ],
+    "startsWithCodes": [
+      "PRT",
+      "AIO"
+    ],
+    "startsWithUrl": [
+      "/monitory/",
+      "/tiskarny/"
+    ],
+    "containsName": [
+      "AIO",
+      "IMAC",
+      "AiO",
+      "iMAC",
+      "iMac"
+    ]
+  },
+  {
+    "shippingIds": [
+      365,
+      407
+    ],
+    "exactCodes": [
+      "KOL0001",
+      "KOL0002"
+    ],
+    "startsWithCodes": [
+      "PRT"
+    ],
+    "startsWithUrl": [
+      "/pocitace/",
+      "/monitory/",
+      "/tiskarny/"
+    ],
+    "containsName": []
   }
 ];
 
