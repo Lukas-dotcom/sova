@@ -145,6 +145,15 @@ window.shippingHideRules = [
     "startsWithCodes": [],
     "startsWithUrl": [],
     "containsName": []
+  },
+  {
+    "shippingIds": [
+      425
+    ],
+    "exactCodes": [],
+    "startsWithCodes": [],
+    "startsWithUrl": [],
+    "containsName": []
   }
 ];
 
