@@ -124,40 +124,100 @@ window.shippingHideRules = [
       362,
       404
     ],
-    "exactCodes": [],
-    "startsWithCodes": [],
-    "startsWithUrl": [],
-    "containsName": []
+    "exactCodes": [
+      "KOL0001",
+      "KOL0002"
+    ],
+    "startsWithCodes": [
+      "PRT",
+      "AIO"
+    ],
+    "startsWithUrl": [
+      "/monitory/",
+      "/tiskarny/"
+    ],
+    "containsName": [
+      "AIO",
+      "IMAC",
+      "AiO",
+      "iMAC",
+      "iMac"
+    ]
   },
   {
     "shippingIds": [
       389,
       437
     ],
-    "exactCodes": [],
-    "startsWithCodes": [],
-    "startsWithUrl": [],
-    "containsName": []
+    "exactCodes": [
+      "KOL0001",
+      "KOL0002"
+    ],
+    "startsWithCodes": [
+      "PRT",
+      "AIO"
+    ],
+    "startsWithUrl": [
+      "/monitory/",
+      "/tiskarny/"
+    ],
+    "containsName": [
+      "AIO",
+      "IMAC",
+      "AiO",
+      "iMAC",
+      "iMac"
+    ]
   },
   {
     "shippingIds": [
       395,
       428
     ],
-    "exactCodes": [],
-    "startsWithCodes": [],
-    "startsWithUrl": [],
-    "containsName": []
+    "exactCodes": [
+      "KOL0001",
+      "KOL0002"
+    ],
+    "startsWithCodes": [
+      "PRT",
+      "AIO"
+    ],
+    "startsWithUrl": [
+      "/monitory/",
+      "/tiskarny/"
+    ],
+    "containsName": [
+      "AIO",
+      "IMAC",
+      "AiO",
+      "iMAC",
+      "iMac"
+    ]
   },
   {
     "shippingIds": [
       398,
       425
     ],
-    "exactCodes": [],
-    "startsWithCodes": [],
-    "startsWithUrl": [],
-    "containsName": []
+    "exactCodes": [
+      "KOL0001",
+      "KOL0002"
+    ],
+    "startsWithCodes": [
+      "PRT",
+      "AIO"
+    ],
+    "startsWithUrl": [
+      "/monitory/",
+      "/tiskarny/"
+    ],
+    "containsName": [
+      "AIO",
+      "IMAC",
+      "AiO",
+      "iMAC",
+      "iMac"
+    ]
   }
 ];
 
