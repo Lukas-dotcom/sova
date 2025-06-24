@@ -199,25 +199,10 @@ window.shippingHideRules = [
       398,
       425
     ],
-    "exactCodes": [
-      "KOL0001",
-      "KOL0002"
-    ],
-    "startsWithCodes": [
-      "PRT",
-      "AIO"
-    ],
-    "startsWithUrl": [
-      "/monitory/",
-      "/tiskarny/"
-    ],
-    "containsName": [
-      "AIO",
-      "IMAC",
-      "AiO",
-      "iMAC",
-      "iMac"
-    ]
+    "exactCodes": [],
+    "startsWithCodes": [],
+    "startsWithUrl": [],
+    "containsName": []
   }
 ];
 
