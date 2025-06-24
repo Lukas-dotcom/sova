@@ -118,6 +118,15 @@ window.shippingHideRules = [
       "/tiskarny/"
     ],
     "containsName": []
+  },
+  {
+    "shippingIds": [
+      404
+    ],
+    "exactCodes": [],
+    "startsWithCodes": [],
+    "startsWithUrl": [],
+    "containsName": []
   }
 ];
 
