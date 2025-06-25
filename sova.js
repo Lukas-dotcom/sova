@@ -191,6 +191,11 @@
             sablonyClanky ()
             }
         
+        if (window.location.href.includes("/admin/objednavky-detail/")){
+            spustitVyplneniDobirky();
+        }
+
+        
 
      
     }
@@ -722,6 +727,84 @@ function waitForIframe() {
     });
 }
 
+function spustitVyplneniDobirky() {
+    const log = (...args) => console.log('[SOVA:COD]', ...args);
+
+    document.addEventListener('click', (e) => {
+        const link = e.target.closest('a.open-modal[href*="pridat-specifickou-zasilku"]');
+        if (!link) return;
+
+        log('✅ Kliknutí zachyceno na:', link.href);
+
+        let tries = 0;
+        const maxTries = 25;
+        const interval = 250;
+
+        const waitForModal = setInterval(() => {
+            tries++;
+
+            const modal = document.querySelector('#modal.modal');
+            if (!modal) {
+                log(`⏳ Modal zatím není připraven... (${tries}/${maxTries})`);
+                if (tries >= maxTries) {
+                    log('❌ Modal nebyl nalezen v limitu.');
+                    clearInterval(waitForModal);
+                }
+                return;
+            }
+
+            log('✅ Modal nalezen.');
+
+            const label = modal.querySelector('label.cod-value');
+            if (!label) {
+                log('⚠️ Nenalezen žádný .cod-value');
+                clearInterval(waitForModal);
+                return;
+            }
+
+            const isHidden = label.classList.contains('hidden-js');
+            log(`🔍 Label pro COD je ${isHidden ? 'skrytý' : 'viditelný'}`);
+
+            if (isHidden) {
+                clearInterval(waitForModal);
+                return;
+            }
+
+            const input = label.querySelector('input[name="cod"]');
+            if (!input) {
+                log('❌ Nenalezen input[name="cod"]');
+                clearInterval(waitForModal);
+                return;
+            }
+
+            const priceSpan = document.querySelector('[data-testid="textTotalPriceWithVat"]');
+            if (!priceSpan) {
+                log('❌ Nenalezen prvek s [data-testid="textTotalPriceWithVat"]');
+                clearInterval(waitForModal);
+                return;
+            }
+
+            const rawText = priceSpan.textContent.trim();
+            log('📦 Text částky:', rawText);
+
+            const match = rawText.match(/([\d\s]+[,\.]\d{2})/);
+            if (!match) {
+                log('❌ Nepodařilo se extrahovat částku z textu:', rawText);
+                clearInterval(waitForModal);
+                return;
+            }
+
+            const cleaned = match[1].replace(/\s/g, '').replace(',', '.');
+            log('✅ Extrahovaná částka:', cleaned);
+
+            input.value = cleaned;
+            input.dispatchEvent(new Event('input', { bubbles: true }));
+            log('💾 Hodnota zapsána do inputu.');
+
+            clearInterval(waitForModal);
+        }, interval);
+    });
+}
 
 
 async function upnutiVerzi() {
