@@ -315,9 +315,9 @@ window.dvojbalikyNechat = {
     259,
     446,
     380,
-    392,
+    449,
     395,
-    398
+    452
   ],
   "velkoobchod": [
     262,
