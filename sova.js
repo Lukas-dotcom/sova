@@ -888,7 +888,8 @@ async function doplneniCeniku() {
         }
 
         const cenaPoKoef = (cena && koef) ? (cena * koef).toFixed(2) : "";
-        rows[rowIndex].children[1].textContent = cenaPoKoef;
+        rows[rowIndex].children[1].textContent = cenaPoKoef ? Number(cenaPoKoef).toLocaleString('cs-CZ', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "";
+
 
         // 6) Fetch akčních cen a doplň do tabulky
         const url = `/admin/ceny/?f[code]=${encodeURIComponent(kodProduktu)}&f[pricelistId]=${pricelistId}`;
@@ -907,7 +908,10 @@ async function doplneniCeniku() {
                     const actionUntil = tr.querySelector('input[name^="actionUntil"]')?.value.trim();
 
                     // Pokud není vyplněno nebo je "0", nepropíšeme hodnotu
-                    if (actionPrice && actionPrice !== "0") rows[rowIndex].children[2].textContent = actionPrice;
+                    if (actionPrice && actionPrice !== "0") {
+                        const formatted = Number(actionPrice.replace(",", ".")).toLocaleString('cs-CZ', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                        rows[rowIndex].children[2].textContent = formatted;
+                    }
                     if (actionFrom && actionFrom !== "0") rows[rowIndex].children[3].textContent = actionFrom;
                     if (actionUntil && actionUntil !== "0") rows[rowIndex].children[4].textContent = actionUntil;
                 }
