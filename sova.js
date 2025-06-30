@@ -195,6 +195,12 @@
             spustitVyplneniDobirky();
         }
 
+        if (window.location.href.includes("/admin/produkty-detail/?id")){
+            doplneniCeniku();
+        }
+
+        
+
         
 
      
@@ -804,6 +810,116 @@ function spustitVyplneniDobirky() {
             clearInterval(waitForModal);
         }, interval);
     });
+}
+
+async function doplneniCeniku() {
+    'use strict';
+
+    console.log("[SOVA] Spouštím script pro tabulku jiných ceníků");
+
+    const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+    // 1) Najdi tabulku Jiné ceníky
+    const h2 = Array.from(document.querySelectorAll("h2")).find(el => el.textContent.includes("Jiné ceníky"));
+    if (!h2) return console.log("[SOVA] Nenalezeno H2 Jiné ceníky");
+
+    const detailTabulka = h2.nextElementSibling.querySelector("table");
+    if (!detailTabulka) return console.log("[SOVA] Nenalezena detailTabulka");
+
+    // 2) Vytvoř novou tabulku
+    const novaTabulka = document.createElement("table");
+    novaTabulka.className = "table checkbox-table";
+    novaTabulka.innerHTML = `
+    <thead>
+        <tr>
+            <th>Ceník</th>
+            <th>Cena podle koef.</th>
+            <th>Akční cena</th>
+            <th>Akční cena od</th>
+            <th>Akční cena do</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>DEALER A</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>DEALER B</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>DEALER C</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>Hlavní ceník</td><td></td><td></td><td></td><td></td></tr>
+    </tbody>`;
+
+    detailTabulka.parentElement.insertAdjacentElement("afterend", novaTabulka);
+
+    const rows = novaTabulka.querySelectorAll("tbody tr");
+
+    // 3) Zjisti kód produktu
+    const kodInput = document.querySelector('#product-code');
+    const kodProduktu = kodInput ? kodInput.value : null;
+    if (!kodProduktu) return console.log("[SOVA] Kód produktu nenalezen");
+
+    console.log("[SOVA] Kód produktu:", kodProduktu);
+
+    // 4) Definuj mapování pricelistId a názvů
+    const pricelistMap = {
+        "12": 0, // DEALER A - řádek 0
+        "15": 1, // DEALER B - řádek 1
+        "18": 2, // DEALER C - řádek 2
+        "0": 3   // Hlavní ceník - řádek 3
+    };
+
+    // 5) Zjisti ceny podle koeficientu
+    for (const [pricelistId, rowIndex] of Object.entries(pricelistMap)) {
+        let cena, koef;
+
+        if (pricelistId === "0") {
+            // Hlavní ceník z hlavní ceny
+            cena = parseFloat(document.querySelector('input[name="pricelistPrice[1]"]').value.replace(",", "."));
+            koef = parseFloat(document.querySelector('input[name="pricelistPriceRatio[1]"]').value.replace(",", "."));
+        } else {
+            const tr = Array.from(detailTabulka.querySelectorAll("tbody tr")).find(tr => {
+                const input = tr.querySelector(`input[name="pricelistIds[]"]`);
+                return input && input.value === pricelistId;
+            });
+
+            if (tr) {
+                const cenaInput = tr.querySelector(`input[name="pricelistPrice[${pricelistId}]"]`);
+                const koefInput = tr.querySelector(`input[name="pricelistPriceRatio[${pricelistId}]"]`);
+                cena = cenaInput ? parseFloat(cenaInput.value.replace(",", ".")) : null;
+                koef = koefInput ? parseFloat(koefInput.value.replace(",", ".")) : null;
+            }
+        }
+
+        const cenaPoKoef = (cena && koef) ? (cena * koef).toFixed(2) : "";
+        rows[rowIndex].children[1].textContent = cenaPoKoef;
+
+        // 6) Fetch akčních cen a doplň do tabulky
+        const url = `/admin/ceny/?f[code]=${encodeURIComponent(kodProduktu)}&f[pricelistId]=${pricelistId}`;
+        fetch(url).then(res => res.text()).then(htmlText => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(htmlText, "text/html");
+
+            const radky = doc.querySelectorAll("table.table tbody tr");
+            let found = false;
+            radky.forEach(tr => {
+                const kodCell = tr.querySelector("td:nth-child(3) span");
+                if (kodCell && kodCell.textContent.trim() === kodProduktu) {
+                    found = true;
+                    const actionPrice = tr.querySelector('input[name^="actionPrice"]')?.value.trim();
+                    const actionFrom = tr.querySelector('input[name^="actionFrom"]')?.value.trim();
+                    const actionUntil = tr.querySelector('input[name^="actionUntil"]')?.value.trim();
+
+                    // Pokud není vyplněno nebo je "0", nepropíšeme hodnotu
+                    if (actionPrice && actionPrice !== "0") rows[rowIndex].children[2].textContent = actionPrice;
+                    if (actionFrom && actionFrom !== "0") rows[rowIndex].children[3].textContent = actionFrom;
+                    if (actionUntil && actionUntil !== "0") rows[rowIndex].children[4].textContent = actionUntil;
+                }
+            });
+            if (!found) console.log(`[SOVA] Nenalezen řádek v ceníku ${pricelistId}`);
+        }).catch(err => console.error(`[SOVA] Chyba fetch ceníku ${pricelistId}:`, err));
+
+        await sleep(300); // pro jistotu mírný delay mezi fetchi
+    }
+
+    console.log("[SOVA] Script dokončen");
+
 }
 
 
