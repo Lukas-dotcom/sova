@@ -182,8 +182,9 @@
         odkazyKdekoliv();
 
         if (window.location.href.includes("/admin/ceny/")){
-        pridatStitikyvPrehledu ()
-        pridatParametry()
+        pridatStitikyvPrehledu ();
+        pridatParametry();
+        doplneniCeniku();
         }
         
 
