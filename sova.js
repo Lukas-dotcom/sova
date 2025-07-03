@@ -197,6 +197,7 @@
 
         if (window.location.href.includes("/admin/produkty-detail/?id")){
             doplneniCeniku();
+            mazatTrackingPriOdstraneniZasilky()
         }
  
         
@@ -715,6 +716,64 @@ async function sablonyClanky() {
         });
     });
 }
+
+function mazatTrackingPriOdstraneniZasilky() {
+    'use strict';
+
+    const STORAGE_KEY = 'deleteShipmentNumber';
+
+    document.addEventListener('click', function(e) {
+        const btn = e.target.closest('a.delete-item');
+        if (!btn) return;
+
+        const shipmentId = btn.getAttribute('data-values');
+        if (!shipmentId) return;
+
+        const rowLink = document.querySelector(`a[href*="/admin/zasilka/?id=${shipmentId}"]`);
+        if (!rowLink) return;
+
+        const strong = rowLink.querySelector('strong');
+        if (!strong) return;
+
+        const shipmentNumber = strong.textContent.trim();
+
+        const input = document.querySelector('input#package-number');
+        if (!input) return;
+
+        // 💡 Uložíme do storage pouze pokud číslo zásilky odpovídá inputu
+        if (input.value.trim() === shipmentNumber) {
+            sessionStorage.setItem(STORAGE_KEY, shipmentNumber);
+            console.log(`[SCRIPT] Uložen identifikátor ${shipmentNumber} pro vymazání po reloadu.`);
+        } else {
+            console.log(`[SCRIPT] Číslo zásilky ${shipmentNumber} neodpovídá inputu – identifikátor neukládám.`);
+        }
+    }, true);
+
+    // Po načtení stránky zkontrolujeme existenci identifikátoru
+    window.addEventListener('load', function() {
+        const deleteNumber = sessionStorage.getItem(STORAGE_KEY);
+        if (!deleteNumber) return;
+
+        const input = document.querySelector('input#package-number');
+        if (input && input.value.trim() === deleteNumber) {
+            console.log(`[SCRIPT] Načten identifikátor ${deleteNumber}, mažu input a klikám na Uložit.`);
+
+            // Vyprázdníme input
+            input.value = '';
+
+            // Odstraníme identifikátor
+            sessionStorage.removeItem(STORAGE_KEY);
+
+            // Klikneme na tlačítko Uložit
+            const saveBtn = document.querySelector('a[rel="saveAndStay"]');
+            if (saveBtn) {
+                saveBtn.click();
+            } else {
+                console.warn('[SCRIPT] Tlačítko Uložit nenalezeno.');
+            }
+        }
+    });
+};
 
 
 // --- Pomocná funkce na čekání ---
