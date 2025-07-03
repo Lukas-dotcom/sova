@@ -193,11 +193,12 @@
         
         if (window.location.href.includes("/admin/objednavky-detail/")){
             spustitVyplneniDobirky();
+            mazatTrackingPriOdstraneniZasilky()
+
         }
 
         if (window.location.href.includes("/admin/produkty-detail/?id")){
             doplneniCeniku();
-            mazatTrackingPriOdstraneniZasilky()
         }
  
         
