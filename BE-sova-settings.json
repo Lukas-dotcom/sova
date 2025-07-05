@@ -188,7 +188,7 @@
   "upravyDobirek": {
     "columns": [
       "doprava",
-      "",
+      "platba",
       "vlastniPole",
       "uprava"
     ],
@@ -198,7 +198,7 @@
           "PPL - kurýr (vícekusová zásilka, Slovensko)",
           "PPL ParcelShop - výdejní místa (vícekusová zásilka, Slovensko)"
         ],
-        "": null,
+        "platba": null,
         "vlastniPole": null,
         "uprava": [
           "vicekusSK"
@@ -206,7 +206,7 @@
       },
       {
         "doprava": null,
-        "": null,
+        "platba": null,
         "vlastniPole": "Doběrečné (HC, separe)",
         "uprava": [
           "dobirkaSepare"
