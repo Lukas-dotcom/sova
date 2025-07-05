@@ -198,7 +198,8 @@
         "platba": null,
         "vlastniPole": "Doběrečné (HC, separe)",
         "uprava": [
-          "dobirkaSepare"
+          "dobirkaSepare",
+          "skrytPridatZasilkuBaliky"
         ]
       },
       {
