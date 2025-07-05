@@ -208,9 +208,7 @@
       },
       {
         "doprava": null,
-        "platba": [
-          "Dobírkou"
-        ],
+        "platba": null,
         "vlastniPole": "Doběrečné (HC, separe)",
         "uprava": [
           "dobirkaSepare"
