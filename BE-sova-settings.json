@@ -202,6 +202,13 @@
         "uprava": [
           "vicekusSK"
         ]
+      },
+      {
+        "doprava": null,
+        "vlastniPole": "Doběrečné (HC, separe)",
+        "uprava": [
+          "dobirkaSepare"
+        ]
       }
     ]
   },
