@@ -189,24 +189,18 @@
     "columns": [
       "doprava",
       "vlastniPole",
-      "uprava",
-      "NovOkno",
-      "Kdo"
+      "uprava"
     ],
     "rules": [
       {
         "doprava": "doprava",
         "vlastniPole": "/admin/html-kody/",
-        "uprava": null,
-        "NovOkno": null,
-        "Kdo": "Lukáš Tejral"
+        "uprava": null
       },
       {
         "doprava": "Soubory",
         "vlastniPole": "/admin/spravce-souboru/",
-        "uprava": null,
-        "NovOkno": null,
-        "Kdo": "Lukáš Tejral"
+        "uprava": null
       }
     ]
   },
