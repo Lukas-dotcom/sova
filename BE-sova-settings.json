@@ -199,7 +199,9 @@
           "Slovensko)\""
         ],
         "vlastniPole": null,
-        "uprava": null
+        "uprava": [
+          "vicekusSK"
+        ]
       }
     ]
   },
