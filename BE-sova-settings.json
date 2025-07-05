@@ -194,19 +194,6 @@
     ],
     "rules": [
       {
-        "doprava": [
-          "PPL - kurýr (vícekusová zásilka, Slovensko)",
-          "PPL ParcelShop - výdejní místa (vícekusová zásilka, Slovensko)"
-        ],
-        "platba": [
-          "Dobírkou"
-        ],
-        "vlastniPole": null,
-        "uprava": [
-          "vicekusSK"
-        ]
-      },
-      {
         "doprava": null,
         "platba": null,
         "vlastniPole": "Doběrečné (HC, separe)",
@@ -222,6 +209,19 @@
         "vlastniPole": null,
         "uprava": [
           "doplneniCastkyKuhrade"
+        ]
+      },
+      {
+        "doprava": [
+          "PPL - kurýr (vícekusová zásilka, Slovensko)",
+          "PPL ParcelShop - výdejní místa (vícekusová zásilka, Slovensko)"
+        ],
+        "platba": [
+          "Dobírkou"
+        ],
+        "vlastniPole": null,
+        "uprava": [
+          "vicekusSK"
         ]
       }
     ]
