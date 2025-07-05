@@ -194,6 +194,14 @@
     ],
     "rules": [
       {
+        "doprava": null,
+        "platba": null,
+        "vlastniPole": "Doběrečné (HC, separe)",
+        "uprava": [
+          "dobirkaSepare"
+        ]
+      },
+      {
         "doprava": [
           "PPL - kurýr (vícekusová zásilka, Slovensko)",
           "PPL ParcelShop - výdejní místa (vícekusová zásilka, Slovensko)"
@@ -204,14 +212,6 @@
         "vlastniPole": null,
         "uprava": [
           "vicekusSK"
-        ]
-      },
-      {
-        "doprava": null,
-        "platba": null,
-        "vlastniPole": "Doběrečné (HC, separe)",
-        "uprava": [
-          "dobirkaSepare"
         ]
       }
     ]
