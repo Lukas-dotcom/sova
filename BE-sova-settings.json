@@ -185,25 +185,6 @@
       }
     ]
   },
-  "upravyDobirek": {
-    "columns": [
-      "doprava",
-      "vlastniPole",
-      "uprava"
-    ],
-    "rules": [
-      {
-        "doprava": "doprava",
-        "vlastniPole": "/admin/html-kody/",
-        "uprava": null
-      },
-      {
-        "doprava": "Soubory",
-        "vlastniPole": "/admin/spravce-souboru/",
-        "uprava": null
-      }
-    ]
-  },
   "odkazyKdekoliv": {
     "columns": [
       "Název",
