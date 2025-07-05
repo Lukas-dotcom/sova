@@ -212,7 +212,8 @@
         ],
         "vlastniPole": null,
         "uprava": [
-          "vicekusSK"
+          "vicekusSK",
+          "skrytPridatZasilkuBaliky"
         ]
       },
       {
