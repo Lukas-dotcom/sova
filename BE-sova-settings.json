@@ -185,6 +185,31 @@
       }
     ]
   },
+  "upravyDobirek": {
+    "columns": [
+      "Název",
+      "Odkaz",
+      "Barvička",
+      "NovOkno",
+      "Kdo"
+    ],
+    "rules": [
+      {
+        "Název": "Html",
+        "Odkaz": "/admin/html-kody/",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Lukáš Tejral"
+      },
+      {
+        "Název": "Soubory",
+        "Odkaz": "/admin/spravce-souboru/",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Lukáš Tejral"
+      }
+    ]
+  },
   "odkazyKdekoliv": {
     "columns": [
       "Název",
