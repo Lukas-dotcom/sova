@@ -188,23 +188,23 @@
   "upravyDobirek": {
     "columns": [
       "doprava",
-      "Odkaz",
-      "Barvička",
+      "vlastniPole",
+      "uprava",
       "NovOkno",
       "Kdo"
     ],
     "rules": [
       {
         "doprava": "doprava",
-        "Odkaz": "/admin/html-kody/",
-        "Barvička": null,
+        "vlastniPole": "/admin/html-kody/",
+        "uprava": null,
         "NovOkno": null,
         "Kdo": "Lukáš Tejral"
       },
       {
         "doprava": "Soubory",
-        "Odkaz": "/admin/spravce-souboru/",
-        "Barvička": null,
+        "vlastniPole": "/admin/spravce-souboru/",
+        "uprava": null,
         "NovOkno": null,
         "Kdo": "Lukáš Tejral"
       }
