@@ -185,6 +185,24 @@
       }
     ]
   },
+  "upravyDobirek": {
+    "columns": [
+      "doprava",
+      "vlastniPole",
+      "uprava"
+    ],
+    "rules": [
+      {
+        "doprava": [
+          "\"PPL - kurýr (vícekusová zásilka",
+          "Slovensko)\"\"PPL ParcelShop - výdejní místa (vícekusová zásilka",
+          "Slovensko)\""
+        ],
+        "vlastniPole": null,
+        "uprava": null
+      }
+    ]
+  },
   "odkazyKdekoliv": {
     "columns": [
       "Název",
