@@ -388,6 +388,7 @@ function priznakEmail () {
             const nameA = tr.querySelector("td[data-testid='cellOrderItemDescr'] a");
             if (!codeA || !nameA) return;
             firstTabCache.set(codeA.textContent.trim(), {
+                code: codeA.textContent.trim(),
                 name: nameA.firstChild?.textContent.trim() || '',
                 url : codeA.href
             });
@@ -411,8 +412,17 @@ function priznakEmail () {
             /* objednávka – 2. tabulka (doplň z cache) */
             const codeCell = tr.querySelector("td[data-testid='cellCompletionItemCode']");
             const codeStr  = codeCell?.textContent.trim();
-            return firstTabCache.get(codeStr) ?? null;
-        }
+            if (!codeStr) return null;
+
+        // máme data z cache první tabulky?
+        const cached = firstTabCache.get(codeStr);
+        if (cached) return cached;           // {code,name,url}
+
+        // fallback: vyčti jméno přímo z druhé tabulky
+        const nameB = tr.querySelector("td[data-testid='cellCompletionItemDescription'] a")
+                        ?.firstChild?.textContent.trim() || '';
+        return { code: codeStr, name: nameB, url: null };
+                }
 
         /* ceny */
         if (pageKey === 'ceny') {
