@@ -283,6 +283,7 @@
   "priznakEmail": {
     "columns": [
       "",
+      "",
       "active-poznamka",
       "active-email-komu",
       "active-email-od",
