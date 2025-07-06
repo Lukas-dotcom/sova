@@ -260,7 +260,28 @@
     "columns": [
       "Název",
       "ID",
-      "Kdo",
+      "Kdo"
+    ],
+    "rules": [
+      {
+        "Název": "Na prodejně",
+        "ID": 968,
+        "Kdo": "Lukáš Tejral"
+      },
+      {
+        "Název": "Na Copy",
+        "ID": 971,
+        "Kdo": "Lukáš Tejral"
+      },
+      {
+        "Název": "Nezvěstný",
+        "ID": 974,
+        "Kdo": "Lukáš Tejral"
+      }
+    ]
+  },
+  "priznakEmail": {
+    "columns": [
       "active-poznamka",
       "active-email-komu",
       "active-email-od",
@@ -272,35 +293,6 @@
     ],
     "rules": [
       {
-        "Název": "Na prodejně",
-        "ID": 968,
-        "Kdo": "Lukáš Tejral",
-        "active-poznamka": null,
-        "active-email-komu": null,
-        "active-email-od": null,
-        "active-email-obsah": null,
-        "pasive-poznamka": null,
-        "pasive-email-komu": null,
-        "pasive-email-od": null,
-        "pasive-email-obsah": null
-      },
-      {
-        "Název": "Na Copy",
-        "ID": 971,
-        "Kdo": "Lukáš Tejral",
-        "active-poznamka": null,
-        "active-email-komu": null,
-        "active-email-od": null,
-        "active-email-obsah": null,
-        "pasive-poznamka": null,
-        "pasive-email-komu": null,
-        "pasive-email-od": null,
-        "pasive-email-obsah": null
-      },
-      {
-        "Název": "Nezvěstný",
-        "ID": 974,
-        "Kdo": "Lukáš Tejral",
         "active-poznamka": "Nenalezeno",
         "active-email-komu": [
           "lukas.tejral@pocitarna.cz"
