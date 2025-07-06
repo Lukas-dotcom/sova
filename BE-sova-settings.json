@@ -307,13 +307,13 @@
         "active-email-komu": [
           "lukas.tejral@pocitarna.cz"
         ],
-        "active-email-od": null,
+        "active-email-od": "lukas.tejral@pocitarna.cz",
         "active-email-obsah": null,
         "pasive-poznamka": null,
         "pasive-email-komu": [
           "lukas.tejral@pocitarna.cz"
         ],
-        "pasive-email-od": null,
+        "pasive-email-od": "lukas.tejral@pocitarna.cz",
         "pasive-email-obsah": null
       }
     ]
