@@ -260,23 +260,27 @@
     "columns": [
       "Název",
       "ID",
-      "Kdo"
+      "Kdo",
+      "Poznámka"
     ],
     "rules": [
       {
         "Název": "Na prodejně",
         "ID": 968,
-        "Kdo": "Lukáš Tejral"
+        "Kdo": "Lukáš Tejral",
+        "Poznámka": null
       },
       {
         "Název": "Na Copy",
         "ID": 971,
-        "Kdo": "Lukáš Tejral"
+        "Kdo": "Lukáš Tejral",
+        "Poznámka": null
       },
       {
         "Název": "Nezvěstný",
         "ID": 974,
-        "Kdo": "Lukáš Tejral"
+        "Kdo": "Lukáš Tejral",
+        "Poznámka": null
       }
     ]
   },
