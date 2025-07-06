@@ -261,7 +261,8 @@
       "Název",
       "ID",
       "Kdo",
-      "Poznamka",
+      "active-poznamka",
+      "",
       "email-komu",
       "email-od",
       "email-obsah"
@@ -271,7 +272,8 @@
         "Název": "Na prodejně",
         "ID": 968,
         "Kdo": "Lukáš Tejral",
-        "Poznamka": null,
+        "active-poznamka": null,
+        "": null,
         "email-komu": null,
         "email-od": null,
         "email-obsah": null
@@ -280,7 +282,8 @@
         "Název": "Na Copy",
         "ID": 971,
         "Kdo": "Lukáš Tejral",
-        "Poznamka": null,
+        "active-poznamka": null,
+        "": null,
         "email-komu": null,
         "email-od": null,
         "email-obsah": null
@@ -289,7 +292,8 @@
         "Název": "Nezvěstný",
         "ID": 974,
         "Kdo": "Lukáš Tejral",
-        "Poznamka": null,
+        "active-poznamka": null,
+        "": null,
         "email-komu": null,
         "email-od": null,
         "email-obsah": null
