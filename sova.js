@@ -767,18 +767,18 @@ async function adminDeliveryHelper() {
 
 /* ---------- DEBUG výpis každého pravidla ---------- */
 RULES.forEach((rule, idx) => {
-  /* co hledáme */
-  const needShip = rule.doprava || [];
-  const needPay  = rule.platba  || [];
+  const needShip = Array.isArray(rule.doprava) ? rule.doprava :
+                   rule.doprava ? [rule.doprava] : [];
+  const needPay  = Array.isArray(rule.platba)  ? rule.platba  :
+                   rule.platba  ? [rule.platba]  : [];
   const needPole = rule.vlastniPole || '';
 
+  /* RAW hodnoty z nastavení */
+  console.log(`RAW → Rule ${idx}`, { doprava: rule.doprava, platba: rule.platba, vlastniPole: rule.vlastniPole });
+
   /* co jsme našli v DOMu */
-  const matchedShip = needShip.filter(s =>
-    allNames.some(n => n.includes(norm(s)))
-  );
-  const matchedPay  = needPay.filter(p =>
-    allNames.some(n => n.includes(norm(p)))
-  );
+  const matchedShip = needShip.filter(s => allNames.some(n => n.includes(norm(s))));
+  const matchedPay  = needPay.filter(p  => allNames.some(n => n.includes(norm(p))));
   const inp         = needPole ? matchLabelInput(needPole) : null;
   const poleVal     = inp?.value.trim() || '';
 
@@ -788,21 +788,21 @@ RULES.forEach((rule, idx) => {
   const poleOK = needPole        ? !!poleVal          : true;
   const passed = shipOK && payOK && poleOK;
 
-  /* LOG */
+  /* Pěkně formátovaný souhrn */
   console.log(
     `%cRule #${idx}`,
     'color:#888',
-    '| uprava:',       rule.uprava?.join(',') ?? '—',
-    '| ↓ hledá (doprava):',  needShip.length ? needShip.join(' | ') : '—',
-    '| ✓ nalezeno:',          matchedShip.join(' | ') || '—',
-    '| dopravaOK:',    shipOK ? '✅' : '❌',
-    '| ↓ hledá (platba):',   needPay.length ? needPay.join(' | ') : '—',
-    '| ✓ nalezeno:',          matchedPay.join(' | ') || '—',
-    '| platbaOK:',     payOK ? '✅' : '❌',
-    '| vlastniPole:',  needPole || '—',
-    '| poleVal:',      poleVal || '—',
-    '| poleOK:',       poleOK ? '✅' : '❌',
-    '| passed:',       passed ? '✔️' : ''
+    '| uprava:', rule.uprava?.join(',') ?? '—',
+    '| hledá(doprava):', needShip.join(' | ') || '—',
+    '| nalezeno:',       matchedShip.join(' | ') || '—',
+    '| dopravaOK:', shipOK ? '✅' : '❌',
+    '| hledá(platba):',  needPay.join(' | ')  || '—',
+    '| nalezeno:',       matchedPay.join(' | ') || '—',
+    '| platbaOK:',  payOK ? '✅' : '❌',
+    '| vlastniPole:', needPole || '—',
+    '| poleVal:',    poleVal   || '—',
+    '| poleOK:',     poleOK ? '✅' : '❌',
+    '| passed:',     passed ? '✔️' : ''
   );
 });
 
