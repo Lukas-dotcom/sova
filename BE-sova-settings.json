@@ -282,8 +282,8 @@
   },
   "priznakEmail": {
     "columns": [
-      "",
-      "",
+      "Název",
+      "ID",
       "active-poznamka",
       "active-email-komu",
       "active-email-od",
@@ -295,7 +295,32 @@
     ],
     "rules": [
       {
-        "": null,
+        "Název": "Na prodejně",
+        "ID": 968,
+        "active-poznamka": null,
+        "active-email-komu": null,
+        "active-email-od": null,
+        "active-email-obsah": null,
+        "pasive-poznamka": null,
+        "pasive-email-komu": null,
+        "pasive-email-od": null,
+        "pasive-email-obsah": null
+      },
+      {
+        "Název": "Na Copy",
+        "ID": 971,
+        "active-poznamka": null,
+        "active-email-komu": null,
+        "active-email-od": null,
+        "active-email-obsah": null,
+        "pasive-poznamka": null,
+        "pasive-email-komu": null,
+        "pasive-email-od": null,
+        "pasive-email-obsah": null
+      },
+      {
+        "Název": "Nezvěstný",
+        "ID": 974,
         "active-poznamka": "Nenalezeno",
         "active-email-komu": [
           "lukas.tejral@pocitarna.cz"
