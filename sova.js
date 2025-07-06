@@ -291,35 +291,50 @@
 async function getRulesFor(featureName, settingSource = "BE") {
     const isSK = location.hostname.endsWith(".sk");
     const effectiveSource = isSK ? `${settingSource}-SK` : settingSource;
-    
-    const rulesUrl = `https://raw.githubusercontent.com/Lukas-dotcom/sova/main/${settingSource}-sova-settings.json`;
+
+    /* --- DEBUG: informace o doméně a URL souboru --- */
+    console.log(
+      "[SOVA] getRulesFor:",
+      "feature =", featureName,
+      "| doména =", location.hostname,
+      "| isSK =", isSK,
+      "| source =", effectiveSource,
+      "| URL =", `https://raw.githubusercontent.com/Lukas-dotcom/sova/main/${effectiveSource}-sova-settings.json`
+    );
+
+    const rulesUrl = `https://raw.githubusercontent.com/Lukas-dotcom/sova/main/${effectiveSource}-sova-settings.json`;
 
     const response = await fetch(rulesUrl);
-    if (!response.ok) throw new Error(`Nelze načíst ${settingSource}-sova-settings.json`);
+    if (!response.ok) {
+        throw new Error(`Nelze načíst ${effectiveSource}-sova-settings.json`);
+    }
 
     const rulesList = await response.json();
-    const allRules = rulesList[featureName] ? rulesList[featureName].rules : null;
+    const allRules =
+        rulesList[featureName] && rulesList[featureName].rules
+          ? rulesList[featureName].rules
+          : null;
 
     if (!allRules) return null;
 
+    /* ---------- filtrování podle "Kdo" ---------- */
     const rulesWithKdo = allRules.filter(r => r.Kdo && r.Kdo.trim() !== "");
 
-    // --- 🚀 Zrychlení: pokud žádný záznam nemá "Kdo", vrať rovnou vše bez čekání ---
+    // 🚀 pokud nikdo nepoužívá "Kdo", vrať rovnou vše
     if (rulesWithKdo.length === 0) {
         return allRules;
     }
 
-    // --- ⏳ Pokud existuje alespoň jeden "Kdo", čekáme na jméno uživatele ---
+    // ⏳ jinak čekáme na jméno uživatele
     const userName = await getUserName();
     const rulesForUser = rulesWithKdo.filter(r => r.Kdo.trim() === userName);
 
-    if (rulesForUser.length > 0) {
-        return rulesForUser;
-    } else {
-        // pokud pro uživatele nic není → vrátíme pravidla bez "Kdo"
-        return allRules.filter(r => !r.Kdo || r.Kdo.trim() === "");
-    }
+    return rulesForUser.length > 0
+        ? rulesForUser
+        : allRules.filter(r => !r.Kdo || r.Kdo.trim() === "");
 }
+
+
 
 
     
