@@ -687,6 +687,7 @@ async function paramSortingSingle() {
 
 
 async function adminDeliveryHelper() {
+    log('🔔 adminDeliveryHelper START');
   /* ---------- utils ---------- */
   const log = (...a) => console.log('%c[SOVA-COD]', 'color:#00aba7;font-weight:bold', ...a);
   const num = t => (t ? parseFloat(t.replace(/[^0-9,\.]/g, '').replace(',', '.')) || 0 : 0);
@@ -711,6 +712,7 @@ async function adminDeliveryHelper() {
 
  /* ---------- fetch settings přes SOVA ---------- */
  const RULES = await getRulesFor('adminDeliveryHelper', 'BE');
+ log(`🔎 RULES získáno: ${Array.isArray(RULES) ? RULES.length : 0}`);
  main(RULES || []);
 
   /* ---------- MAIN ---------- */
