@@ -323,7 +323,7 @@
         "passive-email-komu": [
           "lukas.tejral@pocitarna.cz"
         ],
-        "passive-email-predmet": null,
+        "passive-email-predmet": "Produkt: ||name|| nalezen",
         "passive-email-obsah": "Už jsem našel ||name|| s kódem ||code|| "
       }
     ]
