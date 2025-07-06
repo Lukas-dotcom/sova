@@ -324,9 +324,9 @@
       {
         "Název": "Nezvěstný",
         "ID": 974,
-        "ceny": null,
-        "prehled": null,
-        "objednavka": null,
+        "ceny": true,
+        "prehled": true,
+        "objednavka": true,
         "active-email-komu": [
           "lukas.tejral@pocitarna.cz"
         ],
