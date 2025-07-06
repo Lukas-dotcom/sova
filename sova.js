@@ -767,21 +767,42 @@ async function adminDeliveryHelper() {
 
 /* ---------- DEBUG výpis každého pravidla ---------- */
 RULES.forEach((rule, idx) => {
-  const shipOK = matchList(rule.doprava, allNames);
-  const payOK  = matchList(rule.platba,  allNames);
-  const poleOK = rule.vlastniPole
-        ? !!(matchLabelInput(rule.vlastniPole)?.value.trim())
-        : true;
+  /* co hledáme */
+  const needShip = rule.doprava || [];
+  const needPay  = rule.platba  || [];
+  const needPole = rule.vlastniPole || '';
 
+  /* co jsme našli v DOMu */
+  const matchedShip = needShip.filter(s =>
+    allNames.some(n => n.includes(norm(s)))
+  );
+  const matchedPay  = needPay.filter(p =>
+    allNames.some(n => n.includes(norm(p)))
+  );
+  const inp         = needPole ? matchLabelInput(needPole) : null;
+  const poleVal     = inp?.value.trim() || '';
+
+  /* logické vyhodnocení */
+  const shipOK = needShip.length ? matchedShip.length > 0 : true;
+  const payOK  = needPay.length  ? matchedPay.length  > 0 : true;
+  const poleOK = needPole        ? !!poleVal          : true;
   const passed = shipOK && payOK && poleOK;
-  console.log(
+
+  /* LOG */
+  log(
     `%cRule #${idx}`,
     'color:#888',
-    '| uprava:', rule.uprava?.join(',') ?? '—',
-    '| doprava:', shipOK ? '✅' : '❌',
-    '| platba:',  payOK  ? '✅' : '❌',
-    '| vlastniPole:', rule.vlastniPole ? (poleOK ? '✅' : '❌') : '—',
-    '| passed:', passed ? '✔️' : ''
+    '| uprava:',       rule.uprava?.join(',') ?? '—',
+    '| ↓ hledá (doprava):',  needShip.length ? needShip.join(' | ') : '—',
+    '| ✓ nalezeno:',          matchedShip.join(' | ') || '—',
+    '| dopravaOK:',    shipOK ? '✅' : '❌',
+    '| ↓ hledá (platba):',   needPay.length ? needPay.join(' | ') : '—',
+    '| ✓ nalezeno:',          matchedPay.join(' | ') || '—',
+    '| platbaOK:',     payOK ? '✅' : '❌',
+    '| vlastniPole:',  needPole || '—',
+    '| poleVal:',      poleVal || '—',
+    '| poleOK:',       poleOK ? '✅' : '❌',
+    '| passed:',       passed ? '✔️' : ''
   );
 });
 
