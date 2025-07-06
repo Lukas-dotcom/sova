@@ -284,9 +284,9 @@
     "columns": [
       "Název",
       "ID",
-      "",
       "active-email-komu",
       "active-email-obsah",
+      "",
       "",
       "pasive-email-komu",
       "pasive-email-obsah"
@@ -295,29 +295,29 @@
       {
         "Název": "Na prodejně",
         "ID": 968,
-        "": null,
         "active-email-komu": null,
         "active-email-obsah": null,
+        "": null,
         "pasive-email-komu": null,
         "pasive-email-obsah": null
       },
       {
         "Název": "Na Copy",
         "ID": 971,
-        "": null,
         "active-email-komu": null,
         "active-email-obsah": null,
+        "": null,
         "pasive-email-komu": null,
         "pasive-email-obsah": null
       },
       {
         "Název": "Nezvěstný",
         "ID": 974,
-        "": null,
         "active-email-komu": [
           "lukas.tejral@pocitarna.cz"
         ],
         "active-email-obsah": null,
+        "": null,
         "pasive-email-komu": [
           "lukas.tejral@pocitarna.cz"
         ],
