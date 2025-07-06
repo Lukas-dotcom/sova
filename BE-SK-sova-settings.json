@@ -1,1 +1,441 @@
-
+{
+  "rychleOdkazy": {
+    "columns": [
+      "Název",
+      "Odkaz",
+      "Barvička",
+      "NovOkno",
+      "Kdo"
+    ],
+    "rules": [
+      {
+        "Název": "Html",
+        "Odkaz": "/admin/html-kody/",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Lukáš Tejral"
+      },
+      {
+        "Název": "Soubory",
+        "Odkaz": "/admin/spravce-souboru/",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Lukáš Tejral"
+      },
+      {
+        "Název": "Produkty",
+        "Odkaz": "/admin/ceny/",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Lukáš Tejral"
+      },
+      {
+        "Název": "Objednávky",
+        "Odkaz": "/admin/prehled-objednavek/",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Lukáš Tejral"
+      },
+      {
+        "Název": "Export PR",
+        "Odkaz": "/admin/sablona-exportu-zbozi-detail/?id=301",
+        "Barvička": null,
+        "NovOkno": "true",
+        "Kdo": "Lukáš Tejral"
+      },
+      {
+        "Název": "Export OBJ",
+        "Odkaz": "/admin/sablona-exportu-objednavky/?id=315",
+        "Barvička": null,
+        "NovOkno": true,
+        "Kdo": "Lukáš Tejral"
+      },
+      {
+        "Název": "FV editor",
+        "Odkaz": "https://shoptet.fvstudio.cz/",
+        "Barvička": null,
+        "NovOkno": true,
+        "Kdo": "Lukáš Tejral"
+      },
+      {
+        "Název": "Zde si",
+        "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Jan Kalmus"
+      },
+      {
+        "Název": "nastav svoje",
+        "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Jan Kalmus"
+      },
+      {
+        "Název": "rychlá tlačítka",
+        "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Jan Kalmus"
+      },
+      {
+        "Název": "Honzo",
+        "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Jan Kalmus"
+      },
+      {
+        "Název": "Zde si",
+        "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Tomáš Netopil"
+      },
+      {
+        "Název": "nastav svoje",
+        "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Tomáš Netopil"
+      },
+      {
+        "Název": "rychlá tlačítka",
+        "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Tomáš Netopil"
+      },
+      {
+        "Název": "Tome",
+        "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Tomáš Netopil"
+      },
+      {
+        "Název": "Zde si",
+        "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Petr Kropáček"
+      },
+      {
+        "Název": "nastav svoje",
+        "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Petr Kropáček"
+      },
+      {
+        "Název": "rychlá tlačítka",
+        "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Petr Kropáček"
+      },
+      {
+        "Název": "Peťo",
+        "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Petr Kropáček"
+      },
+      {
+        "Název": "Notebooky",
+        "Odkaz": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=673",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Dominik Němčanský"
+      },
+      {
+        "Název": "Počítače",
+        "Odkaz": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=674",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Dominik Němčanský"
+      },
+      {
+        "Název": "Monitory",
+        "Odkaz": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=714",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Dominik Němčanský"
+      },
+      {
+        "Název": "Tablety",
+        "Odkaz": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=1155",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Dominik Němčanský"
+      },
+      {
+        "Název": "Mobily",
+        "Odkaz": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=717",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Dominik Němčanský"
+      },
+      {
+        "Název": "ALL IN ONE",
+        "Odkaz": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=823",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Dominik Němčanský"
+      }
+    ]
+  },
+  "upravyDobirek": {
+    "columns": [
+      "doprava",
+      "platba",
+      "vlastniPole",
+      "uprava"
+    ],
+    "rules": [
+      {
+        "doprava": null,
+        "platba": null,
+        "vlastniPole": "Doběrečné (HC, separe)",
+        "uprava": [
+          "dobirkaSepare",
+          "skrytPridatZasilkuBaliky"
+        ]
+      },
+      {
+        "doprava": [
+          "SPS (viackusová zásielka)",
+          "PPL ParcelShop - výdajné miesta (viackusová zásielka)"
+        ],
+        "platba": [
+          "Dobierkou"
+        ],
+        "vlastniPole": null,
+        "uprava": [
+          "vicekusSK",
+          "skrytPridatZasilkuBaliky"
+        ]
+      },
+      {
+        "doprava": null,
+        "platba": [
+          "Dobierkou"
+        ],
+        "vlastniPole": null,
+        "uprava": [
+          "doplneniCastkyKuhrade"
+        ]
+      }
+    ]
+  },
+  "odkazyKdekoliv": {
+    "columns": [
+      "Název",
+      "kde",
+      "Odkaz",
+      "Barvička",
+      "NovOkno",
+      "Kdo"
+    ],
+    "rules": [
+      {
+        "Název": "Html",
+        "kde": "/admin/ceny/",
+        "Odkaz": "/admin/html-kody/",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Jan Kalmus"
+      },
+      {
+        "Název": "Objednávky",
+        "kde": "/admin/prehled-objednavek/",
+        "Odkaz": "/admin/prehled-objednavek/",
+        "Barvička": "black",
+        "NovOkno": true,
+        "Kdo": "Lukáš Tejral"
+      }
+    ]
+  },
+  "pridatPriznaky": {
+    "columns": [
+      "Název",
+      "ID",
+      "Zobrazovat"
+    ],
+    "rules": [
+      {
+        "Název": "Akce",
+        "ID": 1,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "Akce dne",
+        "ID": 59,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "BLACK FRIDAY",
+        "ID": 693,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "FUJITSPU DAYS - 500 Kč",
+        "ID": 668,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "Hlavní akce dne",
+        "ID": 56,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "Jarní úklid - výprodej",
+        "ID": 703,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "MASAKR CEN",
+        "ID": 745,
+        "Zobrazovat": "ANO"
+      },
+      {
+        "Název": "Novinka",
+        "ID": 2,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "Tip",
+        "ID": 3,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "Upgrade W11",
+        "ID": 687,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "Vánoční výprodej",
+        "ID": 53,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "Výprodej",
+        "ID": 902,
+        "Zobrazovat": "ANO"
+      },
+      {
+        "Název": "Aukro - nabídka",
+        "ID": 929,
+        "Zobrazovat": "ANO"
+      }
+    ]
+  },
+  "pridatParametry": {
+    "columns": [
+      "Parametr"
+    ],
+    "rules": [
+      {
+        "Parametr": "Typ produktu"
+      },
+      {
+        "Parametr": "Model procesora"
+      },
+      {
+        "Parametr": "Veľkosť operačnej pamäte"
+      },
+      {
+        "Parametr": "Kapacita disku"
+      },
+      {
+        "Parametr": "Dedikovaná grafická karta (GPU)"
+      },
+      {
+        "Parametr": "Rozlíšenie"
+      }
+    ]
+  },
+  "sovaParamSortingMaster": {
+    "columns": [
+      "Parametr",
+      "Oddelovac"
+    ],
+    "rules": [
+      {
+        "Parametr": "Rozlišení",
+        "Oddelovac": "x"
+      },
+      {
+        "Parametr": "Poměr stran",
+        "Oddelovac": ":"
+      },
+      {
+        "Parametr": "Typ produktu",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "Operační systém",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "Připojení",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "Typ pevného disku",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "Stav produktu",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "Modem",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "Typ panelu",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "opt_insurance",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "#CENA",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "#TAG",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "Popis kosmetické vady",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "Systém",
+        "Oddelovac": "neradit"
+      }
+    ]
+  },
+  "FEzvyrazneniVyprodej": {
+    "columns": [
+      "jmena"
+    ],
+    "rules": [
+      {
+        "jmena": "Veronika Esslerová"
+      },
+      {
+        "jmena": "Ondřej Sopek"
+      },
+      {
+        "jmena": "Lukáš Tejral"
+      },
+      {
+        "jmena": "Barbora Grygarová"
+      }
+    ]
+  }
+}
