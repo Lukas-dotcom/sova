@@ -261,26 +261,26 @@
       "Název",
       "ID",
       "Kdo",
-      "Poznámka"
+      "Poznamka"
     ],
     "rules": [
       {
         "Název": "Na prodejně",
         "ID": 968,
         "Kdo": "Lukáš Tejral",
-        "Poznámka": null
+        "Poznamka": null
       },
       {
         "Název": "Na Copy",
         "ID": 971,
         "Kdo": "Lukáš Tejral",
-        "Poznámka": null
+        "Poznamka": null
       },
       {
         "Název": "Nezvěstný",
         "ID": 974,
         "Kdo": "Lukáš Tejral",
-        "Poznámka": null
+        "Poznamka": null
       }
     ]
   },
