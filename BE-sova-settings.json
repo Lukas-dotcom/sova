@@ -285,9 +285,9 @@
       "Název",
       "ID",
       "active-email-komu",
-      "",
+      "active-email-predmet",
       "active-email-obsah",
-      "",
+      "pasive-email-predmet",
       "pasive-email-komu",
       "pasive-email-obsah"
     ],
@@ -296,8 +296,9 @@
         "Název": "Na prodejně",
         "ID": 968,
         "active-email-komu": null,
-        "": null,
+        "active-email-predmet": null,
         "active-email-obsah": null,
+        "pasive-email-predmet": null,
         "pasive-email-komu": null,
         "pasive-email-obsah": null
       },
@@ -305,8 +306,9 @@
         "Název": "Na Copy",
         "ID": 971,
         "active-email-komu": null,
-        "": null,
+        "active-email-predmet": null,
         "active-email-obsah": null,
+        "pasive-email-predmet": null,
         "pasive-email-komu": null,
         "pasive-email-obsah": null
       },
@@ -316,8 +318,9 @@
         "active-email-komu": [
           "lukas.tejral@pocitarna.cz"
         ],
-        "": null,
+        "active-email-predmet": null,
         "active-email-obsah": null,
+        "pasive-email-predmet": null,
         "pasive-email-komu": [
           "lukas.tejral@pocitarna.cz"
         ],
