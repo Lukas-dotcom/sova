@@ -262,7 +262,8 @@
       "ID",
       "Kdo",
       "Poznamka",
-      "Email"
+      "email-komu",
+      "email-obsah"
     ],
     "rules": [
       {
@@ -270,21 +271,24 @@
         "ID": 968,
         "Kdo": "Lukáš Tejral",
         "Poznamka": null,
-        "Email": null
+        "email-komu": null,
+        "email-obsah": null
       },
       {
         "Název": "Na Copy",
         "ID": 971,
         "Kdo": "Lukáš Tejral",
         "Poznamka": null,
-        "Email": null
+        "email-komu": null,
+        "email-obsah": null
       },
       {
         "Název": "Nezvěstný",
         "ID": 974,
         "Kdo": "Lukáš Tejral",
         "Poznamka": null,
-        "Email": null
+        "email-komu": null,
+        "email-obsah": null
       }
     ]
   },
