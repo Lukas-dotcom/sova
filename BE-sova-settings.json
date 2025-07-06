@@ -256,6 +256,80 @@
       }
     ]
   },
+  "priznakyVobjednavkach": {
+    "columns": [
+      "Název",
+      "ID",
+      "Zobrazovat"
+    ],
+    "rules": [
+      {
+        "Název": "Akce",
+        "ID": 1,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "Akce dne",
+        "ID": 59,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "BLACK FRIDAY",
+        "ID": 693,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "FUJITSPU DAYS - 500 Kč",
+        "ID": 668,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "Hlavní akce dne",
+        "ID": 56,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "Jarní úklid - výprodej",
+        "ID": 703,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "MASAKR CEN",
+        "ID": 745,
+        "Zobrazovat": "ANO"
+      },
+      {
+        "Název": "Novinka",
+        "ID": 2,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "Tip",
+        "ID": 3,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "Upgrade W11",
+        "ID": 687,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "Vánoční výprodej",
+        "ID": 53,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "Výprodej",
+        "ID": 902,
+        "Zobrazovat": "ANO"
+      },
+      {
+        "Název": "Aukro - nabídka",
+        "ID": 929,
+        "Zobrazovat": "ANO"
+      }
+    ]
+  },
   "pridatPriznaky": {
     "columns": [
       "Název",
