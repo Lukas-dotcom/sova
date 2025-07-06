@@ -286,7 +286,6 @@
       "ID",
       "active-poznamka",
       "active-email-komu",
-      "active-email-od",
       "active-email-obsah",
       "pasive-poznamka",
       "pasive-email-komu",
@@ -299,7 +298,6 @@
         "ID": 968,
         "active-poznamka": null,
         "active-email-komu": null,
-        "active-email-od": null,
         "active-email-obsah": null,
         "pasive-poznamka": null,
         "pasive-email-komu": null,
@@ -311,7 +309,6 @@
         "ID": 971,
         "active-poznamka": null,
         "active-email-komu": null,
-        "active-email-od": null,
         "active-email-obsah": null,
         "pasive-poznamka": null,
         "pasive-email-komu": null,
@@ -325,7 +322,6 @@
         "active-email-komu": [
           "lukas.tejral@pocitarna.cz"
         ],
-        "active-email-od": "lukas.tejral@pocitarna.cz",
         "active-email-obsah": null,
         "pasive-poznamka": "Už se našel",
         "pasive-email-komu": [
