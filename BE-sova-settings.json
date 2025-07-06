@@ -281,17 +281,32 @@
       {
         "Název": "Na prodejně",
         "ID": 968,
-        "Kdo": "Lukáš Tejral"
+        "Kdo": "Lukáš Koukal"
       },
       {
         "Název": "Na Copy",
         "ID": 971,
-        "Kdo": "Lukáš Tejral"
+        "Kdo": "Lukáš Koukal"
       },
       {
         "Název": "Nezvěstný",
         "ID": 974,
-        "Kdo": "Lukáš Tejral"
+        "Kdo": "Lukáš Koukal"
+      },
+      {
+        "Název": "Na prodejně",
+        "ID": 968,
+        "Kdo": "Lukáš Koukal"
+      },
+      {
+        "Název": "Na Copy",
+        "ID": 971,
+        "Kdo": "Lukáš Koukal"
+      },
+      {
+        "Název": "Nezvěstný",
+        "ID": 974,
+        "Kdo": "Lukáš Koukal"
       }
     ]
   },
