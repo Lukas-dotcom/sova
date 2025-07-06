@@ -185,6 +185,7 @@
         pridatStitikyvPrehledu ();
         pridatParametry();
         doplneniCeniku();
+        priznakEmail();
         }
         
 
@@ -196,6 +197,7 @@
             adminDeliveryHelper();
             mazatTrackingPriOdstraneniZasilky();
             priznakyVobjednavkach();
+            priznakEmail();
 
         }
 
@@ -358,7 +360,113 @@ async function getRulesFor(featureName, settingSource = "BE") {
         console.warn("⚠️ Nepodařilo se zjistit jméno uživatele z dataLayer ani z DOMu.");
         return "";
     }
-    
+
+function priznakEmail () {
+    const LOG = (...a) => console.log('[SOVA-EMAIL]', ...a);
+
+    /* 1️⃣  Detekce podporované stránky */
+    const pageKey = location.pathname.startsWith('/admin/objednavky-detail/')
+        ? 'objednavka'
+        : location.pathname.startsWith('/admin/ceny/')
+        ? 'ceny'
+        : null;
+
+    if (!pageKey) return;          // na jiných stránkách nic neděláme
+    LOG('INIT:', pageKey);
+
+    /* 2️⃣  Načti pravidla (lazy) */
+    let emailRules = null;
+    (async () => { emailRules = await getRulesFor('priznakEmail'); })();
+
+    /* 3️⃣  Vytvoř cache 1. tabulky (objednávka) */
+    const firstTabCache = new Map();
+    if (pageKey === 'objednavka') {
+        document.querySelectorAll(
+            '.tableWrapper table.table.checkbox-table:not(#orderCompletionTable) tbody tr'
+        ).forEach(tr => {
+            const codeA = tr.querySelector("td[data-testid='cellOrderItemCode'] a");
+            const nameA = tr.querySelector("td[data-testid='cellOrderItemDescr'] a");
+            if (!codeA || !nameA) return;
+            firstTabCache.set(codeA.textContent.trim(), {
+                name: nameA.firstChild?.textContent.trim() || '',
+                url : codeA.href
+            });
+        });
+    }
+
+    /* 4️⃣  Funkce – z řádku získat {name,code,url} */
+    async function rowData(btn) {
+        const tr = btn.closest('tr');
+        if (!tr) return null;
+
+        /* objednávka – 1. tabulka */
+        if (pageKey === 'objednavka') {
+            const codeA = tr.querySelector("td[data-testid='cellOrderItemCode'] a");
+            if (codeA) {
+                const nameA = tr.querySelector("td[data-testid='cellOrderItemDescr'] a");
+                return { code: codeA.textContent.trim(),
+                         name: nameA?.firstChild?.textContent.trim() || '',
+                         url : codeA.href };
+            }
+            /* objednávka – 2. tabulka (doplň z cache) */
+            const codeCell = tr.querySelector("td[data-testid='cellCompletionItemCode']");
+            const codeStr  = codeCell?.textContent.trim();
+            return firstTabCache.get(codeStr) ?? null;
+        }
+
+        /* ceny */
+        if (pageKey === 'ceny') {
+            const tds  = [...tr.children];
+            const code = tds[2]?.innerText.trim();
+            const name = tds[3]?.querySelector('strong')?.innerText.trim() || '';
+            const urlA = tds[3]?.querySelector('a');
+            return { code, name, url: urlA?.href };
+        }
+        return null;
+    }
+
+    /* 5️⃣  Klik listener */
+    document.body.addEventListener('click', async e => {
+        const btn = e.target.closest('a.bool-property');
+        if (!btn?.dataset?.values) return;
+
+        if (!emailRules) emailRules = await getRulesFor('priznakEmail');
+        if (!emailRules) return;
+
+        const [nextVal, paramIdStr] = btn.dataset.values.split(',');
+        const willEnable = nextVal === '1';
+        const paramId    = +paramIdStr;
+
+        const rule = emailRules.find(r => +r.ID === paramId);
+        if (!rule || !rule[pageKey]) return;
+
+        const variant = willEnable ? 'active' : 'passive';
+        const to   = rule[`${variant}-email-komu`];
+        const subj = rule[`${variant}-email-predmet`];
+        const body = rule[`${variant}-email-obsah`];
+        if (!to?.length || !subj || !body) return;
+
+        const data = await rowData(btn);
+        if (!data) { LOG('⛔ Chybí data řádku'); return; }
+
+        const user = await getUserName();
+        const replace = s => s
+            .replace(/\|\|name\|\|/g,        data.name || '')
+            .replace(/\|\|code\|\|/g,        data.code || '')
+            .replace(/\|\|product-url\|\|/g, data.url  || '')
+            .replace(/\|\|user\|\|/g,        user      || '');
+
+        const mailto =
+            `mailto:${to.join(',')}` +
+            `?subject=${encodeURIComponent(replace(subj))}` +
+            `&body=${encodeURIComponent(replace(body).replace(/\n/g, '\r\n'))}`;
+
+        LOG('✉️ Otevírám mailto →', mailto);
+        window.open(mailto, '_blank');
+    });
+}    
+
+
 
 // --- Funkce, která spouští zpracování na stránce s výpisem filtrů (otevře nové okno) ---
 async function raditHodnotyFiltru() {
