@@ -709,7 +709,7 @@ async function adminDeliveryHelper() {
   );
 
  /* ---------- fetch settings přes SOVA ---------- */
- const RULES = await getRulesFor('adminDeliveryHelper', 'BE');
+ const RULES = await getRulesFor('adminDeliveryHelper');
  console.log(`🔎 RULES získáno: ${Array.isArray(RULES) ? RULES.length : 0}`);
  main(RULES || []);
 
