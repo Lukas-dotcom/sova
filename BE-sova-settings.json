@@ -318,7 +318,7 @@
         "active-email-komu": [
           "lukas.tejral@pocitarna.cz"
         ],
-        "active-email-predmet": null,
+        "active-email-predmet": "Chybějící produkt: ||nazev||",
         "active-email-obsah": null,
         "passive-email-predmet": null,
         "passive-email-komu": [
