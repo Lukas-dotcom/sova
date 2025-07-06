@@ -185,7 +185,7 @@
       }
     ]
   },
-  "upravyDobirek": {
+  "adminDeliveryHelper": {
     "columns": [
       "doprava",
       "platba",
