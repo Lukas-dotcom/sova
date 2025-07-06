@@ -262,9 +262,9 @@
       "ID",
       "Kdo",
       "active-poznamka",
-      "email-komu",
-      "email-od",
-      "email-obsah",
+      "active-email-komu",
+      "active-email-od",
+      "active-email-obsah",
       "email-obsah"
     ],
     "rules": [
@@ -273,8 +273,9 @@
         "ID": 968,
         "Kdo": "Lukáš Tejral",
         "active-poznamka": null,
-        "email-komu": null,
-        "email-od": null,
+        "active-email-komu": null,
+        "active-email-od": null,
+        "active-email-obsah": null,
         "email-obsah": null
       },
       {
@@ -282,8 +283,9 @@
         "ID": 971,
         "Kdo": "Lukáš Tejral",
         "active-poznamka": null,
-        "email-komu": null,
-        "email-od": null,
+        "active-email-komu": null,
+        "active-email-od": null,
+        "active-email-obsah": null,
         "email-obsah": null
       },
       {
@@ -291,8 +293,9 @@
         "ID": 974,
         "Kdo": "Lukáš Tejral",
         "active-poznamka": null,
-        "email-komu": null,
-        "email-od": null,
+        "active-email-komu": null,
+        "active-email-od": null,
+        "active-email-obsah": null,
         "email-obsah": null
       }
     ]
