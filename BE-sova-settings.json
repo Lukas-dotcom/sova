@@ -263,7 +263,6 @@
       "Kdo",
       "Poznamka",
       "email-komu",
-      "",
       "email-od",
       "email-obsah"
     ],
@@ -274,7 +273,6 @@
         "Kdo": "Lukáš Tejral",
         "Poznamka": null,
         "email-komu": null,
-        "": null,
         "email-od": null,
         "email-obsah": null
       },
@@ -284,7 +282,6 @@
         "Kdo": "Lukáš Tejral",
         "Poznamka": null,
         "email-komu": null,
-        "": null,
         "email-od": null,
         "email-obsah": null
       },
@@ -294,7 +291,6 @@
         "Kdo": "Lukáš Tejral",
         "Poznamka": null,
         "email-komu": null,
-        "": null,
         "email-od": null,
         "email-obsah": null
       }
