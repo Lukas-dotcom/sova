@@ -1,0 +1,47 @@
+name: Deploy_pocitarna_sk.yml
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy-sk:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      # Ověření existujících souborů
+      - name: Výpis dostupných souborů
+        run: ls -la
+
+      # Vytvoření cílové složky na SFTP, pokud neexistuje
+      - name: Create remote directory if missing
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y sshpass
+
+          echo "mkdir /upload/sova" > sftp_mkdir.txt
+          echo "bye" >> sftp_mkdir.txt
+
+          sshpass -p "${{ secrets.FTP_PASS_SK }}" \
+            sftp -P 22 -o StrictHostKeyChecking=no \
+            ${{ secrets.FTP_USER_SK }}@${{ secrets.FTP_HOST_SK }} < sftp_mkdir.txt
+
+      # Nahrání pouze těch souborů, které v repozitáři existují
+      - name: Upload selected SK files if they exist
+        run: |
+          FILES=""
+          [ -f FE-SK-sova.js ] && FILES="$FILES FE-SK-sova.js"
+          [ -f FE-SK-sova.css ] && FILES="$FILES FE-SK-sova.css"
+          [ -f FE-SK-sova-settings.js ] && FILES="$FILES FE-SK-sova-settings.js"
+
+          if [ -n "$FILES" ]; then
+            echo "Nahrávám SK soubory: $FILES"
+            sshpass -p "${{ secrets.FTP_PASS_SK }}" \
+              scp -P 22 -o StrictHostKeyChecking=no $FILES \
+              ${{ secrets.FTP_USER_SK }}@${{ secrets.FTP_HOST_SK }}:/upload/sova
+          else
+            echo "Žádné z cílových SK souborů neexistují, nic se nenahrává."
+          fi

@@ -204,11 +204,11 @@
       },
       {
         "doprava": [
-          "PPL - kurýr (vícekusová zásilka, Slovensko)",
-          "PPL ParcelShop - výdejní místa (vícekusová zásilka, Slovensko)"
+          "SPS (viackusová zásielka)",
+          "PPL ParcelShop - výdajné miesta (viackusová zásielka)"
         ],
         "platba": [
-          "Dobírkou"
+          "Dobierkou"
         ],
         "vlastniPole": null,
         "uprava": [
@@ -219,7 +219,7 @@
       {
         "doprava": null,
         "platba": [
-          "Dobírkou"
+          "Dobierkou"
         ],
         "vlastniPole": null,
         "uprava": [
@@ -339,10 +339,10 @@
         "Parametr": "Typ produktu"
       },
       {
-        "Parametr": "Model procesoru"
+        "Parametr": "Model procesora"
       },
       {
-        "Parametr": "Velikost operační paměti"
+        "Parametr": "Veľkosť operačnej pamäte"
       },
       {
         "Parametr": "Kapacita disku"
@@ -351,7 +351,7 @@
         "Parametr": "Dedikovaná grafická karta (GPU)"
       },
       {
-        "Parametr": "Rozlišení"
+        "Parametr": "Rozlíšenie"
       }
     ]
   },

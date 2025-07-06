@@ -39,8 +39,8 @@ window.expedice = {
 window.shippingHideRules = [
   {
     "shippingIds": [
-      29,
-      104
+      66,
+      75
     ],
     "exactCodes": [
       "KOL0001",
@@ -52,7 +52,8 @@ window.shippingHideRules = [
     ],
     "startsWithUrl": [
       "/monitory/",
-      "/tiskarny/"
+      "/tlaciarne/",
+      "/monitory-2/"
     ],
     "containsName": [
       "AIO",
@@ -64,21 +65,8 @@ window.shippingHideRules = [
   },
   {
     "shippingIds": [
-      37,
-      112
-    ],
-    "exactCodes": [
-      "KOL0001",
-      "KOL0002"
-    ],
-    "startsWithCodes": [],
-    "startsWithUrl": [],
-    "containsName": []
-  },
-  {
-    "shippingIds": [
-      65,
-      140
+      145,
+      151
     ],
     "exactCodes": [
       "KOL0001",
@@ -90,7 +78,8 @@ window.shippingHideRules = [
     ],
     "startsWithUrl": [
       "/monitory/",
-      "/tiskarny/"
+      "/tlaciarne/",
+      "/monitory-2/"
     ],
     "containsName": [
       "AIO",
@@ -102,27 +91,8 @@ window.shippingHideRules = [
   },
   {
     "shippingIds": [
-      48,
-      123
-    ],
-    "exactCodes": [
-      "KOL0001",
-      "KOL0002"
-    ],
-    "startsWithCodes": [
-      "PRT"
-    ],
-    "startsWithUrl": [
-      "/pocitace/",
-      "/monitory/",
-      "/tiskarny/"
-    ],
-    "containsName": []
-  },
-  {
-    "shippingIds": [
-      362,
-      404
+      148,
+      154
     ],
     "exactCodes": [
       "KOL0001",
@@ -134,7 +104,8 @@ window.shippingHideRules = [
     ],
     "startsWithUrl": [
       "/monitory/",
-      "/tiskarny/"
+      "/tlaciarne/",
+      "/monitory-2/"
     ],
     "containsName": [
       "AIO",
@@ -146,8 +117,8 @@ window.shippingHideRules = [
   },
   {
     "shippingIds": [
-      389,
-      437
+      127,
+      133
     ],
     "exactCodes": [
       "KOL0001",
@@ -159,7 +130,8 @@ window.shippingHideRules = [
     ],
     "startsWithUrl": [
       "/monitory/",
-      "/tiskarny/"
+      "/tlaciarne/",
+      "/monitory-2/"
     ],
     "containsName": [
       "AIO",
@@ -171,8 +143,8 @@ window.shippingHideRules = [
   },
   {
     "shippingIds": [
-      395,
-      428
+      139,
+      136
     ],
     "exactCodes": [
       "KOL0001",
@@ -184,7 +156,8 @@ window.shippingHideRules = [
     ],
     "startsWithUrl": [
       "/monitory/",
-      "/tiskarny/"
+      "/tlaciarne/",
+      "/monitory-2/"
     ],
     "containsName": [
       "AIO",
@@ -193,101 +166,6 @@ window.shippingHideRules = [
       "iMAC",
       "iMac"
     ]
-  },
-  {
-    "shippingIds": [
-      455,
-      425
-    ],
-    "exactCodes": [
-      "KOL0001",
-      "KOL0002"
-    ],
-    "startsWithCodes": [
-      "PRT",
-      "AIO"
-    ],
-    "startsWithUrl": [
-      "/monitory/",
-      "/tiskarny/"
-    ],
-    "containsName": [
-      "AIO",
-      "IMAC",
-      "AiO",
-      "iMAC",
-      "iMac"
-    ]
-  },
-  {
-    "shippingIds": [
-      371,
-      413
-    ],
-    "exactCodes": [
-      "KOL0001",
-      "KOL0002"
-    ],
-    "startsWithCodes": [],
-    "startsWithUrl": [],
-    "containsName": []
-  },
-  {
-    "shippingIds": [
-      380,
-      419
-    ],
-    "exactCodes": [
-      "KOL0001",
-      "KOL0002"
-    ],
-    "startsWithCodes": [],
-    "startsWithUrl": [],
-    "containsName": []
-  },
-  {
-    "shippingIds": [
-      374,
-      661
-    ],
-    "exactCodes": [
-      "KOL0001",
-      "KOL0002"
-    ],
-    "startsWithCodes": [
-      "PRT",
-      "AIO"
-    ],
-    "startsWithUrl": [
-      "/monitory/",
-      "/tiskarny/"
-    ],
-    "containsName": [
-      "AIO",
-      "IMAC",
-      "AiO",
-      "iMAC",
-      "iMac"
-    ]
-  },
-  {
-    "shippingIds": [
-      365,
-      407
-    ],
-    "exactCodes": [
-      "KOL0001",
-      "KOL0002"
-    ],
-    "startsWithCodes": [
-      "PRT"
-    ],
-    "startsWithUrl": [
-      "/pocitace/",
-      "/monitory/",
-      "/tiskarny/"
-    ],
-    "containsName": []
   }
 ];
 
@@ -309,26 +187,12 @@ window.navstivene = {
 window.dvojbalikyNechat = {
   "dvojbaliky": true,
   "maloobchod": [
-    240,
-    280,
-    222,
-    259,
-    446,
-    380,
-    458,
-    395,
-    455
+    121,
+    148
   ],
   "velkoobchod": [
-    262,
-    271,
-    274,
-    277,
-    416,
-    419,
-    425,
-    428,
-    431
+    142,
+    154
   ]
 };
 
