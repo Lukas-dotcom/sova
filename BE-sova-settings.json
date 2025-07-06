@@ -285,7 +285,6 @@
       "Název",
       "ID",
       "ceny",
-      "prehled",
       "objednavka",
       "active-email-komu",
       "active-email-predmet",
@@ -299,7 +298,6 @@
         "Název": "Na prodejně",
         "ID": 968,
         "ceny": null,
-        "prehled": null,
         "objednavka": null,
         "active-email-komu": null,
         "active-email-predmet": null,
@@ -312,7 +310,6 @@
         "Název": "Na Copy",
         "ID": 971,
         "ceny": null,
-        "prehled": null,
         "objednavka": null,
         "active-email-komu": null,
         "active-email-predmet": null,
@@ -325,7 +322,6 @@
         "Název": "Nezvěstný",
         "ID": 974,
         "ceny": true,
-        "prehled": true,
         "objednavka": true,
         "active-email-komu": [
           "lukas.tejral@pocitarna.cz"
