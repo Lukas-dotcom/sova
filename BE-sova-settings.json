@@ -287,7 +287,7 @@
       "active-email-komu",
       "active-email-predmet",
       "active-email-obsah",
-      "",
+      "passive-email-komu",
       "passive-email-predmet",
       "passive-email-obsah"
     ],
@@ -298,7 +298,7 @@
         "active-email-komu": null,
         "active-email-predmet": null,
         "active-email-obsah": null,
-        "": null,
+        "passive-email-komu": null,
         "passive-email-predmet": null,
         "passive-email-obsah": null
       },
@@ -308,7 +308,7 @@
         "active-email-komu": null,
         "active-email-predmet": null,
         "active-email-obsah": null,
-        "": null,
+        "passive-email-komu": null,
         "passive-email-predmet": null,
         "passive-email-obsah": null
       },
@@ -320,31 +320,11 @@
         ],
         "active-email-predmet": "Chybějící produkt: ||name||",
         "active-email-obsah": "Ahoj, neviděli jste někdo ||name|| s kódem ||code|| a URL ||product-url||",
-        "": null,
-        "passive-email-predmet": null,
-        "passive-email-obsah": "Už jsem našel ||name|| s kódem ||code|| "
-      },
-      {
-        "Název": null,
-        "ID": null,
-        "active-email-komu": null,
-        "active-email-predmet": null,
-        "active-email-obsah": null,
-        "": "passive-email-komu",
-        "passive-email-predmet": null,
-        "passive-email-obsah": null
-      },
-      {
-        "Název": null,
-        "ID": null,
-        "active-email-komu": null,
-        "active-email-predmet": null,
-        "active-email-obsah": null,
-        "": [
+        "passive-email-komu": [
           "lukas.tejral@pocitarna.cz"
         ],
         "passive-email-predmet": null,
-        "passive-email-obsah": null
+        "passive-email-obsah": "Už jsem našel ||name|| s kódem ||code|| "
       }
     ]
   },
