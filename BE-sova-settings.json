@@ -287,9 +287,9 @@
       "active-email-komu",
       "active-email-predmet",
       "active-email-obsah",
-      "pasive-email-predmet",
-      "pasive-email-komu",
-      "pasive-email-obsah"
+      "passive-email-predmet",
+      "passive-email-komu",
+      "passive-email-obsah"
     ],
     "rules": [
       {
@@ -298,9 +298,9 @@
         "active-email-komu": null,
         "active-email-predmet": null,
         "active-email-obsah": null,
-        "pasive-email-predmet": null,
-        "pasive-email-komu": null,
-        "pasive-email-obsah": null
+        "passive-email-predmet": null,
+        "passive-email-komu": null,
+        "passive-email-obsah": null
       },
       {
         "Název": "Na Copy",
@@ -308,9 +308,9 @@
         "active-email-komu": null,
         "active-email-predmet": null,
         "active-email-obsah": null,
-        "pasive-email-predmet": null,
-        "pasive-email-komu": null,
-        "pasive-email-obsah": null
+        "passive-email-predmet": null,
+        "passive-email-komu": null,
+        "passive-email-obsah": null
       },
       {
         "Název": "Nezvěstný",
@@ -320,11 +320,11 @@
         ],
         "active-email-predmet": null,
         "active-email-obsah": null,
-        "pasive-email-predmet": null,
-        "pasive-email-komu": [
+        "passive-email-predmet": null,
+        "passive-email-komu": [
           "lukas.tejral@pocitarna.cz"
         ],
-        "pasive-email-obsah": null
+        "passive-email-obsah": null
       }
     ]
   },
