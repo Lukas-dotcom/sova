@@ -263,6 +263,8 @@
       "Kdo",
       "Poznamka",
       "email-komu",
+      "",
+      "email-od",
       "email-obsah"
     ],
     "rules": [
@@ -272,6 +274,8 @@
         "Kdo": "Lukáš Tejral",
         "Poznamka": null,
         "email-komu": null,
+        "": null,
+        "email-od": null,
         "email-obsah": null
       },
       {
@@ -280,6 +284,8 @@
         "Kdo": "Lukáš Tejral",
         "Poznamka": null,
         "email-komu": null,
+        "": null,
+        "email-od": null,
         "email-obsah": null
       },
       {
@@ -288,6 +294,8 @@
         "Kdo": "Lukáš Tejral",
         "Poznamka": null,
         "email-komu": null,
+        "": null,
+        "email-od": null,
         "email-obsah": null
       }
     ]
