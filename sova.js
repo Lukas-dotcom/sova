@@ -193,7 +193,7 @@
             }
         
         if (window.location.href.includes("/admin/objednavky-detail/")){
-            spustitVyplneniDobirky();
+            adminDeliveryHelper();
             mazatTrackingPriOdstraneniZasilky()
 
         }
@@ -345,10 +345,261 @@ async function getRulesFor(featureName, settingSource = "BE") {
 
     
     
+async function adminDeliveryHelper() {
+  /* ---------- utils ---------- */
+  const log = (...a) => console.log('%c[SOVA-COD]', 'color:#00aba7;font-weight:bold', ...a);
+  const num = t => (t ? parseFloat(t.replace(/[^0-9,\.]/g, '').replace(',', '.')) || 0 : 0);
+  const fmt = n => n.toFixed(2).replace('.', ',');
+  const norm = s => s.replace(/\s+/g, ' ').trim().toLowerCase();
 
+  /* ---------- css ---------- */
+  document.head.insertAdjacentHTML(
+    'beforeend',
+    `<style>
+.pod-product-row{display:flex;align-items:center;padding:5px 0;width:min(700px,100%)}
+.pod-product-name{width:50%;text-align:right;font-size:12px;margin-right:10px}
+.pod-product-price{display:flex;align-items:center;gap:5px}
+.pod-add-link{display:inline-block;margin-left:3px;width:35px;text-align:center;padding:5px 0;border:1px solid var(--colors-forms-border);background:transparent;border-radius:5px;cursor:pointer;text-decoration:none;color:inherit}
+.pod-ghost-link{display:inline-block;width:55px;text-align:center;padding:5px 0;border:1px solid var(--colors-forms-border);background:transparent;border-radius:5px;cursor:pointer;text-decoration:none;color:inherit}
+.pod-ghost-link:hover,.pod-add-link:hover{background:var(--user-color);border:1px solid var(--user-color);color:#fff}
+.systemMessage.systemMessage--notice.alert{background:#d93025;border:#d93025;margin-top:5px}
+.systemMessage__text.sova-system-message-text.alert{color:#fff}
+#sova-info{display:flex;flex-direction:column;gap:5px;margin-bottom:15px}
+</style>`
+  );
+
+ /* ---------- fetch settings přes SOVA ---------- */
+ const RULES = await getRulesFor('adminDeliveryHelper', 'BE');
+ main(RULES || []);
+
+  /* ---------- MAIN ---------- */
+  function main(RULES) {
+    const prodTbl = [...document.querySelectorAll('table')].find(t => t.querySelector('[data-testid="cellOrderItemDescr"]'));
+    if (!prodTbl) return;
+    const form = document.querySelector('#document-update');
+    if (!form) return;
+
+    /* allNames */
+    const allNames = [...prodTbl.querySelectorAll('tbody tr')].map(tr => {
+      const td = tr.querySelector('[data-testid="cellOrderItemDescr"]');
+      const a = td?.querySelector('a.table__detailLink');
+      return norm(a ? a.childNodes[0].textContent : td?.textContent || '');
+    });
+
+    /* products (price per unit) */
+    const products = [...prodTbl.querySelectorAll('tbody tr')].flatMap(tr => {
+      const codeTD = tr.querySelector('[data-testid="cellOrderItemCode"]');
+      if (!codeTD) return [];
+      const td = tr.querySelector('[data-testid="cellOrderItemDescr"]');
+      const a = td?.querySelector('a.table__detailLink');
+      const name = (a ? a.childNodes[0].textContent : td?.textContent).trim();
+
+      const qtyTxt = tr.querySelector('[data-testid="cellOrderItemAmount"]')?.textContent || '';
+      const qty = num(qtyTxt) || 1;
+
+      const priceWithVat = num(tr.querySelector('[data-testid="cellOrderItemPriceWithVat"]')?.textContent);
+      const pricePerUnit = priceWithVat / qty;
+
+      return pricePerUnit ? [{ name, price: pricePerUnit }] : []; // filtr 0
+    });
+    const maxPrice = products.reduce((m, p) => Math.max(m, p.price), 0);
+    const total = num(document.querySelector('[data-testid="textTotalPriceWithVat"]')?.textContent);
+
+    /* shipments diff */
+    let codSum = 0, nonHidden = 0;
+    const shipTbl = [...document.querySelectorAll('table')].find(t => t.textContent.includes('Číslo a datum zásilky'));
+    if (shipTbl) shipTbl.querySelectorAll('tbody tr').forEach(tr => {
+      if (tr.classList.contains('table__row--hidden')) return;
+      nonHidden++; codSum += num(tr.querySelector('.table__cell--price')?.textContent);
+    });
+    const diff = +(total - codSum).toFixed(2);
+
+    /* helpers */
+    const matchList = (list, hay) => !list || !list.length ? true : hay.some(n => list.some(x => x && n.includes(norm(x))));
+    const matchLabelInput = wanted => {
+      if (!wanted) return null;
+      const w = norm(wanted);
+      return [...document.querySelectorAll('label')].find(l =>
+        norm(l.querySelector('.v2FormField__labelText')?.textContent || '').includes(w)
+      )?.querySelector('input');
+    };
+
+    /* -------- vyber pravidlo -------- */
+    const firstRule = RULES.find(rule => {
+      const shipOK = matchList(rule.doprava, allNames);
+      const payOK  = matchList(rule.platba,  allNames);
+      if (!shipOK || !payOK) return false;
+      if (rule.vlastniPole) {
+        const inp = matchLabelInput(rule.vlastniPole);
+        return !!(inp && inp.value.trim());
+      }
+      return true;
+    });
+    if (!firstRule) return;
+
+    /* -------- okamžitý vicekusSK -------- */
+    if (firstRule.uprava.includes('vicekusSK')) {
+      insertInfo();
+      if (nonHidden > 0 && diff !== 0) insertDiff();
+    }
+    if (firstRule.uprava.includes('skrytPridatZasilkuBaliky')) {
+        skryjPridatZasilkuBaliky();
+    }
+
+    /* -------- modal listener -------- */
+    document.addEventListener('click', e => {
+      if (!e.target.closest('a.open-modal[href*="pridat-specifickou-zasilku"]')) return;
+      openModal();
+    });
+
+    function openModal() {
+      let attempts = 0;
+      const int = setInterval(() => {
+        attempts++;
+        const modal = document.querySelector('#modal.modal');
+        if (!modal) return attempts > 40 && clearInterval(int);
+
+        const codLabel = modal.querySelector('label.cod-value:not(.hidden-js)');
+        if (!codLabel) return;
+        const codInput = codLabel.querySelector('input[name="cod"]');
+        if (!codInput) return;
+
+        /* ctx pro všechna ACTIONS */
+        let ctx = {
+          modal,
+          codInput,
+          currentValue: num(codInput.value) || 0,
+          total,
+          maxPrice,
+          diff,
+          nonHidden,
+          poleVal: firstRule.vlastniPole ? num(matchLabelInput(firstRule.vlastniPole)?.value) : null,
+        };
+
+        for (const id of firstRule.uprava) {
+          const fn = ACTIONS[id];
+          if (typeof fn === 'function') {
+            const res = fn(ctx);
+            if (typeof res === 'number') ctx.currentValue = res;
+          }
+        }
+
+        codInput.value = fmt(ctx.currentValue);
+        codInput.dispatchEvent(new Event('input', { bubbles: true }));
+        clearInterval(int);
+      }, 250);
+    }
+
+    /* -------- ACTIONS -------- */
+    const ACTIONS = {
+      doplneniCastkyKuhrade: ({ total }) => total,
+
+      dobirkaSepare: ({ poleVal, currentValue }) => poleVal ?? currentValue,
+
+      vicekusSK: ({ modal, codInput, nonHidden, maxPrice, diff, currentValue }) => {
+        const val = nonHidden === 0 ? maxPrice : diff;
+        addGhost(modal, codInput, diff);
+        return val ?? currentValue;
+      },
+       skrytPridatZasilkuBaliky: ctx => ctx.currentValue
+    };
+
+/* ---------- UI helpers ---------- */
+function skryjPridatZasilkuBaliky(){
+  document.querySelectorAll('li').forEach(li=>{
+    const a=li.querySelector('a');
+    if(a&&a.textContent.includes('Přidat zásilku (Balíky)')){
+      li.style.display='none';
+    }
+  });
+}
+
+
+function ensureWrapper(){
+  let wrap=document.getElementById('sova-info');
+  if(!wrap){
+    form.insertAdjacentHTML('afterbegin','<div id="sova-info" class="systemMessage__wrapper"></div>');
+    wrap=document.getElementById('sova-info');
+  }
+  return wrap;
+}
+
+function insertInfo(){
+  const wrap=ensureWrapper();
+  if(!wrap.querySelector('.sova-msg-vksk'))
+    wrap.insertAdjacentHTML('beforeend',
+      `<div class="systemMessage systemMessage--notice sova-msg-vksk">
+         <div class="systemMessage__content">
+           <div class="systemMessage__text sova-system-message-text">
+             <strong>Vícekus s dobírkou na Slovensko: přidej více zásilek s dobírkami podle obsahu balíků + k jedné zásilce přičti cenu dopravy a platby</strong>
+           </div>
+         </div>
+       </div>`);
+}
+
+function insertDiff(){
+  if(nonHidden===0||diff===0) return;
+  const wrap=ensureWrapper();
+  if(!wrap.querySelector('.sova-msg-diff'))
+    wrap.insertAdjacentHTML('beforeend',
+      `<div class="systemMessage systemMessage--notice alert sova-msg-diff">
+         <div class="systemMessage__content">
+           <div class="systemMessage__text sova-system-message-text alert">
+             <strong>Celková hodnota zásilky nesedí na sumu dobírek. Rozdíl: ${fmt(diff)}</strong>
+           </div>
+         </div>
+       </div>`);
+}
+
+    function addGhost(modal, codInput, rest) {
+      if (modal.querySelector('.sova-cod-products')) return;
+      const v2 = modal.querySelector('h2 + .v2form');
+      if (!v2) return;
+      const wrap = document.createElement('div');
+      wrap.className = 'sova-cod-products';
+      wrap.style.marginTop = '10px';
+      products.forEach(p => {
+        wrap.insertAdjacentHTML(
+          'beforeend',
+          rowHTML(p.name, p.price)
+        );
+      });
+      wrap.insertAdjacentHTML('beforeend', rowHTML('<strong>Zbytek</strong>', rest));
+      v2.after(wrap);
+
+      wrap.addEventListener('click', e => {
+        const ghost = e.target.closest('.pod-ghost-link');
+        const plus  = e.target.closest('.pod-add-link');
+        if (ghost) {
+          e.preventDefault();
+          codInput.value = fmt(num(ghost.dataset.val));
+          codInput.dispatchEvent(new Event('input', { bubbles: true }));
+        } else if (plus) {
+          e.preventDefault();
+          const addVal = num(plus.dataset.val);
+          const cur = num(codInput.value);
+          codInput.value = fmt(cur + addVal);
+          codInput.dispatchEvent(new Event('input', { bubbles: true }));
+        }
+      });
+    }
+
+ const rowHTML = (name, price) => `
+ <div class="pod-product-row">
+   <div class="pod-product-name">${name}</div>
+   <div class="pod-product-price">
+     <a href="#" class="pod-ghost-link" data-val="${price}">${fmt(price)}</a>
+     ${
+       /zbytek/i.test(name.replace(/<[^>]+>/g, ''))  /* pokud text obsahuje "Zbytek" */
+         ? ''
+         : `<a href="#" class="pod-add-link" data-val="${price}">+</a>`
+     }
+   </div>
+ </div>`;
+  }
+}
     
 
-// --- Funkce, která spouští zpracování na stránce s výpisem filtrů (otevře nové okno) ---
 // --- Funkce, která spouští zpracování na stránce s výpisem filtrů (otevře nové okno) ---
 async function raditHodnotyFiltru() {
     log("Zpracovávám stránku s výpisem filtrů (pro nové okno)...");
@@ -797,84 +1048,7 @@ function waitForIframe() {
     });
 }
 
-function spustitVyplneniDobirky() {
-    const log = (...args) => console.log('[SOVA:COD]', ...args);
 
-    document.addEventListener('click', (e) => {
-        const link = e.target.closest('a.open-modal[href*="pridat-specifickou-zasilku"]');
-        if (!link) return;
-
-        log('✅ Kliknutí zachyceno na:', link.href);
-
-        let tries = 0;
-        const maxTries = 25;
-        const interval = 250;
-
-        const waitForModal = setInterval(() => {
-            tries++;
-
-            const modal = document.querySelector('#modal.modal');
-            if (!modal) {
-                log(`⏳ Modal zatím není připraven... (${tries}/${maxTries})`);
-                if (tries >= maxTries) {
-                    log('❌ Modal nebyl nalezen v limitu.');
-                    clearInterval(waitForModal);
-                }
-                return;
-            }
-
-            log('✅ Modal nalezen.');
-
-            const label = modal.querySelector('label.cod-value');
-            if (!label) {
-                log('⚠️ Nenalezen žádný .cod-value');
-                clearInterval(waitForModal);
-                return;
-            }
-
-            const isHidden = label.classList.contains('hidden-js');
-            log(`🔍 Label pro COD je ${isHidden ? 'skrytý' : 'viditelný'}`);
-
-            if (isHidden) {
-                clearInterval(waitForModal);
-                return;
-            }
-
-            const input = label.querySelector('input[name="cod"]');
-            if (!input) {
-                log('❌ Nenalezen input[name="cod"]');
-                clearInterval(waitForModal);
-                return;
-            }
-
-            const priceSpan = document.querySelector('[data-testid="textTotalPriceWithVat"]');
-            if (!priceSpan) {
-                log('❌ Nenalezen prvek s [data-testid="textTotalPriceWithVat"]');
-                clearInterval(waitForModal);
-                return;
-            }
-
-            const rawText = priceSpan.textContent.trim();
-            log('📦 Text částky:', rawText);
-
-            const match = rawText.match(/([\d\s]+[,\.]\d{2})/);
-            if (!match) {
-                log('❌ Nepodařilo se extrahovat částku z textu:', rawText);
-                clearInterval(waitForModal);
-                return;
-            }
-
-            const cleaned = match[1].replace(/\s/g, '').replace(',', '.');
-            log('✅ Extrahovaná částka:', cleaned);
-
-            input.value = cleaned;
-            input.dispatchEvent(new Event('input', { bubbles: true }));
-            log('💾 Hodnota zapsána do inputu.');
-
-            clearInterval(waitForModal);
-        }, interval);
-    });
-}
 
 async function doplneniCeniku() {
     'use strict';
