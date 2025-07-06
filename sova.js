@@ -194,7 +194,8 @@
         
         if (window.location.href.includes("/admin/objednavky-detail/")){
             adminDeliveryHelper();
-            mazatTrackingPriOdstraneniZasilky()
+            mazatTrackingPriOdstraneniZasilky();
+            priznakyVobjednavkach();
 
         }
 
@@ -698,6 +699,249 @@ async function paramSortingSingle() {
     } catch (e) {
         console.error("Chyba při načítání pravidel z rulesList:", e);
     }
+}
+
+
+async function priznakyVobjednavkach() {
+    'use strict';
+    const LOG = (...a) => console.log('[SOVA-Příznaky]', ...a);
+
+    /**********************************************************************
+     * 1) getRulesFor (neměněná verze) + getUserName (stub)
+     *********************************************************************/
+    async function getRulesFor(featureName, settingSource = 'BE') {
+        const isSK = location.hostname.endsWith('.sk');
+        const effectiveSource = isSK ? `${settingSource}-SK` : settingSource;
+
+        LOG('getRulesFor →', {
+            feature: featureName,
+            isSK,
+            source: effectiveSource
+        });
+
+        const rulesUrl =
+            `https://raw.githubusercontent.com/Lukas-dotcom/sova/main/` +
+            `${effectiveSource}-sova-settings.json`;
+
+        const r = await fetch(rulesUrl);
+        if (!r.ok) throw new Error(`Nelze načíst ${effectiveSource}-sova-settings.json`);
+        const rulesList = await r.json();
+
+        const allRules =
+            rulesList[featureName] && rulesList[featureName].rules
+                ? rulesList[featureName].rules
+                : null;
+        if (!allRules) return null;
+
+        const withKdo = allRules.filter(r => r.Kdo && r.Kdo.trim() !== '');
+        if (withKdo.length === 0) return allRules;
+
+        const userName = await getUserName();               // tvoje globální funkce
+        const forMe = withKdo.filter(r => r.Kdo.trim() === userName);
+        return forMe.length ? forMe : allRules.filter(r => !r.Kdo || r.Kdo.trim() === '');
+    }
+    async function getUserName() { return 'Lukáš Tejral'; } // stub
+
+    /**********************************************************************
+     * 2) Načtení pravidel
+     *********************************************************************/
+    const rules = await getRulesFor('priznakyVobjednavkach', 'BE');
+    if (!rules?.length) return LOG('❌ Nebyla nalezena žádná pravidla');
+
+    LOG('✅ Načtená pravidla', rules);
+
+    /**********************************************************************
+     * 3) Pomocné funkce
+     *********************************************************************/
+    const selectorFirstTable =
+        '.tableWrapper table.table.checkbox-table:not(#orderCompletionTable)';
+    const selectorSecondTable = '#orderCompletionTable';
+
+    /** Vrátí produktId z href "?id=181028" */
+    const href2id = href => (href.match(/id=(\d+)/) || [])[1];
+
+    /** Převod dd.mm.rrrr na Date */
+    const parseDate = d => (d ? new Date(d.split('.').reverse().join('-')) : null);
+
+    /** Je příznak platný dle od-do? */
+    const isValidByDate = (from, to) => {
+        const today = new Date(); today.setHours(0,0,0,0);
+        if (from && from > today) return false;
+        if (to &&   to   < today) return false;
+        return true;
+    };
+
+/**********************************************************************
+ * 4) Injektáž sloupců  (OPRAVENO)
+ *********************************************************************/
+function injectColumns(tableSel, mode /* 'first' | 'second' */) {
+    const table = document.querySelector(tableSel);
+    if (!table) return LOG('⚠️ Tabulka nenalezena', tableSel);
+
+    const headerRow = table.querySelector('thead tr');
+    const sysTh     = headerRow.lastElementChild;
+
+    let insertRef, place, rulesIter;
+    if (mode === 'first') {                // 1. tabulka
+        insertRef = sysTh;
+        place     = 'before';
+        rulesIter = rules;                 // přirozené pořadí
+    } else {                               // 2. tabulka
+        insertRef = headerRow.children[5]; // „Mn.“
+        place     = 'after';
+        rulesIter = rules;                 // ⬅️ už NEreverse!
+    }
+
+    /* --- HLAVIČKY --- */
+    rulesIter.forEach(r => {
+        const th = document.createElement('th');
+        th.className  = `table__cell--actions priz-h-${r.ID}`;
+        th.textContent = r.Název;
+
+        place === 'before'
+            ? insertRef.before(th)
+            : insertRef.after(th);
+
+        if (place === 'after') insertRef = th;  // posunout referenci pro správné pořadí
+    });
+
+    /* --- ŘÁDKY --- */
+    table.querySelectorAll('tbody tr').forEach(tr => {
+        const sysTd = tr.lastElementChild;
+        rulesIter.forEach(r => {
+            const td = document.createElement('td');
+            td.className = `table__cell--actions priz-c-${r.ID}`;
+            td.innerHTML = '';
+            sysTd.before(td);                  // před systémový sloupec
+        });
+    });
+
+    LOG('➡️ Sloupce injektovány do', tableSel);
+}
+
+
+// ▼▼ původní volání nahradit:
+injectColumns(selectorFirstTable,  'first');   // 1. tabulka
+injectColumns(selectorSecondTable, 'second');  // 2. tabulka
+
+
+    /**********************************************************************
+     * 5) Zjištění stavů příznaků a mapování podle kódu produktu
+     *********************************************************************/
+    const codeMap = new Map();        // productCode ➜ { productId, stavy }
+
+    async function fetchStatesForRow(tr) {
+        const codeLink = tr.querySelector("td[data-testid='cellOrderItemCode'] a");
+        if (!codeLink) return;                             // např. doprava / dobírka
+        const codeStr  = codeLink.textContent.trim();
+        const productId = href2id(codeLink.href);
+        if (!productId) return;
+
+        // už máme pro tento kód?
+        if (codeMap.has(codeStr)) return;
+
+        LOG('⏳ Načítám příznaky pro', codeStr, '→ id', productId);
+        try {
+            const resp = await fetch(`/admin/produkty-detail/?id=${productId}`);
+            const html = await resp.text();
+            const doc  = new DOMParser().parseFromString(html, 'text/html');
+
+            const stavy = {};
+            rules.forEach(r => {
+                const chk  = doc.querySelector(`input[name="doubledot[${r.ID}]"]`);
+                const inOd = doc.querySelector(`input[name="doubledotValidFrom[${r.ID}]"]`);
+                const inDo = doc.querySelector(`input[name="doubledotDate[${r.ID}]"]`);
+
+                const from = parseDate(inOd?.value);
+                const to   = parseDate(inDo?.value);
+                stavy[r.ID] = chk?.checked && isValidByDate(from, to);
+            });
+
+            codeMap.set(codeStr, { productId, stavy });
+            LOG('✅ Stav příznaků', codeStr, stavy);
+        } catch (e) {
+            LOG('❌ Chyba při fetch produktu', productId, e);
+        }
+    }
+
+    // – paralelně pro všechny řádky v 1. tabulce
+    await Promise.all(
+        [...document.querySelectorAll(`${selectorFirstTable} tbody tr`)].map(fetchStatesForRow)
+    );
+
+    /**********************************************************************
+     * 6) Render tlačítek do obou tabulek
+     *********************************************************************/
+    function renderButtonsForTable(tableSel, codeCellQuery, hasLink) {
+        document.querySelectorAll(`${tableSel} tbody tr`).forEach(tr => {
+            const codeCell = tr.querySelector(codeCellQuery);
+            const codeStr  = (hasLink ? codeCell?.querySelector('a')?.textContent
+                                       : codeCell?.textContent)?.trim();
+
+            const mapEntry = codeMap.get(codeStr);
+
+            rules.forEach(r => {
+                const td = tr.querySelector(`.priz-c-${r.ID}`);
+                if (!td) return;
+
+                if (!mapEntry) {                         // kód prázdný nebo není produkt
+                    td.innerHTML = '';
+                    return;
+                }
+
+                const isActive = mapEntry.stavy[r.ID];
+                const btn = document.createElement('a');
+                btn.href = '#';
+                btn.className =
+                    `csrf-post-js csrf-post-ajax-js bool-property shoptet-icon ` +
+                    (isActive ? 'enabled' : 'disabled');
+                btn.title = (isActive ? 'Deaktivovat' : 'Aktivovat') + ` ${r.Název}`;
+                btn.dataset.url    = '/admin/produkty/?action=setParameter';
+                btn.dataset.names  = 'enabled,parameterId,productId';
+                btn.dataset.values = `${isActive ? 0 : 1},${r.ID},${mapEntry.productId}`;
+
+                td.textContent = ''; td.append(btn);
+            });
+        });
+
+        LOG('🖊️ Tlačítka vykreslena v', tableSel);
+    }
+
+    renderButtonsForTable(selectorFirstTable, "td[data-testid='cellOrderItemCode']", true);
+    renderButtonsForTable(selectorSecondTable, "td[data-testid='cellCompletionItemCode']", false);
+
+    /**********************************************************************
+     * 7) Klik – toggle příznaku
+     *********************************************************************/
+    document.body.addEventListener('click', async e => {
+        const btn = e.target.closest('a.bool-property');
+        if (!btn) return;
+        e.preventDefault();
+
+        const [enabled, paramId, productId] = btn.dataset.values.split(',');
+        LOG('🔄 Klik → měním', { enabled, paramId, productId });
+
+        try {
+            await fetch(btn.dataset.url, {
+                method: 'POST',
+                credentials: 'include',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `enabled=${enabled}&parameterId=${paramId}&productId=${productId}`
+            });
+
+            btn.classList.toggle('enabled');
+            btn.classList.toggle('disabled');
+            const newEnabled = btn.classList.contains('enabled') ? 0 : 1;
+            btn.dataset.values = `${newEnabled},${paramId},${productId}`;
+            btn.title = btn.classList.contains('enabled') ? 'Deaktivovat' : 'Aktivovat';
+
+            LOG('✅ Přepnuto', { paramId, productId, active: !newEnabled });
+        } catch (err) {
+            LOG('❌ Chyba při POST', err);
+        }
+    });
+
+    LOG('🏁 Init dokončen');
 }
 
 
