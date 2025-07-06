@@ -789,7 +789,7 @@ RULES.forEach((rule, idx) => {
   const passed = shipOK && payOK && poleOK;
 
   /* LOG */
-  log(
+  console.log(
     `%cRule #${idx}`,
     'color:#888',
     '| uprava:',       rule.uprava?.join(',') ?? '—',
