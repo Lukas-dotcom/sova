@@ -266,11 +266,11 @@
       "active-email-od",
       "active-email-obsah",
       "active-email-obsah",
-      "active-poznamka",
-      "active-email-komu",
-      "active-email-od",
-      "active-email-obsah",
-      "active-email-obsah"
+      "pasive-poznamka",
+      "pasive-email-komu",
+      "pasive-email-od",
+      "pasive-email-obsah",
+      "pasive-email-obsah"
     ],
     "rules": [
       {
@@ -280,7 +280,11 @@
         "active-poznamka": null,
         "active-email-komu": null,
         "active-email-od": null,
-        "active-email-obsah": null
+        "active-email-obsah": null,
+        "pasive-poznamka": null,
+        "pasive-email-komu": null,
+        "pasive-email-od": null,
+        "pasive-email-obsah": null
       },
       {
         "Název": "Na Copy",
@@ -289,7 +293,11 @@
         "active-poznamka": null,
         "active-email-komu": null,
         "active-email-od": null,
-        "active-email-obsah": null
+        "active-email-obsah": null,
+        "pasive-poznamka": null,
+        "pasive-email-komu": null,
+        "pasive-email-od": null,
+        "pasive-email-obsah": null
       },
       {
         "Název": "Nezvěstný",
@@ -298,7 +306,11 @@
         "active-poznamka": null,
         "active-email-komu": null,
         "active-email-od": null,
-        "active-email-obsah": null
+        "active-email-obsah": null,
+        "pasive-poznamka": null,
+        "pasive-email-komu": null,
+        "pasive-email-od": null,
+        "pasive-email-obsah": null
       }
     ]
   },
