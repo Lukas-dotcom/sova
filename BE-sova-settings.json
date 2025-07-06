@@ -260,73 +260,73 @@
     "columns": [
       "Název",
       "ID",
-      "Zobrazovat"
+      "kdo"
     ],
     "rules": [
       {
         "Název": "Akce",
         "ID": 1,
-        "Zobrazovat": "NE"
+        "kdo": "NE"
       },
       {
         "Název": "Akce dne",
         "ID": 59,
-        "Zobrazovat": "NE"
+        "kdo": "NE"
       },
       {
         "Název": "BLACK FRIDAY",
         "ID": 693,
-        "Zobrazovat": "NE"
+        "kdo": "NE"
       },
       {
         "Název": "FUJITSPU DAYS - 500 Kč",
         "ID": 668,
-        "Zobrazovat": "NE"
+        "kdo": "NE"
       },
       {
         "Název": "Hlavní akce dne",
         "ID": 56,
-        "Zobrazovat": "NE"
+        "kdo": "NE"
       },
       {
         "Název": "Jarní úklid - výprodej",
         "ID": 703,
-        "Zobrazovat": "NE"
+        "kdo": "NE"
       },
       {
         "Název": "MASAKR CEN",
         "ID": 745,
-        "Zobrazovat": "ANO"
+        "kdo": "ANO"
       },
       {
         "Název": "Novinka",
         "ID": 2,
-        "Zobrazovat": "NE"
+        "kdo": "NE"
       },
       {
         "Název": "Tip",
         "ID": 3,
-        "Zobrazovat": "NE"
+        "kdo": "NE"
       },
       {
         "Název": "Upgrade W11",
         "ID": 687,
-        "Zobrazovat": "NE"
+        "kdo": "NE"
       },
       {
         "Název": "Vánoční výprodej",
         "ID": 53,
-        "Zobrazovat": "NE"
+        "kdo": "NE"
       },
       {
         "Název": "Výprodej",
         "ID": 902,
-        "Zobrazovat": "ANO"
+        "kdo": "ANO"
       },
       {
         "Název": "Aukro - nabídka",
         "ID": 929,
-        "Zobrazovat": "ANO"
+        "kdo": "ANO"
       }
     ]
   },
