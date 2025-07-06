@@ -289,7 +289,6 @@
       "active-email-obsah",
       "pasive-poznamka",
       "pasive-email-komu",
-      "pasive-email-od",
       "pasive-email-obsah"
     ],
     "rules": [
@@ -301,7 +300,6 @@
         "active-email-obsah": null,
         "pasive-poznamka": null,
         "pasive-email-komu": null,
-        "pasive-email-od": null,
         "pasive-email-obsah": null
       },
       {
@@ -312,7 +310,6 @@
         "active-email-obsah": null,
         "pasive-poznamka": null,
         "pasive-email-komu": null,
-        "pasive-email-od": null,
         "pasive-email-obsah": null
       },
       {
@@ -327,7 +324,6 @@
         "pasive-email-komu": [
           "lukas.tejral@pocitarna.cz"
         ],
-        "pasive-email-od": "lukas.tejral@pocitarna.cz",
         "pasive-email-obsah": null
       }
     ]
