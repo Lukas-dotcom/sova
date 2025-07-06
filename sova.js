@@ -289,6 +289,9 @@
     // --- Hlavní část scriptu - vyčítání URL a pravidel
 // --- Načte pravidla pro konkrétní funkci (featureName) z nastavení ---
 async function getRulesFor(featureName, settingSource = "BE") {
+    const isSK = location.hostname.endsWith(".sk");
+    const effectiveSource = isSK ? `${settingSource}-SK` : settingSource;
+    
     const rulesUrl = `https://raw.githubusercontent.com/Lukas-dotcom/sova/main/${settingSource}-sova-settings.json`;
 
     const response = await fetch(rulesUrl);
