@@ -689,7 +689,6 @@ async function paramSortingSingle() {
 async function adminDeliveryHelper() {
   /* ---------- utils ---------- */
   const log = (...a) => console.log('%c[SOVA-COD]', 'color:#00aba7;font-weight:bold', ...a);
-  log('🔔 adminDeliveryHelper START');
   const num = t => (t ? parseFloat(t.replace(/[^0-9,\.]/g, '').replace(',', '.')) || 0 : 0);
   const fmt = n => n.toFixed(2).replace('.', ',');
   const norm = s => s.replace(/\s+/g, ' ').trim().toLowerCase();
