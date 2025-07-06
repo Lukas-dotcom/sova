@@ -262,9 +262,9 @@
       "ID",
       "Kdo",
       "active-poznamka",
-      "",
       "email-komu",
       "email-od",
+      "email-obsah",
       "email-obsah"
     ],
     "rules": [
@@ -273,7 +273,6 @@
         "ID": 968,
         "Kdo": "Lukáš Tejral",
         "active-poznamka": null,
-        "": null,
         "email-komu": null,
         "email-od": null,
         "email-obsah": null
@@ -283,7 +282,6 @@
         "ID": 971,
         "Kdo": "Lukáš Tejral",
         "active-poznamka": null,
-        "": null,
         "email-komu": null,
         "email-od": null,
         "email-obsah": null
@@ -293,7 +291,6 @@
         "ID": 974,
         "Kdo": "Lukáš Tejral",
         "active-poznamka": null,
-        "": null,
         "email-komu": null,
         "email-od": null,
         "email-obsah": null
