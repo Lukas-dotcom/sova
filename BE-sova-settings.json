@@ -304,11 +304,15 @@
         "ID": 974,
         "Kdo": "Lukáš Tejral",
         "active-poznamka": "Nenalezeno",
-        "active-email-komu": null,
+        "active-email-komu": [
+          "lukas.tejral@pocitarna.cz"
+        ],
         "active-email-od": null,
         "active-email-obsah": null,
         "pasive-poznamka": null,
-        "pasive-email-komu": null,
+        "pasive-email-komu": [
+          "lukas.tejral@pocitarna.cz"
+        ],
         "pasive-email-od": null,
         "pasive-email-obsah": null
       }
