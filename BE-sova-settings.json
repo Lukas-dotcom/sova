@@ -282,6 +282,7 @@
   },
   "priznakEmail": {
     "columns": [
+      "",
       "active-poznamka",
       "active-email-komu",
       "active-email-od",
@@ -293,6 +294,7 @@
     ],
     "rules": [
       {
+        "": null,
         "active-poznamka": "Nenalezeno",
         "active-email-komu": [
           "lukas.tejral@pocitarna.cz"
