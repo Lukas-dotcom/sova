@@ -765,6 +765,29 @@ async function adminDeliveryHelper() {
       )?.querySelector('input');
     };
 
+/* ---------- DEBUG výpis každého pravidla ---------- */
+RULES.forEach((rule, idx) => {
+  const shipOK = matchList(rule.doprava, allNames);
+  const payOK  = matchList(rule.platba,  allNames);
+  const poleOK = rule.vlastniPole
+        ? !!(matchLabelInput(rule.vlastniPole)?.value.trim())
+        : true;
+
+  const passed = shipOK && payOK && poleOK;
+  log(
+    `%cRule #${idx}`,
+    'color:#888',
+    '| uprava:', rule.uprava?.join(',') ?? '—',
+    '| doprava:', shipOK ? '✅' : '❌',
+    '| platba:',  payOK  ? '✅' : '❌',
+    '| vlastniPole:', rule.vlastniPole ? (poleOK ? '✅' : '❌') : '—',
+    '| passed:', passed ? '✔️' : ''
+  );
+});
+
+
+
+
     /* -------- vyber pravidlo -------- */
     const firstRule = RULES.find(rule => {
       const shipOK = matchList(rule.doprava, allNames);
