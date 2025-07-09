@@ -345,8 +345,8 @@
         "buttonText": null,
         "confirm": null,
         "redirect": null,
-        "color": "f8a102",
-        "colorHover": "c27e00"
+        "color": "#f8a102",
+        "colorHover": "#c27e00"
       },
       {
         "idCurrent": 3,
