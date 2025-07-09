@@ -327,7 +327,7 @@
         "buttonText": null,
         "confirm": null,
         "redirect": true,
-        "color": "00bd65",
+        "color": "#00bd65",
         "colorHover": "00944f"
       },
       {
