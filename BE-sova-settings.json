@@ -324,7 +324,7 @@
       {
         "idCurrent": 3,
         "idChange": 151,
-        "buttonText": null,
+        "buttonText": "Odeslání-balení",
         "confirm": null,
         "redirect": true,
         "color": "#00bd65",
@@ -333,7 +333,7 @@
       {
         "idCurrent": 151,
         "idChange": 2,
-        "buttonText": null,
+        "buttonText": "Odesláno",
         "confirm": "Skutečně vše zabaleno?",
         "redirect": null,
         "color": "#34ff34",
