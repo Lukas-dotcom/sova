@@ -324,7 +324,7 @@
         "idCurrent": 3,
         "idChange": 151,
         "confirm": null,
-        "redirect": null,
+        "redirect": true,
         "color": null,
         "colorHover": null
       },
