@@ -328,7 +328,7 @@
         "confirm": null,
         "redirect": true,
         "color": "#00bd65",
-        "colorHover": "00944f"
+        "colorHover": "#00944f"
       },
       {
         "idCurrent": 151,
@@ -336,8 +336,8 @@
         "buttonText": null,
         "confirm": "Skutečně vše zabaleno?",
         "redirect": null,
-        "color": "34ff34",
-        "colorHover": "26ba26"
+        "color": "#34ff34",
+        "colorHover": "#26ba26"
       },
       {
         "idCurrent": 89,
