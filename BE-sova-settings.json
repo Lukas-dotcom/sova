@@ -314,6 +314,7 @@
     "columns": [
       "idCurrent",
       "idChange",
+      "",
       "confirm",
       "redirect",
       "color",
@@ -323,6 +324,7 @@
       {
         "idCurrent": 3,
         "idChange": 151,
+        "": null,
         "confirm": null,
         "redirect": true,
         "color": "00bd65",
@@ -331,6 +333,7 @@
       {
         "idCurrent": 151,
         "idChange": 2,
+        "": null,
         "confirm": "Skutečně vše zabaleno?",
         "redirect": null,
         "color": "34ff34",
@@ -339,6 +342,7 @@
       {
         "idCurrent": 89,
         "idChange": 12,
+        "": null,
         "confirm": null,
         "redirect": null,
         "color": "f8a102",
@@ -347,6 +351,7 @@
       {
         "idCurrent": 3,
         "idChange": 18,
+        "": null,
         "confirm": null,
         "redirect": null,
         "color": "f8a102",
