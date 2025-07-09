@@ -331,7 +331,7 @@
       {
         "idCurrent": 151,
         "idChange": 2,
-        "confirm": null,
+        "confirm": "Skutečně vše zabaleno?",
         "redirect": null,
         "color": null,
         "colorHover": null
