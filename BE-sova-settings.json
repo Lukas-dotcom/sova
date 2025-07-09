@@ -351,7 +351,7 @@
       {
         "idCurrent": 3,
         "idChange": 18,
-        "buttonText": null,
+        "buttonText": "Obchod. řešení",
         "confirm": null,
         "redirect": null,
         "color": "#f8a102",
