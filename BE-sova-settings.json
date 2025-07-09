@@ -325,8 +325,8 @@
         "idChange": 151,
         "confirm": null,
         "redirect": true,
-        "color": null,
-        "colorHover": null
+        "color": "00bd65",
+        "colorHover": "00944f"
       },
       {
         "idCurrent": 151,
