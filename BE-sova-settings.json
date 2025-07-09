@@ -333,7 +333,7 @@
         "idChange": 2,
         "confirm": "Skutečně vše zabaleno?",
         "redirect": null,
-        "color": null,
+        "color": "34ff34",
         "colorHover": null
       },
       {
