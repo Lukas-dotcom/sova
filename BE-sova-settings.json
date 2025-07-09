@@ -342,7 +342,7 @@
       {
         "idCurrent": 89,
         "idChange": 12,
-        "buttonText": null,
+        "buttonText": "Zpracovává se",
         "confirm": null,
         "redirect": null,
         "color": "#f8a102",
