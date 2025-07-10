@@ -264,11 +264,11 @@
     "rules": [
       {
         "button": "DOD přibalit",
-        "text": "Prosím "
+        "text": "Vytiskni a přibal dodací list"
       },
       {
         "button": "FA přibalit",
-        "text": "Prosím "
+        "text": "Vytiskni a přibal dodací list"
       },
       {
         "button": "Neposílat MKT",
