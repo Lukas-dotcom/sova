@@ -256,6 +256,18 @@
       }
     ]
   },
+  "pozadavkyExpe": {
+    "columns": [
+      "button",
+      "text"
+    ],
+    "rules": [
+      {
+        "button": "DOD přibalit",
+        "text": null
+      }
+    ]
+  },
   "priznakyVobjednavkach": {
     "columns": [
       "Název",
