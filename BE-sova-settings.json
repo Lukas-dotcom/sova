@@ -269,6 +269,14 @@
       {
         "button": "FA přibalit",
         "text": null
+      },
+      {
+        "button": "Neposílat MKT",
+        "text": null
+      },
+      {
+        "button": "Bez polep",
+        "text": null
       }
     ]
   },
