@@ -265,6 +265,10 @@
       {
         "button": "DOD přibalit",
         "text": null
+      },
+      {
+        "button": "FA přibalit",
+        "text": null
       }
     ]
   },
