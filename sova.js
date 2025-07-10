@@ -1545,7 +1545,13 @@ async function doplneniCeniku() {
 
 /* ---- akční ceny (fetch) ---- */
 const fetchAkce = async (dealer, row) => {
-    const html = await fetch(urlFor(dealer, kod)).then(r => r.text());
+    const html = await fetch(
+        urlFor(dealer, kod),
+        {
+            credentials: 'same-origin',
+            headers: { 'X-Requested-With': 'XMLHttpRequest' } // 👈
+        }
+    ).then(r => r.text());
     const doc  = new DOMParser().parseFromString(html, 'text/html');
 
     doc.querySelectorAll('table.table tbody tr').forEach(tr => {
