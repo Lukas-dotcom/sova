@@ -281,6 +281,10 @@
       {
         "button": "Křehké",
         "text": null
+      },
+      {
+        "button": "Konkrétní kus",
+        "text": null
       }
     ]
   },
