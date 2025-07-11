@@ -256,6 +256,46 @@
       }
     ]
   },
+  "pozadavkyExpe": {
+    "columns": [
+      "button",
+      "text"
+    ],
+    "rules": [
+      {
+        "button": "DOD přibalit",
+        "text": "Vytiskni a přibal dodací list"
+      },
+      {
+        "button": "FA přibalit",
+        "text": "Vytiskni a přibal fakturu"
+      },
+      {
+        "button": "Neposílat MKT",
+        "text": "Npřidávej medvídky ani letáky"
+      },
+      {
+        "button": "Bez polep",
+        "text": "Nepolepuj klávesnici"
+      },
+      {
+        "button": "Křehké",
+        "text": "Obal páskou křehké"
+      },
+      {
+        "button": "Konkrétní kus",
+        "text": "Přidej konkrétní vybraný kus"
+      },
+      {
+        "button": "Hezký kus",
+        "text": "Vyber hezký kus"
+      },
+      {
+        "button": "Baterie 95%",
+        "text": "Vyber kus se stavem baterie aspoň 95%"
+      }
+    ]
+  },
   "priznakyVobjednavkach": {
     "columns": [
       "Název",
