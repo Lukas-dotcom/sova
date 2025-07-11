@@ -184,7 +184,7 @@
         if (window.location.href.includes("/admin/ceny/")){
         pridatStitikyvPrehledu ();
         pridatParametry();
-        doplneniCeniku();
+      //doplneniCeniku();
         priznakEmail();
         }
         
@@ -202,7 +202,7 @@
         }
 
         if (window.location.href.includes("/admin/produkty-detail/?id")){
-            doplneniCeniku();
+    //    doplneniCeniku();
         }
  
         
