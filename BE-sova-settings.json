@@ -187,7 +187,7 @@
   },
   "adminDeliveryHelper": {
     "columns": [
-      "",
+      "zakaznik",
       "doprava",
       "platba",
       "vlastniPole",
@@ -196,7 +196,7 @@
     ],
     "rules": [
       {
-        "": null,
+        "zakaznik": null,
         "doprava": null,
         "platba": null,
         "vlastniPole": "Doběrečné (HC, separe)",
@@ -207,7 +207,7 @@
         "info": null
       },
       {
-        "": null,
+        "zakaznik": null,
         "doprava": [
           "PPL - kurýr (vícekusová zásilka, Slovensko)",
           "PPL ParcelShop - výdejní místa (vícekusová zásilka, Slovensko)"
@@ -223,7 +223,7 @@
         "info": null
       },
       {
-        "": null,
+        "zakaznik": null,
         "doprava": null,
         "platba": [
           "Dobírkou"
