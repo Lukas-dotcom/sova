@@ -229,6 +229,15 @@
         "uprava": [
           "doplneniCastkyKuhrade"
         ]
+      },
+      {
+        "zakaznik": "Netstore",
+        "doprava": null,
+        "platba": null,
+        "vlastniPole": null,
+        "uprava": [
+          "netstore"
+        ]
       }
     ]
   },
