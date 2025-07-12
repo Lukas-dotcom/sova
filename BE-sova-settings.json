@@ -187,22 +187,27 @@
   },
   "adminDeliveryHelper": {
     "columns": [
+      "",
       "doprava",
       "platba",
       "vlastniPole",
-      "uprava"
+      "uprava",
+      "info"
     ],
     "rules": [
       {
+        "": null,
         "doprava": null,
         "platba": null,
         "vlastniPole": "Doběrečné (HC, separe)",
         "uprava": [
           "dobirkaSepare",
           "skrytPridatZasilkuBaliky"
-        ]
+        ],
+        "info": null
       },
       {
+        "": null,
         "doprava": [
           "PPL - kurýr (vícekusová zásilka, Slovensko)",
           "PPL ParcelShop - výdejní místa (vícekusová zásilka, Slovensko)"
@@ -214,9 +219,11 @@
         "uprava": [
           "vicekusSK",
           "skrytPridatZasilkuBaliky"
-        ]
+        ],
+        "info": null
       },
       {
+        "": null,
         "doprava": null,
         "platba": [
           "Dobírkou"
@@ -224,7 +231,8 @@
         "vlastniPole": null,
         "uprava": [
           "doplneniCastkyKuhrade"
-        ]
+        ],
+        "info": null
       }
     ]
   },
