@@ -195,6 +195,15 @@
     ],
     "rules": [
       {
+        "zakaznik": "Netstore",
+        "doprava": null,
+        "platba": null,
+        "vlastniPole": null,
+        "uprava": [
+          "netstore"
+        ]
+      },
+      {
         "zakaznik": null,
         "doprava": null,
         "platba": null,
@@ -228,15 +237,6 @@
         "vlastniPole": null,
         "uprava": [
           "doplneniCastkyKuhrade"
-        ]
-      },
-      {
-        "zakaznik": "Netstore",
-        "doprava": null,
-        "platba": null,
-        "vlastniPole": null,
-        "uprava": [
-          "netstore"
         ]
       }
     ]
