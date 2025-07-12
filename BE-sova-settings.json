@@ -187,17 +187,17 @@
   },
   "adminDeliveryHelper": {
     "columns": [
+      "zakaznik",
       "doprava",
       "platba",
-      "",
       "vlastniPole",
       "uprava"
     ],
     "rules": [
       {
+        "zakaznik": null,
         "doprava": null,
         "platba": null,
-        "": null,
         "vlastniPole": "Doběrečné (HC, separe)",
         "uprava": [
           "dobirkaSepare",
@@ -205,6 +205,7 @@
         ]
       },
       {
+        "zakaznik": null,
         "doprava": [
           "PPL - kurýr (vícekusová zásilka, Slovensko)",
           "PPL ParcelShop - výdejní místa (vícekusová zásilka, Slovensko)"
@@ -212,7 +213,6 @@
         "platba": [
           "Dobírkou"
         ],
-        "": null,
         "vlastniPole": null,
         "uprava": [
           "vicekusSK",
@@ -220,11 +220,11 @@
         ]
       },
       {
+        "zakaznik": null,
         "doprava": null,
         "platba": [
           "Dobírkou"
         ],
-        "": null,
         "vlastniPole": null,
         "uprava": [
           "doplneniCastkyKuhrade"
