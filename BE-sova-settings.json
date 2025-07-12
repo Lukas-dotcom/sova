@@ -189,6 +189,7 @@
     "columns": [
       "doprava",
       "platba",
+      "",
       "vlastniPole",
       "uprava"
     ],
@@ -196,6 +197,7 @@
       {
         "doprava": null,
         "platba": null,
+        "": null,
         "vlastniPole": "Doběrečné (HC, separe)",
         "uprava": [
           "dobirkaSepare",
@@ -210,6 +212,7 @@
         "platba": [
           "Dobírkou"
         ],
+        "": null,
         "vlastniPole": null,
         "uprava": [
           "vicekusSK",
@@ -221,6 +224,7 @@
         "platba": [
           "Dobírkou"
         ],
+        "": null,
         "vlastniPole": null,
         "uprava": [
           "doplneniCastkyKuhrade"
