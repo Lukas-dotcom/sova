@@ -197,6 +197,17 @@
     ],
     "rules": [
       {
+        "zakaznik": [
+          14216
+        ],
+        "doprava": null,
+        "platba": null,
+        "poznamka": null,
+        "vlastniPole": null,
+        "uprava": null,
+        "info": null
+      },
+      {
         "zakaznik": null,
         "doprava": null,
         "platba": null,
