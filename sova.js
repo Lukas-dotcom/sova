@@ -1063,303 +1063,358 @@ injectColumns(selectorSecondTable, 'second');  // 2. tabulka
 }
 
 
-async function adminDeliveryHelper() {
-  /* ---------- utils ---------- */
-  const num = t => (t ? parseFloat(t.replace(/[^0-9,\.]/g, '').replace(',', '.')) || 0 : 0);
-  const fmt = n => n.toFixed(2).replace('.', ',');
-  const norm = s => s.replace(/\s+/g, ' ').trim().toLowerCase();
+/* ===============  ADMIN DELIVERY HELPER 2.0  =============== */
+/* 2025-07-12 – úpravy podle požadavků:                       *
+ *  • #t2 button styling | wrapper #sova-Messages              *
+ *  • nové filtry: zakaznik, poznamka                         *
+ *  • nové pole info, alerts, nové akce skrytPridatSpec…      *
+ *  • dobirkaSepare – kontrola checkboxu codEnabled           */
 
-  /* ---------- css ---------- */
-  document.head.insertAdjacentHTML(
-    'beforeend',
-    `<style>
-.pod-product-row{display:flex;align-items:center;padding:5px 0;width:min(700px,100%)}
-.pod-product-name{width:50%;text-align:right;font-size:12px;margin-right:10px}
-.pod-product-price{display:flex;align-items:center;gap:5px}
-.pod-add-link{display:inline-block;margin-left:3px;width:35px;text-align:center;padding:5px 0;border:1px solid var(--colors-forms-border);background:transparent;border-radius:5px;cursor:pointer;text-decoration:none;color:inherit}
-.pod-ghost-link{display:inline-block;width:55px;text-align:center;padding:5px 0;border:1px solid var(--colors-forms-border);background:transparent;border-radius:5px;cursor:pointer;text-decoration:none;color:inherit}
-.pod-ghost-link:hover,.pod-add-link:hover{background:var(--user-color);border:1px solid var(--user-color);color:#fff}
-.systemMessage.systemMessage--notice.alert{background:#d93025;border:#d93025;margin-top:5px}
-.systemMessage__text.sova-system-message-text.alert{color:#fff}
-#sova-info{display:flex;flex-direction:column;gap:5px;margin-bottom:15px}
-</style>`
-  );
+(async () => {
+/* ---------- FETCH SETTINGS přes SOVA ---------- */
+const RULES = await getRulesFor('adminDeliveryHelper');
+console.log(`🔎 RULES získáno: ${Array.isArray(RULES) ? RULES.length : 0}`);
+main(RULES || []);
 
- /* ---------- fetch settings přes SOVA ---------- */
- const RULES = await getRulesFor('adminDeliveryHelper');
- console.log(`🔎 RULES získáno: ${Array.isArray(RULES) ? RULES.length : 0}`);
- main(RULES || []);
+/* ---------- POMOCNÉ FUNKCE ---------- */
+const norm = s => (s || '').toString().normalize('NFKD')
+  .replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+const num  = s => +(s || '').toString().replace(/\s|&nbsp;|[^\d.-]+/g, '').replace(',', '.') || 0;
+const fmt  = n => n.toLocaleString('cs-CZ', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-  /* ---------- MAIN ---------- */
-  function main(RULES) {
-    const prodTbl = [...document.querySelectorAll('table')].find(t => t.querySelector('[data-testid="cellOrderItemDescr"]'));
-    if (!prodTbl) return;
-    const form = document.querySelector('#document-update');
-    if (!form) return;
+/* vloží / vrátí hlavní wrapper pro naše hlášky */
+function ensureMessagesWrap() {
+  let wrap = document.getElementById('sova-Messages');
+  if (wrap) return wrap;
 
-    /* allNames */
-    const allNames = [...prodTbl.querySelectorAll('tbody tr')].map(tr => {
-      const td = tr.querySelector('[data-testid="cellOrderItemDescr"]');
-      const a = td?.querySelector('a.table__detailLink');
-      return norm(a ? a.childNodes[0].textContent : td?.textContent || '');
-    });
+  const t2 = document.querySelector('#t2');
+  const pRight = t2?.querySelector('p.text-right');
+  if (!pRight) return null;
 
-    /* products (price per unit) */
-    const products = [...prodTbl.querySelectorAll('tbody tr')].flatMap(tr => {
-      const codeTD = tr.querySelector('[data-testid="cellOrderItemCode"]');
-      if (!codeTD) return [];
-      const td = tr.querySelector('[data-testid="cellOrderItemDescr"]');
-      const a = td?.querySelector('a.table__detailLink');
-      const name = (a ? a.childNodes[0].textContent : td?.textContent).trim();
+  pRight.insertAdjacentHTML('beforebegin', `
+    <div id="sova-Messages">
+      <div id="sova-expe-req"></div>
+      <div id="sova-info"></div>
+      <div id="sova-alerts"></div>
+    </div>
+  `);
+  return document.getElementById('sova-Messages');
+}
 
-      const qtyTxt = tr.querySelector('[data-testid="cellOrderItemAmount"]')?.textContent || '';
-      const qty = num(qtyTxt) || 1;
+/* vloží jednu systemMessage do zadaného parentu */
+function insertSystemMessage(parent, text) {
+  parent.insertAdjacentHTML('beforeend', `
+    <div class="systemMessage systemMessage--notice">
+      <div class="systemMessage__content">
+        <div class="systemMessage__text sova-system-message-text">
+          <strong>${text}</strong>
+        </div>
+      </div>
+    </div>
+  `);
+}
 
-      const priceWithVat = num(tr.querySelector('[data-testid="cellOrderItemPriceWithVat"]')?.textContent);
-      const pricePerUnit = priceWithVat / qty;
+/* alert helper */
+function addAlert(text) {
+  const wrap = ensureMessagesWrap();
+  const alertBox = wrap?.querySelector('#sova-alerts');
+  if (alertBox && ![...alertBox.querySelectorAll('.systemMessage__text')]
+      .some(d => d.textContent.trim() === text)) {
+    insertSystemMessage(alertBox, text);
+  }
+}
 
-      return pricePerUnit ? [{ name, price: pricePerUnit }] : []; // filtr 0
-    });
-    const maxPrice = products.reduce((m, p) => Math.max(m, p.price), 0);
-    const total = num(document.querySelector('[data-testid="textTotalPriceWithVat"]')?.textContent);
+/* button styling podle bodu 1 */
+(function styleButtons() {
+  const completeBtn = document.getElementById('completeAllOrderItems');
+  if (completeBtn) completeBtn.style.cssText = 'float:left!important';
+  const saveBtn = document.querySelector('#t2 p.text-right input[type="submit"].btn.btn-sm.btn-action');
+  if (saveBtn) saveBtn.style.cssText = 'float:left!important;margin-left:4px';
+})();
 
-    /* shipments diff */
-    let codSum = 0, nonHidden = 0;
-    const shipTbl = [...document.querySelectorAll('table')].find(t => t.textContent.includes('Číslo a datum zásilky'));
-    if (shipTbl) shipTbl.querySelectorAll('tbody tr').forEach(tr => {
-      if (tr.classList.contains('table__row--hidden')) return;
-      nonHidden++; codSum += num(tr.querySelector('.table__cell--price')?.textContent);
-    });
-    const diff = +(total - codSum).toFixed(2);
+/* ---------- MAIN ---------- */
+function main(RULES) {
+  /* zajistíme wrapper před jakýmkoli vkládáním systemMessage */
+  ensureMessagesWrap();
 
-    /* helpers */
-    const matchList = (list, hay) => !list || !list.length ? true : hay.some(n => list.some(x => x && n.includes(norm(x))));
-    const matchLabelInput = wanted => {
-      if (!wanted) return null;
-      const w = norm(wanted);
-      return [...document.querySelectorAll('label')].find(l =>
-        norm(l.querySelector('.v2FormField__labelText')?.textContent || '').includes(w)
-      )?.querySelector('input');
-    };
+  /* tabulka s produkty */
+  const prodTbl = [...document.querySelectorAll('table')]
+    .find(t => t.querySelector('[data-testid="cellOrderItemDescr"]'));
+  if (!prodTbl) return;
 
-/* ---------- DEBUG výpis každého pravidla ---------- */
-RULES.forEach((rule, idx) => {
-  const needShip = Array.isArray(rule.doprava) ? rule.doprava :
-                   rule.doprava ? [rule.doprava] : [];
-  const needPay  = Array.isArray(rule.platba)  ? rule.platba  :
-                   rule.platba  ? [rule.platba]  : [];
-  const needPole = rule.vlastniPole || '';
+  const form = document.querySelector('#document-update');
+  if (!form) return;
 
-  /* RAW hodnoty z nastavení */
-  console.log(`RAW → Rule ${idx}`, { doprava: rule.doprava, platba: rule.platba, vlastniPole: rule.vlastniPole });
-
-  /* co jsme našli v DOMu */
-  const matchedShip = needShip.filter(s => allNames.some(n => n.includes(norm(s))));
-  const matchedPay  = needPay.filter(p  => allNames.some(n => n.includes(norm(p))));
-  const inp         = needPole ? matchLabelInput(needPole) : null;
-  const poleVal     = inp?.value.trim() || '';
-
-  /* logické vyhodnocení */
-  const shipOK = needShip.length ? matchedShip.length > 0 : true;
-  const payOK  = needPay.length  ? matchedPay.length  > 0 : true;
-  const poleOK = needPole        ? !!poleVal          : true;
-  const passed = shipOK && payOK && poleOK;
-
-  /* Pěkně formátovaný souhrn */
-  console.log(
-    `%cRule #${idx}`,
-    'color:#888',
-    '| uprava:', rule.uprava?.join(',') ?? '—',
-    '| hledá(doprava):', needShip.join(' | ') || '—',
-    '| nalezeno:',       matchedShip.join(' | ') || '—',
-    '| dopravaOK:', shipOK ? '✅' : '❌',
-    '| hledá(platba):',  needPay.join(' | ')  || '—',
-    '| nalezeno:',       matchedPay.join(' | ') || '—',
-    '| platbaOK:',  payOK ? '✅' : '❌',
-    '| vlastniPole:', needPole || '—',
-    '| poleVal:',    poleVal   || '—',
-    '| poleOK:',     poleOK ? '✅' : '❌',
-    '| passed:',     passed ? '✔️' : ''
-  );
-});
-
-
-
-
-    /* -------- vyber pravidlo -------- */
-    const firstRule = RULES.find(rule => {
-      const shipOK = matchList(rule.doprava, allNames);
-      const payOK  = matchList(rule.platba,  allNames);
-      if (!shipOK || !payOK) return false;
-      if (rule.vlastniPole) {
-        const inp = matchLabelInput(rule.vlastniPole);
-        return !!(inp && inp.value.trim());
-      }
-      return true;
-    });
-    if (!firstRule) return;
-
-    /* -------- okamžitý vicekusSK -------- */
-    if (firstRule.uprava.includes('vicekusSK')) {
-      insertInfo();
-      if (nonHidden > 0 && diff !== 0) insertDiff();
-    }
-    if (firstRule.uprava.includes('skrytPridatZasilkuBaliky')) {
-        skryjPridatZasilkuBaliky();
-    }
-
-    /* -------- modal listener -------- */
-    document.addEventListener('click', e => {
-      if (!e.target.closest('a.open-modal[href*="pridat-specifickou-zasilku"]')) return;
-      openModal();
-    });
-
-    function openModal() {
-      let attempts = 0;
-      const int = setInterval(() => {
-        attempts++;
-        const modal = document.querySelector('#modal.modal');
-        if (!modal) return attempts > 40 && clearInterval(int);
-
-        const codLabel = modal.querySelector('label.cod-value:not(.hidden-js)');
-        if (!codLabel) return;
-        const codInput = codLabel.querySelector('input[name="cod"]');
-        if (!codInput) return;
-
-        /* ctx pro všechna ACTIONS */
-        let ctx = {
-          modal,
-          codInput,
-          currentValue: num(codInput.value) || 0,
-          total,
-          maxPrice,
-          diff,
-          nonHidden,
-          poleVal: firstRule.vlastniPole ? num(matchLabelInput(firstRule.vlastniPole)?.value) : null,
-        };
-
-        for (const id of firstRule.uprava) {
-          const fn = ACTIONS[id];
-          if (typeof fn === 'function') {
-            const res = fn(ctx);
-            if (typeof res === 'number') ctx.currentValue = res;
-          }
-        }
-
-        codInput.value = fmt(ctx.currentValue);
-        codInput.dispatchEvent(new Event('input', { bubbles: true }));
-        clearInterval(int);
-      }, 250);
-    }
-
-    /* -------- ACTIONS -------- */
-    const ACTIONS = {
-      doplneniCastkyKuhrade: ({ total }) => total,
-
-      dobirkaSepare: ({ poleVal, currentValue }) => poleVal ?? currentValue,
-
-      vicekusSK: ({ modal, codInput, nonHidden, maxPrice, diff, currentValue }) => {
-        const val = nonHidden === 0 ? maxPrice : diff;
-        addGhost(modal, codInput, diff);
-        return val ?? currentValue;
-      },
-       skrytPridatZasilkuBaliky: ctx => ctx.currentValue
-    };
-
-/* ---------- UI helpers ---------- */
-function skryjPridatZasilkuBaliky(){
-  document.querySelectorAll('li').forEach(li=>{
-    const a=li.querySelector('a');
-    if(a&&a.textContent.includes('Přidat zásilku (Balíky)')){
-      li.style.display='none';
-    }
+  /* --- ALL NAMES (pro doprava / platba) --- */
+  const allNames = [...prodTbl.querySelectorAll('tbody tr')].map(tr => {
+    const td = tr.querySelector('[data-testid="cellOrderItemDescr"]');
+    const a  = td?.querySelector('a.table__detailLink');
+    return norm(a ? a.childNodes[0].textContent : td?.textContent || '');
   });
-}
 
+  /* --- PRODUCTS (unit price) --- */
+  const products = [...prodTbl.querySelectorAll('tbody tr')].flatMap(tr => {
+    const codeTD = tr.querySelector('[data-testid="cellOrderItemCode"]');
+    if (!codeTD) return [];
+    const td  = tr.querySelector('[data-testid="cellOrderItemDescr"]');
+    const a   = td?.querySelector('a.table__detailLink');
+    const name = (a ? a.childNodes[0].textContent : td?.textContent).trim();
 
-function ensureWrapper(){
-  let wrap=document.getElementById('sova-info');
-  if(!wrap){
-    form.insertAdjacentHTML('afterbegin','<div id="sova-info" class="systemMessage__wrapper"></div>');
-    wrap=document.getElementById('sova-info');
-  }
-  return wrap;
-}
+    const qtyTxt   = tr.querySelector('[data-testid="cellOrderItemAmount"]')?.textContent || '';
+    const qty      = num(qtyTxt) || 1;
+    const priceWithVat = num(tr.querySelector('[data-testid="cellOrderItemPriceWithVat"]')?.textContent);
+    const pricePerUnit = priceWithVat / qty;
 
-function insertInfo(){
-  const wrap=ensureWrapper();
-  if(!wrap.querySelector('.sova-msg-vksk'))
-    wrap.insertAdjacentHTML('beforeend',
-      `<div class="systemMessage systemMessage--notice sova-msg-vksk">
-         <div class="systemMessage__content">
-           <div class="systemMessage__text sova-system-message-text">
-             <strong>Vícekus s dobírkou na Slovensko: přidej více zásilek s dobírkami podle obsahu balíků + k jedné zásilce přičti cenu dopravy a platby</strong>
-           </div>
-         </div>
-       </div>`);
-}
+    return pricePerUnit ? [{ name, price: pricePerUnit }] : [];
+  });
+  const maxPrice = products.reduce((m, p) => Math.max(m, p.price), 0);
+  const total    = num(document.querySelector('[data-testid="textTotalPriceWithVat"]')?.textContent);
 
-function insertDiff(){
-  if(nonHidden===0||diff===0) return;
-  const wrap=ensureWrapper();
-  if(!wrap.querySelector('.sova-msg-diff'))
-    wrap.insertAdjacentHTML('beforeend',
-      `<div class="systemMessage systemMessage--notice alert sova-msg-diff">
-         <div class="systemMessage__content">
-           <div class="systemMessage__text sova-system-message-text alert">
-             <strong>Celková hodnota zásilky nesedí na sumu dobírek. Rozdíl: ${fmt(diff)}</strong>
-           </div>
-         </div>
-       </div>`);
-}
+  /* --- SHIPMENTS diff --- */
+  let codSum = 0, nonHidden = 0;
+  const shipTbl = [...document.querySelectorAll('table')]
+    .find(t => t.textContent.includes('Číslo a datum zásilky'));
+  if (shipTbl) shipTbl.querySelectorAll('tbody tr').forEach(tr => {
+    if (tr.classList.contains('table__row--hidden')) return;
+    nonHidden++;
+    codSum += num(tr.querySelector('.table__cell--price')?.textContent);
+  });
+  const diff = +(total - codSum).toFixed(2);
 
-    function addGhost(modal, codInput, rest) {
-      if (modal.querySelector('.sova-cod-products')) return;
-      const v2 = modal.querySelector('h2 + .v2form');
-      if (!v2) return;
-      const wrap = document.createElement('div');
-      wrap.className = 'sova-cod-products';
-      wrap.style.marginTop = '10px';
-      products.forEach(p => {
-        wrap.insertAdjacentHTML(
-          'beforeend',
-          rowHTML(p.name, p.price)
-        );
-      });
-      wrap.insertAdjacentHTML('beforeend', rowHTML('<strong>Zbytek</strong>', rest));
-      v2.after(wrap);
+  /* --- CUSTOMER ID (pro filtr zakaznik) --- */
+  const custLink = document.querySelector('#customer-contact a[href*="/admin/zakaznici-detail/"]');
+  const customerId = custLink ? +(custLink.href.match(/id=(\d+)/)?.[1] || 0) : null;
 
-      wrap.addEventListener('click', e => {
-        const ghost = e.target.closest('.pod-ghost-link');
-        const plus  = e.target.closest('.pod-add-link');
-        if (ghost) {
-          e.preventDefault();
-          codInput.value = fmt(num(ghost.dataset.val));
-          codInput.dispatchEvent(new Event('input', { bubbles: true }));
-        } else if (plus) {
-          e.preventDefault();
-          const addVal = num(plus.dataset.val);
-          const cur = num(codInput.value);
-          codInput.value = fmt(cur + addVal);
-          codInput.dispatchEvent(new Event('input', { bubbles: true }));
-        }
-      });
+  /* --- SHOP NOTE (pro filtr poznamka) --- */
+  const noteElem = document.querySelector('textarea[name="shopRemark"]');
+  const noteText = noteElem ? norm(noteElem.value) : '';
+
+  /* --- pomocné matchery --- */
+  const matchList = (list, haystack) =>
+    !list || !list.length ? true :
+      haystack.some(h => list.some(x => x && h.includes(norm(x))));
+  const matchExact = (list, value) =>
+    !list || !list.length ? true : list.map(String).includes(String(value));
+
+  const matchLabelInput = wanted => {
+    if (!wanted) return null;
+    const w = norm(wanted);
+    return [...document.querySelectorAll('label')].find(l =>
+      norm(l.querySelector('.v2FormField__labelText')?.textContent || '')
+        .includes(w)
+    )?.querySelector('input');
+  };
+
+  /* ---------- DEBUG výpis každého pravidla ---------- */
+  RULES.forEach((rule, idx) => {
+    const needShip  = Array.isArray(rule.doprava) ? rule.doprava : rule.doprava ? [rule.doprava] : [];
+    const needPay   = Array.isArray(rule.platba)  ? rule.platba  : rule.platba  ? [rule.platba]  : [];
+    const needCust  = Array.isArray(rule.zakaznik)? rule.zakaznik: rule.zakaznik? [rule.zakaznik]: [];
+    const needNote  = Array.isArray(rule.poznamka)? rule.poznamka: rule.poznamka? [rule.poznamka]: [];
+    const needPole  = rule.vlastniPole || '';
+
+    /* RAW */
+    console.log(`RAW → Rule ${idx}`, rule);
+
+    /* hodnoty z DOMu */
+    const matchedShip = needShip.filter(s => allNames.some(n => n.includes(norm(s))));
+    const matchedPay  = needPay.filter(p  => allNames.some(n => n.includes(norm(p))));
+    const noteOK      = matchList(needNote.map(norm), [noteText]);
+    const custOK      = matchExact(needCust, customerId);
+
+    const inp     = needPole ? matchLabelInput(needPole) : null;
+    const poleVal = inp?.value.trim() || '';
+
+    /* flags */
+    const shipOK  = needShip.length ? matchedShip.length > 0 : true;
+    const payOK   = needPay.length  ? matchedPay.length  > 0 : true;
+    const poleOK  = needPole        ? !!poleVal          : true;
+    const passed  = shipOK && payOK && poleOK && noteOK && custOK;
+
+    /* log */
+    console.log(
+      `%cRule #${idx}`,
+      'color:#888',
+      '| shipOK:',shipOK?'✅':'❌',
+      '| payOK:', payOK ?'✅':'❌',
+      '| custOK:',custOK?'✅':'❌',
+      '| noteOK:',noteOK?'✅':'❌',
+      '| poleOK:',poleOK?'✅':'❌',
+      '| passed:',passed?'✔️':''
+    );
+  });
+
+  /* -------- vyber PRVNÍ vyhovující pravidlo -------- */
+  const firstRule = RULES.find(rule => {
+    const shipOK  = matchList(rule.doprava, allNames);
+    const payOK   = matchList(rule.platba,  allNames);
+    const custOK  = matchExact(rule.zakaznik, customerId);
+    const noteOK  = matchList((rule.poznamka||[]).map(norm), [noteText]);
+    if (!shipOK || !payOK || !custOK || !noteOK) return false;
+    if (rule.vlastniPole) {
+      const inp = matchLabelInput(rule.vlastniPole);
+      return !!(inp && inp.value.trim());
     }
+    return true;
+  });
+  if (!firstRule) return;
 
- const rowHTML = (name, price) => `
- <div class="pod-product-row">
-   <div class="pod-product-name">${name}</div>
-   <div class="pod-product-price">
-     <a href="#" class="pod-ghost-link" data-val="${price}">${fmt(price)}</a>
-     ${
-       /zbytek/i.test(name.replace(/<[^>]+>/g, ''))  /* pokud text obsahuje "Zbytek" */
-         ? ''
-         : `<a href="#" class="pod-add-link" data-val="${price}">+</a>`
-     }
-   </div>
- </div>`;
+  /* -------- INFO hlášky (bod 5) -------- */
+  if (Array.isArray(firstRule.info) && firstRule.info.length) {
+    const infoWrap = ensureMessagesWrap()?.querySelector('#sova-info');
+    firstRule.info.forEach(msg => insertSystemMessage(infoWrap, msg));
   }
+
+  /* -------- okamžité akce z UPRAVA (mimo modal) -------- */
+  if (firstRule.uprava.includes('vicekusSK')) {
+    /* diff alert (bod 8) */
+    if (nonHidden > 0 && diff !== 0)
+      addAlert(`Celková hodnota zásilky nesedí na sumu dobírek. Rozdíl: ${fmt(diff)}`);
+  }
+  if (firstRule.uprava.includes('skrytPridatZasilkuBaliky')) {
+    skryjPridatZasilkuBaliky();
+  }
+  if (firstRule.uprava.includes('skrytPridatSpecZasilkuBaliky')) {
+    skryjPridatSpecZasilkuBaliky();
+  }
+
+  /* -------- modal listener -------- */
+  document.addEventListener('click', e => {
+    if (!e.target.closest('a.open-modal[href*="pridat-specifickou-zasilku"]')) return;
+    openModal();
+  });
+
+  /* ======   FUNKCE   ====== */
+  function openModal() {
+    let attempts = 0;
+    const int = setInterval(() => {
+      attempts++;
+      const modal = document.querySelector('#modal.modal');
+      if (!modal) return attempts > 40 && clearInterval(int);
+
+      const codLabel = modal.querySelector('label.cod-value:not(.hidden-js)');
+      if (!codLabel) return;
+      const codInput = codLabel.querySelector('input[name="cod"]');
+      if (!codInput) return;
+
+      /* kontext pro ACTIONS */
+      let ctx = {
+        modal,
+        codInput,
+        currentValue: num(codInput.value) || 0,
+        total,
+        maxPrice,
+        diff,
+        nonHidden,
+        poleVal: firstRule.vlastniPole ? num(matchLabelInput(firstRule.vlastniPole)?.value) : null,
+        alerts: []   //💬 akce mohou pushnout text alertu
+      };
+
+      for (const id of firstRule.uprava) {
+        const fn = ACTIONS[id];
+        if (typeof fn === 'function') {
+          const res = fn(ctx);
+          if (typeof res === 'number') ctx.currentValue = res;
+        }
+      }
+
+      /* zobraz alerts z akcí */
+      ctx.alerts.forEach(addAlert);
+
+      codInput.value = fmt(ctx.currentValue);
+      codInput.dispatchEvent(new Event('input', { bubbles: true }));
+      clearInterval(int);
+    }, 250);
+  }
+
+  /* ---------- ACTIONS ---------- */
+  const ACTIONS = {
+    doplneniCastkyKuhrade: ({ total }) => total,
+
+    dobirkaSepare: ({ modal, poleVal, currentValue }) => {
+      /* bod 7 – nejprve zaškrtneme dobírku */
+      const codCheck = modal.querySelector('input[name="codEnabled"]');
+      if (codCheck && !codCheck.checked) {
+        codCheck.checked = true;
+        codCheck.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+      return poleVal ?? currentValue;
+    },
+
+    vicekusSK: ({ modal, codInput, nonHidden, maxPrice, diff, currentValue }) => {
+      const val = nonHidden === 0 ? maxPrice : diff;
+      addGhost(modal, codInput, diff);
+      return val ?? currentValue;
+    },
+
+    skrytPridatZasilkuBaliky: ctx => ctx.currentValue,
+    skrytPridatSpecZasilkuBaliky: ctx => ctx.currentValue,
+    netstore: ctx => ctx.currentValue   // zatím placeholder
+  };
+
+  /* ---------- UI helpers ---------- */
+  function skryjPridatZasilkuBaliky() {
+    document.querySelectorAll('li').forEach(li => {
+      const a = li.querySelector('a');
+      if (a && a.textContent.includes('Přidat zásilku (Balíky)')) {
+        li.style.display = 'none';
+      }
+    });
+  }
+  function skryjPridatSpecZasilkuBaliky() {
+    document.querySelectorAll('li').forEach(li => {
+      const a = li.querySelector('a');
+      if (a && a.textContent.includes('Přidat specifickou zásilku (Balíky)')) {
+        li.style.display = 'none';
+      }
+    });
+  }
+
+  /* původní ghosts – beze změny */
+  function addGhost(modal, codInput, rest) {
+    if (modal.querySelector('.sova-cod-products')) return;
+    const v2 = modal.querySelector('h2 + .v2form');
+    if (!v2) return;
+    const wrap = document.createElement('div');
+    wrap.className = 'sova-cod-products';
+    wrap.style.marginTop = '10px';
+    products.forEach(p => {
+      wrap.insertAdjacentHTML('beforeend', rowHTML(p.name, p.price));
+    });
+    wrap.insertAdjacentHTML('beforeend', rowHTML('<strong>Zbytek</strong>', rest));
+    v2.after(wrap);
+
+    wrap.addEventListener('click', e => {
+      const ghost = e.target.closest('.pod-ghost-link');
+      const plus  = e.target.closest('.pod-add-link');
+      if (ghost) {
+        e.preventDefault();
+        codInput.value = fmt(num(ghost.dataset.val));
+        codInput.dispatchEvent(new Event('input', { bubbles: true }));
+      } else if (plus) {
+        e.preventDefault();
+        const addVal = num(plus.dataset.val);
+        const cur = num(codInput.value);
+        codInput.value = fmt(cur + addVal);
+        codInput.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+    });
+  }
+  const rowHTML = (name, price) => `
+    <div class="pod-product-row">
+      <div class="pod-product-name">${name}</div>
+      <div class="pod-product-price">
+        <a href="#" class="pod-ghost-link" data-val="${price}">${fmt(price)}</a>
+        ${
+          /zbytek/i.test(name.replace(/<[^>]+>/g, ''))
+            ? ''
+            : `<a href="#" class="pod-add-link" data-val="${price}">+</a>`
+        }
+      </div>
+    </div>`;
 }
+})();   /* /IIFE */
+
 
 
 async function sablonyClanky() {
