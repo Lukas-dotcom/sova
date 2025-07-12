@@ -190,6 +190,7 @@
       "zakaznik",
       "doprava",
       "platba",
+      "poznamka",
       "vlastniPole",
       "uprava",
       "info"
@@ -199,6 +200,7 @@
         "zakaznik": null,
         "doprava": null,
         "platba": null,
+        "poznamka": null,
         "vlastniPole": "Doběrečné (HC, separe)",
         "uprava": [
           "dobirkaSepare",
@@ -215,6 +217,7 @@
         "platba": [
           "Dobírkou"
         ],
+        "poznamka": null,
         "vlastniPole": null,
         "uprava": [
           "vicekusSK",
@@ -230,6 +233,7 @@
         "platba": [
           "Dobírkou"
         ],
+        "poznamka": null,
         "vlastniPole": null,
         "uprava": [
           "doplneniCastkyKuhrade"
