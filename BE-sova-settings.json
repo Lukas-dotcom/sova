@@ -220,7 +220,9 @@
           "vicekusSK",
           "skrytPridatZasilkuBaliky"
         ],
-        "info": "Vícekus s dobírkou na Slovensko: přidej více zásilek s dobírkami podle obsahu balíků + k jedné zásilce přičti cenu dopravy a platby"
+        "info": [
+          "Vícekus s dobírkou na Slovensko: přidej více zásilek s dobírkami podle obsahu balíků + k jedné zásilce přičti cenu dopravy a platby"
+        ]
       },
       {
         "zakaznik": null,
