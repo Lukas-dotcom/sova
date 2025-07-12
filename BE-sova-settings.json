@@ -218,7 +218,9 @@
       },
       {
         "doprava": null,
-        "platba": "[Dobírkou] ",
+        "platba": [
+          "Dobírkou"
+        ],
         "vlastniPole": null,
         "uprava": [
           "doplneniCastkyKuhrade"
