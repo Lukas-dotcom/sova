@@ -187,7 +187,6 @@
   },
   "adminDeliveryHelper": {
     "columns": [
-      "zakaznik",
       "doprava",
       "platba",
       "vlastniPole",
@@ -195,16 +194,6 @@
     ],
     "rules": [
       {
-        "zakaznik": "Netstore",
-        "doprava": null,
-        "platba": null,
-        "vlastniPole": null,
-        "uprava": [
-          "netstore"
-        ]
-      },
-      {
-        "zakaznik": null,
         "doprava": null,
         "platba": null,
         "vlastniPole": "Doběrečné (HC, separe)",
@@ -214,7 +203,6 @@
         ]
       },
       {
-        "zakaznik": null,
         "doprava": [
           "PPL - kurýr (vícekusová zásilka, Slovensko)",
           "PPL ParcelShop - výdejní místa (vícekusová zásilka, Slovensko)"
@@ -229,7 +217,6 @@
         ]
       },
       {
-        "zakaznik": null,
         "doprava": null,
         "platba": [
           "Dobírkou"
