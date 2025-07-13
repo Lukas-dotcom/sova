@@ -235,7 +235,8 @@
       "name",
       "price",
       "ean",
-      "itemTypeId"
+      "itemTypeId",
+      "variantName"
     ],
     "rules": [
       {
@@ -244,7 +245,8 @@
         "name": null,
         "price": null,
         "ean": null,
-        "itemTypeId": null
+        "itemTypeId": null,
+        "variantName": null
       },
       {
         "oznaceni": null,
@@ -252,7 +254,8 @@
         "name": null,
         "price": null,
         "ean": "#ERROR!",
-        "itemTypeId": null
+        "itemTypeId": null,
+        "variantName": null
       }
     ]
   },
