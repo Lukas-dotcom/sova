@@ -239,7 +239,7 @@
     ],
     "rules": [
       {
-        "oznaceni": null,
+        "oznaceni": "klavesniceMys",
         "code": "SET0028",
         "name": null,
         "price": null,
