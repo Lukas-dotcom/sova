@@ -228,6 +228,26 @@
       }
     ]
   },
+  "addProductsButton": {
+    "columns": [
+      "oznaceni",
+      "code",
+      "name",
+      "price",
+      "ean",
+      "itemTypeId"
+    ],
+    "rules": [
+      {
+        "oznaceni": null,
+        "code": "SET0028",
+        "name": null,
+        "price": null,
+        "ean": null,
+        "itemTypeId": null
+      }
+    ]
+  },
   "adminDeliveryHelperNEW": {
     "columns": [
       "zakaznik",
