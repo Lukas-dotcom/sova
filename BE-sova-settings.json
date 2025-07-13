@@ -247,15 +247,6 @@
         "ean": null,
         "itemTypeId": null,
         "variantName": null
-      },
-      {
-        "oznaceni": null,
-        "code": null,
-        "name": null,
-        "price": null,
-        "ean": "#ERROR!",
-        "itemTypeId": null,
-        "variantName": null
       }
     ]
   },
