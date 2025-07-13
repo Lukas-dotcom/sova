@@ -245,6 +245,14 @@
         "price": null,
         "ean": null,
         "itemTypeId": null
+      },
+      {
+        "oznaceni": null,
+        "code": null,
+        "name": null,
+        "price": null,
+        "ean": "#ERROR!",
+        "itemTypeId": null
       }
     ]
   },
