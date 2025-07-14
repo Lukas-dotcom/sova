@@ -1,5 +1,5 @@
-// sova.js 
-// Modulární základ skriptu SOVA s podporou rozšiřování o další funkce.
+// sova.js  
+// Modulární základ skriptu SOVA s podporou rozšiřování o další funkce
 (function() {
     'use strict';
 
