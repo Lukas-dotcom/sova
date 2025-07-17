@@ -259,7 +259,7 @@
       }
     ]
   },
-  "runPrudctInputs": {
+  "runPrudoctInputs": {
     "columns": [
       "catagories"
     ],
@@ -305,7 +305,7 @@
         "vlastniPole": null,
         "uprava": [
           "netstore",
-          "skrytPridatSpecZasilkuBaliky"
+          "skrytPridatZasilkuBaliky"
         ],
         "info": null
       },
