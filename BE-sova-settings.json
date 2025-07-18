@@ -185,7 +185,7 @@
       },
       {
         "Název": "Notebooky",
-        "Odkaz": "https://www.pocitarna.cz/admin/produkty/",
+        "Odkaz": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=673",
         "Barvička": null,
         "NovOkno": null,
         "Kdo": "Barbora Grygarová"
