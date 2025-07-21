@@ -823,31 +823,34 @@ async function paramSortingSingle() {
 async function ulozZobrazbezSkl(){
     'use strict';
 
-    function prepareAndSubmit() {
-        let form = document.querySelector('form[action*="produkty-detail"]') || document.forms[0];
-        if (!form) return alert('❌ Formulář nenalezen.');
+function prepareAndSubmit() {
+    // 1) Najdi form
+    const form = document.querySelector('form[action*="produkty-detail"]') || document.forms[0];
+    if (!form) return alert('❌ Formulář nenalezen.');
 
-        // Vynutit viditelnost
-        const vis = form.querySelector('select[name="visibility"]');
-        if (vis) vis.value = '1';
+    // 2) Vynutit visibility=1
+    const vis = form.querySelector('select[name="visibility"]');
+    if (vis) vis.value = '1';
 
-        // Odstranit zásobové prvky
-        const selectors = [
-            'input[name^="stocksAmount"]',
-            'input[name^="stocksLocation"]',
-        ];
-        selectors.forEach(sel => {
-            form.querySelectorAll(sel).forEach(el => {
-                el.disabled = true;
-                el.removeAttribute('name');
-            });
-        });
+    // 3) Odstranit políčka zásob
+    ['input[name^="stocksAmount"]', 'input[name^="stocksLocation"]']
+      .forEach(sel =>
+        form.querySelectorAll(sel).forEach(el => {
+          el.disabled = true;
+          el.removeAttribute('name');
+        })
+      );
 
-        // Zrušit onbeforeunload dialog
-        window.onbeforeunload = null;
+    // 4) Zablokovat SHOPTET před its beforeunload handlery
+    const blocker = e => e.stopImmediatePropagation();
+    window.addEventListener('beforeunload', blocker, true);
 
-        form.submit();
-    }
+    // 5) Odeslat a reload
+    form.submit();
+
+    // 6) (Nepotřebujeme remover, protože stránka hned odjede)
+}
+
 
 function injectLink() {
     const container = document.querySelector('p.content-buttons');
