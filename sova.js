@@ -198,6 +198,7 @@
             mazatTrackingPriOdstraneniZasilky();
             priznakyVobjednavkach();
             priznakEmail();
+            ulozZobrazbezSkl();
 
         }
 
@@ -818,6 +819,79 @@ async function paramSortingSingle() {
         console.error("Chyba při načítání pravidel z rulesList:", e);
     }
 }
+
+async function ulozZobrazbezSkl(){
+    'use strict';
+
+    function prepareAndSubmit() {
+        let form = document.querySelector('form[action*="produkty-detail"]') || document.forms[0];
+        if (!form) return alert('❌ Formulář nenalezen.');
+
+        // Vynutit viditelnost
+        const vis = form.querySelector('select[name="visibility"]');
+        if (vis) vis.value = '1';
+
+        // Odstranit zásobové prvky
+        const selectors = [
+            'input[name^="stocksAmount"]',
+            'input[name^="stocksLocation"]',
+        ];
+        selectors.forEach(sel => {
+            form.querySelectorAll(sel).forEach(el => {
+                el.disabled = true;
+                el.removeAttribute('name');
+            });
+        });
+
+        // Zrušit onbeforeunload dialog
+        window.onbeforeunload = null;
+
+        form.submit();
+    }
+
+function injectLink() {
+    const container = document.querySelector('p.content-buttons');
+    if (!container) return;
+    if (container.querySelector('#tm-save-link')) return;
+
+    // 1) Vytvoříme link
+    const link = document.createElement('a');
+    link.href = '#';
+    link.id   = 'tm-save-link';
+    link.title = 'Uložit, zobrazit (bez skl.)';
+    link.textContent = 'Uložit, zobrazit (bez skl.)';
+    link.className = 'btn btn-sm btn-action submit-js';
+
+    // 2) Inline styly
+    Object.assign(link.style, {
+        cursor: 'pointer',               // místo inherit
+        backgroundColor: 'rgb(68,205,0)'
+    });
+    link.addEventListener('click', e => {
+        e.preventDefault();
+        prepareAndSubmit();
+    });
+
+    // 3) Přidat jako první
+    container.insertBefore(link, container.firstChild);
+
+    // 4) Injektovat hover CSS (jen jednou)
+    if (!document.getElementById('tm-save-link-style')) {
+        const style = document.createElement('style');
+        style.id = 'tm-save-link-style';
+        style.textContent = `
+            #tm-save-link:hover {
+                background-color: rgb(41,122,0) !important;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+}
+
+
+    window.addEventListener('load', injectLink);
+}
+
 
 
 async function priznakyVobjednavkach() {
