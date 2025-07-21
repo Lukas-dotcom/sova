@@ -199,7 +199,6 @@
             priznakyVobjednavkach();
             priznakEmail();
             ulozZobrazbezSkl();
-
         }
 
         if (window.location.href.includes("/admin/produkty-detail/?id")){
