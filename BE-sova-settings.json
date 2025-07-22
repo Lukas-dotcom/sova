@@ -794,11 +794,13 @@
   },
   "prehledReq": {
     "columns": [
-      "typReq"
+      "typReq",
+      "stav"
     ],
     "rules": [
       {
-        "typReq": "expe"
+        "typReq": "expe",
+        "stav": null
       }
     ]
   },
