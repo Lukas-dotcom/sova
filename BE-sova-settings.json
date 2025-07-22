@@ -792,6 +792,25 @@
       }
     ]
   },
+  "prehledZvyraznit": {
+    "columns": [
+      "stavy",
+      "poznamka",
+      "color"
+    ],
+    "rules": [
+      {
+        "stavy": null,
+        "poznamka": "expeduje: Lukáš Tejral",
+        "color": null
+      },
+      {
+        "stavy": null,
+        "poznamka": "expeduje: Lukáš Koukal",
+        "color": null
+      }
+    ]
+  },
   "prehledReq": {
     "columns": [
       "typReq",
