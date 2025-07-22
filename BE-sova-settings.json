@@ -807,7 +807,7 @@
           "Odeslání-balení"
         ],
         "notDoneColor": "#",
-        "DoneColor": "#"
+        "DoneColor": "Green"
       }
     ]
   },
