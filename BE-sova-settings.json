@@ -811,7 +811,11 @@
       },
       {
         "typReq": "servis",
-        "stavy": null,
+        "stavy": [
+          "Odeslat",
+          "Odeslání-balení",
+          "Servisování"
+        ],
         "notDoneColor": "purple",
         "DoneColor": "Green"
       }
