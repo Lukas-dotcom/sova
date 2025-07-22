@@ -806,7 +806,13 @@
           "Odeslat",
           "Odeslání-balení"
         ],
-        "notDoneColor": "#",
+        "notDoneColor": "red",
+        "DoneColor": "Green"
+      },
+      {
+        "typReq": "servis",
+        "stavy": null,
+        "notDoneColor": "purple",
         "DoneColor": "Green"
       }
     ]
