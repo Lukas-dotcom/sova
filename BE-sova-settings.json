@@ -800,12 +800,18 @@
     ],
     "rules": [
       {
-        "stavy": null,
+        "stavy": [
+          "Odeslat",
+          "Odeslání-balení"
+        ],
         "poznamka": "expeduje: Lukáš Tejral",
         "color": "#8098f8"
       },
       {
-        "stavy": null,
+        "stavy": [
+          "Odeslat",
+          "Odeslání-balení"
+        ],
         "poznamka": "expeduje: Lukáš Koukal",
         "color": "#ecf87e"
       }
