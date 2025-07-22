@@ -802,9 +802,12 @@
     "rules": [
       {
         "typReq": "expe",
-        "stavy": null,
-        "notDoneColor": null,
-        "DoneColor": null
+        "stavy": [
+          "Odeslat",
+          "Odeslání-balení"
+        ],
+        "notDoneColor": "#",
+        "DoneColor": "#"
       }
     ]
   },
