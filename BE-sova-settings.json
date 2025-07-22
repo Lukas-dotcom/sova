@@ -795,12 +795,16 @@
   "prehledReq": {
     "columns": [
       "typReq",
-      "stav"
+      "stavy",
+      "notDoneColor",
+      "DoneColor"
     ],
     "rules": [
       {
         "typReq": "expe",
-        "stav": null
+        "stavy": null,
+        "notDoneColor": null,
+        "DoneColor": null
       }
     ]
   },
