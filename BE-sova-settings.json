@@ -792,6 +792,16 @@
       }
     ]
   },
+  "prehledReq": {
+    "columns": [
+      "typReq"
+    ],
+    "rules": [
+      {
+        "typReq": "expe"
+      }
+    ]
+  },
   "FEzvyrazneniVyprodej": {
     "columns": [
       "jmena"
