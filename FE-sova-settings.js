@@ -110,7 +110,8 @@ window.shippingHideRules = [
       "KOL0002"
     ],
     "startsWithCodes": [
-      "PRT"
+      "PRT",
+      "AIO"
     ],
     "startsWithUrl": [
       "/pocitace/",
@@ -280,7 +281,8 @@ window.shippingHideRules = [
       "KOL0002"
     ],
     "startsWithCodes": [
-      "PRT"
+      "PRT",
+      "AIO"
     ],
     "startsWithUrl": [
       "/pocitace/",
