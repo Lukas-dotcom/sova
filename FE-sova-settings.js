@@ -118,7 +118,10 @@ window.shippingHideRules = [
       "/monitory/",
       "/tiskarny/"
     ],
-    "containsName": []
+    "containsName": [
+      "AIO",
+      "AiO"
+    ]
   },
   {
     "shippingIds": [
@@ -289,7 +292,10 @@ window.shippingHideRules = [
       "/monitory/",
       "/tiskarny/"
     ],
-    "containsName": []
+    "containsName": [
+      "AIO",
+      "AiO"
+    ]
   }
 ];
 
