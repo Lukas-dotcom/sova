@@ -803,7 +803,7 @@
         "URL": null
       },
       {
-        "tab": "Odeslat SK",
+        "tab": "Odeslat [SK]",
         "name": null,
         "URL": null
       },
@@ -829,6 +829,11 @@
       },
       {
         "tab": "Zpracovává se",
+        "name": null,
+        "URL": null
+      },
+      {
+        "tab": "Zpracovává se SK",
         "name": null,
         "URL": null
       },
