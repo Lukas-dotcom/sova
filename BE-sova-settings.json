@@ -816,6 +816,11 @@
         "tab": "Odeslání-balení",
         "name": null,
         "URL": null
+      },
+      {
+        "tab": "Odesláno",
+        "name": null,
+        "URL": null
       }
     ]
   },
