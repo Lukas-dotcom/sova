@@ -788,68 +788,55 @@
   "orderTabsAlter": {
     "columns": [
       "tab",
-      "name",
       "URL"
     ],
     "rules": [
       {
         "tab": "Všechny objednávky",
-        "name": null,
         "URL": null
       },
       {
         "tab": "Odeslat",
-        "name": null,
         "URL": null
       },
       {
         "tab": "Odeslat [SK]",
-        "name": null,
         "URL": "https://www.pocitarna.sk/admin/prehled-objednavek/3/"
       },
       {
         "tab": "Odeslat M",
-        "name": null,
         "URL": null
       },
       {
         "tab": "Odeslat M [SK]",
-        "name": null,
-        "URL": null
+        "URL": "https://www.pocitarna.sk/admin/prehled-objednavek/6/"
       },
       {
         "tab": "Připravit",
-        "name": null,
         "URL": null
       },
       {
         "tab": "Připravit [SK]",
-        "name": null,
         "URL": null
       },
       {
         "tab": "Zpracovává se",
-        "name": null,
         "URL": null
       },
       {
         "tab": "Zpracovává se [SK]",
-        "name": null,
         "URL": null
       },
       {
         "tab": "Odeslání-balení",
-        "name": null,
         "URL": null
       },
       {
         "tab": "Odeslání-balení  [SK]",
-        "name": null,
         "URL": null
       },
       {
         "tab": "Odesláno",
-        "name": null,
         "URL": null
       }
     ]
