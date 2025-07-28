@@ -793,6 +793,11 @@
     ],
     "rules": [
       {
+        "tab": "Všechny objednávky",
+        "name": null,
+        "URL": null
+      },
+      {
         "tab": "Odeslat",
         "name": null,
         "URL": null
