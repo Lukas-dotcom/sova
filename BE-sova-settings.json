@@ -785,6 +785,20 @@
       }
     ]
   },
+  "orderTabsAlter": {
+    "columns": [
+      "tab",
+      "name",
+      "URL"
+    ],
+    "rules": [
+      {
+        "tab": "Odeslat",
+        "name": null,
+        "URL": null
+      }
+    ]
+  },
   "prehledZvyraznit": {
     "columns": [
       "stavy",
