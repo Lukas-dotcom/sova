@@ -296,26 +296,26 @@
   },
   "runPrudoctInputs": {
     "columns": [
-      "catagories"
+      "categories"
     ],
     "rules": [
       {
-        "catagories": "Notebooky"
+        "categories": "Notebooky"
       },
       {
-        "catagories": "Počítače"
+        "categories": "Počítače"
       },
       {
-        "catagories": "Monitory"
+        "categories": "Monitory"
       },
       {
-        "catagories": "Telefony, mobily"
+        "categories": "Telefony, mobily"
       },
       {
-        "catagories": "Tablety"
+        "categories": "Tablety"
       },
       {
-        "catagories": "Tiskárny"
+        "categories": "Tiskárny"
       }
     ]
   },
