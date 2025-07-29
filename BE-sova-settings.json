@@ -296,7 +296,8 @@
   },
   "runPrudoctInputs": {
     "columns": [
-      "categories"
+      "categories",
+      "forbiddenProducts"
     ],
     "rules": [
       {
@@ -308,7 +309,8 @@
           "Tablety",
           "Tiskárny",
           0
-        ]
+        ],
+        "forbiddenProducts": null
       }
     ]
   },
