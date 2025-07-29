@@ -313,7 +313,8 @@
         "forbiddenProducts": [
           "MAR",
           "BLESK",
-          "SERVIS"
+          "SERVIS",
+          "TIP"
         ]
       }
     ]
