@@ -310,7 +310,11 @@
           "Tiskárny",
           0
         ],
-        "forbiddenProducts": null
+        "forbiddenProducts": [
+          "MAR",
+          "BLESK",
+          "SERVIS"
+        ]
       }
     ]
   },
