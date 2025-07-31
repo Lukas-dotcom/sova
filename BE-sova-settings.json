@@ -220,6 +220,28 @@
       }
     ]
   },
+  "injectButtons": {
+    "columns": [
+      "buttonName",
+      "color",
+      "function",
+      "parameters",
+      "url",
+      "position",
+      "conditionsSOVAL"
+    ],
+    "rules": [
+      {
+        "buttonName": "Seřadit parametry",
+        "color": null,
+        "function": null,
+        "parameters": null,
+        "url": null,
+        "position": null,
+        "conditionsSOVAL": null
+      }
+    ]
+  },
   "adminDeliveryHelper": {
     "columns": [
       "doprava",
