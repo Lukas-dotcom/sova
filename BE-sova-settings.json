@@ -253,7 +253,7 @@
         "conditionsSOVAL": null
       },
       {
-        "function": "adminDeliveryHelper();",
+        "function": "adminDeliveryHelper",
         "url": "/admin/objednavky-detail/",
         "conditionsSOVAL": null
       },
