@@ -236,6 +236,16 @@
         "function": "pridatStitikyvPrehledu",
         "url": "/admin/ceny/",
         "conditionsSOVAL": null
+      },
+      {
+        "function": "pridatParametry",
+        "url": null,
+        "conditionsSOVAL": null
+      },
+      {
+        "function": "priznakEmail",
+        "url": null,
+        "conditionsSOVAL": null
       }
     ]
   },
