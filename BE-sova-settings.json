@@ -239,6 +239,15 @@
         "url": "/parametry-pro-filtrovani-vypis/",
         "position": null,
         "conditionsSOVAL": null
+      },
+      {
+        "buttonName": "Seřadit parametry",
+        "color": null,
+        "function": null,
+        "parameters": null,
+        "url": null,
+        "position": null,
+        "conditionsSOVAL": null
       }
     ]
   },
