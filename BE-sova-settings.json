@@ -248,7 +248,7 @@
         "conditionsSOVAL": null
       },
       {
-        "function": null,
+        "function": "sablonyClanky",
         "url": "/admin/clanek-rubrika-detail/",
         "conditionsSOVAL": null
       }
