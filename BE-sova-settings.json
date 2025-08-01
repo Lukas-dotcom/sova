@@ -245,9 +245,19 @@
       {
         "buttonName": "Seřadit parametry",
         "color": null,
-        "function": null,
+        "function": "paramSortingSingle",
         "parameters": null,
         "url": "/parametry-pro-filtrovani-detail/",
+        "position": null,
+        "order": null,
+        "conditionsSOVAL": null
+      },
+      {
+        "buttonName": "Upnout kódy",
+        "color": null,
+        "function": null,
+        "parameters": null,
+        "url": null,
         "position": null,
         "order": null,
         "conditionsSOVAL": null
