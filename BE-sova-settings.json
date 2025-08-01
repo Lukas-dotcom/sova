@@ -258,17 +258,17 @@
         "conditionsSOVAL": null
       },
       {
-        "function": "mazatTrackingPriOdstraneniZasilky();",
+        "function": "mazatTrackingPriOdstraneniZasilky",
         "url": null,
         "conditionsSOVAL": null
       },
       {
-        "function": "priznakyVobjednavkach();",
+        "function": "priznakyVobjednavkach",
         "url": null,
         "conditionsSOVAL": null
       },
       {
-        "function": "priznakEmail();",
+        "function": "priznakEmail",
         "url": null,
         "conditionsSOVAL": null
       }
