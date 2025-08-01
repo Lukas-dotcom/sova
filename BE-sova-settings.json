@@ -259,17 +259,17 @@
       },
       {
         "function": "mazatTrackingPriOdstraneniZasilky",
-        "url": "/admin/objednavky-detail/",
+        "url": null,
         "conditionsSOVAL": null
       },
       {
         "function": "priznakyVobjednavkach",
-        "url": "/admin/objednavky-detail/",
+        "url": null,
         "conditionsSOVAL": null
       },
       {
         "function": "priznakEmail",
-        "url": "/admin/objednavky-detail/",
+        "url": null,
         "conditionsSOVAL": null
       }
     ]
