@@ -231,6 +231,11 @@
         "function": "sidebarHide",
         "url": null,
         "conditionsSOVAL": null
+      },
+      {
+        "function": null,
+        "url": "/admin/ceny/",
+        "conditionsSOVAL": null
       }
     ]
   },
