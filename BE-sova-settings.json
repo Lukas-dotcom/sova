@@ -241,11 +241,6 @@
         "function": "pridatParametry",
         "url": null,
         "conditionsSOVAL": null
-      },
-      {
-        "function": "priznakEmail",
-        "url": null,
-        "conditionsSOVAL": null
       }
     ]
   },
