@@ -228,6 +228,7 @@
       "parameters",
       "url",
       "position",
+      "order",
       "conditionsSOVAL"
     ],
     "rules": [
@@ -238,6 +239,7 @@
         "parameters": null,
         "url": "/parametry-pro-filtrovani-vypis/",
         "position": null,
+        "order": null,
         "conditionsSOVAL": null
       },
       {
@@ -247,6 +249,7 @@
         "parameters": null,
         "url": "/parametry-pro-filtrovani-detail/",
         "position": null,
+        "order": null,
         "conditionsSOVAL": null
       }
     ]
