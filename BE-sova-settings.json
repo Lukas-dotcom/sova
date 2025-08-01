@@ -253,8 +253,23 @@
         "conditionsSOVAL": null
       },
       {
-        "function": null,
+        "function": "adminDeliveryHelper();",
         "url": "/admin/objednavky-detail/",
+        "conditionsSOVAL": null
+      },
+      {
+        "function": "mazatTrackingPriOdstraneniZasilky();",
+        "url": null,
+        "conditionsSOVAL": null
+      },
+      {
+        "function": "priznakyVobjednavkach();",
+        "url": null,
+        "conditionsSOVAL": null
+      },
+      {
+        "function": "priznakEmail();",
+        "url": null,
         "conditionsSOVAL": null
       }
     ]
