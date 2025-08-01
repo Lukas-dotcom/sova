@@ -251,6 +251,11 @@
         "function": "sablonyClanky",
         "url": "/admin/clanek-rubrika-detail/",
         "conditionsSOVAL": null
+      },
+      {
+        "function": null,
+        "url": "/admin/objednavky-detail/",
+        "conditionsSOVAL": null
       }
     ]
   },
