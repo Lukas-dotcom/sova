@@ -220,6 +220,20 @@
       }
     ]
   },
+  "injectFunctions": {
+    "columns": [
+      "function",
+      "url",
+      "conditionsSOVAL"
+    ],
+    "rules": [
+      {
+        "function": "sidebarHide",
+        "url": null,
+        "conditionsSOVAL": null
+      }
+    ]
+  },
   "injectButtons": {
     "columns": [
       "buttonName",
