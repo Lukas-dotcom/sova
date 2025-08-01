@@ -235,7 +235,7 @@
       {
         "buttonName": "Seřadit parametry",
         "color": null,
-        "function": null,
+        "function": "raditHodnotyFiltru",
         "parameters": null,
         "url": "/parametry-pro-filtrovani-vypis/",
         "position": null,
