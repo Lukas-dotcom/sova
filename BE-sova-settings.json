@@ -238,7 +238,7 @@
         "function": "raditHodnotyFiltru",
         "parameters": null,
         "url": "/parametry-pro-filtrovani-vypis/",
-        "position": null,
+        "position": "buttonsHeaderLeft",
         "order": null,
         "conditionsSOVAL": null
       },
@@ -248,7 +248,7 @@
         "function": "paramSortingSingle",
         "parameters": null,
         "url": "/parametry-pro-filtrovani-detail/",
-        "position": null,
+        "position": "buttonsHeaderLeft",
         "order": null,
         "conditionsSOVAL": null
       },
@@ -258,7 +258,7 @@
         "function": null,
         "parameters": null,
         "url": "/html-kody/",
-        "position": null,
+        "position": "buttonsHeaderLeft",
         "order": null,
         "conditionsSOVAL": null
       }
