@@ -239,7 +239,17 @@
       },
       {
         "function": "pridatParametry",
-        "url": null,
+        "url": "/admin/ceny/",
+        "conditionsSOVAL": null
+      },
+      {
+        "function": "priznakEmail",
+        "url": "/admin/ceny/",
+        "conditionsSOVAL": null
+      },
+      {
+        "function": null,
+        "url": "/admin/clanek-rubrika-detail/",
         "conditionsSOVAL": null
       }
     ]
