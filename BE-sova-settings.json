@@ -233,7 +233,7 @@
         "conditionsSOVAL": null
       },
       {
-        "function": null,
+        "function": "pridatStitikyvPrehledu",
         "url": "/admin/ceny/",
         "conditionsSOVAL": null
       }
