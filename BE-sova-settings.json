@@ -224,53 +224,63 @@
     "columns": [
       "function",
       "url",
-      "conditionsSOVAL"
+      "conditionsSOVAL",
+      "windowName"
     ],
     "rules": [
       {
         "function": "sidebarHide",
         "url": null,
-        "conditionsSOVAL": null
+        "conditionsSOVAL": null,
+        "windowName": null
       },
       {
         "function": "pridatStitikyvPrehledu",
         "url": "/admin/ceny/",
-        "conditionsSOVAL": null
+        "conditionsSOVAL": null,
+        "windowName": null
       },
       {
         "function": "pridatParametry",
         "url": "/admin/ceny/",
-        "conditionsSOVAL": null
+        "conditionsSOVAL": null,
+        "windowName": null
       },
       {
         "function": "priznakEmail",
         "url": "/admin/ceny/",
-        "conditionsSOVAL": null
+        "conditionsSOVAL": null,
+        "windowName": null
       },
       {
         "function": "sablonyClanky",
         "url": "/admin/clanek-rubrika-detail/",
-        "conditionsSOVAL": null
+        "conditionsSOVAL": null,
+        "windowName": null
       },
       {
         "function": "adminDeliveryHelper",
         "url": "/admin/objednavky-detail/",
-        "conditionsSOVAL": null
+        "conditionsSOVAL": null,
+        "windowName": null
       },
       {
         "function": "mazatTrackingPriOdstraneniZasilky",
         "url": "/admin/objednavky-detail/",
-        "conditionsSOVAL": null
+        "conditionsSOVAL": null,
+        "windowName": null
       },
       {
         "function": "priznakyVobjednavkach",
         "url": "/admin/objednavky-detail/",
-        "conditionsSOVAL": null
+        "conditionsSOVAL": null,
+        "windowName": null
       },
       {
         "function": "priznakEmail",
         "url": "/admin/objednavky-detail/",
-        "conditionsSOVAL": null
+        "conditionsSOVAL": null,
+        "windowName": null
       }
     ]
   },
