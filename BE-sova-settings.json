@@ -223,6 +223,7 @@
   "injectFunctions": {
     "columns": [
       "function",
+      "",
       "url",
       "conditionsSOVAL",
       "windowName"
@@ -230,54 +231,63 @@
     "rules": [
       {
         "function": "sidebarHide",
+        "": null,
         "url": null,
         "conditionsSOVAL": null,
         "windowName": null
       },
       {
         "function": "pridatStitikyvPrehledu",
+        "": null,
         "url": "/admin/ceny/",
         "conditionsSOVAL": null,
         "windowName": null
       },
       {
         "function": "pridatParametry",
+        "": null,
         "url": "/admin/ceny/",
         "conditionsSOVAL": null,
         "windowName": null
       },
       {
         "function": "priznakEmail",
+        "": null,
         "url": "/admin/ceny/",
         "conditionsSOVAL": null,
         "windowName": null
       },
       {
         "function": "sablonyClanky",
+        "": null,
         "url": "/admin/clanek-rubrika-detail/",
         "conditionsSOVAL": null,
         "windowName": null
       },
       {
         "function": "adminDeliveryHelper",
+        "": null,
         "url": "/admin/objednavky-detail/",
         "conditionsSOVAL": null,
         "windowName": null
       },
       {
         "function": "mazatTrackingPriOdstraneniZasilky",
+        "": null,
         "url": "/admin/objednavky-detail/",
         "conditionsSOVAL": null,
         "windowName": null
       },
       {
         "function": "priznakyVobjednavkach",
+        "": null,
         "url": "/admin/objednavky-detail/",
         "conditionsSOVAL": null,
         "windowName": null
       },
       {
         "function": "priznakEmail",
+        "": null,
         "url": "/admin/objednavky-detail/",
         "conditionsSOVAL": null,
         "windowName": null
