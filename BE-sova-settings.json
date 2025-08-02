@@ -291,6 +291,13 @@
         "url": "/admin/objednavky-detail/",
         "conditionsSOVAL": null,
         "windowName": null
+      },
+      {
+        "function": "sendEmail",
+        "parameters": null,
+        "url": null,
+        "conditionsSOVAL": null,
+        "windowName": null
       }
     ]
   },
