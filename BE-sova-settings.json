@@ -220,6 +220,124 @@
       }
     ]
   },
+  "injectFunctions": {
+    "columns": [
+      "function",
+      "parameters",
+      "url",
+      "conditionsSOVAL",
+      "windowName"
+    ],
+    "rules": [
+      {
+        "function": "sidebarHide",
+        "parameters": null,
+        "url": null,
+        "conditionsSOVAL": null,
+        "windowName": null
+      },
+      {
+        "function": "pridatStitikyvPrehledu",
+        "parameters": null,
+        "url": "/admin/ceny/",
+        "conditionsSOVAL": null,
+        "windowName": null
+      },
+      {
+        "function": "pridatParametry",
+        "parameters": null,
+        "url": "/admin/ceny/",
+        "conditionsSOVAL": null,
+        "windowName": null
+      },
+      {
+        "function": "priznakEmail",
+        "parameters": null,
+        "url": "/admin/ceny/",
+        "conditionsSOVAL": null,
+        "windowName": null
+      },
+      {
+        "function": "sablonyClanky",
+        "parameters": null,
+        "url": "/admin/clanek-rubrika-detail/",
+        "conditionsSOVAL": null,
+        "windowName": null
+      },
+      {
+        "function": "adminDeliveryHelper",
+        "parameters": null,
+        "url": "/admin/objednavky-detail/",
+        "conditionsSOVAL": null,
+        "windowName": null
+      },
+      {
+        "function": "mazatTrackingPriOdstraneniZasilky",
+        "parameters": null,
+        "url": "/admin/objednavky-detail/",
+        "conditionsSOVAL": null,
+        "windowName": null
+      },
+      {
+        "function": "priznakyVobjednavkach",
+        "parameters": null,
+        "url": "/admin/objednavky-detail/",
+        "conditionsSOVAL": null,
+        "windowName": null
+      },
+      {
+        "function": "priznakEmail",
+        "parameters": null,
+        "url": "/admin/objednavky-detail/",
+        "conditionsSOVAL": null,
+        "windowName": null
+      }
+    ]
+  },
+  "injectButtons": {
+    "columns": [
+      "buttonName",
+      "color",
+      "function",
+      "parameters",
+      "url",
+      "position",
+      "order",
+      "conditionsSOVAL"
+    ],
+    "rules": [
+      {
+        "buttonName": "Seřadit parametry",
+        "color": null,
+        "function": "raditHodnotyFiltru",
+        "parameters": null,
+        "url": "/parametry-pro-filtrovani-vypis/",
+        "position": "buttonsHeaderLeft",
+        "order": null,
+        "conditionsSOVAL": null
+      },
+      {
+        "buttonName": "Seřadit parametry",
+        "color": null,
+        "function": "paramSortingSingle",
+        "parameters": null,
+        "url": "/parametry-pro-filtrovani-detail/",
+        "position": "buttonsHeaderLeft",
+        "order": null,
+        "conditionsSOVAL": null
+      },
+      {
+        "buttonName": "Upnout kódy",
+        "color": null,
+        "function": null,
+        "parameters": null,
+        "url": "/html-kody/",
+        "position": "buttonsHeaderLeft",
+        "order": null,
+        "conditionsSOVAL": null
+      }
+    ]
+  },
   "adminDeliveryHelper": {
     "columns": [
       "doprava",
