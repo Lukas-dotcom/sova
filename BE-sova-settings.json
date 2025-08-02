@@ -223,7 +223,7 @@
   "injectFunctions": {
     "columns": [
       "function",
-      "",
+      "parameters",
       "url",
       "conditionsSOVAL",
       "windowName"
@@ -231,63 +231,63 @@
     "rules": [
       {
         "function": "sidebarHide",
-        "": null,
+        "parameters": null,
         "url": null,
         "conditionsSOVAL": null,
         "windowName": null
       },
       {
         "function": "pridatStitikyvPrehledu",
-        "": null,
+        "parameters": null,
         "url": "/admin/ceny/",
         "conditionsSOVAL": null,
         "windowName": null
       },
       {
         "function": "pridatParametry",
-        "": null,
+        "parameters": null,
         "url": "/admin/ceny/",
         "conditionsSOVAL": null,
         "windowName": null
       },
       {
         "function": "priznakEmail",
-        "": null,
+        "parameters": null,
         "url": "/admin/ceny/",
         "conditionsSOVAL": null,
         "windowName": null
       },
       {
         "function": "sablonyClanky",
-        "": null,
+        "parameters": null,
         "url": "/admin/clanek-rubrika-detail/",
         "conditionsSOVAL": null,
         "windowName": null
       },
       {
         "function": "adminDeliveryHelper",
-        "": null,
+        "parameters": null,
         "url": "/admin/objednavky-detail/",
         "conditionsSOVAL": null,
         "windowName": null
       },
       {
         "function": "mazatTrackingPriOdstraneniZasilky",
-        "": null,
+        "parameters": null,
         "url": "/admin/objednavky-detail/",
         "conditionsSOVAL": null,
         "windowName": null
       },
       {
         "function": "priznakyVobjednavkach",
-        "": null,
+        "parameters": null,
         "url": "/admin/objednavky-detail/",
         "conditionsSOVAL": null,
         "windowName": null
       },
       {
         "function": "priznakEmail",
-        "": null,
+        "parameters": null,
         "url": "/admin/objednavky-detail/",
         "conditionsSOVAL": null,
         "windowName": null
