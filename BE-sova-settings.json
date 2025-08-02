@@ -294,7 +294,7 @@
       },
       {
         "function": "sendEmail",
-        "parameters": null,
+        "parameters": "{ \"to\": \"zakaznikEmail\", \"subject\": \"'Objednavka ' & status\", \"body\": \"'Ahoj, ...'\" }",
         "url": null,
         "conditionsSOVAL": null,
         "windowName": null
