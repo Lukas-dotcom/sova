@@ -374,8 +374,8 @@
         "parameters": null,
         "url": "objednavka",
         "position": "buttonsHeaderLeft",
-        "order": null,
-        "conditionsSOVAL": null
+        "order": -1,
+        "conditionsSOVAL": "(zakaznikJmeno=\"Test Testovič\")AND(5000<(SUMIF(polozky:Celkem_vc__DPH))))"
       }
     ]
   },
