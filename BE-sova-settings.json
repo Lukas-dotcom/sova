@@ -342,6 +342,16 @@
         "position": "buttonsHeaderLeft",
         "order": null,
         "conditionsSOVAL": null
+      },
+      {
+        "buttonName": "test",
+        "color": null,
+        "function": null,
+        "parameters": null,
+        "url": null,
+        "position": null,
+        "order": null,
+        "conditionsSOVAL": null
       }
     ]
   },
