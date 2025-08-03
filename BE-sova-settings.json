@@ -355,6 +355,30 @@
       }
     ]
   },
+  "injectDefaultButtons": {
+    "columns": [
+      "buttonName",
+      "color",
+      "function",
+      "parameters",
+      "url",
+      "position",
+      "order",
+      "conditionsSOVAL"
+    ],
+    "rules": [
+      {
+        "buttonName": "test",
+        "color": "green",
+        "function": "testSOVA",
+        "parameters": null,
+        "url": "objednavka",
+        "position": "buttonsHeaderLeft",
+        "order": null,
+        "conditionsSOVAL": null
+      }
+    ]
+  },
   "adminDeliveryHelper": {
     "columns": [
       "doprava",
