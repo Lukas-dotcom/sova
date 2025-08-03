@@ -345,7 +345,7 @@
       },
       {
         "buttonName": "test",
-        "color": "green",
+        "color": "red",
         "function": "testSOVA",
         "parameters": null,
         "url": "objednavka",
