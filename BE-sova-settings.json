@@ -346,7 +346,7 @@
       {
         "buttonName": "test",
         "color": null,
-        "function": null,
+        "function": "test",
         "parameters": null,
         "url": null,
         "position": null,
