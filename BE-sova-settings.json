@@ -352,6 +352,16 @@
         "position": "buttonsHeaderLeft",
         "order": null,
         "conditionsSOVAL": null
+      },
+      {
+        "buttonName": null,
+        "color": null,
+        "function": "testSOVA",
+        "parameters": null,
+        "url": null,
+        "position": null,
+        "order": null,
+        "conditionsSOVAL": null
       }
     ]
   },
