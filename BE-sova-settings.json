@@ -348,8 +348,8 @@
         "color": null,
         "function": "test",
         "parameters": null,
-        "url": null,
-        "position": null,
+        "url": "objednavka",
+        "position": "buttonsHeaderLeft",
         "order": null,
         "conditionsSOVAL": null
       }
