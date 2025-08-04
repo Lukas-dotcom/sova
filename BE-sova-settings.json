@@ -368,7 +368,7 @@
     ],
     "rules": [
       {
-        "buttonName": "test",
+        "buttonName": "testol",
         "color": "green",
         "function": "testSOVA",
         "parameters": null,
