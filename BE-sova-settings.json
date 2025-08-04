@@ -296,7 +296,7 @@
         "function": "sendEmail",
         "parameters": "{ \"to\": \"zakaznikEmail\", \"subject\": \"'Objednavka ' & status\", \"body\": \"'Ahoj, ...'\" }",
         "url": "objednavka",
-        "conditionsSOVAL": "equals(status, 'Nevyřízená') AND isGreater(castkaKuhrade, 1000)",
+        "conditionsSOVAL": "equals(status, 'TEST') AND isGreater(castkaKuhrade, 1000)",
         "windowName": null
       }
     ]
