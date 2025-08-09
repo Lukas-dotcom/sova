@@ -14,7 +14,8 @@ window.injectFunctions = [
     "conditionsSOVAL": "productPriceWithVat>250"
   },
   {
-    "function": "testovaciInjectFunction"
+    "function": "testovaciInjectFunction",
+    "parameters": "\"ano je to \"&productName"
   },
   {
     "function": "testovaciInjectFunction"
