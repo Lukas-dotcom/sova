@@ -8,7 +8,8 @@ window.injectFunctions = [
     "pageType": "billingAndShipping"
   },
   {
-    "function": "testovaciInjectFunction"
+    "function": "testovaciInjectFunction",
+    "parameters": "produkt \"&productName&\"je dražší než 250"
   },
   {
     "function": "testovaciInjectFunction"
