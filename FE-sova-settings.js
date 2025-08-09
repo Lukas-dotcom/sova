@@ -45,6 +45,10 @@ window.additionalSale = [
   }
 ];
 
+window.additionalSalePopUP = {
+  "pairText": "pojist12"
+};
+
 window.LadzoSklad = {
   "LIC0004": true,
   "LIC0005": true,
