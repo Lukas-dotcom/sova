@@ -28,14 +28,14 @@ window.injectFunctions = [
 
 window.additionalSale = [
   {
-    "priceID": 1535,
+    "code": 1535,
     "name": "pojištení 1 rok",
     "price": 499,
     "pair": 2,
     "SOVAL": "pricewithvat>5000"
   },
   {
-    "priceID": 1536,
+    "code": 1536,
     "name": "pojištení 2 roky",
     "price": 749,
     "pair": 2,
