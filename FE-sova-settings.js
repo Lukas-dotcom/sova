@@ -19,7 +19,8 @@ window.injectFunctions = [
     "url": "https://733338.myshoptet.com/unisex-hodinky-nature/"
   },
   {
-    "function": "testovaciInjectFunction"
+    "function": "testovaciInjectFunction",
+    "conditionsSOVAL": "contains(productCurrentCategory, \"Do domácnosti\")"
   }
 ];
 
