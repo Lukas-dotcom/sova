@@ -1,3 +1,7 @@
+window.injectFunctions = {
+  "pageType": "productDetail"
+};
+
 window.LadzoSklad = {
   "LIC0004": true,
   "LIC0005": true,
