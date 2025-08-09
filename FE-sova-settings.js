@@ -46,7 +46,8 @@ window.additionalSale = [
 ];
 
 window.additionalSalePopUP = {
-  "pairText": "pojist12"
+  "pairText": "pojist12",
+  "popID": "zar12"
 };
 
 window.LadzoSklad = {
