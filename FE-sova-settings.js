@@ -16,11 +16,13 @@ window.injectFunctions = [
   {
     "function": "testovaciInjectFunction",
     "parameters": "(\"ano je to \" & productName)",
-    "url": "/unisex-hodinky-nature/"
+    "url": "/unisex-hodinky-nature/",
+    "pageType": "productDetail"
   },
   {
     "function": "testovaciInjectFunction",
     "parameters": "(\"Do domácnosti\")",
+    "pageType": "productDetail",
     "conditionsSOVAL": "contains(productCurrentCategory, \"Do domácnosti\")"
   }
 ];
