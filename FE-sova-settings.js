@@ -4,7 +4,8 @@ window.injectFunctions = [
     "pageType": "productDetail"
   },
   {
-    "function": "deliveryOptions"
+    "function": "deliveryOptions",
+    "pageType": "billingAndShipping"
   }
 ];
 
