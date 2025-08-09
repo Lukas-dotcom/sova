@@ -32,6 +32,7 @@ window.additionalSale = [
     "name": "pojištení 1 rok",
     "price": 499,
     "pair": 2,
+    "type": "checkbox",
     "SOVAL": "pricewithvat>5000"
   },
   {
