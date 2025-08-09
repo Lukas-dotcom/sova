@@ -1,7 +1,12 @@
-window.injectFunctions = {
-  "function": "additionalSale",
-  "pageType": "productDetail"
-};
+window.injectFunctions = [
+  {
+    "function": "additionalSale",
+    "pageType": "productDetail"
+  },
+  {
+    "function": "deliveryOptions"
+  }
+];
 
 window.LadzoSklad = {
   "LIC0004": true,
