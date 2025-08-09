@@ -23,7 +23,7 @@ window.injectFunctions = [
     "conditionsSOVAL": "contains(productCurrentCategory, \"Do domácnosti\")"
   },
   {
-    "parameters": "{ \"text\": \"\\\"produkt \\\" & productName & \\\" je dražší než 250\\\"\" }"
+    "parameters": "{ \"text\": '\"produkt \" & productName & \"je dražší než 250\"' }"
   }
 ];
 
