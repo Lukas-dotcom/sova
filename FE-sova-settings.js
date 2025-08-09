@@ -20,6 +20,7 @@ window.injectFunctions = [
   },
   {
     "function": "testovaciInjectFunction",
+    "parameters": "Do domácnosti",
     "conditionsSOVAL": "contains(productCurrentCategory, \"Do domácnosti\")"
   }
 ];
