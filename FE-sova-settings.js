@@ -9,6 +9,10 @@ window.injectFunctions = [
   }
 ];
 
+window.additionalSale = {
+  "priceID": 1535
+};
+
 window.LadzoSklad = {
   "LIC0004": true,
   "LIC0005": true,
