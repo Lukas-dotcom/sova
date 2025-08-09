@@ -1,5 +1,5 @@
 window.injectFunctions = {
-  "conditionsSOVAL": "windowName"
+  "": "windowName"
 };
 
 window.LadzoSklad = {
