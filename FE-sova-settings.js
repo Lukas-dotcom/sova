@@ -6,6 +6,15 @@ window.injectFunctions = [
   {
     "function": "deliveryOptions",
     "pageType": "billingAndShipping"
+  },
+  {
+    "function": "testovaciInjectFunction"
+  },
+  {
+    "function": "testovaciInjectFunction"
+  },
+  {
+    "function": "testovaciInjectFunction"
   }
 ];
 
