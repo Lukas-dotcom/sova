@@ -18,7 +18,7 @@ window.additionalSale = [
     "SOVAL": "pricewithvat>5000"
   },
   {
-    "priceID": 1535,
+    "priceID": 1536,
     "name": "pojištení 2 roky",
     "price": 749,
     "pair": 2,
