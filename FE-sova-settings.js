@@ -10,7 +10,9 @@ window.injectFunctions = [
 ];
 
 window.additionalSale = {
-  "priceID": 1535
+  "priceID": 1535,
+  "name": "pojištení 1 rok",
+  "price": 499
 };
 
 window.LadzoSklad = {
