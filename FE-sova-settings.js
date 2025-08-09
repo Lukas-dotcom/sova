@@ -9,13 +9,22 @@ window.injectFunctions = [
   }
 ];
 
-window.additionalSale = {
-  "priceID": 1535,
-  "name": "pojištení 1 rok",
-  "price": 499,
-  "pair": 2,
-  "SOVAL": "pricewithvat>5000"
-};
+window.additionalSale = [
+  {
+    "priceID": 1535,
+    "name": "pojištení 1 rok",
+    "price": 499,
+    "pair": 2,
+    "SOVAL": "pricewithvat>5000"
+  },
+  {
+    "priceID": 1535,
+    "name": "pojištení 1 rok",
+    "price": 499,
+    "pair": 2,
+    "SOVAL": "pricewithvat>5000"
+  }
+];
 
 window.LadzoSklad = {
   "LIC0004": true,
