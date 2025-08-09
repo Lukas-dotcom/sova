@@ -31,7 +31,7 @@ window.additionalSale = [
     "code": 1535,
     "name": "pojištení 1 rok",
     "price": 499,
-    "pair": 2,
+    "pair": "pojist12",
     "type": "checkbox",
     "SOVAL": "pricewithvat>5000"
   },
@@ -39,7 +39,7 @@ window.additionalSale = [
     "code": 1536,
     "name": "pojištení 2 roky",
     "price": 749,
-    "pair": 2,
+    "pair": "pojist12",
     "type": "checkbox",
     "SOVAL": "pricewithvat>5000"
   }
