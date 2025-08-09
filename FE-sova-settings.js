@@ -9,13 +9,13 @@ window.injectFunctions = [
   },
   {
     "function": "testovaciInjectFunction",
-    "parameters": "produkt \"&productName&\"je dražší než 250",
+    "parameters": "produkt \" & productName & \"je dražší než 250",
     "pageType": "productDetail",
     "conditionsSOVAL": "productPriceWithVat>250"
   },
   {
     "function": "testovaciInjectFunction",
-    "parameters": "\"ano je to \"&productName",
+    "parameters": "\"ano je to \" & productName",
     "url": "https://733338.myshoptet.com/unisex-hodinky-nature/"
   },
   {
