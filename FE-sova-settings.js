@@ -9,7 +9,8 @@ window.injectFunctions = [
   },
   {
     "function": "testovaciInjectFunction",
-    "parameters": "produkt \"&productName&\"je dražší než 250"
+    "parameters": "produkt \"&productName&\"je dražší než 250",
+    "pageType": "productDetail"
   },
   {
     "function": "testovaciInjectFunction"
