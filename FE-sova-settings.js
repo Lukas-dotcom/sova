@@ -1,4 +1,5 @@
 window.injectFunctions = {
+  "function": "additionalSale",
   "pageType": "productDetail"
 };
 
