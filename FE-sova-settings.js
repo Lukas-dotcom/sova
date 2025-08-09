@@ -15,7 +15,7 @@ window.injectFunctions = [
   },
   {
     "function": "testovaciInjectFunction",
-    "parameters": "{ \"text\": '\"ano je to \" & productName' }",
+    "parameters": "\"text\": '\"ano je to \" & productName'",
     "url": "/unisex-hodinky-nature/"
   },
   {
