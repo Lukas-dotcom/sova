@@ -21,9 +21,6 @@ window.injectFunctions = [
   {
     "function": "testovaciInjectFunction",
     "conditionsSOVAL": "contains(productCurrentCategory, \"Do domácnosti\")"
-  },
-  {
-    "parameters": "{ \"text\": '\"produkt \" & productName & \"je dražší než 250\"' }"
   }
 ];
 
