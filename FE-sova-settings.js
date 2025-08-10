@@ -26,14 +26,19 @@ window.injectFunctions = [
   }
 ];
 
-window.injectVariables = {
-  "variable": "zarVylouceneCastiNazvu",
-  "value": [
-    "Z Fold",
-    "Z Flip",
-    "Fujitsu H760"
-  ]
-};
+window.injectVariables = [
+  {
+    "variable": "zarVylouceneCastiNazvu",
+    "value": [
+      "Z Fold",
+      "Z Flip",
+      "Fujitsu H760"
+    ]
+  },
+  {
+    "variable": "jednoduchaPromenna"
+  }
+];
 
 window.additionalSale = [
   {
