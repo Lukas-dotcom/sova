@@ -382,7 +382,10 @@ window.additionalSale = [
 ];
 
 window.injectVariables = {
-  "variable": "zarVylouceneCastiNazvu"
+  "variable": "zarVylouceneCastiNazvu",
+  "value": [
+    0
+  ]
 };
 
 window.additionalSalePopUP = {
