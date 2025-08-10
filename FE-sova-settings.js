@@ -429,7 +429,7 @@ window.additionalSale = [
     "price": 3990,
     "pairText": "Výměna disku",
     "type": "select",
-    "SOVAL": "(\n  ( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory,\"Notebooky\") OR CONTAINS(productCurrentCategory,\"Počítače\") )\n  AND (parametroptdisableupgradedisc = \"false\")\n  AND NOT CONTAINS(productName,\"All in One\")\n  AND NOT CONTAINS(parametrTypdisku,\"eMMC\")\n  AND (\n    CONTAINS(parametrKapacitadisku,\"+\")\n    OR (regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\") = \"\")\n    OR ( 4000 > if( CONTAINS(parametrKapacitadisku,\"TB\"),\n                     regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\")*1000,\n                     regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\") ) )\n  )\n)\n"
+    "SOVAL": "(((category = \"Počítače\") OR CONTAINS(productCurrentCategory,\"Počítače\")) AND (parametroptdisableupgradedisc = \"false\") AND NOT CONTAINS(productName,\"All in One\") AND NOT CONTAINS(parametrTypdisku,\"eMMC\") AND (CONTAINS(parametrKapacitadisku,\"+\") OR (regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\") = \"\") OR (4000 > if(CONTAINS(parametrKapacitadisku,\"TB\"), regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\")*1000, regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\")))))"
   }
 ];
 
