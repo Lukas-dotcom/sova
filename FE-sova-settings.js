@@ -28,20 +28,356 @@ window.injectFunctions = [
 
 window.additionalSale = [
   {
-    "code": 1535,
-    "name": "pojištení 1 rok",
+    "code": "BLESK1",
+    "name": "Blesková výměna zboží",
     "price": 499,
-    "pairText": "pojist12",
+    "pairText": "BLESK1",
     "type": "checkbox",
-    "SOVAL": "pricewithvat>5000"
+    "SOVAL": "(( ( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) OR (category = \"Telefony\" OR CONTAINS(productCurrentCategory, \"Telefony\")) ) AND (parametroptdisableupgradechange = \"false\") AND ( CONTAINS(parametrTypproduktu, \"Repasovaný\") OR (category = \"Telefony\" OR CONTAINS(productCurrentCategory, \"Telefony\")) ))"
   },
   {
-    "code": 1536,
-    "name": "pojištení 2 roky",
-    "price": 749,
-    "pairText": "pojist12",
+    "code": "BLESK2",
+    "name": "Balíček aplikací – Spusť a pracuj",
+    "price": 649,
+    "pairText": "BLESK2",
     "type": "checkbox",
-    "SOVAL": "pricewithvat>5000"
+    "SOVAL": "(( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND (parametroptdisableupgradeblesk = \"false\") AND (CONTAINS(parametrOperacnisystem, \"Windows\") OR CONTAINS(parametrSystem, \"WINDOWS\")) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") AND (parametrKapacitadisku = \"16 GB\" OR parametrKapacitadisku = \"32 GB\") ))"
+  },
+  {
+    "code": "SERVIS006",
+    "name": "Aplikace ochranného skla",
+    "price": 249,
+    "pairText": "SERVIS006",
+    "type": "checkbox",
+    "SOVAL": "((category = \"Telefony\" OR CONTAINS(productCurrentCategory, \"Telefony\")) AND (productManufacturer = \"Apple\") AND ( CONTAINS(productName, \"iPhone\") OR CONTAINS(productCurrentCategory, \"iPhone\") ))"
+  },
+  {
+    "code": "LIC0005",
+    "name": "Office 2019 Pro Plus (druhotná licence)",
+    "price": 799,
+    "pairText": "LIC0005",
+    "type": "checkbox",
+    "SOVAL": "(( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND ( CONTAINS(parametrOperacnisystem, \"Windows\") OR CONTAINS(parametrSystem, \"WINDOWS\") ))"
+  },
+  {
+    "code": "LIC0004",
+    "name": "Office 2021 Pro Plus (druhotná licence)",
+    "price": 1290,
+    "pairText": "LIC0004",
+    "type": "checkbox",
+    "SOVAL": "(( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND ( CONTAINS(parametrOperacnisystem, \"Windows\") OR CONTAINS(parametrSystem, \"WINDOWS\") ))"
+  },
+  {
+    "code": "MAR0012",
+    "name": "Windows 10 Home CZ",
+    "price": 499,
+    "pairText": "Lepší Windows",
+    "type": "select",
+    "SOVAL": "(( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND ( CONTAINS(parametrOperacnisystem, \"Windows\") OR CONTAINS(parametrSystem, \"WINDOWS\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrOperacnisystem, \"Windows 7 Home\"))"
+  },
+  {
+    "code": "MAR0013",
+    "name": "Windows 10 PRO CZ",
+    "price": 499,
+    "pairText": "Lepší Windows",
+    "type": "select",
+    "SOVAL": "(( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND ( CONTAINS(parametrOperacnisystem, \"Windows\") OR CONTAINS(parametrSystem, \"WINDOWS\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrOperacnisystem, \"Windows 7 Pro\"))"
+  },
+  {
+    "code": "MAR0008",
+    "name": "Windows 10 PRO MAR",
+    "price": 899,
+    "pairText": "Lepší Windows",
+    "type": "select",
+    "SOVAL": "(( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND ( CONTAINS(parametrOperacnisystem, \"Windows\") OR CONTAINS(parametrSystem, \"WINDOWS\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND ( CONTAINS(parametrOperacnisystem, \"Windows 7 Home\") OR CONTAINS(parametrOperacnisystem, \"Windows 7 Ultimate\") OR CONTAINS(parametrOperacnisystem, \"Windows 10 Home\") ))"
+  },
+  {
+    "code": "MAR0018",
+    "name": "Windows 11 Home CZ",
+    "price": 449,
+    "pairText": "Lepší Windows",
+    "type": "select",
+    "SOVAL": "(( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND ( CONTAINS(parametrOperacnisystem, \"Windows\") OR CONTAINS(parametrSystem, \"WINDOWS\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND (parametroptpossiblew11 = \"true\") AND CONTAINS(parametrOperacnisystem, \"Windows 10 Home\"))"
+  },
+  {
+    "code": "MAR0019",
+    "name": "Windows 11 Home MAR",
+    "price": 599,
+    "pairText": "Lepší Windows",
+    "type": "select",
+    "SOVAL": "(( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND ( CONTAINS(parametrOperacnisystem, \"Windows\") OR CONTAINS(parametrSystem, \"WINDOWS\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND (parametroptpossiblew11 = \"true\") AND ( CONTAINS(parametrOperacnisystem, \"Windows 7 Pro\") OR CONTAINS(parametrOperacnisystem, \"Windows 7 Home\") ))"
+  },
+  {
+    "code": "MAR0020",
+    "name": "Windows 11 PRO CZ",
+    "price": 449,
+    "pairText": "Lepší Windows",
+    "type": "select",
+    "SOVAL": "(( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND ( CONTAINS(parametrOperacnisystem, \"Windows\") OR CONTAINS(parametrSystem, \"WINDOWS\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND (parametroptpossiblew11 = \"true\") AND CONTAINS(parametrOperacnisystem, \"Windows 10 Pro\"))"
+  },
+  {
+    "code": "MAR0021",
+    "name": "Windows 11 PRO MAR",
+    "price": 899,
+    "pairText": "Lepší Windows",
+    "type": "select",
+    "SOVAL": "(( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND ( CONTAINS(parametrOperacnisystem, \"Windows\") OR CONTAINS(parametrSystem, \"WINDOWS\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND (parametroptpossiblew11 = \"true\") AND ( CONTAINS(parametrOperacnisystem, \"Windows 7 Pro\") OR CONTAINS(parametrOperacnisystem, \"Windows 7 Home\") OR CONTAINS(parametrOperacnisystem, \"Windows 11 Home\") ))"
+  },
+  {
+    "code": "VRP0022",
+    "name": "#ERROR!",
+    "price": 549,
+    "pairText": "Rozšíření RAM",
+    "type": "select",
+    "SOVAL": "(category = \"Počítače\" AND (parametroptdisableupgraderam = \"false\") AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnipameti, \"DDR3\"))"
+  },
+  {
+    "code": "VRP0024",
+    "name": "#ERROR!",
+    "price": 890,
+    "pairText": "Rozšíření RAM",
+    "type": "select",
+    "SOVAL": "(category = \"Počítače\" AND (parametroptdisableupgraderam = \"false\") AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnipameti, \"DDR3\"))"
+  },
+  {
+    "code": "VRP0026",
+    "name": "#ERROR!",
+    "price": 1590,
+    "pairText": "Rozšíření RAM",
+    "type": "select",
+    "SOVAL": "(category = \"Počítače\" AND (parametroptdisableupgraderam = \"false\") AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnipameti, \"DDR3\"))"
+  },
+  {
+    "code": "VRP0020",
+    "name": "#ERROR!",
+    "price": 2490,
+    "pairText": "Rozšíření RAM",
+    "type": "select",
+    "SOVAL": "(category = \"Počítače\" AND (parametroptdisableupgraderam = \"false\") AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnipameti, \"DDR3\"))"
+  },
+  {
+    "code": "VRP0025",
+    "name": "#ERROR!",
+    "price": 890,
+    "pairText": "Rozšíření RAM",
+    "type": "select",
+    "SOVAL": "(category = \"Počítače\" AND (parametroptdisableupgraderam = \"false\") AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnipameti, \"DDR4\"))"
+  },
+  {
+    "code": "VRP0027",
+    "name": "#ERROR!",
+    "price": 1490,
+    "pairText": "Rozšíření RAM",
+    "type": "select",
+    "SOVAL": "(category = \"Počítače\" AND (parametroptdisableupgraderam = \"false\") AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnipameti, \"DDR4\"))"
+  },
+  {
+    "code": "VRP0021",
+    "name": "#ERROR!",
+    "price": 2490,
+    "pairText": "Rozšíření RAM",
+    "type": "select",
+    "SOVAL": "(category = \"Počítače\" AND (parametroptdisableupgraderam = \"false\") AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnipameti, \"DDR4\"))"
+  },
+  {
+    "code": "VRP0034",
+    "name": "#ERROR!",
+    "price": 990,
+    "pairText": "Rozšíření RAM",
+    "type": "select",
+    "SOVAL": "(category = \"Počítače\" AND (parametroptdisableupgraderam = \"false\") AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnipameti, \"DDR5\"))"
+  },
+  {
+    "code": "VRP0035",
+    "name": "#ERROR!",
+    "price": 1790,
+    "pairText": "Rozšíření RAM",
+    "type": "select",
+    "SOVAL": "(category = \"Počítače\" AND (parametroptdisableupgraderam = \"false\") AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnipameti, \"DDR5\"))"
+  },
+  {
+    "code": "VRP0036",
+    "name": "#ERROR!",
+    "price": 2990,
+    "pairText": "Rozšíření RAM",
+    "type": "select",
+    "SOVAL": "(category = \"Počítače\" AND (parametroptdisableupgraderam = \"false\") AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnipameti, \"DDR5\"))"
+  },
+  {
+    "code": "VRP0001",
+    "name": "#ERROR!",
+    "price": 549,
+    "pairText": "Rozšíření RAM",
+    "type": "select",
+    "SOVAL": "(category = \"Notebooky\" AND (parametroptdisableupgraderam = \"false\") AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnipameti, \"DDR3\"))"
+  },
+  {
+    "code": "VRP0002",
+    "name": "#ERROR!",
+    "price": 890,
+    "pairText": "Rozšíření RAM",
+    "type": "select",
+    "SOVAL": "(category = \"Notebooky\" AND (parametroptdisableupgraderam = \"false\") AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnipameti, \"DDR3\"))"
+  },
+  {
+    "code": "VRP0003",
+    "name": "#ERROR!",
+    "price": 1790,
+    "pairText": "Rozšíření RAM",
+    "type": "select",
+    "SOVAL": "(category = \"Notebooky\" AND (parametroptdisableupgraderam = \"false\") AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnipameti, \"DDR3\"))"
+  },
+  {
+    "code": "VRP0004",
+    "name": "#ERROR!",
+    "price": 2490,
+    "pairText": "Rozšíření RAM",
+    "type": "select",
+    "SOVAL": "(category = \"Notebooky\" AND (parametroptdisableupgraderam = \"false\") AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnipameti, \"DDR3\"))"
+  },
+  {
+    "code": "VRP0006",
+    "name": "#ERROR!",
+    "price": 890,
+    "pairText": "Rozšíření RAM",
+    "type": "select",
+    "SOVAL": "(category = \"Notebooky\" AND (parametroptdisableupgraderam = \"false\") AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnipameti, \"DDR4\"))"
+  },
+  {
+    "code": "VRP0007",
+    "name": "#ERROR!",
+    "price": 1790,
+    "pairText": "Rozšíření RAM",
+    "type": "select",
+    "SOVAL": "(category = \"Notebooky\" AND (parametroptdisableupgraderam = \"false\") AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnipameti, \"DDR4\"))"
+  },
+  {
+    "code": "VRP0008",
+    "name": "#ERROR!",
+    "price": 2490,
+    "pairText": "Rozšíření RAM",
+    "type": "select",
+    "SOVAL": "(category = \"Notebooky\" AND (parametroptdisableupgraderam = \"false\") AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnipameti, \"DDR4\"))"
+  },
+  {
+    "code": "VRP0031",
+    "name": "#ERROR!",
+    "price": 990,
+    "pairText": "Rozšíření RAM",
+    "type": "select",
+    "SOVAL": "(category = \"Notebooky\" AND (parametroptdisableupgraderam = \"false\") AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnipameti, \"DDR5\"))"
+  },
+  {
+    "code": "VRP0032",
+    "name": "#ERROR!",
+    "price": 1890,
+    "pairText": "Rozšíření RAM",
+    "type": "select",
+    "SOVAL": "(category = \"Notebooky\" AND (parametroptdisableupgraderam = \"false\") AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnipameti, \"DDR5\"))"
+  },
+  {
+    "code": "VRP0033",
+    "name": "#ERROR!",
+    "price": 3490,
+    "pairText": "Rozšíření RAM",
+    "type": "select",
+    "SOVAL": "(category = \"Notebooky\" AND (parametroptdisableupgraderam = \"false\") AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnipameti, \"DDR5\"))"
+  },
+  {
+    "code": "VRP0028",
+    "name": "SSD 240GB",
+    "price": 1390,
+    "pairText": "Výměna disku",
+    "type": "select",
+    "SOVAL": "(( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND (parametroptdisableupgradedisc = \"false\") AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ))"
+  },
+  {
+    "code": "VRP0015",
+    "name": "SSD 256GB",
+    "price": 1690,
+    "pairText": "Výměna disku",
+    "type": "select",
+    "SOVAL": "(( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND (parametroptdisableupgradedisc = \"false\") AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ))"
+  },
+  {
+    "code": "VRP0029",
+    "name": "SSD 480GB",
+    "price": 1999,
+    "pairText": "Výměna disku",
+    "type": "select",
+    "SOVAL": "(( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND (parametroptdisableupgradedisc = \"false\") AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ))"
+  },
+  {
+    "code": "VRP0016",
+    "name": "SSD 512GB",
+    "price": 1890,
+    "pairText": "Výměna disku",
+    "type": "select",
+    "SOVAL": "(( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND (parametroptdisableupgradedisc = \"false\") AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ))"
+  },
+  {
+    "code": "VRP0017",
+    "name": "SSD 1TB",
+    "price": 2490,
+    "pairText": "Výměna disku",
+    "type": "select",
+    "SOVAL": "(( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND (parametroptdisableupgradedisc = \"false\") AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ))"
+  },
+  {
+    "code": "VRP0018",
+    "name": "SSD 2TB",
+    "price": 3690,
+    "pairText": "Výměna disku",
+    "type": "select",
+    "SOVAL": "(( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND (parametroptdisableupgradedisc = \"false\") AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ))"
+  },
+  {
+    "code": "VRP0019",
+    "name": "SSD 4TB",
+    "price": 7990,
+    "pairText": "Výměna disku",
+    "type": "select",
+    "SOVAL": "(category = \"Počítače\" AND (parametroptdisableupgradedisc = \"false\") AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ))"
+  },
+  {
+    "code": "VRP0009",
+    "name": "HDD 320GB",
+    "price": 999,
+    "pairText": "Výměna disku",
+    "type": "select",
+    "SOVAL": "(( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND (parametroptdisableupgradedisc = \"false\") AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ))"
+  },
+  {
+    "code": "VRP0010",
+    "name": "HDD 500GB",
+    "price": 1599,
+    "pairText": "Výměna disku",
+    "type": "select",
+    "SOVAL": "(( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND (parametroptdisableupgradedisc = \"false\") AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ))"
+  },
+  {
+    "code": "VRP0011",
+    "name": "HDD 1TB",
+    "price": 1990,
+    "pairText": "Výměna disku",
+    "type": "select",
+    "SOVAL": "(( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND (parametroptdisableupgradedisc = \"false\") AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ))"
+  },
+  {
+    "code": "VRP0012",
+    "name": "HDD 2TB",
+    "price": 2990,
+    "pairText": "Výměna disku",
+    "type": "select",
+    "SOVAL": "(( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND (parametroptdisableupgradedisc = \"false\") AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ))"
+  },
+  {
+    "code": "VRP0013",
+    "name": "HDD 4TB",
+    "price": 3990,
+    "pairText": "Výměna disku",
+    "type": "select",
+    "SOVAL": "(( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND (parametroptdisableupgradedisc = \"false\") AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ))"
   }
 ];
 
