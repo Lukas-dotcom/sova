@@ -27,7 +27,9 @@ window.injectFunctions = [
 ];
 
 window.injectVariables = {
-  "zarVylouceneCastiNazvu": "#ERROR!",
+  "zarVylouceneCastiNazvu": [
+    0
+  ],
   "jednoduchaPromenna": "XY",
   "tabulka": [
     "{\n        \"code\": \"NTB00002506\"",
