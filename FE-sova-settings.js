@@ -30,7 +30,8 @@ window.injectVariables = {
   "zarVylouceneCastiNazvu": [
     "Z Fold",
     "Z Flip",
-    "Fujitsu H760"
+    "Fujitsu H760",
+    "H770"
   ],
   "jednoduchaPromenna": "XY",
   "tabulka": [
