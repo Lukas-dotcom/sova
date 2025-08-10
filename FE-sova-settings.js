@@ -66,7 +66,6 @@ window.injectVariables = [
     ]
   },
   {
-    "zarVylouceneCastiNazvu": "objekt",
     "jednoduchaPromenna": "    {\n        \"code\": \"LIC0004\",\n        \"guid\": \"7eab77fc-65d5-11ed-9b08-ecf4bbd76e50\",\n        \"priceId\": 150258,\n        \"quantity\": 1,\n        \"priceWithVat\": 1311,\n        \"priceWithoutDiscount\": 8999,\n        \"itemId\": \"689793e12157d\",\n        \"name\": \"Microsoft Office 2021 Professional PLUS  Druhotná elektronická licence\",\n        \"weight\": 0.01\n    }"
   }
 ];
