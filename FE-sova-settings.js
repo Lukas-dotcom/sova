@@ -8,6 +8,10 @@ window.injectFunctions = [
     "pageType": "billingAndShipping"
   },
   {
+    "function": "additionalSaleCart",
+    "pageType": "cart"
+  },
+  {
     "function": "testovaciInjectFunction",
     "parameters": "(\"produkt \" & productName & \" je dražší než 250\")",
     "pageType": "productDetail",
@@ -23,10 +27,6 @@ window.injectFunctions = [
     "parameters": "(\"Do domácnosti\")",
     "pageType": "productDetail",
     "conditionsSOVAL": "contains(productCurrentCategory, \"Do domácnosti\")"
-  },
-  {
-    "function": "additionalSaleCart",
-    "pageType": "cart"
   }
 ];
 
