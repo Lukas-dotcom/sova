@@ -289,7 +289,7 @@ window.additionalSale = [
     "price": 1390,
     "pairText": "Výměna disku",
     "type": "select",
-    "SOVAL": "(( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND (parametroptdisableupgradedisc = \"false\") AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ))"
+    "SOVAL": "(\r\n  ( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory,\"Notebooky\") OR CONTAINS(productCurrentCategory,\"Počítače\") )\r\n  AND (parametroptdisableupgradedisc = \"false\")\r\n  AND NOT CONTAINS(productName,\"All in One\")\r\n  AND NOT CONTAINS(parametrTypdisku,\"eMMC\")\r\n  AND (\r\n    CONTAINS(parametrKapacitadisku,\"+\")\r\n    OR (regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\") = \"\")\r\n    OR CONTAINS(parametrTypdisku,\"HDD\")\r\n    OR ( 240 > if( CONTAINS(parametrKapacitadisku,\"TB\"),\r\n                    regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\")*1000,\r\n                    regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\") ) )\r\n  )\r\n)\r\n"
   },
   {
     "code": "VRP0015",
