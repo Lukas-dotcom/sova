@@ -36,7 +36,6 @@ window.injectVariables = [
     "jednoduchaPromenna": "XY"
   },
   {
-    "zarVylouceneCastiNazvu": "tabulka",
     "jednoduchaPromenna": [
       "{\n        \"code\": \"NTB00002506\"",
       "guid\": \"4ca69a40-6c60-11f0-a623-52b9de8b4ac3",
