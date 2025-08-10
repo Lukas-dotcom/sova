@@ -27,11 +27,7 @@ window.injectFunctions = [
 ];
 
 window.injectVariables = {
-  "zarVylouceneCastiNazvu": [
-    "Z Fold",
-    "Z Flip",
-    "Fujitsu H760"
-  ],
+  "zarVylouceneCastiNazvu": "#ERROR!",
   "jednoduchaPromenna": "XY",
   "tabulka": [
     "{\n        \"code\": \"NTB00002506\"",
@@ -1316,11 +1312,6 @@ window.additionalSale = [
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\") AND (productPriceWithVat > 68000) AND (productPriceWithVat <= 70000) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
   }
 ];
-
-window.additionalSalePopUP = {
-  "pairText": "pojist12",
-  "popID": "zar12"
-};
 
 window.LadzoSklad = {
   "LIC0004": true,
