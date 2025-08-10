@@ -32,9 +32,7 @@ window.injectVariables = [
       "Z Fold",
       "Z Flip",
       "Fujitsu H760"
-    ]
-  },
-  {
+    ],
     "jednoduchaPromenna": "XY"
   },
   {
