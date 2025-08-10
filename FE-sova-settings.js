@@ -38,6 +38,9 @@ window.injectVariables = [
   {
     "variable": "jednoduchaPromenna",
     "value": "XY"
+  },
+  {
+    "variable": "tabulka"
   }
 ];
 
