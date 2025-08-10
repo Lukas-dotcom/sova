@@ -26,6 +26,15 @@ window.injectFunctions = [
   }
 ];
 
+window.injectVariables = {
+  "variable": "zarVylouceneCastiNazvu",
+  "value": [
+    "Z Fold",
+    "Z Flip",
+    "Fujitsu H760"
+  ]
+};
+
 window.additionalSale = [
   {
     "code": "BLESK1",
@@ -380,13 +389,6 @@ window.additionalSale = [
     "SOVAL": "(\n  ( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory,\"Notebooky\") OR CONTAINS(productCurrentCategory,\"Počítače\") )\n  AND (parametroptdisableupgradedisc = \"false\")\n  AND NOT CONTAINS(productName,\"All in One\")\n  AND NOT CONTAINS(parametrTypdisku,\"eMMC\")\n  AND (\n    CONTAINS(parametrKapacitadisku,\"+\")\n    OR (regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\") = \"\")\n    OR ( 4000 > if( CONTAINS(parametrKapacitadisku,\"TB\"),\n                     regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\")*1000,\n                     regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\") ) )\n  )\n)\n"
   }
 ];
-
-window.injectVariables = {
-  "variable": "zarVylouceneCastiNazvu",
-  "value": [
-    0
-  ]
-};
 
 window.additionalSalePopUP = {
   "pairText": "pojist12",
