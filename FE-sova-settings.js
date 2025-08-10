@@ -23,6 +23,10 @@ window.injectFunctions = [
     "parameters": "(\"Do domácnosti\")",
     "pageType": "productDetail",
     "conditionsSOVAL": "contains(productCurrentCategory, \"Do domácnosti\")"
+  },
+  {
+    "function": "additionalSaleCart",
+    "pageType": "cart"
   }
 ];
 
