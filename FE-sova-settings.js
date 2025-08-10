@@ -25,7 +25,7 @@ window.injectFunctions = [
     "conditionsSOVAL": "contains(productCurrentCategory, \"Do domácnosti\")"
   },
   {
-    "function": "additionalSaleCart ",
+    "function": "additionalSaleCart",
     "pageType": "cart"
   }
 ];
