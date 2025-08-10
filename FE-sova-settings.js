@@ -381,6 +381,10 @@ window.additionalSale = [
   }
 ];
 
+window.injectVariables = {
+  "variable": "zarVylouceneCastiNazvu"
+};
+
 window.additionalSalePopUP = {
   "pairText": "pojist12",
   "popID": "zar12"
