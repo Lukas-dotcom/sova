@@ -42,7 +42,7 @@ window.injectVariables = [
   {
     "variable": "tabulka",
     "value": [
-      "{\r\n        \"code\": \"NTB00002506\"",
+      "{\n        \"code\": \"NTB00002506\"",
       "guid\": \"4ca69a40-6c60-11f0-a623-52b9de8b4ac3",
       "\"priceId\": 193651",
       "\"quantity\": 1",
@@ -50,8 +50,8 @@ window.injectVariables = [
       "\"priceWithoutDiscount\": 69999",
       "itemId\": \"6896294f8870b",
       "name\": \"MSI Stealth 16 MercedesAMG A1VGG-260UK",
-      "\"weight\": 0\r\n    }",
-      "{\r\n        \"code\": \"BAG0175\"",
+      "\"weight\": 0\n    }",
+      "{\n        \"code\": \"BAG0175\"",
       "guid\": \"f4640c6c-052a-11ee-b9ba-4a3f42c5eb17",
       "\"priceId\": 164094",
       "\"quantity\": 1",
@@ -60,8 +60,8 @@ window.injectVariables = [
       "itemId\": \"6896295bed325",
       "\"name\": \"Batoh na notebook 15",
       "6'' Casual lightweight - Denim\"",
-      "\"weight\": 0\r\n    }",
-      "{\r\n        \"code\": \"LIC0004\"",
+      "\"weight\": 0\n    }",
+      "{\n        \"code\": \"LIC0004\"",
       "guid\": \"7eab77fc-65d5-11ed-9b08-ecf4bbd76e50",
       "\"priceId\": 150258",
       "\"quantity\": 1",
@@ -69,11 +69,12 @@ window.injectVariables = [
       "\"priceWithoutDiscount\": 8999",
       "itemId\": \"689793e12157d",
       "name\": \"Microsoft Office 2021 Professional PLUS  Druhotná elektronická licence",
-      "\"weight\": 0.01\r\n    }"
+      "\"weight\": 0.01\n    }"
     ]
   },
   {
-    "variable": "objekt"
+    "variable": "objekt",
+    "value": "    {\n        \"code\": \"LIC0004\",\n        \"guid\": \"7eab77fc-65d5-11ed-9b08-ecf4bbd76e50\",\n        \"priceId\": 150258,\n        \"quantity\": 1,\n        \"priceWithVat\": 1311,\n        \"priceWithoutDiscount\": 8999,\n        \"itemId\": \"689793e12157d\",\n        \"name\": \"Microsoft Office 2021 Professional PLUS  Druhotná elektronická licence\",\n        \"weight\": 0.01\n    }"
   }
 ];
 
