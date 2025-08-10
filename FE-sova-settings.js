@@ -36,7 +36,8 @@ window.injectVariables = [
     ]
   },
   {
-    "variable": "jednoduchaPromenna"
+    "variable": "jednoduchaPromenna",
+    "value": "XY"
   }
 ];
 
