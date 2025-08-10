@@ -125,7 +125,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0022",
-    "name": "#ERROR!",
+    "name": "=+ 2GB RAM (PC DDR3)",
     "price": 549,
     "pairText": "Rozšíření RAM",
     "type": "select",
@@ -133,7 +133,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0024",
-    "name": "#ERROR!",
+    "name": "=+ 4GB RAM (PC DDR3)",
     "price": 890,
     "pairText": "Rozšíření RAM",
     "type": "select",
@@ -141,7 +141,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0026",
-    "name": "#ERROR!",
+    "name": "=+ 8GB RAM (PC DDR3)",
     "price": 1590,
     "pairText": "Rozšíření RAM",
     "type": "select",
@@ -149,7 +149,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0020",
-    "name": "#ERROR!",
+    "name": "=+ 16GB RAM (PC DDR3)",
     "price": 2490,
     "pairText": "Rozšíření RAM",
     "type": "select",
@@ -157,7 +157,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0025",
-    "name": "#ERROR!",
+    "name": "=+ 4GB RAM (PC DDR4)",
     "price": 890,
     "pairText": "Rozšíření RAM",
     "type": "select",
@@ -165,7 +165,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0027",
-    "name": "#ERROR!",
+    "name": "=+ 8GB RAM (PC DDR4)",
     "price": 1490,
     "pairText": "Rozšíření RAM",
     "type": "select",
@@ -173,7 +173,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0021",
-    "name": "#ERROR!",
+    "name": "=+ 16GB RAM (PC DDR4)",
     "price": 2490,
     "pairText": "Rozšíření RAM",
     "type": "select",
@@ -181,7 +181,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0034",
-    "name": "#ERROR!",
+    "name": "=+ 8GB RAM (PC DDR5)",
     "price": 990,
     "pairText": "Rozšíření RAM",
     "type": "select",
@@ -189,7 +189,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0035",
-    "name": "#ERROR!",
+    "name": "=+ 16GB RAM (PC DDR5)",
     "price": 1790,
     "pairText": "Rozšíření RAM",
     "type": "select",
@@ -197,7 +197,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0036",
-    "name": "#ERROR!",
+    "name": "=+ 32GB RAM (PC DDR5)",
     "price": 2990,
     "pairText": "Rozšíření RAM",
     "type": "select",
@@ -205,7 +205,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0001",
-    "name": "#ERROR!",
+    "name": "=+ 2GB RAM (NB DDR3)",
     "price": 549,
     "pairText": "Rozšíření RAM",
     "type": "select",
@@ -213,7 +213,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0002",
-    "name": "#ERROR!",
+    "name": "=+ 4GB RAM (NB DDR3)",
     "price": 890,
     "pairText": "Rozšíření RAM",
     "type": "select",
@@ -221,7 +221,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0003",
-    "name": "#ERROR!",
+    "name": "=+ 8GB RAM (NB DDR3)",
     "price": 1790,
     "pairText": "Rozšíření RAM",
     "type": "select",
@@ -229,7 +229,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0004",
-    "name": "#ERROR!",
+    "name": "=+ 16GB RAM (NB DDR3)",
     "price": 2490,
     "pairText": "Rozšíření RAM",
     "type": "select",
@@ -237,7 +237,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0006",
-    "name": "#ERROR!",
+    "name": "=+ 4GB RAM (NB DDR4)",
     "price": 890,
     "pairText": "Rozšíření RAM",
     "type": "select",
@@ -245,7 +245,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0007",
-    "name": "#ERROR!",
+    "name": "=+ 8GB RAM (NB DDR4)",
     "price": 1790,
     "pairText": "Rozšíření RAM",
     "type": "select",
@@ -253,7 +253,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0008",
-    "name": "#ERROR!",
+    "name": "=+ 16GB RAM (NB DDR4)",
     "price": 2490,
     "pairText": "Rozšíření RAM",
     "type": "select",
@@ -261,7 +261,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0031",
-    "name": "#ERROR!",
+    "name": "=+ 8GB RAM (NB DDR5)",
     "price": 990,
     "pairText": "Rozšíření RAM",
     "type": "select",
@@ -269,7 +269,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0032",
-    "name": "#ERROR!",
+    "name": "=+ 16GB RAM (NB DDR5)",
     "price": 1890,
     "pairText": "Rozšíření RAM",
     "type": "select",
@@ -277,7 +277,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0033",
-    "name": "#ERROR!",
+    "name": "=+ 32GB RAM (NB DDR5)",
     "price": 3490,
     "pairText": "Rozšíření RAM",
     "type": "select",
