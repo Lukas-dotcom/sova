@@ -4,10 +4,6 @@ window.injectFunctions = [
     "pageType": "productDetail"
   },
   {
-    "function": "deliveryOptions",
-    "pageType": "billingAndShipping"
-  },
-  {
     "function": "additionalSaleCart",
     "pageType": "cart"
   },
@@ -27,6 +23,10 @@ window.injectFunctions = [
     "parameters": "(\"Do domácnosti\")",
     "pageType": "productDetail",
     "conditionsSOVAL": "contains(productCurrentCategory, \"Do domácnosti\")"
+  },
+  {
+    "function": "deliveryOptions",
+    "pageType": "billingAndShipping"
   }
 ];
 
