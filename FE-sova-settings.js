@@ -28,7 +28,7 @@ window.injectFunctions = [
 
 window.injectVariables = {
   "zarVylouceneCastiNazvu": [
-    0
+    "Z"
   ],
   "jednoduchaPromenna": "XY",
   "tabulka": [
