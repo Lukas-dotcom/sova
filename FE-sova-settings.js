@@ -104,7 +104,7 @@ window.additionalSale = [
   },
   {
     "code": "MAR0008",
-    "name": "Windows 10 PRO MAR",
+    "name": "Windows 10 PRO",
     "price": "899 Kč",
     "pairText": "Lepší Windows",
     "type": "select",
