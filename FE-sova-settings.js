@@ -1466,7 +1466,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0021",
-    "name": "+ 16GB RAM (PC DDR4)",
+    "name": "+ 16GB RAM",
     "price": "€101,86",
     "pairText": "Rozšíření RAM",
     "type": "select",
