@@ -33,6 +33,7 @@ window.additionalSale = [
   {
     "code": "NET0034",
     "name": "Přidat wifi",
+    "price": "129",
     "pairText": "wifi"
   },
   {
