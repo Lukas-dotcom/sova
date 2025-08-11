@@ -34,13 +34,15 @@ window.additionalSale = [
     "code": "NET0034",
     "name": "Přidat wifi",
     "price": "129",
-    "pairText": "wifi"
+    "pairText": "wifi",
+    "type": "checkbox"
   },
   {
     "code": "NET0033",
     "name": "Přidat bluetooth",
     "price": "149",
-    "pairText": "bluetooth"
+    "pairText": "bluetooth",
+    "type": "checkbox"
   },
   {
     "code": "BLESK1",
