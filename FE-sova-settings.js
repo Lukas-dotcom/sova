@@ -1296,7 +1296,7 @@ window.additionalSale = [
   },
   {
     "code": "BLESK1",
-    "name": "Blesková výměna zboží",
+    "name": "Blesková výměna bez čekání",
     "price": "€20,41",
     "pairText": "BLESK1",
     "type": "checkbox",
@@ -1304,7 +1304,7 @@ window.additionalSale = [
   },
   {
     "code": "BLESK2",
-    "name": "Balíček aplikací – Spusť a pracuj",
+    "name": "Předinstalace programů",
     "price": "€26,55",
     "pairText": "BLESK2",
     "type": "checkbox",
