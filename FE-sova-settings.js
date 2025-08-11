@@ -38,10 +38,7 @@ window.injectVariables = {
     "H770"
   ],
   "upgrVylouceneCastiNazvu": [
-    "Z Fold",
-    "Z Flip",
-    "Fujitsu H760",
-    "H770"
+    0
   ]
 };
 
