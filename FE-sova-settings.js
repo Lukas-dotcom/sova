@@ -258,7 +258,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0002",
-    "name": "+ 4GB RAM (NB DDR3)",
+    "name": "+ 4GB RAM",
     "price": "890 Kč",
     "pairText": "Rozšíření RAM",
     "type": "select",
