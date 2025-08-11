@@ -1300,7 +1300,7 @@ window.additionalSale = [
     "price": "129",
     "pairText": "wifi",
     "type": "checkbox",
-    "SOVAL": "currency=\"CZK\" AND category = \"Počítače\" AND parametroptdisableupgradewifi != \"true\" AND parametrWifi !=\"ANO\""
+    "SOVAL": "currency=\"EUR\" AND category = \"Počítače\" AND parametroptdisableupgradewifi != \"true\" AND parametrWifi !=\"ANO\""
   },
   {
     "code": "NET0033",
@@ -1308,7 +1308,7 @@ window.additionalSale = [
     "price": "149",
     "pairText": "bluetooth",
     "type": "checkbox",
-    "SOVAL": "currency=\"CZK\" AND category = \"Počítače\" AND parametroptdisableupgradebluetooth != \"true\" AND parametrBluetooth !=\"ANO\""
+    "SOVAL": "currency=\"EUR\" AND category = \"Počítače\" AND parametroptdisableupgradebluetooth != \"true\" AND parametrBluetooth !=\"ANO\""
   },
   {
     "code": "BLESK1",
