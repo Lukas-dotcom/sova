@@ -35,6 +35,7 @@ window.additionalSale = [
     "pairText": "wifi"
   },
   {
+    "code": "NET0033",
     "name": "Přidat bluetooth",
     "pairText": "bluetooth"
   },
