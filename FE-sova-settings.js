@@ -1297,7 +1297,7 @@ window.additionalSale = [
   {
     "code": "NET0034",
     "name": "Přidat wifi",
-    "price": "€20,41",
+    "price": "€5,28",
     "pairText": "wifi",
     "type": "checkbox",
     "SOVAL": "currency=\"EUR\" AND category = \"Počítače\" AND parametroptdisableupgradewifi != \"true\" AND parametrWifi !=\"ANO\""
