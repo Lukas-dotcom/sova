@@ -1308,7 +1308,7 @@ window.additionalSale = [
     "price": "€6,01",
     "pairText": "bluetooth",
     "type": "checkbox",
-    "SOVAL": "currency=\"EUR\" AND category = \"Počítače\" AND parametroptdisableupgradebluetooth != \"true\" AND parametrBluetooth !=\"ANO\""
+    "SOVAL": "(currency=\"EUR\" AND category = \"Počítače\" AND parametroptdisableupgradebluetooth != \"true\" AND parametrBluetooth !=\"ANO\")"
   },
   {
     "code": "BLESK1",
