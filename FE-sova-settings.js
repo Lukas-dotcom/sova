@@ -88,7 +88,7 @@ window.additionalSale = [
   },
   {
     "code": "MAR0012",
-    "name": "Windows 10 Home CZ",
+    "name": "Windows 10 Home",
     "price": "499 Kč",
     "pairText": "Lepší Windows",
     "type": "select",
@@ -96,7 +96,7 @@ window.additionalSale = [
   },
   {
     "code": "MAR0013",
-    "name": "Windows 10 PRO CZ",
+    "name": "Windows 10 PRO",
     "price": "499 Kč",
     "pairText": "Lepší Windows",
     "type": "select",
