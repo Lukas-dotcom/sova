@@ -35,7 +35,8 @@ window.additionalSale = [
     "pairText": "wifi"
   },
   {
-    "name": "Přidat bluetooth"
+    "name": "Přidat bluetooth",
+    "pairText": "bluetooth"
   },
   {
     "code": "BLESK1",
