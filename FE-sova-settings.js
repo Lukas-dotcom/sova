@@ -1384,7 +1384,7 @@ window.additionalSale = [
   },
   {
     "code": "MAR0021",
-    "name": "Windows 11 PRO MAR",
+    "name": "Windows 11 PRO",
     "price": "€36,78",
     "pairText": "Lepší Windows",
     "type": "select",
