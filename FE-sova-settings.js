@@ -3470,918 +3470,674 @@ window.additionalSaleCart = [
   {
     "code": "ZAR2000DO2500R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 20.41,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR2500DO3000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 26.55,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR3000DO3500R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 10.19,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR3500DO4000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 32.69,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR4000DO4500R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 52.77,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR4500DO5000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 20.41,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR5000DO5500R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 20.41,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR5500DO6000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 36.78,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR6000DO6500R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 18.37,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR6500DO7000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 24.5,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR7000DO7500R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 18.37,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR7500DO8000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 36.78,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR8000DO8500R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 22.46,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR8500DO9000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 36.41,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR9000DO9500R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 65.04,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR9500DO10000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 101.86,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR10000DO11000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 36.41,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR11000DO12000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 60.95,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR12000DO13000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 101.86,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR13000DO14000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 40.5,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR14000DO15000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 73.23,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR15000DO16000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 122.32,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR16000DO17000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 22.46,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR17000DO18000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 36.41,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR18000DO19000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 73.23,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR19000DO20000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 101.86,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR20000DO21000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 36.41,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR21000DO22000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 73.23,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR22000DO23000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 101.86,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR23000DO24000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 40.5,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR24000DO25000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 77.32,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR25000DO26000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 142.77,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR26000DO27000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 56.86,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR27000DO28000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 69.13,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR28000DO29000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 81.78,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR29000DO30000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 77.32,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR30000DO32000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 101.86,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR32000DO34000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 150.95,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR34000DO36000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 326.86,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR36000DO38000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 40.87,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR38000DO40000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 65.41,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR40000DO42000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 81.41,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR42000DO44000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 122.32,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR44000DO46000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 163.22,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR46000DO48000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 10.19,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR48000DO50000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 12.23,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR50000DO52000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 14.28,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR52000DO54000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 16.32,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR54000DO56000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 18.37,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR56000DO58000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 20.41,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR58000DO60000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 22.46,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR60000DO62000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 24.5,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR62000DO64000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 26.55,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR64000DO66000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 28.59,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR66000DO68000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 30.64,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR68000DO70000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": 32.69,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR2000DO2500R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 34.73,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR2500DO3000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 36.78,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR3000DO3500R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 38.82,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR3500DO4000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 40.87,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR4000DO4500R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 44.96,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR4500DO5000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 49.05,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR5000DO5500R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 53.14,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR5500DO6000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 57.23,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR6000DO6500R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 61.32,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR6500DO7000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 65.41,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR7000DO7500R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 69.5,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR7500DO8000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 73.59,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR8000DO8500R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 77.68,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR8500DO9000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 81.78,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR9000DO9500R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 85.87,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR9500DO10000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 89.96,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR10000DO11000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 94.05,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR11000DO12000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 98.14,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR12000DO13000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 102.23,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR13000DO14000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 106.32,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR14000DO15000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 110.41,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR15000DO16000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 114.5,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR16000DO17000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 118.59,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR17000DO18000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 122.68,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR18000DO19000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 130.87,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR19000DO20000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 139.05,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR20000DO21000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 147.23,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR21000DO22000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 155.41,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR22000DO23000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 163.59,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR23000DO24000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 171.77,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR24000DO25000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 179.96,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR25000DO26000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 188.14,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR26000DO27000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 196.32,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR27000DO28000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 204.5,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR28000DO29000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 212.68,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR29000DO30000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 220.86,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR30000DO32000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 229.04,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR32000DO34000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 237.23,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR34000DO36000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 245.41,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR36000DO38000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 253.59,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR38000DO40000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 261.77,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR40000DO42000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 269.95,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR42000DO44000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 278.13,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR44000DO46000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 286.32,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR46000DO48000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 15.3,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR48000DO50000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 18.37,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR50000DO52000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 21.44,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR52000DO54000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 24.5,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR54000DO56000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 27.57,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR56000DO58000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 30.64,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR58000DO60000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 33.71,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR60000DO62000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 36.78,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR62000DO64000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 39.84,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR64000DO66000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 42.91,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR66000DO68000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 45.98,
     "pairText": "zaruka",
     "type": "checkbox"
   },
   {
     "code": "ZAR68000DO70000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": 49.05,
     "pairText": "zaruka",
     "type": "checkbox"
-  },
-  {
-    "price": 52.12
-  },
-  {
-    "price": 55.19
-  },
-  {
-    "price": 58.25
-  },
-  {
-    "price": 61.32
-  },
-  {
-    "price": 67.46
-  },
-  {
-    "price": 73.59
-  },
-  {
-    "price": 79.73
-  },
-  {
-    "price": 85.87
-  },
-  {
-    "price": 92
-  },
-  {
-    "price": 98.14
-  },
-  {
-    "price": 104.27
-  },
-  {
-    "price": 110.41
-  },
-  {
-    "price": 116.55
-  },
-  {
-    "price": 122.68
-  },
-  {
-    "price": 128.82
-  },
-  {
-    "price": 134.96
-  },
-  {
-    "price": 141.09
-  },
-  {
-    "price": 147.23
-  },
-  {
-    "price": 153.36
-  },
-  {
-    "price": 159.5
-  },
-  {
-    "price": 165.64
-  },
-  {
-    "price": 171.77
-  },
-  {
-    "price": 177.91
-  },
-  {
-    "price": 184.05
-  },
-  {
-    "price": 196.32
-  },
-  {
-    "price": 208.59
-  },
-  {
-    "price": 220.86
-  },
-  {
-    "price": 233.14
-  },
-  {
-    "price": 245.41
-  },
-  {
-    "price": 257.68
-  },
-  {
-    "price": 269.95
-  },
-  {
-    "price": 282.23
-  },
-  {
-    "price": 294.5
-  },
-  {
-    "price": 306.77
-  },
-  {
-    "price": 319.04
-  },
-  {
-    "price": 331.32
-  },
-  {
-    "price": 343.59
-  },
-  {
-    "price": 355.86
-  },
-  {
-    "price": 368.13
-  },
-  {
-    "price": 380.4
-  },
-  {
-    "price": 392.68
-  },
-  {
-    "price": 404.95
-  },
-  {
-    "price": 417.22
-  },
-  {
-    "price": 429.49
   }
 ];
 
