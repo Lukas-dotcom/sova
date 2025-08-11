@@ -39,6 +39,7 @@ window.additionalSale = [
   {
     "code": "NET0033",
     "name": "Přidat bluetooth",
+    "price": "149",
     "pairText": "bluetooth"
   },
   {
