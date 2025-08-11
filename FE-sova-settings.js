@@ -3468,340 +3468,564 @@ window.additionalSaleCart = [
     "SOVAL": "((startsWith(row.URL, \"/tablety/\") OR startsWith(row.URL, \"/telefony/\") OR startsWith(row.URL, \"/monitory/\") OR startsWith(row.URL, \"/pocitace/\") OR startsWith(row.URL, \"/notebooky/\")) AND (row.priceWithVat > 68000) AND (row.priceWithVat <= 70000) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(row.name, zarVylouceneCastiNazvu))))"
   },
   {
-    "price": 20.41
+    "price": 20.41,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 26.55
+    "price": 26.55,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 10.19
+    "price": 10.19,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 32.69
+    "price": 32.69,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 52.77
+    "price": 52.77,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 20.41
+    "price": 20.41,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 20.41
+    "price": 20.41,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 36.78
+    "price": 36.78,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 18.37
+    "price": 18.37,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 24.5
+    "price": 24.5,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 18.37
+    "price": 18.37,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 36.78
+    "price": 36.78,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 22.46
+    "price": 22.46,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 36.41
+    "price": 36.41,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 65.04
+    "price": 65.04,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 101.86
+    "price": 101.86,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 36.41
+    "price": 36.41,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 60.95
+    "price": 60.95,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 101.86
+    "price": 101.86,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 40.5
+    "price": 40.5,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 73.23
+    "price": 73.23,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 122.32
+    "price": 122.32,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 22.46
+    "price": 22.46,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 36.41
+    "price": 36.41,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 73.23
+    "price": 73.23,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 101.86
+    "price": 101.86,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 36.41
+    "price": 36.41,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 73.23
+    "price": 73.23,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 101.86
+    "price": 101.86,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 40.5
+    "price": 40.5,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 77.32
+    "price": 77.32,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 142.77
+    "price": 142.77,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 56.86
+    "price": 56.86,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 69.13
+    "price": 69.13,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 81.78
+    "price": 81.78,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 77.32
+    "price": 77.32,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 101.86
+    "price": 101.86,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 150.95
+    "price": 150.95,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 326.86
+    "price": 326.86,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 40.87
+    "price": 40.87,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 65.41
+    "price": 65.41,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 81.41
+    "price": 81.41,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 122.32
+    "price": 122.32,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 163.22
+    "price": 163.22,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 10.19
+    "price": 10.19,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 12.23
+    "price": 12.23,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 14.28
+    "price": 14.28,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 16.32
+    "price": 16.32,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 18.37
+    "price": 18.37,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 20.41
+    "price": 20.41,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 22.46
+    "price": 22.46,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 24.5
+    "price": 24.5,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 26.55
+    "price": 26.55,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 28.59
+    "price": 28.59,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 30.64
+    "price": 30.64,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 32.69
+    "price": 32.69,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 34.73
+    "price": 34.73,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 36.78
+    "price": 36.78,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 38.82
+    "price": 38.82,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 40.87
+    "price": 40.87,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 44.96
+    "price": 44.96,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 49.05
+    "price": 49.05,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 53.14
+    "price": 53.14,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 57.23
+    "price": 57.23,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 61.32
+    "price": 61.32,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 65.41
+    "price": 65.41,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 69.5
+    "price": 69.5,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 73.59
+    "price": 73.59,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 77.68
+    "price": 77.68,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 81.78
+    "price": 81.78,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 85.87
+    "price": 85.87,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 89.96
+    "price": 89.96,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 94.05
+    "price": 94.05,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 98.14
+    "price": 98.14,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 102.23
+    "price": 102.23,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 106.32
+    "price": 106.32,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 110.41
+    "price": 110.41,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 114.5
+    "price": 114.5,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 118.59
+    "price": 118.59,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 122.68
+    "price": 122.68,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 130.87
+    "price": 130.87,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 139.05
+    "price": 139.05,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 147.23
+    "price": 147.23,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 155.41
+    "price": 155.41,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 163.59
+    "price": 163.59,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 171.77
+    "price": 171.77,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 179.96
+    "price": 179.96,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 188.14
+    "price": 188.14,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 196.32
+    "price": 196.32,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 204.5
+    "price": 204.5,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 212.68
+    "price": 212.68,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 220.86
+    "price": 220.86,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 229.04
+    "price": 229.04,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 237.23
+    "price": 237.23,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 245.41
+    "price": 245.41,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 253.59
+    "price": 253.59,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 261.77
+    "price": 261.77,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 269.95
+    "price": 269.95,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 278.13
+    "price": 278.13,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 286.32
+    "price": 286.32,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 15.3
+    "price": 15.3,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 18.37
+    "price": 18.37,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 21.44
+    "price": 21.44,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 24.5
+    "price": 24.5,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 27.57
+    "price": 27.57,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 30.64
+    "price": 30.64,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 33.71
+    "price": 33.71,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 36.78
+    "price": 36.78,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 39.84
+    "price": 39.84,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 42.91
+    "price": 42.91,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 45.98
+    "price": 45.98,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
-    "price": 49.05
+    "price": 49.05,
+    "pairText": "zaruka",
+    "type": "checkbox"
   },
   {
     "price": 52.12
