@@ -3466,6 +3466,474 @@ window.additionalSaleCart = [
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "((startsWith(row.URL, \"/tablety/\") OR startsWith(row.URL, \"/telefony/\") OR startsWith(row.URL, \"/monitory/\") OR startsWith(row.URL, \"/pocitace/\") OR startsWith(row.URL, \"/notebooky/\")) AND (row.priceWithVat > 68000) AND (row.priceWithVat <= 70000) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(row.name, zarVylouceneCastiNazvu))))"
+  },
+  {
+    "price": 20.41
+  },
+  {
+    "price": 26.55
+  },
+  {
+    "price": 10.19
+  },
+  {
+    "price": 32.69
+  },
+  {
+    "price": 52.77
+  },
+  {
+    "price": 20.41
+  },
+  {
+    "price": 20.41
+  },
+  {
+    "price": 36.78
+  },
+  {
+    "price": 18.37
+  },
+  {
+    "price": 24.5
+  },
+  {
+    "price": 18.37
+  },
+  {
+    "price": 36.78
+  },
+  {
+    "price": 22.46
+  },
+  {
+    "price": 36.41
+  },
+  {
+    "price": 65.04
+  },
+  {
+    "price": 101.86
+  },
+  {
+    "price": 36.41
+  },
+  {
+    "price": 60.95
+  },
+  {
+    "price": 101.86
+  },
+  {
+    "price": 40.5
+  },
+  {
+    "price": 73.23
+  },
+  {
+    "price": 122.32
+  },
+  {
+    "price": 22.46
+  },
+  {
+    "price": 36.41
+  },
+  {
+    "price": 73.23
+  },
+  {
+    "price": 101.86
+  },
+  {
+    "price": 36.41
+  },
+  {
+    "price": 73.23
+  },
+  {
+    "price": 101.86
+  },
+  {
+    "price": 40.5
+  },
+  {
+    "price": 77.32
+  },
+  {
+    "price": 142.77
+  },
+  {
+    "price": 56.86
+  },
+  {
+    "price": 69.13
+  },
+  {
+    "price": 81.78
+  },
+  {
+    "price": 77.32
+  },
+  {
+    "price": 101.86
+  },
+  {
+    "price": 150.95
+  },
+  {
+    "price": 326.86
+  },
+  {
+    "price": 40.87
+  },
+  {
+    "price": 65.41
+  },
+  {
+    "price": 81.41
+  },
+  {
+    "price": 122.32
+  },
+  {
+    "price": 163.22
+  },
+  {
+    "price": 10.19
+  },
+  {
+    "price": 12.23
+  },
+  {
+    "price": 14.28
+  },
+  {
+    "price": 16.32
+  },
+  {
+    "price": 18.37
+  },
+  {
+    "price": 20.41
+  },
+  {
+    "price": 22.46
+  },
+  {
+    "price": 24.5
+  },
+  {
+    "price": 26.55
+  },
+  {
+    "price": 28.59
+  },
+  {
+    "price": 30.64
+  },
+  {
+    "price": 32.69
+  },
+  {
+    "price": 34.73
+  },
+  {
+    "price": 36.78
+  },
+  {
+    "price": 38.82
+  },
+  {
+    "price": 40.87
+  },
+  {
+    "price": 44.96
+  },
+  {
+    "price": 49.05
+  },
+  {
+    "price": 53.14
+  },
+  {
+    "price": 57.23
+  },
+  {
+    "price": 61.32
+  },
+  {
+    "price": 65.41
+  },
+  {
+    "price": 69.5
+  },
+  {
+    "price": 73.59
+  },
+  {
+    "price": 77.68
+  },
+  {
+    "price": 81.78
+  },
+  {
+    "price": 85.87
+  },
+  {
+    "price": 89.96
+  },
+  {
+    "price": 94.05
+  },
+  {
+    "price": 98.14
+  },
+  {
+    "price": 102.23
+  },
+  {
+    "price": 106.32
+  },
+  {
+    "price": 110.41
+  },
+  {
+    "price": 114.5
+  },
+  {
+    "price": 118.59
+  },
+  {
+    "price": 122.68
+  },
+  {
+    "price": 130.87
+  },
+  {
+    "price": 139.05
+  },
+  {
+    "price": 147.23
+  },
+  {
+    "price": 155.41
+  },
+  {
+    "price": 163.59
+  },
+  {
+    "price": 171.77
+  },
+  {
+    "price": 179.96
+  },
+  {
+    "price": 188.14
+  },
+  {
+    "price": 196.32
+  },
+  {
+    "price": 204.5
+  },
+  {
+    "price": 212.68
+  },
+  {
+    "price": 220.86
+  },
+  {
+    "price": 229.04
+  },
+  {
+    "price": 237.23
+  },
+  {
+    "price": 245.41
+  },
+  {
+    "price": 253.59
+  },
+  {
+    "price": 261.77
+  },
+  {
+    "price": 269.95
+  },
+  {
+    "price": 278.13
+  },
+  {
+    "price": 286.32
+  },
+  {
+    "price": 15.3
+  },
+  {
+    "price": 18.37
+  },
+  {
+    "price": 21.44
+  },
+  {
+    "price": 24.5
+  },
+  {
+    "price": 27.57
+  },
+  {
+    "price": 30.64
+  },
+  {
+    "price": 33.71
+  },
+  {
+    "price": 36.78
+  },
+  {
+    "price": 39.84
+  },
+  {
+    "price": 42.91
+  },
+  {
+    "price": 45.98
+  },
+  {
+    "price": 49.05
+  },
+  {
+    "price": 52.12
+  },
+  {
+    "price": 55.19
+  },
+  {
+    "price": 58.25
+  },
+  {
+    "price": 61.32
+  },
+  {
+    "price": 67.46
+  },
+  {
+    "price": 73.59
+  },
+  {
+    "price": 79.73
+  },
+  {
+    "price": 85.87
+  },
+  {
+    "price": 92
+  },
+  {
+    "price": 98.14
+  },
+  {
+    "price": 104.27
+  },
+  {
+    "price": 110.41
+  },
+  {
+    "price": 116.55
+  },
+  {
+    "price": 122.68
+  },
+  {
+    "price": 128.82
+  },
+  {
+    "price": 134.96
+  },
+  {
+    "price": 141.09
+  },
+  {
+    "price": 147.23
+  },
+  {
+    "price": 153.36
+  },
+  {
+    "price": 159.5
+  },
+  {
+    "price": 165.64
+  },
+  {
+    "price": 171.77
+  },
+  {
+    "price": 177.91
+  },
+  {
+    "price": 184.05
+  },
+  {
+    "price": 196.32
+  },
+  {
+    "price": 208.59
+  },
+  {
+    "price": 220.86
+  },
+  {
+    "price": 233.14
+  },
+  {
+    "price": 245.41
+  },
+  {
+    "price": 257.68
+  },
+  {
+    "price": 269.95
+  },
+  {
+    "price": 282.23
+  },
+  {
+    "price": 294.5
+  },
+  {
+    "price": 306.77
+  },
+  {
+    "price": 319.04
+  },
+  {
+    "price": 331.32
+  },
+  {
+    "price": 343.59
+  },
+  {
+    "price": 355.86
+  },
+  {
+    "price": 368.13
+  },
+  {
+    "price": 380.4
+  },
+  {
+    "price": 392.68
+  },
+  {
+    "price": 404.95
+  },
+  {
+    "price": 417.22
+  },
+  {
+    "price": 429.49
   }
 ];
 
