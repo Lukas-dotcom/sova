@@ -31,7 +31,8 @@ window.injectVariables = {
 
 window.additionalSale = [
   {
-    "name": "Přidat wifi"
+    "name": "Přidat wifi",
+    "pairText": "wifi"
   },
   {
     "name": "Přidat bluetooth"
