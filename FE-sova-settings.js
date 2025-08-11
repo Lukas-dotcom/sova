@@ -98,7 +98,7 @@ window.additionalSale = [
   },
   {
     "code": "LIC0005",
-    "name": "Office 2019 Pro Plus (druhotná licence)",
+    "name": "Office 2019 Pro Plus",
     "price": "799 Kč",
     "pairText": "LIC0005",
     "type": "checkbox",
@@ -106,7 +106,7 @@ window.additionalSale = [
   },
   {
     "code": "LIC0004",
-    "name": "Office 2021 Pro Plus (druhotná licence)",
+    "name": "Office 2021 Pro Plus",
     "price": "1 290 Kč",
     "pairText": "LIC0004",
     "type": "checkbox",
@@ -1346,7 +1346,7 @@ window.additionalSale = [
   },
   {
     "code": "LIC0005",
-    "name": "Office 2019 Pro Plus (druhotná licence)",
+    "name": "Office 2019 Pro Plus",
     "price": "€32,69",
     "pairText": "LIC0005",
     "type": "checkbox",
@@ -1354,7 +1354,7 @@ window.additionalSale = [
   },
   {
     "code": "LIC0004",
-    "name": "Office 2021 Pro Plus (druhotná licence)",
+    "name": "Office 2021 Pro Plus",
     "price": "€52,77",
     "pairText": "LIC0004",
     "type": "checkbox",
