@@ -1474,7 +1474,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0034",
-    "name": "+ 8GB RAM (PC DDR5)",
+    "name": "+ 8GB RAM",
     "price": "€40,50",
     "pairText": "Rozšíření RAM",
     "type": "select",
