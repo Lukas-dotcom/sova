@@ -56,7 +56,7 @@ window.additionalSale = [
   },
   {
     "code": "BLESK2",
-    "name": "Balíček aplikací – Spusť a pracuj",
+    "name": "Předinstalace programů",
     "price": "649 Kč",
     "pairText": "BLESK2",
     "type": "checkbox",
