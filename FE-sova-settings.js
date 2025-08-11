@@ -34,6 +34,9 @@ window.additionalSale = [
     "name": "Přidat wifi"
   },
   {
+    "name": "Přidat bluetooth"
+  },
+  {
     "code": "BLESK1",
     "name": "Blesková výměna bez čekání",
     "price": "499 Kč",
