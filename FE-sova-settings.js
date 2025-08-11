@@ -37,7 +37,7 @@ window.injectVariables = {
     "Fujitsu H760",
     "H770"
   ],
-  "upgrVylouceneCastiNazvu": [
+  "RAMvylouceneCastiNazvu": [
     "MSI Vector 16 HX A14VHG-682FR"
   ]
 };
