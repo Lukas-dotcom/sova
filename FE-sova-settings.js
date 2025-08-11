@@ -31,6 +31,7 @@ window.injectVariables = {
 
 window.additionalSale = [
   {
+    "code": "NET0034",
     "name": "Přidat wifi",
     "pairText": "wifi"
   },
