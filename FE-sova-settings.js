@@ -170,7 +170,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0022",
-    "name": "+ 2GB RAM (PC DDR3)",
+    "name": "+ 2GB RAM",
     "price": "549 Kč",
     "pairText": "Rozšíření RAM",
     "type": "select",
@@ -178,7 +178,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0024",
-    "name": "+ 4GB RAM (PC DDR3)",
+    "name": "+ 4GB RAM",
     "price": "890 Kč",
     "pairText": "Rozšíření RAM",
     "type": "select",
@@ -186,7 +186,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0026",
-    "name": "+ 8GB RAM (PC DDR3)",
+    "name": "+ 8GB RAM",
     "price": "1 590 Kč",
     "pairText": "Rozšíření RAM",
     "type": "select",
@@ -194,7 +194,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0020",
-    "name": "+ 16GB RAM (PC DDR3)",
+    "name": "+ 16GB RAM",
     "price": "2 490 Kč",
     "pairText": "Rozšíření RAM",
     "type": "select",
