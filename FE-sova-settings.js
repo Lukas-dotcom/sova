@@ -1360,7 +1360,7 @@ window.additionalSale = [
   },
   {
     "code": "MAR0018",
-    "name": "Windows 11 Home CZ",
+    "name": "Windows 11 Home",
     "price": "€18,37",
     "pairText": "Lepší Windows",
     "type": "select",
@@ -1368,7 +1368,7 @@ window.additionalSale = [
   },
   {
     "code": "MAR0019",
-    "name": "Windows 11 Home MAR",
+    "name": "Windows 11 Home",
     "price": "€24,50",
     "pairText": "Lepší Windows",
     "type": "select",
@@ -1376,7 +1376,7 @@ window.additionalSale = [
   },
   {
     "code": "MAR0020",
-    "name": "Windows 11 PRO CZ",
+    "name": "Windows 11 PRO",
     "price": "€18,37",
     "pairText": "Lepší Windows",
     "type": "select",
