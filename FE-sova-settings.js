@@ -36,7 +36,7 @@ window.additionalSale = [
     "price": "129",
     "pairText": "wifi",
     "type": "checkbox",
-    "SOVAL": "currency=\"CZK\" AND category = \"Počítače\" AND parametroptdisableupgradewifi != \"true\" AND parametrWifi !=\"ANO\""
+    "SOVAL": "(currency=\"CZK\" AND category = \"Počítače\" AND parametroptdisableupgradewifi != \"true\" AND parametrWifi !=\"ANO\")"
   },
   {
     "code": "NET0033",
