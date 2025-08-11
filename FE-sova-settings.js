@@ -2546,7 +2546,8 @@ window.additionalSale = [
     "code": "kodadapteru",
     "name": "superadaptér kupte iho",
     "price": "30 Kč",
-    "type": "checkbox"
+    "type": "checkbox",
+    "SOVAL": "productName CONTAINS \"Dokovací Stanice Acer ProDock\""
   }
 ];
 
