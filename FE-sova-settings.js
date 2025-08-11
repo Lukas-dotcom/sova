@@ -38,7 +38,7 @@ window.injectVariables = {
     "H770"
   ],
   "upgrVylouceneCastiNazvu": [
-    0
+    "MSI Vector 16 HX A14VHG-682FR"
   ]
 };
 
