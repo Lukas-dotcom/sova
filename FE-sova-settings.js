@@ -33,7 +33,7 @@ window.additionalSale = [
   {
     "code": "NET0034",
     "name": "Přidat wifi",
-    "price": "129",
+    "price": "129 Kč",
     "pairText": "wifi",
     "type": "checkbox",
     "SOVAL": "(currency=\"CZK\" AND category = \"Počítače\" AND parametroptdisableupgradewifi != \"true\" AND parametrWifi !=\"ANO\")"
@@ -41,7 +41,7 @@ window.additionalSale = [
   {
     "code": "NET0033",
     "name": "Přidat bluetooth",
-    "price": "149",
+    "price": "149 Kč",
     "pairText": "bluetooth",
     "type": "checkbox",
     "SOVAL": "(currency=\"CZK\" AND category = \"Počítače\" AND parametroptdisableupgradebluetooth != \"true\" AND parametrBluetooth !=\"ANO\")"
