@@ -1295,6 +1295,22 @@ window.additionalSale = [
     "SOVAL": "(currency=\"CZK\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 68000) AND (productPriceWithVat <= 70000) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
   },
   {
+    "code": "NET0034",
+    "name": "Přidat wifi",
+    "price": "129",
+    "pairText": "wifi",
+    "type": "checkbox",
+    "SOVAL": "currency=\"CZK\" AND category = \"Počítače\" AND parametroptdisableupgradewifi != \"true\" AND parametrWifi !=\"ANO\""
+  },
+  {
+    "code": "NET0033",
+    "name": "Přidat bluetooth",
+    "price": "149",
+    "pairText": "bluetooth",
+    "type": "checkbox",
+    "SOVAL": "currency=\"CZK\" AND category = \"Počítače\" AND parametroptdisableupgradebluetooth != \"true\" AND parametrBluetooth !=\"ANO\""
+  },
+  {
     "code": "BLESK1",
     "name": "Blesková výměna bez čekání",
     "price": "€20,41",
