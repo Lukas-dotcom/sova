@@ -2544,8 +2544,7 @@ window.additionalSale = [
   },
   {
     "code": "kodadapteru",
-    "name": "superadaptér kupte iho",
-    "price": "30 Kč"
+    "name": "superadaptér kupte iho"
   }
 ];
 
