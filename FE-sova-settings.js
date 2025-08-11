@@ -1305,7 +1305,7 @@ window.additionalSale = [
   {
     "code": "NET0033",
     "name": "Přidat bluetooth",
-    "price": "€26,55",
+    "price": "€6,01",
     "pairText": "bluetooth",
     "type": "checkbox",
     "SOVAL": "currency=\"EUR\" AND category = \"Počítače\" AND parametroptdisableupgradebluetooth != \"true\" AND parametrBluetooth !=\"ANO\""
