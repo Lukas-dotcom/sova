@@ -8,23 +8,6 @@ window.injectFunctions = [
     "pageType": "cart"
   },
   {
-    "function": "testovaciInjectFunction",
-    "parameters": "(\"produkt \" & productName & \" je dražší než 250\")",
-    "pageType": "productDetail",
-    "conditionsSOVAL": "productPriceWithVat>250"
-  },
-  {
-    "function": "testovaciInjectFunction",
-    "parameters": "(\"ano je to \" & productName)",
-    "url": "/unisex-hodinky-nature/"
-  },
-  {
-    "function": "testovaciInjectFunction",
-    "parameters": "(\"Do domácnosti\")",
-    "pageType": "productDetail",
-    "conditionsSOVAL": "contains(productCurrentCategory, \"Do domácnosti\")"
-  },
-  {
     "function": "deliveryOptions",
     "pageType": "billingAndShipping"
   }
