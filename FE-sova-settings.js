@@ -41,7 +41,8 @@ window.injectVariables = {
     "MSI Vector 16 HX A14VHG-682FR"
   ],
   "DISKvylouceneCastiNazvu": [
-    0
+    "lenovo",
+    "hp"
   ]
 };
 
