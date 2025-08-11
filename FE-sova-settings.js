@@ -48,7 +48,7 @@ window.injectVariables = {
 window.additionalSale = [
   {
     "code": "BLESK1",
-    "name": "Blesková výměna zboží",
+    "name": "Blesková výměna bez čekání",
     "price": "499 Kč",
     "pairText": "BLESK1",
     "type": "checkbox",
