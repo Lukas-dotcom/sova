@@ -25,9 +25,6 @@ window.injectVariables = {
   ],
   "DISKvylouceneCastiNazvu": [
     "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-  ],
-  "testPrazdne": [
-    0
   ]
 };
 
