@@ -24,8 +24,7 @@ window.injectVariables = {
     0
   ],
   "DISKvylouceneCastiNazvu": [
-    "lenovo",
-    "hp"
+    0
   ]
 };
 
