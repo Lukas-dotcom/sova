@@ -18,7 +18,7 @@ window.injectVariables = {
     "Z Fold",
     "Z Flip",
     "Fujitsu H760",
-    "H770"
+    "Fujitsu H770"
   ],
   "RAMvylouceneCastiNazvu": [
     0
