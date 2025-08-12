@@ -304,9 +304,25 @@ reg('regexreplace',(text,pattern,replacement,occurrence=0,case_sens)=>{ try{
   return before+rep+after;
 }catch(e){ console.warn('[REGEXREPLACE] Invalid pattern:',pattern,e); return coerceString(text); }});
 
-reg('contains',(a,b)=>coerceString(a).includes(coerceString(b)),'contains');
-reg('startsWith',(a,b)=>coerceString(a).startsWith(coerceString(b)),'startswith','zacinana');
-reg('endsWith',  (a,b)=>coerceString(a).endsWith(coerceString(b)),'endswith','koncina');
+// --- TEXT: prázdný vzor = false ---
+reg('contains', (a,b) => {
+  const hay = coerceString(a), needle = coerceString(b);
+  if (needle === '') return false;
+  return hay.includes(needle);
+}, 'contains');
+
+reg('startsWith', (a,b) => {
+  const hay = coerceString(a), needle = coerceString(b);
+  if (needle === '') return false;
+  return hay.startsWith(needle);
+}, 'startswith','zacinana');
+
+reg('endsWith', (a,b) => {
+  const hay = coerceString(a), needle = coerceString(b);
+  if (needle === '') return false;
+  return hay.endsWith(needle);
+}, 'endswith','koncina');
+
 
 // Logické
 reg('NOT', x=>!coerceBoolean(x),'!','ne','not');
@@ -460,7 +476,10 @@ function reduceAggregates(node, ctx, hooks = {}){
     case 'sumif': case 'sum': case 'suma': out = values.reduce((s,v)=>s+coerceNumber(v),0); break;
     case 'countif': case 'count': out = matchedRows.length; break;
     case 'any': out = node.pred ? rows.some(pred) : rows.some(r=>coerceBoolean(select(r))); break;
-    case 'all': out = node.pred ? rows.every(pred) : rows.every(r=>coerceBoolean(select(r))); break;
+case 'all': {
+  const base = node.pred ? rows.every(pred) : rows.every(r => coerceBoolean(select(r)));
+  out = rows.length === 0 ? false : base;   // prázdné = false
+} break;
     case 'averageif': out = matchedRows.length ? values.reduce((s,v)=>s+coerceNumber(v),0)/matchedRows.length : 0; break;
     case 'medianif': out = median(values.map(coerceNumber)); break;
     case 'modeif':   out = mode(values); break;
