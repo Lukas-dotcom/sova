@@ -21,7 +21,7 @@ window.injectVariables = {
     "H770"
   ],
   "RAMvylouceneCastiNazvu": [
-    "MSI Vector 16 HX A14VHG-682FR"
+    0
   ],
   "DISKvylouceneCastiNazvu": [
     "lenovo",
