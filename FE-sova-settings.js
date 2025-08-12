@@ -4361,7 +4361,7 @@ window.LadzoSklad = {
 };
 
 window.expedice = {
-  "zobrazit": true,
+  "zobrazit": false,
   "test": false,
   "cas_expedice": "14:00",
   "statni_svatky": [
