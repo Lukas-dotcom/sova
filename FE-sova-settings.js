@@ -52,7 +52,7 @@ window.additionalSale = [
     "price": "499 Kč",
     "pairText": "BLESK1",
     "type": "checkbox",
-    "SOVAL": "(currency=\"CZK\" AND (( ( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) OR (category = \"Telefony\") ) AND ( CONTAINS(parametrTypproduktu, \"Repasovaný\"))))"
+    "SOVAL": "(currency=\"CZK\" AND (( ( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) OR (category = \"Telefony\" OR category=\"Telefony, mobily\") ) AND ( CONTAINS(parametrTypproduktu, \"Repasovaný\"))))"
   },
   {
     "code": "BLESK2",
