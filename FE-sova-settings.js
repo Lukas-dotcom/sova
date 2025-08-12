@@ -21,10 +21,10 @@ window.injectVariables = {
     "Fujitsu H770"
   ],
   "RAMvylouceneCastiNazvu": [
-    0
+    "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
   ],
   "DISKvylouceneCastiNazvu": [
-    0
+    "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
   ]
 };
 
