@@ -21,7 +21,30 @@ window.injectVariables = {
     "Fujitsu H770"
   ],
   "RAMvylouceneCastiNazvu": [
-    "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    "Lenovo ThinkPad X1 Yoga 1st",
+    "Lenovo ThinkPad X1 Yoga 2nd",
+    "Lenovo ThinkPad X1 Yoga 3rd",
+    "Lenovo ThinkPad X1 Yoga 4th",
+    "Lenovo ThinkPad X1 Yoga 5th",
+    "Lenovo ThinkPad X1 Yoga 6th",
+    "Lenovo ThinkPad X1 Yoga 7th",
+    "Lenovo ThinkPad X13 Yoga Gen 1",
+    "Lenovo ThinkPad X13 Yoga Gen 2",
+    "Lenovo ThinkPad X1 Carbon 1st",
+    "Lenovo ThinkPad X1 Carbon 2nd",
+    "Lenovo ThinkPad X1 Carbon 3rd",
+    "Lenovo ThinkPad X1 Carbon 4th",
+    "Lenovo ThinkPad X1 Carbon 5th",
+    "Lenovo ThinkPad X1 Carbon 6th",
+    "Lenovo ThinkPad X1 Carbon 7th",
+    "Lenovo ThinkPad X1 Carbon 8th",
+    "Lenovo ThinkPad X1 Carbon 9th",
+    "Lenovo ThikPad X380 Yoga",
+    "Lenovo Ideapad Flex 5",
+    "Lenovo ThinkPad X280",
+    "Lenovo ThinkPad X390",
+    "Lenovo ThinkPad T490s",
+    "Lenovo ThinkPad T495s"
   ],
   "DISKvylouceneCastiNazvu": [
     "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
