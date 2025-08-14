@@ -60,7 +60,13 @@ window.injectVariables = {
     "MSI Prestige 13Evo A13M",
     "MSI Prestige 14Evo B13M",
     "MSI Summit E16FLIPEVO",
-    "MSI Summit E14Evo A12M"
+    "MSI Summit E14Evo A12M",
+    "Acer TravelMate Spin B311",
+    "Acer Swift Go 14 SFG14",
+    "Acer Aspire Switch 11 SW5",
+    "Acer Swift X zpravidla všechny",
+    "ASUS ZenBook 14 UX434FAC",
+    "ASUS Zenbook UX5401Z"
   ],
   "DISKvylouceneCastiNazvu": [
     "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
