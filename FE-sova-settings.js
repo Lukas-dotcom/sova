@@ -44,7 +44,8 @@ window.injectVariables = {
     "Lenovo ThinkPad X280",
     "Lenovo ThinkPad X390",
     "Lenovo ThinkPad T490s",
-    "Lenovo ThinkPad T495s"
+    "Lenovo ThinkPad T495s",
+    "HP OMEN Transcend"
   ],
   "DISKvylouceneCastiNazvu": [
     "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
