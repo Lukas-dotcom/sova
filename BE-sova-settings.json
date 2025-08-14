@@ -177,46 +177,11 @@
         "Kdo": "Dominik Němčanský"
       },
       {
-        "Název": "Produkty na naskladnění",
-        "Odkaz": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=673",
+        "Název": null,
+        "Odkaz": "https://www.pocitarna.cz/export/products.xls?patternId=1&visibilityId=0&partnerId=5&hash=ba0a4c1858701dc93ce5b9c875606b883998952e02f1b6dbe2315a27fb6171f9&stockState=1&defaultCategoryId=673",
         "Barvička": null,
         "NovOkno": null,
-        "Kdo": "Barbora Grygarová"
-      },
-      {
-        "Název": "Všechny Objednávky",
-        "Odkaz": "https://www.pocitarna.cz/admin/prehled-objednavek/0/",
-        "Barvička": null,
-        "NovOkno": null,
-        "Kdo": "Barbora Grygarová"
-      },
-      {
-        "Název": "Odeslat",
-        "Odkaz": "https://www.pocitarna.cz/admin/prehled-objednavek/3/",
-        "Barvička": null,
-        "NovOkno": null,
-        "Kdo": "Barbora Grygarová"
-      },
-      {
-        "Název": "Obchodní řešení",
-        "Odkaz": "https://www.pocitarna.cz/admin/prehled-objednavek/18/",
-        "Barvička": null,
-        "NovOkno": null,
-        "Kdo": "Barbora Grygarová"
-      },
-      {
-        "Název": "Rezervace",
-        "Odkaz": "https://www.pocitarna.cz/admin/prehled-objednavek/15/",
-        "Barvička": null,
-        "NovOkno": null,
-        "Kdo": "Barbora Grygarová"
-      },
-      {
-        "Název": "Zpracovává se",
-        "Odkaz": "https://www.pocitarna.cz/admin/prehled-objednavek/12/",
-        "Barvička": null,
-        "NovOkno": null,
-        "Kdo": "Barbora Grygarová"
+        "Kdo": null
       }
     ]
   },
