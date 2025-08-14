@@ -48,7 +48,8 @@ window.injectVariables = {
     "HP OMEN Transcend",
     "HP ENVY x360",
     "HP EliteBook x360",
-    "HP Spectre x360"
+    "HP Spectre x360",
+    "Dell Latitude 9430"
   ],
   "DISKvylouceneCastiNazvu": [
     "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
