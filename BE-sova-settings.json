@@ -186,14 +186,14 @@
       {
         "Název": "Export POC",
         "Odkaz": "https://www.pocitarna.cz/export/products.xls?patternId=1&visibilityId=0&partnerId=5&hash=ba0a4c1858701dc93ce5b9c875606b883998952e02f1b6dbe2315a27fb6171f9&stockState=1&defaultCategoryId=674",
-        "Barvička": null,
+        "Barvička": "TRUE",
         "NovOkno": null,
         "Kdo": "Dominik Němčanský"
       },
       {
         "Název": "Export LCD",
         "Odkaz": "https://www.pocitarna.cz/export/products.xls?patternId=1&visibilityId=0&partnerId=5&hash=ba0a4c1858701dc93ce5b9c875606b883998952e02f1b6dbe2315a27fb6171f9&stockState=1&defaultCategoryId=714",
-        "Barvička": null,
+        "Barvička": "true",
         "NovOkno": null,
         "Kdo": "Dominik Němčanský"
       }
