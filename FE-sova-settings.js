@@ -49,7 +49,12 @@ window.injectVariables = {
     "HP ENVY x360",
     "HP EliteBook x360",
     "HP Spectre x360",
-    "Dell Latitude 9430"
+    "Dell Latitude 9430",
+    "Dell Latitude 7400 2-IN-1",
+    "Dell Latitude 5320",
+    "Dell Latitude 7420",
+    "Dell Latitude 7430",
+    "Dell Latitude 7320 Detachable"
   ],
   "DISKvylouceneCastiNazvu": [
     "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
