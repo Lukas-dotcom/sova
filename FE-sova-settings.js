@@ -54,7 +54,8 @@ window.injectVariables = {
     "Dell Latitude 5320",
     "Dell Latitude 7420",
     "Dell Latitude 7430",
-    "Dell Latitude 7320 Detachable"
+    "Dell Latitude 7320 Detachable",
+    "MSI Modern"
   ],
   "DISKvylouceneCastiNazvu": [
     "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
