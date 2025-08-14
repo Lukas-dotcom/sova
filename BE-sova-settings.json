@@ -172,28 +172,28 @@
       {
         "Název": "Mobily",
         "Odkaz": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=717",
-        "Barvička": "GREEN",
+        "Barvička": null,
         "NovOkno": null,
         "Kdo": "Dominik Němčanský"
       },
       {
         "Název": "Export NTB",
         "Odkaz": "https://www.pocitarna.cz/export/products.xls?patternId=1&visibilityId=0&partnerId=5&hash=ba0a4c1858701dc93ce5b9c875606b883998952e02f1b6dbe2315a27fb6171f9&stockState=1&defaultCategoryId=673",
-        "Barvička": "Red",
+        "Barvička": null,
         "NovOkno": null,
         "Kdo": "Dominik Němčanský"
       },
       {
         "Název": "Export POC",
         "Odkaz": "https://www.pocitarna.cz/export/products.xls?patternId=1&visibilityId=0&partnerId=5&hash=ba0a4c1858701dc93ce5b9c875606b883998952e02f1b6dbe2315a27fb6171f9&stockState=1&defaultCategoryId=674",
-        "Barvička": "TRUE",
+        "Barvička": null,
         "NovOkno": null,
         "Kdo": "Dominik Němčanský"
       },
       {
         "Název": "Export LCD",
         "Odkaz": "https://www.pocitarna.cz/export/products.xls?patternId=1&visibilityId=0&partnerId=5&hash=ba0a4c1858701dc93ce5b9c875606b883998952e02f1b6dbe2315a27fb6171f9&stockState=1&defaultCategoryId=714",
-        "Barvička": "true",
+        "Barvička": null,
         "NovOkno": null,
         "Kdo": "Dominik Němčanský"
       }
