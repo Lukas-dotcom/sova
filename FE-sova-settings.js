@@ -66,7 +66,9 @@ window.injectVariables = {
     "Acer Aspire Switch 11 SW5",
     "Acer Swift X zpravidla všechny",
     "ASUS ZenBook 14 UX434FAC",
-    "ASUS Zenbook UX5401Z"
+    "ASUS Zenbook UX5401Z",
+    "Panasonic Toughbook CF-MX4",
+    "Panasonic Toughbook CF-33"
   ],
   "DISKvylouceneCastiNazvu": [
     "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
