@@ -421,7 +421,7 @@
         "color": "purple",
         "position": null,
         "order": null,
-        "conditionsSOVAL": null,
+        "conditionsSOVAL": "activeTabName=\"Nevyřízená\"",
         "targetStatus": null,
         "openTargetStatus": null
       }
