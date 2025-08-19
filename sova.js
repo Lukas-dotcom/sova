@@ -901,45 +901,13 @@ function injectLink() {
 }
 
 async function massProductOpener() {
-  const BTN_ID = 'sova-open-product-details';
+  const BTN_ID = 'sova-open-product-details-now';
   const MASS_ACTION_SEL = '.massAction';
   const TABLE_BODY_SEL = 'tbody[data-testid="tableBodyProductList"]';
   const CHECKBOX_SEL = 'input[name^="productId["].checkboxField:checked';
-
-  const DRIP_DELAY_MS = 10; // prodleva mezi otevřením tabů (zvýš pokud by prohlížeč zlobil)
-  const SHOW_ALERT = false;  // necháme defaultně potichu (jen konzole), lze přepnout
-
-  const isProductList = () => !!document.querySelector(TABLE_BODY_SEL);
   const buildUrl = (id) => `/admin/produkty-detail/?id=${encodeURIComponent(id)}`;
 
-  const htmlStub = (url, id) => `<!doctype html><meta charset="utf-8">
-<title>Načítám #${id}…</title>
-<style>body{font:14px/1.5 system-ui,Segoe UI,Arial;margin:2rem;color:#222}</style>
-<p>Načítám detail produktu <strong>#${id}</strong>…</p>
-<p>Pokud se nic neděje, <a href="${url}">otevři detail ručně</a>.</p>
-<meta http-equiv="refresh" content="0; url=${url}">
-<script>
-  // dvojité jištění – když by meta-refresh neuplatnil, pomůže JS:
-  setTimeout(function(){ try{ location.replace(${JSON.stringify(url)}); }catch(e){ location.href=${JSON.stringify(url)}; } }, 60);
-</script>`;
-
-  function openViaStub(url, id){
-    // Pouze JEDNA metoda: prázdný tab -> naplnit stub
-    // (schválně BEZ 'noopener', některé prohlížeče pak nechtějí dovolit document.write do about:blank)
-    const w = window.open('about:blank', '_blank');
-    if (!w) return false;
-    try {
-      w.document.open();
-      w.document.write(htmlStub(url, id));
-      w.document.close();
-    } catch(_) {
-      // i kdyby write selhal, tab existuje – ale vrátíme false, aby se promítlo do statistik
-      return false;
-    }
-    return true;
-  }
-
-  function addButton(){
+  function addButton() {
     const host = document.querySelector(MASS_ACTION_SEL);
     if (!host || document.getElementById(BTN_ID)) return;
 
@@ -950,7 +918,7 @@ async function massProductOpener() {
     btn.id = BTN_ID;
     btn.type = 'button';
     btn.className = 'btn btn-sm btn-primary btn-iconLeft';
-    btn.innerHTML = 'Otevřít detaily vybraných';
+    btn.innerHTML = '<span class="shoptet-icon icon shp-link icon--sm icon--default"></span>Otevřít detaily (naráz)';
 
     btn.addEventListener('click', (e) => {
       e.preventDefault();
@@ -962,42 +930,50 @@ async function massProductOpener() {
         .map(i => i.value)
         .filter(Boolean);
 
-      if (!ids.length) return alert('Vyber nejprve produkty (zaškrtni checkboxy v prvním sloupci).');
-      if (ids.length > 15 && !confirm(`Otevřít ${ids.length} záložek s detaily?`)) return;
+      if (!ids.length) {
+        alert('Vyber nejprve produkty (zaškrtni checkboxy v prvním sloupci).');
+        return;
+      }
 
-      let opened = 0, blocked = 0, idx = 0;
+      // Bezpečnostní potvrzení pro větší počty
+      if (ids.length > 15 && !confirm(`Otevřít ${ids.length} záložek s detaily naráz?`)) return;
 
-      (function drip(){
-        if (idx >= ids.length) {
-          const msg = `SOVA OpenDetails: otevřeno ${opened} / blokováno ${blocked} (celkem ${ids.length}).`;
-          console.info(msg);
-          if (SHOW_ALERT) alert(msg);
-          return;
+      // Otevři všechny naráz
+      let opened = 0, blocked = 0;
+      for (const id of ids) {
+        const w = window.open(buildUrl(id), '_blank');
+        if (w) {
+          opened++;
+          try { w.blur(); } catch(_) {}
+        } else {
+          blocked++;
         }
-        const id = ids[idx++];
-        const ok = openViaStub(buildUrl(id), id);
-        opened += ok ? 1 : 0;
-        blocked += ok ? 0 : 1;
-        setTimeout(drip, DRIP_DELAY_MS);
-      })();
+      }
+
+      // Vrátit fokus na mateřský tab
+      try { window.focus(); } catch(_) {}
+      setTimeout(() => { try { window.focus(); } catch(_) {} }, 50);
+
+      // Informativně do konzole
+      console.info(`SOVA OpenDetails (naráz): otevřeno ${opened}, zablokováno ${blocked}, celkem ${ids.length}.`);
+      if (blocked) {
+        // Volitelné: krátká hláška
+        // alert(`Otevřeno ${opened} záložek. ${blocked} zablokováno (povolte vyskakovací okna pro tento web).`);
+      }
     });
 
     wrap.appendChild(btn);
     host.appendChild(wrap);
   }
 
-  function ready(fn){
+  function ready(fn) {
     if (document.readyState !== 'loading') return fn();
-    document.addEventListener('DOMContentLoaded', fn, { once:true });
+    document.addEventListener('DOMContentLoaded', fn, { once: true });
   }
 
   ready(() => {
-    if (isProductList()) addButton();
-
-    // Shoptet občas překreslí panel hromadných akcí -> držet tlačítko při životě
-    const mo = new MutationObserver(() => {
-      if (isProductList()) addButton();
-    });
+    addButton();
+    const mo = new MutationObserver(() => addButton());
     mo.observe(document.body, { childList: true, subtree: true });
   });
 };
