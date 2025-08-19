@@ -409,7 +409,6 @@
     "columns": [
       "buttonName",
       "color",
-      "url",
       "position",
       "order",
       "conditionsSOVAL",
@@ -420,7 +419,6 @@
       {
         "buttonName": null,
         "color": "purple",
-        "url": null,
         "position": null,
         "order": null,
         "conditionsSOVAL": null,
