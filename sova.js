@@ -206,6 +206,11 @@
 
         }
  
+       if (window.location.href.includes("/admin/produkty/")){
+
+                massProductOpener();
+
+        }
         
 
         
@@ -895,7 +900,107 @@ function injectLink() {
     window.addEventListener('load', injectLink);
 }
 
+async function massProductOpener() {
+  const BTN_ID = 'sova-open-product-details';
+  const MASS_ACTION_SEL = '.massAction';
+  const TABLE_BODY_SEL = 'tbody[data-testid="tableBodyProductList"]';
+  const CHECKBOX_SEL = 'input[name^="productId["].checkboxField:checked';
 
+  const DRIP_DELAY_MS = 50; // prodleva mezi otevřením tabů (zvýš pokud by prohlížeč zlobil)
+  const SHOW_ALERT = false;  // necháme defaultně potichu (jen konzole), lze přepnout
+
+  const isProductList = () => !!document.querySelector(TABLE_BODY_SEL);
+  const buildUrl = (id) => `/admin/produkty-detail/?id=${encodeURIComponent(id)}`;
+
+  const htmlStub = (url, id) => `<!doctype html><meta charset="utf-8">
+<title>Načítám #${id}…</title>
+<style>body{font:14px/1.5 system-ui,Segoe UI,Arial;margin:2rem;color:#222}</style>
+<p>Načítám detail produktu <strong>#${id}</strong>…</p>
+<p>Pokud se nic neděje, <a href="${url}">otevři detail ručně</a>.</p>
+<meta http-equiv="refresh" content="0; url=${url}">
+<script>
+  // dvojité jištění – když by meta-refresh neuplatnil, pomůže JS:
+  setTimeout(function(){ try{ location.replace(${JSON.stringify(url)}); }catch(e){ location.href=${JSON.stringify(url)}; } }, 60);
+</script>`;
+
+  function openViaStub(url, id){
+    // Pouze JEDNA metoda: prázdný tab -> naplnit stub
+    // (schválně BEZ 'noopener', některé prohlížeče pak nechtějí dovolit document.write do about:blank)
+    const w = window.open('about:blank', '_blank');
+    if (!w) return false;
+    try {
+      w.document.open();
+      w.document.write(htmlStub(url, id));
+      w.document.close();
+    } catch(_) {
+      // i kdyby write selhal, tab existuje – ale vrátíme false, aby se promítlo do statistik
+      return false;
+    }
+    return true;
+  }
+
+  function addButton(){
+    const host = document.querySelector(MASS_ACTION_SEL);
+    if (!host || document.getElementById(BTN_ID)) return;
+
+    const wrap = document.createElement('div');
+    wrap.className = 'massAction__item';
+
+    const btn = document.createElement('button');
+    btn.id = BTN_ID;
+    btn.type = 'button';
+    btn.className = 'btn btn-sm btn-primary btn-iconLeft';
+    btn.innerHTML = 'Otevřít detaily vybraných';
+
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      const tbody = document.querySelector(TABLE_BODY_SEL);
+      if (!tbody) return alert('Tabulka produktů nebyla nalezena.');
+
+      const ids = Array.from(tbody.querySelectorAll(CHECKBOX_SEL))
+        .map(i => i.value)
+        .filter(Boolean);
+
+      if (!ids.length) return alert('Vyber nejprve produkty (zaškrtni checkboxy v prvním sloupci).');
+      if (ids.length > 15 && !confirm(`Otevřít ${ids.length} záložek s detaily?`)) return;
+
+      let opened = 0, blocked = 0, idx = 0;
+
+      (function drip(){
+        if (idx >= ids.length) {
+          const msg = `SOVA OpenDetails: otevřeno ${opened} / blokováno ${blocked} (celkem ${ids.length}).`;
+          console.info(msg);
+          if (SHOW_ALERT) alert(msg);
+          return;
+        }
+        const id = ids[idx++];
+        const ok = openViaStub(buildUrl(id), id);
+        opened += ok ? 1 : 0;
+        blocked += ok ? 0 : 1;
+        setTimeout(drip, DRIP_DELAY_MS);
+      })();
+    });
+
+    wrap.appendChild(btn);
+    host.appendChild(wrap);
+  }
+
+  function ready(fn){
+    if (document.readyState !== 'loading') return fn();
+    document.addEventListener('DOMContentLoaded', fn, { once:true });
+  }
+
+  ready(() => {
+    if (isProductList()) addButton();
+
+    // Shoptet občas překreslí panel hromadných akcí -> držet tlačítko při životě
+    const mo = new MutationObserver(() => {
+      if (isProductList()) addButton();
+    });
+    mo.observe(document.body, { childList: true, subtree: true });
+  });
+};
 
 async function priznakyVobjednavkach() {
     'use strict';
