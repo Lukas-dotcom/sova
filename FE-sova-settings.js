@@ -4454,7 +4454,8 @@ window.shippingHideRules = [
     ],
     "startsWithCodes": [
       "PRT",
-      "AIO"
+      "AIO",
+      "LCD"
     ],
     "startsWithUrl": [
       "/monitory/",
