@@ -399,7 +399,7 @@
         "conditionsSOVAL": "(ANY (polozky, contains(polozky:Kod, \"TUITO\")))",
         "recipient": "(userEmail &\", lukas.tejral@pocitarna.cz\")",
         "CCrecipient": "tejral@pocitarna.cz",
-        "subject": null,
+        "subject": "(\"Vaše objednávka \"& orderCode)",
         "body": null,
         "attachments": null
       }
