@@ -409,7 +409,6 @@
     "columns": [
       "buttonName",
       "color",
-      "position",
       "order",
       "conditionsSOVAL",
       "targetStatus",
@@ -419,7 +418,6 @@
       {
         "buttonName": "Odeslat",
         "color": "purple",
-        "position": null,
         "order": null,
         "conditionsSOVAL": "activeTabName=\"Nevyřízená\"",
         "targetStatus": "(\"Odeslat\")",
