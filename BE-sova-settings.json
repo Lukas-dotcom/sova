@@ -419,7 +419,7 @@
         "buttonName": "Odeslat",
         "color": "purple",
         "order": null,
-        "conditionsSOVAL": "activeTabName=\"Nevyřízená\"",
+        "conditionsSOVAL": "(activeTabName=\"Nevyřízená\")",
         "targetStatus": "(\"Odeslat\")",
         "openTargetStatus": "(\"true\")"
       }
