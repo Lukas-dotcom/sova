@@ -343,7 +343,7 @@
         "buttonName": "testol",
         "color": "black",
         "function": "testSOVA",
-        "parameters": "aaaa",
+        "parameters": "aaaabbbcccccc",
         "url": "objednavka",
         "position": "buttonsHeaderLeft",
         "order": -1,
