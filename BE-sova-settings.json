@@ -391,7 +391,7 @@
     ],
     "rules": [
       {
-        "buttonName": "testmail",
+        "buttonName": "testMail",
         "color": null,
         "url": null,
         "position": null,
