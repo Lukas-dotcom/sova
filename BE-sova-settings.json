@@ -401,7 +401,7 @@
         "CCrecipient": "tejral@pocitarna.cz",
         "subject": "(\"Vaše objednávka \"& orderCode)",
         "body": null,
-        "attachments": null
+        "attachments": "faktury, zalohoveFaktury, dobropisy, DodaciListy"
       }
     ]
   },
