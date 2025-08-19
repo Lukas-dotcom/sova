@@ -417,7 +417,7 @@
     ],
     "rules": [
       {
-        "buttonName": null,
+        "buttonName": "Odeslat",
         "color": "purple",
         "position": null,
         "order": null,
