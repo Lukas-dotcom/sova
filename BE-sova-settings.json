@@ -333,7 +333,7 @@
         "buttonName": "test",
         "color": "red",
         "function": "testSOVA",
-        "parameters": "(\"dddddddddddddd\")",
+        "parameters": "(\"ddddddddddd\")",
         "url": "objednavka",
         "position": "buttonsHeaderLeft",
         "order": null,
