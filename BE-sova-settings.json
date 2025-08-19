@@ -341,7 +341,7 @@
       },
       {
         "buttonName": "testol",
-        "color": "green",
+        "color": "black",
         "function": "testSOVA",
         "parameters": null,
         "url": "objednavka",
