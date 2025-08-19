@@ -396,7 +396,7 @@
         "url": "objednavka",
         "position": "buttonsAboveTabsRight",
         "order": null,
-        "conditionsSOVAL": null,
+        "conditionsSOVAL": "(ANY (polozky, contains(polozky:Kod, \"TUITO\")))",
         "recipient": null,
         "CCrecipient": null,
         "subject": null,
