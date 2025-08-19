@@ -906,7 +906,7 @@ async function massProductOpener() {
   const TABLE_BODY_SEL = 'tbody[data-testid="tableBodyProductList"]';
   const CHECKBOX_SEL = 'input[name^="productId["].checkboxField:checked';
 
-  const DRIP_DELAY_MS = 50; // prodleva mezi otevřením tabů (zvýš pokud by prohlížeč zlobil)
+  const DRIP_DELAY_MS = 10; // prodleva mezi otevřením tabů (zvýš pokud by prohlížeč zlobil)
   const SHOW_ALERT = false;  // necháme defaultně potichu (jen konzole), lze přepnout
 
   const isProductList = () => !!document.querySelector(TABLE_BODY_SEL);
