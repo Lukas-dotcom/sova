@@ -394,7 +394,7 @@
         "buttonName": "testMail",
         "color": "yellow",
         "url": "objednavka",
-        "position": null,
+        "position": "buttonsAboveTabsRight",
         "order": null,
         "conditionsSOVAL": null,
         "recipient": null,
