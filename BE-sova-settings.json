@@ -423,7 +423,7 @@
         "order": null,
         "conditionsSOVAL": "activeTabName=\"Nevyřízená\"",
         "targetStatus": "(\"Odeslat\")",
-        "openTargetStatus": true
+        "openTargetStatus": "(\"true\")"
       }
     ]
   },
