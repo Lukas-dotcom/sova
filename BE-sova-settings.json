@@ -393,7 +393,7 @@
       {
         "buttonName": "testMail",
         "color": "yellow",
-        "url": null,
+        "url": "objednavka",
         "position": null,
         "order": null,
         "conditionsSOVAL": null,
