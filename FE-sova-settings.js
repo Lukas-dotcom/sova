@@ -4517,7 +4517,8 @@ window.shippingHideRules = [
     ],
     "startsWithCodes": [
       "PRT",
-      "AIO"
+      "AIO",
+      "LCD"
     ],
     "startsWithUrl": [
       "/pocitace/",
@@ -4695,7 +4696,8 @@ window.shippingHideRules = [
     ],
     "startsWithCodes": [
       "PRT",
-      "AIO"
+      "AIO",
+      "LCD"
     ],
     "startsWithUrl": [
       "/pocitace/",
