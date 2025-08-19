@@ -405,6 +405,30 @@
       }
     ]
   },
+  "injectButtonsMassStatusChange": {
+    "columns": [
+      "buttonName",
+      "color",
+      "url",
+      "position",
+      "order",
+      "conditionsSOVAL",
+      "targetStatus",
+      "openTargetStatus"
+    ],
+    "rules": [
+      {
+        "buttonName": null,
+        "color": "purple",
+        "url": null,
+        "position": null,
+        "order": null,
+        "conditionsSOVAL": null,
+        "targetStatus": null,
+        "openTargetStatus": null
+      }
+    ]
+  },
   "adminDeliveryHelper": {
     "columns": [
       "doprava",
