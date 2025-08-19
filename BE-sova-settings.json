@@ -361,7 +361,7 @@
         "url": "objednavka",
         "position": "buttonsHeaderLeft",
         "order": -1,
-        "conditionsSOVAL": "(customerName=\"Test Testovič\")AND(5000<(SUMIF(polozky:Celkem_vc_DPH))"
+        "conditionsSOVAL": "(customerName=\"Test Testovič\")AND(5000<(SUMIF(polozky:Celkem_vc_DPH)))"
       }
     ]
   },
