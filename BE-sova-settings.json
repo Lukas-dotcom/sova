@@ -375,6 +375,36 @@
       }
     ]
   },
+  "injectButtonsEmail": {
+    "columns": [
+      "buttonName",
+      "color",
+      "url",
+      "position",
+      "order",
+      "conditionsSOVAL",
+      "recipient",
+      "CCrecipient",
+      "subject",
+      "body",
+      "attachments"
+    ],
+    "rules": [
+      {
+        "buttonName": "testmail",
+        "color": null,
+        "url": null,
+        "position": null,
+        "order": null,
+        "conditionsSOVAL": null,
+        "recipient": null,
+        "CCrecipient": null,
+        "subject": null,
+        "body": null,
+        "attachments": null
+      }
+    ]
+  },
   "adminDeliveryHelper": {
     "columns": [
       "doprava",
