@@ -398,7 +398,7 @@
         "order": null,
         "conditionsSOVAL": "(ANY (polozky, contains(polozky:Kod, \"TUITO\")))",
         "recipient": "lukas.tejral@pocitarna.cz, tejral@pocitarna.cz",
-        "CCrecipient": null,
+        "CCrecipient": "tejral@pocitarna.cz",
         "subject": null,
         "body": null,
         "attachments": null
