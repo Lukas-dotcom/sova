@@ -431,8 +431,7 @@
       "color",
       "order",
       "conditionsSOVAL",
-      "targetStatus",
-      "openTargetStatus"
+      "targetStatus"
     ],
     "rules": [
       {
@@ -440,8 +439,7 @@
         "color": "purple",
         "order": null,
         "conditionsSOVAL": "(activeTabName=\"Nevyřízená\")",
-        "targetStatus": "(\"Odeslat\")",
-        "openTargetStatus": "(\"true\")"
+        "targetStatus": "(\"Odeslat\")"
       }
     ]
   },
