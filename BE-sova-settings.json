@@ -430,6 +430,7 @@
       "buttonName",
       "color",
       "order",
+      "position",
       "conditionsSOVAL",
       "targetStatus",
       "openAfterChange"
@@ -439,6 +440,7 @@
         "buttonName": "Odeslat",
         "color": "purple",
         "order": null,
+        "position": "buttonsHeaderLeft",
         "conditionsSOVAL": "(activeTabName=\"Nevyřízená\")",
         "targetStatus": "(\"Odeslat\")",
         "openAfterChange": "(\"/admin/prehled-objednavek/\"&statusId&\"/\")"
