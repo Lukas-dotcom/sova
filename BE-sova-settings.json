@@ -490,8 +490,8 @@
         "color": "purple",
         "url": null,
         "position": "buttonsHeaderLeft",
-        "order": "(status=\"Nevyřízená\")",
-        "conditionsSOVAL": "(\"Odeslat\")",
+        "order": null,
+        "conditionsSOVAL": "(status=\"Nevyřízená\")",
         "href": "(\"/admin/prehled-objednavek/\"&statusId&\"/\")",
         "newTab": true
       }
