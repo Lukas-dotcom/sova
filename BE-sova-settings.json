@@ -425,6 +425,26 @@
       }
     ]
   },
+  "injectButtonsOrderStatusChange": {
+    "columns": [
+      "buttonName",
+      "color",
+      "order",
+      "conditionsSOVAL",
+      "targetStatus",
+      "openTargetStatus"
+    ],
+    "rules": [
+      {
+        "buttonName": "Odeslat",
+        "color": "purple",
+        "order": null,
+        "conditionsSOVAL": "(activeTabName=\"Nevyřízená\")",
+        "targetStatus": "(\"Odeslat\")",
+        "openTargetStatus": "(\"true\")"
+      }
+    ]
+  },
   "adminDeliveryHelper": {
     "columns": [
       "doprava",
