@@ -473,6 +473,30 @@
       }
     ]
   },
+  "injectButtonsLinks": {
+    "columns": [
+      "buttonName",
+      "color",
+      "url",
+      "position",
+      "order",
+      "conditionsSOVAL",
+      "href",
+      "newTab"
+    ],
+    "rules": [
+      {
+        "buttonName": null,
+        "color": null,
+        "url": null,
+        "position": null,
+        "order": null,
+        "conditionsSOVAL": null,
+        "href": null,
+        "newTab": true
+      }
+    ]
+  },
   "adminDeliveryHelper": {
     "columns": [
       "doprava",
