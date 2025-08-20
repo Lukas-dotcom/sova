@@ -69,8 +69,7 @@ window.injectVariables = {
     "Panasonic Toughbook CF-MX4",
     "Panasonic Toughbook CF-33",
     "Samsung Galaxy Book Pro 360",
-    "Lg Gram 17Z90Q",
-    "Yoga"
+    "Lg Gram 17Z90Q"
   ],
   "DISKvylouceneCastiNazvu": [
     "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
