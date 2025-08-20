@@ -486,7 +486,7 @@
     ],
     "rules": [
       {
-        "buttonName": "Odeslat",
+        "buttonName": "Link tlačítko",
         "color": "brown",
         "url": null,
         "position": "buttonsHeaderRight",
