@@ -486,13 +486,13 @@
     ],
     "rules": [
       {
-        "buttonName": null,
-        "color": null,
+        "buttonName": "Odeslat",
+        "color": "purple",
         "url": null,
-        "position": null,
-        "order": null,
-        "conditionsSOVAL": null,
-        "href": null,
+        "position": "buttonsHeaderLeft",
+        "order": "(status=\"Nevyřízená\")",
+        "conditionsSOVAL": "(\"Odeslat\")",
+        "href": "(\"/admin/prehled-objednavek/\"&statusId&\"/\")",
         "newTab": true
       }
     ]
