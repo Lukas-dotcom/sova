@@ -487,9 +487,9 @@
     "rules": [
       {
         "buttonName": "Odeslat",
-        "color": "purple",
+        "color": "brown",
         "url": null,
-        "position": "buttonsHeaderLeft",
+        "position": "buttonsHeaderRight",
         "order": null,
         "conditionsSOVAL": "(status=\"Nevyřízená\")",
         "href": "(\"/admin/prehled-objednavek/\"&statusId&\"/\")",
