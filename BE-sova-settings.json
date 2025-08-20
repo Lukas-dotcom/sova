@@ -441,7 +441,7 @@
         "order": null,
         "conditionsSOVAL": "(activeTabName=\"Nevyřízená\")",
         "targetStatus": "(\"Odeslat\")",
-        "openAfterChange": null
+        "openAfterChange": "(\"/admin/prehled-objednavek/\"&statusId&\"/\")"
       }
     ]
   },
