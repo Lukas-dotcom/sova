@@ -441,7 +441,7 @@
         "color": "purple",
         "order": null,
         "position": "buttonsHeaderLeft",
-        "conditionsSOVAL": "(activeTabName=\"Nevyřízená\")",
+        "conditionsSOVAL": "(status=\"Nevyřízená\")",
         "targetStatus": "(\"Odeslat\")",
         "openAfterChange": "(\"/admin/prehled-objednavek/\"&statusId&\"/\")"
       }
