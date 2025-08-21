@@ -422,7 +422,7 @@
         "buttonName": "testMail",
         "color": "yellow",
         "order": null,
-        "conditionsSOVAL": "(ANY (polozky, contains(polozky:Kod, \"TUITO\")))",
+        "conditionsSOVAL": "(activeTabId=\"-1\")",
         "recipient": "(userEmail &\", lukas.tejral@pocitarna.cz\")",
         "CCrecipient": "tejral@pocitarna.cz",
         "subject": "(\"Vaše objednávka \"& orderCode)",
