@@ -488,7 +488,7 @@
       {
         "buttonName": "Link tlačítko",
         "color": "brown",
-        "url": null,
+        "url": "objednavka",
         "position": "buttonsHeaderRight",
         "order": null,
         "conditionsSOVAL": "(status=\"Nevyřízená\")",
