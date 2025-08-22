@@ -512,7 +512,9 @@
           3,
           "h45"
         ],
-        "testPromenne3": null
+        "testPromenne3": [
+          "SOVAL]userName=\"Lukáš\"[ENDSOVAL"
+        ]
       }
     ]
   },
