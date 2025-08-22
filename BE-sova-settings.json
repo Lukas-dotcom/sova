@@ -497,6 +497,20 @@
       }
     ]
   },
+  "injectVariables": {
+    "columns": [
+      "testPromenne",
+      "testPromenne2",
+      "testPromenne3"
+    ],
+    "rules": [
+      {
+        "testPromenne": "Adam",
+        "testPromenne2": null,
+        "testPromenne3": null
+      }
+    ]
+  },
   "adminDeliveryHelper": {
     "columns": [
       "doprava",
