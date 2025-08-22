@@ -506,7 +506,9 @@
     "rules": [
       {
         "testPromenne": "Adam",
-        "testPromenne2": null,
+        "testPromenne2": [
+          0
+        ],
         "testPromenne3": null
       }
     ]
