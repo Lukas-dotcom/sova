@@ -507,7 +507,10 @@
       {
         "testPromenne": "Adam",
         "testPromenne2": [
-          0
+          5,
+          4,
+          3,
+          "h45"
         ],
         "testPromenne3": null
       }
