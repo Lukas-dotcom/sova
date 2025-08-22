@@ -497,6 +497,77 @@
       }
     ]
   },
+  "injectVariables": {
+    "columns": [
+      "testPromenne",
+      "testPromenne2",
+      "testPromenne3"
+    ],
+    "rules": [
+      {
+        "testPromenne": [
+          "Z Fold",
+          "Z Flip",
+          "Fujitsu H760",
+          "Fujitsu H770"
+        ],
+        "testPromenne2": [
+          "Lenovo ThinkPad X1 Yoga 1st",
+          "Lenovo ThinkPad X1 Yoga 2nd",
+          "Lenovo ThinkPad X1 Yoga 3rd",
+          "Lenovo ThinkPad X1 Yoga 4th",
+          "Lenovo ThinkPad X1 Yoga 5th",
+          "Lenovo ThinkPad X1 Yoga 6th",
+          "Lenovo ThinkPad X1 Yoga 7th",
+          "Lenovo ThinkPad X13 Yoga Gen 1",
+          "Lenovo ThinkPad X13 Yoga Gen 2",
+          "Lenovo ThinkPad X1 Carbon 1st",
+          "Lenovo ThinkPad X1 Carbon 2nd",
+          "Lenovo ThinkPad X1 Carbon 3rd",
+          "Lenovo ThinkPad X1 Carbon 4th",
+          "Lenovo ThinkPad X1 Carbon 5th",
+          "Lenovo ThinkPad X1 Carbon 6th",
+          "Lenovo ThinkPad X1 Carbon 7th",
+          "Lenovo ThinkPad X1 Carbon 8th",
+          "Lenovo ThinkPad X1 Carbon 9th",
+          "Lenovo ThikPad X380 Yoga",
+          "Lenovo Ideapad Flex 5",
+          "Lenovo ThinkPad X280",
+          "Lenovo ThinkPad X390",
+          "Lenovo ThinkPad T490s",
+          "Lenovo ThinkPad T495s",
+          "HP OMEN Transcend",
+          "HP ENVY x360",
+          "HP EliteBook x360",
+          "HP Spectre x360",
+          "Dell Latitude 9430",
+          "Dell Latitude 7400 2-IN-1",
+          "Dell Latitude 5320",
+          "Dell Latitude 7420",
+          "Dell Latitude 7430",
+          "Dell Latitude 7320 Detachable",
+          "MSI Prestige 13 AI Evo A1MG",
+          "MSI Prestige 13Evo A13M",
+          "MSI Prestige 14Evo B13M",
+          "MSI Summit E16FLIPEVO",
+          "MSI Summit E14Evo A12M",
+          "Acer TravelMate Spin B311",
+          "Acer Swift Go 14 SFG14",
+          "Acer Aspire Switch 11 SW5",
+          "Acer Swift X zpravidla všechny",
+          "ASUS ZenBook 14 UX434FAC",
+          "ASUS Zenbook UX5401Z",
+          "Panasonic Toughbook CF-MX4",
+          "Panasonic Toughbook CF-33",
+          "Samsung Galaxy Book Pro 360",
+          "Lg Gram 17Z90Q"
+        ],
+        "testPromenne3": [
+          "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        ]
+      }
+    ]
+  },
   "adminDeliveryHelper": {
     "columns": [
       "doprava",
