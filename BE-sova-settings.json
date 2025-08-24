@@ -411,7 +411,7 @@
         "recipient": "%%(userEmail &\", lukas.tejral@pocitarna.cz\")%%",
         "CCrecipient": "tejral@pocitarna.cz",
         "subject": "%%(\"Vaše objednávka \"& orderCode)%%",
-        "body": "<p>Dobrý den %% customerName %%,</p>\r\n<p>posíláme podklady k objednávce <strong>%% orderCode %%</strong>. Najdete je níže.</p>\r\n<p>Děkujeme za nákup a přejeme hezký den.</p>\r\n<p>toto je cena %%suma(items:totalPrice)%%</p>\r\n\n",
+        "body": "<p>Dobrý den %% customerName %%,</p>\n<p>posíláme podklady k objednávce <strong>%% orderCode %%</strong>. Najdete je níže.</p>\n<p>Děkujeme za nákup a přejeme hezký den.</p>\n<p>toto je cena %%suma(items:totalPrice)%%</p>",
         "attachments": [
           "faktury",
           "zalohoveFaktury",
