@@ -353,7 +353,7 @@
         "buttonName": "testolB",
         "color": "orange",
         "function": "testSOVA",
-        "parameters": "(\"ddddddddddd\")",
+        "parameters": "ddddddddddd",
         "url": "objednavka",
         "position": "buttonsHeaderLeft",
         "order": -1,
