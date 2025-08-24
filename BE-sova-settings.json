@@ -502,7 +502,7 @@
         "position": "buttonsHeaderRight",
         "order": -5,
         "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
-        "href": "(\"/admin/prehled-objednavek/\"&statusId&\"/\")",
+        "href": "%%\"/admin/prehled-objednavek/\"&statusId&\"/\"%%",
         "newTab": true
       }
     ]
