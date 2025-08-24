@@ -351,7 +351,7 @@
       },
       {
         "buttonName": "testolB",
-        "color": "black",
+        "color": "orange",
         "function": "testSOVA",
         "parameters": "(\"ddddddddddd\")",
         "url": "objednavka",
