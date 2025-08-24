@@ -348,6 +348,16 @@
         "position": "buttonsHeaderLeft",
         "order": -1,
         "conditionsSOVAL": "%%(customerName=\"Test Testovič\")AND(5000<(SUMIF(items:totalPrice)))%%"
+      },
+      {
+        "buttonName": "testolB",
+        "color": "black",
+        "function": "testSOVA",
+        "parameters": "(\"ddddddddddd\")",
+        "url": "objednavka",
+        "position": "buttonsHeaderLeft",
+        "order": -1,
+        "conditionsSOVAL": "%%(customerName=\"Test Testovič\")AND(5000<(SUMIF(items:totalPrice)))%%"
       }
     ]
   },
