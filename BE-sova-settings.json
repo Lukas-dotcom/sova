@@ -522,7 +522,7 @@
           3,
           "h45"
         ],
-        "testPromenne3": "<SOVAL>userName=\"Lukáš\"<ENDSOVAL>"
+        "testPromenne3": "%%userName=\"Lukáš\"%%"
       }
     ]
   },
