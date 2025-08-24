@@ -456,8 +456,8 @@
         "color": "purple",
         "order": null,
         "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
-        "targetStatus": "(\"Odeslat\")",
-        "openTargetStatus": "(\"true\")"
+        "targetStatus": "Odeslat",
+        "openTargetStatus": true
       }
     ]
   },
