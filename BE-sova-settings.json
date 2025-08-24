@@ -427,7 +427,7 @@
         "buttonName": "testMail",
         "color": "yellow",
         "order": null,
-        "conditionsSOVAL": "%%statusID=-1%%",
+        "conditionsSOVAL": "%%statusID=\"-1\"%%",
         "recipient": "%%(userEmail &\", lukas.tejral@pocitarna.cz\")%%",
         "CCrecipient": "tejral@pocitarna.cz",
         "subject": "%%(\"Vaše objednávka \"& orderCode)%%",
