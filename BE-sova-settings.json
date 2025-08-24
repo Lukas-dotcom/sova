@@ -396,7 +396,7 @@
         "url": "objednavka",
         "position": "buttonsAboveTabsRight",
         "order": null,
-        "conditionsSOVAL": "%%(ANY (items, contains(items:Kod, \"TUITO\")))%%",
+        "conditionsSOVAL": "%%(ANY (items, contains(items:code, \"TUITO\")))%%",
         "recipient": "%%(userEmail &\", lukas.tejral@pocitarna.cz\")%%",
         "CCrecipient": "tejral@pocitarna.cz",
         "subject": "%%(\"Vaše objednávka \"& orderCode)%%",
