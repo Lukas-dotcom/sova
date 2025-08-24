@@ -397,7 +397,8 @@
       "CCrecipient",
       "subject",
       "body",
-      "attachments"
+      "attachments",
+      "eml"
     ],
     "rules": [
       {
@@ -416,7 +417,8 @@
           "zalohoveFaktury",
           "dobropisy",
           "DodaciListy"
-        ]
+        ],
+        "eml": true
       }
     ]
   },
