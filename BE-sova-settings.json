@@ -410,7 +410,7 @@
         "recipient": "%%(userEmail &\", lukas.tejral@pocitarna.cz\")%%",
         "CCrecipient": "tejral@pocitarna.cz",
         "subject": "%%(\"Vaše objednávka \"& orderCode)%%",
-        "body": null,
+        "body": "Dobrý den %%customerName%%,",
         "attachments": [
           "faktury",
           "zalohoveFaktury",
