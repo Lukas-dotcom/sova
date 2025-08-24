@@ -479,7 +479,7 @@
         "position": "buttonsHeaderLeft",
         "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
         "targetStatus": "Odeslat",
-        "openAfterChange": "(\"/admin/prehled-objednavek/\"&statusId&\"/\")"
+        "openAfterChange": "%%(\"/admin/prehled-objednavek/\"&statusId&\"/\")%%"
       }
     ]
   },
