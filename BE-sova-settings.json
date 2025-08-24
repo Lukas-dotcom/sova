@@ -501,7 +501,7 @@
         "url": "objednavka",
         "position": "buttonsHeaderRight",
         "order": -5,
-        "conditionsSOVAL": "(status=\"Nevyřízená\")",
+        "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
         "href": "(\"/admin/prehled-objednavek/\"&statusId&\"/\")",
         "newTab": true
       }
