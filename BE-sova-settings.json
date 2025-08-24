@@ -514,6 +514,16 @@
         "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
         "href": "%%\"/admin/prehled-objednavek/\"&statusId&\"/\"%%",
         "newTab": true
+      },
+      {
+        "buttonName": "Link mulit tlačítko",
+        "color": "brown",
+        "url": "objednavka",
+        "position": "buttonsHeaderRight",
+        "order": -5,
+        "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
+        "href": "%%\"/admin/prehled-objednavek/\"&statusId&\"/\"%%",
+        "newTab": true
       }
     ]
   },
