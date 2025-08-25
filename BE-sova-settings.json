@@ -607,11 +607,10 @@
       "predifinedRequests",
       "requestsStyle",
       "positionSettings",
-      "",
+      "order",
       "positionRequests",
       "conditionsSOVAL",
-      "color",
-      "order"
+      "color"
     ],
     "rules": [
       {
@@ -621,11 +620,10 @@
         ],
         "requestsStyle": "rows",
         "positionSettings": "downSection",
-        "": null,
+        "order": null,
         "positionRequests": "endOfT2",
         "conditionsSOVAL": null,
-        "color": "orange",
-        "order": null
+        "color": "orange"
       },
       {
         "requestType": "servis",
@@ -634,11 +632,10 @@
         ],
         "requestsStyle": "tags",
         "positionSettings": "downSection",
-        "": null,
+        "order": null,
         "positionRequests": "endOfT1",
         "conditionsSOVAL": null,
-        "color": "purple",
-        "order": null
+        "color": "purple"
       }
     ]
   },
