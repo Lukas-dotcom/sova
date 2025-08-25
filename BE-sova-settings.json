@@ -611,7 +611,8 @@
       "orderSettings",
       "positionRequests",
       "orderRequests",
-      "conditionsSOVAL",
+      "conditionsRequests",
+      "",
       "color"
     ],
     "rules": [
@@ -626,7 +627,8 @@
         "orderSettings": null,
         "positionRequests": "endOfT2",
         "orderRequests": null,
-        "conditionsSOVAL": null,
+        "conditionsRequests": null,
+        "": null,
         "color": "orange"
       },
       {
@@ -640,7 +642,8 @@
         "orderSettings": null,
         "positionRequests": "endOfT1",
         "orderRequests": null,
-        "conditionsSOVAL": null,
+        "conditionsRequests": null,
+        "": null,
         "color": "purple"
       }
     ]
