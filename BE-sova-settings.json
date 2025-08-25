@@ -618,7 +618,7 @@
           0
         ],
         "requestsStyle": "rows",
-        "positionSettings": null,
+        "positionSettings": "endOfT2",
         "positionRequests": null,
         "conditionsSOVAL": null,
         "color": "orange"
@@ -629,7 +629,7 @@
           0
         ],
         "requestsStyle": "tags",
-        "positionSettings": null,
+        "positionSettings": "endOfT1",
         "positionRequests": null,
         "conditionsSOVAL": null,
         "color": "purple"
