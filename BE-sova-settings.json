@@ -617,7 +617,7 @@
         "predifinedRequests": [
           0
         ],
-        "requestsStyle": null,
+        "requestsStyle": "rows",
         "positionSettings": null,
         "positionRequests": null,
         "conditionsSOVAL": null,
@@ -628,7 +628,7 @@
         "predifinedRequests": [
           0
         ],
-        "requestsStyle": null,
+        "requestsStyle": "tags",
         "positionSettings": null,
         "positionRequests": null,
         "conditionsSOVAL": null,
