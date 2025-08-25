@@ -510,7 +510,7 @@
         "openTargetStatus": true
       },
       {
-        "buttonName": "Odeslat",
+        "buttonName": "Odeslat M",
         "color": "purple",
         "order": null,
         "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
