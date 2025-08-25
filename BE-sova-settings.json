@@ -432,7 +432,8 @@
       "CCrecipient",
       "subject",
       "body",
-      "attachments"
+      "attachments",
+      "eml"
     ],
     "rules": [
       {
@@ -449,7 +450,25 @@
           "zalohoveFaktury",
           "dobropisy",
           "DodaciListy"
-        ]
+        ],
+        "eml": null
+      },
+      {
+        "buttonName": "testMail",
+        "color": "yellow",
+        "order": null,
+        "conditionsSOVAL": "%%statusID=\"-1\"%%",
+        "recipient": "%% if(it.paymentStatus = 'Nezaplaceno', 'fakturace@firma.cz', 'obchod@firma.cz') %%",
+        "CCrecipient": "%% if(contains(it.deliveryTypeName, \"PPL\"), \"logistika@firma.cz\",\"\") %%",
+        "subject": "Vaše objednávka %% it.code %%",
+        "body": "Dobrý den %% it.customer %%,\n\nděkujeme za objednávku %% it.code %% v hodnotě %% it.price %% %% it.currency %%.\n\nHezký den,\nTým Počítrárna ",
+        "attachments": [
+          "faktury",
+          "zalohoveFaktury",
+          "dobropisy",
+          "DodaciListy"
+        ],
+        "eml": null
       }
     ]
   },
