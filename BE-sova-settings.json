@@ -518,7 +518,7 @@
       "order",
       "position",
       "conditionsSOVAL",
-      "targetStatus",
+      "targetStatusID",
       "openAfterChange"
     ],
     "rules": [
@@ -528,7 +528,7 @@
         "order": null,
         "position": "buttonsHeaderLeft",
         "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
-        "targetStatus": 89,
+        "targetStatusID": 89,
         "openAfterChange": "%%(\"/admin/prehled-objednavek/\"&statusId&\"/\")%%"
       }
     ]
