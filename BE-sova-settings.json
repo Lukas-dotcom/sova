@@ -605,6 +605,7 @@
     "columns": [
       "requestType",
       "predifinedRequests",
+      "customeRequests",
       "requestsStyle",
       "positionSettings",
       "orderSettings",
@@ -619,6 +620,7 @@
         "predifinedRequests": [
           0
         ],
+        "customeRequests": null,
         "requestsStyle": "rows",
         "positionSettings": "downSection",
         "orderSettings": null,
@@ -632,6 +634,7 @@
         "predifinedRequests": [
           0
         ],
+        "customeRequests": null,
         "requestsStyle": "tags",
         "positionSettings": "downSection",
         "orderSettings": null,
