@@ -609,6 +609,7 @@
       "positionSettings",
       "orderSettings",
       "positionRequests",
+      "orderSettings",
       "conditionsSOVAL",
       "color"
     ],
