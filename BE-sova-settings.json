@@ -506,7 +506,15 @@
         "color": "purple",
         "order": null,
         "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
-        "targetStatus": "Odeslat",
+        "targetStatus": 3,
+        "openTargetStatus": true
+      },
+      {
+        "buttonName": "Odeslat",
+        "color": "purple",
+        "order": null,
+        "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
+        "targetStatus": 3,
         "openTargetStatus": true
       }
     ]
