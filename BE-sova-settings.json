@@ -614,7 +614,9 @@
     "rules": [
       {
         "requestType": "expe",
-        "predifinedRequests": null,
+        "predifinedRequests": [
+          0
+        ],
         "requestsStyle": null,
         "positionSettings": null,
         "positionRequests": null,
@@ -623,7 +625,9 @@
       },
       {
         "requestType": "servis",
-        "predifinedRequests": null,
+        "predifinedRequests": [
+          0
+        ],
         "requestsStyle": null,
         "positionSettings": null,
         "positionRequests": null,
