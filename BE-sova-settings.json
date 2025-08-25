@@ -621,7 +621,7 @@
         "positionSettings": null,
         "positionRequests": null,
         "conditionsSOVAL": null,
-        "color": null
+        "color": "orange"
       },
       {
         "requestType": "servis",
@@ -632,7 +632,7 @@
         "positionSettings": null,
         "positionRequests": null,
         "conditionsSOVAL": null,
-        "color": null
+        "color": "purple"
       }
     ]
   },
