@@ -562,7 +562,10 @@
         "position": "buttonsHeaderRight",
         "order": -6,
         "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
-        "href": "[%%\"/admin/prehled-objednavek/\"&statusId&\"/\"%%, /admin/prehled-objednavek/2/",
+        "href": [
+          "%%\"/admin/prehled-objednavek/\"&statusId&\"/\"%%",
+          "/admin/prehled-objednavek/2/"
+        ],
         "newTab": true
       }
     ]
