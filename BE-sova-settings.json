@@ -609,7 +609,8 @@
       "positionSettings",
       "positionRequests",
       "conditionsSOVAL",
-      "color"
+      "color",
+      "order"
     ],
     "rules": [
       {
@@ -621,7 +622,8 @@
         "positionSettings": "endOfT2",
         "positionRequests": null,
         "conditionsSOVAL": null,
-        "color": "orange"
+        "color": "orange",
+        "order": null
       },
       {
         "requestType": "servis",
@@ -632,7 +634,8 @@
         "positionSettings": "endOfT1",
         "positionRequests": null,
         "conditionsSOVAL": null,
-        "color": "purple"
+        "color": "purple",
+        "order": null
       }
     ]
   },
