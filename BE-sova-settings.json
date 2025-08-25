@@ -422,7 +422,7 @@
       },
       {
         "buttonName": "testMail",
-        "color": "yellow",
+        "color": "green",
         "url": "objednavka",
         "position": "buttonsAboveTabsRight",
         "order": null,
