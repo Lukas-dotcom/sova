@@ -474,7 +474,7 @@
       },
       {
         "buttonName": "testMailEML",
-        "color": "yellow",
+        "color": "black",
         "order": null,
         "conditionsSOVAL": "%%statusID=\"-1\"%%",
         "recipient": "%% if(it.paymentStatus = 'Nezaplaceno', 'fakturace@firma.cz', 'obchod@firma.cz') %%",
