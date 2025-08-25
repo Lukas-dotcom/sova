@@ -607,7 +607,7 @@
       "predifinedRequests",
       "requestsStyle",
       "positionSettings",
-      "order",
+      "orderSettings",
       "positionRequests",
       "conditionsSOVAL",
       "color"
@@ -620,7 +620,7 @@
         ],
         "requestsStyle": "rows",
         "positionSettings": "downSection",
-        "order": null,
+        "orderSettings": null,
         "positionRequests": "endOfT2",
         "conditionsSOVAL": null,
         "color": "orange"
@@ -632,7 +632,7 @@
         ],
         "requestsStyle": "tags",
         "positionSettings": "downSection",
-        "order": null,
+        "orderSettings": null,
         "positionRequests": "endOfT1",
         "conditionsSOVAL": null,
         "color": "purple"
