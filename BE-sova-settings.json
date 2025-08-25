@@ -402,7 +402,7 @@
     ],
     "rules": [
       {
-        "buttonName": "testMail",
+        "buttonName": "testMaileml",
         "color": "yellow",
         "url": "objednavka",
         "position": "buttonsAboveTabsRight",
