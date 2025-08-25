@@ -619,8 +619,8 @@
           0
         ],
         "requestsStyle": "rows",
-        "positionSettings": "endOfT2",
-        "positionRequests": null,
+        "positionSettings": null,
+        "positionRequests": "endOfT2",
         "conditionsSOVAL": null,
         "color": "orange",
         "order": null
@@ -631,10 +631,30 @@
           0
         ],
         "requestsStyle": "tags",
-        "positionSettings": "endOfT1",
-        "positionRequests": null,
+        "positionSettings": null,
+        "positionRequests": "endOfT1",
         "conditionsSOVAL": null,
         "color": "purple",
+        "order": null
+      },
+      {
+        "requestType": null,
+        "predifinedRequests": null,
+        "requestsStyle": null,
+        "positionSettings": "downSection",
+        "positionRequests": null,
+        "conditionsSOVAL": null,
+        "color": null,
+        "order": null
+      },
+      {
+        "requestType": null,
+        "predifinedRequests": null,
+        "requestsStyle": null,
+        "positionSettings": "downSection",
+        "positionRequests": null,
+        "conditionsSOVAL": null,
+        "color": null,
         "order": null
       }
     ]
