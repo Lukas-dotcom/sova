@@ -454,7 +454,7 @@
         "eml": null
       },
       {
-        "buttonName": "testMail",
+        "buttonName": "testMailEML",
         "color": "yellow",
         "order": null,
         "conditionsSOVAL": "%%statusID=\"-1\"%%",
@@ -468,7 +468,7 @@
           "dobropisy",
           "DodaciListy"
         ],
-        "eml": null
+        "eml": true
       }
     ]
   },
