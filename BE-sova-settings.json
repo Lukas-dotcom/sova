@@ -607,6 +607,7 @@
       "predifinedRequests",
       "requestsStyle",
       "positionSettings",
+      "",
       "positionRequests",
       "conditionsSOVAL",
       "color",
@@ -619,7 +620,8 @@
           0
         ],
         "requestsStyle": "rows",
-        "positionSettings": null,
+        "positionSettings": "downSection",
+        "": null,
         "positionRequests": "endOfT2",
         "conditionsSOVAL": null,
         "color": "orange",
@@ -631,30 +633,11 @@
           0
         ],
         "requestsStyle": "tags",
-        "positionSettings": null,
+        "positionSettings": "downSection",
+        "": null,
         "positionRequests": "endOfT1",
         "conditionsSOVAL": null,
         "color": "purple",
-        "order": null
-      },
-      {
-        "requestType": null,
-        "predifinedRequests": null,
-        "requestsStyle": null,
-        "positionSettings": "downSection",
-        "positionRequests": null,
-        "conditionsSOVAL": null,
-        "color": null,
-        "order": null
-      },
-      {
-        "requestType": null,
-        "predifinedRequests": null,
-        "requestsStyle": null,
-        "positionSettings": "downSection",
-        "positionRequests": null,
-        "conditionsSOVAL": null,
-        "color": null,
         "order": null
       }
     ]
