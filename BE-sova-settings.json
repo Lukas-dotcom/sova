@@ -513,7 +513,7 @@
         "buttonName": "Odeslat M",
         "color": "purple",
         "order": null,
-        "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
+        "conditionsSOVAL": null,
         "targetStatus": 89,
         "openTargetStatus": null
       }
