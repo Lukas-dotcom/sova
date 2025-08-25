@@ -609,7 +609,7 @@
       "positionSettings",
       "orderSettings",
       "positionRequests",
-      "orderSettings",
+      "orderRequests",
       "conditionsSOVAL",
       "color"
     ],
@@ -623,6 +623,7 @@
         "positionSettings": "downSection",
         "orderSettings": null,
         "positionRequests": "endOfT2",
+        "orderRequests": null,
         "conditionsSOVAL": null,
         "color": "orange"
       },
@@ -635,6 +636,7 @@
         "positionSettings": "downSection",
         "orderSettings": null,
         "positionRequests": "endOfT1",
+        "orderRequests": null,
         "conditionsSOVAL": null,
         "color": "purple"
       }
