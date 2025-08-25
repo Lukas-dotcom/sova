@@ -601,6 +601,37 @@
       }
     ]
   },
+  "orderRequests": {
+    "columns": [
+      "requestType",
+      "predifinedRequests",
+      "requestsStyle",
+      "positionSettings",
+      "positionRequests",
+      "conditionsSOVAL",
+      "color"
+    ],
+    "rules": [
+      {
+        "requestType": "expe",
+        "predifinedRequests": null,
+        "requestsStyle": null,
+        "positionSettings": null,
+        "positionRequests": null,
+        "conditionsSOVAL": null,
+        "color": null
+      },
+      {
+        "requestType": "servis",
+        "predifinedRequests": null,
+        "requestsStyle": null,
+        "positionSettings": null,
+        "positionRequests": null,
+        "conditionsSOVAL": null,
+        "color": null
+      }
+    ]
+  },
   "adminDeliveryHelper": {
     "columns": [
       "doprava",
