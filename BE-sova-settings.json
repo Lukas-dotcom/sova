@@ -557,7 +557,7 @@
       },
       {
         "buttonName": "Link mulit tlačítko",
-        "color": "brown",
+        "color": "black",
         "url": "objednavka",
         "position": "buttonsHeaderRight",
         "order": -6,
