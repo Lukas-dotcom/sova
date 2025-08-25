@@ -540,8 +540,8 @@
         "position": "buttonsHeaderLeft",
         "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
         "targetStatusID": 89,
-        "preventEmail": true,
-        "openAfterChange": "%%(\"/admin/prehled-objednavek/\"&statusId&\"/\")%%"
+        "preventEmail": null,
+        "openAfterChange": null
       }
     ]
   },
