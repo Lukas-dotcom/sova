@@ -621,7 +621,7 @@
         "predifinedRequests": [
           0
         ],
-        "customeRequests": null,
+        "customeRequests": true,
         "requestsStyle": "rows",
         "positionSettings": "downSection",
         "orderSettings": null,
