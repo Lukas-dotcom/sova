@@ -497,7 +497,7 @@
       "color",
       "order",
       "conditionsSOVAL",
-      "targetStatus",
+      "targetStatusID",
       "openTargetStatus"
     ],
     "rules": [
@@ -506,7 +506,7 @@
         "color": "purple",
         "order": null,
         "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
-        "targetStatus": 3,
+        "targetStatusID": 3,
         "openTargetStatus": true
       },
       {
@@ -514,7 +514,7 @@
         "color": "purple",
         "order": null,
         "conditionsSOVAL": null,
-        "targetStatus": 89,
+        "targetStatusID": 89,
         "openTargetStatus": null
       }
     ]
