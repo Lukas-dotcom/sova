@@ -528,7 +528,7 @@
         "order": null,
         "position": "buttonsHeaderLeft",
         "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
-        "targetStatus": "Odeslat",
+        "targetStatus": 89,
         "openAfterChange": "%%(\"/admin/prehled-objednavek/\"&statusId&\"/\")%%"
       }
     ]
