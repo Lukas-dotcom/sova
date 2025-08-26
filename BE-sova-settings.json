@@ -642,7 +642,7 @@
         "orderSettings": -1,
         "conditionsSettings": null,
         "positionRequests": "endOfT2",
-        "orderRequests": null,
+        "orderRequests": -1,
         "conditionsRequests": null,
         "color": "orange"
       },
