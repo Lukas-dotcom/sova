@@ -725,12 +725,14 @@
         "condition": null
       },
       {
-        "inputVariable": null,
+        "inputVariable": "typ",
         "inputName": null,
         "inputPosition": null,
         "order": null,
         "type": "select",
-        "selectOptions": null,
+        "selectOptions": [
+          0
+        ],
         "condition": null
       }
     ]
