@@ -717,7 +717,7 @@
       },
       {
         "inputVariable": "reklamace",
-        "inputName": null,
+        "inputName": "Rekl.",
         "inputPosition": null,
         "order": null,
         "type": "checkbox",
