@@ -860,11 +860,11 @@
     "rules": [
       {
         "button": "DOD přibalit",
-        "text": "Vytiskni a přibal dodací list"
+        "text": "Přibal dodací list"
       },
       {
         "button": "FA přibalit",
-        "text": "Vytiskni a přibal fakturu"
+        "text": "Přibal fakturu"
       },
       {
         "button": "Neposílat MKT",
