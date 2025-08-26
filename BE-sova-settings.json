@@ -621,7 +621,8 @@
       "positionRequests",
       "orderRequests",
       "conditionsRequests",
-      "color"
+      "color",
+      "logs"
     ],
     "rules": [
       {
@@ -644,7 +645,8 @@
         "positionRequests": "endOfT2",
         "orderRequests": -1,
         "conditionsRequests": "%%status=\"Odeslat\"%%",
-        "color": "orange"
+        "color": "orange",
+        "logs": true
       },
       {
         "requestType": "servis",
@@ -661,7 +663,8 @@
         "positionRequests": "endOfT1",
         "orderRequests": null,
         "conditionsRequests": null,
-        "color": "purple"
+        "color": "purple",
+        "logs": null
       }
     ]
   },
