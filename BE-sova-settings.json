@@ -284,6 +284,13 @@
         "url": "objednavka",
         "conditionsSOVAL": "equals(status, 'TEST') AND isGreater(castkaKuhrade, 1000)",
         "windowName": null
+      },
+      {
+        "function": "orderRequests",
+        "parameters": null,
+        "url": null,
+        "conditionsSOVAL": null,
+        "windowName": null
       }
     ]
   },
