@@ -673,7 +673,7 @@
           "externí servis",
           "pročistit"
         ],
-        "customRequests": null,
+        "customRequests": true,
         "requestsStyle": "tags",
         "positionSettings": "downSection",
         "orderSettings": 2,
