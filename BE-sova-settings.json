@@ -718,7 +718,7 @@
       {
         "inputVariable": "reklamace",
         "inputName": "Rekl.",
-        "inputPosition": "column1row1",
+        "inputPosition": "column1row2",
         "order": null,
         "type": "checkbox",
         "selectOptions": null,
