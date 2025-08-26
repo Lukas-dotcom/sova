@@ -288,7 +288,7 @@
       {
         "function": "orderRequests",
         "parameters": null,
-        "url": null,
+        "url": "objednavka",
         "conditionsSOVAL": null,
         "windowName": null
       }
