@@ -627,7 +627,14 @@
       {
         "requestType": "expe",
         "predifinedRequests": [
-          0
+          "Přibal dodací list",
+          "Přibal fakturu",
+          "NE medvídky a letáky",
+          "Nepolepuj klávesnici",
+          "Obal páskou křehké",
+          "Přidej konkrétní vybraný kus",
+          "Vyber hezký kus",
+          "Vyber kus se stavem baterie aspoň 95%"
         ],
         "customRequests": true,
         "requestsStyle": "rows",
