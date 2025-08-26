@@ -707,7 +707,7 @@
         "condition": null
       },
       {
-        "inputVariable": null,
+        "inputVariable": "komise",
         "inputName": null,
         "inputPosition": null,
         "order": null,
