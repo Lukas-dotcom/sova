@@ -855,40 +855,51 @@
   "pozadavkyExpe": {
     "columns": [
       "button",
-      "text"
+      "text",
+      "",
+      "",
+      ""
     ],
     "rules": [
       {
         "button": "DOD přibalit",
-        "text": "Přibal dodací list"
+        "text": "Přibal dodací list",
+        "": null
       },
       {
         "button": "FA přibalit",
-        "text": "Přibal fakturu"
+        "text": "Přibal fakturu",
+        "": null
       },
       {
         "button": "Neposílat MKT",
-        "text": "NE medvídky a letáky"
+        "text": "NE medvídky a letáky",
+        "": null
       },
       {
         "button": "Bez polep",
-        "text": "Nepolepuj klávesnici"
+        "text": "Nepolepuj klávesnici",
+        "": "#N/A"
       },
       {
         "button": "Křehké",
-        "text": "Obal páskou křehké"
+        "text": "Obal páskou křehké",
+        "": null
       },
       {
         "button": "Konkrétní kus",
-        "text": "Přidej konkrétní vybraný kus"
+        "text": "Přidej konkrétní vybraný kus",
+        "": null
       },
       {
         "button": "Hezký kus",
-        "text": "Vyber hezký kus"
+        "text": "Vyber hezký kus",
+        "": null
       },
       {
         "button": "Baterie 95%",
-        "text": "Vyber kus se stavem baterie aspoň 95%"
+        "text": "Vyber kus se stavem baterie aspoň 95%",
+        "": null
       }
     ]
   },
