@@ -710,7 +710,7 @@
         "inputVariable": "komise",
         "inputName": "Kms.",
         "inputPosition": "column1row2",
-        "order": null,
+        "order": 2,
         "type": "checkbox",
         "selectOptions": null,
         "condition": null
@@ -719,7 +719,7 @@
         "inputVariable": "reklamace",
         "inputName": "Rekl.",
         "inputPosition": "column1row2",
-        "order": null,
+        "order": 3,
         "type": "checkbox",
         "selectOptions": null,
         "condition": null
