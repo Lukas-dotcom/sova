@@ -698,7 +698,7 @@
     ],
     "rules": [
       {
-        "inputVariable": null,
+        "inputVariable": "zaruka",
         "inputName": null,
         "inputPosition": "column1row1",
         "order": null,
