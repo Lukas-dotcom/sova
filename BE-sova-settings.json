@@ -640,7 +640,7 @@
         "requestsStyle": "rows",
         "positionSettings": "downSection",
         "orderSettings": -1,
-        "conditionsSettings": null,
+        "conditionsSettings": "%%status=\"Obchod. řešení\"",
         "positionRequests": "endOfT2",
         "orderRequests": -1,
         "conditionsRequests": null,
