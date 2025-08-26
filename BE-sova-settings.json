@@ -667,7 +667,7 @@
         "logs": null
       },
       {
-        "requestType": "servis",
+        "requestType": "jineOddeleni",
         "predifinedRequests": [
           "opravit",
           "externí servis",
