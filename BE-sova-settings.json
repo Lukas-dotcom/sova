@@ -691,6 +691,7 @@
       "inputVariable",
       "inputName",
       "inputPosition",
+      "order",
       "type",
       "selectOptions",
       "condition"
@@ -700,6 +701,7 @@
         "inputVariable": null,
         "inputName": null,
         "inputPosition": "column1row1",
+        "order": null,
         "type": null,
         "selectOptions": null,
         "condition": null
