@@ -708,7 +708,7 @@
       },
       {
         "inputVariable": "komise",
-        "inputName": null,
+        "inputName": "Kms.",
         "inputPosition": null,
         "order": null,
         "type": "checkbox",
