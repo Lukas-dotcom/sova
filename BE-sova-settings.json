@@ -702,7 +702,7 @@
         "inputName": null,
         "inputPosition": "column1row1",
         "order": null,
-        "type": null,
+        "type": "text",
         "selectOptions": null,
         "condition": null
       }
