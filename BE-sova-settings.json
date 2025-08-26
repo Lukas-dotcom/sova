@@ -617,10 +617,10 @@
       "requestsStyle",
       "positionSettings",
       "orderSettings",
+      "conditionsSettings",
       "positionRequests",
       "orderRequests",
       "conditionsRequests",
-      "conditionsSettings",
       "color"
     ],
     "rules": [
@@ -640,10 +640,10 @@
         "requestsStyle": "rows",
         "positionSettings": "downSection",
         "orderSettings": null,
+        "conditionsSettings": null,
         "positionRequests": "endOfT2",
         "orderRequests": null,
         "conditionsRequests": null,
-        "conditionsSettings": null,
         "color": "orange"
       },
       {
@@ -657,10 +657,10 @@
         "requestsStyle": "tags",
         "positionSettings": "downSection",
         "orderSettings": null,
+        "conditionsSettings": null,
         "positionRequests": "endOfT1",
         "orderRequests": null,
         "conditionsRequests": null,
-        "conditionsSettings": null,
         "color": "purple"
       }
     ]
