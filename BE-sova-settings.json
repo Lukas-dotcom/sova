@@ -665,6 +665,24 @@
         "conditionsRequests": null,
         "color": "purple",
         "logs": null
+      },
+      {
+        "requestType": "servis",
+        "predifinedRequests": [
+          "opravit",
+          "externí servis",
+          "pročistit"
+        ],
+        "customRequests": null,
+        "requestsStyle": "tags",
+        "positionSettings": "downSection",
+        "orderSettings": null,
+        "conditionsSettings": null,
+        "positionRequests": "endOfT1",
+        "orderRequests": null,
+        "conditionsRequests": null,
+        "color": "green",
+        "logs": null
       }
     ]
   },
