@@ -676,13 +676,13 @@
         "customRequests": null,
         "requestsStyle": "tags",
         "positionSettings": "downSection",
-        "orderSettings": null,
+        "orderSettings": 2,
         "conditionsSettings": null,
         "positionRequests": "endOfT1",
-        "orderRequests": null,
+        "orderRequests": 2,
         "conditionsRequests": null,
         "color": "green",
-        "logs": null
+        "logs": true
       }
     ]
   },
