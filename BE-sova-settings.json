@@ -649,7 +649,9 @@
       {
         "requestType": "servis",
         "predifinedRequests": [
-          0
+          "opravit",
+          "externí servis",
+          "pročistit"
         ],
         "customRequests": null,
         "requestsStyle": "tags",
