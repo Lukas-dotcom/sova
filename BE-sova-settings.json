@@ -727,7 +727,7 @@
       {
         "inputVariable": "typ",
         "inputName": "Typ",
-        "inputPosition": null,
+        "inputPosition": "column3row2",
         "order": null,
         "type": "select",
         "selectOptions": [
