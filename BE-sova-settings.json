@@ -731,7 +731,9 @@
         "order": null,
         "type": "select",
         "selectOptions": [
-          0
+          "typ a",
+          "druhý typ",
+          "třetí typ"
         ],
         "condition": null
       }
