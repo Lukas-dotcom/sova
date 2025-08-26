@@ -735,7 +735,7 @@
           "druhý typ",
           "třetí typ"
         ],
-        "condition": null
+        "condition": "%%status=\"Nevyřízená\"%%"
       }
     ]
   },
