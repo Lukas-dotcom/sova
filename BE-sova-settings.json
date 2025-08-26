@@ -716,6 +716,15 @@
         "condition": null
       },
       {
+        "inputVariable": "reklamace",
+        "inputName": null,
+        "inputPosition": null,
+        "order": null,
+        "type": "checkbox",
+        "selectOptions": null,
+        "condition": null
+      },
+      {
         "inputVariable": null,
         "inputName": null,
         "inputPosition": null,
