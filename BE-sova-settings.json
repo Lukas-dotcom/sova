@@ -879,7 +879,7 @@
       {
         "button": "Bez polep",
         "text": "Nepolepuj klávesnici",
-        "": "#N/A"
+        "": "#VALUE!"
       },
       {
         "button": "Křehké",
