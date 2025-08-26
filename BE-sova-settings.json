@@ -639,7 +639,7 @@
         "customRequests": true,
         "requestsStyle": "rows",
         "positionSettings": "downSection",
-        "orderSettings": null,
+        "orderSettings": -1,
         "conditionsSettings": null,
         "positionRequests": "endOfT2",
         "orderRequests": null,
