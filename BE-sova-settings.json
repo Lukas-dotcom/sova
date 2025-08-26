@@ -669,9 +669,9 @@
       {
         "requestType": "jineOddeleni",
         "predifinedRequests": [
-          "opravit",
-          "externí servis",
-          "pročistit"
+          "něco udělat",
+          "přehodit jinam",
+          "nene"
         ],
         "customRequests": true,
         "requestsStyle": "tags",
