@@ -686,6 +686,26 @@
       }
     ]
   },
+  "additionalOrderInputs": {
+    "columns": [
+      "inputVariable",
+      "inputName",
+      "inputPosition",
+      "type",
+      "selectOptions",
+      "condition"
+    ],
+    "rules": [
+      {
+        "inputVariable": null,
+        "inputName": null,
+        "inputPosition": "column1row1",
+        "type": null,
+        "selectOptions": null,
+        "condition": null
+      }
+    ]
+  },
   "adminDeliveryHelper": {
     "columns": [
       "doprava",
