@@ -681,7 +681,7 @@
         "positionRequests": "endOfT1",
         "orderRequests": 2,
         "conditionsRequests": null,
-        "color": "green",
+        "color": "brown",
         "logs": true
       }
     ]
