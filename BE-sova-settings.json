@@ -699,7 +699,7 @@
     "rules": [
       {
         "inputVariable": "zaruka",
-        "inputName": null,
+        "inputName": "Zar",
         "inputPosition": "column1row1",
         "order": null,
         "type": "text",
@@ -726,7 +726,7 @@
       },
       {
         "inputVariable": "typ",
-        "inputName": null,
+        "inputName": "typ",
         "inputPosition": null,
         "order": null,
         "type": "select",
