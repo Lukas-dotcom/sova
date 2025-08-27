@@ -712,7 +712,7 @@
         "condition": "%%NOT ALL(req_expe, req_expe:done =\"true\")%%"
       },
       {
-        "Alert": null,
+        "Alert": "Nesedí celková částka dobírky",
         "position": "endOfT2",
         "order": 55,
         "color": "white",
