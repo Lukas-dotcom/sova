@@ -697,6 +697,7 @@
     "columns": [
       "Alert",
       "position",
+      "order",
       "color",
       "backgroundColor",
       "condition"
@@ -705,6 +706,7 @@
       {
         "Alert": null,
         "position": null,
+        "order": 999,
         "color": "white",
         "backgroundColor": "red",
         "condition": "%%NOT ALL(req_expe, req_expe:done =\"true\")%%"
