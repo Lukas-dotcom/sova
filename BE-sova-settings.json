@@ -704,7 +704,7 @@
     ],
     "rules": [
       {
-        "Alert": null,
+        "Alert": "Nejsou splněny všechny požadavky na Expedci!",
         "position": "endOfT2",
         "order": 999,
         "color": "white",
