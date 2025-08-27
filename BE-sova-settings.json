@@ -815,6 +815,33 @@
         "type": null,
         "selectOptions": null,
         "condition": null
+      },
+      {
+        "inputVariable": "aa",
+        "inputName": "aa",
+        "inputPosition": null,
+        "order": null,
+        "type": null,
+        "selectOptions": null,
+        "condition": null
+      },
+      {
+        "inputVariable": "bbb",
+        "inputName": "bbb",
+        "inputPosition": null,
+        "order": null,
+        "type": null,
+        "selectOptions": null,
+        "condition": null
+      },
+      {
+        "inputVariable": "cc",
+        "inputName": "cc",
+        "inputPosition": null,
+        "order": null,
+        "type": null,
+        "selectOptions": null,
+        "condition": null
       }
     ]
   },
