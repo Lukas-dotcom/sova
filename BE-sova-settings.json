@@ -772,13 +772,13 @@
     "columns": [
       "Info",
       "color",
-      "Conditions"
+      "conditions"
     ],
     "rules": [
       {
         "Info": "%%filter(req_expe:request, req_expe:done !=\"true\" )%%",
         "color": "orange",
-        "Conditions": "%%status=\"Odeslat\" or status=\"Odeslat M\"%%"
+        "conditions": "%%status=\"Odeslat\" or status=\"Odeslat M\"%%"
       }
     ]
   },
