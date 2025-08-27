@@ -284,6 +284,13 @@
         "url": "objednavka",
         "conditionsSOVAL": null,
         "windowName": null
+      },
+      {
+        "function": "additionalOrderInputs",
+        "parameters": null,
+        "url": "objednavka",
+        "conditionsSOVAL": null,
+        "windowName": null
       }
     ]
   },
