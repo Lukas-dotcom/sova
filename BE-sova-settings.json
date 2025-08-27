@@ -822,7 +822,11 @@
         "inputPosition": "column3row9",
         "order": 2,
         "type": "select",
-        "selectOptions": null,
+        "selectOptions": [
+          "typ a",
+          "druhý typ",
+          "třetí typ"
+        ],
         "condition": null
       }
     ]
