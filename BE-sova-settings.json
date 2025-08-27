@@ -747,7 +747,7 @@
       {
         "inputVariable": null,
         "inputName": null,
-        "inputPosition": null,
+        "inputPosition": "column3row2",
         "order": null,
         "type": "checkbox",
         "selectOptions": null,
