@@ -793,8 +793,13 @@
         "conditions": "%%status=\"Odeslat\" or status=\"Odeslat M\"%%"
       },
       {
-        "Info": null,
+        "Info": "%%it.code%%",
         "color": "green",
+        "conditions": null
+      },
+      {
+        "Info": "%%it.code%%",
+        "color": null,
         "conditions": null
       }
     ]
