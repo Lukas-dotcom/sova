@@ -707,7 +707,7 @@
       {
         "inputVariable": "zaruka",
         "inputName": "Záruka",
-        "inputPosition": "column4row2",
+        "inputPosition": "column2row2",
         "order": null,
         "type": "text",
         "selectOptions": null,
