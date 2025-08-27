@@ -706,8 +706,8 @@
         "Alert": null,
         "position": null,
         "color": null,
-        "backgroundColor": null,
-        "condition": "%%NOT ALL(req_Expe, req_exe:done =\"true\")%%"
+        "backgroundColor": "red",
+        "condition": "%%NOT ALL(req_expe, req_expe:done =\"true\")%%"
       }
     ]
   },
