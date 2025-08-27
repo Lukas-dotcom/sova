@@ -705,7 +705,7 @@
       {
         "Alert": null,
         "position": null,
-        "color": null,
+        "color": "white",
         "backgroundColor": "red",
         "condition": "%%NOT ALL(req_expe, req_expe:done =\"true\")%%"
       }
