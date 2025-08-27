@@ -293,7 +293,7 @@
         "windowName": null
       },
       {
-        "function": "Alerts",
+        "function": "alerts",
         "parameters": null,
         "url": null,
         "conditionsSOVAL": null,
