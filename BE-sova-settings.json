@@ -788,7 +788,7 @@
         "conditions": "%%status=\"Odeslat\" or status=\"Odeslat M\"%%"
       },
       {
-        "Info": null,
+        "Info": "%%userFullName%%",
         "color": "blue",
         "conditions": null
       }
