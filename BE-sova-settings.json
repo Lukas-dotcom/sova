@@ -724,7 +724,7 @@
         "order": 55,
         "color": "white",
         "backgroundColor": "red",
-        "condition": "%%if(text3=\"\",castkaKuhrade = sumif(zasilky:dobirka, not (zasilky:stav = \"Stornováno\" or zasilky:stav = \"Zažádáno o zrušení\")), text3 = sumif(zasilky:dobirka, not (zasilky:stav = \"Stornováno\" or zasilky:stav = \"Zažádáno o zrušení\")))%%"
+        "condition": "%%not (if(text3=\"\",castkaKuhrade = sumif(zasilky:dobirka, not (zasilky:stav = \"Stornováno\" or zasilky:stav = \"Zažádáno o zrušení\")), text3 = sumif(zasilky:dobirka, not (zasilky:stav = \"Stornováno\" or zasilky:stav = \"Zažádáno o zrušení\"))))%%"
       }
     ]
   },
