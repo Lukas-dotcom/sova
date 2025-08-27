@@ -768,6 +768,20 @@
       }
     ]
   },
+  "ordersTableInfo": {
+    "columns": [
+      "Info",
+      "color",
+      "Conditions"
+    ],
+    "rules": [
+      {
+        "Info": "%% %%",
+        "color": "orange",
+        "Conditions": null
+      }
+    ]
+  },
   "adminDeliveryHelper": {
     "columns": [
       "doprava",
