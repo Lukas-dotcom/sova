@@ -710,6 +710,14 @@
         "color": "white",
         "backgroundColor": "red",
         "condition": "%%NOT ALL(req_expe, req_expe:done =\"true\")%%"
+      },
+      {
+        "Alert": null,
+        "position": null,
+        "order": null,
+        "color": "white",
+        "backgroundColor": "red",
+        "condition": "%%if(text3=\"\",castkaKuhrade = sumif(zasilky:dobirka, not (zasilky:stav = \"Stornováno\" or zasilky:stav = \"Zažádáno o zrušení\")), text3 = sumif(zasilky:dobirka, not (zasilky:stav = \"Stornováno\" or zasilky:stav = \"Zažádáno o zrušení\")))%%"
       }
     ]
   },
