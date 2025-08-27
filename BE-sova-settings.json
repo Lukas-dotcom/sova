@@ -820,7 +820,7 @@
         "inputVariable": "selectt",
         "inputName": "selectt",
         "inputPosition": "column3row9",
-        "order": null,
+        "order": 2,
         "type": "select",
         "selectOptions": null,
         "condition": null
