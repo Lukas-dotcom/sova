@@ -302,7 +302,7 @@
       {
         "function": "ordersTableInfo",
         "parameters": null,
-        "url": null,
+        "url": "objednavky",
         "conditionsSOVAL": null,
         "windowName": null
       }
