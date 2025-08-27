@@ -746,7 +746,7 @@
       },
       {
         "inputVariable": null,
-        "inputName": null,
+        "inputName": "aa",
         "inputPosition": "column3row6",
         "order": null,
         "type": "checkbox",
