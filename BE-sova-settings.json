@@ -706,7 +706,7 @@
     "rules": [
       {
         "inputVariable": "zaruka",
-        "inputName": "Zar.",
+        "inputName": "Záruka",
         "inputPosition": "column4row2",
         "order": null,
         "type": "text",
