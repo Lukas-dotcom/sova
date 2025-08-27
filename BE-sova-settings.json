@@ -745,7 +745,7 @@
         "condition": "%%status=\"Nevyřízená\"%%"
       },
       {
-        "inputVariable": null,
+        "inputVariable": "aa",
         "inputName": "aa",
         "inputPosition": "column3row6",
         "order": null,
@@ -754,7 +754,7 @@
         "condition": null
       },
       {
-        "inputVariable": null,
+        "inputVariable": "bbb",
         "inputName": "bbb",
         "inputPosition": "column3row6",
         "order": null,
@@ -763,8 +763,8 @@
         "condition": null
       },
       {
-        "inputVariable": null,
-        "inputName": null,
+        "inputVariable": "cc",
+        "inputName": "cc",
         "inputPosition": "column3row6",
         "order": null,
         "type": "checkbox",
@@ -772,8 +772,8 @@
         "condition": null
       },
       {
-        "inputVariable": null,
-        "inputName": null,
+        "inputVariable": "dd",
+        "inputName": "dd",
         "inputPosition": "column3row6",
         "order": null,
         "type": "checkbox",
