@@ -811,7 +811,7 @@
         "inputVariable": "hh",
         "inputName": "hh",
         "inputPosition": "column3row9",
-        "order": null,
+        "order": 3,
         "type": "checkbox",
         "selectOptions": null,
         "condition": null
