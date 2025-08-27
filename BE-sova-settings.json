@@ -783,12 +783,12 @@
     ],
     "rules": [
       {
-        "Info": "%%filter(req_expe:request, req_expe:done !=\"true\" )%%",
+        "Info": "%%filter($req_expe:request, $req_expe:done !=\"true\" )%%",
         "color": "orange",
         "conditions": null
       },
       {
-        "Info": "%%userFullName%% nov",
+        "Info": "%%userFullName%% nov ",
         "color": "blue",
         "conditions": "%%status=\"Odeslat\" or status=\"Odeslat M\"%%"
       },
