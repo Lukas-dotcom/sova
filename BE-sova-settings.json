@@ -755,7 +755,7 @@
       },
       {
         "inputVariable": null,
-        "inputName": null,
+        "inputName": "bbb",
         "inputPosition": "column3row6",
         "order": null,
         "type": "checkbox",
