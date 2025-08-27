@@ -779,6 +779,69 @@
         "type": "checkbox",
         "selectOptions": null,
         "condition": null
+      },
+      {
+        "inputVariable": "ee",
+        "inputName": "aa",
+        "inputPosition": null,
+        "order": null,
+        "type": null,
+        "selectOptions": null,
+        "condition": null
+      },
+      {
+        "inputVariable": "ff",
+        "inputName": "bbb",
+        "inputPosition": null,
+        "order": null,
+        "type": null,
+        "selectOptions": null,
+        "condition": null
+      },
+      {
+        "inputVariable": "cc",
+        "inputName": "cc",
+        "inputPosition": null,
+        "order": null,
+        "type": null,
+        "selectOptions": null,
+        "condition": null
+      },
+      {
+        "inputVariable": "dd",
+        "inputName": "dd",
+        "inputPosition": null,
+        "order": null,
+        "type": null,
+        "selectOptions": null,
+        "condition": null
+      },
+      {
+        "inputVariable": "aa",
+        "inputName": "aa",
+        "inputPosition": null,
+        "order": null,
+        "type": null,
+        "selectOptions": null,
+        "condition": null
+      },
+      {
+        "inputVariable": "bbb",
+        "inputName": "bbb",
+        "inputPosition": null,
+        "order": null,
+        "type": null,
+        "selectOptions": null,
+        "condition": null
+      },
+      {
+        "inputVariable": "cc",
+        "inputName": "cc",
+        "inputPosition": null,
+        "order": null,
+        "type": null,
+        "selectOptions": null,
+        "condition": null
       }
     ]
   },
