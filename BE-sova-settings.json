@@ -743,6 +743,42 @@
           "třetí typ"
         ],
         "condition": "%%status=\"Nevyřízená\"%%"
+      },
+      {
+        "inputVariable": null,
+        "inputName": null,
+        "inputPosition": null,
+        "order": null,
+        "type": "checkbox",
+        "selectOptions": null,
+        "condition": null
+      },
+      {
+        "inputVariable": null,
+        "inputName": null,
+        "inputPosition": null,
+        "order": null,
+        "type": "checkbox",
+        "selectOptions": null,
+        "condition": null
+      },
+      {
+        "inputVariable": null,
+        "inputName": null,
+        "inputPosition": null,
+        "order": null,
+        "type": "checkbox",
+        "selectOptions": null,
+        "condition": null
+      },
+      {
+        "inputVariable": null,
+        "inputName": null,
+        "inputPosition": null,
+        "order": null,
+        "type": "checkbox",
+        "selectOptions": null,
+        "condition": null
       }
     ]
   },
