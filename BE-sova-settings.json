@@ -798,8 +798,8 @@
         "conditions": null
       },
       {
-        "Info": "%%it.code%%",
-        "color": null,
+        "Info": "%%code%%",
+        "color": "purple",
         "conditions": null
       }
     ]
