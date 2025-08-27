@@ -796,6 +796,11 @@
         "Info": "%%$code%%",
         "color": "green",
         "conditions": null
+      },
+      {
+        "Info": "%%code%%",
+        "color": "purple",
+        "conditions": null
       }
     ]
   },
