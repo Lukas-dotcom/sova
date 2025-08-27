@@ -291,6 +291,13 @@
         "url": "objednavka",
         "conditionsSOVAL": null,
         "windowName": null
+      },
+      {
+        "function": "Alerts",
+        "parameters": null,
+        "url": null,
+        "conditionsSOVAL": null,
+        "windowName": null
       }
     ]
   },
