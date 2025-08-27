@@ -693,6 +693,24 @@
       }
     ]
   },
+  "Alerts": {
+    "columns": [
+      "Alert",
+      "position",
+      "color",
+      "backgroundColor",
+      "condition"
+    ],
+    "rules": [
+      {
+        "Alert": null,
+        "position": null,
+        "color": null,
+        "backgroundColor": null,
+        "condition": "%%NOT ALL(req_Expe, req_exe:done =\"true\")%%"
+      }
+    ]
+  },
   "additionalOrderInputs": {
     "columns": [
       "inputVariable",
