@@ -785,7 +785,7 @@
         "inputName": "ee",
         "inputPosition": "column3row9",
         "order": null,
-        "type": null,
+        "type": "checkbox",
         "selectOptions": null,
         "condition": null
       },
@@ -794,7 +794,7 @@
         "inputName": "ff",
         "inputPosition": "column3row9",
         "order": null,
-        "type": null,
+        "type": "checkbox",
         "selectOptions": null,
         "condition": null
       },
@@ -803,7 +803,7 @@
         "inputName": "gg",
         "inputPosition": "column3row9",
         "order": null,
-        "type": null,
+        "type": "checkbox",
         "selectOptions": null,
         "condition": null
       },
@@ -812,7 +812,7 @@
         "inputName": "hh",
         "inputPosition": "column3row9",
         "order": null,
-        "type": null,
+        "type": "checkbox",
         "selectOptions": null,
         "condition": null
       }
