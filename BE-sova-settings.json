@@ -788,12 +788,12 @@
         "conditions": null
       },
       {
-        "Info": "%%userFullName%% nov ",
+        "Info": "%%userFullName%% nov",
         "color": "blue",
         "conditions": "%%status=\"Odeslat\" or status=\"Odeslat M\"%%"
       },
       {
-        "Info": "%%it.code%%",
+        "Info": "%%$code%%",
         "color": "green",
         "conditions": null
       },
