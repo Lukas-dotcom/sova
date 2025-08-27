@@ -776,7 +776,7 @@
     ],
     "rules": [
       {
-        "Info": "%% %%",
+        "Info": "%%filter(req_expe:request, req_expe:done !=\"true\" )%%",
         "color": "orange",
         "Conditions": null
       }
