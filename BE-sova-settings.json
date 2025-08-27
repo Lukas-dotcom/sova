@@ -705,7 +705,7 @@
     "rules": [
       {
         "Alert": null,
-        "position": null,
+        "position": "endOfT2",
         "order": 999,
         "color": "white",
         "backgroundColor": "red",
