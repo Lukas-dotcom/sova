@@ -786,6 +786,11 @@
         "Info": "%%filter(req_expe:request, req_expe:done !=\"true\" )%%",
         "color": "orange",
         "conditions": "%%status=\"Odeslat\" or status=\"Odeslat M\"%%"
+      },
+      {
+        "Info": null,
+        "color": "blue",
+        "conditions": null
       }
     ]
   },
