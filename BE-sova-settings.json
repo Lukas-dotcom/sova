@@ -815,6 +815,15 @@
         "type": "checkbox",
         "selectOptions": null,
         "condition": null
+      },
+      {
+        "inputVariable": "selectt",
+        "inputName": "selectt",
+        "inputPosition": "column3row9",
+        "order": null,
+        "type": "select",
+        "selectOptions": null,
+        "condition": null
       }
     ]
   },
