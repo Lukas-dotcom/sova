@@ -801,23 +801,23 @@
   },
   "ordersTableColor": {
     "columns": [
-      "Info",
+      "rowCondition",
       "color",
       "conditions"
     ],
     "rules": [
       {
-        "Info": "%%filter(req_expe:request, done !=\"true\" )%%",
+        "rowCondition": "%%filter(req_expe:request, done !=\"true\" )%%",
         "color": "orange",
         "conditions": null
       },
       {
-        "Info": "%%$userFullName%%",
+        "rowCondition": "%%$userFullName%%",
         "color": "blue",
         "conditions": "%%status=\"Odeslat\" or status=\"Odeslat M\"%%"
       },
       {
-        "Info": "%%code%%",
+        "rowCondition": "%%code%%",
         "color": "green",
         "conditions": null
       }
