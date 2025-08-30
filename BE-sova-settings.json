@@ -807,7 +807,7 @@
     ],
     "rules": [
       {
-        "rowCondition": "%%filter(req_expe:request, done !=\"true\" )%%",
+        "rowCondition": "%%price>5000%%",
         "color": "orange",
         "conditions": null
       },
