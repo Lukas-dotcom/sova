@@ -305,6 +305,13 @@
         "url": "objednavky",
         "conditionsSOVAL": null,
         "windowName": null
+      },
+      {
+        "function": "ordersTableColor",
+        "parameters": null,
+        "url": "objednavky",
+        "conditionsSOVAL": null,
+        "windowName": null
       }
     ]
   },
