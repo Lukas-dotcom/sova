@@ -790,7 +790,7 @@
       {
         "Info": "%%$userFullName%%",
         "color": "blue",
-        "conditions": "%%$status=\"Odeslat\" or $status=\"Odeslat M\"%%"
+        "conditions": "%%status=\"Odeslat\" or status=\"Odeslat M\"%%"
       },
       {
         "Info": "%%code%%",
