@@ -808,7 +808,7 @@
     "rules": [
       {
         "rowCondition": "%%price>5000%%",
-        "color": "orange",
+        "color": "yellow",
         "conditions": null
       },
       {
