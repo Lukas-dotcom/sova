@@ -812,7 +812,7 @@
         "conditions": null
       },
       {
-        "rowCondition": "%%$userFullName%%",
+        "rowCondition": "%%currency=\"€\"%%",
         "color": "blue",
         "conditions": "%%status=\"Odeslat\" or status=\"Odeslat M\"%%"
       },
