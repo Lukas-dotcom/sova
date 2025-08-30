@@ -793,7 +793,7 @@
         "conditions": "%%status=\"Odeslat\" or status=\"Odeslat M\"%%"
       },
       {
-        "Info": "%%$code%%",
+        "Info": "%%code%%",
         "color": "green",
         "conditions": null
       }
