@@ -817,7 +817,7 @@
         "conditions": "%%status=\"Odeslat\" or status=\"Odeslat M\"%%"
       },
       {
-        "rowCondition": "%%code%%",
+        "rowCondition": "%%deliveryType = \"PPL smart\"%%",
         "color": "green",
         "conditions": null
       }
