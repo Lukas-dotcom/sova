@@ -225,21 +225,21 @@
       {
         "function": "pridatStitikyvPrehledu",
         "parameters": null,
-        "pageType": "/admin/ceny/",
+        "pageType": "ceny",
         "conditionsSOVAL": null,
         "windowName": null
       },
       {
         "function": "pridatParametry",
         "parameters": null,
-        "pageType": "/admin/ceny/",
+        "pageType": "ceny",
         "conditionsSOVAL": null,
         "windowName": null
       },
       {
         "function": "priznakEmail",
         "parameters": null,
-        "pageType": "/admin/ceny/",
+        "pageType": "ceny",
         "conditionsSOVAL": null,
         "windowName": null
       },
