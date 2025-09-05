@@ -302,14 +302,14 @@
       {
         "function": "ordersTableInfo",
         "parameters": null,
-        "pageType": "objednavky",
+        "pageType": "prehled-objednavek",
         "conditionsSOVAL": null,
         "windowName": null
       },
       {
         "function": "ordersTableColor",
         "parameters": null,
-        "pageType": "objednavky",
+        "pageType": "prehled-objednavek",
         "conditionsSOVAL": null,
         "windowName": null
       }
