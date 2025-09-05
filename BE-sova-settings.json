@@ -253,28 +253,28 @@
       {
         "function": "adminDeliveryHelper",
         "parameters": null,
-        "pageType": "/admin/objednavky-detail/",
+        "pageType": "objednavky-detail",
         "conditionsSOVAL": null,
         "windowName": null
       },
       {
         "function": "mazatTrackingPriOdstraneniZasilky",
         "parameters": null,
-        "pageType": "/admin/objednavky-detail/",
+        "pageType": "objednavky-detail",
         "conditionsSOVAL": null,
         "windowName": null
       },
       {
         "function": "priznakyVobjednavkach",
         "parameters": null,
-        "pageType": "/admin/objednavky-detail/",
+        "pageType": "objednavky-detail",
         "conditionsSOVAL": null,
         "windowName": null
       },
       {
         "function": "priznakEmail",
         "parameters": null,
-        "pageType": "/admin/objednavky-detail/",
+        "pageType": "objednavky-detail",
         "conditionsSOVAL": null,
         "windowName": null
       },
