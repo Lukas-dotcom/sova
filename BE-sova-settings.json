@@ -585,7 +585,7 @@
     "columns": [
       "buttonName",
       "color",
-      "url",
+      "pageType",
       "position",
       "order",
       "conditionsSOVAL",
@@ -596,7 +596,7 @@
       {
         "buttonName": "Link tlačítko",
         "color": "brown",
-        "url": "objednavka",
+        "pageType": "objednavky-detail",
         "position": "buttonsHeaderRight",
         "order": -5,
         "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
@@ -606,7 +606,7 @@
       {
         "buttonName": "Link mulit tlačítko",
         "color": "black",
-        "url": "objednavka",
+        "pageType": "objednavky-detail",
         "position": "buttonsHeaderRight",
         "order": -6,
         "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
