@@ -281,14 +281,14 @@
       {
         "function": "orderRequests",
         "parameters": null,
-        "pageType": "objednavka",
+        "pageType": "objednavky-detail",
         "conditionsSOVAL": null,
         "windowName": null
       },
       {
         "function": "additionalOrderInputs",
         "parameters": null,
-        "pageType": "objednavka",
+        "pageType": "objednavky-detail",
         "conditionsSOVAL": null,
         "windowName": null
       },
