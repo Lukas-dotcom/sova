@@ -417,7 +417,7 @@
     "columns": [
       "buttonName",
       "color",
-      "url",
+      "pageType",
       "position",
       "order",
       "conditionsSOVAL",
@@ -432,7 +432,7 @@
       {
         "buttonName": "testMaileml",
         "color": "yellow",
-        "url": "objednavka",
+        "pageType": "objednavky-detail",
         "position": "buttonsAboveTabsRight",
         "order": null,
         "conditionsSOVAL": "%%(ANY (items, contains(items:code, \"TUITO\")))%%",
@@ -451,7 +451,7 @@
       {
         "buttonName": "testMail",
         "color": "green",
-        "url": "objednavka",
+        "pageType": "objednavky-detail",
         "position": "buttonsAboveTabsRight",
         "order": null,
         "conditionsSOVAL": "%%(ANY (items, contains(items:code, \"TUITO\")))%%",
