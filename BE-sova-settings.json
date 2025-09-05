@@ -210,7 +210,7 @@
     "columns": [
       "function",
       "parameters",
-      "url",
+      "pageType",
       "conditionsSOVAL",
       "windowName"
     ],
@@ -218,98 +218,98 @@
       {
         "function": "sidebarHide",
         "parameters": null,
-        "url": null,
+        "pageType": null,
         "conditionsSOVAL": null,
         "windowName": null
       },
       {
         "function": "pridatStitikyvPrehledu",
         "parameters": null,
-        "url": "/admin/ceny/",
+        "pageType": "/admin/ceny/",
         "conditionsSOVAL": null,
         "windowName": null
       },
       {
         "function": "pridatParametry",
         "parameters": null,
-        "url": "/admin/ceny/",
+        "pageType": "/admin/ceny/",
         "conditionsSOVAL": null,
         "windowName": null
       },
       {
         "function": "priznakEmail",
         "parameters": null,
-        "url": "/admin/ceny/",
+        "pageType": "/admin/ceny/",
         "conditionsSOVAL": null,
         "windowName": null
       },
       {
         "function": "sablonyClanky",
         "parameters": null,
-        "url": "/admin/clanek-rubrika-detail/",
+        "pageType": "/admin/clanek-rubrika-detail/",
         "conditionsSOVAL": null,
         "windowName": null
       },
       {
         "function": "adminDeliveryHelper",
         "parameters": null,
-        "url": "/admin/objednavky-detail/",
+        "pageType": "/admin/objednavky-detail/",
         "conditionsSOVAL": null,
         "windowName": null
       },
       {
         "function": "mazatTrackingPriOdstraneniZasilky",
         "parameters": null,
-        "url": "/admin/objednavky-detail/",
+        "pageType": "/admin/objednavky-detail/",
         "conditionsSOVAL": null,
         "windowName": null
       },
       {
         "function": "priznakyVobjednavkach",
         "parameters": null,
-        "url": "/admin/objednavky-detail/",
+        "pageType": "/admin/objednavky-detail/",
         "conditionsSOVAL": null,
         "windowName": null
       },
       {
         "function": "priznakEmail",
         "parameters": null,
-        "url": "/admin/objednavky-detail/",
+        "pageType": "/admin/objednavky-detail/",
         "conditionsSOVAL": null,
         "windowName": null
       },
       {
         "function": "orderRequests",
         "parameters": null,
-        "url": "objednavka",
+        "pageType": "objednavka",
         "conditionsSOVAL": null,
         "windowName": null
       },
       {
         "function": "additionalOrderInputs",
         "parameters": null,
-        "url": "objednavka",
+        "pageType": "objednavka",
         "conditionsSOVAL": null,
         "windowName": null
       },
       {
         "function": "alerts",
         "parameters": null,
-        "url": null,
+        "pageType": null,
         "conditionsSOVAL": null,
         "windowName": null
       },
       {
         "function": "ordersTableInfo",
         "parameters": null,
-        "url": "objednavky",
+        "pageType": "objednavky",
         "conditionsSOVAL": null,
         "windowName": null
       },
       {
         "function": "ordersTableColor",
         "parameters": null,
-        "url": "objednavky",
+        "pageType": "objednavky",
         "conditionsSOVAL": null,
         "windowName": null
       }
