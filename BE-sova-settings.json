@@ -395,7 +395,7 @@
       "color",
       "function",
       "parameters",
-      "url",
+      "pageType",
       "position",
       "order",
       "conditionsSOVAL"
@@ -406,7 +406,7 @@
         "color": "green",
         "function": "testSOVA",
         "parameters": null,
-        "url": "objednavky-detail",
+        "pageType": "objednavky-detail",
         "position": "buttonsHeaderLeft",
         "order": -1,
         "conditionsSOVAL": "%%(customerName=\"Test Testovič\")AND(5000<(SUMIF(items:totalPrice)))%%"
