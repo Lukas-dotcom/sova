@@ -321,7 +321,7 @@
       "color",
       "function",
       "parameters",
-      "url",
+      "pageType",
       "position",
       "order",
       "conditionsSOVAL"
@@ -332,7 +332,7 @@
         "color": null,
         "function": "raditHodnotyFiltru",
         "parameters": null,
-        "url": "/parametry-pro-filtrovani-vypis/",
+        "pageType": "/parametry-pro-filtrovani-vypis/",
         "position": "buttonsHeaderLeft",
         "order": null,
         "conditionsSOVAL": null
@@ -342,7 +342,7 @@
         "color": null,
         "function": "paramSortingSingle",
         "parameters": null,
-        "url": "/parametry-pro-filtrovani-detail/",
+        "pageType": "/parametry-pro-filtrovani-detail/",
         "position": "buttonsHeaderLeft",
         "order": null,
         "conditionsSOVAL": null
@@ -352,7 +352,7 @@
         "color": null,
         "function": null,
         "parameters": null,
-        "url": "/html-kody/",
+        "pageType": "/html-kody/",
         "position": "buttonsHeaderLeft",
         "order": null,
         "conditionsSOVAL": null
@@ -362,7 +362,7 @@
         "color": "red",
         "function": "testSOVA",
         "parameters": "(\"ddddddddddd\")",
-        "url": "objednavka",
+        "pageType": "objednavka",
         "position": "buttonsHeaderLeft",
         "order": null,
         "conditionsSOVAL": null
@@ -372,7 +372,7 @@
         "color": "black",
         "function": "testSOVA",
         "parameters": "(\"ddddddddddd\")",
-        "url": "objednavka",
+        "pageType": "objednavka",
         "position": "buttonsHeaderLeft",
         "order": -1,
         "conditionsSOVAL": "%%(customerName=\"Test Testovič\")AND(5000<(SUMIF(items:totalPrice)))%%"
@@ -382,7 +382,7 @@
         "color": "orange",
         "function": "testSOVA",
         "parameters": "ddddddddddd",
-        "url": "objednavka",
+        "pageType": "objednavka",
         "position": "buttonsHeaderLeft",
         "order": -1,
         "conditionsSOVAL": "%%(customerName=\"Test Testovič\")AND(5000<(SUMIF(items:totalPrice)))%%"
