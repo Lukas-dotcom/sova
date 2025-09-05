@@ -246,7 +246,7 @@
       {
         "function": "sablonyClanky",
         "parameters": null,
-        "pageType": "/admin/clanek-rubrika-detail/",
+        "pageType": "clanek-rubrika-detail",
         "conditionsSOVAL": null,
         "windowName": null
       },
