@@ -342,7 +342,7 @@
         "color": null,
         "function": "paramSortingSingle",
         "parameters": null,
-        "pageType": "/parametry-pro-filtrovani-detail/",
+        "pageType": "parametry-pro-filtrovani-detail",
         "position": "buttonsHeaderLeft",
         "order": null,
         "conditionsSOVAL": null
@@ -352,7 +352,7 @@
         "color": null,
         "function": null,
         "parameters": null,
-        "pageType": "/html-kody/",
+        "pageType": "html-kody",
         "position": "buttonsHeaderLeft",
         "order": null,
         "conditionsSOVAL": null
