@@ -362,7 +362,7 @@
         "color": "red",
         "function": "testSOVA",
         "parameters": "(\"ddddddddddd\")",
-        "pageType": "objednavka",
+        "pageType": "objednavky-detail",
         "position": "buttonsHeaderLeft",
         "order": null,
         "conditionsSOVAL": null
@@ -372,7 +372,7 @@
         "color": "black",
         "function": "testSOVA",
         "parameters": "(\"ddddddddddd\")",
-        "pageType": "objednavka",
+        "pageType": "objednavky-detail",
         "position": "buttonsHeaderLeft",
         "order": -1,
         "conditionsSOVAL": "%%(customerName=\"Test Testovič\")AND(5000<(SUMIF(items:totalPrice)))%%"
@@ -382,7 +382,7 @@
         "color": "orange",
         "function": "testSOVA",
         "parameters": "ddddddddddd",
-        "pageType": "objednavka",
+        "pageType": "objednavky-detail",
         "position": "buttonsHeaderLeft",
         "order": -1,
         "conditionsSOVAL": "%%(customerName=\"Test Testovič\")AND(5000<(SUMIF(items:totalPrice)))%%"
