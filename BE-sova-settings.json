@@ -634,15 +634,21 @@
       "testPromenne2",
       "testPromenne3",
       "testPromenne-pageType",
-      "testPromenne2",
+      "testPromenne2-pageType",
       "testPromenne3"
     ],
     "rules": [
       {
         "testPromenne": "Adam",
-        "testPromenne2": null,
+        "testPromenne2": [
+          5,
+          4,
+          3,
+          "h45"
+        ],
         "testPromenne3": null,
-        "testPromenne-pageType": null
+        "testPromenne-pageType": null,
+        "testPromenne2-pageType": null
       }
     ]
   },
