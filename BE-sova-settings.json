@@ -632,18 +632,16 @@
     "columns": [
       "testPromenne",
       "testPromenne2",
+      "testPromenne3",
+      "testPromenne",
+      "testPromenne2",
       "testPromenne3"
     ],
     "rules": [
       {
-        "testPromenne": "Adam",
-        "testPromenne2": [
-          5,
-          4,
-          3,
-          "h45"
-        ],
-        "testPromenne3": "%%userName=\"Lukáš\"%%"
+        "testPromenne": null,
+        "testPromenne2": null,
+        "testPromenne3": null
       }
     ]
   },
