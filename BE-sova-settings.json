@@ -635,7 +635,7 @@
       "testPromenne3",
       "testPromenne-pageType",
       "testPromenne2-pageType",
-      "testPromenne3"
+      "testPromenne3-pageType"
     ],
     "rules": [
       {
@@ -646,9 +646,10 @@
           3,
           "h45"
         ],
-        "testPromenne3": null,
+        "testPromenne3": "%%userName=\"Lukáš\"%%",
         "testPromenne-pageType": null,
-        "testPromenne2-pageType": null
+        "testPromenne2-pageType": null,
+        "testPromenne3-pageType": null
       }
     ]
   },
