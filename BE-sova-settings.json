@@ -632,10 +632,7 @@
     "columns": [
       "testPromenne",
       "testPromenne2",
-      "testPromenne3",
-      "testPromenne-pageType",
-      "testPromenne2-pageType",
-      "testPromenne3-pageType"
+      "testPromenne3"
     ],
     "rules": [
       {
@@ -646,10 +643,7 @@
           3,
           "h45"
         ],
-        "testPromenne3": "%%userName=\"Lukáš\"%%",
-        "testPromenne-pageType": null,
-        "testPromenne2-pageType": null,
-        "testPromenne3-pageType": null
+        "testPromenne3": "%%userName=\"Lukáš\"%%"
       }
     ]
   },
