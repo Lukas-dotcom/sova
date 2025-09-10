@@ -726,7 +726,7 @@
   },
   "Alerts": {
     "columns": [
-      "Alert",
+      "alert",
       "position",
       "order",
       "color",
@@ -735,7 +735,7 @@
     ],
     "rules": [
       {
-        "Alert": "Nejsou splněny všechny požadavky na Expedci!",
+        "alert": "Nejsou splněny všechny požadavky na Expedci!",
         "position": "endOfT2",
         "order": 999,
         "color": "white",
@@ -743,7 +743,7 @@
         "condition": "%%NOT ALL(req_expe, req_expe:done =\"true\")%%"
       },
       {
-        "Alert": "Nesedí celková částka dobírky",
+        "alert": "Nesedí celková částka dobírky",
         "position": "endOfT2",
         "order": 55,
         "color": "white",
