@@ -740,7 +740,7 @@
         "order": 999,
         "color": "white",
         "backgroundColor": "red",
-        "condition": "%%NOT ALL(req_expe, req_expe:done =\"true\")%%"
+        "condition": "%%NOT ALL(req_expe, done =\"true\")%%"
       },
       {
         "alert": "Nesedí celková částka dobírky",
