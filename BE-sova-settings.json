@@ -760,7 +760,7 @@
     "rules": [
       {
         "color": "yellow",
-        "condition": null
+        "condition": "status != \"Nevyřízená\""
       }
     ]
   },
