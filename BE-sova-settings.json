@@ -419,7 +419,7 @@
         "pageType": "objednavky-detail",
         "position": "buttonsHeaderLeft",
         "order": -1,
-        "conditionsSOVAL": "%%(customerName=\"Test Testovič\")AND(5000<(SUMIF(items:totalPrice)))%%"
+        "conditionsSOVAL": null
       }
     ]
   },
