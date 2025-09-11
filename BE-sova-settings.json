@@ -916,7 +916,7 @@
       }
     ]
   },
-  "runPrudoctInputs": {
+  "pocitarnaExpeditionCompletor": {
     "columns": [
       "categories",
       "forbiddenProducts"
