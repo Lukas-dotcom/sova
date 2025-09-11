@@ -393,7 +393,7 @@
         "function": "testSOVA",
         "parameters": "ddddddddddd",
         "pageType": "objednavky-detail",
-        "position": "end",
+        "position": "buttonsEndOfT2",
         "order": null,
         "conditionsSOVAL": null
       }
