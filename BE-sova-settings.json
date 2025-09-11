@@ -750,7 +750,7 @@
     "rules": [
       {
         "color": "yellow",
-        "condition": "status != \"Zpracovává se\""
+        "condition": "status = \"Zpracovává se\""
       }
     ]
   },
