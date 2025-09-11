@@ -752,6 +752,18 @@
       }
     ]
   },
+  "orderDetailItemsColor": {
+    "columns": [
+      "color",
+      "condition"
+    ],
+    "rules": [
+      {
+        "color": "yellow",
+        "condition": null
+      }
+    ]
+  },
   "additionalOrderInputs": {
     "columns": [
       "inputVariable",
