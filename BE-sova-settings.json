@@ -386,6 +386,16 @@
         "position": "buttonsHeaderLeft",
         "order": -1,
         "conditionsSOVAL": "%%(customerName=\"Test Testovič\")%%"
+      },
+      {
+        "buttonName": "testolC",
+        "color": "orange",
+        "function": "testSOVA",
+        "parameters": "ddddddddddd",
+        "pageType": "objednavky-detail",
+        "position": "buttonsHeaderLeft",
+        "order": null,
+        "conditionsSOVAL": null
       }
     ]
   },
