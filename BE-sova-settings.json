@@ -770,7 +770,7 @@
     "rules": [
       {
         "color": "#fffeb8",
-        "condition": "status = \"Zpracovává se\""
+        "condition": "status = \"Vychystáno\""
       }
     ]
   },
