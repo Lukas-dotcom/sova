@@ -402,7 +402,7 @@
         "color": "green",
         "function": "pocitarnaExpeditionList",
         "parameters": null,
-        "pageType": null,
+        "pageType": "objednavky-detail",
         "position": null,
         "order": null,
         "conditionsSOVAL": null
