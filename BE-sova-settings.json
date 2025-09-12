@@ -759,7 +759,7 @@
     ],
     "rules": [
       {
-        "color": "yellow",
+        "color": "#fffeb8",
         "condition": "status = \"Zpracovává se\""
       }
     ]
