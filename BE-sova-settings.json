@@ -399,7 +399,7 @@
       },
       {
         "buttonName": "Tisk soupisky",
-        "color": null,
+        "color": "green",
         "function": "pocitarnaExpeditionList",
         "parameters": null,
         "pageType": null,
