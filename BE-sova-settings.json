@@ -403,7 +403,7 @@
         "function": "pocitarnaExpeditionList",
         "parameters": null,
         "pageType": "prehled-objednavek",
-        "position": null,
+        "position": "buttonsMassAction",
         "order": null,
         "conditionsSOVAL": null
       }
