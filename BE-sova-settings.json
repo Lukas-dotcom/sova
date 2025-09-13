@@ -543,7 +543,7 @@
         "buttonName": "Odeslat",
         "color": "purple",
         "order": null,
-        "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
+        "conditionsSOVAL": "%%status=\"Odeslat\"%%",
         "targetStatusID": 3,
         "openTargetStatus": true
       },
