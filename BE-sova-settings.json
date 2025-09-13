@@ -544,16 +544,8 @@
         "color": "#34ff34",
         "order": null,
         "conditionsSOVAL": "%%status=\"Odeslat\"%%",
-        "targetStatusID": 3,
+        "targetStatusID": 2,
         "openTargetStatus": true
-      },
-      {
-        "buttonName": "Odeslat M",
-        "color": "purple",
-        "order": null,
-        "conditionsSOVAL": null,
-        "targetStatusID": 89,
-        "openTargetStatus": null
       }
     ]
   },
