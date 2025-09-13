@@ -584,7 +584,7 @@
         "color": "#fe0000",
         "order": null,
         "position": "buttonsHeaderLeft",
-        "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
+        "conditionsSOVAL": "%%status=\"Odeslat\"%%",
         "targetStatusID": 89,
         "preventEmail": null,
         "openAfterChange": null
