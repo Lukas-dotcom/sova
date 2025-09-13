@@ -358,46 +358,6 @@
         "conditionsSOVAL": null
       },
       {
-        "buttonName": "test",
-        "color": "red",
-        "function": "testSOVA",
-        "parameters": "(\"ddddddddddd\")",
-        "pageType": "objednavky-detail",
-        "position": "buttonsHeaderLeft",
-        "order": null,
-        "conditionsSOVAL": null
-      },
-      {
-        "buttonName": "testol",
-        "color": "black",
-        "function": "testSOVA",
-        "parameters": "(\"ddddddddddd\")",
-        "pageType": "objednavky-detail",
-        "position": "buttonsHeaderLeft",
-        "order": -1,
-        "conditionsSOVAL": "%%(customerName=\"Test Testovič\")AND(5000<(SUMIF(items:totalPrice)))%%"
-      },
-      {
-        "buttonName": "testolB",
-        "color": "orange",
-        "function": "testSOVA",
-        "parameters": "ddddddddddd",
-        "pageType": "objednavky-detail",
-        "position": "buttonsHeaderLeft",
-        "order": -1,
-        "conditionsSOVAL": "%%(customerName=\"Test Testovič\")%%"
-      },
-      {
-        "buttonName": "testolC",
-        "color": "orange",
-        "function": "testSOVA",
-        "parameters": "ddddddddddd",
-        "pageType": "objednavky-detail",
-        "position": "buttonsEndOfT2Right",
-        "order": null,
-        "conditionsSOVAL": null
-      },
-      {
         "buttonName": "Tisk soupisky",
         "color": "green",
         "function": "pocitarnaExpeditionList",
