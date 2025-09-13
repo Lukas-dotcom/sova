@@ -393,7 +393,7 @@
         "function": "testSOVA",
         "parameters": "ddddddddddd",
         "pageType": "objednavky-detail",
-        "position": "buttonsEndOfT2",
+        "position": "buttonsEndOfT2Right",
         "order": null,
         "conditionsSOVAL": null
       },
@@ -413,7 +413,7 @@
         "function": "openModalUrl",
         "parameters": "{\"anchorText\":\"Přidat zásilku (Balíky)\"}",
         "pageType": "objednavky-detail",
-        "position": "buttonsEndOfT2",
+        "position": "buttonsEndOfT2Right",
         "order": null,
         "conditionsSOVAL": null
       },
@@ -423,7 +423,7 @@
         "function": "openModalUrl ",
         "parameters": "{\"anchorText\":\"Přidat specifickou zásilku (Balíky)\"}",
         "pageType": "objednavky-detail",
-        "position": "buttonsEndOfT2",
+        "position": "buttonsEndOfT2Right",
         "order": null,
         "conditionsSOVAL": null
       },
