@@ -574,8 +574,8 @@
         "color": "purple",
         "order": null,
         "position": "buttonsHeaderLeft",
-        "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
-        "targetStatusID": 89,
+        "conditionsSOVAL": "%%status=\"Odeslat\"%%",
+        "targetStatusID": 2,
         "preventEmail": true,
         "openAfterChange": "%%(\"/admin/prehled-objednavek/\"&statusId&\"/\")%%"
       },
