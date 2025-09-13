@@ -406,6 +406,16 @@
         "position": "buttonsMassAction",
         "order": null,
         "conditionsSOVAL": null
+      },
+      {
+        "buttonName": "Přidat balík",
+        "color": null,
+        "function": null,
+        "parameters": null,
+        "pageType": null,
+        "position": null,
+        "order": null,
+        "conditionsSOVAL": null
       }
     ]
   },
