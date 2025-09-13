@@ -410,7 +410,7 @@
       {
         "buttonName": "Balík",
         "color": null,
-        "function": null,
+        "function": "openModalUrl",
         "parameters": null,
         "pageType": null,
         "position": null,
@@ -420,7 +420,7 @@
       {
         "buttonName": "Spec. a vícekus balík",
         "color": null,
-        "function": null,
+        "function": "openModalUrl ",
         "parameters": null,
         "pageType": null,
         "position": null,
