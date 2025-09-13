@@ -580,7 +580,7 @@
         "openAfterChange": null
       },
       {
-        "buttonName": "Zaslat",
+        "buttonName": "Odeslat M",
         "color": "green",
         "order": null,
         "position": "buttonsHeaderLeft",
