@@ -570,14 +570,14 @@
     ],
     "rules": [
       {
-        "buttonName": "Odeslat",
+        "buttonName": "Odesláno",
         "color": "purple",
         "order": null,
         "position": "buttonsHeaderLeft",
         "conditionsSOVAL": "%%status=\"Odeslat\"%%",
         "targetStatusID": 2,
-        "preventEmail": true,
-        "openAfterChange": "%%(\"/admin/prehled-objednavek/\"&statusId&\"/\")%%"
+        "preventEmail": null,
+        "openAfterChange": null
       },
       {
         "buttonName": "Zaslat",
