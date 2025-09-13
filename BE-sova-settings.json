@@ -421,7 +421,7 @@
         "buttonName": "Spec. a vícekus balík",
         "color": null,
         "function": "openModalUrl ",
-        "parameters": "{\"anchorText\":\"Přidat specifickou zásilku (Balíky)\"}",
+        "parameters": "{\"anchorText\":\"Přidat specifickou zásilku (Balíky)\", \"openInModal\": true}",
         "pageType": "objednavky-detail",
         "position": "buttonsEndOfT2Right",
         "order": null,
