@@ -433,7 +433,7 @@
         "function": "openModalUrl",
         "parameters": "{\"anchorText\":\"Přidat zásilku (Balíky)\"}",
         "pageType": "objednavky-detail",
-        "position": "buttonsEndOfT2",
+        "position": "buttonsHeaderLeft",
         "order": null,
         "conditionsSOVAL": null
       }
