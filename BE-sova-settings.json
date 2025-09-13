@@ -540,7 +540,7 @@
     ],
     "rules": [
       {
-        "buttonName": "Odeslat",
+        "buttonName": "Odesláno",
         "color": "purple",
         "order": null,
         "conditionsSOVAL": "%%status=\"Odeslat\"%%",
