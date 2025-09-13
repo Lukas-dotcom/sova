@@ -571,7 +571,7 @@
     "rules": [
       {
         "buttonName": "Odesláno",
-        "color": "purple",
+        "color": "#34ff34",
         "order": null,
         "position": "buttonsHeaderLeft",
         "conditionsSOVAL": "%%status=\"Odeslat\"%%",
