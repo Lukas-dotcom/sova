@@ -581,7 +581,7 @@
       },
       {
         "buttonName": "Odeslat M",
-        "color": "green",
+        "color": "#fe0000",
         "order": null,
         "position": "buttonsHeaderLeft",
         "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
