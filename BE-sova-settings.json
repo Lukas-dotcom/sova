@@ -699,14 +699,6 @@
         "color": "white",
         "backgroundColor": "red",
         "condition": "%%NOT ALL(req_expe, done =\"true\")%%"
-      },
-      {
-        "alert": "Nesedí celková částka dobírky",
-        "position": "endOfT2",
-        "order": 55,
-        "color": "white",
-        "backgroundColor": "red",
-        "condition": "%%not (if(text3=\"\",castkaKuhrade = sumif(dobirka, not (stav = \"Stornováno\" or stav = \"Zažádáno o zrušení\")), text3 = sumif(dobirka, not (stav = \"Stornováno\" or stav = \"Zažádáno o zrušení\"))))%%"
       }
     ]
   },
