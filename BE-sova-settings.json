@@ -386,16 +386,6 @@
         "position": "buttonsEndOfT2Right",
         "order": null,
         "conditionsSOVAL": null
-      },
-      {
-        "buttonName": "Balíka",
-        "color": null,
-        "function": "openModalUrl",
-        "parameters": "{\"anchorText\":\"Přidat zásilku (Balíky)\"}",
-        "pageType": "objednavky-detail",
-        "position": "buttonsHeaderLeft",
-        "order": null,
-        "conditionsSOVAL": null
       }
     ]
   },
