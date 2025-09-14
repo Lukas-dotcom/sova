@@ -530,7 +530,7 @@
       {
         "buttonName": "Odesláno",
         "color": "#34ff34",
-        "order": 3,
+        "order": 4,
         "position": "buttonsEndOfT2Right",
         "conditionsSOVAL": "%%status=\"Odeslat\"%%",
         "targetStatusID": 2,
@@ -540,7 +540,7 @@
       {
         "buttonName": "Odeslat M",
         "color": "#fe0000",
-        "order": 4,
+        "order": 3,
         "position": "buttonsEndOfT2Right",
         "conditionsSOVAL": "%%status=\"Odeslat\"%%",
         "targetStatusID": 89,
