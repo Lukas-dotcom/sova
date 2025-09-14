@@ -389,30 +389,6 @@
       }
     ]
   },
-  "injectDefaultButtons": {
-    "columns": [
-      "buttonName",
-      "color",
-      "function",
-      "parameters",
-      "pageType",
-      "position",
-      "order",
-      "conditionsSOVAL"
-    ],
-    "rules": [
-      {
-        "buttonName": "testola",
-        "color": "green",
-        "function": "testSOVA",
-        "parameters": null,
-        "pageType": "objednavky-detail",
-        "position": "buttonsHeaderLeft",
-        "order": -1,
-        "conditionsSOVAL": null
-      }
-    ]
-  },
   "injectButtonsEmail": {
     "columns": [
       "buttonName",
