@@ -337,6 +337,31 @@
       }
     ]
   },
+  "pocitarnaExpeditionCompletor": {
+    "columns": [
+      "categories",
+      "forbiddenProducts"
+    ],
+    "rules": [
+      {
+        "categories": [
+          "Notebooky",
+          "Počítače",
+          "Monitory",
+          "Telefóny, mobily",
+          "Tablety"
+        ],
+        "forbiddenProducts": [
+          "MAR",
+          "BLESK",
+          "SERVIS",
+          "TIP",
+          "ZAR",
+          "REKLAMACE"
+        ]
+      }
+    ]
+  },
   "pridatParametry": {
     "columns": [
       "Parametr"
