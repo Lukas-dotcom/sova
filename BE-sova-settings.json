@@ -793,11 +793,11 @@
       {
         "rowCondition": "%%currency=\"€\"%%",
         "color": "blue",
-        "conditions": "%%status=\"Odeslat\" or status=\"Odeslat M\"%%"
+        "conditions": "%%status=\"Odeslat\" or status=\"Odeslat M or status=\"Připravit\"%%"
       },
       {
         "rowCondition": "%%deliveryType = \"PPL smart\"%%",
-        "color": "green",
+        "color": "green ",
         "conditions": null
       }
     ]
