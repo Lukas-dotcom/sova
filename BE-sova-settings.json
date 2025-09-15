@@ -13,7 +13,14 @@
           "Telefóny, mobily",
           "Tablety"
         ],
-        "forbiddenProducts": "[MAR,BLESK,SERVIS,TIP,ZAR,REKLAMACE] "
+        "forbiddenProducts": [
+          "MAR",
+          "BLESK",
+          "SERVIS",
+          "TIP",
+          "ZAR",
+          "REKLAMACE"
+        ]
       }
     ]
   }
