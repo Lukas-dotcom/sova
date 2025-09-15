@@ -682,26 +682,6 @@
       }
     ]
   },
-  "Alerts": {
-    "columns": [
-      "alert",
-      "position",
-      "order",
-      "color",
-      "backgroundColor",
-      "condition"
-    ],
-    "rules": [
-      {
-        "alert": "Nejsou splněny všechny požadavky na Expedci!",
-        "position": "endOfT2",
-        "order": 999,
-        "color": "white",
-        "backgroundColor": "red",
-        "condition": "%%NOT ALL(req_expe, done =\"true\")%%"
-      }
-    ]
-  },
   "orderDetailItemsColor": {
     "columns": [
       "color",
