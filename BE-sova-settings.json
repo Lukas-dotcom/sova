@@ -871,12 +871,7 @@
           "Telefony, mobily",
           "Tablety"
         ],
-        "categoriesId": [
-          673,
-          674,
-          714,
-          33056
-        ],
+        "categoriesId": "[673,674,714,717] ",
         "forbiddenProducts": [
           "MAR",
           "BLESK",
