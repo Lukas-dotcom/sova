@@ -360,7 +360,13 @@
           "ZAR",
           "REKLAMACE"
         ],
-        "categoriesId": null
+        "categoriesId": [
+          2865,
+          1689,
+          1692,
+          1761,
+          1764
+        ]
       }
     ]
   },
