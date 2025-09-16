@@ -859,6 +859,7 @@
   "pocitarnaExpeditionCompletor": {
     "columns": [
       "categories",
+      "categoriesId",
       "forbiddenProducts"
     ],
     "rules": [
@@ -870,6 +871,7 @@
           "Telefony, mobily",
           "Tablety"
         ],
+        "categoriesId": null,
         "forbiddenProducts": [
           "MAR",
           "BLESK",
