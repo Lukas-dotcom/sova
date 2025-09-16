@@ -340,7 +340,8 @@
   "pocitarnaExpeditionCompletor": {
     "columns": [
       "categories",
-      "forbiddenProducts"
+      "forbiddenProducts",
+      "categoriesId"
     ],
     "rules": [
       {
@@ -358,7 +359,8 @@
           "TIP",
           "ZAR",
           "REKLAMACE"
-        ]
+        ],
+        "categoriesId": null
       }
     ]
   },
