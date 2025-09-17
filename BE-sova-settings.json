@@ -413,7 +413,7 @@
         "pageType": "objednavky-detail",
         "position": "buttonsEndOfT2Right",
         "order": null,
-        "conditionsSOVAL": null,
+        "conditionsSOVAL": "%%netstoreDone != \"true\"%%",
         "sovaGates": null
       },
       {
@@ -424,7 +424,7 @@
         "pageType": "objednavky-detail",
         "position": "buttonsEndOfT2Right",
         "order": null,
-        "conditionsSOVAL": null,
+        "conditionsSOVAL": "%%netstoreDone != \"true\"%%",
         "sovaGates": null
       },
       {
