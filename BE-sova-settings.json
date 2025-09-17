@@ -426,6 +426,17 @@
         "order": null,
         "conditionsSOVAL": null,
         "sovaGates": null
+      },
+      {
+        "buttonName": "Tisk FA",
+        "color": null,
+        "function": null,
+        "parameters": null,
+        "pageType": null,
+        "position": null,
+        "order": null,
+        "conditionsSOVAL": null,
+        "sovaGates": null
       }
     ]
   },
