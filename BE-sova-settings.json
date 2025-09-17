@@ -409,7 +409,7 @@
         "buttonName": "Zpr Netstore",
         "color": null,
         "function": "netstoreActionRunner",
-        "parameters": null,
+        "parameters": "{ netstoreAction:'processOnePiece' }",
         "pageType": null,
         "position": null,
         "order": null,
