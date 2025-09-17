@@ -324,7 +324,8 @@
       "pageType",
       "position",
       "order",
-      "conditionsSOVAL"
+      "conditionsSOVAL",
+      "SovaGates"
     ],
     "rules": [
       {
@@ -335,7 +336,8 @@
         "pageType": "parametry-pro-filtrovani-vypis",
         "position": "buttonsHeaderLeft",
         "order": null,
-        "conditionsSOVAL": null
+        "conditionsSOVAL": null,
+        "SovaGates": null
       },
       {
         "buttonName": "Seřadit parametry",
@@ -345,7 +347,8 @@
         "pageType": "parametry-pro-filtrovani-detail",
         "position": "buttonsHeaderLeft",
         "order": null,
-        "conditionsSOVAL": null
+        "conditionsSOVAL": null,
+        "SovaGates": null
       },
       {
         "buttonName": "Upnout kódy",
@@ -355,7 +358,8 @@
         "pageType": "html-kody",
         "position": "buttonsHeaderLeft",
         "order": null,
-        "conditionsSOVAL": null
+        "conditionsSOVAL": null,
+        "SovaGates": null
       },
       {
         "buttonName": "Tisk soupisky",
@@ -365,7 +369,8 @@
         "pageType": "prehled-objednavek",
         "position": "buttonsMassAction",
         "order": null,
-        "conditionsSOVAL": null
+        "conditionsSOVAL": null,
+        "SovaGates": null
       },
       {
         "buttonName": "Balík",
@@ -375,7 +380,8 @@
         "pageType": "objednavky-detail",
         "position": "buttonsEndOfT2Right",
         "order": null,
-        "conditionsSOVAL": null
+        "conditionsSOVAL": null,
+        "SovaGates": null
       },
       {
         "buttonName": "Spec. a vícekus balík",
@@ -385,7 +391,8 @@
         "pageType": "objednavky-detail",
         "position": "buttonsEndOfT2Right",
         "order": null,
-        "conditionsSOVAL": null
+        "conditionsSOVAL": null,
+        "SovaGates": null
       }
     ]
   },
