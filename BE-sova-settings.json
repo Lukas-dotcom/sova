@@ -395,11 +395,11 @@
         "sovaGates": null
       },
       {
-        "buttonName": null,
+        "buttonName": "Přepřipravit expedici",
         "color": "blue",
         "function": "pocitarnaExpeditionPrepareCompletor",
         "parameters": null,
-        "pageType": null,
+        "pageType": "objednavky-detail",
         "position": null,
         "order": null,
         "conditionsSOVAL": null,
