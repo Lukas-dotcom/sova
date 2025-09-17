@@ -396,7 +396,7 @@
       },
       {
         "buttonName": null,
-        "color": null,
+        "color": "blue",
         "function": "pocitarnaExpeditionPrepareCompletor",
         "parameters": null,
         "pageType": null,
