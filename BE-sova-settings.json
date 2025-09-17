@@ -408,7 +408,7 @@
       {
         "buttonName": "Zpr Netstore",
         "color": null,
-        "function": null,
+        "function": "netstoreActionRunner",
         "parameters": null,
         "pageType": null,
         "position": null,
@@ -419,7 +419,7 @@
       {
         "buttonName": "Zpr Netstore vckus",
         "color": null,
-        "function": null,
+        "function": "netstoreActionRunner",
         "parameters": null,
         "pageType": null,
         "position": null,
@@ -430,7 +430,18 @@
       {
         "buttonName": "Tisk FA",
         "color": null,
-        "function": null,
+        "function": "netstoreActionRunner",
+        "parameters": null,
+        "pageType": null,
+        "position": null,
+        "order": null,
+        "conditionsSOVAL": null,
+        "sovaGates": null
+      },
+      {
+        "buttonName": "Tisk štítek",
+        "color": null,
+        "function": "netstoreActionRunner",
         "parameters": null,
         "pageType": null,
         "position": null,
