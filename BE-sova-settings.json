@@ -442,7 +442,7 @@
         "buttonName": "Tisk štítek",
         "color": null,
         "function": "netstoreActionRunner",
-        "parameters": "{ netstoreAction:\"printShippingLabel\" }",
+        "parameters": "{ netstoreAction:\"processOnePiece\" }",
         "pageType": null,
         "position": null,
         "order": null,
