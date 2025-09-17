@@ -431,7 +431,7 @@
         "buttonName": "Tisk FA",
         "color": null,
         "function": "netstoreActionRunner",
-        "parameters": "{ netstoreAction:\"printInvoice\" }",
+        "parameters": "{ \"netstoreAction\":\"printInvoice\" }",
         "pageType": "objednavky-detail",
         "position": "buttonsEndOfT2Right",
         "order": null,
