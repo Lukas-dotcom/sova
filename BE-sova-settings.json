@@ -400,7 +400,7 @@
         "function": "pocitarnaExpeditionPrepareCompletor",
         "parameters": null,
         "pageType": "objednavky-detail",
-        "position": null,
+        "position": "buttonsEndOfT2Left",
         "order": null,
         "conditionsSOVAL": null,
         "sovaGates": null
