@@ -393,6 +393,17 @@
         "order": null,
         "conditionsSOVAL": null,
         "sovaGates": null
+      },
+      {
+        "buttonName": null,
+        "color": null,
+        "function": "pocitarnaExpeditionPrepareCompletor",
+        "parameters": null,
+        "pageType": null,
+        "position": null,
+        "order": null,
+        "conditionsSOVAL": null,
+        "sovaGates": null
       }
     ]
   },
