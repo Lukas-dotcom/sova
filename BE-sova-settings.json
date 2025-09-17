@@ -411,7 +411,7 @@
         "function": "netstoreActionRunner",
         "parameters": "{ netstoreAction:\"processOnePiece\" }",
         "pageType": "objednavky-detail",
-        "position": null,
+        "position": "buttonsEndOfT2Right",
         "order": null,
         "conditionsSOVAL": null,
         "sovaGates": null
@@ -422,7 +422,7 @@
         "function": "netstoreActionRunner",
         "parameters": "{ netstoreAction:\"processMultiPiece\" }",
         "pageType": "objednavky-detail",
-        "position": null,
+        "position": "buttonsEndOfT2Right",
         "order": null,
         "conditionsSOVAL": null,
         "sovaGates": null
@@ -433,7 +433,7 @@
         "function": "netstoreActionRunner",
         "parameters": "{ netstoreAction:\"printInvoice\" }",
         "pageType": "objednavky-detail",
-        "position": null,
+        "position": "buttonsEndOfT2Right",
         "order": null,
         "conditionsSOVAL": null,
         "sovaGates": null
@@ -444,7 +444,7 @@
         "function": "netstoreActionRunner",
         "parameters": "{ netstoreAction:\"printShippingLabel\" }",
         "pageType": "objednavky-detail",
-        "position": null,
+        "position": "buttonsEndOfT2Right",
         "order": null,
         "conditionsSOVAL": null,
         "sovaGates": null
