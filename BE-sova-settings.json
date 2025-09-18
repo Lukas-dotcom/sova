@@ -887,11 +887,10 @@
       }
     ]
   },
-  "addProductsButton": {
+  "addProductsPrepareCompletor": {
     "columns": [
       "oznaceni",
-      "code",
-      "name",
+      "templateCode",
       "price",
       "ean",
       "itemTypeId",
@@ -900,8 +899,7 @@
     "rules": [
       {
         "oznaceni": "klavesniceMys",
-        "code": "SET0028",
-        "name": "TRUST+set+kl%C3%A1vesnice+%2B+my%C5%A1+ODY+II%2C+bezdr%C3%A1tov%C3%A1%2C+USB%2C+CZ%2FSK",
+        "templateCode": "SET0028",
         "price": 0,
         "ean": 8713439254389,
         "itemTypeId": 1,
@@ -909,8 +907,7 @@
       },
       {
         "oznaceni": "appleLightning",
-        "code": "PR0014",
-        "name": "P%C5%99%C3%ADslu%C5%A1enstv%C3%AD+pro+iPhone+lighting+konektor",
+        "templateCode": "PR0014",
         "price": 0,
         "ean": null,
         "itemTypeId": 11,
