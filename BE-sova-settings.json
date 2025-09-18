@@ -413,7 +413,7 @@
         "pageType": "objednavky-detail",
         "position": "buttonsEndOfT2Right",
         "order": null,
-        "conditionsSOVAL": "%%netstoreDone != \"true\"%%",
+        "conditionsSOVAL": "%%netstoreDone != \"true\" & customerBillVatId = \"CZ27203026\"%%",
         "sovaGates": null
       },
       {
