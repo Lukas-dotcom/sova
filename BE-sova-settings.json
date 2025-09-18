@@ -893,7 +893,7 @@
       "templateCode",
       "price"
     ],
-    "rules": [
+    "rules_addProductsPrepareCompletor": [
       {
         "oznaceni": "klavesniceMys",
         "templateCode": "SET0028",
