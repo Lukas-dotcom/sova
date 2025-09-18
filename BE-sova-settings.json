@@ -446,7 +446,7 @@
         "pageType": "objednavky-detail",
         "position": "buttonsEndOfT2Right",
         "order": null,
-        "conditionsSOVAL": null,
+        "conditionsSOVAL": "customerBillVatId = \"CZ27203026\"",
         "sovaGates": null
       }
     ]
