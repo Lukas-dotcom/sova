@@ -891,27 +891,18 @@
     "columns": [
       "oznaceni",
       "templateCode",
-      "price",
-      "ean",
-      "itemTypeId",
-      "variantName"
+      "price"
     ],
     "rules": [
       {
         "oznaceni": "klavesniceMys",
         "templateCode": "SET0028",
-        "price": 0,
-        "ean": 8713439254389,
-        "itemTypeId": 1,
-        "variantName": "P%C5%99%C3%ADslu%C5%A1enstv%C3%AD+zdarma"
+        "price": 0
       },
       {
         "oznaceni": "appleLightning",
         "templateCode": "PR0014",
-        "price": 0,
-        "ean": null,
-        "itemTypeId": 11,
-        "variantName": "P%C5%99%C3%ADslu%C5%A1enstv%C3%AD+zdarma"
+        "price": 0
       }
     ]
   },
