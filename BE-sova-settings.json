@@ -903,6 +903,11 @@
         "oznaceni": "appleLightning",
         "templateCode": "PR0014",
         "price": 0
+      },
+      {
+        "oznaceni": null,
+        "templateCode": "PR0017",
+        "price": null
       }
     ]
   },
