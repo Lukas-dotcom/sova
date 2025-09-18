@@ -905,9 +905,14 @@
         "price": 0
       },
       {
-        "oznaceni": null,
+        "oznaceni": "test1",
         "templateCode": "PR0017",
-        "price": null
+        "price": 0
+      },
+      {
+        "oznaceni": null,
+        "templateCode": "PR0010",
+        "price": 0
       }
     ]
   },
