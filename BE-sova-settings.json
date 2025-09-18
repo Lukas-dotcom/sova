@@ -910,7 +910,7 @@
         "price": 0
       },
       {
-        "oznaceni": null,
+        "oznaceni": "test2",
         "templateCode": "PR0010",
         "price": 0
       }
