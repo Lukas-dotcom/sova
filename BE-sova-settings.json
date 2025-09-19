@@ -892,6 +892,8 @@
       "oznaceni",
       "templateCode",
       "price",
+      "",
+      "",
       ""
     ],
     "rules_addProductsPrepareCompletor": [
@@ -928,19 +930,19 @@
       {
         "oznaceni": null,
         "templateCode": "Dell Precision 3431 SFF",
-        "price": "klavesniceMys",
+        "price": null,
         "": null
       },
       {
         "oznaceni": null,
         "templateCode": "HP EliteDesk 800 G4 SFF",
-        "price": "klavesniceMys",
-        "": "appleLightning"
+        "price": null,
+        "": null
       },
       {
         "oznaceni": null,
         "templateCode": "MSI MAG Infinite S3 14NUD5-1603UK DT",
-        "price": "appleLightning",
+        "price": null,
         "": "test2"
       },
       {
@@ -953,7 +955,7 @@
         "oznaceni": "položka sady",
         "templateCode": "DELL Latitude E6420",
         "price": "appleLightning",
-        "": "test2"
+        "": null
       }
     ]
   },
