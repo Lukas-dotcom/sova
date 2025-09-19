@@ -955,8 +955,8 @@
       {
         "oznaceni": "položka sady",
         "templateCode": "DELL Latitude E6420",
-        "price": "appleLightning",
-        "": null
+        "price": null,
+        "": "test2"
       }
     ]
   },
