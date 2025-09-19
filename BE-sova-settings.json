@@ -602,8 +602,8 @@
         "conditionsSOVAL": "%%status=\"Odesláno\""
       },
       {
-        "variableName": null,
-        "showName": null,
+        "variableName": "viewVariants",
+        "showName": "Možnosti zobrazení",
         "controlType": "select",
         "selectOptions": [
           0
