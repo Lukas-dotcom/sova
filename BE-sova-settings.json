@@ -582,14 +582,22 @@
       "variableName",
       "showName",
       "controlType",
-      "saveType"
+      "saveType",
+      "pageType",
+      "position",
+      "order",
+      "conditionsSOVAL"
     ],
     "rules": [
       {
         "variableName": "zobrazPCNceny",
         "showName": null,
         "controlType": null,
-        "saveType": null
+        "saveType": null,
+        "pageType": null,
+        "position": null,
+        "order": null,
+        "conditionsSOVAL": null
       }
     ]
   },
