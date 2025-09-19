@@ -617,7 +617,7 @@
         "conditionsSOVAL": null
       },
       {
-        "variableName": "viewVariants",
+        "variableName": "ownVar",
         "showName": "Možnosti zobrazení",
         "controlType": "select",
         "selectOptions": [
