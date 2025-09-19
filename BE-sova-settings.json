@@ -894,6 +894,7 @@
       "price",
       "",
       "",
+      "",
       ""
     ],
     "rules_addProductsPrepareCompletor": [
@@ -925,7 +926,7 @@
         "oznaceni": null,
         "templateCode": "DELL Latitude E6420",
         "price": "appleLightning",
-        "": "test1"
+        "": null
       },
       {
         "oznaceni": null,
