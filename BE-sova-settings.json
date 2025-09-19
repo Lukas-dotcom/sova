@@ -577,6 +577,22 @@
       }
     ]
   },
+  "injectControls": {
+    "columns": [
+      "variableName",
+      "showName",
+      "controlType",
+      "saveType"
+    ],
+    "rules": [
+      {
+        "variableName": "zobrazPCNceny",
+        "showName": null,
+        "controlType": null,
+        "saveType": null
+      }
+    ]
+  },
   "injectButtonsOrderStatusChange": {
     "columns": [
       "buttonName",
