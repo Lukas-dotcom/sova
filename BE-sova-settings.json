@@ -623,7 +623,7 @@
         "selectOptions": null,
         "saveType": "local",
         "pageType": "objednavky-detail",
-        "position": "endOfT2",
+        "position": "endOfT1",
         "order": 1,
         "conditionsSOVAL": null
       }
