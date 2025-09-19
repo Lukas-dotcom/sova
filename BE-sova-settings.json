@@ -596,7 +596,7 @@
         "saveType": "session",
         "pageType": "objednavky-detail",
         "position": "endOfT2",
-        "order": null,
+        "order": -2,
         "conditionsSOVAL": null
       },
       {
