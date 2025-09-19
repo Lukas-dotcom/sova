@@ -920,40 +920,40 @@
         "": null
       },
       {
-        "oznaceni": "DELL Latitude E6420",
-        "templateCode": "appleLightning",
-        "price": "test1",
-        "": null
-      },
-      {
-        "oznaceni": "Dell Precision 3431 SFF",
-        "templateCode": "klavesniceMys",
-        "price": null,
-        "": null
-      },
-      {
-        "oznaceni": "HP EliteDesk 800 G4 SFF",
-        "templateCode": "klavesniceMys",
+        "oznaceni": null,
+        "templateCode": "DELL Latitude E6420",
         "price": "appleLightning",
+        "": "test1"
+      },
+      {
+        "oznaceni": null,
+        "templateCode": "Dell Precision 3431 SFF",
+        "price": "klavesniceMys",
         "": null
       },
       {
-        "oznaceni": "MSI MAG Infinite S3 14NUD5-1603UK DT",
-        "templateCode": "appleLightning",
-        "price": "test2",
+        "oznaceni": null,
+        "templateCode": "HP EliteDesk 800 G4 SFF",
+        "price": "klavesniceMys",
+        "": "appleLightning"
+      },
+      {
+        "oznaceni": null,
+        "templateCode": "MSI MAG Infinite S3 14NUD5-1603UK DT",
+        "price": "appleLightning",
+        "": "test2"
+      },
+      {
+        "oznaceni": null,
+        "templateCode": "MSI Thin A15 B7UCX-010NEU",
+        "price": "/",
         "": null
       },
       {
-        "oznaceni": "MSI Thin A15 B7UCX-010NEU",
-        "templateCode": "/",
+        "oznaceni": "položka sady",
+        "templateCode": "DELL Latitude E6420",
         "price": null,
         "": null
-      },
-      {
-        "oznaceni": "DELL Latitude E6420",
-        "templateCode": null,
-        "price": null,
-        "": "položka sady"
       }
     ]
   },
