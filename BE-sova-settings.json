@@ -602,7 +602,7 @@
       {
         "variableName": null,
         "showName": null,
-        "controlType": null,
+        "controlType": "select",
         "saveType": "local",
         "pageType": null,
         "position": null,
