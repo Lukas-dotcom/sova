@@ -913,6 +913,11 @@
         "oznaceni": "test2",
         "templateCode": "PR0010",
         "price": 0
+      },
+      {
+        "oznaceni": "DELL Latitude E6420",
+        "templateCode": "appleLightning",
+        "price": "test1"
       }
     ]
   },
