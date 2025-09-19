@@ -599,7 +599,7 @@
         "pageType": "objednavky-detail",
         "position": "endOfT2",
         "order": -2,
-        "conditionsSOVAL": "%%status=\"Odesláno\""
+        "conditionsSOVAL": "%%status=\"Odesláno\"%%"
       },
       {
         "variableName": "viewVariants",
