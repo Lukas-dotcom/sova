@@ -593,7 +593,17 @@
         "variableName": "zobrazPCNceny",
         "showName": "Zobrazit PCN",
         "controlType": "checkbox",
-        "saveType": null,
+        "saveType": "session",
+        "pageType": null,
+        "position": null,
+        "order": null,
+        "conditionsSOVAL": null
+      },
+      {
+        "variableName": null,
+        "showName": null,
+        "controlType": null,
+        "saveType": "local",
         "pageType": null,
         "position": null,
         "order": null,
