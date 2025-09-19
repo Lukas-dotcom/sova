@@ -618,13 +618,9 @@
       },
       {
         "variableName": "ownVar",
-        "showName": "Možnosti zobrazení",
-        "controlType": "select",
-        "selectOptions": [
-          "malé",
-          "střední",
-          "velké"
-        ],
+        "showName": "vlastní proměná",
+        "controlType": "input",
+        "selectOptions": null,
         "saveType": "local",
         "pageType": "objednavky-detail",
         "position": "endOfT2",
