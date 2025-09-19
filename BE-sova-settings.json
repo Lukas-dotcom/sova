@@ -894,7 +894,6 @@
       "price",
       "",
       "",
-      "",
       ""
     ],
     "rules_addProductsPrepareCompletor": [
@@ -931,13 +930,13 @@
       {
         "oznaceni": null,
         "templateCode": "Dell Precision 3431 SFF",
-        "price": null,
+        "price": "klavesniceMys",
         "": null
       },
       {
         "oznaceni": null,
         "templateCode": "HP EliteDesk 800 G4 SFF",
-        "price": null,
+        "price": "klavesniceMys",
         "": null
       },
       {
@@ -949,7 +948,7 @@
       {
         "oznaceni": null,
         "templateCode": "MSI Thin A15 B7UCX-010NEU",
-        "price": null,
+        "price": "/",
         "": null
       },
       {
