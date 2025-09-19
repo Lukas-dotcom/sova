@@ -594,8 +594,8 @@
         "showName": "Zobrazit PCN",
         "controlType": "checkbox",
         "saveType": "session",
-        "pageType": null,
-        "position": null,
+        "pageType": "objednavky-detail",
+        "position": "endOfT2",
         "order": null,
         "conditionsSOVAL": null
       },
