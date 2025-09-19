@@ -913,6 +913,16 @@
         "oznaceni": "test2",
         "templateCode": "PR0010",
         "price": 0
+      },
+      {
+        "oznaceni": "PR0011",
+        "templateCode": "PR0011",
+        "price": null
+      },
+      {
+        "oznaceni": "PR0012",
+        "templateCode": "PR0012",
+        "price": null
       }
     ]
   },
