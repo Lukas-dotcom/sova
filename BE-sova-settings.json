@@ -611,9 +611,9 @@
           "velké"
         ],
         "saveType": "local",
-        "pageType": null,
-        "position": null,
-        "order": null,
+        "pageType": "objednavky-detail",
+        "position": "endOfT2",
+        "order": -1,
         "conditionsSOVAL": null
       }
     ]
