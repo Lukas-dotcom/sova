@@ -591,8 +591,8 @@
     "rules": [
       {
         "variableName": "zobrazPCNceny",
-        "showName": null,
-        "controlType": null,
+        "showName": "Zobrazit PCN",
+        "controlType": "checkbox",
         "saveType": null,
         "pageType": null,
         "position": null,
