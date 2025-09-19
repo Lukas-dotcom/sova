@@ -605,7 +605,9 @@
         "variableName": null,
         "showName": null,
         "controlType": "select",
-        "selectOptions": null,
+        "selectOptions": [
+          0
+        ],
         "saveType": "local",
         "pageType": null,
         "position": null,
