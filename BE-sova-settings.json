@@ -615,6 +615,21 @@
         "position": "endOfT2",
         "order": -1,
         "conditionsSOVAL": null
+      },
+      {
+        "variableName": "viewVariants",
+        "showName": "Možnosti zobrazení",
+        "controlType": "select",
+        "selectOptions": [
+          "malé",
+          "střední",
+          "velké"
+        ],
+        "saveType": "local",
+        "pageType": "objednavky-detail",
+        "position": "endOfT2",
+        "order": 1,
+        "conditionsSOVAL": null
       }
     ]
   },
