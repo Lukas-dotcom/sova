@@ -928,6 +928,11 @@
         "oznaceni": "HP EliteDesk 800 G4 SFF",
         "templateCode": "klavesniceMys",
         "price": "appleLightning"
+      },
+      {
+        "oznaceni": null,
+        "templateCode": "appleLightning",
+        "price": "test2"
       }
     ]
   },
