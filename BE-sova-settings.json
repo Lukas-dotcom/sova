@@ -918,6 +918,11 @@
         "oznaceni": "DELL Latitude E6420",
         "templateCode": "appleLightning",
         "price": "test1"
+      },
+      {
+        "oznaceni": "Dell Precision 3431 SFF",
+        "templateCode": "klavesniceMys",
+        "price": null
       }
     ]
   },
