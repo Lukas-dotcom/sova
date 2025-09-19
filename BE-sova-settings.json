@@ -923,6 +923,11 @@
         "oznaceni": "Dell Precision 3431 SFF",
         "templateCode": "klavesniceMys",
         "price": null
+      },
+      {
+        "oznaceni": null,
+        "templateCode": "klavesniceMys",
+        "price": null
       }
     ]
   },
