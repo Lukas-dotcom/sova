@@ -917,12 +917,12 @@
       {
         "oznaceni": "PR0011",
         "templateCode": "PR0011",
-        "price": null
+        "price": 0
       },
       {
         "oznaceni": "PR0012",
         "templateCode": "PR0012",
-        "price": null
+        "price": 0
       }
     ]
   },
