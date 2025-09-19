@@ -606,7 +606,9 @@
         "showName": "Možnosti zobrazení",
         "controlType": "select",
         "selectOptions": [
-          0
+          "malé",
+          "střední",
+          "velké"
         ],
         "saveType": "local",
         "pageType": null,
