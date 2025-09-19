@@ -933,6 +933,11 @@
         "oznaceni": "MSI MAG Infinite S3 14NUD5-1603UK DT",
         "templateCode": "appleLightning",
         "price": "test2"
+      },
+      {
+        "oznaceni": "MSI Thin A15 B7UCX-010NEU",
+        "templateCode": "/",
+        "price": null
       }
     ]
   },
