@@ -455,7 +455,7 @@
         "function": "pocitarnaAddByPCNModal",
         "parameters": null,
         "pageType": "objednavky-detail",
-        "position": "buttonsEndOfT2Left",
+        "position": "buttonsEndOfT1Left",
         "order": -2,
         "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
         "sovaGates": null
