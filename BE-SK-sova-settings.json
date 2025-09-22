@@ -183,6 +183,60 @@
       }
     ]
   },
+  "injectButtonsMassStatusChange": {
+    "columns": [
+      "buttonName",
+      "color",
+      "order",
+      "conditionsSOVAL",
+      "targetStatusID",
+      "openTargetStatus"
+    ],
+    "rules": [
+      {
+        "buttonName": "Odesláno",
+        "color": "#34ff34",
+        "order": null,
+        "conditionsSOVAL": "%%status=\"Odeslat\"%%",
+        "targetStatusID": 2,
+        "openTargetStatus": true
+      }
+    ]
+  },
+  "injectButtonsOrderStatusChange": {
+    "columns": [
+      "buttonName",
+      "color",
+      "order",
+      "position",
+      "conditionsSOVAL",
+      "targetStatusID",
+      "preventEmail",
+      "openAfterChange"
+    ],
+    "rules": [
+      {
+        "buttonName": "Odesláno",
+        "color": "#34ff34",
+        "order": 4,
+        "position": "buttonsEndOfT2Right",
+        "conditionsSOVAL": "%%status=\"Odeslat\"%%",
+        "targetStatusID": 2,
+        "preventEmail": null,
+        "openAfterChange": null
+      },
+      {
+        "buttonName": "Odeslat M",
+        "color": "#fe0000",
+        "order": 3,
+        "position": "buttonsEndOfT2Right",
+        "conditionsSOVAL": "%%status=\"Odeslat\"%%",
+        "targetStatusID": 89,
+        "preventEmail": null,
+        "openAfterChange": null
+      }
+    ]
+  },
   "rychleOdkazy": {
     "columns": [
       "Název",
