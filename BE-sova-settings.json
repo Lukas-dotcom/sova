@@ -457,7 +457,7 @@
         "pageType": "objednavky-detail",
         "position": "buttonsEndOfT2Left",
         "order": null,
-        "conditionsSOVAL": null,
+        "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
         "sovaGates": null
       }
     ]
