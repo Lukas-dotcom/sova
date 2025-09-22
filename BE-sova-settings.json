@@ -962,7 +962,12 @@
       {
         "oznaceni": "iMac ",
         "templateCode": "SET0029",
-        "price": null
+        "price": 0
+      },
+      {
+        "oznaceni": "kabel",
+        "templateCode": "CAB0004 ",
+        "price": 0
       },
       {
         "oznaceni": "appleLightning",
