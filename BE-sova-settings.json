@@ -766,7 +766,7 @@
     "rules": [
       {
         "alert": "Objednávka předpřipravena",
-        "position": null,
+        "position": "aboveContact",
         "order": null,
         "color": "blue",
         "backgroundColor": null,
