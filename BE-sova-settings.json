@@ -608,7 +608,7 @@
         "selectOptions": null,
         "saveType": "session",
         "pageType": "objednavky-detail",
-        "position": "endOfT2",
+        "position": "buttonsHeaderLeft",
         "order": -2,
         "conditionsSOVAL": "%%status=\"Odesláno\"%%"
       }
