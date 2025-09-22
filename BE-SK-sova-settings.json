@@ -269,6 +269,46 @@
       }
     ]
   },
+  "additionalOrderInputs": {
+    "columns": [
+      "inputVariable",
+      "inputName",
+      "inputPosition",
+      "order",
+      "type",
+      "selectOptions",
+      "condition"
+    ],
+    "rules": [
+      {
+        "inputVariable": "zaruka",
+        "inputName": "Záruka",
+        "inputPosition": "column2row2",
+        "order": -1,
+        "type": "text",
+        "selectOptions": null,
+        "condition": null
+      },
+      {
+        "inputVariable": "komise",
+        "inputName": "Kms.",
+        "inputPosition": "column1row2",
+        "order": 2,
+        "type": "checkbox",
+        "selectOptions": null,
+        "condition": null
+      },
+      {
+        "inputVariable": "reklamace",
+        "inputName": "Rekl.",
+        "inputPosition": "column1row2",
+        "order": 3,
+        "type": "checkbox",
+        "selectOptions": null,
+        "condition": null
+      }
+    ]
+  },
   "rychleOdkazy": {
     "columns": [
       "Název",
