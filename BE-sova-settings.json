@@ -459,17 +459,6 @@
         "order": null,
         "conditionsSOVAL": "%%pocitarnaExpeditionPrepare != \"true\"%%",
         "sovaGates": null
-      },
-      {
-        "buttonName": null,
-        "color": null,
-        "function": null,
-        "parameters": null,
-        "pageType": null,
-        "position": null,
-        "order": null,
-        "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
-        "sovaGates": null
       }
     ]
   },
