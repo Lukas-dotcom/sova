@@ -955,6 +955,11 @@
         "price": 0
       },
       {
+        "oznaceni": "iMac ",
+        "templateCode": "SET0029",
+        "price": null
+      },
+      {
         "oznaceni": "klavesniceMys",
         "templateCode": "SET0028",
         "price": 0
