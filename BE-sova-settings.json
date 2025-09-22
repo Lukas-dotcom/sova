@@ -766,42 +766,6 @@
         "conditionsRequests": "%%status=\"Odeslat\"%%",
         "color": "orange",
         "logs": true
-      },
-      {
-        "requestType": "servis",
-        "predefinedRequests": [
-          "opravit",
-          "externí servis",
-          "pročistit"
-        ],
-        "customRequests": null,
-        "requestsStyle": "tags",
-        "positionSettings": "downSection",
-        "orderSettings": null,
-        "conditionsSettings": null,
-        "positionRequests": "endOfT1",
-        "orderRequests": null,
-        "conditionsRequests": null,
-        "color": "purple",
-        "logs": null
-      },
-      {
-        "requestType": "jineOddeleni",
-        "predefinedRequests": [
-          "něco udělat",
-          "přehodit jinam",
-          "nene"
-        ],
-        "customRequests": true,
-        "requestsStyle": "tags",
-        "positionSettings": "downSection",
-        "orderSettings": 2,
-        "conditionsSettings": null,
-        "positionRequests": "endOfT1",
-        "orderRequests": 2,
-        "conditionsRequests": null,
-        "color": "brown",
-        "logs": true
       }
     ]
   },
