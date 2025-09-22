@@ -450,17 +450,6 @@
         "sovaGates": null
       },
       {
-        "buttonName": "Přidat PCN produkt",
-        "color": null,
-        "function": "pocitarnaAddByPCNModal",
-        "parameters": null,
-        "pageType": "objednavky-detail",
-        "position": "buttonsEndOfT1Left",
-        "order": -2,
-        "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
-        "sovaGates": null
-      },
-      {
         "buttonName": "Předpřipravit expedici",
         "color": "blue",
         "function": "pocitarnaExpeditionPrepareCompletor",
@@ -469,6 +458,17 @@
         "position": "buttonsEndOfT1Left",
         "order": null,
         "conditionsSOVAL": "%%pocitarnaExpeditionPrepare != \"true\"%%",
+        "sovaGates": null
+      },
+      {
+        "buttonName": null,
+        "color": null,
+        "function": null,
+        "parameters": null,
+        "pageType": null,
+        "position": null,
+        "order": null,
+        "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
         "sovaGates": null
       }
     ]
