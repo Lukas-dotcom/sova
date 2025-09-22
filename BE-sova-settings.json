@@ -402,7 +402,7 @@
         "pageType": "objednavky-detail",
         "position": "buttonsEndOfT2Left",
         "order": null,
-        "conditionsSOVAL": null,
+        "conditionsSOVAL": "%%pocitarnaExpeditionPrepare != \"true\"%%",
         "sovaGates": null
       },
       {
@@ -468,7 +468,7 @@
         "pageType": "objednavky-detail",
         "position": "buttonsEndOfT1Left",
         "order": null,
-        "conditionsSOVAL": null,
+        "conditionsSOVAL": "%%pocitarnaExpeditionPrepare != \"true\"%%",
         "sovaGates": null
       }
     ]
