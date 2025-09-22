@@ -610,7 +610,7 @@
         "pageType": "ceny",
         "position": "buttonsHeaderLeft",
         "order": -2,
-        "conditionsSOVAL": "%%status=\"Odesláno\"%%"
+        "conditionsSOVAL": null
       }
     ]
   },
