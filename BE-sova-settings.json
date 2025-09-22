@@ -940,6 +940,11 @@
         "price": 0
       },
       {
+        "oznaceni": "iPad ",
+        "templateCode": null,
+        "price": null
+      },
+      {
         "oznaceni": "klavesniceMys",
         "templateCode": "SET0028",
         "price": 0
