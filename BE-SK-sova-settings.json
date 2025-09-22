@@ -333,6 +333,65 @@
       }
     ]
   },
+  "addProductsPrepareCompletor-": {
+    "columns": [
+      "oznaceni",
+      "templateCode",
+      "price"
+    ],
+    "rules": [
+      {
+        "oznaceni": "iphoneJack",
+        "templateCode": "PR0013",
+        "price": 0
+      },
+      {
+        "oznaceni": "iphoneNoJ",
+        "templateCode": "PR0014",
+        "price": 0
+      },
+      {
+        "oznaceni": "AndroidUsbC",
+        "templateCode": "PR0017",
+        "price": 0
+      },
+      {
+        "oznaceni": "AndroidUsbMicro",
+        "templateCode": "PR0015",
+        "price": 0
+      },
+      {
+        "oznaceni": "iPad ",
+        "templateCode": "PR0021",
+        "price": 0
+      },
+      {
+        "oznaceni": "iPadUsbC",
+        "templateCode": "PR0020",
+        "price": 0
+      },
+      {
+        "oznaceni": "klavesniceMys",
+        "templateCode": "SET0028",
+        "price": 0
+      },
+      {
+        "oznaceni": "AIO ",
+        "templateCode": "SET0028",
+        "price": 0
+      },
+      {
+        "oznaceni": "iMac ",
+        "templateCode": "SET0029",
+        "price": 0
+      },
+      {
+        "oznaceni": "kabel",
+        "templateCode": "CAB0004 ",
+        "price": 0
+      }
+    ]
+  },
   "rychleOdkazy": {
     "columns": [
       "Název",
