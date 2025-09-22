@@ -25,6 +25,164 @@
       }
     ]
   },
+  "injectButtons": {
+    "columns": [
+      "buttonName",
+      "color",
+      "function",
+      "parameters",
+      "pageType",
+      "position",
+      "order",
+      "conditionsSOVAL",
+      "sovaGates"
+    ],
+    "rules": [
+      {
+        "buttonName": "Seřadit parametry",
+        "color": null,
+        "function": "raditHodnotyFiltru",
+        "parameters": null,
+        "pageType": "parametry-pro-filtrovani-vypis",
+        "position": "buttonsHeaderLeft",
+        "order": null,
+        "conditionsSOVAL": null,
+        "sovaGates": null
+      },
+      {
+        "buttonName": "Seřadit parametry",
+        "color": null,
+        "function": "paramSortingSingle",
+        "parameters": null,
+        "pageType": "parametry-pro-filtrovani-detail",
+        "position": "buttonsHeaderLeft",
+        "order": null,
+        "conditionsSOVAL": null,
+        "sovaGates": null
+      },
+      {
+        "buttonName": "Upnout kódy",
+        "color": null,
+        "function": null,
+        "parameters": null,
+        "pageType": "html-kody",
+        "position": "buttonsHeaderLeft",
+        "order": null,
+        "conditionsSOVAL": null,
+        "sovaGates": null
+      },
+      {
+        "buttonName": "Tisk soupisky",
+        "color": "green",
+        "function": "pocitarnaExpeditionList",
+        "parameters": null,
+        "pageType": "prehled-objednavek",
+        "position": "buttonsMassAction",
+        "order": null,
+        "conditionsSOVAL": null,
+        "sovaGates": null
+      },
+      {
+        "buttonName": "Balík",
+        "color": null,
+        "function": "openModalUrl",
+        "parameters": "{\"anchorText\":\"Přidat zásilku (Balíky)\"}",
+        "pageType": "objednavky-detail",
+        "position": "buttonsEndOfT2Right",
+        "order": null,
+        "conditionsSOVAL": "%%customerBillVatId != \"CZ27203026\"%%",
+        "sovaGates": null
+      },
+      {
+        "buttonName": "Spec. a vícekus balík",
+        "color": null,
+        "function": "openModalUrl ",
+        "parameters": "{\"anchorText\":\"Přidat specifickou zásilku (Balíky)\", \"openInModal\": true}",
+        "pageType": "objednavky-detail",
+        "position": "buttonsEndOfT2Right",
+        "order": null,
+        "conditionsSOVAL": "%%customerBillVatId != \"CZ27203026\"%%",
+        "sovaGates": null
+      },
+      {
+        "buttonName": "Předpřipravit expedici",
+        "color": "blue",
+        "function": "pocitarnaExpeditionPrepareCompletor",
+        "parameters": null,
+        "pageType": "objednavky-detail",
+        "position": "buttonsEndOfT2Left",
+        "order": null,
+        "conditionsSOVAL": "%%pocitarnaExpeditionPrepare != \"true\"%%",
+        "sovaGates": null
+      },
+      {
+        "buttonName": "Zpr Netstore",
+        "color": null,
+        "function": "netstoreActionRunner",
+        "parameters": "{\"netstoreAction\":\"processOnePiece\" }",
+        "pageType": "objednavky-detail",
+        "position": "buttonsEndOfT2Right",
+        "order": null,
+        "conditionsSOVAL": "%%netstoreDone != \"true\" AND customerBillVatId = \"CZ27203026\"%%",
+        "sovaGates": null
+      },
+      {
+        "buttonName": "Zpr Netstore vckus",
+        "color": null,
+        "function": "netstoreActionRunner",
+        "parameters": "{ \"netstoreAction\":\"processMultiPiece\" }",
+        "pageType": "objednavky-detail",
+        "position": "buttonsEndOfT2Right",
+        "order": null,
+        "conditionsSOVAL": "%%netstoreDone != \"true\"  AND customerBillVatId = \"CZ27203026\"%%",
+        "sovaGates": null
+      },
+      {
+        "buttonName": "Tisk FA",
+        "color": null,
+        "function": "netstoreActionRunner",
+        "parameters": "{ \"netstoreAction\":\"printInvoice\" }",
+        "pageType": "objednavky-detail",
+        "position": "buttonsEndOfT2Right",
+        "order": null,
+        "conditionsSOVAL": "%%customerBillVatId = \"CZ27203026\"%%",
+        "sovaGates": null
+      },
+      {
+        "buttonName": "Tisk štítek",
+        "color": null,
+        "function": "netstoreActionRunner",
+        "parameters": "{ \"netstoreAction\":\"printShippingLabel\" }",
+        "pageType": "objednavky-detail",
+        "position": "buttonsEndOfT2Right",
+        "order": null,
+        "conditionsSOVAL": "%%customerBillVatId = \"CZ27203026\"%%",
+        "sovaGates": null
+      },
+      {
+        "buttonName": "Přidat PCN produkt",
+        "color": null,
+        "function": "pocitarnaAddByPCNModal",
+        "parameters": null,
+        "pageType": "objednavky-detail",
+        "position": "buttonsEndOfT1Left",
+        "order": -2,
+        "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
+        "sovaGates": null
+      },
+      {
+        "buttonName": "Předpřipravit expedici",
+        "color": "blue",
+        "function": "pocitarnaExpeditionPrepareCompletor",
+        "parameters": null,
+        "pageType": "objednavky-detail",
+        "position": "buttonsEndOfT1Left",
+        "order": null,
+        "conditionsSOVAL": "%%pocitarnaExpeditionPrepare != \"true\"%%",
+        "sovaGates": null
+      }
+    ]
+  },
   "rychleOdkazy": {
     "columns": [
       "Název",
