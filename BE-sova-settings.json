@@ -950,6 +950,11 @@
         "price": null
       },
       {
+        "oznaceni": "AIO ",
+        "templateCode": null,
+        "price": null
+      },
+      {
         "oznaceni": "klavesniceMys",
         "templateCode": "SET0028",
         "price": 0
