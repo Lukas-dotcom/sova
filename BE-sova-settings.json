@@ -459,6 +459,17 @@
         "order": -2,
         "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
         "sovaGates": null
+      },
+      {
+        "buttonName": "Předpřipravit expedici",
+        "color": "blue",
+        "function": "pocitarnaExpeditionPrepareCompletor",
+        "parameters": null,
+        "pageType": "objednavky-detail",
+        "position": "buttonsEndOfT2Left",
+        "order": null,
+        "conditionsSOVAL": null,
+        "sovaGates": null
       }
     ]
   },
