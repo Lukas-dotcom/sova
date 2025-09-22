@@ -1,4 +1,584 @@
 {
+  "rychleOdkazy": {
+    "columns": [
+      "Název",
+      "Odkaz",
+      "Barvička",
+      "NovOkno",
+      "Kdo"
+    ],
+    "rules": [
+      {
+        "Název": "Html",
+        "Odkaz": "/admin/html-kody/",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Lukáš Tejral"
+      },
+      {
+        "Název": "Soubory",
+        "Odkaz": "/admin/spravce-souboru/",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Lukáš Tejral"
+      },
+      {
+        "Název": "Produkty",
+        "Odkaz": "/admin/ceny/",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Lukáš Tejral"
+      },
+      {
+        "Název": "Objednávky",
+        "Odkaz": "/admin/prehled-objednavek/",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Lukáš Tejral"
+      },
+      {
+        "Název": "Export PR",
+        "Odkaz": "/admin/sablona-exportu-zbozi-detail/?id=301",
+        "Barvička": null,
+        "NovOkno": "true",
+        "Kdo": "Lukáš Tejral"
+      },
+      {
+        "Název": "Export OBJ",
+        "Odkaz": "/admin/sablona-exportu-objednavky/?id=315",
+        "Barvička": null,
+        "NovOkno": true,
+        "Kdo": "Lukáš Tejral"
+      },
+      {
+        "Název": "FV editor",
+        "Odkaz": "https://shoptet.fvstudio.cz/",
+        "Barvička": null,
+        "NovOkno": true,
+        "Kdo": "Lukáš Tejral"
+      },
+      {
+        "Název": "Zde si",
+        "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Jan Kalmus"
+      },
+      {
+        "Název": "nastav svoje",
+        "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Jan Kalmus"
+      },
+      {
+        "Název": "rychlá tlačítka",
+        "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Jan Kalmus"
+      },
+      {
+        "Název": "Honzo",
+        "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Jan Kalmus"
+      },
+      {
+        "Název": "Zde si",
+        "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Tomáš Netopil"
+      },
+      {
+        "Název": "nastav svoje",
+        "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Tomáš Netopil"
+      },
+      {
+        "Název": "rychlá tlačítka",
+        "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Tomáš Netopil"
+      },
+      {
+        "Název": "Tome",
+        "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Tomáš Netopil"
+      },
+      {
+        "Název": "Zde si",
+        "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Petr Kropáček"
+      },
+      {
+        "Název": "nastav svoje",
+        "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Petr Kropáček"
+      },
+      {
+        "Název": "rychlá tlačítka",
+        "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Petr Kropáček"
+      },
+      {
+        "Název": "Peťo",
+        "Odkaz": "https://docs.google.com/spreadsheets/d/1lccvzZk589xQP4LGjNRNUhWx5712jQfHcQ3ZmCGV4Xs/edit?pli=1&gid=1511314482#gid=1511314482",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Petr Kropáček"
+      },
+      {
+        "Název": "Notebooky",
+        "Odkaz": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=673",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Dominik Němčanský"
+      },
+      {
+        "Název": "Počítače",
+        "Odkaz": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=674",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Dominik Němčanský"
+      },
+      {
+        "Název": "Monitory",
+        "Odkaz": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=714",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Dominik Němčanský"
+      },
+      {
+        "Název": "Tablety",
+        "Odkaz": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=1155",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Dominik Němčanský"
+      },
+      {
+        "Název": "Mobily",
+        "Odkaz": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=717",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Dominik Němčanský"
+      },
+      {
+        "Název": "Export NTB",
+        "Odkaz": "https://www.pocitarna.cz/export/products.xls?patternId=399&visibilityId=0&partnerId=5&hash=113b1704349647164a438c246e26185f16a9499991df68f315ba2d75bab2b6d9&stockState=1&defaultCategoryId=673",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Dominik Němčanský"
+      },
+      {
+        "Název": "Export POC",
+        "Odkaz": "https://www.pocitarna.cz/export/products.xls?patternId=399&visibilityId=0&partnerId=5&hash=113b1704349647164a438c246e26185f16a9499991df68f315ba2d75bab2b6d9&stockState=1&defaultCategoryId=674",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Dominik Němčanský"
+      },
+      {
+        "Název": "Export LCD",
+        "Odkaz": "https://www.pocitarna.cz/export/products.xls?patternId=399&visibilityId=0&partnerId=5&hash=113b1704349647164a438c246e26185f16a9499991df68f315ba2d75bab2b6d9&stockState=1&defaultCategoryId=714",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Dominik Němčanský"
+      },
+      {
+        "Název": "Import",
+        "Odkaz": "https://www.pocitarna.cz/admin/import-produktu/",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Dominik Němčanský"
+      }
+    ]
+  },
+  "injectFunctions": {
+    "columns": [
+      "function",
+      "parameters",
+      "pageType",
+      "conditionsSOVAL",
+      "windowName"
+    ],
+    "rules": [
+      {
+        "function": "sidebarHide",
+        "parameters": null,
+        "pageType": null,
+        "conditionsSOVAL": null,
+        "windowName": null
+      },
+      {
+        "function": "pridatStitikyvPrehledu",
+        "parameters": null,
+        "pageType": "ceny",
+        "conditionsSOVAL": null,
+        "windowName": null
+      },
+      {
+        "function": "pridatParametry",
+        "parameters": null,
+        "pageType": "ceny",
+        "conditionsSOVAL": null,
+        "windowName": null
+      },
+      {
+        "function": "priznakEmail",
+        "parameters": null,
+        "pageType": "ceny",
+        "conditionsSOVAL": null,
+        "windowName": null
+      },
+      {
+        "function": "sablonyClanky",
+        "parameters": null,
+        "pageType": "clanek-rubrika-detail",
+        "conditionsSOVAL": null,
+        "windowName": null
+      },
+      {
+        "function": "adminDeliveryHelper",
+        "parameters": null,
+        "pageType": "objednavky-detail",
+        "conditionsSOVAL": null,
+        "windowName": null
+      },
+      {
+        "function": "mazatTrackingPriOdstraneniZasilky",
+        "parameters": null,
+        "pageType": "objednavky-detail",
+        "conditionsSOVAL": null,
+        "windowName": null
+      },
+      {
+        "function": "priznakyVobjednavkach",
+        "parameters": null,
+        "pageType": "objednavky-detail",
+        "conditionsSOVAL": null,
+        "windowName": null
+      },
+      {
+        "function": "priznakEmail",
+        "parameters": null,
+        "pageType": "objednavky-detail",
+        "conditionsSOVAL": null,
+        "windowName": null
+      },
+      {
+        "function": "orderRequests",
+        "parameters": null,
+        "pageType": "objednavky-detail",
+        "conditionsSOVAL": null,
+        "windowName": null
+      },
+      {
+        "function": "additionalOrderInputs",
+        "parameters": null,
+        "pageType": "objednavky-detail",
+        "conditionsSOVAL": null,
+        "windowName": null
+      },
+      {
+        "function": "alerts",
+        "parameters": null,
+        "pageType": null,
+        "conditionsSOVAL": null,
+        "windowName": null
+      },
+      {
+        "function": "ordersTableInfo",
+        "parameters": null,
+        "pageType": "prehled-objednavek",
+        "conditionsSOVAL": null,
+        "windowName": null
+      },
+      {
+        "function": "ordersTableColor",
+        "parameters": null,
+        "pageType": "prehled-objednavek",
+        "conditionsSOVAL": null,
+        "windowName": null
+      }
+    ]
+  },
+  "injectButtons": {
+    "columns": [
+      "buttonName",
+      "color",
+      "function",
+      "parameters",
+      "pageType",
+      "position",
+      "order",
+      "conditionsSOVAL",
+      "sovaGates"
+    ],
+    "rules": [
+      {
+        "buttonName": "Seřadit parametry",
+        "color": null,
+        "function": "raditHodnotyFiltru",
+        "parameters": null,
+        "pageType": "parametry-pro-filtrovani-vypis",
+        "position": "buttonsHeaderLeft",
+        "order": null,
+        "conditionsSOVAL": null,
+        "sovaGates": null
+      },
+      {
+        "buttonName": "Seřadit parametry",
+        "color": null,
+        "function": "paramSortingSingle",
+        "parameters": null,
+        "pageType": "parametry-pro-filtrovani-detail",
+        "position": "buttonsHeaderLeft",
+        "order": null,
+        "conditionsSOVAL": null,
+        "sovaGates": null
+      },
+      {
+        "buttonName": "Upnout kódy",
+        "color": null,
+        "function": null,
+        "parameters": null,
+        "pageType": "html-kody",
+        "position": "buttonsHeaderLeft",
+        "order": null,
+        "conditionsSOVAL": null,
+        "sovaGates": null
+      },
+      {
+        "buttonName": "Tisk soupisky",
+        "color": "green",
+        "function": "pocitarnaExpeditionList",
+        "parameters": null,
+        "pageType": "prehled-objednavek",
+        "position": "buttonsMassAction",
+        "order": null,
+        "conditionsSOVAL": null,
+        "sovaGates": null
+      },
+      {
+        "buttonName": "Balík",
+        "color": null,
+        "function": "openModalUrl",
+        "parameters": "{\"anchorText\":\"Přidat zásilku (Balíky)\"}",
+        "pageType": "objednavky-detail",
+        "position": "buttonsEndOfT2Right",
+        "order": null,
+        "conditionsSOVAL": "%%customerBillVatId != \"CZ27203026\"%%",
+        "sovaGates": null
+      },
+      {
+        "buttonName": "Spec. a vícekus balík",
+        "color": null,
+        "function": "openModalUrl ",
+        "parameters": "{\"anchorText\":\"Přidat specifickou zásilku (Balíky)\", \"openInModal\": true}",
+        "pageType": "objednavky-detail",
+        "position": "buttonsEndOfT2Right",
+        "order": null,
+        "conditionsSOVAL": "%%customerBillVatId != \"CZ27203026\"%%",
+        "sovaGates": null
+      },
+      {
+        "buttonName": "Předpřipravit expedici",
+        "color": "blue",
+        "function": "pocitarnaExpeditionPrepareCompletor",
+        "parameters": null,
+        "pageType": "objednavky-detail",
+        "position": "buttonsEndOfT2Left",
+        "order": null,
+        "conditionsSOVAL": "%%pocitarnaExpeditionPrepare != \"true\"%%",
+        "sovaGates": null
+      },
+      {
+        "buttonName": "Zpr Netstore",
+        "color": null,
+        "function": "netstoreActionRunner",
+        "parameters": "{\"netstoreAction\":\"processOnePiece\" }",
+        "pageType": "objednavky-detail",
+        "position": "buttonsEndOfT2Right",
+        "order": null,
+        "conditionsSOVAL": "%%netstoreDone != \"true\" AND customerBillVatId = \"CZ27203026\"%%",
+        "sovaGates": null
+      },
+      {
+        "buttonName": "Zpr Netstore vckus",
+        "color": null,
+        "function": "netstoreActionRunner",
+        "parameters": "{ \"netstoreAction\":\"processMultiPiece\" }",
+        "pageType": "objednavky-detail",
+        "position": "buttonsEndOfT2Right",
+        "order": null,
+        "conditionsSOVAL": "%%netstoreDone != \"true\"  AND customerBillVatId = \"CZ27203026\"%%",
+        "sovaGates": null
+      },
+      {
+        "buttonName": "Tisk FA",
+        "color": null,
+        "function": "netstoreActionRunner",
+        "parameters": "{ \"netstoreAction\":\"printInvoice\" }",
+        "pageType": "objednavky-detail",
+        "position": "buttonsEndOfT2Right",
+        "order": null,
+        "conditionsSOVAL": "%%customerBillVatId = \"CZ27203026\"%%",
+        "sovaGates": null
+      },
+      {
+        "buttonName": "Tisk štítek",
+        "color": null,
+        "function": "netstoreActionRunner",
+        "parameters": "{ \"netstoreAction\":\"printShippingLabel\" }",
+        "pageType": "objednavky-detail",
+        "position": "buttonsEndOfT2Right",
+        "order": null,
+        "conditionsSOVAL": "%%customerBillVatId = \"CZ27203026\"%%",
+        "sovaGates": null
+      },
+      {
+        "buttonName": "Přidat PCN produkt",
+        "color": null,
+        "function": "pocitarnaAddByPCNModal",
+        "parameters": null,
+        "pageType": "objednavky-detail",
+        "position": "buttonsEndOfT1Left",
+        "order": -2,
+        "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
+        "sovaGates": null
+      },
+      {
+        "buttonName": "Předpřipravit expedici",
+        "color": "blue",
+        "function": "pocitarnaExpeditionPrepareCompletor",
+        "parameters": null,
+        "pageType": "objednavky-detail",
+        "position": "buttonsEndOfT1Left",
+        "order": null,
+        "conditionsSOVAL": "%%pocitarnaExpeditionPrepare != \"true\"%%",
+        "sovaGates": null
+      }
+    ]
+  },
+  "injectButtonsEmail": {
+    "columns": [
+      "buttonName",
+      "color",
+      "pageType",
+      "position",
+      "order",
+      "conditionsSOVAL",
+      "recipient",
+      "CCrecipient",
+      "subject",
+      "body",
+      "attachments",
+      "eml"
+    ],
+    "rules": [
+      {
+        "buttonName": "testMaileml",
+        "color": "yellow",
+        "pageType": "objednavky-detail",
+        "position": "buttonsAboveTabsRight",
+        "order": null,
+        "conditionsSOVAL": "%%(ANY (items, contains(items:code, \"TUITO\")))%%",
+        "recipient": "%%(userEmail &\", lukas.tejral@pocitarna.cz\")%%",
+        "CCrecipient": "tejral@pocitarna.cz",
+        "subject": "%%(\"Vaše objednávka \"& orderCode)%%",
+        "body": "<p>Dobrý den %% customerName %%,</p>\n<p>posíláme podklady k objednávce <strong>%% orderCode %%</strong>. Najdete je níže.</p>\n<p>Děkujeme za nákup a přejeme hezký den.</p>\n<p>toto je cena %%suma(items:totalPrice)%%</p>",
+        "attachments": [
+          "faktury",
+          "zalohoveFaktury",
+          "dobropisy",
+          "DodaciListy"
+        ],
+        "eml": true
+      },
+      {
+        "buttonName": "testMail",
+        "color": "green",
+        "pageType": "objednavky-detail",
+        "position": "buttonsAboveTabsRight",
+        "order": null,
+        "conditionsSOVAL": "%%(ANY (items, contains(items:code, \"TUITO\")))%%",
+        "recipient": "%%(userEmail &\", lukas.tejral@pocitarna.cz\")%%",
+        "CCrecipient": "tejral@pocitarna.cz",
+        "subject": "%%(\"Vaše objednávka \"& orderCode)%%",
+        "body": "<p>Dobrý den %% customerName %%,</p>\n<p>posíláme podklady k objednávce <strong>%% orderCode %%</strong>. Najdete je níže.</p>\n<p>Děkujeme za nákup a přejeme hezký den.</p>\n<p>toto je cena %%suma(items:totalPrice)%%</p>",
+        "attachments": [
+          "faktury",
+          "zalohoveFaktury",
+          "dobropisy",
+          "DodaciListy"
+        ],
+        "eml": null
+      }
+    ]
+  },
+  "injectButtonsMassEmail": {
+    "columns": [
+      "buttonName",
+      "color",
+      "order",
+      "conditionsSOVAL",
+      "recipient",
+      "CCrecipient",
+      "subject",
+      "body",
+      "attachments",
+      "eml"
+    ],
+    "rules": [
+      {
+        "buttonName": "testMail",
+        "color": "yellow",
+        "order": null,
+        "conditionsSOVAL": "%%statusID=\"-1\"%%",
+        "recipient": "%% if(it.paymentStatus = 'Nezaplaceno', 'fakturace@firma.cz', 'obchod@firma.cz') %%",
+        "CCrecipient": "%% if(contains(it.deliveryTypeName, \"PPL\"), \"logistika@firma.cz\",\"\") %%",
+        "subject": "Vaše objednávka %% it.code %%",
+        "body": "Dobrý den %% it.customer %%,\n\nděkujeme za objednávku %% it.code %% v hodnotě %% it.price %% %% it.currency %%.\n\nHezký den,\nTým Počítrárna ",
+        "attachments": [
+          "faktury",
+          "zalohoveFaktury",
+          "dobropisy",
+          "DodaciListy"
+        ],
+        "eml": null
+      },
+      {
+        "buttonName": "testMailEML",
+        "color": "black",
+        "order": null,
+        "conditionsSOVAL": "%%statusID=\"-1\"%%",
+        "recipient": "%% if(it.paymentStatus = 'Nezaplaceno', 'fakturace@firma.cz', 'obchod@firma.cz') %%",
+        "CCrecipient": "%% if(contains(it.deliveryTypeName, \"PPL\"), \"logistika@firma.cz\",\"\") %%",
+        "subject": "Vaše objednávka %% it.code %%",
+        "body": "Dobrý den %% it.customer %%,\n\nděkujeme za objednávku %% it.code %% v hodnotě %% it.price %% %% it.currency %%.\n\nHezký den,\nTým Počítrárna ",
+        "attachments": [
+          "faktury",
+          "zalohoveFaktury",
+          "dobropisy",
+          "DodaciListy"
+        ],
+        "eml": true
+      }
+    ]
+  },
   "injectButtonsMassStatusChange": {
     "columns": [
       "buttonName",
@@ -16,6 +596,1014 @@
         "conditionsSOVAL": "%%status=\"Odeslat\"%%",
         "targetStatusID": 2,
         "openTargetStatus": true
+      }
+    ]
+  },
+  "injectButtonsOrderStatusChange": {
+    "columns": [
+      "buttonName",
+      "color",
+      "order",
+      "position",
+      "conditionsSOVAL",
+      "targetStatusID",
+      "preventEmail",
+      "openAfterChange"
+    ],
+    "rules": [
+      {
+        "buttonName": "Odesláno",
+        "color": "#34ff34",
+        "order": 4,
+        "position": "buttonsEndOfT2Right",
+        "conditionsSOVAL": "%%status=\"Odeslat\"%%",
+        "targetStatusID": 2,
+        "preventEmail": null,
+        "openAfterChange": null
+      },
+      {
+        "buttonName": "Odeslat M",
+        "color": "#fe0000",
+        "order": 3,
+        "position": "buttonsEndOfT2Right",
+        "conditionsSOVAL": "%%status=\"Odeslat\"%%",
+        "targetStatusID": 89,
+        "preventEmail": null,
+        "openAfterChange": null
+      }
+    ]
+  },
+  "injectControls": {
+    "columns": [
+      "variableName",
+      "showName",
+      "controlType",
+      "selectOptions",
+      "saveType",
+      "pageType",
+      "position",
+      "order",
+      "conditionsSOVAL"
+    ],
+    "rules": [
+      {
+        "variableName": "zobrazPCNceny",
+        "showName": "Zobrazit PCN",
+        "controlType": "checkbox",
+        "selectOptions": null,
+        "saveType": "local",
+        "pageType": "ceny",
+        "position": "buttonsHeaderLeft",
+        "order": -2,
+        "conditionsSOVAL": null
+      }
+    ]
+  },
+  "injectButtonsLinks": {
+    "columns": [
+      "buttonName",
+      "color",
+      "pageType",
+      "position",
+      "order",
+      "conditionsSOVAL",
+      "href",
+      "newTab"
+    ],
+    "rules": [
+      {
+        "buttonName": "Link tlačítko",
+        "color": "brown",
+        "pageType": "objednavky-detail",
+        "position": "buttonsHeaderRight",
+        "order": -5,
+        "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
+        "href": "%%\"/admin/prehled-objednavek/\"&statusId&\"/\"%%",
+        "newTab": true
+      },
+      {
+        "buttonName": "Link mulit tlačítko",
+        "color": "black",
+        "pageType": "objednavky-detail",
+        "position": "buttonsHeaderRight",
+        "order": -6,
+        "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
+        "href": [
+          "%%\"/admin/prehled-objednavek/\"&statusId&\"/\"%%",
+          "/admin/prehled-objednavek/2/"
+        ],
+        "newTab": true
+      }
+    ]
+  },
+  "injectVariables": {
+    "columns": [
+      "testPromenne",
+      "testPromenne2",
+      "testPromenne3"
+    ],
+    "rules": [
+      {
+        "testPromenne": "Adam",
+        "testPromenne2": [
+          5,
+          4,
+          3,
+          "h45"
+        ],
+        "testPromenne3": "%%userName=\"Lukáš\"%%"
+      }
+    ]
+  },
+  "orderRequests": {
+    "columns": [
+      "requestType",
+      "predefinedRequests",
+      "customRequests",
+      "requestsStyle",
+      "positionSettings",
+      "orderSettings",
+      "conditionsSettings",
+      "positionRequests",
+      "orderRequests",
+      "conditionsRequests",
+      "color",
+      "logs"
+    ],
+    "rules": [
+      {
+        "requestType": "expe",
+        "predefinedRequests": [
+          "Přibal dodací list",
+          "Přibal fakturu",
+          "NE medvídky a letáky",
+          "Nepolepuj klávesnici",
+          "Obal páskou křehké",
+          "Nereinstalovat na SVK windows"
+        ],
+        "customRequests": true,
+        "requestsStyle": "rows",
+        "positionSettings": "downSection",
+        "orderSettings": -1,
+        "conditionsSettings": null,
+        "positionRequests": "endOfT2",
+        "orderRequests": -1,
+        "conditionsRequests": "%%status=\"Odeslat\"%%",
+        "color": "orange",
+        "logs": true
+      }
+    ]
+  },
+  "Alerts": {
+    "columns": [
+      "alert",
+      "position",
+      "order",
+      "color",
+      "backgroundColor",
+      "condition"
+    ],
+    "rules": [
+      {
+        "alert": "Objednávka předpřipravena",
+        "position": null,
+        "order": null,
+        "color": null,
+        "backgroundColor": null,
+        "condition": null
+      }
+    ]
+  },
+  "orderDetailItemsColor": {
+    "columns": [
+      "color",
+      "condition"
+    ],
+    "rules": [
+      {
+        "color": "#fffeb8",
+        "condition": "status = \"Zpracovává se\""
+      }
+    ]
+  },
+  "additionalOrderInputs": {
+    "columns": [
+      "inputVariable",
+      "inputName",
+      "inputPosition",
+      "order",
+      "type",
+      "selectOptions",
+      "condition"
+    ],
+    "rules": [
+      {
+        "inputVariable": "zaruka",
+        "inputName": "Záruka",
+        "inputPosition": "column2row2",
+        "order": -1,
+        "type": "text",
+        "selectOptions": null,
+        "condition": null
+      },
+      {
+        "inputVariable": "komise",
+        "inputName": "Kms.",
+        "inputPosition": "column1row2",
+        "order": 2,
+        "type": "checkbox",
+        "selectOptions": null,
+        "condition": null
+      },
+      {
+        "inputVariable": "reklamace",
+        "inputName": "Rekl.",
+        "inputPosition": "column1row2",
+        "order": 3,
+        "type": "checkbox",
+        "selectOptions": null,
+        "condition": null
+      }
+    ]
+  },
+  "ordersTableInfo": {
+    "columns": [
+      "Info",
+      "color",
+      "conditions"
+    ],
+    "rules": [
+      {
+        "Info": "%%filter(req_expe:request, done !=\"true\" )%%",
+        "color": "orange",
+        "conditions": null
+      },
+      {
+        "Info": "%%$userFullName%%",
+        "color": "blue",
+        "conditions": "%%status=\"Odeslat\" or status=\"Odeslat M\"%%"
+      },
+      {
+        "Info": "%%code%%",
+        "color": "green",
+        "conditions": null
+      }
+    ]
+  },
+  "ordersTableColor": {
+    "columns": [
+      "rowCondition",
+      "color",
+      "conditions"
+    ],
+    "rules": [
+      {
+        "rowCondition": "%%price>5000%%",
+        "color": "yellow",
+        "conditions": null
+      },
+      {
+        "rowCondition": "%%currency=\"€\"%%",
+        "color": "blue",
+        "conditions": "%%status=\"Odeslat\" or status=\"Odeslat M or status=\"Připravit\"%%"
+      },
+      {
+        "rowCondition": "%%deliveryType = \"PPL smart\"%%",
+        "color": "green",
+        "conditions": null
+      }
+    ]
+  },
+  "adminDeliveryHelper": {
+    "columns": [
+      "doprava",
+      "platba",
+      "vlastniPole",
+      "uprava"
+    ],
+    "rules": [
+      {
+        "doprava": null,
+        "platba": null,
+        "vlastniPole": "Doběrečné (HC, separe)",
+        "uprava": [
+          "dobirkaSepare",
+          "skrytPridatZasilkuBaliky"
+        ]
+      },
+      {
+        "doprava": [
+          "PPL - kurýr (vícekusová zásilka, Slovensko)",
+          "PPL ParcelShop - výdejní místa (vícekusová zásilka, Slovensko)"
+        ],
+        "platba": [
+          "Dobírkou"
+        ],
+        "vlastniPole": null,
+        "uprava": [
+          "vicekusSK",
+          "skrytPridatZasilkuBaliky"
+        ]
+      },
+      {
+        "doprava": null,
+        "platba": [
+          "Dobírkou"
+        ],
+        "vlastniPole": null,
+        "uprava": [
+          "doplneniCastkyKuhrade"
+        ]
+      }
+    ]
+  },
+  "addProductsPrepareCompletor": {
+    "columns": [
+      "oznaceni",
+      "templateCode",
+      "price"
+    ],
+    "rules_addProductsPrepareCompletor": [
+      {
+        "oznaceni": "iphoneJack",
+        "templateCode": "PR0013",
+        "price": 0
+      },
+      {
+        "oznaceni": "iphoneNoJ",
+        "templateCode": "PR0014",
+        "price": 0
+      },
+      {
+        "oznaceni": "AndroidUsbC",
+        "templateCode": "PR0017",
+        "price": 0
+      },
+      {
+        "oznaceni": "AndroidUsbMicro",
+        "templateCode": "PR0015",
+        "price": 0
+      },
+      {
+        "oznaceni": "iPad ",
+        "templateCode": "PR0021",
+        "price": 0
+      },
+      {
+        "oznaceni": "iPadUsbC",
+        "templateCode": "PR0020",
+        "price": 0
+      },
+      {
+        "oznaceni": "klavesniceMys",
+        "templateCode": "SET0028",
+        "price": 0
+      },
+      {
+        "oznaceni": "AIO ",
+        "templateCode": "SET0028",
+        "price": 0
+      },
+      {
+        "oznaceni": "iMac ",
+        "templateCode": "SET0029",
+        "price": 0
+      },
+      {
+        "oznaceni": "kabel",
+        "templateCode": "CAB0004 ",
+        "price": 0
+      }
+    ]
+  },
+  "pocitarnaExpeditionCompletor": {
+    "columns": [
+      "categories",
+      "categoriesId",
+      "forbiddenProducts"
+    ],
+    "rules": [
+      {
+        "categories": [
+          "Notebooky",
+          "Počítače",
+          "Monitory",
+          "Telefony, mobily",
+          "Tablety"
+        ],
+        "categoriesId": [
+          673,
+          674,
+          714,
+          717,
+          1155
+        ],
+        "forbiddenProducts": [
+          "MAR",
+          "BLESK",
+          "SERVIS",
+          "TIP",
+          "ZAR",
+          "REKLAMACE"
+        ]
+      }
+    ]
+  },
+  "adminDeliveryHelperNEW": {
+    "columns": [
+      "zakaznik",
+      "doprava",
+      "platba",
+      "poznamka",
+      "vlastniPole",
+      "uprava",
+      "info"
+    ],
+    "rules": [
+      {
+        "zakaznik": [
+          14216
+        ],
+        "doprava": null,
+        "platba": null,
+        "poznamka": null,
+        "vlastniPole": null,
+        "uprava": [
+          "netstore",
+          "skrytPridatZasilkuBaliky"
+        ],
+        "info": null
+      },
+      {
+        "zakaznik": null,
+        "doprava": null,
+        "platba": null,
+        "poznamka": null,
+        "vlastniPole": "Doběrečné (HC, separe)",
+        "uprava": [
+          "dobirkaSepare",
+          "skrytPridatZasilkuBaliky"
+        ],
+        "info": null
+      },
+      {
+        "zakaznik": null,
+        "doprava": [
+          "PPL - kurýr (vícekusová zásilka, Slovensko)",
+          "PPL ParcelShop - výdejní místa (vícekusová zásilka, Slovensko)"
+        ],
+        "platba": [
+          "Dobírkou"
+        ],
+        "poznamka": null,
+        "vlastniPole": null,
+        "uprava": [
+          "vicekusSK",
+          "skrytPridatZasilkuBaliky"
+        ],
+        "info": [
+          "Vícekus s dobírkou na Slovensko: přidej více zásilek s dobírkami podle obsahu balíků + k jedné zásilce přičti cenu dopravy a platby"
+        ]
+      },
+      {
+        "zakaznik": null,
+        "doprava": null,
+        "platba": [
+          "Dobírkou"
+        ],
+        "poznamka": null,
+        "vlastniPole": null,
+        "uprava": [
+          "doplneniCastkyKuhrade"
+        ],
+        "info": null
+      }
+    ]
+  },
+  "odkazyKdekoliv": {
+    "columns": [
+      "Název",
+      "kde",
+      "Odkaz",
+      "Barvička",
+      "NovOkno",
+      "Kdo"
+    ],
+    "rules": [
+      {
+        "Název": "Html",
+        "kde": "/admin/ceny/",
+        "Odkaz": "/admin/html-kody/",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Jan Kalmus"
+      },
+      {
+        "Název": "Objednávky",
+        "kde": "/admin/prehled-objednavek/",
+        "Odkaz": "/admin/prehled-objednavek/",
+        "Barvička": "black",
+        "NovOkno": true,
+        "Kdo": "Lukáš Tejral"
+      }
+    ]
+  },
+  "pozadavkyExpe": {
+    "columns": [
+      "button",
+      "text"
+    ],
+    "rules": [
+      {
+        "button": "DOD přibalit",
+        "text": "Přibal dodací list"
+      },
+      {
+        "button": "FA přibalit",
+        "text": "Přibal fakturu"
+      },
+      {
+        "button": "Neposílat MKT",
+        "text": "NE medvídky a letáky"
+      },
+      {
+        "button": "Bez polep",
+        "text": "Nepolepuj klávesnici"
+      },
+      {
+        "button": "Křehké",
+        "text": "Obal páskou křehké"
+      },
+      {
+        "button": "Konkrétní kus",
+        "text": "Přidej konkrétní vybraný kus"
+      },
+      {
+        "button": "Hezký kus",
+        "text": "Vyber hezký kus"
+      },
+      {
+        "button": "Baterie 95%",
+        "text": "Vyber kus se stavem baterie aspoň 95%"
+      }
+    ]
+  },
+  "priznakyVobjednavkach": {
+    "columns": [
+      "Název",
+      "ID",
+      "Kdo"
+    ],
+    "rules": [
+      {
+        "Název": "Na prodejně",
+        "ID": 968,
+        "Kdo": "Lukáš Tejral"
+      },
+      {
+        "Název": "Na Copy",
+        "ID": 971,
+        "Kdo": "Lukáš Tejral"
+      },
+      {
+        "Název": "Nezvěstný",
+        "ID": 974,
+        "Kdo": "Lukáš Tejral"
+      },
+      {
+        "Název": "Na prodejně",
+        "ID": 968,
+        "Kdo": "Lukáš Koukal"
+      },
+      {
+        "Název": "Na Copy",
+        "ID": 971,
+        "Kdo": "Lukáš Koukal"
+      },
+      {
+        "Název": "Nezvěstný",
+        "ID": 974,
+        "Kdo": "Lukáš Koukal"
+      },
+      {
+        "Název": "Na prodejně",
+        "ID": 968,
+        "Kdo": "Eva Chytil"
+      },
+      {
+        "Název": "Na Copy",
+        "ID": 971,
+        "Kdo": "Eva Chytil"
+      },
+      {
+        "Název": "Nezvěstný",
+        "ID": 974,
+        "Kdo": "Eva Chytil"
+      }
+    ]
+  },
+  "ryhclaTlacitkaObjednavky": {
+    "columns": [
+      "idCurrent",
+      "idChange",
+      "buttonText",
+      "confirm",
+      "redirect",
+      "color",
+      "colorHover"
+    ],
+    "rules": [
+      {
+        "idCurrent": 3,
+        "idChange": 151,
+        "buttonText": "Odeslání-balení",
+        "confirm": null,
+        "redirect": true,
+        "color": "#00bd65",
+        "colorHover": "#00944f"
+      },
+      {
+        "idCurrent": 151,
+        "idChange": 2,
+        "buttonText": "Odesláno",
+        "confirm": "Skutečně vše zabaleno?",
+        "redirect": null,
+        "color": "#34ff34",
+        "colorHover": "#26ba26"
+      },
+      {
+        "idCurrent": 89,
+        "idChange": 12,
+        "buttonText": "Zpracovává se",
+        "confirm": null,
+        "redirect": null,
+        "color": "#f8a102",
+        "colorHover": "#c27e00"
+      },
+      {
+        "idCurrent": 3,
+        "idChange": 18,
+        "buttonText": "Obchod. řešení",
+        "confirm": null,
+        "redirect": null,
+        "color": "#f8a102",
+        "colorHover": "#c27e00"
+      }
+    ]
+  },
+  "priznakEmail": {
+    "columns": [
+      "Název",
+      "ID",
+      "ceny",
+      "objednavka",
+      "active-email-komu",
+      "active-email-predmet",
+      "active-email-obsah",
+      "passive-email-komu",
+      "passive-email-predmet",
+      "passive-email-obsah"
+    ],
+    "rules": [
+      {
+        "Název": "Na prodejně",
+        "ID": 968,
+        "ceny": null,
+        "objednavka": null,
+        "active-email-komu": null,
+        "active-email-predmet": null,
+        "active-email-obsah": null,
+        "passive-email-komu": null,
+        "passive-email-predmet": null,
+        "passive-email-obsah": null
+      },
+      {
+        "Název": "Na Copy",
+        "ID": 971,
+        "ceny": null,
+        "objednavka": null,
+        "active-email-komu": null,
+        "active-email-predmet": null,
+        "active-email-obsah": null,
+        "passive-email-komu": null,
+        "passive-email-predmet": null,
+        "passive-email-obsah": null
+      },
+      {
+        "Název": "Nezvěstný",
+        "ID": 974,
+        "ceny": true,
+        "objednavka": true,
+        "active-email-komu": [
+          "lukas.tejral@pocitarna.cz"
+        ],
+        "active-email-predmet": "Chybějící produkt: ||name||",
+        "active-email-obsah": "Ahoj, neviděli jste někdo ||name|| s kódem ||code|| a URL ||product-url||",
+        "passive-email-komu": [
+          "lukas.tejral@pocitarna.cz"
+        ],
+        "passive-email-predmet": "Produkt: ||name|| nalezen",
+        "passive-email-obsah": "Už jsem našel ||name|| s kódem ||code|| "
+      }
+    ]
+  },
+  "pridatPriznaky": {
+    "columns": [
+      "Název",
+      "ID",
+      "Zobrazovat"
+    ],
+    "rules": [
+      {
+        "Název": "Akce",
+        "ID": 1,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "Akce dne",
+        "ID": 59,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "BLACK FRIDAY",
+        "ID": 693,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "FUJITSPU DAYS - 500 Kč",
+        "ID": 668,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "Hlavní akce dne",
+        "ID": 56,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "Jarní úklid - výprodej",
+        "ID": 703,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "MASAKR CEN",
+        "ID": 745,
+        "Zobrazovat": "ANO"
+      },
+      {
+        "Název": "Novinka",
+        "ID": 2,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "Tip",
+        "ID": 3,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "Upgrade W11",
+        "ID": 687,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "Vánoční výprodej",
+        "ID": 53,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "Výprodej",
+        "ID": 902,
+        "Zobrazovat": "ANO"
+      },
+      {
+        "Název": "Aukro - nabídka",
+        "ID": 929,
+        "Zobrazovat": "NE"
+      },
+      {
+        "Název": "Nezvěstný",
+        "ID": 974,
+        "Zobrazovat": "ANO"
+      }
+    ]
+  },
+  "pridatParametry": {
+    "columns": [
+      "Parametr"
+    ],
+    "rules": [
+      {
+        "Parametr": "Typ produktu"
+      },
+      {
+        "Parametr": "Model procesoru"
+      },
+      {
+        "Parametr": "Velikost operační paměti"
+      },
+      {
+        "Parametr": "Kapacita disku"
+      },
+      {
+        "Parametr": "Dedikovaná grafická karta (GPU)"
+      },
+      {
+        "Parametr": "Rozlišení"
+      }
+    ]
+  },
+  "sovaParamSortingMaster": {
+    "columns": [
+      "Parametr",
+      "Oddelovac"
+    ],
+    "rules": [
+      {
+        "Parametr": "Rozlišení",
+        "Oddelovac": "x"
+      },
+      {
+        "Parametr": "Poměr stran",
+        "Oddelovac": ":"
+      },
+      {
+        "Parametr": "Typ produktu",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "Operační systém",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "Připojení",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "Typ pevného disku",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "Stav produktu",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "Modem",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "Typ panelu",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "opt_insurance",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "#CENA",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "#TAG",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "Popis kosmetické vady",
+        "Oddelovac": "neradit"
+      },
+      {
+        "Parametr": "Systém",
+        "Oddelovac": "neradit"
+      }
+    ]
+  },
+  "orderTabsAlter": {
+    "columns": [
+      "tab",
+      "URL"
+    ],
+    "rules": [
+      {
+        "tab": "Všechny objednávky",
+        "URL": null
+      },
+      {
+        "tab": "Odeslat",
+        "URL": null
+      },
+      {
+        "tab": "Odeslat [SK]",
+        "URL": "https://www.pocitarna.sk/admin/prehled-objednavek/3/"
+      },
+      {
+        "tab": "Odeslat M",
+        "URL": null
+      },
+      {
+        "tab": "Odeslat M [SK]",
+        "URL": "https://www.pocitarna.sk/admin/prehled-objednavek/6/"
+      },
+      {
+        "tab": "Připravit",
+        "URL": null
+      },
+      {
+        "tab": "Připravit [SK]",
+        "URL": "https://www.pocitarna.sk/admin/prehled-objednavek/-2/"
+      },
+      {
+        "tab": "Zpracovává se",
+        "URL": null
+      },
+      {
+        "tab": "Zpracovává se [SK]",
+        "URL": "https://www.pocitarna.sk/admin/prehled-objednavek/9/"
+      },
+      {
+        "tab": "Odeslání-balení",
+        "URL": null
+      },
+      {
+        "tab": "Odeslání-balení  [SK]",
+        "URL": "https://www.pocitarna.sk/admin/prehled-objednavek/9/"
+      },
+      {
+        "tab": "Odesláno",
+        "URL": null
+      }
+    ]
+  },
+  "prehledZvyraznit": {
+    "columns": [
+      "stavy",
+      "poznamka",
+      "color"
+    ],
+    "rules": [
+      {
+        "stavy": [
+          "Odeslat",
+          "Odeslání-balení"
+        ],
+        "poznamka": "expeduje: Lukáš Tejral",
+        "color": "#8098f8"
+      },
+      {
+        "stavy": [
+          "Odeslat",
+          "Odeslání-balení"
+        ],
+        "poznamka": "expeduje: Lukáš Koukal",
+        "color": "#ecf87e"
+      }
+    ]
+  },
+  "prehledReq": {
+    "columns": [
+      "typReq",
+      "stavy",
+      "notDoneColor",
+      "DoneColor"
+    ],
+    "rules": [
+      {
+        "typReq": "expe",
+        "stavy": [
+          "Odeslat",
+          "Odeslání-balení"
+        ],
+        "notDoneColor": "red",
+        "DoneColor": "Green"
+      },
+      {
+        "typReq": "servis",
+        "stavy": [
+          "Odeslat",
+          "Odeslání-balení",
+          "Servisování"
+        ],
+        "notDoneColor": "purple",
+        "DoneColor": "Green"
+      }
+    ]
+  },
+  "FEzvyrazneniVyprodej": {
+    "columns": [
+      "jmena"
+    ],
+    "rules": [
+      {
+        "jmena": "Veronika Esslerová"
+      },
+      {
+        "jmena": "Ondřej Sopek"
+      },
+      {
+        "jmena": "Lukáš Tejral"
+      },
+      {
+        "jmena": "Barbora Grygarová"
+      },
+      {
+        "jmena": "Petr Hudlík"
       }
     ]
   }
