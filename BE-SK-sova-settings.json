@@ -257,6 +257,18 @@
       }
     ]
   },
+  "orderDetailItemsColor": {
+    "columns": [
+      "color",
+      "condition"
+    ],
+    "rules": [
+      {
+        "color": "#fffeb8",
+        "condition": "status = \"Zpracovává se\""
+      }
+    ]
+  },
   "rychleOdkazy": {
     "columns": [
       "Název",
