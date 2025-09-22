@@ -1,4 +1,30 @@
 {
+  "injectControls": {
+    "columns": [
+      "variableName",
+      "showName",
+      "controlType",
+      "selectOptions",
+      "saveType",
+      "pageType",
+      "position",
+      "order",
+      "conditionsSOVAL"
+    ],
+    "rules": [
+      {
+        "variableName": "zobrazPCNceny",
+        "showName": "Zobrazit PCN",
+        "controlType": "checkbox",
+        "selectOptions": null,
+        "saveType": "local",
+        "pageType": "ceny",
+        "position": "buttonsHeaderLeft",
+        "order": -2,
+        "conditionsSOVAL": null
+      }
+    ]
+  },
   "rychleOdkazy": {
     "columns": [
       "Název",
