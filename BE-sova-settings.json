@@ -768,9 +768,9 @@
         "alert": "Objednávka předpřipravena",
         "position": null,
         "order": null,
-        "color": null,
+        "color": "blue",
         "backgroundColor": null,
-        "condition": null
+        "condition": "%% pocitarnaExpeditionPrepare = \"true\" %%"
       }
     ]
   },
