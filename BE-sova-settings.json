@@ -450,7 +450,7 @@
         "sovaGates": null
       },
       {
-        "buttonName": "Přidat produkt",
+        "buttonName": "Přidat PCN produkt",
         "color": null,
         "function": "pocitarnaAddByPCNModal",
         "parameters": null,
