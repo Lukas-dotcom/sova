@@ -607,7 +607,7 @@
         "controlType": "checkbox",
         "selectOptions": null,
         "saveType": "session",
-        "pageType": "objednavky-detail",
+        "pageType": "ceny",
         "position": "buttonsHeaderLeft",
         "order": -2,
         "conditionsSOVAL": "%%status=\"Odesláno\"%%"
