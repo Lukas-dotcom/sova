@@ -945,6 +945,11 @@
         "price": null
       },
       {
+        "oznaceni": "iPadUsbC",
+        "templateCode": null,
+        "price": null
+      },
+      {
         "oznaceni": "klavesniceMys",
         "templateCode": "SET0028",
         "price": 0
