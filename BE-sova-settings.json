@@ -765,7 +765,7 @@
     ],
     "rules": [
       {
-        "alert": "Objednávka předpřipravena",
+        "alert": "Objednávka předpřipravena pro expedici",
         "position": "aboveContact",
         "order": null,
         "color": "blue",
