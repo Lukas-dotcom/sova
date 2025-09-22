@@ -448,6 +448,17 @@
         "order": null,
         "conditionsSOVAL": "%%customerBillVatId = \"CZ27203026\"%%",
         "sovaGates": null
+      },
+      {
+        "buttonName": "pocitarnaAddByPCNModal",
+        "color": null,
+        "function": null,
+        "parameters": null,
+        "pageType": "objednavky-detail",
+        "position": "buttonsEndOfT2Left",
+        "order": null,
+        "conditionsSOVAL": null,
+        "sovaGates": null
       }
     ]
   },
