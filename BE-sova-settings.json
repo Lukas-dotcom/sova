@@ -927,12 +927,17 @@
       {
         "oznaceni": "iphoneNoJ",
         "templateCode": "PR0014",
-        "price": null
+        "price": 0
       },
       {
         "oznaceni": "AndroidUsbC",
         "templateCode": "PR0017",
-        "price": null
+        "price": 0
+      },
+      {
+        "oznaceni": "AndroidUsbMicro",
+        "templateCode": "PR0015",
+        "price": 0
       },
       {
         "oznaceni": "klavesniceMys",
