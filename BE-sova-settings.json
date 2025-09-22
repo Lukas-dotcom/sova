@@ -920,6 +920,11 @@
     ],
     "rules_addProductsPrepareCompletor": [
       {
+        "oznaceni": "iphoneJack",
+        "templateCode": "PR0013",
+        "price": 0
+      },
+      {
         "oznaceni": "klavesniceMys",
         "templateCode": "SET0028",
         "price": 0
