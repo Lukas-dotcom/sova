@@ -925,6 +925,11 @@
         "price": 0
       },
       {
+        "oznaceni": "iphoneNoJ",
+        "templateCode": "PR0014",
+        "price": null
+      },
+      {
         "oznaceni": "klavesniceMys",
         "templateCode": "SET0028",
         "price": 0
