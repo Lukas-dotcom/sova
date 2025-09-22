@@ -760,7 +760,7 @@
         "requestsStyle": "rows",
         "positionSettings": "downSection",
         "orderSettings": -1,
-        "conditionsSettings": "%%status=\"Obchod. řešení\"%%",
+        "conditionsSettings": null,
         "positionRequests": "endOfT2",
         "orderRequests": -1,
         "conditionsRequests": "%%status=\"Odeslat\"%%",
