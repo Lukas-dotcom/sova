@@ -942,12 +942,12 @@
       {
         "oznaceni": "iPad ",
         "templateCode": "PR0011",
-        "price": null
+        "price": 0
       },
       {
         "oznaceni": "iPadUsbC",
-        "templateCode": null,
-        "price": null
+        "templateCode": "PR0020",
+        "price": 0
       },
       {
         "oznaceni": "AIO ",
