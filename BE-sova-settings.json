@@ -783,7 +783,7 @@
           "přehodit jinam",
           "nene"
         ],
-        "customRequests": "PRAVDA ",
+        "customRequests": true,
         "requestsStyle": "tags",
         "positionSettings": "downSection",
         "orderSettings": 2,
