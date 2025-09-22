@@ -930,6 +930,11 @@
         "price": null
       },
       {
+        "oznaceni": "AndroidUsbC",
+        "templateCode": "PR0017 ",
+        "price": null
+      },
+      {
         "oznaceni": "klavesniceMys",
         "templateCode": "SET0028",
         "price": 0
