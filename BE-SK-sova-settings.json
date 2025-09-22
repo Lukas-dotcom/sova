@@ -392,6 +392,45 @@
       }
     ]
   },
+  "orderRequests": {
+    "columns": [
+      "requestType",
+      "predefinedRequests",
+      "customRequests",
+      "requestsStyle",
+      "positionSettings",
+      "orderSettings",
+      "conditionsSettings",
+      "positionRequests",
+      "orderRequests",
+      "conditionsRequests",
+      "color",
+      "logs"
+    ],
+    "rules": [
+      {
+        "requestType": "expe",
+        "predefinedRequests": [
+          "Přibal dodací list",
+          "Přibal fakturu",
+          "NE medvídky a letáky",
+          "Nepolepuj klávesnici",
+          "Obal páskou křehké",
+          "Nereinstalovat na SVK windows"
+        ],
+        "customRequests": true,
+        "requestsStyle": "rows",
+        "positionSettings": "downSection",
+        "orderSettings": -1,
+        "conditionsSettings": null,
+        "positionRequests": "endOfT2",
+        "orderRequests": -1,
+        "conditionsRequests": "%%status=\"Odeslat\"%%",
+        "color": "orange",
+        "logs": true
+      }
+    ]
+  },
   "rychleOdkazy": {
     "columns": [
       "Název",
