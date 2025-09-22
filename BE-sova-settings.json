@@ -395,7 +395,7 @@
         "sovaGates": null
       },
       {
-        "buttonName": "Přepřipravit expedici",
+        "buttonName": "Předpřipravit expedici",
         "color": "blue",
         "function": "pocitarnaExpeditionPrepareCompletor",
         "parameters": null,
