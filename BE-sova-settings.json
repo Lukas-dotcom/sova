@@ -611,32 +611,6 @@
         "position": "endOfT2",
         "order": -2,
         "conditionsSOVAL": "%%status=\"Odesláno\"%%"
-      },
-      {
-        "variableName": "viewVariants",
-        "showName": "Možnosti zobrazení",
-        "controlType": "select",
-        "selectOptions": [
-          "malé",
-          "střední",
-          "velké"
-        ],
-        "saveType": "local",
-        "pageType": "objednavky-detail",
-        "position": "endOfT2",
-        "order": -1,
-        "conditionsSOVAL": null
-      },
-      {
-        "variableName": "ownVar",
-        "showName": "vlastní proměná",
-        "controlType": "input",
-        "selectOptions": null,
-        "saveType": "local",
-        "pageType": "objednavky-detail",
-        "position": "endOfT1",
-        "order": 1,
-        "conditionsSOVAL": null
       }
     ]
   },
