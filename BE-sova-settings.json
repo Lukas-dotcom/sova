@@ -722,7 +722,7 @@
   "orderRequests": {
     "columns": [
       "requestType",
-      "predifinedRequests",
+      "predefinedRequests",
       "customRequests",
       "requestsStyle",
       "positionSettings",
@@ -737,7 +737,7 @@
     "rules": [
       {
         "requestType": "expe",
-        "predifinedRequests": [
+        "predefinedRequests": [
           "Přibal dodací list",
           "Přibal fakturu",
           "NE medvídky a letáky",
@@ -760,7 +760,7 @@
       },
       {
         "requestType": "servis",
-        "predifinedRequests": [
+        "predefinedRequests": [
           "opravit",
           "externí servis",
           "pročistit"
@@ -778,12 +778,12 @@
       },
       {
         "requestType": "jineOddeleni",
-        "predifinedRequests": [
+        "predefinedRequests": [
           "něco udělat",
           "přehodit jinam",
           "nene"
         ],
-        "customRequests": true,
+        "customRequests": "PRAVDA ",
         "requestsStyle": "tags",
         "positionSettings": "downSection",
         "orderSettings": 2,
