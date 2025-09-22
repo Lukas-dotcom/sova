@@ -450,9 +450,9 @@
         "sovaGates": null
       },
       {
-        "buttonName": "pocitarnaAddByPCNModal",
+        "buttonName": null,
         "color": null,
-        "function": null,
+        "function": "pocitarnaAddByPCNModal",
         "parameters": null,
         "pageType": "objednavky-detail",
         "position": "buttonsEndOfT2Left",
