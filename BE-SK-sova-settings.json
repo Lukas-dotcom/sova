@@ -237,6 +237,26 @@
       }
     ]
   },
+  "Alerts": {
+    "columns": [
+      "alert",
+      "position",
+      "order",
+      "color",
+      "backgroundColor",
+      "condition"
+    ],
+    "rules": [
+      {
+        "alert": "Objednávka předpřipravena",
+        "position": "aboveContact",
+        "order": null,
+        "color": "blue",
+        "backgroundColor": null,
+        "condition": "%% pocitarnaExpeditionPrepare = \"true\" %%"
+      }
+    ]
+  },
   "rychleOdkazy": {
     "columns": [
       "Název",
