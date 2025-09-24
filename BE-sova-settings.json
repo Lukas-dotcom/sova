@@ -760,6 +760,14 @@
         "color": "blue",
         "backgroundColor": null,
         "condition": "%% pocitarnaExpeditionPrepare = \"true\" %%"
+      },
+      {
+        "alert": null,
+        "position": null,
+        "order": null,
+        "color": "red",
+        "backgroundColor": null,
+        "condition": "%% text3 != \"\" and ((customerDeliveryCountryId=151 OR (customerDeliveryCountryId=\"\" AND customerBillCountryId=151)) AND any(items,contains(productName,\"vícekus\") AND code=\"\") AND any(items,code=\"\" AND productName=\"Dobírkou\")) %%"
       }
     ]
   },
