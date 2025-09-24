@@ -762,7 +762,7 @@
         "condition": "%% pocitarnaExpeditionPrepare = \"true\" %%"
       },
       {
-        "alert": null,
+        "alert": "Pozor! Vícekus na Slovensko s HC separe. Zajistit, že dobírka za všechny balíky je správně ve výši HC separe",
         "position": "endOfT2",
         "order": null,
         "color": "red",
