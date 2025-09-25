@@ -17,7 +17,7 @@
         "textContains": "Kopie",
         "textEquals": null,
         "occurrenceNumber": null,
-        "condSoval": "%%pageType=\"Odeslat\"%%"
+        "condSoval": "%%pageType=\"objednavky-detail\"%%"
       }
     ]
   },
