@@ -486,7 +486,7 @@
         "buttonName": "Kopie: produkty",
         "color": "#7236f5",
         "function": "orderDuplicateSmart",
-        "parameters": "{\"mode\":\"contactOnly\"}",
+        "parameters": "{\"mode\":\"noBillingNoShipping\"}",
         "pageType": "objednavky-detail",
         "position": "buttonsSecondHeaderRight",
         "order": null,
