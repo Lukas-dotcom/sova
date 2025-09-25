@@ -483,7 +483,7 @@
         "sovaGates": null
       },
       {
-        "buttonName": "Kopie: kontakty",
+        "buttonName": "Kopie: produkty",
         "color": "#7236f5",
         "function": "orderDuplicateSmart",
         "parameters": "{\"mode\":\"contactOnly\"}",
@@ -494,7 +494,7 @@
         "sovaGates": null
       },
       {
-        "buttonName": "Kopie: kontakty",
+        "buttonName": "Kopie: celá",
         "color": "#7236f5",
         "function": "orderDuplicateSmart",
         "parameters": "{\"mode\":\"contactOnly\"}",
