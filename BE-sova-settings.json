@@ -6,7 +6,6 @@
       "closestCss",
       "textContains",
       "textEquals",
-      "",
       "occurrenceNumber",
       "condSoval"
     ],
@@ -17,8 +16,7 @@
         "closestCss": null,
         "textContains": null,
         "textEquals": null,
-        "": null,
-        "occurrenceNumber": 2,
+        "occurrenceNumber": null,
         "condSoval": "%%status=\"Odeslat\"%%"
       }
     ]
