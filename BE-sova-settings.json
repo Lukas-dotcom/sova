@@ -14,7 +14,7 @@
         "selectorCss": ".open-menu.right-aligned",
         "withinCss": null,
         "closestCss": null,
-        "textContains": null,
+        "textContains": "Kopie",
         "textEquals": null,
         "occurrenceNumber": null,
         "condSoval": "%%status=\"Odeslat\"%%"
