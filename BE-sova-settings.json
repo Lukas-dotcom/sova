@@ -459,6 +459,17 @@
         "order": null,
         "conditionsSOVAL": "%%pocitarnaExpeditionPrepare != \"true\"%%",
         "sovaGates": null
+      },
+      {
+        "buttonName": "Kopie",
+        "color": null,
+        "function": null,
+        "parameters": null,
+        "pageType": null,
+        "position": null,
+        "order": null,
+        "conditionsSOVAL": null,
+        "sovaGates": null
       }
     ]
   },
