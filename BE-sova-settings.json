@@ -12,7 +12,7 @@
     "rules": [
       {
         "selectorCss": ".open-menu.right-aligned",
-        "withinCss": null,
+        "withinCss": "div.content-buttons__moreActions.js-drawer[data-drawer-id='action-menu']",
         "closestCss": null,
         "textContains": "Kopie",
         "textEquals": null,
