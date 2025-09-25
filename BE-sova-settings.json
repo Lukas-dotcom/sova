@@ -475,7 +475,7 @@
         "buttonName": "Kopie: dopr + plat",
         "color": "#7236f5",
         "function": "orderDuplicateSmart",
-        "parameters": "{\"mode\":\"contactOnly\"}",
+        "parameters": "{\"mode\":\"noProducts\"}",
         "pageType": "objednavky-detail",
         "position": "buttonsSecondHeaderRight",
         "order": null,
