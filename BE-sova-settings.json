@@ -11,7 +11,7 @@
     ],
     "rules": [
       {
-        "selectorCss": null,
+        "selectorCss": ".open-menu.right-aligned",
         "withinCss": null,
         "closestCss": null,
         "textContains": null,
