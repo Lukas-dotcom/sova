@@ -17,7 +17,7 @@
         "textContains": "Kopie",
         "textEquals": null,
         "occurrenceNumber": null,
-        "condSoval": "%%status=\"Odeslat\"%%"
+        "condSoval": "%%pageType=\"Odeslat\"%%"
       }
     ]
   },
