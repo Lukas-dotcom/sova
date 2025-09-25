@@ -513,7 +513,7 @@
         "function": "orderDuplicateSmart",
         "parameters": "{\"mode\":\"whole\"}",
         "pageType": "objednavky-detail",
-        "position": "buttonsEndOfT6Right ",
+        "position": "buttonsEndOfT6Right",
         "order": null,
         "conditionsSOVAL": null,
         "sovaGates": null
