@@ -3,13 +3,19 @@
     "columns": [
       "selector",
       "occurrenceNumber",
+      "condSoval",
+      "",
+      "",
+      "",
+      "occurrenceNumber",
       "condSoval"
     ],
     "rules": [
       {
         "selector": null,
         "occurrenceNumber": 2,
-        "condSoval": "%%status=\"Odeslat\"%%"
+        "condSoval": "%%status=\"Odeslat\"%%",
+        "": null
       }
     ]
   },
