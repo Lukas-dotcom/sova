@@ -462,7 +462,7 @@
       },
       {
         "buttonName": "Kopie",
-        "color": null,
+        "color": "#7236f5",
         "function": null,
         "parameters": null,
         "pageType": null,
