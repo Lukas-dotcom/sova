@@ -461,7 +461,7 @@
         "sovaGates": null
       },
       {
-        "buttonName": "Kopie: kontakty",
+        "buttonName": null,
         "color": "#7236f5",
         "function": "orderDuplicateSmart",
         "parameters": "{\"mode\":\"contactOnly\"}",
@@ -472,7 +472,7 @@
         "sovaGates": null
       },
       {
-        "buttonName": "Kopie: dopr + plat",
+        "buttonName": null,
         "color": "#7236f5",
         "function": "orderDuplicateSmart",
         "parameters": "{\"mode\":\"noProducts\"}",
@@ -483,7 +483,7 @@
         "sovaGates": null
       },
       {
-        "buttonName": "Kopie: produkty",
+        "buttonName": null,
         "color": "#7236f5",
         "function": "orderDuplicateSmart",
         "parameters": "{\"mode\":\"noBillingNoShipping\"}",
@@ -494,7 +494,7 @@
         "sovaGates": null
       },
       {
-        "buttonName": "Kopie: celá",
+        "buttonName": null,
         "color": "#7236f5",
         "function": "orderDuplicateSmart",
         "parameters": "{\"mode\":\"whole\"}",
