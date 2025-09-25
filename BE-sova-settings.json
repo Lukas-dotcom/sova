@@ -464,7 +464,7 @@
         "buttonName": "Kopie",
         "color": "#7236f5",
         "function": "orderDuplicateSmart",
-        "parameters": null,
+        "parameters": "{\"mode\":\"contactOnly\"}",
         "pageType": null,
         "position": null,
         "order": null,
