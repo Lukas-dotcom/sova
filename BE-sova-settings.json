@@ -4,7 +4,7 @@
       "selectorCss",
       "withinCss",
       "closestCss",
-      "textContains",
+      "",
       "",
       "",
       "occurrenceNumber",
@@ -15,7 +15,6 @@
         "selectorCss": null,
         "withinCss": null,
         "closestCss": null,
-        "textContains": null,
         "": null,
         "occurrenceNumber": 2,
         "condSoval": "%%status=\"Odeslat\"%%"
