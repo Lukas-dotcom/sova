@@ -472,7 +472,7 @@
         "sovaGates": null
       },
       {
-        "buttonName": "Kopie: kontakty",
+        "buttonName": "Kopie: dopr + plat",
         "color": "#7236f5",
         "function": "orderDuplicateSmart",
         "parameters": "{\"mode\":\"contactOnly\"}",
