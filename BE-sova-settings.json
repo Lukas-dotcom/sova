@@ -3,15 +3,13 @@
     "columns": [
       "selector",
       "occurrenceNumber",
-      "condSoval",
-      "pageType"
+      "condSoval"
     ],
     "rules": [
       {
         "selector": null,
         "occurrenceNumber": 2,
-        "condSoval": null,
-        "pageType": null
+        "condSoval": "%%status=\"Odeslat\"%%"
       }
     ]
   },
