@@ -72,7 +72,7 @@ window.injectVariables = {
     "Lg Gram 17Z90Q"
   ],
   "DISKvylouceneCastiNazvu": [
-    0
+    "aaaaaaaaaaaaaaaaaaa"
   ]
 };
 
