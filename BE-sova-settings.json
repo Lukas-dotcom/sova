@@ -463,7 +463,7 @@
       {
         "buttonName": "Kopie",
         "color": "#7236f5",
-        "function": null,
+        "function": "orderDuplicateSmart",
         "parameters": null,
         "pageType": null,
         "position": null,
