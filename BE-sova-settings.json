@@ -461,11 +461,11 @@
         "sovaGates": null
       },
       {
-        "buttonName": "Kopie",
+        "buttonName": "Kopie: kontakty",
         "color": "#7236f5",
         "function": "orderDuplicateSmart",
         "parameters": "{\"mode\":\"contactOnly\"}",
-        "pageType": null,
+        "pageType": "objednavky-detail",
         "position": null,
         "order": null,
         "conditionsSOVAL": null,
