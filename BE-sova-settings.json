@@ -2,7 +2,7 @@
   "shoptetElementHide": {
     "columns": [
       "selectorCss",
-      "",
+      "withinCss",
       "",
       "",
       "",
@@ -13,6 +13,7 @@
     "rules": [
       {
         "selectorCss": null,
+        "withinCss": null,
         "": null,
         "occurrenceNumber": 2,
         "condSoval": "%%status=\"Odeslat\"%%"
