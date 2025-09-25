@@ -1,4 +1,20 @@
 {
+  "shoptetElementHide": {
+    "columns": [
+      "selector",
+      "occurrenceNumber",
+      "condSoval",
+      "pageType"
+    ],
+    "rules": [
+      {
+        "selector": null,
+        "occurrenceNumber": 2,
+        "condSoval": null,
+        "pageType": null
+      }
+    ]
+  },
   "rychleOdkazy": {
     "columns": [
       "Název",
