@@ -488,7 +488,7 @@
         "function": "orderDuplicateSmart",
         "parameters": "{\"mode\":\"contactOnly\"}",
         "pageType": "objednavky-detail",
-        "position": "buttonsEndOfT6Right",
+        "position": "buttonsSecondHeaderLeft",
         "order": null,
         "conditionsSOVAL": null,
         "sovaGates": null
