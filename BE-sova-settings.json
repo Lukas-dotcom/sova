@@ -713,6 +713,17 @@
         "conditionsSOVAL": null
       },
       {
+        "variableName": "zobrazParamtery",
+        "showName": null,
+        "controlType": null,
+        "selectOptions": null,
+        "saveType": null,
+        "pageType": null,
+        "position": null,
+        "order": null,
+        "conditionsSOVAL": null
+      },
+      {
         "variableName": "zobrazStitky",
         "showName": null,
         "controlType": null,
