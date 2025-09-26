@@ -703,7 +703,7 @@
     "rules": [
       {
         "variableName": "zobrazPCNceny",
-        "showName": "Zobrazit PCN",
+        "showName": "PCN",
         "controlType": "checkbox",
         "selectOptions": null,
         "saveType": "local",
@@ -714,7 +714,7 @@
       },
       {
         "variableName": "zobrazParamtery",
-        "showName": null,
+        "showName": "Zobrazit P",
         "controlType": null,
         "selectOptions": null,
         "saveType": null,
