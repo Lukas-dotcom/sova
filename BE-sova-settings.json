@@ -711,6 +711,17 @@
         "position": "buttonsHeaderLeft",
         "order": -2,
         "conditionsSOVAL": null
+      },
+      {
+        "variableName": "zobrazStitky",
+        "showName": null,
+        "controlType": null,
+        "selectOptions": null,
+        "saveType": null,
+        "pageType": null,
+        "position": null,
+        "order": null,
+        "conditionsSOVAL": null
       }
     ]
   },
