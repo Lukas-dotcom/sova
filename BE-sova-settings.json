@@ -488,7 +488,7 @@
         "function": "orderDuplicateSmart",
         "parameters": "{\"mode\":\"contactOnly\"}",
         "pageType": "objednavky-detail",
-        "position": "buttonsSecondHeaderLeft",
+        "position": "buttonsSecondHeaderRight",
         "order": null,
         "conditionsSOVAL": null,
         "sovaGates": null
@@ -499,7 +499,7 @@
         "function": "orderDuplicateSmart",
         "parameters": "{\"mode\":\"noProducts\"}",
         "pageType": "objednavky-detail",
-        "position": "buttonsEndOfT6Right",
+        "position": "buttonsSecondHeaderRight",
         "order": null,
         "conditionsSOVAL": null,
         "sovaGates": null
@@ -510,7 +510,7 @@
         "function": "orderDuplicateSmart",
         "parameters": "{\"mode\":\"noBillingNoShipping\"}",
         "pageType": "objednavky-detail",
-        "position": "buttonsEndOfT6Right",
+        "position": "buttonsSecondHeaderRight",
         "order": null,
         "conditionsSOVAL": null,
         "sovaGates": null
@@ -521,7 +521,7 @@
         "function": "orderDuplicateSmart",
         "parameters": "{\"mode\":\"whole\"}",
         "pageType": "objednavky-detail",
-        "position": "buttonsEndOfT6Right",
+        "position": "buttonsSecondHeaderRight",
         "order": null,
         "conditionsSOVAL": null,
         "sovaGates": null
