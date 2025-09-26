@@ -715,23 +715,23 @@
       {
         "variableName": "zobrazParamtery",
         "showName": "Parametry",
-        "controlType": null,
+        "controlType": "checkbox",
         "selectOptions": null,
-        "saveType": null,
-        "pageType": null,
-        "position": null,
-        "order": null,
+        "saveType": "local",
+        "pageType": "ceny",
+        "position": "buttonsHeaderLeft",
+        "order": -2,
         "conditionsSOVAL": null
       },
       {
         "variableName": "zobrazStitky",
         "showName": "Štítky",
-        "controlType": null,
+        "controlType": "checkbox",
         "selectOptions": null,
-        "saveType": null,
-        "pageType": null,
-        "position": null,
-        "order": null,
+        "saveType": "local",
+        "pageType": "ceny",
+        "position": "buttonsHeaderLeft",
+        "order": -2,
         "conditionsSOVAL": null
       }
     ]
