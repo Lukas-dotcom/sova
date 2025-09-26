@@ -736,43 +736,6 @@
       }
     ]
   },
-  "injectButtonsLinks": {
-    "columns": [
-      "buttonName",
-      "color",
-      "pageType",
-      "position",
-      "order",
-      "conditionsSOVAL",
-      "href",
-      "newTab"
-    ],
-    "rules": [
-      {
-        "buttonName": "Link tlačítko",
-        "color": "brown",
-        "pageType": "objednavky-detail",
-        "position": "buttonsHeaderRight",
-        "order": -5,
-        "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
-        "href": "%%\"/admin/prehled-objednavek/\"&statusId&\"/\"%%",
-        "newTab": true
-      },
-      {
-        "buttonName": "Link mulit tlačítko",
-        "color": "black",
-        "pageType": "objednavky-detail",
-        "position": "buttonsHeaderRight",
-        "order": -6,
-        "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
-        "href": [
-          "%%\"/admin/prehled-objednavek/\"&statusId&\"/\"%%",
-          "/admin/prehled-objednavek/2/"
-        ],
-        "newTab": true
-      }
-    ]
-  },
   "injectVariables": {
     "columns": [
       "testPromenne",
