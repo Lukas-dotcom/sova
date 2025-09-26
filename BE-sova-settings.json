@@ -725,7 +725,7 @@
       },
       {
         "variableName": "zobrazStitky",
-        "showName": null,
+        "showName": "Štítky",
         "controlType": null,
         "selectOptions": null,
         "saveType": null,
