@@ -585,7 +585,7 @@
       {
         "buttonName": "Obchodní řešení",
         "color": "grey",
-        "pageType": null,
+        "pageType": "objednavky-detail",
         "position": null,
         "order": null,
         "conditionsSOVAL": null,
