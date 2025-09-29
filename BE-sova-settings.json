@@ -568,7 +568,7 @@
         "recipient": "Info@pocitarna.cz, Matej.Prokes@pocitarna.cz",
         "CCrecipient": "hromadn-expe@pocitarna.cz",
         "subject": "Obchodní řešení: %%orderCode%%",
-        "body": "<p>Ahoj,</p>\r\n\r\n<p>Je potřeba kontaktovat zákazníka ohledně obj. č. \r\n  <a href=\"%%url%%\">%%orderCode%%</a>\r\n</p>\r\n\r\n<p><strong>Důvod:</strong></p>\r\n\r\n<p>Podpora: Prosím kontaktovat zákazníka<br>\r\nMatěj: Prosím odskladnit id:</p>",
+        "body": "<p>Ahoj,</p>\n\n<p>Je potřeba kontaktovat zákazníka ohledně obj. č. \n  <a href=\"%%url%%\">%%orderCode%%</a>\n</p>\n\n<p><strong>Důvod:</strong></p>\n\n<p>Podpora: Prosím kontaktovat zákazníka<br>\nMatěj: Prosím odskladnit id:</p>",
         "attachments": null,
         "eml": true
       }
