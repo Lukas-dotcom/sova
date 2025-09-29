@@ -774,7 +774,7 @@
     "rules": [
       {
         "buttonName": "Tisk Faktury",
-        "color": null,
+        "color": "orange",
         "pageType": "objednavky-detail",
         "position": "buttonsEndOfT1Left",
         "order": 9,
