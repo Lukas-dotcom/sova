@@ -584,7 +584,7 @@
       },
       {
         "buttonName": "Obchodní řešení",
-        "color": null,
+        "color": "grey",
         "pageType": null,
         "position": null,
         "order": null,
