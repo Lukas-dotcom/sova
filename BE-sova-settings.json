@@ -776,7 +776,7 @@
         "buttonName": "Tisk Faktury",
         "color": null,
         "pageType": null,
-        "position": null,
+        "position": "end",
         "order": 9,
         "conditionsSOVAL": "%%status = \"Vyřízeno - pokladna\"%%",
         "href": null,
