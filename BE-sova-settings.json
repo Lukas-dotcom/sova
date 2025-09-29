@@ -704,7 +704,7 @@
         "buttonName": null,
         "color": null,
         "order": null,
-        "position": null,
+        "position": "buttonsEndOfT1Left",
         "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
         "targetStatusID": 145,
         "preventEmail": null,
