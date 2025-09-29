@@ -559,7 +559,7 @@
         "eml": null
       },
       {
-        "buttonName": "Obchodní řešení 2",
+        "buttonName": "Obchodní řešení",
         "color": "grey",
         "pageType": "objednavky-detail",
         "position": "buttonsEndOfT2Right",
