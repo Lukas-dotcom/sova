@@ -563,7 +563,7 @@
         "color": "grey",
         "pageType": "objednavky-detail",
         "position": "buttonsEndOfT2Right",
-        "order": -10,
+        "order": -8,
         "conditionsSOVAL": null,
         "recipient": "Info@pocitarna.cz, Matej.Prokes@pocitarna.cz",
         "CCrecipient": "hromadn-expe@pocitarna.cz",
