@@ -705,7 +705,7 @@
         "color": null,
         "order": null,
         "position": null,
-        "conditionsSOVAL": null,
+        "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
         "targetStatusID": 145,
         "preventEmail": null,
         "openAfterChange": null
