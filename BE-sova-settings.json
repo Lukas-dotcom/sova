@@ -699,6 +699,16 @@
         "targetStatusID": 89,
         "preventEmail": null,
         "openAfterChange": null
+      },
+      {
+        "buttonName": null,
+        "color": null,
+        "order": null,
+        "position": null,
+        "conditionsSOVAL": null,
+        "targetStatusID": 145,
+        "preventEmail": null,
+        "openAfterChange": null
       }
     ]
   },
