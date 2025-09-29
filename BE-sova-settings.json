@@ -557,6 +557,20 @@
         "body": "Ahoj,\n \nJe potřeba kontaktovat zákazníka ohledně obj. č. %%orderCode%%\nDůvod: \n\nPodpora:  Prosím kontaktovat zákazníka\nMatěj: Prosím odskladnit id:",
         "attachments": null,
         "eml": null
+      },
+      {
+        "buttonName": "Obchodní řešení",
+        "color": "grey",
+        "pageType": "objednavky-detail",
+        "position": "buttonsEndOfT2Right",
+        "order": -10,
+        "conditionsSOVAL": null,
+        "recipient": "Info@pocitarna.cz, Matej.Prokes@pocitarna.cz",
+        "CCrecipient": "hromadn-expe@pocitarna.cz",
+        "subject": "Obchodní řešení: %%orderCode%%",
+        "body": "Ahoj,\n \nJe potřeba kontaktovat zákazníka ohledně obj. č. %%orderCode%%\nDůvod: \n\nPodpora:  Prosím kontaktovat zákazníka\nMatěj: Prosím odskladnit id:",
+        "attachments": null,
+        "eml": null
       }
     ]
   },
