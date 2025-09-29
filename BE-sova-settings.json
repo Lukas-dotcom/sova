@@ -780,7 +780,7 @@
         "order": 9,
         "conditionsSOVAL": "%%status = \"Vyřízeno - pokladna\"%%",
         "href": "%%lookup(faktury:printUrl,#index = 0)%%",
-        "newTab": null
+        "newTab": false
       }
     ]
   },
