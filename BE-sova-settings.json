@@ -590,7 +590,7 @@
         "order": -10,
         "conditionsSOVAL": null,
         "recipient": "Info@pocitarna.cz, Matej.Prokes@pocitarna.cz",
-        "CCrecipient": null,
+        "CCrecipient": "hromadn-expe@pocitarna.cz",
         "subject": null,
         "body": null,
         "attachments": null,
