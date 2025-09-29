@@ -843,7 +843,7 @@
         "condition": "%% customerBillFullName = \"koncový zákazník\"  AND pocitarnaExpeditionPrepare = \"true\"%%"
       },
       {
-        "alert": "Objednávka předpřipravena pro expedici",
+        "alert": "Objednávka není předpřipravena pro expedici",
         "position": "endOfT1",
         "order": null,
         "color": "red",
