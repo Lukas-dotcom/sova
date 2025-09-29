@@ -553,7 +553,7 @@
         "conditionsSOVAL": null,
         "recipient": "Info@pocitarna.cz, Matej.Prokes@pocitarna.cz",
         "CCrecipient": "hromadn-expe@pocitarna.cz",
-        "subject": "Obchodní řešení: %%orderCode%% ",
+        "subject": "Obchodní řešení: %%orderCode%%",
         "body": "<p>Ahoj,</p>\n\n<p>Je potřeba kontaktovat zákazníka ohledně obj. č. \n  <a href=\"%%url%%\">%%orderCode%%</a>\n</p>\n\n<p><strong>Důvod:</strong></p>\n\n<p>Podpora: Prosím kontaktovat zákazníka<br>\nMatěj: Prosím odskladnit id:</p><p></p><p></p>\n\n<div style=\"font-family:Arial,sans-serif;color:#2C2C2C;font-size:13px;line-height:1.35;\">\n  <p style=\"margin:0 0 6px 0;\">\n    <span style=\"font-weight:bold;color:#1793CE;font-size:15px;\">%%userFullname%%</span>\n  </p>\n\n  <div style=\"height:2px;background:#1793CE;line-height:0;font-size:0;margin:0 0 8px 0;\">&#8203;</div>\n\n  <p style=\"margin:0;\"><strong>POČÍTÁRNA s.r.o.</strong></p>\n  <p style=\"margin:0;\">Vlkova 1a, Brno, 628 00</p>\n  <p style=\"margin:0;\">Telefon: %%userPhone%%</p>\n  <p style=\"margin:0;\">Email: <a href=\"mailto:%%userEmail%%\" style=\"color:#1793CE;text-decoration:none;\">%%userEmail%%</a></p>\n  <p style=\"margin:0;\"><a href=\"https://www.pocitarna.cz\" style=\"color:#1793CE;text-decoration:none;\">www.pocitarna.cz</a></p>\n</div>\n",
         "attachments": null,
         "eml": true
