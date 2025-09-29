@@ -703,7 +703,7 @@
       {
         "buttonName": null,
         "color": null,
-        "order": null,
+        "order": 2,
         "position": "buttonsEndOfT1Left",
         "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
         "targetStatusID": 145,
