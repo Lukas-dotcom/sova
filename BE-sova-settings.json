@@ -775,8 +775,8 @@
       {
         "buttonName": "Tisk Faktury",
         "color": null,
-        "pageType": null,
-        "position": "end",
+        "pageType": "objednavky-detail",
+        "position": "buttonsEndOfT1Left",
         "order": 9,
         "conditionsSOVAL": "%%status = \"Vyřízeno - pokladna\"%%",
         "href": null,
