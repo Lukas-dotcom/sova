@@ -701,8 +701,8 @@
         "openAfterChange": null
       },
       {
-        "buttonName": null,
-        "color": null,
+        "buttonName": "Vyřízeno - pokladna",
+        "color": "#32cb00",
         "order": 2,
         "position": "buttonsEndOfT1Left",
         "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
