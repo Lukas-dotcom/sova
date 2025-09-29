@@ -550,7 +550,7 @@
         "pageType": "objednavky-detail",
         "position": "buttonsEndOfT2Right",
         "order": -8,
-        "conditionsSOVAL": " ",
+        "conditionsSOVAL": null,
         "recipient": "Info@pocitarna.cz, Matej.Prokes@pocitarna.cz",
         "CCrecipient": "hromadn-expe@pocitarna.cz",
         "subject": "Obchodní řešení: %%orderCode%%",
