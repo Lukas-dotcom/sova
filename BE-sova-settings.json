@@ -760,6 +760,30 @@
       }
     ]
   },
+  "injectButtonsLinks": {
+    "columns": [
+      "buttonName",
+      "color",
+      "pageType",
+      "position",
+      "order",
+      "conditionsSOVAL",
+      "href",
+      "newTab"
+    ],
+    "rules": [
+      {
+        "buttonName": "Tisk Faktury",
+        "color": null,
+        "pageType": null,
+        "position": null,
+        "order": null,
+        "conditionsSOVAL": null,
+        "href": null,
+        "newTab": null
+      }
+    ]
+  },
   "injectVariables": {
     "columns": [
       "testPromenne",
