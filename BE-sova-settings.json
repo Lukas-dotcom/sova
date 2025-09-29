@@ -777,7 +777,7 @@
         "color": null,
         "pageType": null,
         "position": null,
-        "order": null,
+        "order": 9,
         "conditionsSOVAL": "%%status = \"Vyřízeno - pokladna\"%%",
         "href": null,
         "newTab": null
