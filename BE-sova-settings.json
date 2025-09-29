@@ -835,12 +835,12 @@
         "condition": "%% text3 != \"\" and ((customerDeliveryCountryId=151 OR (customerDeliveryCountryId=\"\" AND customerBillCountryId=151)) AND any(items,contains(productName,\"vícekus\") AND code=\"\") AND any(items,code=\"\" AND productName=\"Dobírkou\")) %%"
       },
       {
-        "alert": null,
+        "alert": "Objednávka předpřipravena pro expedici",
         "position": null,
         "order": null,
         "color": null,
         "backgroundColor": null,
-        "condition": "%% customerBillFullName = \"koncový zákazník\" %%"
+        "condition": "%% customerBillFullName = \"koncový zákazník\"  AND pocitarnaExpeditionPrepare = \"true\"%%"
       }
     ]
   },
