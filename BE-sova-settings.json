@@ -581,6 +581,20 @@
           "DodaciListy"
         ],
         "eml": null
+      },
+      {
+        "buttonName": "Obchodní řešení",
+        "color": null,
+        "pageType": null,
+        "position": null,
+        "order": null,
+        "conditionsSOVAL": null,
+        "recipient": null,
+        "CCrecipient": null,
+        "subject": null,
+        "body": null,
+        "attachments": null,
+        "eml": null
       }
     ]
   },
