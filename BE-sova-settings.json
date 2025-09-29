@@ -545,44 +545,6 @@
     ],
     "rules": [
       {
-        "buttonName": "testMaileml",
-        "color": "yellow",
-        "pageType": "objednavky-detail",
-        "position": "buttonsAboveTabsRight",
-        "order": null,
-        "conditionsSOVAL": "%%(ANY (items, contains(code, \"TUITO\")))%%",
-        "recipient": "%%(userEmail &\", lukas.tejral@pocitarna.cz\")%%",
-        "CCrecipient": "tejral@pocitarna.cz",
-        "subject": "%%(\"Vaše objednávka \"& orderCode)%%",
-        "body": "<p>Dobrý den %% customerName %%,</p>\n<p>posíláme podklady k objednávce <strong>%% orderCode %%</strong>. Najdete je níže.</p>\n<p>Děkujeme za nákup a přejeme hezký den.</p>\n<p>toto je cena %%suma(items:totalPrice)%%</p>",
-        "attachments": [
-          "faktury",
-          "zalohoveFaktury",
-          "dobropisy",
-          "DodaciListy"
-        ],
-        "eml": true
-      },
-      {
-        "buttonName": "testMail",
-        "color": "green",
-        "pageType": "objednavky-detail",
-        "position": "buttonsAboveTabsRight",
-        "order": null,
-        "conditionsSOVAL": "%%(ANY (items, contains(code, \"TUITO\")))%%",
-        "recipient": "%%(userEmail &\", lukas.tejral@pocitarna.cz\")%%",
-        "CCrecipient": "tejral@pocitarna.cz",
-        "subject": "%%(\"Vaše objednávka \"& orderCode)%%",
-        "body": "<p>Dobrý den %% customerName %%,</p>\n<p>posíláme podklady k objednávce <strong>%% orderCode %%</strong>. Najdete je níže.</p>\n<p>Děkujeme za nákup a přejeme hezký den.</p>\n<p>toto je cena %%suma(items:totalPrice)%%</p>",
-        "attachments": [
-          "faktury",
-          "zalohoveFaktury",
-          "dobropisy",
-          "DodaciListy"
-        ],
-        "eml": null
-      },
-      {
         "buttonName": "Obchodní řešení",
         "color": "grey",
         "pageType": "objednavky-detail",
