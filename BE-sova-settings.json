@@ -592,7 +592,7 @@
         "recipient": "Info@pocitarna.cz, Matej.Prokes@pocitarna.cz",
         "CCrecipient": "hromadn-expe@pocitarna.cz",
         "subject": null,
-        "body": "Ahoj,\n \nJe potřeba kontaktovat zákazníka ohledně obj. č. %%%%\nDůvod: \n\nPodpora:  Prosím kontaktovat zákazníka\nMatěj: Prosím odskladnit id:",
+        "body": "Ahoj,\n \nJe potřeba kontaktovat zákazníka ohledně obj. č. %%orderCode%%\nDůvod: \n\nPodpora:  Prosím kontaktovat zákazníka\nMatěj: Prosím odskladnit id:",
         "attachments": null,
         "eml": null
       }
