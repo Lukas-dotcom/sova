@@ -836,9 +836,17 @@
       },
       {
         "alert": "Objednávka předpřipravena pro expedici",
-        "position": null,
+        "position": "endOfT1",
         "order": null,
-        "color": null,
+        "color": "green",
+        "backgroundColor": null,
+        "condition": "%% customerBillFullName = \"koncový zákazník\"  AND pocitarnaExpeditionPrepare = \"true\"%%"
+      },
+      {
+        "alert": "Objednávka předpřipravena pro expedici",
+        "position": "endOfT1",
+        "order": null,
+        "color": "green",
         "backgroundColor": null,
         "condition": "%% customerBillFullName = \"koncový zákazník\"  AND pocitarnaExpeditionPrepare = \"true\"%%"
       }
