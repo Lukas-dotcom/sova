@@ -554,7 +554,7 @@
         "function": "shoptetHttpGet",
         "parameters": null,
         "pageType": null,
-        "position": null,
+        "position": "buttonsEndOfT4Right",
         "order": null,
         "conditionsSOVAL": null,
         "sovaGates": null
