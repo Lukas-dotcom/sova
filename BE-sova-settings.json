@@ -538,7 +538,7 @@
         "sovaGates": null
       },
       {
-        "buttonName": null,
+        "buttonName": "Objednávka",
         "color": null,
         "function": "openAddOrderModal",
         "parameters": null,
