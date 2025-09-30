@@ -948,7 +948,7 @@
       {
         "Info": "%%profit & \" \" & currency %%",
         "color": "green",
-        "conditions": "userFullName=\"Tomáš Netopil\" OR userFullName=\"Lukáš Tejral\""
+        "conditions": "%%userFullName=\"Tomáš Netopil\"%%"
       }
     ]
   },
