@@ -549,7 +549,7 @@
         "sovaGates": null
       },
       {
-        "buttonName": null,
+        "buttonName": "pokladna",
         "color": null,
         "function": "shoptetHttpGet",
         "parameters": null,
