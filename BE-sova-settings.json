@@ -547,6 +547,17 @@
         "order": 2,
         "conditionsSOVAL": "%%userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\" %%",
         "sovaGates": null
+      },
+      {
+        "buttonName": null,
+        "color": null,
+        "function": "shoptetHttpGet",
+        "parameters": null,
+        "pageType": null,
+        "position": null,
+        "order": null,
+        "conditionsSOVAL": null,
+        "sovaGates": null
       }
     ]
   },
