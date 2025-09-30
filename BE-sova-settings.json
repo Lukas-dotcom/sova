@@ -828,7 +828,7 @@
         "order": null,
         "color": "red",
         "backgroundColor": null,
-        "condition": "%% text3 != \"\" and ((customerDeliveryCountryId=151 OR (customerDeliveryCountryId=\"\" AND customerBillCountryId=151)) AND any(items,contains(productName,\"vícekus\") AND code=\"\") AND any(items,code=\"\" AND productName=\"Dobírkou\")) %%"
+        "condition": "%% text3 != \"\" and ((customerDeliveryCountryId=151 OR (customerDeliveryCountryId=\"\" AND customerBillCountryId=151)) AND any(items,contains(productName,\"vícekus\") AND code=\"\") AND any(items,code=\"\" AND productName=\"Dobírkou\")) AND pageType =\"objednavky-detail\"%%"
       },
       {
         "alert": "Objednávka předpřipravena pro expedici",
