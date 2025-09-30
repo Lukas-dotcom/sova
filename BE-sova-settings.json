@@ -558,6 +558,17 @@
         "order": null,
         "conditionsSOVAL": null,
         "sovaGates": null
+      },
+      {
+        "buttonName": "pokladna2",
+        "color": null,
+        "function": "domClickBySnippet",
+        "parameters": "{\"element\": 'a[title=\"Kartou\"]', textMode: 'ignore'}",
+        "pageType": "objednavky-detail",
+        "position": "buttonsEndOfT4Right",
+        "order": null,
+        "conditionsSOVAL": null,
+        "sovaGates": null
       }
     ]
   },
