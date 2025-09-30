@@ -528,7 +528,7 @@
       },
       {
         "buttonName": "Objednávka: koncák",
-        "color": "green",
+        "color": "#02ba14",
         "function": "createOrderQuick",
         "parameters": "{\"billFullName\":\"koncový zákazník\"}",
         "pageType": null,
