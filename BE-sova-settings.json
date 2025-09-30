@@ -527,7 +527,7 @@
         "sovaGates": null
       },
       {
-        "buttonName": null,
+        "buttonName": "createOrderQuick",
         "color": "green",
         "function": null,
         "parameters": null,
