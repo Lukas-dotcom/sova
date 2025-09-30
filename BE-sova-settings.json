@@ -533,7 +533,7 @@
         "parameters": "{\"billFullName\":\"koncový zákazník\"}",
         "pageType": null,
         "position": "topHeader",
-        "order": null,
+        "order": 1,
         "conditionsSOVAL": "%%userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\" %%",
         "sovaGates": null
       }
