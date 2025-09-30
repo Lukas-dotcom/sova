@@ -911,6 +911,11 @@
         "Info": "%%filter(req_expe:request, done !=\"true\" )%%",
         "color": "orange",
         "conditions": null
+      },
+      {
+        "Info": null,
+        "color": null,
+        "conditions": "userFullName=\"Tomáš Netopil\""
       }
     ]
   },
