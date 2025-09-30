@@ -552,7 +552,7 @@
         "buttonName": "pokladna",
         "color": null,
         "function": "shoptetHttpGet",
-        "parameters": "{ \"url\": \"/admin/action/CashDesk/getPOSPaymentData/\", \"query\": { \"orderId\": %%params_id%% }, \"headers\": { \"x-inertia\": \"true\" }, \"mode\": \"fetch-json\"}",
+        "parameters": "{ \"url\": \"/admin/action/CashDesk/getPOSPaymentData/?orderId=%%params_id%%\", \"query\": { \"orderId\": \"%%params_id%%\" }, \"headers\": { \"x-inertia\": \"true\" }, \"mode\": \"fetch-json\"}",
         "pageType": "objednavky-detail",
         "position": "buttonsEndOfT4Right",
         "order": null,
