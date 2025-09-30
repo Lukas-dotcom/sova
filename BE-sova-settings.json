@@ -539,7 +539,7 @@
       },
       {
         "buttonName": "Objednávka",
-        "color": null,
+        "color": "#007d0c",
         "function": "openAddOrderModal",
         "parameters": null,
         "pageType": null,
