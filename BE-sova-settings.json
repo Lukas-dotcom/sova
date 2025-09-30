@@ -532,7 +532,7 @@
         "function": "createOrderQuick",
         "parameters": "{\"billFullName\":\"koncový zákazník\"}",
         "pageType": null,
-        "position": null,
+        "position": "topHeader",
         "order": null,
         "conditionsSOVAL": null,
         "sovaGates": null
