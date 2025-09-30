@@ -543,8 +543,8 @@
         "function": "openAddOrderModal",
         "parameters": null,
         "pageType": null,
-        "position": null,
-        "order": null,
+        "position": "topHeader",
+        "order": 2,
         "conditionsSOVAL": null,
         "sovaGates": null
       }
