@@ -552,7 +552,7 @@
         "buttonName": "pokladna",
         "color": null,
         "function": "shoptetHttpGet",
-        "parameters": "{url: '/admin/action/CashDesk/getPOSPaymentData/', query: { orderId: '%%params_id%%' }, headers: JSON.stringify({ 'x-inertia': 'true' }), mode: 'fetch-json'}",
+        "parameters": "{path: '/admin/action/CashDesk/getPOSPaymentData/', query: { orderId: '%%params_id%%' }, headers: JSON.stringify({ 'x-inertia': 'true' }), mode: 'fetch-json'}",
         "pageType": "objednavky-detail",
         "position": "buttonsEndOfT4Right",
         "order": null,
