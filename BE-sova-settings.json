@@ -820,7 +820,7 @@
         "order": null,
         "color": "blue",
         "backgroundColor": null,
-        "condition": "%% pocitarnaExpeditionPrepare = \"true\" %%"
+        "condition": "%% pocitarnaExpeditionPrepare = \"true\" AND pageType =\"objednavky-detail\"%%"
       },
       {
         "alert": "Pozor! Vícekus na Slovensko s HC separe. Zajistit, že dobírka za všechny balíky je správně ve výši HC separe",
