@@ -913,7 +913,7 @@
         "conditions": null
       },
       {
-        "Info": "%%profit%%",
+        "Info": "%%profit & \" \" & currency %%",
         "color": "green",
         "conditions": "userFullName=\"Tomáš Netopil\" OR userFullName=\"Lukáš Tejral\""
       }
