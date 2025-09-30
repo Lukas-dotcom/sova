@@ -836,7 +836,7 @@
         "order": null,
         "color": "green",
         "backgroundColor": null,
-        "condition": "%% customerBillFullName = \"koncový zákazník\"  AND pocitarnaExpeditionPrepare = \"true\"%%"
+        "condition": "%% customerBillFullName = \"koncový zákazník\"  AND pocitarnaExpeditionPrepare = \"true\" AND pageType =\"objednavky-detail\"%%"
       },
       {
         "alert": "Objednávka není předpřipravena pro expedici",
