@@ -911,16 +911,6 @@
         "Info": "%%filter(req_expe:request, done !=\"true\" )%%",
         "color": "orange",
         "conditions": null
-      },
-      {
-        "Info": "%%$userFullName%%",
-        "color": "blue",
-        "conditions": "%%status=\"Odeslat\" or status=\"Odeslat M\"%%"
-      },
-      {
-        "Info": "%%code%%",
-        "color": "green",
-        "conditions": null
       }
     ]
   },
