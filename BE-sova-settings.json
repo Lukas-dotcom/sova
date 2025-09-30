@@ -913,8 +913,8 @@
         "conditions": null
       },
       {
-        "Info": null,
-        "color": null,
+        "Info": "%%profit%%",
+        "color": "green",
         "conditions": "userFullName=\"Tomáš Netopil\""
       }
     ]
