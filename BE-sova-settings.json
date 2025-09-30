@@ -552,7 +552,7 @@
         "buttonName": "pokladna",
         "color": null,
         "function": "shoptetHttpGet",
-        "parameters": null,
+        "parameters": "{\r\n  url: '/admin/action/CashDesk/getPOSPaymentData/',\r\n  query: { orderId: '%%params_id%%' },\r\n  headers: JSON.stringify({ 'x-inertia': 'true' }),\r\n  mode: 'fetch-json'\r\n}",
         "pageType": null,
         "position": "buttonsEndOfT4Right",
         "order": null,
