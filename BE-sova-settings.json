@@ -552,7 +552,7 @@
         "buttonName": "pokladna",
         "color": null,
         "function": "domClickBySnippet",
-        "parameters": "{parentElement: 'span.reactWidget-shoptet-pay-pos-payment',\r\n  element: 'a[title=\"Kartou\"]'}",
+        "parameters": "{parentElement: 'span.reactWidget-shoptet-pay-pos-payment', element: 'a[title=\"Kartou\"]'}",
         "pageType": "objednavky-detail",
         "position": "buttonsEndOfT4Right",
         "order": null,
