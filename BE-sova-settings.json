@@ -915,7 +915,7 @@
       {
         "Info": "%%profit%%",
         "color": "green",
-        "conditions": "userFullName=\"Tomáš Netopil\" NEBO userFullName=\"Lukáš Tejral\""
+        "conditions": "userFullName=\"Tomáš Netopil\" OR userFullName=\"Lukáš Tejral\""
       }
     ]
   },
