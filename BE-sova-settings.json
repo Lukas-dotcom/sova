@@ -561,7 +561,7 @@
       },
       {
         "buttonName": "Hotově",
-        "color": null,
+        "color": "#01943c",
         "function": "domClickBySnippet",
         "parameters": "{\"parentElement\": \".open-menu\", \"element\": \"a[title='Hotově']\"}",
         "pageType": "objednavky-detail",
