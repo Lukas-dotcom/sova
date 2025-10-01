@@ -585,7 +585,7 @@
         "buttonName": "Objednávka",
         "color": null,
         "function": "domClickBySnippet",
-        "parameters": "{\"parentElement\": \".open-menu\", \"element\": \"a[title='Hotově']\"}",
+        "parameters": "{\"parentElement\": \".open-menu\", \"element\": \"a[title='Přejít na objednávku']\"}",
         "pageType": "faktura-detail",
         "position": "buttonsEndOfT1Left",
         "order": 2,
