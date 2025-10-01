@@ -549,7 +549,7 @@
         "sovaGates": null
       },
       {
-        "buttonName": "pokladna",
+        "buttonName": null,
         "color": null,
         "function": "domClickBySnippet",
         "parameters": "{\"element\": \"a[title='Kartou']\"}",
