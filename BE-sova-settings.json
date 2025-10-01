@@ -560,7 +560,7 @@
         "sovaGates": null
       },
       {
-        "buttonName": "pokladna2",
+        "buttonName": "Hotově",
         "color": null,
         "function": "domClickBySnippet",
         "parameters": "{\"parentElement\": \".open-menu\", \"element\": \"a[title='Kartou']\"}",
