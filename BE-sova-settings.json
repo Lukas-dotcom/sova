@@ -556,7 +556,7 @@
         "pageType": "objednavky-detail",
         "position": "buttonsEndOfT1Left",
         "order": 3,
-        "conditionsSOVAL": null,
+        "conditionsSOVAL": "%%userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\" %%",
         "sovaGates": null
       },
       {
@@ -567,7 +567,7 @@
         "pageType": "objednavky-detail",
         "position": "buttonsEndOfT1Left",
         "order": 4,
-        "conditionsSOVAL": null,
+        "conditionsSOVAL": "%%userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\" %%",
         "sovaGates": null
       }
     ]
