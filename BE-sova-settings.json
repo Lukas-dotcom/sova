@@ -595,7 +595,7 @@
       {
         "buttonName": "Tisk FA",
         "color": null,
-        "function": null,
+        "function": "domClickBySnippet",
         "parameters": null,
         "pageType": "objednavky-detail",
         "position": "buttonsEndOfT1Left",
