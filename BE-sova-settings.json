@@ -552,7 +552,7 @@
         "buttonName": "Kartou",
         "color": null,
         "function": "domClickBySnippet",
-        "parameters": "{\"element\": \"a[title='Kartou']\"}",
+        "parameters": "{\"parentElement\": \".open-menu\", \"element\": \"a[title='Kartou']\"}",
         "pageType": "objednavky-detail",
         "position": "buttonsEndOfT4Right",
         "order": null,
