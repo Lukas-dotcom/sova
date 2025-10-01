@@ -731,7 +731,7 @@
       {
         "buttonName": "Vyřízeno - pokladna",
         "color": "#32cb00",
-        "order": 2,
+        "order": 9,
         "position": "buttonsEndOfT1Left",
         "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
         "targetStatusID": 145,
