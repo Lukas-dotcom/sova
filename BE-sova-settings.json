@@ -563,7 +563,7 @@
         "buttonName": "pokladna2",
         "color": null,
         "function": "domClickBySnippet",
-        "parameters": "{\"element\": \"a[title='Kartou']\", textMode: 'ignore'}",
+        "parameters": "{\"parentElement\": \".open-menu\", \"element\": \"a[title='Kartou']\"}",
         "pageType": "objednavky-detail",
         "position": "buttonsEndOfT4Right",
         "order": null,
