@@ -550,7 +550,7 @@
       },
       {
         "buttonName": "Kartou",
-        "color": null,
+        "color": "#5591f2",
         "function": "domClickBySnippet",
         "parameters": "{\"parentElement\": \".open-menu\", \"element\": \"a[title='Kartou']\"}",
         "pageType": "objednavky-detail",
