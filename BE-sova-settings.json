@@ -576,8 +576,8 @@
         "function": null,
         "parameters": null,
         "pageType": "faktura-detail",
-        "position": null,
-        "order": null,
+        "position": "buttonsEndOfT1Left",
+        "order": 1,
         "conditionsSOVAL": null,
         "sovaGates": null
       },
@@ -587,8 +587,8 @@
         "function": null,
         "parameters": null,
         "pageType": "faktura-detail",
-        "position": null,
-        "order": null,
+        "position": "buttonsEndOfT1Left",
+        "order": 2,
         "conditionsSOVAL": null,
         "sovaGates": null
       }
