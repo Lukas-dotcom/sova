@@ -574,7 +574,7 @@
         "buttonName": "Tisk",
         "color": null,
         "function": "domClickBySnippet",
-        "parameters": "{\"parentElement\": \".open-menu\", \"element\": \"a[title='Kartou']\"}",
+        "parameters": "{\"parentElement\": \".open-menu\", \"element\": \"a[title='Standardní']\"}",
         "pageType": "faktura-detail",
         "position": "buttonsEndOfT1Left",
         "order": 1,
