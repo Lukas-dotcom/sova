@@ -569,6 +569,28 @@
         "order": 4,
         "conditionsSOVAL": "%%(userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\") AND (count (faktury) > 0)%%",
         "sovaGates": null
+      },
+      {
+        "buttonName": null,
+        "color": null,
+        "function": null,
+        "parameters": null,
+        "pageType": "faktura-detail",
+        "position": null,
+        "order": null,
+        "conditionsSOVAL": null,
+        "sovaGates": null
+      },
+      {
+        "buttonName": null,
+        "color": null,
+        "function": null,
+        "parameters": null,
+        "pageType": "faktura-detail",
+        "position": null,
+        "order": null,
+        "conditionsSOVAL": null,
+        "sovaGates": null
       }
     ]
   },
