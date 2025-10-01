@@ -554,9 +554,9 @@
         "function": "domClickBySnippet",
         "parameters": "{\"parentElement\": \".open-menu\", \"element\": \"a[title='Kartou']\"}",
         "pageType": "objednavky-detail",
-        "position": "buttonsEndOfT4Right",
+        "position": "buttonsEndOfT1Left",
         "order": 3,
-        "conditionsSOVAL": null,
+        "conditionsSOVAL": "%%userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\" %%",
         "sovaGates": null
       },
       {
@@ -565,9 +565,9 @@
         "function": "domClickBySnippet",
         "parameters": "{\"parentElement\": \".open-menu\", \"element\": \"a[title='Hotově']\"}",
         "pageType": "objednavky-detail",
-        "position": "buttonsEndOfT4Right",
+        "position": "buttonsEndOfT1Left",
         "order": 4,
-        "conditionsSOVAL": null,
+        "conditionsSOVAL": "%%userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\" %%",
         "sovaGates": null
       }
     ]
