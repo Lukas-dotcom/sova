@@ -597,8 +597,8 @@
         "color": null,
         "function": null,
         "parameters": null,
-        "pageType": null,
-        "position": null,
+        "pageType": "objednavky-detail",
+        "position": "buttonsEndOfT1Left",
         "order": null,
         "conditionsSOVAL": null,
         "sovaGates": null
