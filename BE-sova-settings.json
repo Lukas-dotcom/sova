@@ -596,7 +596,7 @@
         "buttonName": "Tisk FA",
         "color": null,
         "function": "domClickBySnippet",
-        "parameters": null,
+        "parameters": "{\"parentElement\": \"#t5\", \"element\": \"a.print-item[title='Vytisknout položku'][href^='/admin/tisk-dokladu/']\", \"textMode\": \"ignore\"}",
         "pageType": "objednavky-detail",
         "position": "buttonsEndOfT1Left",
         "order": 7,
