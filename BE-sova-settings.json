@@ -563,7 +563,7 @@
         "buttonName": "Hotově",
         "color": null,
         "function": "domClickBySnippet",
-        "parameters": "{\"parentElement\": \".open-menu\", \"element\": \"a[title='Kartou']\"}",
+        "parameters": "{\"parentElement\": \".open-menu\", \"element\": \"a[title='Hotově']\"}",
         "pageType": "objednavky-detail",
         "position": "buttonsEndOfT4Right",
         "order": null,
