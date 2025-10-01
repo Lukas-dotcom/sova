@@ -571,6 +571,17 @@
         "sovaGates": null
       },
       {
+        "buttonName": "Tisk FA",
+        "color": null,
+        "function": "domClickBySnippet",
+        "parameters": "{\"parentElement\": \"#t5\", \"element\": \"a.print-item[title='Vytisknout položku'][href^='/admin/tisk-dokladu/']\", \"textMode\": \"ignore\"}",
+        "pageType": "objednavky-detail",
+        "position": "buttonsEndOfT1Left",
+        "order": 8,
+        "conditionsSOVAL": "%%(userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\") AND (count (faktury) > 0)%%",
+        "sovaGates": null
+      },
+      {
         "buttonName": "Tisk",
         "color": null,
         "function": "domClickBySnippet",
@@ -590,17 +601,6 @@
         "position": "buttonsEndOfT1Left",
         "order": 2,
         "conditionsSOVAL": "%%userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\" %%",
-        "sovaGates": null
-      },
-      {
-        "buttonName": "Tisk FA",
-        "color": null,
-        "function": "domClickBySnippet",
-        "parameters": "{\"parentElement\": \"#t5\", \"element\": \"a.print-item[title='Vytisknout položku'][href^='/admin/tisk-dokladu/']\", \"textMode\": \"ignore\"}",
-        "pageType": "objednavky-detail",
-        "position": "buttonsEndOfT1Left",
-        "order": 8,
-        "conditionsSOVAL": "%%(userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\") AND (count (faktury) > 0)%%",
         "sovaGates": null
       }
     ]
