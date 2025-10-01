@@ -573,7 +573,7 @@
       {
         "buttonName": "Tisk",
         "color": null,
-        "function": null,
+        "function": "domClickBySnippet",
         "parameters": null,
         "pageType": "faktura-detail",
         "position": "buttonsEndOfT1Left",
@@ -584,7 +584,7 @@
       {
         "buttonName": "Objednávka",
         "color": null,
-        "function": null,
+        "function": "domClickBySnippet",
         "parameters": null,
         "pageType": "faktura-detail",
         "position": "buttonsEndOfT1Left",
