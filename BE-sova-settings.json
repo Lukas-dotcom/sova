@@ -555,7 +555,7 @@
         "parameters": "{\"parentElement\": \".open-menu\", \"element\": \"a[title='Kartou']\"}",
         "pageType": "objednavky-detail",
         "position": "buttonsEndOfT4Right",
-        "order": null,
+        "order": 3,
         "conditionsSOVAL": null,
         "sovaGates": null
       },
@@ -566,7 +566,7 @@
         "parameters": "{\"parentElement\": \".open-menu\", \"element\": \"a[title='Hotově']\"}",
         "pageType": "objednavky-detail",
         "position": "buttonsEndOfT4Right",
-        "order": null,
+        "order": 4,
         "conditionsSOVAL": null,
         "sovaGates": null
       }
