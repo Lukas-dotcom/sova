@@ -788,30 +788,6 @@
       }
     ]
   },
-  "injectButtonsLinks": {
-    "columns": [
-      "buttonName",
-      "color",
-      "pageType",
-      "position",
-      "order",
-      "conditionsSOVAL",
-      "href",
-      "newTab"
-    ],
-    "rules": [
-      {
-        "buttonName": "Tisk Faktury",
-        "color": "orange",
-        "pageType": "objednavky-detail",
-        "position": "buttonsEndOfT1Left",
-        "order": 9,
-        "conditionsSOVAL": "%%status = \"Vyřízeno - pokladna\"%%",
-        "href": "%%lookup(faktury:printUrl,#index = 0)%%",
-        "newTab": false
-      }
-    ]
-  },
   "injectVariables": {
     "columns": [
       "testPromenne",
