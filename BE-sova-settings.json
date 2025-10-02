@@ -971,7 +971,7 @@
         "newTab": null
       },
       {
-        "buttonName": null,
+        "buttonName": "Otevřít vybrané",
         "color": null,
         "pageType": "ceny",
         "position": "buttonsSecondHeaderLeft",
