@@ -848,7 +848,7 @@
         "order": null,
         "conditionsSOVAL": null,
         "href": "/admin/sablona-exportu-zbozi-detail/?id=301",
-        "newTab": null
+        "newTab": true
       },
       {
         "buttonName": "Export OBJ",
@@ -858,7 +858,7 @@
         "order": null,
         "conditionsSOVAL": null,
         "href": "/admin/sablona-exportu-objednavky/?id=315",
-        "newTab": null
+        "newTab": true
       },
       {
         "buttonName": "FV editor",
@@ -868,7 +868,7 @@
         "order": null,
         "conditionsSOVAL": null,
         "href": "https://shoptet.fvstudio.cz/",
-        "newTab": null
+        "newTab": true
       }
     ]
   },
