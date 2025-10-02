@@ -477,7 +477,7 @@
         "function": "pocitarnaExpeditionPrepareCompletor",
         "parameters": null,
         "pageType": "objednavky-detail",
-        "position": "buttonsEndOfT1Left",
+        "position": "buttonsUnderTabsLeft",
         "order": 2,
         "conditionsSOVAL": "%%pocitarnaExpeditionPrepare != \"true\"%%",
         "sovaGates": null
