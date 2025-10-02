@@ -835,7 +835,7 @@
         "color": null,
         "pageType": null,
         "position": null,
-        "order": null,
+        "order": 4,
         "conditionsSOVAL": "%%userFullName = \"Lukáš Tejral\"%%",
         "href": "/admin/prehled-objednavek/",
         "newTab": null
@@ -845,7 +845,7 @@
         "color": null,
         "pageType": null,
         "position": null,
-        "order": null,
+        "order": 5,
         "conditionsSOVAL": "%%userFullName = \"Lukáš Tejral\"%%",
         "href": "/admin/sablona-exportu-zbozi-detail/?id=301",
         "newTab": true
@@ -855,7 +855,7 @@
         "color": null,
         "pageType": null,
         "position": null,
-        "order": null,
+        "order": 6,
         "conditionsSOVAL": "%%userFullName = \"Lukáš Tejral\"%%",
         "href": "/admin/sablona-exportu-objednavky/?id=315",
         "newTab": true
@@ -865,7 +865,7 @@
         "color": null,
         "pageType": null,
         "position": null,
-        "order": null,
+        "order": 7,
         "conditionsSOVAL": "%%userFullName = \"Lukáš Tejral\"%%",
         "href": "https://shoptet.fvstudio.cz/",
         "newTab": true
