@@ -977,7 +977,7 @@
         "position": "buttonsSecondHeaderLeft",
         "order": 1,
         "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\" OR userFullName = \"Lukáš Tejral\"%%",
-        "href": null,
+        "href": "%%filter (items:url, checked= \"true\")%%",
         "newTab": null
       }
     ]
