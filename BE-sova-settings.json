@@ -805,8 +805,8 @@
         "color": null,
         "pageType": null,
         "position": null,
-        "order": null,
-        "conditionsSOVAL": null,
+        "order": 1,
+        "conditionsSOVAL": "%%userFullName = \"Lukáš Tejral\"%%",
         "href": "/admin/html-kody/",
         "newTab": null
       },
@@ -815,8 +815,8 @@
         "color": null,
         "pageType": null,
         "position": null,
-        "order": null,
-        "conditionsSOVAL": null,
+        "order": 2,
+        "conditionsSOVAL": "%%userFullName = \"Lukáš Tejral\"%%",
         "href": "/admin/spravce-souboru/",
         "newTab": null
       },
@@ -825,8 +825,8 @@
         "color": null,
         "pageType": null,
         "position": null,
-        "order": null,
-        "conditionsSOVAL": null,
+        "order": 3,
+        "conditionsSOVAL": "%%userFullName = \"Lukáš Tejral\"%%",
         "href": "/admin/ceny/",
         "newTab": null
       },
@@ -836,7 +836,7 @@
         "pageType": null,
         "position": null,
         "order": null,
-        "conditionsSOVAL": null,
+        "conditionsSOVAL": "%%userFullName = \"Lukáš Tejral\"%%",
         "href": "/admin/prehled-objednavek/",
         "newTab": null
       },
@@ -846,7 +846,7 @@
         "pageType": null,
         "position": null,
         "order": null,
-        "conditionsSOVAL": null,
+        "conditionsSOVAL": "%%userFullName = \"Lukáš Tejral\"%%",
         "href": "/admin/sablona-exportu-zbozi-detail/?id=301",
         "newTab": true
       },
@@ -856,7 +856,7 @@
         "pageType": null,
         "position": null,
         "order": null,
-        "conditionsSOVAL": null,
+        "conditionsSOVAL": "%%userFullName = \"Lukáš Tejral\"%%",
         "href": "/admin/sablona-exportu-objednavky/?id=315",
         "newTab": true
       },
@@ -866,7 +866,7 @@
         "pageType": null,
         "position": null,
         "order": null,
-        "conditionsSOVAL": null,
+        "conditionsSOVAL": "%%userFullName = \"Lukáš Tejral\"%%",
         "href": "https://shoptet.fvstudio.cz/",
         "newTab": true
       }
