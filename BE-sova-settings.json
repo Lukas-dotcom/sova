@@ -1084,7 +1084,7 @@
       },
       {
         "alert": "POZOR!!! Objednávka obsahuje více položek se stejným kódem. PCN, PN, SN pole u druhého a dalšího kusu budeš muset vyplnit ručně!",
-        "position": "endOfT1",
+        "position": "endOfT2",
         "order": null,
         "color": "red",
         "backgroundColor": null,
