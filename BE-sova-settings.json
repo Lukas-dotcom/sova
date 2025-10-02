@@ -523,7 +523,7 @@
         "pageType": null,
         "position": "topHeader",
         "order": 1,
-        "conditionsSOVAL": "%%userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\" %%",
+        "conditionsSOVAL": "%%userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\"%%",
         "sovaGates": null
       },
       {
@@ -534,7 +534,7 @@
         "pageType": null,
         "position": "topHeader",
         "order": 2,
-        "conditionsSOVAL": "%%userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\" %%",
+        "conditionsSOVAL": "%%userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\"%%",
         "sovaGates": null
       },
       {
