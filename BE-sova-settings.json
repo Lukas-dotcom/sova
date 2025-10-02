@@ -959,6 +959,26 @@
         "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\"%%",
         "href": "https://www.pocitarna.cz/admin/import-produktu/",
         "newTab": null
+      },
+      {
+        "buttonName": null,
+        "color": null,
+        "pageType": null,
+        "position": "buttonsSecondHeaderLeft",
+        "order": null,
+        "conditionsSOVAL": null,
+        "href": null,
+        "newTab": null
+      },
+      {
+        "buttonName": null,
+        "color": null,
+        "pageType": null,
+        "position": "buttonsSecondHeaderLeft",
+        "order": null,
+        "conditionsSOVAL": null,
+        "href": null,
+        "newTab": null
       }
     ]
   },
