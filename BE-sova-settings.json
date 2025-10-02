@@ -545,7 +545,7 @@
         "pageType": "objednavky-detail",
         "position": "buttonsUnderTabsLeft",
         "order": 3,
-        "conditionsSOVAL": "%%(userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\") AND (count (faktury) = 0)%%",
+        "conditionsSOVAL": "%%pocitarnaExpeditionPrepare = \"true\"  AND (userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\") AND (count (faktury) = 0)%%",
         "sovaGates": null
       },
       {
