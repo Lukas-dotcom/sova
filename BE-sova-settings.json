@@ -347,7 +347,8 @@
       "position",
       "order",
       "conditionsSOVAL",
-      "sovaGates"
+      "sovaGates",
+      "pairButton"
     ],
     "rules": [
       {
@@ -359,7 +360,8 @@
         "position": "buttonsHeaderLeft",
         "order": null,
         "conditionsSOVAL": null,
-        "sovaGates": null
+        "sovaGates": null,
+        "pairButton": null
       },
       {
         "buttonName": "Seřadit parametry",
@@ -370,7 +372,8 @@
         "position": "buttonsHeaderLeft",
         "order": null,
         "conditionsSOVAL": null,
-        "sovaGates": null
+        "sovaGates": null,
+        "pairButton": null
       },
       {
         "buttonName": "Upnout kódy",
@@ -381,7 +384,8 @@
         "position": "buttonsHeaderLeft",
         "order": null,
         "conditionsSOVAL": null,
-        "sovaGates": null
+        "sovaGates": null,
+        "pairButton": null
       },
       {
         "buttonName": "Tisk soupisky",
@@ -392,7 +396,8 @@
         "position": "buttonsMassAction",
         "order": null,
         "conditionsSOVAL": null,
-        "sovaGates": null
+        "sovaGates": null,
+        "pairButton": null
       },
       {
         "buttonName": "Balík",
@@ -403,7 +408,8 @@
         "position": "buttonsEndOfT2Right",
         "order": null,
         "conditionsSOVAL": "%%customerBillVatId != \"CZ27203026\" AND text3=\"\"%%",
-        "sovaGates": null
+        "sovaGates": null,
+        "pairButton": null
       },
       {
         "buttonName": "Spec. a vícekus balík",
@@ -414,7 +420,8 @@
         "position": "buttonsEndOfT2Right",
         "order": null,
         "conditionsSOVAL": "%%customerBillVatId != \"CZ27203026\"%%",
-        "sovaGates": null
+        "sovaGates": null,
+        "pairButton": null
       },
       {
         "buttonName": "Zpr Netstore",
@@ -425,7 +432,8 @@
         "position": "buttonsEndOfT2Right",
         "order": null,
         "conditionsSOVAL": "%%netstoreDone != \"true\" AND customerBillVatId = \"CZ27203026\"%%",
-        "sovaGates": null
+        "sovaGates": null,
+        "pairButton": null
       },
       {
         "buttonName": "Zpr Netstore vckus",
@@ -436,7 +444,8 @@
         "position": "buttonsEndOfT2Right",
         "order": null,
         "conditionsSOVAL": "%%netstoreDone != \"true\"  AND customerBillVatId = \"CZ27203026\"%%",
-        "sovaGates": null
+        "sovaGates": null,
+        "pairButton": null
       },
       {
         "buttonName": "Tisk FA",
@@ -447,7 +456,8 @@
         "position": "buttonsEndOfT2Right",
         "order": null,
         "conditionsSOVAL": "%%customerBillVatId = \"CZ27203026\"%%",
-        "sovaGates": null
+        "sovaGates": null,
+        "pairButton": null
       },
       {
         "buttonName": "Tisk štítek",
@@ -458,7 +468,8 @@
         "position": "buttonsEndOfT2Right",
         "order": null,
         "conditionsSOVAL": "%%customerBillVatId = \"CZ27203026\"%%",
-        "sovaGates": null
+        "sovaGates": null,
+        "pairButton": null
       },
       {
         "buttonName": "Předpřipravit expedici",
@@ -469,7 +480,8 @@
         "position": "buttonsUnderTabsLeft",
         "order": 2,
         "conditionsSOVAL": "%%pocitarnaExpeditionPrepare != \"true\"%%",
-        "sovaGates": null
+        "sovaGates": null,
+        "pairButton": null
       },
       {
         "buttonName": "Kopie: kontakty",
@@ -480,7 +492,8 @@
         "position": "buttonsSecondHeaderRight",
         "order": null,
         "conditionsSOVAL": null,
-        "sovaGates": null
+        "sovaGates": null,
+        "pairButton": null
       },
       {
         "buttonName": "Kopie: dopr + plat",
@@ -491,7 +504,8 @@
         "position": "buttonsSecondHeaderRight",
         "order": null,
         "conditionsSOVAL": null,
-        "sovaGates": null
+        "sovaGates": null,
+        "pairButton": null
       },
       {
         "buttonName": "Kopie: produkty",
@@ -502,7 +516,8 @@
         "position": "buttonsSecondHeaderRight",
         "order": null,
         "conditionsSOVAL": null,
-        "sovaGates": null
+        "sovaGates": null,
+        "pairButton": null
       },
       {
         "buttonName": "Kopie: celá",
@@ -513,7 +528,8 @@
         "position": "buttonsSecondHeaderRight",
         "order": null,
         "conditionsSOVAL": null,
-        "sovaGates": null
+        "sovaGates": null,
+        "pairButton": null
       },
       {
         "buttonName": "Objednávka: koncák",
@@ -524,7 +540,8 @@
         "position": "topHeader",
         "order": 1,
         "conditionsSOVAL": "%%userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\"%%",
-        "sovaGates": null
+        "sovaGates": null,
+        "pairButton": null
       },
       {
         "buttonName": "Objednávka",
@@ -535,7 +552,8 @@
         "position": "topHeader",
         "order": 2,
         "conditionsSOVAL": "%%userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\"%%",
-        "sovaGates": null
+        "sovaGates": null,
+        "pairButton": null
       },
       {
         "buttonName": "Kartou",
@@ -546,7 +564,8 @@
         "position": "buttonsUnderTabsLeft",
         "order": 3,
         "conditionsSOVAL": "%%pocitarnaExpeditionPrepare = \"true\"  AND (userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\") AND (count (faktury) = 0)%%",
-        "sovaGates": null
+        "sovaGates": null,
+        "pairButton": null
       },
       {
         "buttonName": "Hotově",
@@ -557,7 +576,8 @@
         "position": "buttonsUnderTabsLeft",
         "order": 4,
         "conditionsSOVAL": "%%pocitarnaExpeditionPrepare = \"true\"  AND (userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\") AND (count (faktury) = 0)%%",
-        "sovaGates": null
+        "sovaGates": null,
+        "pairButton": null
       },
       {
         "buttonName": "Tisk FA",
@@ -568,7 +588,8 @@
         "position": "buttonsUnderTabsLeft",
         "order": 8,
         "conditionsSOVAL": "%%(userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\") AND (count (faktury) > 0)%%",
-        "sovaGates": null
+        "sovaGates": null,
+        "pairButton": null
       },
       {
         "buttonName": "Tisk",
@@ -579,7 +600,8 @@
         "position": "buttonsEndOfT1Left",
         "order": 1,
         "conditionsSOVAL": "%%userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\" %%",
-        "sovaGates": null
+        "sovaGates": null,
+        "pairButton": null
       },
       {
         "buttonName": "Objednávka",
@@ -590,7 +612,8 @@
         "position": "buttonsEndOfT1Left",
         "order": 3,
         "conditionsSOVAL": "%%userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\" %%",
-        "sovaGates": null
+        "sovaGates": null,
+        "pairButton": null
       }
     ]
   },
