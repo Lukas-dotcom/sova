@@ -493,7 +493,7 @@
         "order": null,
         "conditionsSOVAL": null,
         "sovaGates": null,
-        "pairButton": null
+        "pairButton": "Kopie"
       },
       {
         "buttonName": "Kopie: dopr + plat",
@@ -505,7 +505,7 @@
         "order": null,
         "conditionsSOVAL": null,
         "sovaGates": null,
-        "pairButton": null
+        "pairButton": "Kopie"
       },
       {
         "buttonName": "Kopie: produkty",
@@ -517,7 +517,7 @@
         "order": null,
         "conditionsSOVAL": null,
         "sovaGates": null,
-        "pairButton": null
+        "pairButton": "Kopie"
       },
       {
         "buttonName": "Kopie: celá",
@@ -529,7 +529,7 @@
         "order": null,
         "conditionsSOVAL": null,
         "sovaGates": null,
-        "pairButton": null
+        "pairButton": "Kopie"
       },
       {
         "buttonName": "Objednávka: koncák",
