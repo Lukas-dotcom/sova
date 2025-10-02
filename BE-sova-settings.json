@@ -886,7 +886,7 @@
         "order": null,
         "color": "red",
         "backgroundColor": null,
-        "condition": "%% customerBillFullName = \"koncový zákazník\"  AND pocitarnaExpeditionPrepare != \"true\" AND pageType =\"objednavky-detail\"%%"
+        "condition": "%% (userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\")  AND pocitarnaExpeditionPrepare != \"true\" AND pageType =\"objednavky-detail\"%%"
       }
     ]
   },
