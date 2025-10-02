@@ -965,7 +965,7 @@
         "color": null,
         "pageType": null,
         "position": "buttonsSecondHeaderLeft",
-        "order": null,
+        "order": 1,
         "conditionsSOVAL": null,
         "href": null,
         "newTab": null
@@ -975,7 +975,7 @@
         "color": null,
         "pageType": null,
         "position": "buttonsSecondHeaderLeft",
-        "order": null,
+        "order": 1,
         "conditionsSOVAL": null,
         "href": null,
         "newTab": null
