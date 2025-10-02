@@ -968,7 +968,7 @@
         "order": 1,
         "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\" OR userFullName = \"Lukáš Tejral\"%%",
         "href": "%%filter (items:url)%%",
-        "newTab": null
+        "newTab": true
       },
       {
         "buttonName": "Otevřít vybrané",
@@ -978,7 +978,7 @@
         "order": 1,
         "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\" OR userFullName = \"Lukáš Tejral\"%%",
         "href": "%%filter (items:url, checked= \"true\")%%",
-        "newTab": null
+        "newTab": true
       }
     ]
   },
