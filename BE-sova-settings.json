@@ -807,7 +807,7 @@
         "position": null,
         "order": null,
         "conditionsSOVAL": null,
-        "href": null,
+        "href": "/admin/html-kody/",
         "newTab": null
       },
       {
@@ -817,7 +817,7 @@
         "position": null,
         "order": null,
         "conditionsSOVAL": null,
-        "href": null,
+        "href": "/admin/spravce-souboru/",
         "newTab": null
       },
       {
@@ -827,7 +827,7 @@
         "position": null,
         "order": null,
         "conditionsSOVAL": null,
-        "href": null,
+        "href": "/admin/ceny/",
         "newTab": null
       },
       {
@@ -837,7 +837,7 @@
         "position": null,
         "order": null,
         "conditionsSOVAL": null,
-        "href": null,
+        "href": "/admin/prehled-objednavek/",
         "newTab": null
       },
       {
@@ -847,7 +847,7 @@
         "position": null,
         "order": null,
         "conditionsSOVAL": null,
-        "href": null,
+        "href": "/admin/sablona-exportu-zbozi-detail/?id=301",
         "newTab": null
       },
       {
@@ -857,7 +857,7 @@
         "position": null,
         "order": null,
         "conditionsSOVAL": null,
-        "href": null,
+        "href": "/admin/sablona-exportu-objednavky/?id=315",
         "newTab": null
       },
       {
@@ -867,7 +867,7 @@
         "position": null,
         "order": null,
         "conditionsSOVAL": null,
-        "href": null,
+        "href": "https://shoptet.fvstudio.cz/",
         "newTab": null
       }
     ]
