@@ -732,7 +732,7 @@
         "buttonName": "Vyřízeno - pokladna",
         "color": "#32cb00",
         "order": 9,
-        "position": "buttonsEndOfT1Left",
+        "position": "buttonsUnderTabsLeft",
         "conditionsSOVAL": "%%(status=\"Nevyřízená\") AND (userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\")%%",
         "targetStatusID": 145,
         "preventEmail": null,
