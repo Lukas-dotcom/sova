@@ -966,7 +966,7 @@
         "pageType": "ceny",
         "position": "buttonsSecondHeaderLeft",
         "order": 1,
-        "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\"%%",
+        "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\" OR userFullName = \"Lukáš Tejral\"%%",
         "href": null,
         "newTab": null
       },
@@ -976,7 +976,7 @@
         "pageType": "ceny",
         "position": "buttonsSecondHeaderLeft",
         "order": 1,
-        "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\"%%",
+        "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\" OR userFullName = \"Lukáš Tejral\"%%",
         "href": null,
         "newTab": null
       }
