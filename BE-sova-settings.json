@@ -733,7 +733,7 @@
         "color": "#32cb00",
         "order": 9,
         "position": "buttonsUnderTabsLeft",
-        "conditionsSOVAL": "%%(status=\"Nevyřízená\") AND (userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\")%%",
+        "conditionsSOVAL": "%%pocitarnaExpeditionPrepare = \"true\"  AND (status=\"Nevyřízená\") AND (userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\")%%",
         "targetStatusID": 145,
         "preventEmail": null,
         "openAfterChange": null
