@@ -1088,7 +1088,7 @@
         "order": null,
         "color": "red",
         "backgroundColor": null,
-        "condition": null
+        "condition": "%% ANY(kompletace,  (count ($kompletace, Kod = $Kod) > 1) AND (Kod contains \"NTB\" OR Kod contains \"POC\" OR Kod contains \"AIO\" OR Kod contains \"LCD\" OR Kod startsWith \"T\"))%%"
       }
     ]
   },
