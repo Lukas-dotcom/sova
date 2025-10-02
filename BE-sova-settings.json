@@ -788,6 +788,90 @@
       }
     ]
   },
+  "injectButtonsLinks": {
+    "columns": [
+      "buttonName",
+      "color",
+      "pageType",
+      "position",
+      "order",
+      "conditionsSOVAL",
+      "href",
+      "newTab"
+    ],
+    "rules": [
+      {
+        "buttonName": "Html",
+        "color": null,
+        "pageType": null,
+        "position": null,
+        "order": null,
+        "conditionsSOVAL": null,
+        "href": null,
+        "newTab": null
+      },
+      {
+        "buttonName": "Soubory",
+        "color": null,
+        "pageType": null,
+        "position": null,
+        "order": null,
+        "conditionsSOVAL": null,
+        "href": null,
+        "newTab": null
+      },
+      {
+        "buttonName": "Produkty",
+        "color": null,
+        "pageType": null,
+        "position": null,
+        "order": null,
+        "conditionsSOVAL": null,
+        "href": null,
+        "newTab": null
+      },
+      {
+        "buttonName": "Objednávky",
+        "color": null,
+        "pageType": null,
+        "position": null,
+        "order": null,
+        "conditionsSOVAL": null,
+        "href": null,
+        "newTab": null
+      },
+      {
+        "buttonName": "Export PR",
+        "color": null,
+        "pageType": null,
+        "position": null,
+        "order": null,
+        "conditionsSOVAL": null,
+        "href": null,
+        "newTab": null
+      },
+      {
+        "buttonName": "Export OBJ",
+        "color": null,
+        "pageType": null,
+        "position": null,
+        "order": null,
+        "conditionsSOVAL": null,
+        "href": null,
+        "newTab": null
+      },
+      {
+        "buttonName": "FV editor",
+        "color": null,
+        "pageType": null,
+        "position": null,
+        "order": null,
+        "conditionsSOVAL": null,
+        "href": null,
+        "newTab": null
+      }
+    ]
+  },
   "injectVariables": {
     "columns": [
       "testPromenne",
