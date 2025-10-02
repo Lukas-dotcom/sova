@@ -973,7 +973,7 @@
       {
         "buttonName": null,
         "color": null,
-        "pageType": null,
+        "pageType": "ceny",
         "position": "buttonsSecondHeaderLeft",
         "order": 1,
         "conditionsSOVAL": null,
