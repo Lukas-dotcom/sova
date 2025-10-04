@@ -1291,6 +1291,11 @@
         "price": 0
       },
       {
+        "oznaceni": "iPad30pin",
+        "templateCode": "PR0010",
+        "price": null
+      },
+      {
         "oznaceni": "klavesniceMys",
         "templateCode": "SET0028",
         "price": 0
