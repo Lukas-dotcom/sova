@@ -1309,6 +1309,11 @@
         "oznaceni": "napajeciKabel",
         "templateCode": "CAB0004 ",
         "price": 0
+      },
+      {
+        "oznaceni": "iphoneCtype",
+        "templateCode": null,
+        "price": 0
       }
     ]
   },
