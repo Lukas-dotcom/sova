@@ -41,10 +41,10 @@
         "selectorCss": ".btn.btn-sm.btn-primary.no-disable.help-anchor.shp-helpdesk-outline",
         "withinCss": "div.content-buttons.sova-slot.sova-slot--buttonsHeaderRight",
         "closestCss": null,
-        "textContains": null,
+        "textContains": "Nápověda",
         "textEquals": null,
         "occurrenceNumber": null,
-        "condSoval": null
+        "condSoval": "%%pageType=\"objednavky-detail\"%%"
       }
     ]
   },
