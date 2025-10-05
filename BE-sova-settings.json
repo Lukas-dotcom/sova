@@ -691,7 +691,7 @@
         "color": "grey",
         "pageType": "objednavky-detail",
         "position": null,
-        "order": null,
+        "order": -7,
         "conditionsSOVAL": null,
         "recipient": null,
         "CCrecipient": null,
