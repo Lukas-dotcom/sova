@@ -690,7 +690,7 @@
         "buttonName": "Chyba dárky",
         "color": "grey",
         "pageType": "objednavky-detail",
-        "position": null,
+        "position": "buttonsEndOfT2Right",
         "order": -7,
         "conditionsSOVAL": null,
         "recipient": null,
