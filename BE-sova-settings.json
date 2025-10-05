@@ -518,7 +518,7 @@
         "pageType": "objednavky-detail",
         "position": "buttonsUnderTabsLeft",
         "order": 3,
-        "conditionsSOVAL": null,
+        "conditionsSOVAL": "%%pocitarnaExpeditionPrepare = \"true\"%%",
         "sovaGates": null,
         "pairButton": null
       },
