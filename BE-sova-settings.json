@@ -511,7 +511,7 @@
         "pairButton": null
       },
       {
-        "buttonName": "Předpřipravit expedici",
+        "buttonName": "Předpřipravit expe bez darků",
         "color": "blue",
         "function": "pocitarnaExpeditionPrepareCompletor",
         "parameters": "{ \"noProductAdd\": \"true\" }",
