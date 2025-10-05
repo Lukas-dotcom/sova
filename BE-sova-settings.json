@@ -512,7 +512,7 @@
       },
       {
         "buttonName": "Předpřipravit expe bez darků",
-        "color": "blue",
+        "color": "#42b9f5",
         "function": "pocitarnaExpeditionPrepareCompletor",
         "parameters": "{ \"noProductAdd\": \"true\" }",
         "pageType": "objednavky-detail",
