@@ -502,7 +502,7 @@
         "pairButton": null
       },
       {
-        "buttonName": "Kopie: kontakty",
+        "buttonName": "Kontakty",
         "color": "#7236f5",
         "function": "orderDuplicateSmart",
         "parameters": "{\"mode\":\"contactOnly\"}",
@@ -514,7 +514,7 @@
         "pairButton": "Kopie"
       },
       {
-        "buttonName": "Kopie: dopr + plat",
+        "buttonName": "Dopr + plat",
         "color": "#7236f5",
         "function": "orderDuplicateSmart",
         "parameters": "{\"mode\":\"noProducts\"}",
