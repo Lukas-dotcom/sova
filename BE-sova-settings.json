@@ -38,7 +38,7 @@
         "condSoval": "%%pageType=\"objednavky-detail\"%%"
       },
       {
-        "selectorCss": null,
+        "selectorCss": ".btn.btn-sm.btn-primary.no-disable.help-anchor.shp-helpdesk-outline",
         "withinCss": "div.content-buttons.sova-slot.sova-slot--buttonsHeaderRight",
         "closestCss": null,
         "textContains": null,
