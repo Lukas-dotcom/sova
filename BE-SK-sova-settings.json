@@ -383,6 +383,11 @@
         "price": 0
       },
       {
+        "oznaceni": "iphoneCtype",
+        "templateCode": null,
+        "price": 0
+      },
+      {
         "oznaceni": "AndroidUsbC",
         "templateCode": "PR0017",
         "price": 0
@@ -393,22 +398,22 @@
         "price": 0
       },
       {
-        "oznaceni": "iPad ",
-        "templateCode": "PR0021",
+        "oznaceni": "iPadLightning",
+        "templateCode": "PR0011",
         "price": 0
       },
       {
         "oznaceni": "iPadUsbC",
-        "templateCode": "PR0020",
+        "templateCode": "PR0021",
+        "price": 0
+      },
+      {
+        "oznaceni": "iPad30pin",
+        "templateCode": "PR0010",
         "price": 0
       },
       {
         "oznaceni": "klavesniceMys",
-        "templateCode": "SET0028",
-        "price": 0
-      },
-      {
-        "oznaceni": "AIO ",
         "templateCode": "SET0028",
         "price": 0
       },
@@ -418,7 +423,7 @@
         "price": 0
       },
       {
-        "oznaceni": "kabel",
+        "oznaceni": "napajeciKabel",
         "templateCode": "CAB0004 ",
         "price": 0
       }
