@@ -511,6 +511,18 @@
         "pairButton": null
       },
       {
+        "buttonName": "Předpřipravit expedici",
+        "color": "blue",
+        "function": "pocitarnaExpeditionPrepareCompletor",
+        "parameters": null,
+        "pageType": "objednavky-detail",
+        "position": "buttonsUnderTabsLeft",
+        "order": 2,
+        "conditionsSOVAL": "%%pocitarnaExpeditionPrepare != \"true\"%%",
+        "sovaGates": null,
+        "pairButton": null
+      },
+      {
         "buttonName": "Kontakty",
         "color": "#7236f5",
         "function": "orderDuplicateSmart",
