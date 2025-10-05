@@ -689,7 +689,7 @@
       {
         "buttonName": "Chyba dárky",
         "color": "grey",
-        "pageType": null,
+        "pageType": "objednavky-detail",
         "position": null,
         "order": null,
         "conditionsSOVAL": null,
