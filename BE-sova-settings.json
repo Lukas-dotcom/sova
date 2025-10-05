@@ -517,7 +517,7 @@
         "parameters": "{ \"noProductAdd\": \"true\" }",
         "pageType": "objednavky-detail",
         "position": "buttonsUnderTabsLeft",
-        "order": 2,
+        "order": 3,
         "conditionsSOVAL": "%%pocitarnaExpeditionPrepare != \"true\"%%",
         "sovaGates": null,
         "pairButton": null
@@ -601,7 +601,7 @@
         "parameters": "{\"parentElement\": \".open-menu\", \"element\": \"a[title='Kartou']\"}",
         "pageType": "objednavky-detail",
         "position": "buttonsUnderTabsLeft",
-        "order": 3,
+        "order": 4,
         "conditionsSOVAL": "%%pocitarnaExpeditionPrepare = \"true\"  AND (userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\") AND (count (faktury) = 0)%%",
         "sovaGates": null,
         "pairButton": null
@@ -613,7 +613,7 @@
         "parameters": "{\"parentElement\": \".open-menu\", \"element\": \"a[title='Hotově']\"}",
         "pageType": "objednavky-detail",
         "position": "buttonsUnderTabsLeft",
-        "order": 4,
+        "order": 5,
         "conditionsSOVAL": "%%pocitarnaExpeditionPrepare = \"true\"  AND (userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\") AND (count (faktury) = 0)%%",
         "sovaGates": null,
         "pairButton": null
