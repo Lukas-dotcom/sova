@@ -538,7 +538,7 @@
         "pairButton": "Kopie"
       },
       {
-        "buttonName": "Kopie: celá",
+        "buttonName": "Celá",
         "color": "#7236f5",
         "function": "orderDuplicateSmart",
         "parameters": "{\"mode\":\"whole\"}",
