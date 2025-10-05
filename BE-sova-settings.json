@@ -36,6 +36,15 @@
         "textEquals": null,
         "occurrenceNumber": null,
         "condSoval": "%%pageType=\"objednavky-detail\"%%"
+      },
+      {
+        "selectorCss": null,
+        "withinCss": "div.content-buttons.sova-slot.sova-slot--buttonsHeaderRight",
+        "closestCss": null,
+        "textContains": null,
+        "textEquals": null,
+        "occurrenceNumber": null,
+        "condSoval": null
       }
     ]
   },
