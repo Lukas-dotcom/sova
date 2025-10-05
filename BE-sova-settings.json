@@ -18,15 +18,6 @@
         "textEquals": null,
         "occurrenceNumber": null,
         "condSoval": "%%pageType=\"objednavky-detail\"%%"
-      },
-      {
-        "selectorCss": ".open-menu.right-aligned",
-        "withinCss": "div.content-buttons__moreActions.js-drawer[data-drawer-id='action-menu']",
-        "closestCss": null,
-        "textContains": "Kopie",
-        "textEquals": null,
-        "occurrenceNumber": null,
-        "condSoval": "%%pageType=\"objednavky-detail\"%%"
       }
     ]
   },
