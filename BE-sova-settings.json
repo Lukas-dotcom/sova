@@ -20,7 +20,7 @@
         "condSoval": "%%pageType=\"objednavky-detail\"%%"
       },
       {
-        "selectorCss": ".open-menu.right-aligned",
+        "selectorCss": ".reactWidget-delete-order-modal",
         "withinCss": "div.content-buttons__moreActions.js-drawer[data-drawer-id='action-menu']",
         "closestCss": null,
         "textContains": "Smazat",
