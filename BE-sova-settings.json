@@ -514,7 +514,7 @@
         "buttonName": "Předpřipravit expedici",
         "color": "blue",
         "function": "pocitarnaExpeditionPrepareCompletor",
-        "parameters": null,
+        "parameters": "{ \"noProductAdd\": \"true\" }",
         "pageType": "objednavky-detail",
         "position": "buttonsUnderTabsLeft",
         "order": 2,
