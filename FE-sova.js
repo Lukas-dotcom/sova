@@ -2550,6 +2550,107 @@ td.p-name .sova-upsell-select-row select{ width:100%; min-width:160px; margin:0;
   ns.fn.register('additionalSaleCart', function(){ scheduleRender('fn.call'); });
 })(SOVA);
 
+/*───────────────────────────────────────────────────────────────────────────*
+ * cartRelatedAutoScroll – při přidání `visible` na .related… odscrolluj (FE)
+ *  + omezeno na košík (URL ∨ pageType), nativní smooth scroll, 1× trigger
+ *───────────────────────────────────────────────────────────────────────────*/
+(function registerCartRelatedAutoScroll(ns){
+  if (!ns?.fn) return;
+  if (window.__SOVA_cartRelatedAutoScroll_initialized) return;
+  window.__SOVA_cartRelatedAutoScroll_initialized = true;
+
+  const TAG  = '[cartRelatedAutoScroll]';
+  const TEST = () => localStorage.getItem('SOVA.testSOVA.enabled') === '1';
+
+  // ── Nastavení
+  const MOBILE_MAX_WIDTH = 768;   // breakpoint pro „mobil“
+  const forceMobile      = false; // vynucení mobilu při testu na desktopu
+  const HEADER_OFFSET    = 0;     // px (sticky header), 0 = použij scrollIntoView
+  const GLOBAL_COOLDOWN  = 1500;  // ms – po autoskrolu ignoruj krátce další triggery
+  const SEL              = '.related[class*="related-to-"]';
+
+  const isMobile = () => forceMobile || (window.matchMedia && window.matchMedia(`(max-width:${MOBILE_MAX_WIDTH}px)`).matches);
+
+  // ── Gate: spouštět jen v košíku
+  function allowRun(){
+    try {
+      const url = location.pathname + location.search;
+      if (/\/(kosik|cart)(\/|$|\?)/i.test(url)) return true;
+      const ctx = ns.getContext?.snapshot?.() || {};
+      const pt  = (ctx?.page?.type || '').toLowerCase();
+      if (/(cart|kosik|order)/.test(pt)) return true;
+    } catch{}
+    return false;
+  }
+  if (!allowRun()){
+    TEST() && console.log(TAG, 'skip: not a cart page');
+    return;
+  }
+
+  function nativeSmoothScrollToEl(el){
+    if (!el) return;
+    if (HEADER_OFFSET > 0) {
+      const rect = el.getBoundingClientRect();
+      const targetY = (window.scrollY || window.pageYOffset) + rect.top - HEADER_OFFSET;
+      window.scrollTo({ top: targetY, behavior: 'smooth' });
+    } else {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+    }
+  }
+
+  let lastAutoScrollAt = 0;
+
+  function onVisibleAdded(el, oldClassValue){
+    if (!isMobile()) return;
+    const oldHas = !!(oldClassValue && oldClassValue.split(/\s+/).includes('visible'));
+    const nowHas = el.classList.contains('visible');
+    if (!nowHas || oldHas) return; // jen NOVÉ přidání
+
+    if (el.dataset.sovaScrolledOnVisible === '1') return; // už řešeno pro tenhle prvek
+
+    const now = Date.now();
+    if (now - lastAutoScrollAt < GLOBAL_COOLDOWN) return; // globální cooldown
+
+    el.dataset.sovaScrolledOnVisible = '1';
+    lastAutoScrollAt = now;
+
+    setTimeout(() => nativeSmoothScrollToEl(el), 50); // drobný delay kvůli layoutu
+    TEST() && console.log(TAG, 'scroll →', el);
+  }
+
+  function onVisibleRemoved(el, oldClassValue){
+    const oldHas = !!(oldClassValue && oldClassValue.split(/\s+/).includes('visible'));
+    const nowHas = el.classList.contains('visible');
+    if (oldHas && !nowHas) {
+      delete el.dataset.sovaScrolledOnVisible; // povol další jednorázový scroll
+      TEST() && console.log(TAG, 'unlock (visible removed) ←', el);
+    }
+  }
+
+  const mo = new MutationObserver((muts) => {
+    for (const m of muts) {
+      if (m.type === 'attributes' && m.attributeName === 'class') {
+        const el = /** @type {Element} */ (m.target);
+        if (!el.matches(SEL)) continue;
+        const oldVal = m.oldValue || '';
+        onVisibleRemoved(el, oldVal);
+        onVisibleAdded(el, oldVal);
+      }
+    }
+  });
+
+  mo.observe(document.documentElement, {
+    subtree: true,
+    attributes: true,
+    attributeOldValue: true,
+    attributeFilter: ['class'],
+  });
+
+  // volitelný public trigger (pro ladění / reattach)
+  ns.fn.register?.('cartRelatedAutoScroll', function(){ /* no-op; init proběhl */ });
+
+  TEST() && console.log(TAG, 'initialized');
+})(SOVA);
 
 
 
