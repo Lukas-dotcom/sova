@@ -538,7 +538,7 @@
         "parameters": "{\"mode\":\"whole\"}",
         "pageType": "objednavky-detail",
         "position": "buttonsHeaderRight",
-        "order": 115,
+        "order": 114,
         "conditionsSOVAL": null,
         "sovaGates": null,
         "pairButton": "Kopie"
