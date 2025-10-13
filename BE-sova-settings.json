@@ -502,7 +502,7 @@
         "parameters": "{\"mode\":\"contactOnly\"}",
         "pageType": "objednavky-detail",
         "position": "buttonsHeaderRight",
-        "order": 115,
+        "order": 114,
         "conditionsSOVAL": null,
         "sovaGates": null,
         "pairButton": "Kopie"
@@ -514,7 +514,7 @@
         "parameters": "{\"mode\":\"noProducts\"}",
         "pageType": "objednavky-detail",
         "position": "buttonsHeaderRight",
-        "order": 115,
+        "order": 114,
         "conditionsSOVAL": null,
         "sovaGates": null,
         "pairButton": "Kopie"
@@ -526,7 +526,7 @@
         "parameters": "{\"mode\":\"noBillingNoShipping\"}",
         "pageType": "objednavky-detail",
         "position": "buttonsHeaderRight",
-        "order": 115,
+        "order": 114,
         "conditionsSOVAL": null,
         "sovaGates": null,
         "pairButton": "Kopie"
