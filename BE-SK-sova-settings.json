@@ -258,7 +258,7 @@
         "parameters": "{\"mode\":\"noBillingNoShipping\"}",
         "pageType": "objednavky-detail",
         "position": "buttonsHeaderRight",
-        "order": 115,
+        "order": 120,
         "conditionsSOVAL": null,
         "sovaGates": null,
         "pairButton": "Kopie"
