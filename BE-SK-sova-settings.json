@@ -258,7 +258,7 @@
         "parameters": "{\"mode\":\"noBillingNoShipping\"}",
         "pageType": "objednavky-detail",
         "position": "buttonsHeaderRight",
-        "order": 114,
+        "order": 115,
         "conditionsSOVAL": null,
         "sovaGates": null,
         "pairButton": "Kopie"
@@ -270,7 +270,7 @@
         "parameters": "{\"mode\":\"whole\"}",
         "pageType": "objednavky-detail",
         "position": "buttonsHeaderRight",
-        "order": 114,
+        "order": 115,
         "conditionsSOVAL": null,
         "sovaGates": null,
         "pairButton": "Kopie"
