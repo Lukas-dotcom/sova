@@ -226,6 +226,54 @@
         "conditionsSOVAL": "%%pocitarnaExpeditionPrepare != \"true\"%%",
         "sovaGates": null,
         "pairButton": null
+      },
+      {
+        "buttonName": "Kontakty",
+        "color": "#7236f5",
+        "function": "orderDuplicateSmart",
+        "parameters": "{\"mode\":\"contactOnly\"}",
+        "pageType": "objednavky-detail",
+        "position": "buttonsHeaderRight",
+        "order": 115,
+        "conditionsSOVAL": null,
+        "sovaGates": null,
+        "pairButton": "Kopie"
+      },
+      {
+        "buttonName": "Dopr + plat",
+        "color": "#7236f5",
+        "function": "orderDuplicateSmart",
+        "parameters": "{\"mode\":\"noProducts\"}",
+        "pageType": "objednavky-detail",
+        "position": "buttonsHeaderRight",
+        "order": 115,
+        "conditionsSOVAL": null,
+        "sovaGates": null,
+        "pairButton": "Kopie"
+      },
+      {
+        "buttonName": "Produkty",
+        "color": "#7236f5",
+        "function": "orderDuplicateSmart",
+        "parameters": "{\"mode\":\"noBillingNoShipping\"}",
+        "pageType": "objednavky-detail",
+        "position": "buttonsHeaderRight",
+        "order": 114,
+        "conditionsSOVAL": null,
+        "sovaGates": null,
+        "pairButton": "Kopie"
+      },
+      {
+        "buttonName": "Celá",
+        "color": "#7236f5",
+        "function": "orderDuplicateSmart",
+        "parameters": "{\"mode\":\"whole\"}",
+        "pageType": "objednavky-detail",
+        "position": "buttonsHeaderRight",
+        "order": 114,
+        "conditionsSOVAL": null,
+        "sovaGates": null,
+        "pairButton": "Kopie"
       }
     ]
   },
