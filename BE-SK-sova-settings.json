@@ -365,13 +365,13 @@
       }
     ]
   },
-  "addProductsPrepareCompletor-": {
+  "addProductsPrepareCompletor": {
     "columns": [
       "oznaceni",
       "templateCode",
       "price"
     ],
-    "rules": [
+    "rules_addProductsPrepareCompletor": [
       {
         "oznaceni": "iphoneJack",
         "templateCode": "PR0013",
