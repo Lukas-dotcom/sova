@@ -277,6 +277,28 @@
       }
     ]
   },
+  "shoptetElementHide": {
+    "columns": [
+      "selectorCss",
+      "withinCss",
+      "closestCss",
+      "textContains",
+      "textEquals",
+      "occurrenceNumber",
+      "condSoval"
+    ],
+    "rules": [
+      {
+        "selectorCss": ".open-menu.right-aligned",
+        "withinCss": null,
+        "closestCss": null,
+        "textContains": "Kopie",
+        "textEquals": null,
+        "occurrenceNumber": null,
+        "condSoval": "%%pageType=\"objednavky-detail\"%%"
+      }
+    ]
+  },
   "injectButtonsMassStatusChange": {
     "columns": [
       "buttonName",
