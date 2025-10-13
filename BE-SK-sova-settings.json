@@ -67,7 +67,8 @@
       "position",
       "order",
       "conditionsSOVAL",
-      "sovaGates"
+      "sovaGates",
+      "pairButton"
     ],
     "rules": [
       {
@@ -79,7 +80,8 @@
         "position": "buttonsHeaderLeft",
         "order": null,
         "conditionsSOVAL": null,
-        "sovaGates": null
+        "sovaGates": null,
+        "pairButton": null
       },
       {
         "buttonName": "Seřadit parametry",
@@ -90,7 +92,8 @@
         "position": "buttonsHeaderLeft",
         "order": null,
         "conditionsSOVAL": null,
-        "sovaGates": null
+        "sovaGates": null,
+        "pairButton": null
       },
       {
         "buttonName": "Upnout kódy",
@@ -101,7 +104,8 @@
         "position": "buttonsHeaderLeft",
         "order": null,
         "conditionsSOVAL": null,
-        "sovaGates": null
+        "sovaGates": null,
+        "pairButton": null
       },
       {
         "buttonName": "Tisk soupisky",
@@ -112,7 +116,8 @@
         "position": "buttonsMassAction",
         "order": null,
         "conditionsSOVAL": null,
-        "sovaGates": null
+        "sovaGates": null,
+        "pairButton": null
       },
       {
         "buttonName": "Balík",
@@ -123,7 +128,8 @@
         "position": "buttonsEndOfT2Right",
         "order": null,
         "conditionsSOVAL": "%%customerBillVatId != \"CZ27203026\"%%",
-        "sovaGates": null
+        "sovaGates": null,
+        "pairButton": null
       },
       {
         "buttonName": "Spec. a vícekus balík",
@@ -134,7 +140,8 @@
         "position": "buttonsEndOfT2Right",
         "order": null,
         "conditionsSOVAL": "%%customerBillVatId != \"CZ27203026\"%%",
-        "sovaGates": null
+        "sovaGates": null,
+        "pairButton": null
       },
       {
         "buttonName": "Předpřipravit expedici",
@@ -145,7 +152,8 @@
         "position": "buttonsEndOfT2Left",
         "order": null,
         "conditionsSOVAL": "%%pocitarnaExpeditionPrepare != \"true\"%%",
-        "sovaGates": null
+        "sovaGates": null,
+        "pairButton": null
       },
       {
         "buttonName": "Zpr Netstore",
@@ -156,7 +164,8 @@
         "position": "buttonsEndOfT2Right",
         "order": null,
         "conditionsSOVAL": "%%netstoreDone != \"true\" AND customerBillVatId = \"CZ27203026\"%%",
-        "sovaGates": null
+        "sovaGates": null,
+        "pairButton": null
       },
       {
         "buttonName": "Zpr Netstore vckus",
@@ -167,7 +176,8 @@
         "position": "buttonsEndOfT2Right",
         "order": null,
         "conditionsSOVAL": "%%netstoreDone != \"true\"  AND customerBillVatId = \"CZ27203026\"%%",
-        "sovaGates": null
+        "sovaGates": null,
+        "pairButton": null
       },
       {
         "buttonName": "Tisk FA",
@@ -178,7 +188,8 @@
         "position": "buttonsEndOfT2Right",
         "order": null,
         "conditionsSOVAL": "%%customerBillVatId = \"CZ27203026\"%%",
-        "sovaGates": null
+        "sovaGates": null,
+        "pairButton": null
       },
       {
         "buttonName": "Tisk štítek",
@@ -189,7 +200,8 @@
         "position": "buttonsEndOfT2Right",
         "order": null,
         "conditionsSOVAL": "%%customerBillVatId = \"CZ27203026\"%%",
-        "sovaGates": null
+        "sovaGates": null,
+        "pairButton": null
       },
       {
         "buttonName": "Přidat PCN produkt",
@@ -200,7 +212,8 @@
         "position": "buttonsEndOfT1Left",
         "order": -2,
         "conditionsSOVAL": "%%status=\"Nevyřízená\"%%",
-        "sovaGates": null
+        "sovaGates": null,
+        "pairButton": null
       },
       {
         "buttonName": "Předpřipravit expedici",
@@ -211,7 +224,8 @@
         "position": "buttonsEndOfT1Left",
         "order": null,
         "conditionsSOVAL": "%%pocitarnaExpeditionPrepare != \"true\"%%",
-        "sovaGates": null
+        "sovaGates": null,
+        "pairButton": null
       }
     ]
   },
