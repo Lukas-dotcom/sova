@@ -842,7 +842,7 @@
         "selectOptions": null,
         "saveType": "session",
         "pageType": "sablona-exportu-objednavky",
-        "position": "buttonsAboveTabsLeft",
+        "position": "buttonsHeaderLeft",
         "order": 1,
         "conditionsSOVAL": "%%url contains \"https://www.pocitarna.cz/admin/sablona-exportu-objednavky/?id=315\"%%"
       },
@@ -853,7 +853,7 @@
         "selectOptions": null,
         "saveType": "session",
         "pageType": "sablona-exportu-objednavky",
-        "position": "buttonsAboveTabsLeft",
+        "position": "buttonsHeaderLeft",
         "order": 2,
         "conditionsSOVAL": "%%url contains \"https://www.pocitarna.cz/admin/sablona-exportu-objednavky/?id=315\"%%"
       }
