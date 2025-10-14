@@ -1080,6 +1080,46 @@
         "conditionsSOVAL": "%%url contains \"https://www.pocitarna.cz/admin/sablona-exportu-zbozi-detail/?id=301\"%%",
         "href": "https://www.pocitarna.cz/export/products.xls?patternId=301&partnerId=20&hash=3031a27de4e3f6dd1871bd562c4531510bd9c35ba77ee1678007cbfede0d0fdb&onlyVisible=1",
         "newTab": null
+      },
+      {
+        "buttonName": null,
+        "color": null,
+        "pageType": null,
+        "position": "buttonsHeaderLeft",
+        "order": null,
+        "conditionsSOVAL": null,
+        "href": null,
+        "newTab": null
+      },
+      {
+        "buttonName": null,
+        "color": null,
+        "pageType": null,
+        "position": "buttonsHeaderLeft",
+        "order": null,
+        "conditionsSOVAL": null,
+        "href": null,
+        "newTab": null
+      },
+      {
+        "buttonName": null,
+        "color": "sablona-exportu-objednavky",
+        "pageType": null,
+        "position": 1,
+        "order": "%%url contains \"https://www.pocitarna.cz/admin/sablona-exportu-objednavky/?id=315\"%%",
+        "conditionsSOVAL": null,
+        "href": null,
+        "newTab": null
+      },
+      {
+        "buttonName": null,
+        "color": "sablona-exportu-objednavky",
+        "pageType": null,
+        "position": 2,
+        "order": "%%url contains \"https://www.pocitarna.cz/admin/sablona-exportu-objednavky/?id=315\"%%",
+        "conditionsSOVAL": null,
+        "href": null,
+        "newTab": null
       }
     ]
   },
