@@ -836,7 +836,7 @@
         "conditionsSOVAL": null
       },
       {
-        "variableName": null,
+        "variableName": "objExportFrom",
         "showName": null,
         "controlType": "input",
         "selectOptions": null,
@@ -847,7 +847,7 @@
         "conditionsSOVAL": null
       },
       {
-        "variableName": null,
+        "variableName": "objExportTo",
         "showName": null,
         "controlType": "input",
         "selectOptions": null,
