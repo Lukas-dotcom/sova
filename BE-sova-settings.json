@@ -626,6 +626,30 @@
         "conditionsSOVAL": "%%userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\" %%",
         "sovaGates": null,
         "pairButton": null
+      },
+      {
+        "buttonName": "Všechny",
+        "color": null,
+        "function": null,
+        "parameters": null,
+        "pageType": null,
+        "position": null,
+        "order": null,
+        "conditionsSOVAL": null,
+        "sovaGates": null,
+        "pairButton": null
+      },
+      {
+        "buttonName": "Viditelné",
+        "color": null,
+        "function": null,
+        "parameters": null,
+        "pageType": null,
+        "position": null,
+        "order": null,
+        "conditionsSOVAL": null,
+        "sovaGates": null,
+        "pairButton": null
       }
     ]
   },
