@@ -1094,7 +1094,7 @@
       {
         "buttonName": "Otevřít VŠE",
         "color": null,
-        "pageType": "ceny",
+        "pageType": "produkty",
         "position": "buttonsMassAction",
         "order": 1,
         "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\" OR userFullName = \"Lukáš Tejral\"%%",
@@ -1104,7 +1104,7 @@
       {
         "buttonName": "Otevřít vybrané",
         "color": null,
-        "pageType": "ceny",
+        "pageType": "produkty ",
         "position": "buttonsMassAction",
         "order": 1,
         "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\" OR userFullName = \"Lukáš Tejral\"%%",
