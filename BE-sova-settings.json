@@ -834,6 +834,39 @@
         "position": "buttonsHeaderLeft",
         "order": -1,
         "conditionsSOVAL": null
+      },
+      {
+        "variableName": null,
+        "showName": null,
+        "controlType": null,
+        "selectOptions": null,
+        "saveType": null,
+        "pageType": "objednavky-export",
+        "position": null,
+        "order": null,
+        "conditionsSOVAL": null
+      },
+      {
+        "variableName": null,
+        "showName": null,
+        "controlType": null,
+        "selectOptions": null,
+        "saveType": null,
+        "pageType": "objednavky-export",
+        "position": null,
+        "order": null,
+        "conditionsSOVAL": null
+      },
+      {
+        "variableName": null,
+        "showName": null,
+        "controlType": null,
+        "selectOptions": null,
+        "saveType": null,
+        "pageType": "objednavky-export",
+        "position": null,
+        "order": null,
+        "conditionsSOVAL": null
       }
     ]
   },
