@@ -1036,7 +1036,7 @@
         "position": "buttonsHeaderRight",
         "order": 1,
         "conditionsSOVAL": "%%url contains \"https://www.pocitarna.cz/admin/sablona-exportu-zbozi-detail/?id=301\"%%",
-        "href": null,
+        "href": "https://www.pocitarna.cz/export/products.xls?patternId=301&partnerId=20&hash=3031a27de4e3f6dd1871bd562c4531510bd9c35ba77ee1678007cbfede0d0fdb",
         "newTab": null
       },
       {
