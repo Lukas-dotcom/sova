@@ -1041,7 +1041,7 @@
       },
       {
         "buttonName": "Skladem",
-        "color": null,
+        "color": "blue",
         "pageType": "sablona-exportu-zbozi-detail",
         "position": "buttonsHeaderRight",
         "order": 2,
