@@ -650,6 +650,18 @@
         "conditionsSOVAL": null,
         "sovaGates": null,
         "pairButton": null
+      },
+      {
+        "buttonName": "Skladem",
+        "color": null,
+        "function": null,
+        "parameters": null,
+        "pageType": null,
+        "position": null,
+        "order": null,
+        "conditionsSOVAL": null,
+        "sovaGates": null,
+        "pairButton": null
       }
     ]
   },
