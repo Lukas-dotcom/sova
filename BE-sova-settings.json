@@ -634,7 +634,7 @@
         "parameters": null,
         "pageType": null,
         "position": null,
-        "order": null,
+        "order": 1,
         "conditionsSOVAL": "%%url contains \"https://www.pocitarna.cz/admin/sablona-exportu-zbozi-detail/?id=301\"%%",
         "sovaGates": null,
         "pairButton": null
@@ -646,7 +646,7 @@
         "parameters": null,
         "pageType": null,
         "position": null,
-        "order": null,
+        "order": 2,
         "conditionsSOVAL": "%%url contains \"https://www.pocitarna.cz/admin/sablona-exportu-zbozi-detail/?id=301\"%%",
         "sovaGates": null,
         "pairButton": null
@@ -658,7 +658,7 @@
         "parameters": null,
         "pageType": null,
         "position": null,
-        "order": null,
+        "order": 3,
         "conditionsSOVAL": "%%url contains \"https://www.pocitarna.cz/admin/sablona-exportu-zbozi-detail/?id=301\"%%",
         "sovaGates": null,
         "pairButton": null
