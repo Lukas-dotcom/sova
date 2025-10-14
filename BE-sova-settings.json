@@ -842,8 +842,8 @@
         "selectOptions": null,
         "saveType": "session",
         "pageType": "objednavky-export",
-        "position": null,
-        "order": null,
+        "position": "buttonsAboveTabsLeft",
+        "order": 1,
         "conditionsSOVAL": null
       },
       {
@@ -853,8 +853,8 @@
         "selectOptions": null,
         "saveType": "session",
         "pageType": "objednavky-export",
-        "position": null,
-        "order": null,
+        "position": "buttonsAboveTabsLeft",
+        "order": 2,
         "conditionsSOVAL": null
       }
     ]
