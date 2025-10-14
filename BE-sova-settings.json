@@ -841,7 +841,7 @@
         "controlType": "input",
         "selectOptions": null,
         "saveType": "session",
-        "pageType": "objednavky-export",
+        "pageType": "sablona-exportu-objednavky",
         "position": "buttonsAboveTabsLeft",
         "order": 1,
         "conditionsSOVAL": null
@@ -852,7 +852,7 @@
         "controlType": "input",
         "selectOptions": null,
         "saveType": "session",
-        "pageType": "objednavky-export",
+        "pageType": "sablona-exportu-objednavky",
         "position": "buttonsAboveTabsLeft",
         "order": 2,
         "conditionsSOVAL": null
