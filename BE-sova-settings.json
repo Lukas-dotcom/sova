@@ -1087,7 +1087,7 @@
         "pageType": null,
         "position": "buttonsHeaderRight",
         "order": null,
-        "conditionsSOVAL": null,
+        "conditionsSOVAL": "%%url contains \"https://www.pocitarna.cz/admin/sablona-exportu-objednavky/?id=315\"%%",
         "href": null,
         "newTab": null
       },
@@ -1097,7 +1097,7 @@
         "pageType": null,
         "position": "buttonsHeaderRight",
         "order": null,
-        "conditionsSOVAL": null,
+        "conditionsSOVAL": "%%url contains \"https://www.pocitarna.cz/admin/sablona-exportu-objednavky/?id=315\"%%",
         "href": null,
         "newTab": null
       },
@@ -1106,7 +1106,7 @@
         "color": "sablona-exportu-objednavky",
         "pageType": null,
         "position": 1,
-        "order": "%%url contains \"https://www.pocitarna.cz/admin/sablona-exportu-objednavky/?id=315\"%%",
+        "order": null,
         "conditionsSOVAL": null,
         "href": null,
         "newTab": null
@@ -1116,7 +1116,7 @@
         "color": "sablona-exportu-objednavky",
         "pageType": null,
         "position": 2,
-        "order": "%%url contains \"https://www.pocitarna.cz/admin/sablona-exportu-objednavky/?id=315\"%%",
+        "order": null,
         "conditionsSOVAL": null,
         "href": null,
         "newTab": null
