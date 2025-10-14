@@ -1083,7 +1083,7 @@
       },
       {
         "buttonName": "Export",
-        "color": null,
+        "color": "Green",
         "pageType": "sablona-exportu-objednavky",
         "position": "buttonsHeaderRight",
         "order": 1,
