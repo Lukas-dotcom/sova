@@ -659,7 +659,7 @@
         "pageType": null,
         "position": null,
         "order": null,
-        "conditionsSOVAL": null,
+        "conditionsSOVAL": "%%url contains \"https://www.pocitarna.cz/admin/sablona-exportu-zbozi-detail/?id=301\"%%",
         "sovaGates": null,
         "pairButton": null
       }
