@@ -1031,7 +1031,7 @@
       },
       {
         "buttonName": "Všechny",
-        "color": null,
+        "color": "orange",
         "pageType": "sablona-exportu-zbozi-detail",
         "position": "buttonsHeaderRight",
         "order": 1,
@@ -1051,7 +1051,7 @@
       },
       {
         "buttonName": "Viditelné",
-        "color": null,
+        "color": "green",
         "pageType": "sablona-exportu-zbozi-detail",
         "position": "buttonsHeaderRight",
         "order": 3,
