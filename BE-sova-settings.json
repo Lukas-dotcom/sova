@@ -1085,7 +1085,7 @@
         "buttonName": "Export",
         "color": "Green",
         "pageType": "sablona-exportu-objednavky",
-        "position": "buttonsHeaderRight",
+        "position": "buttonsHeaderLeft",
         "order": 1,
         "conditionsSOVAL": "%%url contains \"https://www.pocitarna.cz/admin/sablona-exportu-objednavky/?id=315\"%%",
         "href": "%%\"https://www.pocitarna.cz/export/orders.xls?patternId=315&partnerId=20&hash=87c0441cf19d46c29928dfe5e4a3f2e58a0a54936c768272baa57ea85326d344\" & (IF(objExportFrom != \"\", \"&dateFrom=\" & objExportFrom, \"\")) & (IF(objExportTo   != \"\", \"&dateUntil=\" & objExportTo, \"\"))%%",
