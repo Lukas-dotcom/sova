@@ -856,17 +856,6 @@
         "position": null,
         "order": null,
         "conditionsSOVAL": null
-      },
-      {
-        "variableName": null,
-        "showName": null,
-        "controlType": "input",
-        "selectOptions": null,
-        "saveType": "session",
-        "pageType": "objednavky-export",
-        "position": null,
-        "order": null,
-        "conditionsSOVAL": null
       }
     ]
   },
