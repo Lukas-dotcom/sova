@@ -855,7 +855,7 @@
         "pageType": "sablona-exportu-objednavky",
         "position": "buttonsAboveTabsLeft",
         "order": 2,
-        "conditionsSOVAL": null
+        "conditionsSOVAL": "%%url contains \"https://www.pocitarna.cz/admin/sablona-exportu-objednavky/?id=315\"%%"
       }
     ]
   },
