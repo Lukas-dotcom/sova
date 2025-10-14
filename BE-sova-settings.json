@@ -1035,9 +1035,9 @@
         "pageType": "sablona-exportu-zbozi-detail",
         "position": "buttonsHeaderRight",
         "order": 1,
-        "conditionsSOVAL": null,
+        "conditionsSOVAL": "%%url contains \"https://www.pocitarna.cz/admin/sablona-exportu-zbozi-detail/?id=301\"%%",
         "href": null,
-        "newTab": "%%url contains \"https://www.pocitarna.cz/admin/sablona-exportu-zbozi-detail/?id=301\"%%"
+        "newTab": null
       },
       {
         "buttonName": "Skladem",
@@ -1045,9 +1045,9 @@
         "pageType": "sablona-exportu-zbozi-detail",
         "position": "buttonsHeaderRight",
         "order": 2,
-        "conditionsSOVAL": null,
+        "conditionsSOVAL": "%%url contains \"https://www.pocitarna.cz/admin/sablona-exportu-zbozi-detail/?id=301\"%%",
         "href": null,
-        "newTab": "%%url contains \"https://www.pocitarna.cz/admin/sablona-exportu-zbozi-detail/?id=301\"%%"
+        "newTab": null
       },
       {
         "buttonName": "Viditelné",
@@ -1055,9 +1055,9 @@
         "pageType": "sablona-exportu-zbozi-detail",
         "position": "buttonsHeaderRight",
         "order": 3,
-        "conditionsSOVAL": null,
+        "conditionsSOVAL": "%%url contains \"https://www.pocitarna.cz/admin/sablona-exportu-zbozi-detail/?id=301\"%%",
         "href": null,
-        "newTab": "%%url contains \"https://www.pocitarna.cz/admin/sablona-exportu-zbozi-detail/?id=301\"%%"
+        "newTab": null
       }
     ]
   },
