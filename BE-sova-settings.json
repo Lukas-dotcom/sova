@@ -11,7 +11,7 @@
         "htmlURL": "settingsBE.html",
         "breadCrumb": "Nastavení SOVA Back-end",
         "position": "wholePage",
-        "condSoval": null
+        "condSoval": "%%url=\"/admin/sova-back-end/\"%%"
       }
     ]
   },
