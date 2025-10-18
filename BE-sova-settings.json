@@ -8,7 +8,7 @@
     ],
     "rules": [
       {
-        "htmlURL": "settingsBE.html",
+        "htmlURL": "html/settingsBE.html",
         "breadCrumb": "Nastavení SOVA Back-end",
         "position": "wholePage",
         "condSoval": "%%url=\"/admin/sova-back-end/\"%%"
