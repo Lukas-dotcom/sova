@@ -9,7 +9,7 @@
     "rules": [
       {
         "htmlURL": "settingsBE.html",
-        "breadCrumb": null,
+        "breadCrumb": "Nastavení SOVA Back-end",
         "position": null,
         "condSoval": null
       }
