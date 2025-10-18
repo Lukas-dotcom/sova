@@ -10,7 +10,7 @@
       {
         "htmlURL": "settingsBE.html",
         "breadCrumb": "Nastavení SOVA Back-end",
-        "position": null,
+        "position": "wholePage",
         "condSoval": null
       }
     ]
