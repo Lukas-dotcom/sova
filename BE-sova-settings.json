@@ -11,7 +11,7 @@
         "htmlURL": "html/settingsBE.html",
         "breadCrumb": "Nastavení SOVA Back-end",
         "position": "wholePage",
-        "condSoval": "%%url=\"https://644482.myshoptet.com/admin/sova-back-end/\"%% "
+        "condSoval": "%%url=\"https://644482.myshoptet.com/admin/sova-back-end/\"%%"
       }
     ]
   },
