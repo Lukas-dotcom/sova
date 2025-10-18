@@ -1,4 +1,20 @@
 {
+  "injectHtml": {
+    "columns": [
+      "htmlURL",
+      "breadCrumb",
+      "position",
+      "condSoval"
+    ],
+    "rules": [
+      {
+        "htmlURL": "settingsFE.html",
+        "breadCrumb": null,
+        "position": null,
+        "condSoval": null
+      }
+    ]
+  },
   "shoptetElementHide": {
     "columns": [
       "selectorCss",
