@@ -14,7 +14,7 @@
         "condSoval": "%%pageType=\"sova-back-end\"%%"
       },
       {
-        "htmlURL": "html/settingsBE.html",
+        "htmlURL": "html/settingsFE.html",
         "breadCrumb": "Nastavení SOVA Back-end",
         "position": "wholePage",
         "condSoval": "%%pageType=\"sova-back-end\"%%"
