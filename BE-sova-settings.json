@@ -17,7 +17,7 @@
         "htmlURL": "html/settingsFE.html",
         "breadCrumb": "Nastavení SOVA Front-end",
         "position": "wholePage",
-        "condSoval": "%%pageType=\"sova-back-end\"%%"
+        "condSoval": "%%pageType=\"sova-font-end\"%%"
       }
     ]
   },
