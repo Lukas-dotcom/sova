@@ -12,6 +12,12 @@
         "breadCrumb": "Nastavení SOVA Back-end",
         "position": "wholePage",
         "condSoval": "%%pageType=\"sova-back-end\"%%"
+      },
+      {
+        "htmlURL": "html/settingsBE.html",
+        "breadCrumb": "Nastavení SOVA Back-end",
+        "position": "wholePage",
+        "condSoval": "%%pageType=\"sova-back-end\"%%"
       }
     ]
   },
