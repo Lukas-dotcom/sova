@@ -15,7 +15,7 @@
       },
       {
         "htmlURL": "html/settingsFE.html",
-        "breadCrumb": "Nastavení SOVA Back-end",
+        "breadCrumb": "Nastavení SOVA Front-end",
         "position": "wholePage",
         "condSoval": "%%pageType=\"sova-back-end\"%%"
       }
