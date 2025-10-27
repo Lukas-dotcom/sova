@@ -2553,12 +2553,10 @@ td.p-name .sova-upsell-select-row select{ width:100%; min-width:160px; margin:0;
 /*───────────────────────────────────────────────────────────────────────────
  * csvImportCart – hromadný import položek do košíku z CSV (no rules)
  *  + pouze na desktopu (min-width: 767.98px)
- *  + UI v .cart-summary (titul + tlačítko Nahrát, drag&drop na tlačítko)
- *  + autodetekce oddělovače (; → ,), robustní parser (uvozovky, CRLF)
- *  + agregace duplicitních kódů (součet amount)
- *  + bezpečné volání addToCart (cartShared → jQuery.post → fetch)
- *  + detailní TEST logy (mount/unmount, cílový host, parsování, add flow)
- *  + lehká "event gate" (inspirováno vzorem)
+ *  + UI primárně v .cart-summary, fallback do .cart-inner.cart-empty (append)
+ *  + klik i drag&drop, autodetekce ; → ,, robustní CSV parser (uvozovky)
+ *  + agregace duplicit (součet amount), detailní TEST logy
+ *  + bezpečné addToCart (cartShared → jQuery.post → fetch) + event gate
  *───────────────────────────────────────────────────────────────────────────*/
 (function registerCsvImportCart(ns){
   if (!ns?.fn) return;
@@ -2569,7 +2567,7 @@ td.p-name .sova-upsell-select-row select{ width:100%; min-width:160px; margin:0;
   const TEST = () => localStorage.getItem('SOVA.testSOVA.enabled') === '1';
 
   /* Viewport gate (desktop only) */
-  const MQ = '(min-width: 767.98px)';
+  const MQ  = '(min-width: 767.98px)';
   const mql = window.matchMedia ? window.matchMedia(MQ) : { matches:true, addEventListener:()=>{}, addListener:()=>{} };
   const isDesktop = () => !!mql.matches;
 
@@ -2579,7 +2577,8 @@ td.p-name .sova-upsell-select-row select{ width:100%; min-width:160px; margin:0;
     const el = document.createElement('style');
     el.id = 'sova-csv-import-css';
     el.textContent = `
-.cart-summary .sova-csv { margin-top: 20px; }
+.cart-summary .sova-csv,
+.cart-inner.cart-empty .sova-csv { margin-top: 20px; }
 .sova-csv__head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 .sova-csv__title { color: #006e6b; font-size: 1rem; font-weight: 700; }
 .sova-csv__btn {
@@ -2621,7 +2620,15 @@ td.p-name .sova-upsell-select-row select{ width:100%; min-width:160px; margin:0;
     return parts.join(' > ');
   }
 
-  /* "Gate" – čeká na dokončení aktualizací košíku */
+  function getHostInfo(){
+    const pri = document.querySelector('.cart-summary');
+    if (pri) return { host: pri, kind: '.cart-summary' };
+    const alt = document.querySelector('.cart-inner.cart-empty');
+    if (alt) return { host: alt, kind: '.cart-inner.cart-empty' };
+    return { host: null, kind: '(none)' };
+  }
+
+  /* Event gate */
   const op = { active:false, idleTimer:0, safetyTimer:0, cleanup:null };
   function beginOp(label){
     TEST() && console.log(TAG,'op begin →', label);
@@ -2649,7 +2656,7 @@ td.p-name .sova-upsell-select-row select{ width:100%; min-width:160px; margin:0;
     op.active = false;
   }
 
-  /* Přidání do košíku – stejné fallbacky jako ve vzoru */
+  /* addToCart fallback chain */
   function addByCode(code, amount, onDone){
     if (!code || !amount || amount <= 0){ onDone && onDone('skip'); return; }
     TEST() && console.log(TAG,'add start', {code, amount});
@@ -2670,7 +2677,6 @@ td.p-name .sova-upsell-select-row select{ width:100%; min-width:160px; margin:0;
         return;
       }
     }catch(e){ console.error(TAG,'AJAX add failed', e); }
-    // fetch fallback
     try{
       const params = new URLSearchParams();
       params.set('productCode', code);
@@ -2684,7 +2690,7 @@ td.p-name .sova-upsell-select-row select{ width:100%; min-width:160px; margin:0;
     }catch(e){ console.error(TAG,'fetch add failed', e); done('error'); }
   }
 
-  /* CSV helpery – načtení, normalizace, parser, agregace */
+  /* CSV helpery */
   function readFileText(file){
     return new Promise((res, rej)=>{
       const r = new FileReader();
@@ -2750,7 +2756,7 @@ td.p-name .sova-upsell-select-row select{ width:100%; min-width:160px; margin:0;
       const codeRaw   = (r[attempt.codeIdx] ?? '').toString().trim();
       const amountRaw = (r[attempt.amountIdx] ?? '').toString().replace(',', '.').trim();
       if (!codeRaw){
-        if (r.every(c => String(c).trim()==='')) return; // prázdný řádek
+        if (r.every(c => String(c).trim()==='')) return;
         errors.push({ line: lineNo, msg:'Prázdný "code".' }); return;
       }
       const amount = Number(amountRaw);
@@ -2767,11 +2773,13 @@ td.p-name .sova-upsell-select-row select{ width:100%; min-width:160px; margin:0;
     return { agg, errors, sep: usedSep, header: attempt.headerRaw };
   }
 
-  /* Mount / Unmount do .cart-summary (desktop only) */
+  /* Mount / Unmount (desktop only), host = .cart-summary || .cart-inner.cart-empty */
   function unmount(){
-    const host = document.querySelector('.cart-summary');
-    const box = host?.querySelector('.sova-csv');
-    if (box){ box.remove(); TEST() && console.log(TAG, 'UNMOUNT: .sova-csv odstraněn'); }
+    const box = document.querySelector('.sova-csv');
+    if (box){
+      box.remove();
+      TEST() && console.log(TAG, 'UNMOUNT: .sova-csv odstraněn');
+    }
   }
 
   function ensureMount(){
@@ -2781,13 +2789,15 @@ td.p-name .sova-upsell-select-row select{ width:100%; min-width:160px; margin:0;
       return;
     }
     ensureCSS();
-    const host = document.querySelector('.cart-summary');
-    if (!host){
-      TEST() && console.log(TAG, 'Host .cart-summary NENALEZEN – počkám přes MO');
+
+    const info = getHostInfo();
+    if (!info.host){
+      TEST() && console.log(TAG, 'Host nenalezen – čekám přes MO', { tried:['.cart-summary', '.cart-inner.cart-empty'] });
       return;
     }
-    if (host.querySelector('.sova-csv')){
-      TEST() && console.log(TAG, 'ALREADY mounted @', cssPath(host));
+
+    if (document.querySelector('.sova-csv')){
+      TEST() && console.log(TAG, 'ALREADY mounted @', cssPath(document.querySelector('.sova-csv')?.parentElement), 'host kind:', info.kind);
       return;
     }
 
@@ -2803,8 +2813,8 @@ td.p-name .sova-upsell-select-row select{ width:100%; min-width:160px; margin:0;
       <ul class="sova-csv__list" hidden></ul>
       <div class="sova-csv__hint">Očekávané sloupce v hlavičce: <code>code</code>, <code>amount</code> (oddělovač <code>;</code> nebo <code>,</code>). Duplicitní kódy se sčítají.</div>
     `;
-    host.appendChild(box);
-    TEST() && console.log(TAG, 'MOUNT OK @', cssPath(host));
+    info.host.appendChild(box); // append = poslední potomek
+    TEST() && console.log(TAG, 'MOUNT OK @', cssPath(info.host), 'host kind:', info.kind);
 
     const btn   = box.querySelector('.sova-csv__btn');
     const fileI = box.querySelector('.sova-csv__file');
@@ -2859,6 +2869,7 @@ td.p-name .sova-upsell-select-row select{ width:100%; min-width:160px; margin:0;
         }
 
         TEST() && console.groupCollapsed(TAG, 'ADD SUMMARY');
+        TEST() && console.log('host kind:', info.kind, 'host path:', cssPath(info.host));
         TEST() && console.log('sep:', sep, 'header:', header);
         TEST() && console.log('pairs:', pairs);
         TEST() && console.log('errors(first5):', (errors||[]).slice(0,5));
@@ -2896,11 +2907,9 @@ td.p-name .sova-upsell-select-row select{ width:100%; min-width:160px; margin:0;
       });
     }
 
-    // Click → výběr souboru
     btn.addEventListener('click', ()=> fileI.click());
     fileI.addEventListener('change', (e)=> handleFiles(e.target.files));
 
-    // Drag & drop přímo na tlačítko
     ['dragenter','dragover'].forEach(ev=>{
       btn.addEventListener(ev, (e)=>{ e.preventDefault(); e.stopPropagation(); btn.classList.add('is-dragover'); });
     });
@@ -2926,16 +2935,19 @@ td.p-name .sova-upsell-select-row select{ width:100%; min-width:160px; margin:0;
     }
   }
 
-  /* MO – sleduje .cart-summary i obecné změny (SPA) */
-  const touchesSummary = (el)=> !!(el && el.nodeType===1 && (el.matches?.('.cart-summary') || el.querySelector?.('.cart-summary')));
+  /* MO – sleduje oba možné hosty */
+  const touchesHost = (el)=> !!(el && el.nodeType===1 && (
+    el.matches?.('.cart-summary, .cart-inner.cart-empty') ||
+    el.querySelector?.('.cart-summary, .cart-inner.cart-empty')
+  ));
   const mo = new MutationObserver((muts)=>{
-    if (muts.some(m => touchesSummary(m.target) || [...(m.addedNodes||[])].some(touchesSummary))){
+    if (muts.some(m => touchesHost(m.target) || [...(m.addedNodes||[])].some(touchesHost))){
       maybeMountOrUnmount('MO');
     }
   });
   mo.observe(document.documentElement || document.body, { childList:true, subtree:true });
 
-  /* MQ listener – když se překročí breakpoint, zareagujeme mount/unmount */
+  /* MQ listener – mount/unmount při překročení breakpointu */
   if (mql.addEventListener) mql.addEventListener('change', ()=> maybeMountOrUnmount('MQ change'));
   else if (mql.addListener)  mql.addListener(()=> maybeMountOrUnmount('MQ change'));
 
@@ -2946,10 +2958,11 @@ td.p-name .sova-upsell-select-row select{ width:100%; min-width:160px; margin:0;
     maybeMountOrUnmount('boot');
   }
 
-  // public hook (volitelné)
+  // public hook
   ns.fn.register('csvImportCart', function(){ maybeMountOrUnmount('fn.call'); });
 
 })(SOVA);
+
 
 
 
