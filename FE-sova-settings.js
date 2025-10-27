@@ -13,8 +13,7 @@ window.injectFunctions = [
   },
   {
     "function": "csvImportCart",
-    "pageType": "cart",
-    "conditionsSOVAL": " "
+    "pageType": "cart "
   }
 ];
 
