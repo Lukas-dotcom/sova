@@ -14,7 +14,7 @@ window.injectFunctions = [
   {
     "function": "csvImportCart",
     "pageType": "cart",
-    "conditionsSOVAL": "customerEmail = \"tejryluk@gmail.com\""
+    "conditionsSOVAL": "customerEmail = \"tejryluk@gmail.com\" "
   }
 ];
 
