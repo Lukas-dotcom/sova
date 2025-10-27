@@ -13,7 +13,7 @@ window.injectFunctions = [
   },
   {
     "function": "csvImportCart",
-    "pageType": "cart "
+    "pageType": "cart"
   }
 ];
 
