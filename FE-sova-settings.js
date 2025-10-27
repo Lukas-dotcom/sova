@@ -10,6 +10,10 @@ window.injectFunctions = [
   {
     "function": "deliveryOptions",
     "pageType": "billingAndShipping"
+  },
+  {
+    "function": "csvImportCart",
+    "pageType": "cart"
   }
 ];
 
