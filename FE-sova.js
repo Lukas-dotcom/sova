@@ -2557,6 +2557,7 @@ td.p-name .sova-upsell-select-row select{ width:100%; min-width:160px; margin:0;
  *  + klik i drag&drop, autodetekce ; → ,, robustní CSV parser (uvozovky)
  *  + agregace duplicit (součet amount), detailní TEST logy
  *  + bezpečné addToCart (cartShared → jQuery.post → fetch) + event gate
+ *  + ⚠️ žádný autoboot – spouští se jen přes injectFunctions (ns.fn.run)
  *───────────────────────────────────────────────────────────────────────────*/
 (function registerCsvImportCart(ns){
   if (!ns?.fn) return;
@@ -2875,11 +2876,11 @@ td.p-name .sova-upsell-select-row select{ width:100%; min-width:160px; margin:0;
         TEST() && console.log('errors(first5):', (errors||[]).slice(0,5));
         TEST() && console.groupEnd();
 
+        beginOp('bulk-add');
         setList([
           { type:'ok', text:`Bude přidáno ${pairs.length} položek (${pairs.map(p=>`${esc(p.code)}×${String(p.qty)}`).join(', ')}).` }
         ].concat((errors||[]).slice(0,5).map(er => ({ type:'err', text:`Řádek ${er.line}: ${er.msg}` }))));
 
-        beginOp('bulk-add');
         setStatus(`Přidávám do košíku… 0 / ${pairs.length}`);
         let i = 0;
         const step = () => {
@@ -2935,33 +2936,39 @@ td.p-name .sova-upsell-select-row select{ width:100%; min-width:160px; margin:0;
     }
   }
 
-  /* MO – sleduje oba možné hosty */
-  const touchesHost = (el)=> !!(el && el.nodeType===1 && (
-    el.matches?.('.cart-summary, .cart-inner.cart-empty') ||
-    el.querySelector?.('.cart-summary, .cart-inner.cart-empty')
-  ));
-  const mo = new MutationObserver((muts)=>{
-    if (muts.some(m => touchesHost(m.target) || [...(m.addedNodes||[])].some(touchesHost))){
-      maybeMountOrUnmount('MO');
+  /* === Registrace pouze pro injectFunctions (žádný autoboot) ============= */
+  let _installed = false;
+  ns.fn.register('csvImportCart', function csvImportCartEntry(/*{ params, settings } = {}, ctx*/){
+    if (_installed){
+      TEST() && console.log(TAG,'re-run → refresh');
+      maybeMountOrUnmount('re-run');
+      return;
     }
+    _installed = true;
+
+    // MO – sleduje hosty až po spuštění pravidlem
+    const touchesHost = (el)=> !!(el && el.nodeType===1 && (
+      el.matches?.('.cart-summary, .cart-inner.cart-empty') ||
+      el.querySelector?.('.cart-summary, .cart-inner.cart-empty')
+    ));
+    const mo = new MutationObserver((muts)=>{
+      if (muts.some(m => touchesHost(m.target) || [...(m.addedNodes||[])].some(touchesHost))){
+        maybeMountOrUnmount('MO');
+      }
+    });
+    mo.observe(document.documentElement || document.body, { childList:true, subtree:true });
+
+    // MQ – reaguje na breakpoint až po spuštění pravidlem
+    const onMQ = ()=> maybeMountOrUnmount('MQ change');
+    if (mql.addEventListener) mql.addEventListener('change', onMQ);
+    else if (mql.addListener)  mql.addListener(onMQ);
+
+    // první mount
+    maybeMountOrUnmount('rule-run');
   });
-  mo.observe(document.documentElement || document.body, { childList:true, subtree:true });
 
-  /* MQ listener – mount/unmount při překročení breakpointu */
-  if (mql.addEventListener) mql.addEventListener('change', ()=> maybeMountOrUnmount('MQ change'));
-  else if (mql.addListener)  mql.addListener(()=> maybeMountOrUnmount('MQ change'));
+})(SOVA);
 
-  // boot
-  if (document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', ()=> maybeMountOrUnmount('DOMContentLoaded'), { once:true });
-  } else {
-    maybeMountOrUnmount('boot');
-  }
-
-  // public hook
-  ns.fn.register('csvImportCart', function(){ maybeMountOrUnmount('fn.call'); });
-
-})(SOVA); 
 
 
 
