@@ -2552,12 +2552,13 @@ td.p-name .sova-upsell-select-row select{ width:100%; min-width:160px; margin:0;
 
 /*───────────────────────────────────────────────────────────────────────────
  * csvImportCart – hromadný import položek do košíku z CSV (no rules)
- *  + UI v .cart-summary (titul + tlačítko Nahrát)
- *  + klik i drag&drop na tlačítko
+ *  + pouze na desktopu (min-width: 767.98px)
+ *  + UI v .cart-summary (titul + tlačítko Nahrát, drag&drop na tlačítko)
  *  + autodetekce oddělovače (; → ,), robustní parser (uvozovky, CRLF)
  *  + agregace duplicitních kódů (součet amount)
  *  + bezpečné volání addToCart (cartShared → jQuery.post → fetch)
- *  + lehká "event gate" (inspirováno vzorem) kvůli ladnému dokončení
+ *  + detailní TEST logy (mount/unmount, cílový host, parsování, add flow)
+ *  + lehká "event gate" (inspirováno vzorem)
  *───────────────────────────────────────────────────────────────────────────*/
 (function registerCsvImportCart(ns){
   if (!ns?.fn) return;
@@ -2566,6 +2567,11 @@ td.p-name .sova-upsell-select-row select{ width:100%; min-width:160px; margin:0;
 
   const TAG  = '[csvImportCart]';
   const TEST = () => localStorage.getItem('SOVA.testSOVA.enabled') === '1';
+
+  /* Viewport gate (desktop only) */
+  const MQ = '(min-width: 767.98px)';
+  const mql = window.matchMedia ? window.matchMedia(MQ) : { matches:true, addEventListener:()=>{}, addListener:()=>{} };
+  const isDesktop = () => !!mql.matches;
 
   /* CSS (jen jednou) */
   function ensureCSS(){
@@ -2590,9 +2596,32 @@ td.p-name .sova-upsell-select-row select{ width:100%; min-width:160px; margin:0;
 .sova-csv__hint { margin-top:.25rem; font-size:.775rem; color:#777; }
     `;
     document.head.appendChild(el);
+    TEST() && console.log(TAG, 'CSS injected');
   }
 
-  /* "Gate" – čeká na dokončení aktualizací košíku (inspirováno vzorem) */
+  /* helpers */
+  const esc = (s)=> String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+
+  function cssPath(el){
+    if (!el || el.nodeType !== 1) return '';
+    const parts = [];
+    let cur = el, steps = 0;
+    while (cur && cur.nodeType === 1 && steps < 6){
+      let seg = cur.nodeName.toLowerCase();
+      if (cur.id){ seg += '#' + cur.id; parts.unshift(seg); break; }
+      if (cur.classList?.length){ seg += '.' + [...cur.classList].slice(0,2).join('.'); }
+      if (cur.parentElement){
+        const idx = Array.prototype.indexOf.call(cur.parentElement.children, cur) + 1;
+        seg += `:nth-child(${idx})`;
+      }
+      parts.unshift(seg);
+      cur = cur.parentElement; steps++;
+    }
+    return parts.join(' > ');
+  }
+
+  /* "Gate" – čeká na dokončení aktualizací košíku */
   const op = { active:false, idleTimer:0, safetyTimer:0, cleanup:null };
   function beginOp(label){
     TEST() && console.log(TAG,'op begin →', label);
@@ -2623,9 +2652,9 @@ td.p-name .sova-upsell-select-row select{ width:100%; min-width:160px; margin:0;
   /* Přidání do košíku – stejné fallbacky jako ve vzoru */
   function addByCode(code, amount, onDone){
     if (!code || !amount || amount <= 0){ onDone && onDone('skip'); return; }
-    TEST() && console.log(TAG,'add', {code, amount});
+    TEST() && console.log(TAG,'add start', {code, amount});
     let finished = false;
-    const done = (why)=>{ if (finished) return; finished = true; onDone && onDone(why||'done'); };
+    const done = (why)=>{ if (finished) return; finished = true; TEST() && console.log(TAG,'add done', {code, amount, why}); onDone && onDone(why||'done'); };
     try{
       if (window.shoptet?.cartShared?.addToCart){
         window.shoptet.cartShared.addToCart({ productCode: code, amount }, true);
@@ -2664,9 +2693,8 @@ td.p-name .sova-upsell-select-row select{ width:100%; min-width:160px; margin:0;
       r.readAsText(file);
     });
   }
-  function normalizeNewlines(s){ return String(s||'').replace(/\r\n/g,'\n').replace(/\r/g,'\n'); }
+  const normalizeNewlines = (s)=> String(s||'').replace(/\r\n/g,'\n').replace(/\r/g,'\n');
 
-  // Jednoduchý CSV parser s podporou uvozovek pro daný oddělovač
   function parseCSV(text, sep){
     const out = [];
     let row = [], cur = '', inQ = false;
@@ -2693,22 +2721,23 @@ td.p-name .sova-upsell-select-row select{ width:100%; min-width:160px; margin:0;
     const header = rows[0].map(c => String(c||'').trim().toLowerCase());
     const codeIdx   = header.findIndex(h => h === 'code' || h === 'productcode' || h === 'sku');
     const amountIdx = header.findIndex(h => h === 'amount' || h === 'qty' || h === 'quantity' || h === 'mnozstvi' || h === 'množství');
-    return { codeIdx, amountIdx };
+    return { codeIdx, amountIdx, headerRaw: rows[0] };
   }
 
   function tryParse(text, sep){
     const rows = parseCSV(text, sep);
-    const { codeIdx, amountIdx } = detectHeader(rows);
-    return { rows, codeIdx, amountIdx };
+    const { codeIdx, amountIdx, headerRaw } = detectHeader(rows);
+    return { rows, codeIdx, amountIdx, headerRaw };
   }
 
   function buildAggMap(text){
     const src = normalizeNewlines(text).trim();
     if (!src) throw new Error('Soubor je prázdný.');
-    // pořadí dle zadání: středník → čárka
-    let attempt = tryParse(src, ';');
+    let usedSep = ';';
+    let attempt = tryParse(src, usedSep);
     if (attempt.codeIdx < 0 || attempt.amountIdx < 0){
-      attempt = tryParse(src, ',');
+      usedSep = ',';
+      attempt = tryParse(src, usedSep);
     }
     if (attempt.codeIdx < 0 || attempt.amountIdx < 0){
       throw new Error('V hlavičce chybí sloupce "code" a/nebo "amount".');
@@ -2731,15 +2760,37 @@ td.p-name .sova-upsell-select-row select{ width:100%; min-width:160px; margin:0;
       const prev = agg.get(codeRaw) || 0;
       agg.set(codeRaw, prev + amount);
     });
-    return { agg, errors };
+    TEST() && console.groupCollapsed(TAG, 'CSV parsed');
+    TEST() && console.log('usedSep:', usedSep, 'header:', attempt.headerRaw);
+    TEST() && console.log('rows(body):', rows.length, 'errors:', errors.length);
+    TEST() && console.groupEnd();
+    return { agg, errors, sep: usedSep, header: attempt.headerRaw };
   }
 
-  /* Mount UI do .cart-summary */
+  /* Mount / Unmount do .cart-summary (desktop only) */
+  function unmount(){
+    const host = document.querySelector('.cart-summary');
+    const box = host?.querySelector('.sova-csv');
+    if (box){ box.remove(); TEST() && console.log(TAG, 'UNMOUNT: .sova-csv odstraněn'); }
+  }
+
   function ensureMount(){
+    if (!isDesktop()){
+      TEST() && console.log(TAG, 'SKIP mount: viewport < 767.98px');
+      unmount();
+      return;
+    }
     ensureCSS();
     const host = document.querySelector('.cart-summary');
-    if (!host) return;
-    if (host.querySelector('.sova-csv')) return; // už je
+    if (!host){
+      TEST() && console.log(TAG, 'Host .cart-summary NENALEZEN – počkám přes MO');
+      return;
+    }
+    if (host.querySelector('.sova-csv')){
+      TEST() && console.log(TAG, 'ALREADY mounted @', cssPath(host));
+      return;
+    }
+
     const box = document.createElement('div');
     box.className = 'sova-csv';
     box.innerHTML = `
@@ -2753,13 +2804,12 @@ td.p-name .sova-upsell-select-row select{ width:100%; min-width:160px; margin:0;
       <div class="sova-csv__hint">Očekávané sloupce v hlavičce: <code>code</code>, <code>amount</code> (oddělovač <code>;</code> nebo <code>,</code>). Duplicitní kódy se sčítají.</div>
     `;
     host.appendChild(box);
+    TEST() && console.log(TAG, 'MOUNT OK @', cssPath(host));
 
     const btn   = box.querySelector('.sova-csv__btn');
     const fileI = box.querySelector('.sova-csv__file');
     const status= box.querySelector('.sova-csv__status');
     const list  = box.querySelector('.sova-csv__list');
-
-    const esc = (s)=> String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
 
     function setStatus(html){ status.innerHTML = html; }
     function setList(items){
@@ -2770,8 +2820,14 @@ td.p-name .sova-upsell-select-row select{ width:100%; min-width:160px; margin:0;
     function setBusy(b){ btn.disabled = !!b; }
 
     function handleFiles(files){
+      if (!isDesktop()){
+        TEST() && console.log(TAG, 'ABORT: not desktop during handleFiles');
+        setStatus('Funkce dostupná jen na ≥ 767.98px.');
+        return;
+      }
       const f = files && files[0];
       if (!f) return;
+      TEST() && console.log(TAG, 'file selected', { name:f.name, size:f.size, type:f.type });
       if (!/\.csv($|#|\?)/i.test(f.name) && f.type !== 'text/csv'){
         setStatus('Soubor nemá příponu .csv. Zkusím ho přesto zpracovat…');
       } else {
@@ -2779,31 +2835,39 @@ td.p-name .sova-upsell-select-row select{ width:100%; min-width:160px; margin:0;
       }
       setBusy(true);
       readFileText(f).then(txt => {
-        let agg, errs;
+        TEST() && console.log(TAG, 'file read OK, length:', txt.length);
+        let res;
         try {
-          const parsed = buildAggMap(txt);
-          agg = parsed.agg; errs = parsed.errors||[];
+          res = buildAggMap(txt);
         } catch(e){
           setBusy(false);
           setList([{ type:'err', text:String(e.message||e) }]);
           setStatus('');
+          TEST() && console.log(TAG, 'parse ERROR:', e);
           return;
         }
-
+        const { agg, errors, sep, header } = res;
         const pairs = Array.from(agg.entries()).map(([code, qty]) => ({ code, qty }));
+
         if (!pairs.length){
           setBusy(false);
           setList([{ type:'err', text:'CSV neobsahuje žádné platné položky.' }]
-            .concat((errs||[]).slice(0,5).map(er => ({ type:'err', text:`Řádek ${er.line}: ${er.msg}` })) ));
+            .concat((errors||[]).slice(0,5).map(er => ({ type:'err', text:`Řádek ${er.line}: ${er.msg}` })) ));
           setStatus('');
+          TEST() && console.log(TAG, 'no valid pairs; errors:', errors);
           return;
         }
 
+        TEST() && console.groupCollapsed(TAG, 'ADD SUMMARY');
+        TEST() && console.log('sep:', sep, 'header:', header);
+        TEST() && console.log('pairs:', pairs);
+        TEST() && console.log('errors(first5):', (errors||[]).slice(0,5));
+        TEST() && console.groupEnd();
+
         setList([
           { type:'ok', text:`Bude přidáno ${pairs.length} položek (${pairs.map(p=>`${esc(p.code)}×${String(p.qty)}`).join(', ')}).` }
-        ].concat(errs.slice(0,5).map(er => ({ type:'err', text:`Řádek ${er.line}: ${er.msg}` }))));
+        ].concat((errors||[]).slice(0,5).map(er => ({ type:'err', text:`Řádek ${er.line}: ${er.msg}` }))));
 
-        // Hromadné přidání do košíku (sekvenčně, s jemným rozestupem)
         beginOp('bulk-add');
         setStatus(`Přidávám do košíku… 0 / ${pairs.length}`);
         let i = 0;
@@ -2812,20 +2876,23 @@ td.p-name .sova-upsell-select-row select{ width:100%; min-width:160px; margin:0;
             setStatus(`Dokončování…`);
             setTimeout(()=> finishOp('bulk'), 0);
             setBusy(false);
+            TEST() && console.log(TAG, 'bulk add DONE');
             return;
           }
           const item = pairs[i];
-          addByCode(item.code, item.qty, ()=> {
+          addByCode(item.code, item.qty, (why)=> {
             i++;
             setStatus(`Přidávám do košíku… ${i} / ${pairs.length}`);
+            TEST() && console.log(TAG, 'added', { index:i, total:pairs.length, code:item.code, qty:item.qty, via:why });
             setTimeout(step, 80);
           });
         };
         step();
-      }).catch(()=>{
+      }).catch((e)=>{
         setList([{ type:'err', text:'Načtení souboru selhalo.' }]);
         setStatus('');
         setBusy(false);
+        TEST() && console.log(TAG, 'file read ERROR:', e);
       });
     }
 
@@ -2842,32 +2909,48 @@ td.p-name .sova-upsell-select-row select{ width:100%; min-width:160px; margin:0;
     });
     btn.addEventListener('drop', (e)=>{
       const files = e.dataTransfer?.files;
+      TEST() && console.log(TAG, 'drop', { count: files?.length||0 });
       if (files && files.length) handleFiles(files);
     });
 
-    TEST() && console.log(TAG,'UI mounted');
+    TEST() && console.log(TAG,'UI mounted & handlers attached');
   }
 
-  // MO: dohlíží na .cart-summary, mount provede i později (SPA)
-  const mo = new MutationObserver((muts)=>{
-    const touches = (el)=> !!(el && el.nodeType===1 && (el.matches?.('.cart-summary') || el.querySelector?.('.cart-summary')));
-    if (muts.some(m => touches(m.target) || [...(m.addedNodes||[])].some(touches) || [...(m.removedNodes||[])].some(touches))){
+  function maybeMountOrUnmount(reason){
+    if (isDesktop()){
+      TEST() && console.log(TAG, `viewport OK (desktop) → ensureMount [${reason}]`);
       ensureMount();
+    } else {
+      TEST() && console.log(TAG, `viewport small (mobile) → unmount [${reason}]`);
+      unmount();
+    }
+  }
+
+  /* MO – sleduje .cart-summary i obecné změny (SPA) */
+  const touchesSummary = (el)=> !!(el && el.nodeType===1 && (el.matches?.('.cart-summary') || el.querySelector?.('.cart-summary')));
+  const mo = new MutationObserver((muts)=>{
+    if (muts.some(m => touchesSummary(m.target) || [...(m.addedNodes||[])].some(touchesSummary))){
+      maybeMountOrUnmount('MO');
     }
   });
   mo.observe(document.documentElement || document.body, { childList:true, subtree:true });
 
+  /* MQ listener – když se překročí breakpoint, zareagujeme mount/unmount */
+  if (mql.addEventListener) mql.addEventListener('change', ()=> maybeMountOrUnmount('MQ change'));
+  else if (mql.addListener)  mql.addListener(()=> maybeMountOrUnmount('MQ change'));
+
   // boot
   if (document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', ensureMount, { once:true });
+    document.addEventListener('DOMContentLoaded', ()=> maybeMountOrUnmount('DOMContentLoaded'), { once:true });
   } else {
-    ensureMount();
+    maybeMountOrUnmount('boot');
   }
 
-  // public hook (volitelné vyvolání z konzole či jiných featur)
-  ns.fn.register('csvImportCart', function(){ ensureMount(); });
+  // public hook (volitelné)
+  ns.fn.register('csvImportCart', function(){ maybeMountOrUnmount('fn.call'); });
 
-})(SOVA); 
+})(SOVA);
+
 
 
 
