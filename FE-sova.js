@@ -2961,7 +2961,7 @@ td.p-name .sova-upsell-select-row select{ width:100%; min-width:160px; margin:0;
   // public hook
   ns.fn.register('csvImportCart', function(){ maybeMountOrUnmount('fn.call'); });
 
-})(SOVA);
+})(SOVA); 
 
 
 
