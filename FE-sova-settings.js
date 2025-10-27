@@ -10,6 +10,11 @@ window.injectFunctions = [
   {
     "function": "deliveryOptions",
     "pageType": "billingAndShipping"
+  },
+  {
+    "function": "csvImportCart",
+    "pageType": "cart",
+    "conditionsSOVAL": "customerEmail = \"tejryluk@gmail.com\""
   }
 ];
 
