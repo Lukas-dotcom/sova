@@ -14,7 +14,7 @@ window.injectFunctions = [
   {
     "function": "csvImportCart",
     "pageType": "cart",
-    "conditionsSOVAL": "(customerEmail = \"tejryluk@gmail.com\")"
+    "conditionsSOVAL": "(customerGroupId = \"2\" OR customerGroupId = \"6\" OR customerGroupId = \"8\" OR customerGroupId = \"14\" OR )"
   }
 ];
 
