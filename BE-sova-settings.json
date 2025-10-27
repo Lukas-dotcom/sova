@@ -631,7 +631,7 @@
         "function": "domClickBySnippet",
         "parameters": "{\"parentElement\": \".open-menu\", \"element\": \"span.open-print a[href^='/admin/tisk-dokladu/'][href*='type=invoice'][href*='id=']\", \"textMode\":\"ignore\" }",
         "pageType": "faktura-detail",
-        "position": "aboveContact ",
+        "position": "aboveContact",
         "order": 1,
         "conditionsSOVAL": "%%userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\" %%",
         "sovaGates": null,
