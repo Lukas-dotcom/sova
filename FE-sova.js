@@ -2867,7 +2867,7 @@ td.p-name .sova-upsell-select-row select{ width:100%; min-width:160px; margin:0;
   // public hook (volitelné vyvolání z konzole či jiných featur)
   ns.fn.register('csvImportCart', function(){ ensureMount(); });
 
-})(SOVA);
+})(SOVA); 
 
 
 
