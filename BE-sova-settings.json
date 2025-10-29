@@ -222,10 +222,10 @@
       },
       {
         "Název": "Konzole",
-        "Odkaz": null,
+        "Odkaz": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=1589",
         "Barvička": null,
         "NovOkno": null,
-        "Kdo": null
+        "Kdo": "Dominik Němčanský"
       },
       {
         "Název": "Export NTB",
