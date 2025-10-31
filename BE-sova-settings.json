@@ -187,7 +187,7 @@
       },
       {
         "Název": "Notebooky",
-        "Odkaz": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=673",
+        "Odkaz": "https://www.pocitarna.cz/admin/ceny/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=673&f[pricelistId]=1&f[chosenPricelistId]=1",
         "Barvička": null,
         "NovOkno": null,
         "Kdo": "Dominik Němčanský"
@@ -216,13 +216,6 @@
       {
         "Název": "Mobily",
         "Odkaz": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=717",
-        "Barvička": null,
-        "NovOkno": null,
-        "Kdo": "Dominik Němčanský"
-      },
-      {
-        "Název": "Konzole",
-        "Odkaz": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=1589",
         "Barvička": null,
         "NovOkno": null,
         "Kdo": "Dominik Němčanský"
