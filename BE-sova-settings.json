@@ -668,7 +668,7 @@
       {
         "buttonName": "test modal",
         "color": null,
-        "function": null,
+        "function": "modalGenerator",
         "parameters": null,
         "pageType": "objednavky-detail",
         "position": "buttonsEndOfT3Right",
