@@ -33,7 +33,7 @@
       },
       {
         "schema": "nodeInput",
-        "html": "<div apiHtmlGneretator = \"\"></div>"
+        "html": "<div apiHtmlGneretator = \"#@variable@#\"></div>"
       }
     ]
   },
