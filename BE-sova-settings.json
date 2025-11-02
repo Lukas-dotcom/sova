@@ -33,7 +33,7 @@
       },
       {
         "schema": "nodeInput",
-        "html": "<div>\n</div>"
+        "html": "<div></div>"
       }
     ]
   },
