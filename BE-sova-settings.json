@@ -21,6 +21,18 @@
       }
     ]
   },
+  "modalGenerator": {
+    "columns": [
+      "schema",
+      "html"
+    ],
+    "rules": [
+      {
+        "schema": "table",
+        "html": null
+      }
+    ]
+  },
   "shoptetElementHide": {
     "columns": [
       "selectorCss",
