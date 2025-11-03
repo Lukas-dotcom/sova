@@ -680,7 +680,7 @@
         "pageType": "objednavky-detail",
         "position": "buttonsEndOfT3Right",
         "order": null,
-        "conditionsSOVAL": "%%userFullName=\"Lukáš Tejral\" %% ",
+        "conditionsSOVAL": "%%userFullName=\"Lukáš Tejral\" %%",
         "sovaGates": null,
         "pairButton": null
       }
