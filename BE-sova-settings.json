@@ -241,7 +241,7 @@
         "Odkaz": "https://www.pocitarna.cz/admin/ceny/708/?f[stockState]=1&f[visibilityId]=0&f[pricelistId]=1&f[chosenPricelistId]=1",
         "Barvička": null,
         "NovOkno": null,
-        "Kdo": null
+        "Kdo": "Dominik Němčanský"
       },
       {
         "Název": "Export NTB",
@@ -596,7 +596,7 @@
         "pageType": null,
         "position": "topHeader",
         "order": 1,
-        "conditionsSOVAL": "%%userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\"%%",
+        "conditionsSOVAL": "%%userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\"%%",
         "sovaGates": null,
         "pairButton": null
       },
@@ -608,7 +608,7 @@
         "pageType": null,
         "position": "topHeader",
         "order": 2,
-        "conditionsSOVAL": "%%userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral%%",
+        "conditionsSOVAL": "%%userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\"%%",
         "sovaGates": null,
         "pairButton": null
       },
