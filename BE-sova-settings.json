@@ -669,7 +669,7 @@
         "buttonName": "test modal",
         "color": null,
         "function": "modalGenerator",
-        "parameters": "{\"schema\":\"tableInput\",\"variable\":\"Moje tabulka\"}",
+        "parameters": "{\"schema\":\"tableInput\",\"variable\":\"mojeCRT\"}",
         "pageType": "objednavky-detail",
         "position": "buttonsEndOfT3Right",
         "order": null,
