@@ -21,6 +21,20 @@
       }
     ]
   },
+  "APIhtmlGenerator": {
+    "columns": [
+      "schema",
+      "type",
+      "html"
+    ],
+    "rules": [
+      {
+        "schema": null,
+        "type": "forEach",
+        "html": null
+      }
+    ]
+  },
   "modalGenerator": {
     "columns": [
       "schema",
