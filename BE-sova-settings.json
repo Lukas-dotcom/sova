@@ -31,7 +31,7 @@
       {
         "schema": "simpleVars",
         "type": "forEach",
-        "html": "<div class=\"v2formRow\">\n  <div class=\"v2FormField\">\n    <span class=\"v2FormField__label sova\">\n      <span class=\"v2FormField__labelText\">Text</span>\n      \n    </span>\n    <div class=\"v2FormField__input\">\n      <input data-sova-role=\"primary\" data-sova-var=\"hlText\" data-sova-type=\"text\" type=\"text\" class=\"textField full\" placeholder=\"…\">\n    </div>\n    <span class=\"show-tooltip tooltip-icon\">Nápověda k textu…<a href=\"https://www.google.com\" target=\"_blank\">Google</a></span>\n  </div>\n</div>"
+        "html": "<div class=\"v2formRow\">\n  <div class=\"v2FormField\">\n    <span class=\"v2FormField__label sova\">\n      <span class=\"v2FormField__labelText\">#@variable@#</span>\n      \n    </span>\n    <div class=\"v2FormField__input\">\n      <input data-sova-role=\"primary\" data-sova-var=\"#@variable@#\" data-sova-type=\"text\" type=\"text\" class=\"textField full\" placeholder=\"…\">\n    </div>\n  </div>\n</div>"
       },
       {
         "schema": null,
