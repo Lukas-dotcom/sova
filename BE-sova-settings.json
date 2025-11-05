@@ -32,6 +32,11 @@
         "schema": null,
         "type": "forEach",
         "html": null
+      },
+      {
+        "schema": null,
+        "type": "perRole",
+        "html": null
       }
     ]
   },
