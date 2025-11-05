@@ -29,7 +29,7 @@
     ],
     "rules": [
       {
-        "schema": null,
+        "schema": "simpleVars",
         "type": "forEach",
         "html": null
       },
