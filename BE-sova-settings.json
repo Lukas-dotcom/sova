@@ -34,7 +34,7 @@
         "html": "<div class=\"v2formRow\">\n  <div class=\"v2FormField\">\n    <span class=\"v2FormField__label sova\">\n      <span class=\"v2FormField__labelText\">#@variable@#</span>\n      \n    </span>\n    <div class=\"v2FormField__input\">\n      <input data-sova-role=\"primary\" data-sova-var=\"#@variable@#\" data-sova-type=\"text\" type=\"text\" class=\"textField full\" placeholder=\"…\">\n    </div>\n  </div>\n</div>"
       },
       {
-        "schema": "transFromNode",
+        "schema": "transfromNode",
         "type": "perRole",
         "html": "\n<div class=\"v2form\">\n\n<h1>Tabulka: #@variable@# </h1>\n<div class=\"sova-crt\" data-sova-type=\"columnRowTable\" data-sova-var=\"#@variable@#\">\n  <input type=\"hidden\" data-sova-role=\"primary\" data-sova-type=\"columnRowTable\" data-sova-var=\"mojeCRT\" value=\"[]\">\n\n  <template class=\"sova-cell-template\">\n    <input type=\"text\"\n           class=\"textField full\"\n           data-sova-role=\"aux\"\n           data-sova-type=\"text\"\n           data-sova-var=\"#thisCell\"\n           data-sova-for=\"#thisTable\"\n           placeholder=\"hodnota\">\n  </template>\n\n  <table>\n    <thead>\n     <tr>\n\n        <th class=\"sova-crt__thctrl\">\n          <a href=\"#\" class=\"btn btn-primary btn-sm no-disable sova-crt__addcol\" title=\"+ sloupec\">+ sloupec</a>\n        </th>\n      </tr>\n    </thead>\n    <tbody></tbody>\n  </table>\n\n</div>\n</div> "
       }
