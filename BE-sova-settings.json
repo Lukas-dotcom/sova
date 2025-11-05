@@ -34,7 +34,7 @@
         "html": "<div class=\"v2formRow\">\n  <div class=\"v2FormField\">\n    <span class=\"v2FormField__label sova\">\n      <span class=\"v2FormField__labelText\">#@variable@#</span>\n      \n    </span>\n    <div class=\"v2FormField__input\">\n      <input data-sova-role=\"primary\" data-sova-var=\"#@variable@#\" data-sova-type=\"text\" type=\"text\" class=\"textField full\" placeholder=\"…\">\n    </div>\n  </div>\n</div>"
       },
       {
-        "schema": null,
+        "schema": "transFromNode",
         "type": "perRole",
         "html": null
       }
