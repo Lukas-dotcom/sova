@@ -264,10 +264,10 @@
       },
       {
         "Název": "Komponenty",
-        "Odkaz": null,
+        "Odkaz": "https://www.pocitarna.cz/admin/ceny/728/?f[stockState]=1&f[visibilityId]=0&f[pricelistId]=1&f[chosenPricelistId]=1",
         "Barvička": null,
         "NovOkno": null,
-        "Kdo": null
+        "Kdo": "Dominik Němčanský"
       },
       {
         "Název": "Export NTB",
