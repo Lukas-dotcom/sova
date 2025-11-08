@@ -22,8 +22,8 @@
       {
         "htmlURL": "html/settingsETL.html",
         "breadCrumb": "SOVA ETL nastavení",
-        "position": null,
-        "condSoval": null
+        "position": "wholePage",
+        "condSoval": "%%pageType=\"sova-font-etl\"%%"
       }
     ]
   },
