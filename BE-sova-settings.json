@@ -21,7 +21,7 @@
       },
       {
         "htmlURL": "html/settingsETL.html",
-        "breadCrumb": null,
+        "breadCrumb": "Nastavení SOVA ETL",
         "position": null,
         "condSoval": null
       }
