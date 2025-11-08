@@ -58,7 +58,7 @@
       },
       {
         "schema": "nodeInput",
-        "html": "<div apiHtmlGneretator = \"#@variable@#\"></div>"
+        "html": "<div APIhtmlGeneratorSchema=\"transfromNode\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       }
     ]
   },
