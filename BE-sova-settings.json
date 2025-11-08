@@ -18,6 +18,12 @@
         "breadCrumb": "Nastavení SOVA Front-end",
         "position": "wholePage",
         "condSoval": "%%pageType=\"sova-font-end\"%%"
+      },
+      {
+        "htmlURL": "html/settingsETL.html",
+        "breadCrumb": null,
+        "position": null,
+        "condSoval": null
       }
     ]
   },
