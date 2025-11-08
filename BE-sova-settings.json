@@ -58,7 +58,7 @@
       },
       {
         "schema": "SOVALtransform",
-        "html": "<div APIhtmlGeneratorSchema=\"transfromNode\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+        "html": "<div APIhtmlGeneratorSchema=\"SOVALtransform\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       }
     ]
   },
