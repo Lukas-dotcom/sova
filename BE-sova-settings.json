@@ -72,11 +72,11 @@
       },
       {
         "schema": "CSVparser",
-        "html": null
+        "html": "<div APIhtmlGeneratorSchema=\"SOVALtransform\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       },
       {
         "schema": "CSVgenerator",
-        "html": null
+        "html": "<div APIhtmlGeneratorSchema=\"SOVALtransform\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       }
     ]
   },
