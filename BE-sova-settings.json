@@ -77,6 +77,10 @@
       {
         "schema": "CSVgenerator",
         "html": "<div APIhtmlGeneratorSchema=\"CSVgenerator\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+      },
+      {
+        "schema": "SOVALfilter",
+        "html": null
       }
     ]
   },
