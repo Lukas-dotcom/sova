@@ -80,11 +80,11 @@
       },
       {
         "schema": "SOVALfilter",
-        "html": "<div APIhtmlGeneratorSchema=\"CSVgenerator\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+        "html": "<div APIhtmlGeneratorSchema=\"SOVALfilter\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       },
       {
         "schema": "deduplicate",
-        "html": "<div APIhtmlGeneratorSchema=\"CSVgenerator\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+        "html": "<div APIhtmlGeneratorSchema=\"deduplicate\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       },
       {
         "schema": "addValuesToTable",
