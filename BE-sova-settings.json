@@ -88,7 +88,7 @@
       },
       {
         "schema": "addValuesToTable",
-        "html": "<div APIhtmlGeneratorSchema=\"CSVgenerator\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+        "html": "<div APIhtmlGeneratorSchema=\"addValuesToTable\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       }
     ]
   },
