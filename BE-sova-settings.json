@@ -76,7 +76,7 @@
       },
       {
         "schema": "CSVgenerator",
-        "html": "<div APIhtmlGeneratorSchema=\"SOVALtransform\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+        "html": "<div APIhtmlGeneratorSchema=\"CSVgenerator\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       }
     ]
   },
