@@ -72,7 +72,7 @@
       },
       {
         "schema": "CSVparser",
-        "html": "<div APIhtmlGeneratorSchema=\"SOVALtransform\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+        "html": "<div APIhtmlGeneratorSchema=\"CSVparser\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       },
       {
         "schema": "CSVgenerator",
