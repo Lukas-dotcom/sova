@@ -286,14 +286,14 @@
         "Kdo": "Dominik Němčanský"
       },
       {
-        "Název": "Mobily",
+        "Název": "Monitory",
         "Odkaz": "https://www.pocitarna.cz/admin/ceny/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=714&f[pricelistId]=1&f[chosenPricelistId]=1",
         "Barvička": null,
         "NovOkno": null,
         "Kdo": "Dominik Němčanský"
       },
       {
-        "Název": "Monitory",
+        "Název": "Tablety",
         "Odkaz": "https://www.pocitarna.cz/admin/ceny/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=1155&f[pricelistId]=1&f[chosenPricelistId]=1",
         "Barvička": null,
         "NovOkno": null,
@@ -316,6 +316,27 @@
       {
         "Název": "Komponenty",
         "Odkaz": "https://www.pocitarna.cz/admin/ceny/728/?f[stockState]=1&f[visibilityId]=0&f[pricelistId]=1&f[chosenPricelistId]=1",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Dominik Němčanský"
+      },
+      {
+        "Název": "Export NTB",
+        "Odkaz": "https://www.pocitarna.cz/export/products.xls?patternId=399&visibilityId=0&partnerId=5&hash=113b1704349647164a438c246e26185f16a9499991df68f315ba2d75bab2b6d9&stockState=1&defaultCategoryId=673",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Dominik Němčanský"
+      },
+      {
+        "Název": "Export POC",
+        "Odkaz": "https://www.pocitarna.cz/export/products.xls?patternId=399&visibilityId=0&partnerId=5&hash=113b1704349647164a438c246e26185f16a9499991df68f315ba2d75bab2b6d9&stockState=1&defaultCategoryId=674",
+        "Barvička": null,
+        "NovOkno": null,
+        "Kdo": "Dominik Němčanský"
+      },
+      {
+        "Název": "Export LCD",
+        "Odkaz": "https://www.pocitarna.cz/export/products.xls?patternId=399&visibilityId=0&partnerId=5&hash=113b1704349647164a438c246e26185f16a9499991df68f315ba2d75bab2b6d9&stockState=1&defaultCategoryId=714",
         "Barvička": null,
         "NovOkno": null,
         "Kdo": "Dominik Němčanský"
