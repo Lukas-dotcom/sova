@@ -78,7 +78,7 @@
     ],
     "rules": [
       {
-        "schema": "TABLE ",
+        "schema": "TABLE",
         "html": "\n<div class=\"v2form\" data-sova-formid=\"#@variable@#\">\n\n<h1>Tabulka: #@variable@# </h1>\n<div class=\"sova-crt\" data-sova-type=\"columnRowTable\" data-sova-var=\"#@variable@#\">\n  <input type=\"hidden\" data-sova-role=\"primary\" data-sova-type=\"columnRowTable\" data-sova-var=\"#@variable@#\" value=\"[]\">\n\n  <template class=\"sova-cell-template\">\n    <input type=\"text\"\n           class=\"textField full\"\n           data-sova-role=\"aux\"\n           data-sova-type=\"text\"\n           data-sova-var=\"#thisCell\"\n           data-sova-for=\"#thisTable\"\n           placeholder=\"hodnota\">\n  </template>\n<div calss=\"sova-crt-tableWrapper>\n  <table>\n    <thead>\n     <tr>\n\n        <th class=\"sova-crt__thctrl\">\n          <a href=\"#\" class=\"btn btn-primary btn-sm no-disable sova-crt__addcol\" title=\"+ sloupec\">+ sloupec</a>\n        </th>\n      </tr>\n    </thead>\n    <tbody></tbody>\n  </table>\n</div>\n</div>\n<a systemorigin=\"sova\"\n     class=\"btn btn-sm sova-btn\"\n     href=\"#\"\n     style=\"background-color:var(--colors-interactive-action-enabled); float: right;\"\n     feature=\"APIinputSender\"\n     parameters='{\"closeModal\":true,\"sovaFormID\":\"#@variable@#\"}'>\n    Uložit\n  </a>\n\n</div>"
       },
       {
