@@ -76,7 +76,7 @@
       },
       {
         "schema": "arrayToMultiplecolumns",
-        "type": null,
+        "type": "perRole",
         "html": null
       }
     ]
