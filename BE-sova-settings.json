@@ -120,7 +120,7 @@
         "html": "<div APIhtmlGeneratorSchema=\"multicolumnToArray\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       },
       {
-        "schema": "arrayToMultiplecolumns",
+        "schema": "arrayToMultipleColumns ",
         "html": "<div APIhtmlGeneratorSchema=\"arrayToMultipleColumns\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       }
     ]
