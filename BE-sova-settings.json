@@ -107,7 +107,7 @@
       },
       {
         "schema": "multicolumnToArray",
-        "html": "<div APIhtmlGeneratorSchema=\"addValuesToTable\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+        "html": "<div APIhtmlGeneratorSchema=\"multicolumnToArray\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       }
     ]
   },
