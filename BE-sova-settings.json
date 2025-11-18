@@ -771,7 +771,7 @@
         "function": "netstoreCountReady",
         "parameters": null,
         "pageType": null,
-        "position": null,
+        "position": "buttonsMassAction",
         "order": null,
         "conditionsSOVAL": null,
         "sovaGates": null,
