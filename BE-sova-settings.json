@@ -121,7 +121,7 @@
       },
       {
         "schema": "arrayToMultiplecolumns",
-        "html": "<div APIhtmlGeneratorSchema=\"arrayToMultiplecolumns\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+        "html": "<div APIhtmlGeneratorSchema=\"arrayToMultipleColumns\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       }
     ]
   },
