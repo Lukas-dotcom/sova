@@ -768,7 +768,7 @@
       {
         "buttonName": "Počet Netstore k odvozu",
         "color": null,
-        "function": null,
+        "function": "netstoreCountReady",
         "parameters": null,
         "pageType": null,
         "position": null,
