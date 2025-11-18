@@ -104,6 +104,10 @@
       {
         "schema": "addValuesToTable",
         "html": "<div APIhtmlGeneratorSchema=\"addValuesToTable\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+      },
+      {
+        "schema": "multicolumnToArray",
+        "html": "<div APIhtmlGeneratorSchema=\"addValuesToTable\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       }
     ]
   },
