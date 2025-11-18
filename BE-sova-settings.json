@@ -770,7 +770,7 @@
         "color": null,
         "function": "netstoreCountReady",
         "parameters": null,
-        "pageType": null,
+        "pageType": "zasilky",
         "position": "buttonsMassAction",
         "order": null,
         "conditionsSOVAL": null,
