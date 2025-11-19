@@ -1353,7 +1353,7 @@
         "order": null,
         "color": "green",
         "backgroundColor": null,
-        "condition": "%% (userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\")  AND pocitarnaExpeditionPrepare = \"true\" AND pageType =\"objednavky-detail\"%%"
+        "condition": "%% (userFullName=\"Petr Hudlík\" OR userFullName=\"Roman Bielik\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\")  AND pocitarnaExpeditionPrepare = \"true\" AND pageType =\"objednavky-detail\"%%"
       },
       {
         "alert": "Objednávka není předpřipravena pro expedici",
@@ -1361,7 +1361,7 @@
         "order": null,
         "color": "red",
         "backgroundColor": null,
-        "condition": "%% (userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\")  AND pocitarnaExpeditionPrepare != \"true\" AND pageType =\"objednavky-detail\"%%"
+        "condition": "%% (userFullName=\"Petr Hudlík\" OR userFullName=\"Roman Bielik\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\")  AND pocitarnaExpeditionPrepare != \"true\" AND pageType =\"objednavky-detail\"%%"
       },
       {
         "alert": "POZOR!!! Objednávka obsahuje více položek se stejným kódem. PCN, PN, SN pole u druhého a dalšího kusu budeš muset vyplnit ručně!",
