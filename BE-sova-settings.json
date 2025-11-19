@@ -677,7 +677,7 @@
         "pageType": null,
         "position": "topHeader",
         "order": 1,
-        "conditionsSOVAL": "%%userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\"%%",
+        "conditionsSOVAL": "%%userFullName=\"Petr Hudlík\" OR userFullName=\"Roman Bielik\" OR userFullName=\"Ondřej Sopek\"%%",
         "sovaGates": null,
         "pairButton": null
       },
@@ -689,7 +689,7 @@
         "pageType": null,
         "position": "topHeader",
         "order": 2,
-        "conditionsSOVAL": "%%userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\"%%",
+        "conditionsSOVAL": "%%userFullName=\"Petr Hudlík\" OR userFullName=\"Roman Bielik\" OR userFullName=\"Ondřej Sopek\"%%",
         "sovaGates": null,
         "pairButton": null
       },
@@ -701,7 +701,7 @@
         "pageType": "objednavky-detail",
         "position": "buttonsUnderTabsLeft",
         "order": 4,
-        "conditionsSOVAL": "%%pocitarnaExpeditionPrepare = \"true\"  AND (userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\") AND (count (faktury) = 0)%%",
+        "conditionsSOVAL": "%%pocitarnaExpeditionPrepare = \"true\"  AND (userFullName=\"Petr Hudlík\" OR userFullName=\"Roman Bielik\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\") AND (count (faktury) = 0)%%",
         "sovaGates": null,
         "pairButton": null
       },
@@ -713,7 +713,7 @@
         "pageType": "objednavky-detail",
         "position": "buttonsUnderTabsLeft",
         "order": 5,
-        "conditionsSOVAL": "%%pocitarnaExpeditionPrepare = \"true\"  AND (userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\") AND (count (faktury) = 0)%%",
+        "conditionsSOVAL": "%%pocitarnaExpeditionPrepare = \"true\"  AND (userFullName=\"Petr Hudlík\" OR userFullName=\"Roman Bielik\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\") AND (count (faktury) = 0)%%",
         "sovaGates": null,
         "pairButton": null
       },
@@ -725,7 +725,7 @@
         "pageType": "objednavky-detail",
         "position": "buttonsUnderTabsLeft",
         "order": 8,
-        "conditionsSOVAL": "%%(userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\") AND (count (faktury) > 0)%%",
+        "conditionsSOVAL": "%%(userFullName=\"Petr Hudlík\" OR userFullName=\"Roman Bielik\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\") AND (count (faktury) > 0)%%",
         "sovaGates": null,
         "pairButton": null
       },
@@ -737,7 +737,7 @@
         "pageType": "faktura-detail",
         "position": "aboveContact",
         "order": 1,
-        "conditionsSOVAL": "%%userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\" %%",
+        "conditionsSOVAL": "%%userFullName=\"Petr Hudlík\" OR userFullName=\"Roman Bielik\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\" %%",
         "sovaGates": null,
         "pairButton": null
       },
@@ -749,7 +749,7 @@
         "pageType": "faktura-detail",
         "position": "aboveContact",
         "order": 3,
-        "conditionsSOVAL": "%%userFullName=\"Petr Hudlík\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\" %%",
+        "conditionsSOVAL": "%%userFullName=\"Petr Hudlík\" OR userFullName=\"Roman Bielik\" OR userFullName=\"Ondřej Sopek\" OR userFullName=\"Lukáš Tejral\" %%",
         "sovaGates": null,
         "pairButton": null
       },
