@@ -127,6 +127,10 @@
       {
         "schema": "arrayToMultipleColumns",
         "html": "<div APIhtmlGeneratorSchema=\"arrayToMultipleColumns\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+      },
+      {
+        "schema": "aiFill",
+        "html": null
       }
     ]
   },
