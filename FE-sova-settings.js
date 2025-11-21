@@ -2617,7 +2617,7 @@ window.additionalSaleCart = [
   {
     "code": "ZAR2000DO2500R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "249 Kč",
+    "price": "290 Kč",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"CZK\" AND ((startsWith(row.URL, \"/tablety/\") OR startsWith(row.URL, \"/telefony/\") OR startsWith(row.URL, \"/monitory/\") OR startsWith(row.URL, \"/pocitace/\") OR startsWith(row.URL, \"/notebooky/\")) AND (row.priceWithVat > 2000) AND (row.priceWithVat <= 2500) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(row.name, zarVylouceneCastiNazvu)))))"
@@ -2625,7 +2625,7 @@ window.additionalSaleCart = [
   {
     "code": "ZAR2500DO3000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "299 Kč",
+    "price": "290 Kč",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"CZK\" AND ((startsWith(row.URL, \"/tablety/\") OR startsWith(row.URL, \"/telefony/\") OR startsWith(row.URL, \"/monitory/\") OR startsWith(row.URL, \"/pocitace/\") OR startsWith(row.URL, \"/notebooky/\")) AND (row.priceWithVat > 2500) AND (row.priceWithVat <= 3000) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(row.name, zarVylouceneCastiNazvu)))))"
@@ -2633,7 +2633,7 @@ window.additionalSaleCart = [
   {
     "code": "ZAR3000DO3500R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "349 Kč",
+    "price": "390 Kč",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"CZK\" AND ((startsWith(row.URL, \"/tablety/\") OR startsWith(row.URL, \"/telefony/\") OR startsWith(row.URL, \"/monitory/\") OR startsWith(row.URL, \"/pocitace/\") OR startsWith(row.URL, \"/notebooky/\")) AND (row.priceWithVat > 3000) AND (row.priceWithVat <= 3500) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(row.name, zarVylouceneCastiNazvu)))))"
@@ -2641,7 +2641,7 @@ window.additionalSaleCart = [
   {
     "code": "ZAR3500DO4000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "399 Kč",
+    "price": "390 Kč",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"CZK\" AND ((startsWith(row.URL, \"/tablety/\") OR startsWith(row.URL, \"/telefony/\") OR startsWith(row.URL, \"/monitory/\") OR startsWith(row.URL, \"/pocitace/\") OR startsWith(row.URL, \"/notebooky/\")) AND (row.priceWithVat > 3500) AND (row.priceWithVat <= 4000) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(row.name, zarVylouceneCastiNazvu)))))"
@@ -2649,7 +2649,7 @@ window.additionalSaleCart = [
   {
     "code": "ZAR4000DO4500R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "449 Kč",
+    "price": "490 Kč",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"CZK\" AND ((startsWith(row.URL, \"/tablety/\") OR startsWith(row.URL, \"/telefony/\") OR startsWith(row.URL, \"/monitory/\") OR startsWith(row.URL, \"/pocitace/\") OR startsWith(row.URL, \"/notebooky/\")) AND (row.priceWithVat > 4000) AND (row.priceWithVat <= 4500) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(row.name, zarVylouceneCastiNazvu)))))"
@@ -2657,7 +2657,7 @@ window.additionalSaleCart = [
   {
     "code": "ZAR4500DO5000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "499 Kč",
+    "price": "490 Kč",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"CZK\" AND ((startsWith(row.URL, \"/tablety/\") OR startsWith(row.URL, \"/telefony/\") OR startsWith(row.URL, \"/monitory/\") OR startsWith(row.URL, \"/pocitace/\") OR startsWith(row.URL, \"/notebooky/\")) AND (row.priceWithVat > 4500) AND (row.priceWithVat <= 5000) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(row.name, zarVylouceneCastiNazvu)))))"
@@ -2665,7 +2665,7 @@ window.additionalSaleCart = [
   {
     "code": "ZAR5000DO5500R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "549 Kč",
+    "price": "590 Kč",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"CZK\" AND ((startsWith(row.URL, \"/tablety/\") OR startsWith(row.URL, \"/telefony/\") OR startsWith(row.URL, \"/monitory/\") OR startsWith(row.URL, \"/pocitace/\") OR startsWith(row.URL, \"/notebooky/\")) AND (row.priceWithVat > 5000) AND (row.priceWithVat <= 5500) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(row.name, zarVylouceneCastiNazvu)))))"
@@ -2673,7 +2673,7 @@ window.additionalSaleCart = [
   {
     "code": "ZAR5500DO6000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "599 Kč",
+    "price": "590 Kč",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"CZK\" AND ((startsWith(row.URL, \"/tablety/\") OR startsWith(row.URL, \"/telefony/\") OR startsWith(row.URL, \"/monitory/\") OR startsWith(row.URL, \"/pocitace/\") OR startsWith(row.URL, \"/notebooky/\")) AND (row.priceWithVat > 5500) AND (row.priceWithVat <= 6000) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(row.name, zarVylouceneCastiNazvu)))))"
@@ -2681,7 +2681,7 @@ window.additionalSaleCart = [
   {
     "code": "ZAR6000DO6500R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "649 Kč",
+    "price": "690 Kč",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"CZK\" AND ((startsWith(row.URL, \"/tablety/\") OR startsWith(row.URL, \"/telefony/\") OR startsWith(row.URL, \"/monitory/\") OR startsWith(row.URL, \"/pocitace/\") OR startsWith(row.URL, \"/notebooky/\")) AND (row.priceWithVat > 6000) AND (row.priceWithVat <= 6500) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(row.name, zarVylouceneCastiNazvu)))))"
@@ -2689,7 +2689,7 @@ window.additionalSaleCart = [
   {
     "code": "ZAR6500DO7000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "699 Kč",
+    "price": "690 Kč",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"CZK\" AND ((startsWith(row.URL, \"/tablety/\") OR startsWith(row.URL, \"/telefony/\") OR startsWith(row.URL, \"/monitory/\") OR startsWith(row.URL, \"/pocitace/\") OR startsWith(row.URL, \"/notebooky/\")) AND (row.priceWithVat > 6500) AND (row.priceWithVat <= 7000) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(row.name, zarVylouceneCastiNazvu)))))"
@@ -2697,7 +2697,7 @@ window.additionalSaleCart = [
   {
     "code": "ZAR7000DO7500R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "749 Kč",
+    "price": "790 Kč",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"CZK\" AND ((startsWith(row.URL, \"/tablety/\") OR startsWith(row.URL, \"/telefony/\") OR startsWith(row.URL, \"/monitory/\") OR startsWith(row.URL, \"/pocitace/\") OR startsWith(row.URL, \"/notebooky/\")) AND (row.priceWithVat > 7000) AND (row.priceWithVat <= 7500) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(row.name, zarVylouceneCastiNazvu)))))"
@@ -2705,7 +2705,7 @@ window.additionalSaleCart = [
   {
     "code": "ZAR7500DO8000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "799 Kč",
+    "price": "790 Kč",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"CZK\" AND ((startsWith(row.URL, \"/tablety/\") OR startsWith(row.URL, \"/telefony/\") OR startsWith(row.URL, \"/monitory/\") OR startsWith(row.URL, \"/pocitace/\") OR startsWith(row.URL, \"/notebooky/\")) AND (row.priceWithVat > 7500) AND (row.priceWithVat <= 8000) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(row.name, zarVylouceneCastiNazvu)))))"
@@ -2713,7 +2713,7 @@ window.additionalSaleCart = [
   {
     "code": "ZAR8000DO8500R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "849 Kč",
+    "price": "890 Kč",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"CZK\" AND ((startsWith(row.URL, \"/tablety/\") OR startsWith(row.URL, \"/telefony/\") OR startsWith(row.URL, \"/monitory/\") OR startsWith(row.URL, \"/pocitace/\") OR startsWith(row.URL, \"/notebooky/\")) AND (row.priceWithVat > 8000) AND (row.priceWithVat <= 8500) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(row.name, zarVylouceneCastiNazvu)))))"
@@ -2721,7 +2721,7 @@ window.additionalSaleCart = [
   {
     "code": "ZAR8500DO9000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "899 Kč",
+    "price": "890 Kč",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"CZK\" AND ((startsWith(row.URL, \"/tablety/\") OR startsWith(row.URL, \"/telefony/\") OR startsWith(row.URL, \"/monitory/\") OR startsWith(row.URL, \"/pocitace/\") OR startsWith(row.URL, \"/notebooky/\")) AND (row.priceWithVat > 8500) AND (row.priceWithVat <= 9000) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(row.name, zarVylouceneCastiNazvu)))))"
@@ -2729,7 +2729,7 @@ window.additionalSaleCart = [
   {
     "code": "ZAR9000DO9500R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "949 Kč",
+    "price": "990 Kč",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"CZK\" AND ((startsWith(row.URL, \"/tablety/\") OR startsWith(row.URL, \"/telefony/\") OR startsWith(row.URL, \"/monitory/\") OR startsWith(row.URL, \"/pocitace/\") OR startsWith(row.URL, \"/notebooky/\")) AND (row.priceWithVat > 9000) AND (row.priceWithVat <= 9500) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(row.name, zarVylouceneCastiNazvu)))))"
@@ -3065,7 +3065,7 @@ window.additionalSaleCart = [
   {
     "code": "ZAR2000DO2500R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "374 Kč",
+    "price": "390 Kč",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"CZK\" AND ((startsWith(row.URL, \"/tablety/\") OR startsWith(row.URL, \"/telefony/\") OR startsWith(row.URL, \"/monitory/\") OR startsWith(row.URL, \"/pocitace/\") OR startsWith(row.URL, \"/notebooky/\")) AND (row.priceWithVat > 2000) AND (row.priceWithVat <= 2500) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(row.name, zarVylouceneCastiNazvu)))))"
@@ -3073,7 +3073,7 @@ window.additionalSaleCart = [
   {
     "code": "ZAR2500DO3000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "449 Kč",
+    "price": "490 Kč",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"CZK\" AND ((startsWith(row.URL, \"/tablety/\") OR startsWith(row.URL, \"/telefony/\") OR startsWith(row.URL, \"/monitory/\") OR startsWith(row.URL, \"/pocitace/\") OR startsWith(row.URL, \"/notebooky/\")) AND (row.priceWithVat > 2500) AND (row.priceWithVat <= 3000) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(row.name, zarVylouceneCastiNazvu)))))"
@@ -3081,7 +3081,7 @@ window.additionalSaleCart = [
   {
     "code": "ZAR3000DO3500R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "524 Kč",
+    "price": "590 Kč",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"CZK\" AND ((startsWith(row.URL, \"/tablety/\") OR startsWith(row.URL, \"/telefony/\") OR startsWith(row.URL, \"/monitory/\") OR startsWith(row.URL, \"/pocitace/\") OR startsWith(row.URL, \"/notebooky/\")) AND (row.priceWithVat > 3000) AND (row.priceWithVat <= 3500) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(row.name, zarVylouceneCastiNazvu)))))"
@@ -3089,7 +3089,7 @@ window.additionalSaleCart = [
   {
     "code": "ZAR3500DO4000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "599 Kč",
+    "price": "590 Kč",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"CZK\" AND ((startsWith(row.URL, \"/tablety/\") OR startsWith(row.URL, \"/telefony/\") OR startsWith(row.URL, \"/monitory/\") OR startsWith(row.URL, \"/pocitace/\") OR startsWith(row.URL, \"/notebooky/\")) AND (row.priceWithVat > 3500) AND (row.priceWithVat <= 4000) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(row.name, zarVylouceneCastiNazvu)))))"
@@ -3097,7 +3097,7 @@ window.additionalSaleCart = [
   {
     "code": "ZAR4000DO4500R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "674 Kč",
+    "price": "690 Kč",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"CZK\" AND ((startsWith(row.URL, \"/tablety/\") OR startsWith(row.URL, \"/telefony/\") OR startsWith(row.URL, \"/monitory/\") OR startsWith(row.URL, \"/pocitace/\") OR startsWith(row.URL, \"/notebooky/\")) AND (row.priceWithVat > 4000) AND (row.priceWithVat <= 4500) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(row.name, zarVylouceneCastiNazvu)))))"
@@ -3105,7 +3105,7 @@ window.additionalSaleCart = [
   {
     "code": "ZAR4500DO5000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "749 Kč",
+    "price": "790 Kč",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"CZK\" AND ((startsWith(row.URL, \"/tablety/\") OR startsWith(row.URL, \"/telefony/\") OR startsWith(row.URL, \"/monitory/\") OR startsWith(row.URL, \"/pocitace/\") OR startsWith(row.URL, \"/notebooky/\")) AND (row.priceWithVat > 4500) AND (row.priceWithVat <= 5000) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(row.name, zarVylouceneCastiNazvu)))))"
@@ -3113,7 +3113,7 @@ window.additionalSaleCart = [
   {
     "code": "ZAR5000DO5500R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "824 Kč",
+    "price": "890 Kč",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"CZK\" AND ((startsWith(row.URL, \"/tablety/\") OR startsWith(row.URL, \"/telefony/\") OR startsWith(row.URL, \"/monitory/\") OR startsWith(row.URL, \"/pocitace/\") OR startsWith(row.URL, \"/notebooky/\")) AND (row.priceWithVat > 5000) AND (row.priceWithVat <= 5500) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(row.name, zarVylouceneCastiNazvu)))))"
@@ -3121,7 +3121,7 @@ window.additionalSaleCart = [
   {
     "code": "ZAR5500DO6000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "899 Kč",
+    "price": "890 Kč",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"CZK\" AND ((startsWith(row.URL, \"/tablety/\") OR startsWith(row.URL, \"/telefony/\") OR startsWith(row.URL, \"/monitory/\") OR startsWith(row.URL, \"/pocitace/\") OR startsWith(row.URL, \"/notebooky/\")) AND (row.priceWithVat > 5500) AND (row.priceWithVat <= 6000) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(row.name, zarVylouceneCastiNazvu)))))"
