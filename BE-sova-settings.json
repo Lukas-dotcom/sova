@@ -1107,7 +1107,7 @@
         "position": "topHeader",
         "order": 1,
         "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\"%%",
-        "href": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=673",
+        "href": "https://www.pocitarna.cz/admin/ceny/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=673&f[pricelistId]=1&f[chosenPricelistId]=1",
         "newTab": null
       },
       {
@@ -1117,7 +1117,7 @@
         "position": "topHeader",
         "order": 2,
         "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\"%%",
-        "href": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=674",
+        "href": "https://www.pocitarna.cz/admin/ceny/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=674&f[pricelistId]=1&f[chosenPricelistId]=1",
         "newTab": null
       },
       {
@@ -1127,7 +1127,7 @@
         "position": "topHeader",
         "order": 3,
         "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\"%%",
-        "href": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=714",
+        "href": "https://www.pocitarna.cz/admin/ceny/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=714&f[pricelistId]=1&f[chosenPricelistId]=1",
         "newTab": null
       },
       {
@@ -1137,7 +1137,7 @@
         "position": "topHeader",
         "order": 4,
         "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\"%%",
-        "href": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=1155",
+        "href": "https://www.pocitarna.cz/admin/ceny/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=1155&f[pricelistId]=1&f[chosenPricelistId]=1",
         "newTab": null
       },
       {
@@ -1147,7 +1147,7 @@
         "position": "topHeader",
         "order": 5,
         "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\"%%",
-        "href": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=717",
+        "href": "https://www.pocitarna.cz/admin/ceny/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=717&f[pricelistId]=1&f[chosenPricelistId]=1",
         "newTab": null
       },
       {
@@ -1157,7 +1157,7 @@
         "position": "topHeader",
         "order": 6,
         "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\"%%",
-        "href": "https://www.pocitarna.cz/export/products.xls?patternId=399&visibilityId=0&partnerId=5&hash=113b1704349647164a438c246e26185f16a9499991df68f315ba2d75bab2b6d9&stockState=1&defaultCategoryId=673",
+        "href": "https://www.pocitarna.cz/admin/ceny/0/?f[visibilityId]=0&f[defaultCategoryId]=2141&f[pricelistId]=1&f[chosenPricelistId]=1&f[stockState]=1",
         "newTab": null
       },
       {
@@ -1167,7 +1167,7 @@
         "position": "topHeader",
         "order": 7,
         "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\"%%",
-        "href": "https://www.pocitarna.cz/export/products.xls?patternId=399&visibilityId=0&partnerId=5&hash=113b1704349647164a438c246e26185f16a9499991df68f315ba2d75bab2b6d9&stockState=1&defaultCategoryId=674",
+        "href": "https://www.pocitarna.cz/admin/ceny/0/?f[visibilityId]=0&f[defaultCategoryId]=1589&f[pricelistId]=1&f[chosenPricelistId]=1&f[stockState]=1",
         "newTab": null
       },
       {
@@ -1177,7 +1177,7 @@
         "position": "topHeader",
         "order": 8,
         "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\"%%",
-        "href": "https://www.pocitarna.cz/export/products.xls?patternId=399&visibilityId=0&partnerId=5&hash=113b1704349647164a438c246e26185f16a9499991df68f315ba2d75bab2b6d9&stockState=1&defaultCategoryId=714",
+        "href": "https://www.pocitarna.cz/admin/ceny/708/?f[stockState]=1&f[visibilityId]=0&f[pricelistId]=1&f[chosenPricelistId]=1",
         "newTab": null
       },
       {
@@ -1187,7 +1187,7 @@
         "position": "topHeader",
         "order": 9,
         "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\"%%",
-        "href": "https://www.pocitarna.cz/admin/import-produktu/",
+        "href": "https://www.pocitarna.cz/admin/ceny/728/?f[stockState]=1&f[visibilityId]=0&f[pricelistId]=1&f[chosenPricelistId]=1",
         "newTab": null
       },
       {
