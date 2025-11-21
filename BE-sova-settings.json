@@ -1141,7 +1141,7 @@
         "newTab": null
       },
       {
-        "buttonName": "Mobily",
+        "buttonName": "Telefony",
         "color": null,
         "pageType": null,
         "position": "topHeader",
@@ -1151,7 +1151,7 @@
         "newTab": null
       },
       {
-        "buttonName": "Export NTB",
+        "buttonName": "Hodinky",
         "color": null,
         "pageType": null,
         "position": "topHeader",
@@ -1161,7 +1161,7 @@
         "newTab": null
       },
       {
-        "buttonName": "Export POC",
+        "buttonName": "Konzole",
         "color": null,
         "pageType": null,
         "position": "topHeader",
@@ -1171,7 +1171,7 @@
         "newTab": null
       },
       {
-        "buttonName": "Export LCD",
+        "buttonName": "Přísluško",
         "color": null,
         "pageType": null,
         "position": "topHeader",
@@ -1181,7 +1181,7 @@
         "newTab": null
       },
       {
-        "buttonName": "Import",
+        "buttonName": "Komponenty",
         "color": null,
         "pageType": null,
         "position": "topHeader",
