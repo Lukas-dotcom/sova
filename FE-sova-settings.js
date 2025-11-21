@@ -1718,7 +1718,7 @@ window.additionalSale = [
   {
     "code": "ZAR2000DO2500R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€12",
+    "price": "€12,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 81.82) AND (productPriceWithVat <= 102.27) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -1726,7 +1726,7 @@ window.additionalSale = [
   {
     "code": "ZAR2500DO3000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€12",
+    "price": "€12,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 102.27) AND (productPriceWithVat <= 122.72) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -1734,7 +1734,7 @@ window.additionalSale = [
   {
     "code": "ZAR3000DO3500R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€16,13",
+    "price": "€16,10",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 122.72) AND (productPriceWithVat <= 143.18) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -1742,7 +1742,7 @@ window.additionalSale = [
   {
     "code": "ZAR3500DO4000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€16,13",
+    "price": "€16,10",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 143.18) AND (productPriceWithVat <= 163.63) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -1750,7 +1750,7 @@ window.additionalSale = [
   {
     "code": "ZAR4000DO4500R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€20,27",
+    "price": "€20,30",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 163.63) AND (productPriceWithVat <= 184.09) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -1758,7 +1758,7 @@ window.additionalSale = [
   {
     "code": "ZAR4500DO5000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€20,27",
+    "price": "€20,30",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 184.09) AND (productPriceWithVat <= 204.54) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -1766,7 +1766,7 @@ window.additionalSale = [
   {
     "code": "ZAR5000DO5500R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€24,41",
+    "price": "€24,40",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 204.54) AND (productPriceWithVat <= 224.99) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -1774,7 +1774,7 @@ window.additionalSale = [
   {
     "code": "ZAR5500DO6000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€24,41",
+    "price": "€24,40",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 224.99) AND (productPriceWithVat <= 245.45) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -1782,7 +1782,7 @@ window.additionalSale = [
   {
     "code": "ZAR6000DO6500R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€28,54",
+    "price": "€28,50",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 245.45) AND (productPriceWithVat <= 265.90) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -1790,7 +1790,7 @@ window.additionalSale = [
   {
     "code": "ZAR6500DO7000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€28,54",
+    "price": "€28,50",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 265.90) AND (productPriceWithVat <= 286.36) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -1798,7 +1798,7 @@ window.additionalSale = [
   {
     "code": "ZAR7000DO7500R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€32,68",
+    "price": "€32,70",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 286.36) AND (productPriceWithVat <= 306.81) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -1806,7 +1806,7 @@ window.additionalSale = [
   {
     "code": "ZAR7500DO8000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€32,68",
+    "price": "€32,70",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 306.81) AND (productPriceWithVat <= 327.27) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -1814,7 +1814,7 @@ window.additionalSale = [
   {
     "code": "ZAR8000DO8500R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€36,81",
+    "price": "€36,80",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 327.27) AND (productPriceWithVat <= 347.72) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -1822,7 +1822,7 @@ window.additionalSale = [
   {
     "code": "ZAR8500DO9000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€36,81",
+    "price": "€36,80",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 347.72) AND (productPriceWithVat <= 368.17) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -1830,7 +1830,7 @@ window.additionalSale = [
   {
     "code": "ZAR9000DO9500R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€40,95",
+    "price": "€41,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 368.17) AND (productPriceWithVat <= 388.63) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -1838,7 +1838,7 @@ window.additionalSale = [
   {
     "code": "ZAR9500DO10000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€40,95",
+    "price": "€41,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 388.63) AND (productPriceWithVat <= 409.08) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -1846,7 +1846,7 @@ window.additionalSale = [
   {
     "code": "ZAR10000DO11000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€45,09",
+    "price": "€45,10",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 409.08) AND (productPriceWithVat <= 449.99) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -1854,7 +1854,7 @@ window.additionalSale = [
   {
     "code": "ZAR11000DO12000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€49,22",
+    "price": "€49,20",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 449.99) AND (productPriceWithVat <= 490.90) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -1862,7 +1862,7 @@ window.additionalSale = [
   {
     "code": "ZAR12000DO13000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€53,36",
+    "price": "€53,40",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 490.90) AND (productPriceWithVat <= 531.81) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -1870,7 +1870,7 @@ window.additionalSale = [
   {
     "code": "ZAR13000DO14000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€57,5",
+    "price": "€57,50",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 531.81) AND (productPriceWithVat <= 572.71) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -1878,7 +1878,7 @@ window.additionalSale = [
   {
     "code": "ZAR14000DO15000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€61,63",
+    "price": "€61,60",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 572.71) AND (productPriceWithVat <= 613.62) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -1886,7 +1886,7 @@ window.additionalSale = [
   {
     "code": "ZAR15000DO16000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€65,77",
+    "price": "€65,80",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 613.62) AND (productPriceWithVat <= 654.53) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -1894,7 +1894,7 @@ window.additionalSale = [
   {
     "code": "ZAR16000DO17000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€69,91",
+    "price": "€69,90",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 654.53) AND (productPriceWithVat <= 695.44) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -1902,7 +1902,7 @@ window.additionalSale = [
   {
     "code": "ZAR17000DO18000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€74,04",
+    "price": "€74,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 695.44) AND (productPriceWithVat <= 736.35) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -1910,7 +1910,7 @@ window.additionalSale = [
   {
     "code": "ZAR18000DO19000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€78,18",
+    "price": "€78,20",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 736.35) AND (productPriceWithVat <= 777.26) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -1918,7 +1918,7 @@ window.additionalSale = [
   {
     "code": "ZAR19000DO20000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€82,32",
+    "price": "€82,30",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 777.26) AND (productPriceWithVat <= 818.16) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -1926,7 +1926,7 @@ window.additionalSale = [
   {
     "code": "ZAR20000DO21000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€86,45",
+    "price": "€86,50",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 818.16) AND (productPriceWithVat <= 859.07) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -1934,7 +1934,7 @@ window.additionalSale = [
   {
     "code": "ZAR21000DO22000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€90,59",
+    "price": "€90,60",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 859.07) AND (productPriceWithVat <= 899.98) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -1942,7 +1942,7 @@ window.additionalSale = [
   {
     "code": "ZAR22000DO23000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€94,73",
+    "price": "€94,70",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 899.98) AND (productPriceWithVat <= 940.89) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -1950,7 +1950,7 @@ window.additionalSale = [
   {
     "code": "ZAR23000DO24000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€98,86",
+    "price": "€98,90",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 940.89) AND (productPriceWithVat <= 981.80) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -1958,7 +1958,7 @@ window.additionalSale = [
   {
     "code": "ZAR24000DO25000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€103",
+    "price": "€103,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 981.80) AND (productPriceWithVat <= 1022.70) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -1966,7 +1966,7 @@ window.additionalSale = [
   {
     "code": "ZAR25000DO26000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€107,14",
+    "price": "€107,10",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 1022.70) AND (productPriceWithVat <= 1063.61) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -1974,7 +1974,7 @@ window.additionalSale = [
   {
     "code": "ZAR26000DO27000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€111,27",
+    "price": "€111,30",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 1063.61) AND (productPriceWithVat <= 1104.52) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -1982,7 +1982,7 @@ window.additionalSale = [
   {
     "code": "ZAR27000DO28000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€115,41",
+    "price": "€115,40",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 1104.52) AND (productPriceWithVat <= 1145.43) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -1990,7 +1990,7 @@ window.additionalSale = [
   {
     "code": "ZAR28000DO29000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€119,54",
+    "price": "€119,50",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 1145.43) AND (productPriceWithVat <= 1186.34) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -1998,7 +1998,7 @@ window.additionalSale = [
   {
     "code": "ZAR29000DO30000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€123,68",
+    "price": "€123,70",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 1186.34) AND (productPriceWithVat <= 1227.24) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2006,7 +2006,7 @@ window.additionalSale = [
   {
     "code": "ZAR30000DO32000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€131,95",
+    "price": "€132,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 1227.24) AND (productPriceWithVat <= 1309.06) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2014,7 +2014,7 @@ window.additionalSale = [
   {
     "code": "ZAR32000DO34000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€140,23",
+    "price": "€140,20",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 1309.06) AND (productPriceWithVat <= 1390.88) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2022,7 +2022,7 @@ window.additionalSale = [
   {
     "code": "ZAR34000DO36000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€148,5",
+    "price": "€148,50",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 1390.88) AND (productPriceWithVat <= 1472.69) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2030,7 +2030,7 @@ window.additionalSale = [
   {
     "code": "ZAR36000DO38000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€156,77",
+    "price": "€156,80",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 1472.69) AND (productPriceWithVat <= 1554.51) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2038,7 +2038,7 @@ window.additionalSale = [
   {
     "code": "ZAR38000DO40000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€165,05",
+    "price": "€165,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 1554.51) AND (productPriceWithVat <= 1636.33) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2046,7 +2046,7 @@ window.additionalSale = [
   {
     "code": "ZAR40000DO42000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€173,32",
+    "price": "€173,30",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 1636.33) AND (productPriceWithVat <= 1718.14) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2054,7 +2054,7 @@ window.additionalSale = [
   {
     "code": "ZAR42000DO44000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€181,59",
+    "price": "€181,60",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 1718.14) AND (productPriceWithVat <= 1799.96) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2062,7 +2062,7 @@ window.additionalSale = [
   {
     "code": "ZAR44000DO46000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€189,87",
+    "price": "€189,90",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 1799.96) AND (productPriceWithVat <= 1881.78) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2070,7 +2070,7 @@ window.additionalSale = [
   {
     "code": "ZAR46000DO48000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€198,14",
+    "price": "€198,10",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 1881.78) AND (productPriceWithVat <= 1963.59) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2078,7 +2078,7 @@ window.additionalSale = [
   {
     "code": "ZAR48000DO50000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€206,41",
+    "price": "€206,40",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 1963.59) AND (productPriceWithVat <= 2045.41) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2086,7 +2086,7 @@ window.additionalSale = [
   {
     "code": "ZAR50000DO52000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€214,68",
+    "price": "€214,70",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 2045.41) AND (productPriceWithVat <= 2127.22) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2094,7 +2094,7 @@ window.additionalSale = [
   {
     "code": "ZAR52000DO54000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€222,96",
+    "price": "€223,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 2127.22) AND (productPriceWithVat <= 2209.04) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2102,7 +2102,7 @@ window.additionalSale = [
   {
     "code": "ZAR54000DO56000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€231,23",
+    "price": "€231,20",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 2209.04) AND (productPriceWithVat <= 2290.86) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2110,7 +2110,7 @@ window.additionalSale = [
   {
     "code": "ZAR56000DO58000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€239,5",
+    "price": "€239,50",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 2290.86) AND (productPriceWithVat <= 2372.67) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2118,7 +2118,7 @@ window.additionalSale = [
   {
     "code": "ZAR58000DO60000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€247,78",
+    "price": "€247,80",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 2372.67) AND (productPriceWithVat <= 2454.49) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2126,7 +2126,7 @@ window.additionalSale = [
   {
     "code": "ZAR60000DO62000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€256,05",
+    "price": "€256,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 2454.49) AND (productPriceWithVat <= 2536.31) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2134,7 +2134,7 @@ window.additionalSale = [
   {
     "code": "ZAR62000DO64000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€264,32",
+    "price": "€264,30",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 2536.31) AND (productPriceWithVat <= 2618.12) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2142,7 +2142,7 @@ window.additionalSale = [
   {
     "code": "ZAR64000DO66000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€272,6",
+    "price": "€272,60",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 2618.12) AND (productPriceWithVat <= 2699.94) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2150,7 +2150,7 @@ window.additionalSale = [
   {
     "code": "ZAR66000DO68000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€280,87",
+    "price": "€280,90",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 2699.94) AND (productPriceWithVat <= 2781.75) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2158,7 +2158,7 @@ window.additionalSale = [
   {
     "code": "ZAR68000DO70000R1",
     "name": "Prodloužení záruky +1 rok",
-    "price": "€289,14",
+    "price": "€289,10",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 2781.75) AND (productPriceWithVat <= 2863.57) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2166,7 +2166,7 @@ window.additionalSale = [
   {
     "code": "ZAR2000DO2500R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€16,13",
+    "price": "€16,10",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 81.82) AND (productPriceWithVat <= 102.27) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2174,7 +2174,7 @@ window.additionalSale = [
   {
     "code": "ZAR2500DO3000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€20,27",
+    "price": "€20,30",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 102.27) AND (productPriceWithVat <= 122.72) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2182,7 +2182,7 @@ window.additionalSale = [
   {
     "code": "ZAR3000DO3500R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€24,41",
+    "price": "€24,40",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 122.72) AND (productPriceWithVat <= 143.18) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2190,7 +2190,7 @@ window.additionalSale = [
   {
     "code": "ZAR3500DO4000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€24,41",
+    "price": "€24,40",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 143.18) AND (productPriceWithVat <= 163.63) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2198,7 +2198,7 @@ window.additionalSale = [
   {
     "code": "ZAR4000DO4500R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€28,54",
+    "price": "€28,50",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 163.63) AND (productPriceWithVat <= 184.09) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2206,7 +2206,7 @@ window.additionalSale = [
   {
     "code": "ZAR4500DO5000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€32,68",
+    "price": "€32,70",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 184.09) AND (productPriceWithVat <= 204.54) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2214,7 +2214,7 @@ window.additionalSale = [
   {
     "code": "ZAR5000DO5500R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€36,81",
+    "price": "€36,80",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 204.54) AND (productPriceWithVat <= 224.99) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2222,7 +2222,7 @@ window.additionalSale = [
   {
     "code": "ZAR5500DO6000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€36,81",
+    "price": "€36,80",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 224.99) AND (productPriceWithVat <= 245.45) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2230,7 +2230,7 @@ window.additionalSale = [
   {
     "code": "ZAR6000DO6500R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€40,95",
+    "price": "€41,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 245.45) AND (productPriceWithVat <= 265.90) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2238,7 +2238,7 @@ window.additionalSale = [
   {
     "code": "ZAR6500DO7000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€45,09",
+    "price": "€45,10",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 265.90) AND (productPriceWithVat <= 286.36) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2246,7 +2246,7 @@ window.additionalSale = [
   {
     "code": "ZAR7000DO7500R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€49,22",
+    "price": "€49,20",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 286.36) AND (productPriceWithVat <= 306.81) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2254,7 +2254,7 @@ window.additionalSale = [
   {
     "code": "ZAR7500DO8000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€49,22",
+    "price": "€49,20",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 306.81) AND (productPriceWithVat <= 327.27) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2262,7 +2262,7 @@ window.additionalSale = [
   {
     "code": "ZAR8000DO8500R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€53,36",
+    "price": "€53,40",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 327.27) AND (productPriceWithVat <= 347.72) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2270,7 +2270,7 @@ window.additionalSale = [
   {
     "code": "ZAR8500DO9000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€57,5",
+    "price": "€57,50",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 347.72) AND (productPriceWithVat <= 368.17) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2278,7 +2278,7 @@ window.additionalSale = [
   {
     "code": "ZAR9000DO9500R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€61,63",
+    "price": "€61,60",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 368.17) AND (productPriceWithVat <= 388.63) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2286,7 +2286,7 @@ window.additionalSale = [
   {
     "code": "ZAR9500DO10000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€61,63",
+    "price": "€61,60",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 388.63) AND (productPriceWithVat <= 409.08) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2294,7 +2294,7 @@ window.additionalSale = [
   {
     "code": "ZAR10000DO11000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€69,91",
+    "price": "€69,90",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 409.08) AND (productPriceWithVat <= 449.99) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2302,7 +2302,7 @@ window.additionalSale = [
   {
     "code": "ZAR11000DO12000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€74,04",
+    "price": "€74,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 449.99) AND (productPriceWithVat <= 490.90) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2310,7 +2310,7 @@ window.additionalSale = [
   {
     "code": "ZAR12000DO13000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€82,32",
+    "price": "€82,30",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 490.90) AND (productPriceWithVat <= 531.81) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2318,7 +2318,7 @@ window.additionalSale = [
   {
     "code": "ZAR13000DO14000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€86,45",
+    "price": "€86,50",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 531.81) AND (productPriceWithVat <= 572.71) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2326,7 +2326,7 @@ window.additionalSale = [
   {
     "code": "ZAR14000DO15000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€94,73",
+    "price": "€94,70",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 572.71) AND (productPriceWithVat <= 613.62) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2334,7 +2334,7 @@ window.additionalSale = [
   {
     "code": "ZAR15000DO16000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€98,86",
+    "price": "€98,90",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 613.62) AND (productPriceWithVat <= 654.53) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2342,7 +2342,7 @@ window.additionalSale = [
   {
     "code": "ZAR16000DO17000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€107,14",
+    "price": "€107,10",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 654.53) AND (productPriceWithVat <= 695.44) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2350,7 +2350,7 @@ window.additionalSale = [
   {
     "code": "ZAR17000DO18000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€111,27",
+    "price": "€111,30",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 695.44) AND (productPriceWithVat <= 736.35) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2358,7 +2358,7 @@ window.additionalSale = [
   {
     "code": "ZAR18000DO19000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€119,54",
+    "price": "€119,50",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 736.35) AND (productPriceWithVat <= 777.26) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2366,7 +2366,7 @@ window.additionalSale = [
   {
     "code": "ZAR19000DO20000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€123,68",
+    "price": "€123,70",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 777.26) AND (productPriceWithVat <= 818.16) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2374,7 +2374,7 @@ window.additionalSale = [
   {
     "code": "ZAR20000DO21000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€131,95",
+    "price": "€132,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 818.16) AND (productPriceWithVat <= 859.07) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2382,7 +2382,7 @@ window.additionalSale = [
   {
     "code": "ZAR21000DO22000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€136,09",
+    "price": "€136,10",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 859.07) AND (productPriceWithVat <= 899.98) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2390,7 +2390,7 @@ window.additionalSale = [
   {
     "code": "ZAR22000DO23000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€144,36",
+    "price": "€144,40",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 899.98) AND (productPriceWithVat <= 940.89) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2398,7 +2398,7 @@ window.additionalSale = [
   {
     "code": "ZAR23000DO24000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€148,5",
+    "price": "€148,50",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 940.89) AND (productPriceWithVat <= 981.80) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2406,7 +2406,7 @@ window.additionalSale = [
   {
     "code": "ZAR24000DO25000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€156,77",
+    "price": "€156,80",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 981.80) AND (productPriceWithVat <= 1022.70) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2414,7 +2414,7 @@ window.additionalSale = [
   {
     "code": "ZAR25000DO26000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€160,91",
+    "price": "€160,90",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 1022.70) AND (productPriceWithVat <= 1063.61) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2422,7 +2422,7 @@ window.additionalSale = [
   {
     "code": "ZAR26000DO27000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€169,18",
+    "price": "€169,20",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 1063.61) AND (productPriceWithVat <= 1104.52) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2430,7 +2430,7 @@ window.additionalSale = [
   {
     "code": "ZAR27000DO28000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€173,32",
+    "price": "€173,30",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 1104.52) AND (productPriceWithVat <= 1145.43) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2438,7 +2438,7 @@ window.additionalSale = [
   {
     "code": "ZAR28000DO29000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€181,59",
+    "price": "€181,60",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 1145.43) AND (productPriceWithVat <= 1186.34) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2446,7 +2446,7 @@ window.additionalSale = [
   {
     "code": "ZAR29000DO30000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€185,73",
+    "price": "€185,70",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 1186.34) AND (productPriceWithVat <= 1227.24) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2454,7 +2454,7 @@ window.additionalSale = [
   {
     "code": "ZAR30000DO32000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€198,14",
+    "price": "€198,10",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 1227.24) AND (productPriceWithVat <= 1309.06) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2462,7 +2462,7 @@ window.additionalSale = [
   {
     "code": "ZAR32000DO34000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€210,55",
+    "price": "€210,50",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 1309.06) AND (productPriceWithVat <= 1390.88) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2470,7 +2470,7 @@ window.additionalSale = [
   {
     "code": "ZAR34000DO36000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€222,96",
+    "price": "€223,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 1390.88) AND (productPriceWithVat <= 1472.69) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2478,7 +2478,7 @@ window.additionalSale = [
   {
     "code": "ZAR36000DO38000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€235,37",
+    "price": "€235,40",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 1472.69) AND (productPriceWithVat <= 1554.51) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2486,7 +2486,7 @@ window.additionalSale = [
   {
     "code": "ZAR38000DO40000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€247,78",
+    "price": "€247,80",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 1554.51) AND (productPriceWithVat <= 1636.33) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2494,7 +2494,7 @@ window.additionalSale = [
   {
     "code": "ZAR40000DO42000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€260,19",
+    "price": "€260,20",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 1636.33) AND (productPriceWithVat <= 1718.14) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2502,7 +2502,7 @@ window.additionalSale = [
   {
     "code": "ZAR42000DO44000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€272,6",
+    "price": "€272,60",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 1718.14) AND (productPriceWithVat <= 1799.96) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2510,7 +2510,7 @@ window.additionalSale = [
   {
     "code": "ZAR44000DO46000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€285,01",
+    "price": "€285,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 1799.96) AND (productPriceWithVat <= 1881.78) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2518,7 +2518,7 @@ window.additionalSale = [
   {
     "code": "ZAR46000DO48000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€297,41",
+    "price": "€297,40",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 1881.78) AND (productPriceWithVat <= 1963.59) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2526,7 +2526,7 @@ window.additionalSale = [
   {
     "code": "ZAR48000DO50000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€309,82",
+    "price": "€309,80",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 1963.59) AND (productPriceWithVat <= 2045.41) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2534,7 +2534,7 @@ window.additionalSale = [
   {
     "code": "ZAR50000DO52000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€322,23",
+    "price": "€322,20",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 2045.41) AND (productPriceWithVat <= 2127.22) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2542,7 +2542,7 @@ window.additionalSale = [
   {
     "code": "ZAR52000DO54000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€334,64",
+    "price": "€334,60",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 2127.22) AND (productPriceWithVat <= 2209.04) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2550,7 +2550,7 @@ window.additionalSale = [
   {
     "code": "ZAR54000DO56000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€347,05",
+    "price": "€347,10",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 2209.04) AND (productPriceWithVat <= 2290.86) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2558,7 +2558,7 @@ window.additionalSale = [
   {
     "code": "ZAR56000DO58000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€359,46",
+    "price": "€359,50",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 2290.86) AND (productPriceWithVat <= 2372.67) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2566,7 +2566,7 @@ window.additionalSale = [
   {
     "code": "ZAR58000DO60000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€371,87",
+    "price": "€371,90",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 2372.67) AND (productPriceWithVat <= 2454.49) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2574,7 +2574,7 @@ window.additionalSale = [
   {
     "code": "ZAR60000DO62000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€384,28",
+    "price": "€384,30",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 2454.49) AND (productPriceWithVat <= 2536.31) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2582,7 +2582,7 @@ window.additionalSale = [
   {
     "code": "ZAR62000DO64000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€396,69",
+    "price": "€396,70",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 2536.31) AND (productPriceWithVat <= 2618.12) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2590,7 +2590,7 @@ window.additionalSale = [
   {
     "code": "ZAR64000DO66000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€409,1",
+    "price": "€409,10",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 2618.12) AND (productPriceWithVat <= 2699.94) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2598,7 +2598,7 @@ window.additionalSale = [
   {
     "code": "ZAR66000DO68000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€421,51",
+    "price": "€421,50",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 2699.94) AND (productPriceWithVat <= 2781.75) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
@@ -2606,7 +2606,7 @@ window.additionalSale = [
   {
     "code": "ZAR68000DO70000R2",
     "name": "Prodloužení záruky +2 roky",
-    "price": "€433,92",
+    "price": "€433,90",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 2781.75) AND (productPriceWithVat <= 2863.57) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
