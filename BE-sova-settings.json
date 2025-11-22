@@ -134,7 +134,7 @@
       },
       {
         "schema": "aiFillPick",
-        "html": "<div APIhtmlGeneratorSchema=\"aiFill\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+        "html": "<div APIhtmlGeneratorSchema=\"aiFillPick\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       }
     ]
   },
