@@ -1176,7 +1176,7 @@
         "position": "topHeader",
         "order": 7,
         "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\"%%",
-        "href": "https://www.pocitarna.cz/admin/ceny/0/?f[visibilityId]=0&f[defaultCategoryId]=1589&f[pricelistId]=1&f[chosenPricelistId]=1&f[stockState]=1",
+        "href": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=1589&f[chosenPricelistId]=1",
         "newTab": null
       },
       {
