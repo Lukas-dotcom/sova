@@ -429,7 +429,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0011",
-    "name": "HDD 1TB",
+    "name": "HDD 1TB ",
     "price": "1 990 Kč",
     "pairText": "Výměna disku",
     "type": "select",
