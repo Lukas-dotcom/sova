@@ -61,6 +61,7 @@ window.injectVariables = {
     "Dell Latitude 7420",
     "Dell Latitude 7430",
     "Dell Latitude 7320 Detachable",
+    0,
     "MSI Prestige 13 AI Evo A1MG",
     "MSI Prestige 13Evo A13M",
     "MSI Prestige 14Evo B13M",
