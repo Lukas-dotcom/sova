@@ -309,63 +309,63 @@
       },
       {
         "Název": "Notebooky",
-        "Odkaz": "https://www.pocitarna.cz/admin/ceny/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=673&f[pricelistId]=1&f[chosenPricelistId]=1",
+        "Odkaz": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=673&f[pricelistId]=1&f[chosenPricelistId]=1",
         "Barvička": null,
         "NovOkno": null,
         "Kdo": "Dominik Němčanský"
       },
       {
         "Název": "Počítače",
-        "Odkaz": "https://www.pocitarna.cz/admin/ceny/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=674&f[pricelistId]=1&f[chosenPricelistId]=1",
+        "Odkaz": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=674&f[pricelistId]=1&f[chosenPricelistId]=1",
         "Barvička": null,
         "NovOkno": null,
         "Kdo": "Dominik Němčanský"
       },
       {
         "Název": "Monitory",
-        "Odkaz": "https://www.pocitarna.cz/admin/ceny/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=714&f[pricelistId]=1&f[chosenPricelistId]=1",
+        "Odkaz": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=714&f[pricelistId]=1&f[chosenPricelistId]=1",
         "Barvička": null,
         "NovOkno": null,
         "Kdo": "Dominik Němčanský"
       },
       {
         "Název": "Tablety",
-        "Odkaz": "https://www.pocitarna.cz/admin/ceny/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=1155&f[pricelistId]=1&f[chosenPricelistId]=1",
+        "Odkaz": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=1155&f[chosenPricelistId]=1",
         "Barvička": null,
         "NovOkno": null,
         "Kdo": "Dominik Němčanský"
       },
       {
         "Název": "Telefony",
-        "Odkaz": "https://www.pocitarna.cz/admin/ceny/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=717&f[pricelistId]=1&f[chosenPricelistId]=1",
+        "Odkaz": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=717&f[chosenPricelistId]=1",
         "Barvička": null,
         "NovOkno": null,
         "Kdo": "Dominik Němčanský"
       },
       {
         "Název": "Hodinky",
-        "Odkaz": "https://www.pocitarna.cz/admin/ceny/0/?f[visibilityId]=0&f[defaultCategoryId]=2141&f[pricelistId]=1&f[chosenPricelistId]=1&f[stockState]=1",
+        "Odkaz": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=2141&f[chosenPricelistId]=1",
         "Barvička": null,
         "NovOkno": null,
         "Kdo": "Dominik Němčanský"
       },
       {
         "Název": "Konzole",
-        "Odkaz": "https://www.pocitarna.cz/admin/ceny/0/?f[visibilityId]=0&f[defaultCategoryId]=1589&f[pricelistId]=1&f[chosenPricelistId]=1&f[stockState]=1",
+        "Odkaz": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=1589&f[chosenPricelistId]=1",
         "Barvička": null,
         "NovOkno": null,
         "Kdo": "Dominik Němčanský"
       },
       {
         "Název": "Přísluško",
-        "Odkaz": "https://www.pocitarna.cz/admin/ceny/708/?f[stockState]=1&f[visibilityId]=0&f[pricelistId]=1&f[chosenPricelistId]=1",
+        "Odkaz": "https://www.pocitarna.cz/admin/produkty/708/?f[stockState]=1&f[visibilityId]=0&f[chosenPricelistId]=1",
         "Barvička": null,
         "NovOkno": null,
         "Kdo": "Dominik Němčanský"
       },
       {
         "Název": "Komponenty",
-        "Odkaz": "https://www.pocitarna.cz/admin/ceny/728/?f[stockState]=1&f[visibilityId]=0&f[pricelistId]=1&f[chosenPricelistId]=1",
+        "Odkaz": "https://www.pocitarna.cz/admin/produkty/728/?f%5BstockState%5D=1&f%5BvisibilityId%5D=0&f%5BchosenPricelistId%5D=1",
         "Barvička": null,
         "NovOkno": null,
         "Kdo": "Dominik Němčanský"
