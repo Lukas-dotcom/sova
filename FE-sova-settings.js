@@ -78,7 +78,8 @@ window.injectVariables = {
     "Samsung Galaxy Book Pro 360",
     "Lg Gram 17Z90Q",
     "Acer Aspire 5 Spin",
-    "Chromebook"
+    "Chromebook",
+    "Apple"
   ],
   "DISKvylouceneCastiNazvu": [
     "Apple",
