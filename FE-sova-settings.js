@@ -2561,7 +2561,7 @@ window.additionalSale = [
     "SOVAL": "(currency=\"EUR\" AND (category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefony, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat > 2699.94) AND (productPriceWithVat <= 2781.75) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu))))"
   },
   {
-    "code": "ZAR68000DO70000R2 ",
+    "code": "ZAR68000DO70000R2",
     "name": "Prodloužení záruky +2 roky",
     "price": "€433,90",
     "pairText": "zaruka",
