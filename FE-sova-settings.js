@@ -2546,7 +2546,7 @@ window.additionalSale = [
   },
   {
     "code": "ZAR68000DO70000R2",
-    "name": "Prodloužení záruky +2 roky ",
+    "name": "Prodloužení záruky +2 roky",
     "price": "€433,90",
     "pairText": "zaruka",
     "type": "checkbox",
