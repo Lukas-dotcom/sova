@@ -355,7 +355,7 @@ window.additionalSale = [
   {
     "code": "VRP0016",
     "name": "SSD 512GB",
-    "price": "1 890 Kč",
+    "price": "2 390 Kč",
     "pairText": "Výměna disku",
     "type": "select",
     "SOVAL": "(currency=\"CZK\" AND (NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnisystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\")))  AND (ALL(DISKvylouceneCastiNazvu, NOT CONTAINS(productName, DISKvylouceneCastiNazvu)))AND (((category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory,\"Notebooky\") OR CONTAINS(productCurrentCategory,\"Počítače\")) AND (parametroptdisableupgradedisc = \"false\") AND NOT CONTAINS(productName,\"All in One\") AND NOT CONTAINS(parametrTypdisku,\"eMMC\") AND (CONTAINS(parametrKapacitadisku,\"+\") OR (regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\") = \"\") OR CONTAINS(parametrTypdisku,\"HDD\") OR (512 > if(CONTAINS(parametrKapacitadisku,\"TB\"), regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\")*1000, regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\"))))))"
@@ -383,46 +383,6 @@ window.additionalSale = [
     "pairText": "Výměna disku",
     "type": "select",
     "SOVAL": "(currency=\"CZK\" AND (NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnisystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\")))  AND (ALL(DISKvylouceneCastiNazvu, NOT CONTAINS(productName, DISKvylouceneCastiNazvu)))AND (((category = \"Počítače\") OR CONTAINS(productCurrentCategory,\"Počítače\")) AND (parametroptdisableupgradedisc = \"false\") AND NOT (category = \"Notebooky\" OR CONTAINS(productCurrentCategory,\"Notebooky\")) AND NOT CONTAINS(productName,\"All in One\") AND NOT CONTAINS(parametrTypdisku,\"eMMC\") AND (CONTAINS(parametrKapacitadisku,\"+\") OR (regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\") = \"\") OR CONTAINS(parametrTypdisku,\"HDD\") OR (4000 > if(CONTAINS(parametrKapacitadisku,\"TB\"), regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\")*1000, regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\"))))))"
-  },
-  {
-    "code": "VRP0009",
-    "name": "HDD 320GB",
-    "price": "999 Kč",
-    "pairText": "Výměna disku",
-    "type": "select",
-    "SOVAL": "(currency=\"CZK\" AND (NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnisystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\")))  AND (ALL(DISKvylouceneCastiNazvu, NOT CONTAINS(productName, DISKvylouceneCastiNazvu)))AND (((category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory,\"Notebooky\") OR CONTAINS(productCurrentCategory,\"Počítače\")) AND (parametroptdisableupgradedisc = \"false\") AND NOT CONTAINS(productName,\"All in One\") AND NOT CONTAINS(parametrTypdisku,\"eMMC\") AND (CONTAINS(parametrKapacitadisku,\"+\") OR (regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\") = \"\") OR (320 > if(CONTAINS(parametrKapacitadisku,\"TB\"), regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\")*1000, regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\"))))))"
-  },
-  {
-    "code": "VRP0010",
-    "name": "HDD 500GB",
-    "price": "1 599 Kč",
-    "pairText": "Výměna disku",
-    "type": "select",
-    "SOVAL": "(currency=\"CZK\" AND (NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnisystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\")))  AND (ALL(DISKvylouceneCastiNazvu, NOT CONTAINS(productName, DISKvylouceneCastiNazvu)))AND (((category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory,\"Notebooky\") OR CONTAINS(productCurrentCategory,\"Počítače\")) AND (parametroptdisableupgradedisc = \"false\") AND NOT CONTAINS(productName,\"All in One\") AND NOT CONTAINS(parametrTypdisku,\"eMMC\") AND (CONTAINS(parametrKapacitadisku,\"+\") OR (regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\") = \"\") OR (500 > if(CONTAINS(parametrKapacitadisku,\"TB\"), regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\")*1000, regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\"))))))"
-  },
-  {
-    "code": "VRP0011",
-    "name": "HDD 1TB",
-    "price": "1 990 Kč",
-    "pairText": "Výměna disku",
-    "type": "select",
-    "SOVAL": "(currency=\"CZK\" AND (NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnisystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\")))  AND (ALL(DISKvylouceneCastiNazvu, NOT CONTAINS(productName, DISKvylouceneCastiNazvu)))AND (((category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory,\"Notebooky\") OR CONTAINS(productCurrentCategory,\"Počítače\")) AND (parametroptdisableupgradedisc = \"false\") AND NOT CONTAINS(productName,\"All in One\") AND NOT CONTAINS(parametrTypdisku,\"eMMC\") AND (CONTAINS(parametrKapacitadisku,\"+\") OR (regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\") = \"\") OR (1000 > if(CONTAINS(parametrKapacitadisku,\"TB\"), regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\")*1000, regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\"))))))"
-  },
-  {
-    "code": "VRP0012",
-    "name": "HDD 2TB",
-    "price": "2 990 Kč",
-    "pairText": "Výměna disku",
-    "type": "select",
-    "SOVAL": "(currency=\"CZK\" AND (NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnisystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\")))  AND (ALL(DISKvylouceneCastiNazvu, NOT CONTAINS(productName, DISKvylouceneCastiNazvu)))AND (((category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory,\"Notebooky\") OR CONTAINS(productCurrentCategory,\"Počítače\")) AND (parametroptdisableupgradedisc = \"false\") AND NOT CONTAINS(productName,\"All in One\") AND NOT CONTAINS(parametrTypdisku,\"eMMC\") AND (CONTAINS(parametrKapacitadisku,\"+\") OR (regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\") = \"\") OR (2000 > if(CONTAINS(parametrKapacitadisku,\"TB\"), regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\")*1000, regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\"))))))"
-  },
-  {
-    "code": "VRP0013",
-    "name": "HDD 4TB",
-    "price": "3 990 Kč",
-    "pairText": "Výměna disku",
-    "type": "select",
-    "SOVAL": "(currency=\"CZK\" AND (NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnisystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\")))  AND (ALL(DISKvylouceneCastiNazvu, NOT CONTAINS(productName, DISKvylouceneCastiNazvu)))AND (((category = \"Počítače\")) AND (parametroptdisableupgradedisc = \"false\") AND NOT CONTAINS(productName,\"All in One\") AND NOT CONTAINS(parametrTypdisku,\"eMMC\") AND (CONTAINS(parametrKapacitadisku,\"+\") OR (regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\") = \"\") OR (4000 > if(CONTAINS(parametrKapacitadisku,\"TB\"), regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\")*1000, regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\"))))))"
   },
   {
     "code": "ZAR2000DO2500R1",
@@ -1615,46 +1575,6 @@ window.additionalSale = [
     "pairText": "Výměna disku",
     "type": "select",
     "SOVAL": "(currency=\"EUR\" AND (NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnisystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\")))  AND (ALL(DISKvylouceneCastiNazvu, NOT CONTAINS(productName, DISKvylouceneCastiNazvu)))AND (((category = \"Počítače\") OR CONTAINS(productCurrentCategory,\"Počítače\")) AND (parametroptdisableupgradedisc = \"false\") AND NOT (category = \"Notebooky\" OR CONTAINS(productCurrentCategory,\"Notebooky\")) AND NOT CONTAINS(productName,\"All in One\") AND NOT CONTAINS(parametrTypdisku,\"eMMC\") AND (CONTAINS(parametrKapacitadisku,\"+\") OR (regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\") = \"\") OR CONTAINS(parametrTypdisku,\"HDD\") OR (4000 > if(CONTAINS(parametrKapacitadisku,\"TB\"), regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\")*1000, regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\"))))))"
-  },
-  {
-    "code": "VRP0009",
-    "name": "HDD 320GB",
-    "price": "€40,87",
-    "pairText": "Výměna disku",
-    "type": "select",
-    "SOVAL": "(currency=\"EUR\" AND (NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnisystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\")))  AND (ALL(DISKvylouceneCastiNazvu, NOT CONTAINS(productName, DISKvylouceneCastiNazvu)))AND (((category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory,\"Notebooky\") OR CONTAINS(productCurrentCategory,\"Počítače\")) AND (parametroptdisableupgradedisc = \"false\") AND NOT CONTAINS(productName,\"All in One\") AND NOT CONTAINS(parametrTypdisku,\"eMMC\") AND (CONTAINS(parametrKapacitadisku,\"+\") OR (regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\") = \"\") OR (320 > if(CONTAINS(parametrKapacitadisku,\"TB\"), regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\")*1000, regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\"))))))"
-  },
-  {
-    "code": "VRP0010",
-    "name": "HDD 500GB",
-    "price": "€65,41",
-    "pairText": "Výměna disku",
-    "type": "select",
-    "SOVAL": "(currency=\"EUR\" AND (NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnisystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\")))  AND (ALL(DISKvylouceneCastiNazvu, NOT CONTAINS(productName, DISKvylouceneCastiNazvu)))AND (((category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory,\"Notebooky\") OR CONTAINS(productCurrentCategory,\"Počítače\")) AND (parametroptdisableupgradedisc = \"false\") AND NOT CONTAINS(productName,\"All in One\") AND NOT CONTAINS(parametrTypdisku,\"eMMC\") AND (CONTAINS(parametrKapacitadisku,\"+\") OR (regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\") = \"\") OR (500 > if(CONTAINS(parametrKapacitadisku,\"TB\"), regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\")*1000, regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\"))))))"
-  },
-  {
-    "code": "VRP0011",
-    "name": "HDD 1TB",
-    "price": "€81,41",
-    "pairText": "Výměna disku",
-    "type": "select",
-    "SOVAL": "(currency=\"EUR\" AND (NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnisystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\")))  AND (ALL(DISKvylouceneCastiNazvu, NOT CONTAINS(productName, DISKvylouceneCastiNazvu)))AND (((category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory,\"Notebooky\") OR CONTAINS(productCurrentCategory,\"Počítače\")) AND (parametroptdisableupgradedisc = \"false\") AND NOT CONTAINS(productName,\"All in One\") AND NOT CONTAINS(parametrTypdisku,\"eMMC\") AND (CONTAINS(parametrKapacitadisku,\"+\") OR (regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\") = \"\") OR (1000 > if(CONTAINS(parametrKapacitadisku,\"TB\"), regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\")*1000, regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\"))))))"
-  },
-  {
-    "code": "VRP0012",
-    "name": "HDD 2TB",
-    "price": "€122,32",
-    "pairText": "Výměna disku",
-    "type": "select",
-    "SOVAL": "(currency=\"EUR\" AND (NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnisystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\")))  AND (ALL(DISKvylouceneCastiNazvu, NOT CONTAINS(productName, DISKvylouceneCastiNazvu)))AND (((category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory,\"Notebooky\") OR CONTAINS(productCurrentCategory,\"Počítače\")) AND (parametroptdisableupgradedisc = \"false\") AND NOT CONTAINS(productName,\"All in One\") AND NOT CONTAINS(parametrTypdisku,\"eMMC\") AND (CONTAINS(parametrKapacitadisku,\"+\") OR (regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\") = \"\") OR (2000 > if(CONTAINS(parametrKapacitadisku,\"TB\"), regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\")*1000, regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\"))))))"
-  },
-  {
-    "code": "VRP0013",
-    "name": "HDD 4TB",
-    "price": "€163,22",
-    "pairText": "Výměna disku",
-    "type": "select",
-    "SOVAL": "(currency=\"EUR\" AND (NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnisystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\")))  AND (ALL(DISKvylouceneCastiNazvu, NOT CONTAINS(productName, DISKvylouceneCastiNazvu)))AND (((category = \"Počítače\")) AND (parametroptdisableupgradedisc = \"false\") AND NOT CONTAINS(productName,\"All in One\") AND NOT CONTAINS(parametrTypdisku,\"eMMC\") AND (CONTAINS(parametrKapacitadisku,\"+\") OR (regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\") = \"\") OR (4000 > if(CONTAINS(parametrKapacitadisku,\"TB\"), regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\")*1000, regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\"))))))"
   },
   {
     "code": "ZAR2000DO2500R1",
