@@ -1537,6 +1537,27 @@ window.additionalSale = [
     "SOVAL": "(currency=\"EUR\" AND (NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnisystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\")))  AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu)))  AND (category = \"Notebooky\" AND (parametroptdisableupgraderam = \"false\") AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnipameti, \"DDR4\")))"
   },
   {
+    "code": "VRP0031",
+    "name": "+ 8GB RAM",
+    "price": "1 290 Kč",
+    "pairText": "Rozšíření RAM",
+    "type": "select"
+  },
+  {
+    "code": "VRP0032",
+    "name": "+ 16GB RAM",
+    "price": "3 990 Kč",
+    "pairText": "Rozšíření RAM",
+    "type": "select"
+  },
+  {
+    "code": "VRP0033",
+    "name": "+ 32GB RAM",
+    "price": "6 990 Kč",
+    "pairText": "Rozšíření RAM",
+    "type": "select"
+  },
+  {
     "code": "VRP0028",
     "name": "SSD 240GB",
     "price": "€56,86",
