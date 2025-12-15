@@ -1546,7 +1546,7 @@ window.additionalSale = [
   {
     "code": "VRP0032",
     "name": "+ 16GB RAM",
-    "price": "€ 163",
+    "price": "€ 164,6",
     "pairText": "Rozšíření RAM",
     "type": "select"
   },
