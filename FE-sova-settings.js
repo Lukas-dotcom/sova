@@ -337,7 +337,8 @@ window.additionalSale = [
     "name": "+ 16GB RAM"
   },
   {
-    "code": "VRP0033"
+    "code": "VRP0033",
+    "name": "+ 32GB RAM"
   },
   {
     "code": "VRP0028",
