@@ -330,15 +330,18 @@ window.additionalSale = [
   },
   {
     "code": "VRP0031",
-    "name": "+ 8GB RAM"
+    "name": "+ 8GB RAM",
+    "price": "1 290"
   },
   {
     "code": "VRP0032",
-    "name": "+ 16GB RAM"
+    "name": "+ 16GB RAM",
+    "price": "3 990"
   },
   {
     "code": "VRP0033",
-    "name": "+ 32GB RAM"
+    "name": "+ 32GB RAM",
+    "price": "6 990"
   },
   {
     "code": "VRP0028",
