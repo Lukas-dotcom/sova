@@ -1539,21 +1539,21 @@ window.additionalSale = [
   {
     "code": "VRP0031",
     "name": "+ 8GB RAM",
-    "price": "€ 53,20",
+    "price": "€53,20",
     "pairText": "Rozšíření RAM",
     "type": "select"
   },
   {
     "code": "VRP0032",
     "name": "+ 16GB RAM",
-    "price": "€ 164,60",
+    "price": "€164,60",
     "pairText": "Rozšíření RAM",
     "type": "select"
   },
   {
     "code": "VRP0033",
     "name": "+ 32GB RAM",
-    "price": "€ 288,40",
+    "price": "€288,40",
     "pairText": "Rozšíření RAM",
     "type": "select"
   },
