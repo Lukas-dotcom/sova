@@ -341,7 +341,7 @@ window.additionalSale = [
   {
     "code": "VRP0033",
     "name": "+ 32GB RAM",
-    "price": "6 990"
+    "price": "6 990 Kč"
   },
   {
     "code": "VRP0028",
