@@ -1539,7 +1539,7 @@ window.additionalSale = [
   {
     "code": "VRP0031",
     "name": "+ 8GB RAM",
-    "price": "€ 53",
+    "price": "€ 53,2",
     "pairText": "Rozšíření RAM",
     "type": "select"
   },
