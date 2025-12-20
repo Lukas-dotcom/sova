@@ -111,7 +111,7 @@
         "html": "<div APIhtmlGeneratorSchema=\"SOVALtransform\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       },
       {
-        "schema": "SOVALtransform",
+        "schema": "SOVALmassTransform",
         "html": "<div APIhtmlGeneratorSchema=\"SOVALtransform\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       },
       {
