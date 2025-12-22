@@ -80,6 +80,8 @@ window.injectVariables = {
     "Acer Aspire 5 Spin",
     "Chromebook",
     "Apple",
+    "HP 15",
+    "HP 15",
     "HP 15"
   ],
   "DISKvylouceneCastiNazvu": [
