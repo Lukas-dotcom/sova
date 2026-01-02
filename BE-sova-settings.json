@@ -152,7 +152,7 @@
       },
       {
         "schema": "massEmailSend",
-        "html": "<div APIhtmlGeneratorSchema=\"aiFillPick\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+        "html": "<div APIhtmlGeneratorSchema=\"massEmailSend\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       }
     ]
   },
