@@ -149,6 +149,10 @@
       {
         "schema": "aiFillPick",
         "html": "<div APIhtmlGeneratorSchema=\"aiFillPick\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+      },
+      {
+        "schema": "massEmailSend",
+        "html": "<div APIhtmlGeneratorSchema=\"aiFillPick\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       }
     ]
   },
