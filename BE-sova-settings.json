@@ -166,7 +166,7 @@
       },
       {
         "schema": "scraper",
-        "html": "<div APIhtmlGeneratorSchema=\"massEmailSend\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+        "html": "<div APIhtmlGeneratorSchema=\"scraper\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       }
     ]
   },
