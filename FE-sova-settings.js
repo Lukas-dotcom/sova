@@ -94,7 +94,7 @@ window.additionalSale = [
   {
     "code": "NET0034",
     "name": "Přidat wifi",
-    "price": "129 Kč",
+    "price": "129 Kč ",
     "pairText": "wifi",
     "type": "checkbox",
     "SOVAL": "(currency=\"CZK\" AND category = \"Počítače\" AND parametroptdisableupgradewifi != \"true\" AND parametrWifi !=\"ANO\")"
