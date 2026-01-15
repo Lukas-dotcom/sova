@@ -18,7 +18,8 @@ window.injectFunctions = [
   },
   {
     "function": "customerDetails",
-    "pageType": "customerDetails"
+    "pageType": "customerDetails",
+    "conditionsSOVAL": "(customerGroupId = \"2\" OR customerGroupId = \"6\" OR customerGroupId = \"8\" OR customerGroupId = \"14\")"
   }
 ];
 
