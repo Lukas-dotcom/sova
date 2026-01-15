@@ -1611,6 +1611,97 @@ ns.rules = ns.rules || {};
   ns.fn.register('testovaciInjectFunction', testovaciInjectFunction);
 })(SOVA);
 
+/*───────────────────────────────────────────────────────────────────────────*
+ * forceNewsletterOptOut – FE feature
+ *  - customerDetails + customerGroupId in (2,6,8,14)
+ *  - zaškrtne #sendNewsletter (doNotSendNewsletter)
+ *  - skryje label[for="sendNewsletter"] + fieldset.stay-in-touch
+ *───────────────────────────────────────────────────────────────────────────*/
+(function registerForceNewsletterOptOut(ns){
+  if (!ns?.fn) return;
+
+  const TAG  = '[forceNewsletterOptOut]';
+  const TEST = () => localStorage.getItem('SOVA.testSOVA.enabled') === '1';
+
+  function ensureCSS(){
+    if (document.getElementById('sova-force-newsletter-optout-css')) return;
+    const st = document.createElement('style');
+    st.id = 'sova-force-newsletter-optout-css';
+    st.textContent = `
+      body.sova-force-newsletter-optout label[for="sendNewsletter"]{
+        display:none !important;
+      }
+      body.sova-force-newsletter-optout fieldset.stay-in-touch{
+        display:none !important;
+      }
+    `;
+    document.head.appendChild(st);
+  }
+
+  function apply(cfg){
+    const input = document.querySelector(cfg.checkboxSelector) || document.querySelector('#sendNewsletter');
+    if (input){
+      if (!input.checked){
+        input.checked = true;
+        try { input.dispatchEvent(new Event('change', { bubbles:true })); } catch {}
+      }
+    }
+
+    if (cfg.hideLabel){
+      const label = document.querySelector(cfg.labelSelector);
+      if (label) label.style.display = 'none';
+    }
+
+    if (cfg.hideFieldset){
+      const fs = document.querySelector(cfg.fieldsetSelector);
+      if (fs) fs.style.display = 'none';
+    }
+
+    return !!input;
+  }
+
+  ns.fn.register('forceNewsletterOptOut', ({ params, settings }, ctx) => {
+    // settings (volitelné; když nic nedáš, použije defaulty)
+    const cfg = Object.assign({
+      checkboxSelector: 'input#sendNewsletter[name="doNotSendNewsletter"]',
+      labelSelector: 'label[for="sendNewsletter"]',
+      fieldsetSelector: 'fieldset.stay-in-touch',
+      hideLabel: true,
+      hideFieldset: true
+    }, (settings && typeof settings === 'object') ? settings : {});
+
+    // “double safety” (pravidlo tohle už gateuje, ale fail-safe je dobrý)
+    const gid = Number(ctx?.customerGroupId);
+    if (ctx?.pageType !== 'customerDetails') return false;
+    if (![2,6,8,14].includes(gid)) return false;
+
+    ensureCSS();
+    document.body?.classList?.add('sova-force-newsletter-optout');
+
+    // Apply hned + pár retry (kdyby se checkout DOM domaloval později)
+    let tries = 0;
+    const MAX = 25;
+    const tick = () => {
+      const ok = apply(cfg);
+      if (ok || tries++ >= MAX) return;
+      setTimeout(tick, 120);
+    };
+    tick();
+
+    // Re-apply na typické Shoptet eventy (když se checkout přerenderuje)
+    const events = [
+      'ShoptetDOMAdvancedOrderLoaded',
+      'ShoptetDOMPageContentLoaded',
+      'ShoptetDOMContentLoaded'
+    ];
+    const handler = () => apply(cfg);
+    events.forEach(ev => document.addEventListener(ev, handler, true));
+
+    if (TEST()) console.log(TAG, 'enabled', { pageType: ctx?.pageType, customerGroupId: gid, cfg });
+    return true;
+  });
+
+})(SOVA);
 
 /*───────────────────────────────────────────────────────────────────────────*
  * additionalSale – FE injekční funkce (s rozšířeným debug logem)
