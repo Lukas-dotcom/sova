@@ -1612,10 +1612,10 @@ ns.rules = ns.rules || {};
 })(SOVA);
 
 /*───────────────────────────────────────────────────────────────────────────*
- * forceNewsletterOptOut – FE feature
- *  - customerDetails + customerGroupId in (2,6,8,14)
- *  - zaškrtne #sendNewsletter (doNotSendNewsletter)
- *  - skryje label[for="sendNewsletter"] + fieldset.stay-in-touch
+ * forceNewsletterOptOut – FE feature (NO gating)
+ *  - always: check #sendNewsletter (doNotSendNewsletter)
+ *  - hide ONLY label[for="sendNewsletter"] (no other elements)
+ *  - inject CSS for persistence
  *───────────────────────────────────────────────────────────────────────────*/
 (function registerForceNewsletterOptOut(ns){
   if (!ns?.fn) return;
@@ -1628,10 +1628,8 @@ ns.rules = ns.rules || {};
     const st = document.createElement('style');
     st.id = 'sova-force-newsletter-optout-css';
     st.textContent = `
-      body.sova-force-newsletter-optout label[for="sendNewsletter"]{
-        display:none !important;
-      }
-      body.sova-force-newsletter-optout fieldset.stay-in-touch{
+      /* hide ONLY the newsletter label */
+      label[for="sendNewsletter"]{
         display:none !important;
       }
     `;
@@ -1639,69 +1637,61 @@ ns.rules = ns.rules || {};
   }
 
   function apply(cfg){
-    const input = document.querySelector(cfg.checkboxSelector) || document.querySelector('#sendNewsletter');
-    if (input){
-      if (!input.checked){
-        input.checked = true;
-        try { input.dispatchEvent(new Event('change', { bubbles:true })); } catch {}
-      }
+    // 1) check checkbox
+    const input =
+      document.querySelector(cfg.checkboxSelector) ||
+      document.querySelector('input#sendNewsletter[name="doNotSendNewsletter"]') ||
+      document.querySelector('#sendNewsletter');
+
+    if (input && !input.checked){
+      input.checked = true;
+      try { input.dispatchEvent(new Event('change', { bubbles:true })); } catch {}
     }
 
-    if (cfg.hideLabel){
-      const label = document.querySelector(cfg.labelSelector);
-      if (label) label.style.display = 'none';
-    }
+    // 2) hide ONLY label (inline as extra safety)
+    const label =
+      document.querySelector(cfg.labelSelector) ||
+      document.querySelector('label[for="sendNewsletter"]');
 
-    if (cfg.hideFieldset){
-      const fs = document.querySelector(cfg.fieldsetSelector);
-      if (fs) fs.style.display = 'none';
-    }
+    if (label) label.style.display = 'none';
 
-    return !!input;
+    return { hasInput: !!input, hasLabel: !!label };
   }
 
-  ns.fn.register('forceNewsletterOptOut', ({ params, settings }, ctx) => {
-    // settings (volitelné; když nic nedáš, použije defaulty)
+  ns.fn.register('forceNewsletterOptOut', ({ params, settings } /*, ctx */) => {
     const cfg = Object.assign({
       checkboxSelector: 'input#sendNewsletter[name="doNotSendNewsletter"]',
-      labelSelector: 'label[for="sendNewsletter"]',
-      fieldsetSelector: 'fieldset.stay-in-touch',
-      hideLabel: true,
-      hideFieldset: true
+      labelSelector: 'label[for="sendNewsletter"]'
     }, (settings && typeof settings === 'object') ? settings : {});
 
-    // “double safety” (pravidlo tohle už gateuje, ale fail-safe je dobrý)
-    const gid = Number(ctx?.customerGroupId);
-    if (ctx?.pageType !== 'customerDetails') return false;
-    if (![2,6,8,14].includes(gid)) return false;
-
     ensureCSS();
-    document.body?.classList?.add('sova-force-newsletter-optout');
 
-    // Apply hned + pár retry (kdyby se checkout DOM domaloval později)
+    // apply hned
     let tries = 0;
     const MAX = 25;
     const tick = () => {
-      const ok = apply(cfg);
-      if (ok || tries++ >= MAX) return;
+      const r = apply(cfg);
+      if ((r.hasInput && r.hasLabel) || tries++ >= MAX) return;
       setTimeout(tick, 120);
     };
     tick();
 
-    // Re-apply na typické Shoptet eventy (když se checkout přerenderuje)
+    // re-apply na typické Shoptet eventy (když se část DOMu přerenderuje)
     const events = [
       'ShoptetDOMAdvancedOrderLoaded',
       'ShoptetDOMPageContentLoaded',
-      'ShoptetDOMContentLoaded'
+      'ShoptetDOMContentLoaded',
+      'ShoptetDOMCartContentLoaded'
     ];
     const handler = () => apply(cfg);
     events.forEach(ev => document.addEventListener(ev, handler, true));
 
-    if (TEST()) console.log(TAG, 'enabled', { pageType: ctx?.pageType, customerGroupId: gid, cfg });
+    if (TEST()) console.log(TAG, 'applied', { cfg });
     return true;
   });
 
 })(SOVA);
+
 
 /*───────────────────────────────────────────────────────────────────────────*
  * additionalSale – FE injekční funkce (s rozšířeným debug logem)
