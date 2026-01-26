@@ -4420,7 +4420,10 @@ window.shippingHideRules = [
     ],
     "containsName": [
       "AIO",
-      "AiO"
+      "IMAC",
+      "AiO",
+      "iMAC",
+      "iMac"
     ]
   },
   {
@@ -4600,7 +4603,10 @@ window.shippingHideRules = [
     ],
     "containsName": [
       "AIO",
-      "AiO"
+      "IMAC",
+      "AiO",
+      "iMAC",
+      "iMac"
     ]
   }
 ];
