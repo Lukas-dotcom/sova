@@ -23,6 +23,15 @@ window.injectFunctions = [
   }
 ];
 
+window.additionalSale = {
+  "code": "NET0034",
+  "name": "Přidat wifi",
+  "price": "129 Kč",
+  "pairText": "wifi",
+  "type": "checkbox",
+  "SOVAL": "(currency=\"CZK\" AND category = \"Počítače\" AND parametroptdisableupgradewifi != \"true\" AND parametrWifi !=\"ANO\")"
+};
+
 window.LadzoSklad = {
   "LIC0004": true,
   "LIC0005": true,
