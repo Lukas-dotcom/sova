@@ -1,6 +1,6 @@
 window.injectFunctions = [
   {
-    "function": "additionalSale ",
+    "function": "additionalSale",
     "pageType": "productDetail"
   },
   {
