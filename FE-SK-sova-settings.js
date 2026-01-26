@@ -1,3 +1,28 @@
+window.injectFunctions = [
+  {
+    "function": "additionalSale ",
+    "pageType": "productDetail"
+  },
+  {
+    "function": "additionalSaleCart",
+    "pageType": "cart"
+  },
+  {
+    "function": "deliveryOptions",
+    "pageType": "billingAndShipping"
+  },
+  {
+    "function": "csvImportCart",
+    "pageType": "cart",
+    "conditionsSOVAL": "(customerGroupId = \"2\" OR customerGroupId = \"6\" OR customerGroupId = \"21\")"
+  },
+  {
+    "function": "forceNewsletterOptOut",
+    "pageType": "customerDetails",
+    "conditionsSOVAL": "(customerGroupId = \"2\" OR customerGroupId = \"6\" OR customerGroupId = \"21\")"
+  }
+];
+
 window.LadzoSklad = {
   "LIC0004": true,
   "LIC0005": true,
