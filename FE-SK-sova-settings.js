@@ -102,7 +102,8 @@ window.shippingHideRules = [
     ],
     "startsWithCodes": [
       "PRT",
-      "AIO"
+      "AIO",
+      "LCD"
     ],
     "startsWithUrl": [
       "/monitory/",
@@ -128,7 +129,8 @@ window.shippingHideRules = [
     ],
     "startsWithCodes": [
       "PRT",
-      "AIO"
+      "AIO",
+      "LCD"
     ],
     "startsWithUrl": [
       "/monitory/",
