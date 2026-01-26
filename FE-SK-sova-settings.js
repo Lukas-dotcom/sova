@@ -38,7 +38,7 @@ window.additionalSale = [
     "price": "129 Kč",
     "pairText": "wifi",
     "type": "checkbox",
-    "SOVAL": "(category = \"Počítače\")"
+    "SOVAL": "(category = \"Notebooky\")"
   }
 ];
 
