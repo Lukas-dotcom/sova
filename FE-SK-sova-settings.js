@@ -23,14 +23,24 @@ window.injectFunctions = [
   }
 ];
 
-window.additionalSale = {
-  "code": "NET0034",
-  "name": "Přidat wifi",
-  "price": "129 Kč",
-  "pairText": "wifi",
-  "type": "checkbox",
-  "SOVAL": "(category = \"Počítače\")"
-};
+window.additionalSale = [
+  {
+    "code": "NET0034",
+    "name": "Přidat wifi",
+    "price": "129 Kč",
+    "pairText": "wifi",
+    "type": "checkbox",
+    "SOVAL": "(category = \"Počítače\")"
+  },
+  {
+    "code": "NET0034",
+    "name": "Přidat wifi",
+    "price": "129 Kč",
+    "pairText": "wifi",
+    "type": "checkbox",
+    "SOVAL": "(category = \"Počítače\")"
+  }
+];
 
 window.LadzoSklad = {
   "LIC0004": true,
