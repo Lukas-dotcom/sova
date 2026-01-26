@@ -12,7 +12,7 @@ window.injectFunctions = [
     "pageType": "billingAndShipping"
   },
   {
-    "function": "csvImportCart",
+    "function": "csvImportCart   ",
     "pageType": "cart",
     "conditionsSOVAL": "(customerGroupId = \"2\" OR customerGroupId = \"6\" OR customerGroupId = \"21\")"
   },
