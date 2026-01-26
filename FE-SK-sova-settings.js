@@ -66,7 +66,7 @@ window.shippingHideRules = [
   },
   {
     "shippingIds": [
-      121,
+      148,
       154
     ],
     "exactCodes": [
