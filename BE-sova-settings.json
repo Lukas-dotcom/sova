@@ -1623,8 +1623,8 @@
   "pocitarnaExpeditionCompletor": {
     "columns": [
       "categories",
-      "categoriesId",
-      "forbiddenProducts"
+      "forbiddenProducts",
+      "categoriesId"
     ],
     "rules": [
       {
@@ -1638,6 +1638,14 @@
           "Herní konzole",
           "Grafické karty"
         ],
+        "forbiddenProducts": [
+          "MAR",
+          "BLESK",
+          "SERVIS",
+          "TIP",
+          "ZAR",
+          "REKLAMACE"
+        ],
         "categoriesId": [
           673,
           674,
@@ -1647,15 +1655,8 @@
           823,
           1589,
           2141,
-          1080
-        ],
-        "forbiddenProducts": [
-          "MAR",
-          "BLESK",
-          "SERVIS",
-          "TIP",
-          "ZAR",
-          "REKLAMACE"
+          1080,
+          1694
         ]
       }
     ]
