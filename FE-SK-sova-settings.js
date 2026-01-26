@@ -39,32 +39,6 @@ window.expedice = {
 window.shippingHideRules = [
   {
     "shippingIds": [
-      66,
-      75
-    ],
-    "exactCodes": [
-      "KOL0001",
-      "KOL0002"
-    ],
-    "startsWithCodes": [
-      "PRT",
-      "AIO"
-    ],
-    "startsWithUrl": [
-      "/monitory/",
-      "/tlaciarne/",
-      "/monitory-2/"
-    ],
-    "containsName": [
-      "AIO",
-      "IMAC",
-      "AiO",
-      "iMAC",
-      "iMac"
-    ]
-  },
-  {
-    "shippingIds": [
       145,
       151
     ],
