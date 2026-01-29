@@ -343,7 +343,7 @@
       },
       {
         "Název": "Počítače",
-        "Odkaz": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=674&f[pricelistId]=1&f[chosenPricelistId]=1&f[itemTypeId]=2",
+        "Odkaz": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=674&f[chosenPricelistId]=1",
         "Barvička": null,
         "NovOkno": null,
         "Kdo": "Dominik Němčanský"
