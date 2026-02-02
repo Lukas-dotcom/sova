@@ -1309,7 +1309,7 @@
       {
         "buttonName": "CMP objednávka",
         "color": null,
-        "pageType": null,
+        "pageType": "objednavky-detail",
         "position": null,
         "order": null,
         "conditionsSOVAL": null,
