@@ -1313,7 +1313,7 @@
         "position": "buttonsSecondHeaderLeft",
         "order": 1,
         "conditionsSOVAL": null,
-        "href": "%%(\"https://cmp.pocitarna.com/order/\"&orderCode&\"/\")%%",
+        "href": "%%\"https://cmp.pocitarna.com/order/\"&orderCode&\"/\"%%",
         "newTab": true
       }
     ]
