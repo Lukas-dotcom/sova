@@ -1305,6 +1305,16 @@
         "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\" OR userFullName = \"Lukáš Tejral\"%%",
         "href": "%%filter (items:url, checked= \"true\")%%",
         "newTab": true
+      },
+      {
+        "buttonName": null,
+        "color": null,
+        "pageType": null,
+        "position": null,
+        "order": null,
+        "conditionsSOVAL": null,
+        "href": "https://cmp.pocitarna.com/order/\"&orderCode&\"/",
+        "newTab": true
       }
     ]
   },
