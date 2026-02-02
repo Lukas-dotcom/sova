@@ -1310,8 +1310,8 @@
         "buttonName": "CMP objednávka",
         "color": "#00adab",
         "pageType": "objednavky-detail",
-        "position": null,
-        "order": null,
+        "position": "buttonsHeaderLeft",
+        "order": 1,
         "conditionsSOVAL": null,
         "href": "https://cmp.pocitarna.com/order/\"&orderCode&\"/",
         "newTab": true
