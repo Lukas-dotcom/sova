@@ -1311,7 +1311,7 @@
         "color": "#00adab",
         "pageType": "objednavky-detail",
         "position": "buttonsSecondHeaderLeft",
-        "order": 2,
+        "order": 1,
         "conditionsSOVAL": null,
         "href": "%%\"https://cmp.pocitarna.com/order/code/\"&orderCode&\"/\"%%",
         "newTab": true
