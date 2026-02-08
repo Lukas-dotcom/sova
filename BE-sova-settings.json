@@ -170,7 +170,7 @@
       },
       {
         "schema": "xmlParser",
-        "html": "<div APIhtmlGeneratorSchema=\"CSVparser\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+        "html": "<div APIhtmlGeneratorSchema=\"xmlParser\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       }
     ]
   },
