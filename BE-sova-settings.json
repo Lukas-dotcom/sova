@@ -167,6 +167,10 @@
       {
         "schema": "scraper",
         "html": "<div APIhtmlGeneratorSchema=\"scraper\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+      },
+      {
+        "schema": "xmlParser",
+        "html": null
       }
     ]
   },
