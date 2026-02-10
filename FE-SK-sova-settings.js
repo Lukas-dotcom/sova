@@ -17,7 +17,7 @@ window.injectFunctions = [
     "conditionsSOVAL": "(customerGroupId = \"2\" OR customerGroupId = \"6\" OR customerGroupId = \"21\")"
   },
   {
-    "function": "forceNewsletterOptOut",
+    "function": "hideNewwLetterOut",
     "pageType": "customerDetails",
     "conditionsSOVAL": "(customerGroupId = \"2\" OR customerGroupId = \"6\" OR customerGroupId = \"21\")"
   }
