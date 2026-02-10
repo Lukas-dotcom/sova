@@ -1612,15 +1612,15 @@ ns.rules = ns.rules || {};
 })(SOVA);
 
 /*───────────────────────────────────────────────────────────────────────────*
- * forceNewsletterOptOut – FE feature (NO gating)
- *  - always: check #sendNewsletter (doNotSendNewsletter)
+ * hideNewwLetterOut – FE feature (NO gating)
  *  - hide ONLY label[for="sendNewsletter"] (no other elements)
  *  - inject CSS for persistence
+ *  - NOTE: no automatic checking / unchecking of the checkbox
  *───────────────────────────────────────────────────────────────────────────*/
-(function registerForceNewsletterOptOut(ns){
+(function registerHideNewwLetterOut(ns){
   if (!ns?.fn) return;
 
-  const TAG  = '[forceNewsletterOptOut]';
+  const TAG  = '[hideNewwLetterOut]';
   const TEST = () => localStorage.getItem('SOVA.testSOVA.enabled') === '1';
 
   function ensureCSS(){
@@ -1637,18 +1637,13 @@ ns.rules = ns.rules || {};
   }
 
   function apply(cfg){
-    // 1) check checkbox
+    // find checkbox (NO touching its checked state)
     const input =
       document.querySelector(cfg.checkboxSelector) ||
       document.querySelector('input#sendNewsletter[name="doNotSendNewsletter"]') ||
       document.querySelector('#sendNewsletter');
 
-    if (input && !input.checked){
-      input.checked = true;
-      try { input.dispatchEvent(new Event('change', { bubbles:true })); } catch {}
-    }
-
-    // 2) hide ONLY label (inline as extra safety)
+    // hide ONLY label (inline as extra safety)
     const label =
       document.querySelector(cfg.labelSelector) ||
       document.querySelector('label[for="sendNewsletter"]');
@@ -1658,7 +1653,7 @@ ns.rules = ns.rules || {};
     return { hasInput: !!input, hasLabel: !!label };
   }
 
-  ns.fn.register('forceNewsletterOptOut', ({ params, settings } /*, ctx */) => {
+  ns.fn.register('hideNewwLetterOut', ({ params, settings } /*, ctx */) => {
     const cfg = Object.assign({
       checkboxSelector: 'input#sendNewsletter[name="doNotSendNewsletter"]',
       labelSelector: 'label[for="sendNewsletter"]'
@@ -1686,11 +1681,12 @@ ns.rules = ns.rules || {};
     const handler = () => apply(cfg);
     events.forEach(ev => document.addEventListener(ev, handler, true));
 
-    if (TEST()) console.log(TAG, 'applied', { cfg });
+    if (TEST()) console.log(TAG, 'applied (hide only; no checkbox change)', { cfg });
     return true;
   });
 
 })(SOVA);
+
 
 
 /*───────────────────────────────────────────────────────────────────────────*
