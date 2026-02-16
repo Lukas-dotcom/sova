@@ -353,6 +353,270 @@
       }
     ]
   },
+  "injectButtonsLinks": {
+    "columns": [
+      "buttonName",
+      "color",
+      "pageType",
+      "position",
+      "order",
+      "conditionsSOVAL",
+      "href",
+      "newTab"
+    ],
+    "rules": [
+      {
+        "buttonName": "Html",
+        "color": null,
+        "pageType": null,
+        "position": "topHeader",
+        "order": 1,
+        "conditionsSOVAL": "%%userFullName = \"Lukáš Tejral\"%%",
+        "href": "/admin/html-kody/",
+        "newTab": null
+      },
+      {
+        "buttonName": "Soubory",
+        "color": null,
+        "pageType": null,
+        "position": "topHeader",
+        "order": 2,
+        "conditionsSOVAL": "%%userFullName = \"Lukáš Tejral\"%%",
+        "href": "/admin/spravce-souboru/",
+        "newTab": null
+      },
+      {
+        "buttonName": "Produkty",
+        "color": null,
+        "pageType": null,
+        "position": "topHeader",
+        "order": 3,
+        "conditionsSOVAL": "%%userFullName = \"Lukáš Tejral\"%%",
+        "href": "/admin/ceny/",
+        "newTab": null
+      },
+      {
+        "buttonName": "Objednávky",
+        "color": null,
+        "pageType": null,
+        "position": "topHeader",
+        "order": 4,
+        "conditionsSOVAL": "%%userFullName = \"Lukáš Tejral\"%%",
+        "href": "/admin/prehled-objednavek/",
+        "newTab": null
+      },
+      {
+        "buttonName": "Export PR",
+        "color": null,
+        "pageType": null,
+        "position": "topHeader",
+        "order": 5,
+        "conditionsSOVAL": "%%userFullName = \"Lukáš Tejral\"%%",
+        "href": "/admin/sablona-exportu-zbozi-detail/?id=301",
+        "newTab": true
+      },
+      {
+        "buttonName": "Export OBJ",
+        "color": null,
+        "pageType": null,
+        "position": "topHeader",
+        "order": 6,
+        "conditionsSOVAL": "%%userFullName = \"Lukáš Tejral\"%%",
+        "href": "/admin/sablona-exportu-objednavky/?id=315",
+        "newTab": true
+      },
+      {
+        "buttonName": "FV editor",
+        "color": null,
+        "pageType": null,
+        "position": "topHeader",
+        "order": 7,
+        "conditionsSOVAL": "%%userFullName = \"Lukáš Tejral\"%%",
+        "href": "https://shoptet.fvstudio.cz/",
+        "newTab": true
+      },
+      {
+        "buttonName": "Notebooky",
+        "color": null,
+        "pageType": null,
+        "position": "topHeader",
+        "order": 1,
+        "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\"%%",
+        "href": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=673&f[pricelistId]=1&f[chosenPricelistId]=1",
+        "newTab": null
+      },
+      {
+        "buttonName": "Počítače",
+        "color": null,
+        "pageType": null,
+        "position": "topHeader",
+        "order": 2,
+        "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\"%%",
+        "href": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=674&f[pricelistId]=1&f[chosenPricelistId]=1",
+        "newTab": null
+      },
+      {
+        "buttonName": "Monitory",
+        "color": null,
+        "pageType": null,
+        "position": "topHeader",
+        "order": 3,
+        "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\"%%",
+        "href": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=714&f[pricelistId]=1&f[chosenPricelistId]=1",
+        "newTab": null
+      },
+      {
+        "buttonName": "Tablety",
+        "color": null,
+        "pageType": null,
+        "position": "topHeader",
+        "order": 4,
+        "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\"%%",
+        "href": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=1155&f[chosenPricelistId]=1",
+        "newTab": null
+      },
+      {
+        "buttonName": "Telefony",
+        "color": null,
+        "pageType": null,
+        "position": "topHeader",
+        "order": 5,
+        "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\"%%",
+        "href": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=717&f[chosenPricelistId]=1",
+        "newTab": null
+      },
+      {
+        "buttonName": "Hodinky",
+        "color": null,
+        "pageType": null,
+        "position": "topHeader",
+        "order": 6,
+        "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\"%%",
+        "href": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=2141&f[chosenPricelistId]=1",
+        "newTab": null
+      },
+      {
+        "buttonName": "Konzole",
+        "color": null,
+        "pageType": null,
+        "position": "topHeader",
+        "order": 7,
+        "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\"%%",
+        "href": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=1589&f[chosenPricelistId]=1",
+        "newTab": null
+      },
+      {
+        "buttonName": "Přísluško",
+        "color": null,
+        "pageType": null,
+        "position": "topHeader",
+        "order": 8,
+        "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\"%%",
+        "href": "https://www.pocitarna.cz/admin/produkty/708/?f[stockState]=1&f[visibilityId]=0&f[chosenPricelistId]=1",
+        "newTab": null
+      },
+      {
+        "buttonName": "Komponenty",
+        "color": null,
+        "pageType": null,
+        "position": "topHeader",
+        "order": 9,
+        "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\"%%",
+        "href": "https://www.pocitarna.cz/admin/produkty/728/?f%5BstockState%5D=1&f%5BvisibilityId%5D=0&f%5BchosenPricelistId%5D=1",
+        "newTab": null
+      },
+      {
+        "buttonName": "Otevřít VŠE",
+        "color": null,
+        "pageType": "ceny",
+        "position": "buttonsMassAction",
+        "order": 1,
+        "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\" OR userFullName = \"Lukáš Tejral\"%%",
+        "href": "%%filter (items:url)%%",
+        "newTab": true
+      },
+      {
+        "buttonName": "Otevřít vybrané",
+        "color": null,
+        "pageType": "ceny",
+        "position": "buttonsMassAction",
+        "order": 1,
+        "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\" OR userFullName = \"Lukáš Tejral\"%%",
+        "href": "%%filter (items:url, checked= \"true\")%%",
+        "newTab": true
+      },
+      {
+        "buttonName": "Všechny",
+        "color": "orange",
+        "pageType": "sablona-exportu-zbozi-detail",
+        "position": "buttonsHeaderRight",
+        "order": 1,
+        "conditionsSOVAL": "%%url contains \"https://www.pocitarna.cz/admin/sablona-exportu-zbozi-detail/?id=301\"%%",
+        "href": "https://www.pocitarna.cz/export/products.xls?patternId=301&partnerId=20&hash=3031a27de4e3f6dd1871bd562c4531510bd9c35ba77ee1678007cbfede0d0fdb",
+        "newTab": null
+      },
+      {
+        "buttonName": "Skladem",
+        "color": "blue",
+        "pageType": "sablona-exportu-zbozi-detail",
+        "position": "buttonsHeaderRight",
+        "order": 2,
+        "conditionsSOVAL": "%%url contains \"https://www.pocitarna.cz/admin/sablona-exportu-zbozi-detail/?id=301\"%%",
+        "href": "https://www.pocitarna.cz/export/products.xls?patternId=301&partnerId=20&hash=3031a27de4e3f6dd1871bd562c4531510bd9c35ba77ee1678007cbfede0d0fdb&stockState=1",
+        "newTab": null
+      },
+      {
+        "buttonName": "Viditelné",
+        "color": "green",
+        "pageType": "sablona-exportu-zbozi-detail",
+        "position": "buttonsHeaderRight",
+        "order": 3,
+        "conditionsSOVAL": "%%url contains \"https://www.pocitarna.cz/admin/sablona-exportu-zbozi-detail/?id=301\"%%",
+        "href": "https://www.pocitarna.cz/export/products.xls?patternId=301&partnerId=20&hash=3031a27de4e3f6dd1871bd562c4531510bd9c35ba77ee1678007cbfede0d0fdb&onlyVisible=1",
+        "newTab": null
+      },
+      {
+        "buttonName": "Export",
+        "color": "Green",
+        "pageType": "sablona-exportu-objednavky",
+        "position": "buttonsHeaderLeft",
+        "order": 4,
+        "conditionsSOVAL": "%%url contains \"https://www.pocitarna.cz/admin/sablona-exportu-objednavky/?id=315\"%%",
+        "href": "%%\"https://www.pocitarna.cz/export/orders.xls?patternId=315&partnerId=20&hash=87c0441cf19d46c29928dfe5e4a3f2e58a0a54936c768272baa57ea85326d344\" & (IF(objExportFrom != \"\", \"&dateFrom=\" & objExportFrom, \"\")) & (IF(objExportTo   != \"\", \"&dateUntil=\" & objExportTo, \"\"))%%",
+        "newTab": null
+      },
+      {
+        "buttonName": "Otevřít VŠE",
+        "color": null,
+        "pageType": "produkty",
+        "position": "buttonsMassAction",
+        "order": 1,
+        "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\" OR userFullName = \"Lukáš Tejral\"%%",
+        "href": "%%filter (items:url)%%",
+        "newTab": true
+      },
+      {
+        "buttonName": "Otevřít vybrané",
+        "color": null,
+        "pageType": "produkty",
+        "position": "buttonsMassAction",
+        "order": 1,
+        "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\" OR userFullName = \"Lukáš Tejral\"%%",
+        "href": "%%filter (items:url, checked= \"true\")%%",
+        "newTab": true
+      },
+      {
+        "buttonName": "CMP objednávka",
+        "color": "#00adab",
+        "pageType": "objednavky-detail",
+        "position": "buttonsSecondHeaderLeft",
+        "order": 1,
+        "conditionsSOVAL": null,
+        "href": "%%\"https://cmp.pocitarna.com/order/code/\"&orderCode&\"/\"%%",
+        "newTab": true
+      }
+    ]
+  },
   "Alerts": {
     "columns": [
       "alert",
