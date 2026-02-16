@@ -509,7 +509,7 @@
         "buttonName": "Přísluško",
         "color": null,
         "pageType": null,
-        "position": "topHeader",
+        "position": "topHeader ",
         "order": 8,
         "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\"%%",
         "href": "https://www.pocitarna.cz/admin/produkty/708/?f[stockState]=1&f[visibilityId]=0&f[chosenPricelistId]=1",
@@ -544,46 +544,6 @@
         "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\" OR userFullName = \"Lukáš Tejral\"%%",
         "href": "%%filter (items:url, checked= \"true\")%%",
         "newTab": true
-      },
-      {
-        "buttonName": "Všechny",
-        "color": "orange",
-        "pageType": "sablona-exportu-zbozi-detail",
-        "position": "buttonsHeaderRight",
-        "order": 1,
-        "conditionsSOVAL": "%%url contains \"https://www.pocitarna.cz/admin/sablona-exportu-zbozi-detail/?id=301\"%%",
-        "href": "https://www.pocitarna.cz/export/products.xls?patternId=301&partnerId=20&hash=3031a27de4e3f6dd1871bd562c4531510bd9c35ba77ee1678007cbfede0d0fdb",
-        "newTab": null
-      },
-      {
-        "buttonName": "Skladem",
-        "color": "blue",
-        "pageType": "sablona-exportu-zbozi-detail",
-        "position": "buttonsHeaderRight",
-        "order": 2,
-        "conditionsSOVAL": "%%url contains \"https://www.pocitarna.cz/admin/sablona-exportu-zbozi-detail/?id=301\"%%",
-        "href": "https://www.pocitarna.cz/export/products.xls?patternId=301&partnerId=20&hash=3031a27de4e3f6dd1871bd562c4531510bd9c35ba77ee1678007cbfede0d0fdb&stockState=1",
-        "newTab": null
-      },
-      {
-        "buttonName": "Viditelné",
-        "color": "green",
-        "pageType": "sablona-exportu-zbozi-detail",
-        "position": "buttonsHeaderRight",
-        "order": 3,
-        "conditionsSOVAL": "%%url contains \"https://www.pocitarna.cz/admin/sablona-exportu-zbozi-detail/?id=301\"%%",
-        "href": "https://www.pocitarna.cz/export/products.xls?patternId=301&partnerId=20&hash=3031a27de4e3f6dd1871bd562c4531510bd9c35ba77ee1678007cbfede0d0fdb&onlyVisible=1",
-        "newTab": null
-      },
-      {
-        "buttonName": "Export",
-        "color": "Green",
-        "pageType": "sablona-exportu-objednavky",
-        "position": "buttonsHeaderLeft",
-        "order": 4,
-        "conditionsSOVAL": "%%url contains \"https://www.pocitarna.cz/admin/sablona-exportu-objednavky/?id=315\"%%",
-        "href": "%%\"https://www.pocitarna.cz/export/orders.xls?patternId=315&partnerId=20&hash=87c0441cf19d46c29928dfe5e4a3f2e58a0a54936c768272baa57ea85326d344\" & (IF(objExportFrom != \"\", \"&dateFrom=\" & objExportFrom, \"\")) & (IF(objExportTo   != \"\", \"&dateUntil=\" & objExportTo, \"\"))%%",
-        "newTab": null
       },
       {
         "buttonName": "Otevřít VŠE",
