@@ -112,7 +112,7 @@ window.additionalSale = [
     "price": "149 Kč",
     "pairText": "bluetooth",
     "type": "checkbox",
-    "SOVAL": "(currency=\"CZK\" AND category = \"Počítače\" AND parametroptdisableupgradebluetooth != \"true\" AND parametrBluetooth !=\"ANO\")"
+    "SOVAL": "(currency=\"CZK\" AND category = \"Počítače\" AND parametrBluetooth !=\"ANO\")"
   },
   {
     "code": "BLESK1",
