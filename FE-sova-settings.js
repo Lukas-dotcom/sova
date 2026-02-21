@@ -1320,7 +1320,7 @@ window.additionalSale = [
     "price": "€26,55",
     "pairText": "BLESK3",
     "type": "checkbox",
-    "SOVAL": "(currency=\"CZK\" AND (NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnisystem, \"Chrome\"))) AND (( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND (parametroptdisableupgradeblesk = \"false\") AND (parametrDedikovanagrafickakarta = \"ANO\") AND (CONTAINS(parametrOperacnisystem, \"Windows\") OR CONTAINS(parametrSystem, \"WINDOWS\")) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") AND (parametrKapacitadisku = \"16 GB\" OR parametrKapacitadisku = \"32 GB\") )))"
+    "SOVAL": "(currency=\"EUR\" AND (NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnisystem, \"Chrome\"))) AND (( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND (parametroptdisableupgradeblesk = \"false\") AND (parametrDedikovanagrafickakarta = \"ANO\") AND (CONTAINS(parametrOperacnisystem, \"Windows\") OR CONTAINS(parametrSystem, \"WINDOWS\")) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") AND (parametrKapacitadisku = \"16 GB\" OR parametrKapacitadisku = \"32 GB\") )))"
   },
   {
     "code": "SERVIS006",
