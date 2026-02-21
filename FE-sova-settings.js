@@ -134,7 +134,8 @@ window.additionalSale = [
     "code": "BLESK3",
     "name": "Předinstalace pro hráče",
     "price": "649",
-    "pairText": "BLESK3"
+    "pairText": "BLESK3",
+    "type": "checkbox"
   },
   {
     "code": "SERVIS006",
