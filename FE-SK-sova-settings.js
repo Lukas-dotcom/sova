@@ -1958,7 +1958,7 @@ window.shippingHideRules = [
   },
   {
     "shippingIds": [
-      148,
+      172,
       154
     ],
     "exactCodes": [
