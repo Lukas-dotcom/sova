@@ -2012,7 +2012,7 @@ window.shippingHideRules = [
   },
   {
     "shippingIds": [
-      160,
+      208,
       196
     ],
     "exactCodes": [
