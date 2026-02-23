@@ -112,7 +112,7 @@ window.additionalSale = [
   {
     "code": "ZARSK120DO140R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 14,
+    "price": "€14,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >120) AND (productPriceWithVat <=140) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -120,7 +120,7 @@ window.additionalSale = [
   {
     "code": "ZARSK140DO160R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 16,
+    "price": "€16,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >140) AND (productPriceWithVat <=160) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -128,7 +128,7 @@ window.additionalSale = [
   {
     "code": "ZARSK160DO180R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 18,
+    "price": "€18,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >160) AND (productPriceWithVat <=180) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -136,7 +136,7 @@ window.additionalSale = [
   {
     "code": "ZARSK180DO200R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 20,
+    "price": "€20,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >180) AND (productPriceWithVat <=200) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -144,7 +144,7 @@ window.additionalSale = [
   {
     "code": "ZARSK200DO220R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 22,
+    "price": "€22,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >200) AND (productPriceWithVat <=220) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -152,7 +152,7 @@ window.additionalSale = [
   {
     "code": "ZARSK220DO240R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 24,
+    "price": "€24,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >220) AND (productPriceWithVat <=240) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -160,7 +160,7 @@ window.additionalSale = [
   {
     "code": "ZARSK240DO260R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 26,
+    "price": "€26,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >240) AND (productPriceWithVat <=260) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -168,7 +168,7 @@ window.additionalSale = [
   {
     "code": "ZARSK260DO280R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 28,
+    "price": "€28,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >260) AND (productPriceWithVat <=280) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -176,7 +176,7 @@ window.additionalSale = [
   {
     "code": "ZARSK280DO300R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 30,
+    "price": "€30,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >280) AND (productPriceWithVat <=300) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -184,7 +184,7 @@ window.additionalSale = [
   {
     "code": "ZARSK300DO320R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 32,
+    "price": "€32,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >300) AND (productPriceWithVat <=320) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -192,7 +192,7 @@ window.additionalSale = [
   {
     "code": "ZARSK320DO340R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 34,
+    "price": "€34,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >320) AND (productPriceWithVat <=340) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -200,7 +200,7 @@ window.additionalSale = [
   {
     "code": "ZARSK340DO360R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 36,
+    "price": "€36,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >340) AND (productPriceWithVat <=360) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -208,7 +208,7 @@ window.additionalSale = [
   {
     "code": "ZARSK360DO380R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 38,
+    "price": "€38,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >360) AND (productPriceWithVat <=380) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -216,7 +216,7 @@ window.additionalSale = [
   {
     "code": "ZARSK380DO400R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 40,
+    "price": "€40,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >380) AND (productPriceWithVat <=400) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -224,7 +224,7 @@ window.additionalSale = [
   {
     "code": "ZARSK400DO440R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 44,
+    "price": "€44,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >400) AND (productPriceWithVat <=440) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -232,7 +232,7 @@ window.additionalSale = [
   {
     "code": "ZARSK440DO480R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 48,
+    "price": "€48,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >440) AND (productPriceWithVat <=480) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -240,7 +240,7 @@ window.additionalSale = [
   {
     "code": "ZARSK480DO520R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 52,
+    "price": "€52,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >480) AND (productPriceWithVat <=520) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -248,7 +248,7 @@ window.additionalSale = [
   {
     "code": "ZARSK520DO560R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 56,
+    "price": "€56,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >520) AND (productPriceWithVat <=560) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -256,7 +256,7 @@ window.additionalSale = [
   {
     "code": "ZARSK560DO600R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 60,
+    "price": "€60,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >560) AND (productPriceWithVat <=600) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -264,7 +264,7 @@ window.additionalSale = [
   {
     "code": "ZARSK600DO640R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 64,
+    "price": "€64,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >600) AND (productPriceWithVat <=640) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -272,7 +272,7 @@ window.additionalSale = [
   {
     "code": "ZARSK640DO680R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 68,
+    "price": "€68,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >640) AND (productPriceWithVat <=680) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -280,7 +280,7 @@ window.additionalSale = [
   {
     "code": "ZARSK680DO720R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 72,
+    "price": "€72,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >680) AND (productPriceWithVat <=720) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -288,7 +288,7 @@ window.additionalSale = [
   {
     "code": "ZARSK720DO760R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 76,
+    "price": "€76,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >720) AND (productPriceWithVat <=760) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -296,7 +296,7 @@ window.additionalSale = [
   {
     "code": "ZARSK760DO800R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 80,
+    "price": "€80,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >760) AND (productPriceWithVat <=800) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -304,7 +304,7 @@ window.additionalSale = [
   {
     "code": "ZARSK800DO840R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 84,
+    "price": "€84,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >800) AND (productPriceWithVat <=840) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -312,7 +312,7 @@ window.additionalSale = [
   {
     "code": "ZARSK840DO880R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 88,
+    "price": "€88,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >840) AND (productPriceWithVat <=880) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -320,7 +320,7 @@ window.additionalSale = [
   {
     "code": "ZARSK880DO920R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 92,
+    "price": "€92,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >880) AND (productPriceWithVat <=920) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -328,7 +328,7 @@ window.additionalSale = [
   {
     "code": "ZARSK920DO960R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 96,
+    "price": "€96,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >920) AND (productPriceWithVat <=960) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -336,7 +336,7 @@ window.additionalSale = [
   {
     "code": "ZARSK960DO1000R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 100,
+    "price": "€100,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >960) AND (productPriceWithVat <=1000) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -344,7 +344,7 @@ window.additionalSale = [
   {
     "code": "ZARSK1000DO1040R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 104,
+    "price": "€104,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >1000) AND (productPriceWithVat <=1040) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -352,7 +352,7 @@ window.additionalSale = [
   {
     "code": "ZARSK1040DO1080R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 108,
+    "price": "€108,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >1040) AND (productPriceWithVat <=1080) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -360,7 +360,7 @@ window.additionalSale = [
   {
     "code": "ZARSK1080DO1120R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 112,
+    "price": "€112,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >1080) AND (productPriceWithVat <=1120) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -368,7 +368,7 @@ window.additionalSale = [
   {
     "code": "ZARSK1120DO1160R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 116,
+    "price": "€116,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >1120) AND (productPriceWithVat <=1160) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -376,7 +376,7 @@ window.additionalSale = [
   {
     "code": "ZARSK1160DO1200R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 120,
+    "price": "€120,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >1160) AND (productPriceWithVat <=1200) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -384,7 +384,7 @@ window.additionalSale = [
   {
     "code": "ZARSK1200DO1280R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 128,
+    "price": "€128,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >1200) AND (productPriceWithVat <=1280) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -392,7 +392,7 @@ window.additionalSale = [
   {
     "code": "ZARSK1280DO1360R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 136,
+    "price": "€136,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >1280) AND (productPriceWithVat <=1360) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -400,7 +400,7 @@ window.additionalSale = [
   {
     "code": "ZARSK1360DO1440R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 144,
+    "price": "€144,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >1360) AND (productPriceWithVat <=1440) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -408,7 +408,7 @@ window.additionalSale = [
   {
     "code": "ZARSK1440DO1520R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 152,
+    "price": "€152,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >1440) AND (productPriceWithVat <=1520) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -416,7 +416,7 @@ window.additionalSale = [
   {
     "code": "ZARSK1520DO1600R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 160,
+    "price": "€160,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >1520) AND (productPriceWithVat <=1600) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -424,7 +424,7 @@ window.additionalSale = [
   {
     "code": "ZARSK1600DO1680R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 168,
+    "price": "€168,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >1600) AND (productPriceWithVat <=1680) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -432,7 +432,7 @@ window.additionalSale = [
   {
     "code": "ZARSK1680DO1760R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 176,
+    "price": "€176,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >1680) AND (productPriceWithVat <=1760) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -440,7 +440,7 @@ window.additionalSale = [
   {
     "code": "ZARSK1760DO1840R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 184,
+    "price": "€184,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >1760) AND (productPriceWithVat <=1840) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -448,7 +448,7 @@ window.additionalSale = [
   {
     "code": "ZARSK1840DO1920R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 192,
+    "price": "€192,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >1840) AND (productPriceWithVat <=1920) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -456,7 +456,7 @@ window.additionalSale = [
   {
     "code": "ZARSK1920DO2000R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 200,
+    "price": "€200,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >1920) AND (productPriceWithVat <=2000) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -464,7 +464,7 @@ window.additionalSale = [
   {
     "code": "ZARSK2000DO2080R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 208,
+    "price": "€208,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >2000) AND (productPriceWithVat <=2080) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -472,7 +472,7 @@ window.additionalSale = [
   {
     "code": "ZARSK2080DO2160R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 216,
+    "price": "€216,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >2080) AND (productPriceWithVat <=2160) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -480,7 +480,7 @@ window.additionalSale = [
   {
     "code": "ZARSK2160DO2240R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 224,
+    "price": "€224,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >2160) AND (productPriceWithVat <=2240) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -488,7 +488,7 @@ window.additionalSale = [
   {
     "code": "ZARSK2240DO2320R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 232,
+    "price": "€232,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >2240) AND (productPriceWithVat <=2320) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -496,7 +496,7 @@ window.additionalSale = [
   {
     "code": "ZARSK2320DO2400R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 240,
+    "price": "€240,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >2320) AND (productPriceWithVat <=2400) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -504,7 +504,7 @@ window.additionalSale = [
   {
     "code": "ZARSK2400DO2480R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 248,
+    "price": "€248,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >2400) AND (productPriceWithVat <=2480) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -512,7 +512,7 @@ window.additionalSale = [
   {
     "code": "ZARSK2480DO2560R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 256,
+    "price": "€256,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >2480) AND (productPriceWithVat <=2560) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -520,7 +520,7 @@ window.additionalSale = [
   {
     "code": "ZARSK2560DO2640R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 264,
+    "price": "€264,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >2560) AND (productPriceWithVat <=2640) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -528,7 +528,7 @@ window.additionalSale = [
   {
     "code": "ZARSK2640DO2720R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 272,
+    "price": "€272,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >2640) AND (productPriceWithVat <=2720) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -536,7 +536,7 @@ window.additionalSale = [
   {
     "code": "ZARSK2720DO2800R1",
     "name": "Predĺženie záruky +1 rok",
-    "price": 280,
+    "price": "€280,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >2720) AND (productPriceWithVat <=2800) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -544,7 +544,7 @@ window.additionalSale = [
   {
     "code": "ZARSK80DO100R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 15,
+    "price": "€15,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >80) AND (productPriceWithVat <=100) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -552,7 +552,7 @@ window.additionalSale = [
   {
     "code": "ZARSK100DO120R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 18,
+    "price": "€18,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >100) AND (productPriceWithVat <=120) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -560,7 +560,7 @@ window.additionalSale = [
   {
     "code": "ZARSK120DO140R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 21,
+    "price": "€21,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >120) AND (productPriceWithVat <=140) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -568,7 +568,7 @@ window.additionalSale = [
   {
     "code": "ZARSK140DO160R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 24,
+    "price": "€24,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >140) AND (productPriceWithVat <=160) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -576,7 +576,7 @@ window.additionalSale = [
   {
     "code": "ZARSK160DO180R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 27,
+    "price": "€27,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >160) AND (productPriceWithVat <=180) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -584,7 +584,7 @@ window.additionalSale = [
   {
     "code": "ZARSK180DO200R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 30,
+    "price": "€30,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >180) AND (productPriceWithVat <=200) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -592,7 +592,7 @@ window.additionalSale = [
   {
     "code": "ZARSK200DO220R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 33,
+    "price": "€33,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >200) AND (productPriceWithVat <=220) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -600,7 +600,7 @@ window.additionalSale = [
   {
     "code": "ZARSK220DO240R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 36,
+    "price": "€36,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >220) AND (productPriceWithVat <=240) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -608,7 +608,7 @@ window.additionalSale = [
   {
     "code": "ZARSK240DO260R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 39,
+    "price": "€39,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >240) AND (productPriceWithVat <=260) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -616,7 +616,7 @@ window.additionalSale = [
   {
     "code": "ZARSK260DO280R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 42,
+    "price": "€42,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >260) AND (productPriceWithVat <=280) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -624,7 +624,7 @@ window.additionalSale = [
   {
     "code": "ZARSK280DO300R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 45,
+    "price": "€45,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >280) AND (productPriceWithVat <=300) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -632,7 +632,7 @@ window.additionalSale = [
   {
     "code": "ZARSK300DO320R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 48,
+    "price": "€48,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >300) AND (productPriceWithVat <=320) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -640,7 +640,7 @@ window.additionalSale = [
   {
     "code": "ZARSK320DO340R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 51,
+    "price": "€51,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >320) AND (productPriceWithVat <=340) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -648,7 +648,7 @@ window.additionalSale = [
   {
     "code": "ZARSK340DO360R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 54,
+    "price": "€54,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >340) AND (productPriceWithVat <=360) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -656,7 +656,7 @@ window.additionalSale = [
   {
     "code": "ZARSK360DO380R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 57,
+    "price": "€57,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >360) AND (productPriceWithVat <=380) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -664,7 +664,7 @@ window.additionalSale = [
   {
     "code": "ZARSK380DO400R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 60,
+    "price": "€60,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >380) AND (productPriceWithVat <=400) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -672,7 +672,7 @@ window.additionalSale = [
   {
     "code": "ZARSK400DO440R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 66,
+    "price": "€66,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >400) AND (productPriceWithVat <=440) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -680,7 +680,7 @@ window.additionalSale = [
   {
     "code": "ZARSK440DO480R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 72,
+    "price": "€72,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >440) AND (productPriceWithVat <=480) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -688,7 +688,7 @@ window.additionalSale = [
   {
     "code": "ZARSK480DO520R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 78,
+    "price": "€78,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >480) AND (productPriceWithVat <=520) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -696,7 +696,7 @@ window.additionalSale = [
   {
     "code": "ZARSK520DO560R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 84,
+    "price": "€84,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >520) AND (productPriceWithVat <=560) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -704,7 +704,7 @@ window.additionalSale = [
   {
     "code": "ZARSK560DO600R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 90,
+    "price": "€90,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >560) AND (productPriceWithVat <=600) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -712,7 +712,7 @@ window.additionalSale = [
   {
     "code": "ZARSK600DO640R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 96,
+    "price": "€96,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >600) AND (productPriceWithVat <=640) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -720,7 +720,7 @@ window.additionalSale = [
   {
     "code": "ZARSK640DO680R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 102,
+    "price": "€102,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >640) AND (productPriceWithVat <=680) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -728,7 +728,7 @@ window.additionalSale = [
   {
     "code": "ZARSK680DO720R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 108,
+    "price": "€108,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >680) AND (productPriceWithVat <=720) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -736,7 +736,7 @@ window.additionalSale = [
   {
     "code": "ZARSK720DO760R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 114,
+    "price": "€114,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >720) AND (productPriceWithVat <=760) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -744,7 +744,7 @@ window.additionalSale = [
   {
     "code": "ZARSK760DO800R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 120,
+    "price": "€120,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >760) AND (productPriceWithVat <=800) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -752,7 +752,7 @@ window.additionalSale = [
   {
     "code": "ZARSK800DO840R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 126,
+    "price": "€126,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >800) AND (productPriceWithVat <=840) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -760,7 +760,7 @@ window.additionalSale = [
   {
     "code": "ZARSK840DO880R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 132,
+    "price": "€132,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >840) AND (productPriceWithVat <=880) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -768,7 +768,7 @@ window.additionalSale = [
   {
     "code": "ZARSK880DO920R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 138,
+    "price": "€138,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >880) AND (productPriceWithVat <=920) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -776,7 +776,7 @@ window.additionalSale = [
   {
     "code": "ZARSK920DO960R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 144,
+    "price": "€144,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >920) AND (productPriceWithVat <=960) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -784,7 +784,7 @@ window.additionalSale = [
   {
     "code": "ZARSK960DO1000R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 150,
+    "price": "€150,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >960) AND (productPriceWithVat <=1000) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -792,7 +792,7 @@ window.additionalSale = [
   {
     "code": "ZARSK1000DO1040R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 156,
+    "price": "€156,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >1000) AND (productPriceWithVat <=1040) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -800,7 +800,7 @@ window.additionalSale = [
   {
     "code": "ZARSK1040DO1080R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 162,
+    "price": "€162,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >1040) AND (productPriceWithVat <=1080) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -808,7 +808,7 @@ window.additionalSale = [
   {
     "code": "ZARSK1080DO1120R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 168,
+    "price": "€168,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >1080) AND (productPriceWithVat <=1120) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -816,7 +816,7 @@ window.additionalSale = [
   {
     "code": "ZARSK1120DO1160R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 174,
+    "price": "€174,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >1120) AND (productPriceWithVat <=1160) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -824,7 +824,7 @@ window.additionalSale = [
   {
     "code": "ZARSK1160DO1200R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 180,
+    "price": "€180,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >1160) AND (productPriceWithVat <=1200) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -832,7 +832,7 @@ window.additionalSale = [
   {
     "code": "ZARSK1200DO1280R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 192,
+    "price": "€192,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >1200) AND (productPriceWithVat <=1280) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -840,7 +840,7 @@ window.additionalSale = [
   {
     "code": "ZARSK1280DO1360R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 204,
+    "price": "€204,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >1280) AND (productPriceWithVat <=1360) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -848,7 +848,7 @@ window.additionalSale = [
   {
     "code": "ZARSK1360DO1440R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 216,
+    "price": "€216,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >1360) AND (productPriceWithVat <=1440) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -856,7 +856,7 @@ window.additionalSale = [
   {
     "code": "ZARSK1440DO1520R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 228,
+    "price": "€228,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >1440) AND (productPriceWithVat <=1520) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -864,7 +864,7 @@ window.additionalSale = [
   {
     "code": "ZARSK1520DO1600R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 240,
+    "price": "€240,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >1520) AND (productPriceWithVat <=1600) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -872,7 +872,7 @@ window.additionalSale = [
   {
     "code": "ZARSK1600DO1680R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 252,
+    "price": "€252,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >1600) AND (productPriceWithVat <=1680) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -880,7 +880,7 @@ window.additionalSale = [
   {
     "code": "ZARSK1680DO1760R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 264,
+    "price": "€264,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >1680) AND (productPriceWithVat <=1760) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -888,7 +888,7 @@ window.additionalSale = [
   {
     "code": "ZARSK1760DO1840R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 276,
+    "price": "€276,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >1760) AND (productPriceWithVat <=1840) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -896,7 +896,7 @@ window.additionalSale = [
   {
     "code": "ZARSK1840DO1920R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 288,
+    "price": "€288,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >1840) AND (productPriceWithVat <=1920) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -904,7 +904,7 @@ window.additionalSale = [
   {
     "code": "ZARSK1920DO2000R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 300,
+    "price": "€300,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >1920) AND (productPriceWithVat <=2000) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -912,7 +912,7 @@ window.additionalSale = [
   {
     "code": "ZARSK2000DO2080R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 312,
+    "price": "€312,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >2000) AND (productPriceWithVat <=2080) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -920,7 +920,7 @@ window.additionalSale = [
   {
     "code": "ZARSK2080DO2160R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 324,
+    "price": "€324,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >2080) AND (productPriceWithVat <=2160) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -928,7 +928,7 @@ window.additionalSale = [
   {
     "code": "ZARSK2160DO2240R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 336,
+    "price": "€336,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >2160) AND (productPriceWithVat <=2240) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -936,7 +936,7 @@ window.additionalSale = [
   {
     "code": "ZARSK2240DO2320R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 348,
+    "price": "€348,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >2240) AND (productPriceWithVat <=2320) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -944,7 +944,7 @@ window.additionalSale = [
   {
     "code": "ZARSK2320DO2400R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 360,
+    "price": "€360,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >2320) AND (productPriceWithVat <=2400) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -952,7 +952,7 @@ window.additionalSale = [
   {
     "code": "ZARSK2400DO2480R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 372,
+    "price": "€372,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >2400) AND (productPriceWithVat <=2480) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -960,7 +960,7 @@ window.additionalSale = [
   {
     "code": "ZARSK2480DO2560R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 384,
+    "price": "€384,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >2480) AND (productPriceWithVat <=2560) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -968,7 +968,7 @@ window.additionalSale = [
   {
     "code": "ZARSK2560DO2640R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 396,
+    "price": "€396,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >2560) AND (productPriceWithVat <=2640) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -976,7 +976,7 @@ window.additionalSale = [
   {
     "code": "ZARSK2640DO2720R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 408,
+    "price": "€408,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >2640) AND (productPriceWithVat <=2720) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
@@ -984,7 +984,7 @@ window.additionalSale = [
   {
     "code": "ZARSK2720DO2800R2",
     "name": "Predĺženie záruky +2 roky",
-    "price": 420,
+    "price": "€420,00",
     "pairText": "zaruka",
     "type": "checkbox",
     "SOVAL": "(category = \"Notebooky\" OR category = \"Počítače\" OR category=\"Telefóny, mobily\" OR category=\"Tablety\" OR category=\"Monitory\") AND (productPriceWithVat >2720) AND (productPriceWithVat <=2800) AND (ALL(zarVylouceneCastiNazvu, NOT CONTAINS(productName, zarVylouceneCastiNazvu)))"
