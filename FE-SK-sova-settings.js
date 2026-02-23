@@ -1931,7 +1931,7 @@ window.expedice = {
 window.shippingHideRules = [
   {
     "shippingIds": [
-      145,
+      169,
       151
     ],
     "exactCodes": [
