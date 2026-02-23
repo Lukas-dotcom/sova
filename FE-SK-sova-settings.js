@@ -2057,8 +2057,8 @@ window.navstivene = {
 window.dvojbalikyNechat = {
   "dvojbaliky": true,
   "maloobchod": [
-    121,
-    148
+    166,
+    172
   ],
   "velkoobchod": [
     142,
