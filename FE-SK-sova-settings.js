@@ -2061,8 +2061,8 @@ window.dvojbalikyNechat = {
     172
   ],
   "velkoobchod": [
-    142,
-    154
+    190,
+    184
   ]
 };
 
