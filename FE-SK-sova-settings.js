@@ -2013,7 +2013,7 @@ window.shippingHideRules = [
   {
     "shippingIds": [
       208,
-      196
+      217
     ],
     "exactCodes": [
       "KOL0001",
