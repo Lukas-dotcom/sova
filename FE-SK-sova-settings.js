@@ -1985,7 +1985,7 @@ window.shippingHideRules = [
   },
   {
     "shippingIds": [
-      127,
+      175,
       133
     ],
     "exactCodes": [
