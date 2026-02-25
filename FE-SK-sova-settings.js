@@ -1087,7 +1087,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0022",
-    "name": "#ERROR!",
+    "name": "=+ 2GB RAM",
     "price": "€22,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
@@ -1095,7 +1095,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0024",
-    "name": "#ERROR!",
+    "name": "=+ 4GB RAM",
     "price": "€36,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
@@ -1103,7 +1103,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0026",
-    "name": "#ERROR!",
+    "name": "=+ 8GB RAM",
     "price": "€65,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
@@ -1111,7 +1111,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0020",
-    "name": "#ERROR!",
+    "name": "=+ 16GB RAM",
     "price": "€102,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
@@ -1119,7 +1119,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0025",
-    "name": "#ERROR!",
+    "name": "=+ 4GB RAM",
     "price": "€57,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
@@ -1127,7 +1127,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0027",
-    "name": "#ERROR!",
+    "name": "=+ 8GB RAM",
     "price": "€81,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
@@ -1135,7 +1135,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0021",
-    "name": "#ERROR!",
+    "name": "=+ 16GB RAM",
     "price": "€142,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
@@ -1143,7 +1143,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0034",
-    "name": "#ERROR!",
+    "name": "=+ 8GB RAM",
     "price": "€122,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
@@ -1151,7 +1151,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0036",
-    "name": "#ERROR!",
+    "name": "=+ 32GB RAM",
     "price": "€408,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
@@ -1159,7 +1159,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0001",
-    "name": "#ERROR!",
+    "name": "=+ 2GB RAM",
     "price": "€22,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
@@ -1167,7 +1167,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0002",
-    "name": "#ERROR!",
+    "name": "=+ 4GB RAM",
     "price": "€36,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
@@ -1175,7 +1175,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0003",
-    "name": "#ERROR!",
+    "name": "=+ 8GB RAM",
     "price": "€44,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
@@ -1183,7 +1183,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0004",
-    "name": "#ERROR!",
+    "name": "=+ 16GB RAM",
     "price": "€69,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
@@ -1191,7 +1191,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0006",
-    "name": "#ERROR!",
+    "name": "=+ 4GB RAM",
     "price": "€73,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
@@ -1199,7 +1199,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0007",
-    "name": "#ERROR!",
+    "name": "=+ 8GB RAM",
     "price": "€81,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
@@ -1207,7 +1207,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0008",
-    "name": "#ERROR!",
+    "name": "=+ 16GB RAM",
     "price": "€142,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
@@ -1215,7 +1215,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0031",
-    "name": "#ERROR!",
+    "name": "=+ 8GB RAM",
     "price": "€122,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
@@ -1223,7 +1223,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0032",
-    "name": "#ERROR!",
+    "name": "=+ 16GB RAM",
     "price": "€204,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
@@ -1231,7 +1231,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0033",
-    "name": "#ERROR!",
+    "name": "=+ 32GB RAM",
     "price": "€408,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
