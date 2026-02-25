@@ -1041,7 +1041,7 @@ window.additionalSale = [
     "code": "LICSK0005",
     "name": "Office 2019 Pro Plus",
     "price": "€32,90",
-    "pairText": "LIC0005",
+    "pairText": "LICSK0005",
     "type": "checkbox",
     "SOVAL": "((( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND ( CONTAINS(parametrOperacnysystem, \"Windows\") OR CONTAINS(parametrSystem, \"WINDOWS\") )))"
   },
@@ -1049,7 +1049,7 @@ window.additionalSale = [
     "code": "LICSK0004",
     "name": "Office 2021 Pro Plus",
     "price": "€52,90",
-    "pairText": "LIC0004",
+    "pairText": "LICSK0004 ",
     "type": "checkbox",
     "SOVAL": "((( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND ( CONTAINS(parametrOperacnysystem, \"Windows\") OR CONTAINS(parametrSystem, \"WINDOWS\") )))"
   },
