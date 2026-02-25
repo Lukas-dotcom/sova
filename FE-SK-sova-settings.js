@@ -1087,7 +1087,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0022",
-    "name": "#ERROR!",
+    "name": "=+ 2GB RAM",
     "price": "€22,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
@@ -1095,7 +1095,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0024",
-    "name": "#ERROR!",
+    "name": "=+ 4GB RAM",
     "price": "€36,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
