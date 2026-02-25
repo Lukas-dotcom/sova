@@ -1095,7 +1095,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0024",
-    "name": "=+ 4GB RAM",
+    "name": "#ERROR!",
     "price": "€36,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
