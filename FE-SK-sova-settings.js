@@ -2349,7 +2349,10 @@ window.navstivene = {
 
 window.dvojbalikyNechat = {
   "dvojbaliky": true,
-  "maloobchod": "[121,148] ",
+  "maloobchod": [
+    121,
+    148
+  ],
   "velkoobchod": [
     142,
     154
