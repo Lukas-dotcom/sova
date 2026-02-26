@@ -1048,7 +1048,7 @@ window.additionalSale = [
     "price": "€32,90",
     "pairText": "LIC0005",
     "type": "checkbox",
-    "SOVAL": "((( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND ( CONTAINS(parametrOperacnysystem, \"Windows\") OR CONTAINS(parametrSystem, \"WINDOWS\") )))"
+    "SOVAL": "(neco =\"tohleSkryva\" AND (( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND ( CONTAINS(parametrOperacnysystem, \"Windows\") OR CONTAINS(parametrSystem, \"WINDOWS\") )))"
   },
   {
     "code": "LICSK0004",
@@ -1056,7 +1056,7 @@ window.additionalSale = [
     "price": "€52,90",
     "pairText": "LIC0004",
     "type": "checkbox",
-    "SOVAL": "((( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND ( CONTAINS(parametrOperacnysystem, \"Windows\") OR CONTAINS(parametrSystem, \"WINDOWS\") )))"
+    "SOVAL": "(neco =\"tohleSkryva\" AND (( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND ( CONTAINS(parametrOperacnysystem, \"Windows\") OR CONTAINS(parametrSystem, \"WINDOWS\") )))"
   },
   {
     "code": "MAR0012",
