@@ -2224,8 +2224,8 @@ window.expedice = {
 window.shippingHideRules = [
   {
     "shippingIds": [
-      169,
-      187
+      145,
+      151
     ],
     "exactCodes": [
       "KOL0001",
@@ -2251,8 +2251,8 @@ window.shippingHideRules = [
   },
   {
     "shippingIds": [
-      172,
-      190
+      148,
+      154
     ],
     "exactCodes": [
       "KOL0001",
@@ -2278,8 +2278,8 @@ window.shippingHideRules = [
   },
   {
     "shippingIds": [
-      211,
-      214
+      127,
+      133
     ],
     "exactCodes": [
       "KOL0001",
@@ -2305,8 +2305,8 @@ window.shippingHideRules = [
   },
   {
     "shippingIds": [
-      208,
-      217
+      139,
+      136
     ],
     "exactCodes": [
       "KOL0001",
