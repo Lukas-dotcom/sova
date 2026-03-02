@@ -1436,12 +1436,12 @@
         "condition": "%% ANY(kompletace,  (count ($kompletace, Kod = $Kod) > 1) AND (Kod contains \"NTB\" OR Kod contains \"POC\" OR Kod contains \"AIO\" OR Kod contains \"LCD\" OR Kod startsWith \"T\"))%%"
       },
       {
-        "alert": "<div style=\"font-family: Arial, sans-serif; line-height: 1.4;\">\r\n  <span style=\"font-size: 28px; margin-right: 8px;\">☠️</span>\r\n  <span>\r\n    Pozor, jedná se o AUKRO objednávku, před vrácením platby\r\n    <a href=\"https://aukro.cz/moje-aukro/muj-prodej/transakce?\" target=\"_blank\" rel=\"noopener noreferrer\">ZDE ověř</a>,\r\n    jestli vrací Aukro nebo my\r\n  </span>\r\n</div>",
+        "alert": "<div style=\"font-family: Arial, sans-serif; line-height: 1.4;\">\n  <span style=\"font-size: 28px; margin-right: 8px;\">☠️</span>\n  <span>\n    Pozor, jedná se o AUKRO objednávku, před vrácením platby\n    <a href=\"https://aukro.cz/moje-aukro/muj-prodej/transakce?\" target=\"_blank\" rel=\"noopener noreferrer\">ZDE ověř</a>,\n    jestli vrací Aukro nebo my\n  </span>\n</div>",
         "position": "aboveContact",
         "order": null,
         "color": "red",
         "backgroundColor": "black",
-        "condition": null
+        "condition": "%% (userFullName=\"Petr Kropáček\" OR userFullName=\"Lukáš Tejral\" OR userFullName=\"Jan Kalmus\" OR userFullName=\"Tomáš Netopil\")  AND (shopRemark contains \"AUKRO\")%%"
       }
     ]
   },
