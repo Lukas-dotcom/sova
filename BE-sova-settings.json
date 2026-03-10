@@ -1319,7 +1319,7 @@
         "buttonName": "CMP objednávka",
         "color": "#00adab",
         "pageType": "objednavky-detail",
-        "position": "buttonsSecondHeaderLeft",
+        "position": "rightSticky ",
         "order": 4,
         "conditionsSOVAL": null,
         "href": "%%\"https://cmp.pocitarna.com/order/code/\"&orderCode&\"/\"%%",
