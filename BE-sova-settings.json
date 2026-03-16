@@ -29,7 +29,7 @@
         "htmlURL": "html/etl_monitory.html",
         "breadCrumb": "monitory",
         "position": "wholePage",
-        "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_monitory\"%%"
+        "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_monitory/\"%%"
       },
       {
         "htmlURL": "html/etl_notebooky.html",
