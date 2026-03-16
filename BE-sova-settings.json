@@ -23,7 +23,7 @@
         "htmlURL": "html/settingsETL.html",
         "breadCrumb": "SOVA ETL nastavení",
         "position": "wholePage",
-        "condSoval": "%%pageType=\"sova-etl\"%%"
+        "condSoval": "%%url=\"https://www.pocitarna.cz/admin/sova-etl/\"%%"
       },
       {
         "htmlURL": "html/etl_monitory.html",
