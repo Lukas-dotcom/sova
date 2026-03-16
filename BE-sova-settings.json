@@ -35,13 +35,13 @@
         "htmlURL": "html/etl_notebooky.html",
         "breadCrumb": "notebooky",
         "position": "wholePage",
-        "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_notebooky\"%%"
+        "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_notebooky/\"%%"
       },
       {
         "htmlURL": "html/etl_pocitace.html",
         "breadCrumb": "pocitace",
         "position": "wholePage",
-        "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_pocitace\"%%"
+        "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_pocitace/\"%%"
       },
       {
         "htmlURL": "html/etl_tablety.html",
