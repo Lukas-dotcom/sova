@@ -4,26 +4,65 @@
       "htmlURL",
       "breadCrumb",
       "position",
-      "condSoval"
+      "condSoval",
+      ""
     ],
     "rules": [
       {
         "htmlURL": "html/settingsBE.html",
         "breadCrumb": "SOVA Back-end nastavení ",
         "position": "wholePage",
-        "condSoval": "%%pageType=\"sova-back-end\"%%"
+        "condSoval": "%%pageType=\"sova-back-end\"%%",
+        "": null
       },
       {
         "htmlURL": "html/settingsFE.html",
         "breadCrumb": "SOVA Front-end nastavení ",
         "position": "wholePage",
-        "condSoval": "%%pageType=\"sova-font-end\"%%"
+        "condSoval": "%%pageType=\"sova-font-end\"%%",
+        "": null
       },
       {
         "htmlURL": "html/settingsETL.html",
         "breadCrumb": "SOVA ETL nastavení",
         "position": "wholePage",
-        "condSoval": "%%pageType=\"sova-etl\"%%"
+        "condSoval": "%%pageType=\"sova-etl\"%%",
+        "": null
+      },
+      {
+        "htmlURL": "etl_monitory",
+        "breadCrumb": "html/etl_monitory.html",
+        "position": "SOVA ETL nastavení",
+        "condSoval": "wholePage",
+        "": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_monitory\"%%"
+      },
+      {
+        "htmlURL": "etl_notebooky",
+        "breadCrumb": "html/etl_notebooky.html",
+        "position": "SOVA ETL nastavení",
+        "condSoval": "wholePage",
+        "": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_notebooky\"%%"
+      },
+      {
+        "htmlURL": "etl_pocitace",
+        "breadCrumb": "html/etl_pocitace.html",
+        "position": "SOVA ETL nastavení",
+        "condSoval": "wholePage",
+        "": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_pocitace\"%%"
+      },
+      {
+        "htmlURL": "etl_tablety",
+        "breadCrumb": "html/etl_tablety.html",
+        "position": "SOVA ETL nastavení",
+        "condSoval": "wholePage",
+        "": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_tablety\"%%"
+      },
+      {
+        "htmlURL": "etl_telefony",
+        "breadCrumb": "html/etl_telefony.html",
+        "position": "SOVA ETL nastavení",
+        "condSoval": "wholePage",
+        "": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_telefony\"%%"
       }
     ]
   },
