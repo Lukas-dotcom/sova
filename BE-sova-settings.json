@@ -51,7 +51,7 @@
       },
       {
         "htmlURL": "html/etl_telefony.html",
-        "breadCrumb": "SOVA ETL nastavení",
+        "breadCrumb": "telefony",
         "position": "wholePage",
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_telefony\"%%"
       }
