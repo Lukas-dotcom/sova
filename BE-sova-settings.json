@@ -27,13 +27,13 @@
       },
       {
         "htmlURL": "html/etl_monitory.html",
-        "breadCrumb": "SOVA ETL nastavení",
+        "breadCrumb": "monitory",
         "position": "wholePage",
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_monitory\"%%"
       },
       {
         "htmlURL": "html/etl_notebooky.html",
-        "breadCrumb": "SOVA ETL nastavení",
+        "breadCrumb": "notebooky",
         "position": "wholePage",
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_notebooky\"%%"
       },
