@@ -39,13 +39,13 @@
       },
       {
         "htmlURL": "html/etl_pocitace.html",
-        "breadCrumb": "SOVA ETL nastavení",
+        "breadCrumb": "pocitace",
         "position": "wholePage",
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_pocitace\"%%"
       },
       {
         "htmlURL": "html/etl_tablety.html",
-        "breadCrumb": "SOVA ETL nastavení",
+        "breadCrumb": "tablety",
         "position": "wholePage",
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_tablety\"%%"
       },
