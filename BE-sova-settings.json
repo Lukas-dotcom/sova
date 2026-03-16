@@ -41,13 +41,13 @@
         "htmlURL": "html/etl_pocitace.html",
         "breadCrumb": "pocitace",
         "position": "wholePage",
-        "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_pocitace/\"%%"
+        "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_pocitace\"%%"
       },
       {
         "htmlURL": "html/etl_tablety.html",
         "breadCrumb": "tablety",
         "position": "wholePage",
-        "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_tablety/\"%%"
+        "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_tablety\"%%"
       },
       {
         "htmlURL": "html/etl_telefony.html",
