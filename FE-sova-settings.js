@@ -1291,7 +1291,7 @@ window.additionalSale = [
     "SOVAL": "(currency=\"EUR\" AND category = \"Počítače\" AND parametrWifi !=\"ANO\")"
   },
   {
-    "code": "NET0033",
+    "code": "NET0036 ",
     "name": "Přidat bluetooth",
     "price": "€6,1",
     "pairText": "bluetooth",
