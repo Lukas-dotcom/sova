@@ -174,12 +174,12 @@
 
   .fvPreinstallJumpWrap {
     text-align: start;
-    margin: 0px 0 12px;
+    margin: 0px 0 25px;
   }
 
   .fvPreinstallJumpBtn {
     display: inline-block;
-    padding: 8px 12px;
+    padding: 4px 12px;
     border-radius: 5px;
     background: var(--color-primary);
     color: white !important;
