@@ -134,7 +134,7 @@ window.additionalSale = [
     "code": "BLESK3",
     "name": "Předinstalace pro hráče",
     "price": "699 Kč",
-    "pairText": "BLESK3",
+    "pairText": "BLESK2",
     "type": "checkbox",
     "SOVAL": "(currency=\"CZK\" AND (parametrVyuziti CONTAINS \"Herní\") AND (NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnisystem, \"Chrome\"))) AND (( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND (parametroptdisableupgradeblesk = \"false\") AND (CONTAINS(parametrOperacnisystem, \"Windows\") OR CONTAINS(parametrSystem, \"WINDOWS\")) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") AND (parametrKapacitadisku = \"16 GB\" OR parametrKapacitadisku = \"32 GB\") )))"
   },
@@ -1318,7 +1318,7 @@ window.additionalSale = [
     "code": "BLESK3",
     "name": "Předinstalace pro hráče",
     "price": "€28,50",
-    "pairText": "BLESK3",
+    "pairText": "BLESK2",
     "type": "checkbox",
     "SOVAL": "(currency=\"EUR\" AND (parametrVyuziti CONTAINS \"Herní\") AND (NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnisystem, \"Chrome\"))) AND (( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND (parametroptdisableupgradeblesk = \"false\") AND (CONTAINS(parametrOperacnisystem, \"Windows\") OR CONTAINS(parametrSystem, \"WINDOWS\")) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") AND (parametrKapacitadisku = \"16 GB\" OR parametrKapacitadisku = \"32 GB\") )))"
   },
