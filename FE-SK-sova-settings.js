@@ -1029,7 +1029,7 @@ window.additionalSale = [
   {
     "code": "BLESK3",
     "name": "Predinštalácia pre hráčov",
-    "price": "€26,35",
+    "price": "€28,50",
     "pairText": "BLESK3",
     "type": "checkbox",
     "SOVAL": "((parametrVyuzitie CONTAINS \"Herné\") AND (NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\"))) AND (( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND (parametroptdisableupgradeblesk = \"false\") AND (CONTAINS(parametrOperacnysystem, \"Windows\") OR CONTAINS(parametrSystem, \"WINDOWS\")) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") AND (parametrKapacitadisku = \"16 GB\" OR parametrKapacitadisku = \"32 GB\") )))"
