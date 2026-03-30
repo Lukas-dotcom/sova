@@ -203,3 +203,25 @@
     font-size:12.5px;
   }
 }
+
+  .fvPreinstallJumpWrap {
+    text-align: center;
+    margin: 18px 0 28px;
+  }
+
+  .fvPreinstallJumpBtn {
+    display: inline-block;
+    padding: 12px 22px;
+    border-radius: 12px;
+    background: var(--color-primary);
+    color: white !important;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background 0.2s ease;
+  }
+
+  .fvPreinstallJumpBtn:hover {
+    background: #004e4c;
+    color: white !important;
+    text-decoration: none;
+  }
