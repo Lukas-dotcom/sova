@@ -230,7 +230,7 @@
       {
         "enabled": true,
         "engine": null,
-        "mode": null,
+        "mode": "images",
         "queryTemplate": null,
         "openFor": null,
         "order": null
