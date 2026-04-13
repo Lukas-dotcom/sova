@@ -232,7 +232,7 @@
         "engine": "google",
         "mode": "images",
         "queryTemplate": "{{pairName}} {{color}}",
-        "openFor": "onlyEmpty ",
+        "openFor": "onlyEmpty",
         "order": 20
       }
     ]
