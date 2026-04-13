@@ -229,7 +229,7 @@
       },
       {
         "enabled": true,
-        "engine": null,
+        "engine": "google",
         "mode": "images",
         "queryTemplate": null,
         "openFor": null,
