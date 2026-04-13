@@ -223,17 +223,17 @@
         "enabled": true,
         "engine": "google",
         "mode": "all",
-        "queryTemplate": null,
-        "openFor": null,
-        "order": null
+        "queryTemplate": "{{pairName}} {{color}}",
+        "openFor": "onlyEmpty",
+        "order": 10
       },
       {
         "enabled": true,
         "engine": "google",
         "mode": "images",
-        "queryTemplate": null,
-        "openFor": null,
-        "order": null
+        "queryTemplate": "{{pairName}} {{color}}",
+        "openFor": "onlyEmpty",
+        "order": 20
       }
     ]
   },
