@@ -224,16 +224,16 @@
         "engine": "google",
         "mode": "all",
         "queryTemplate": "{{pairName}} {{color}}",
-        "openFor": "onlyEmpty",
-        "order": 10
+        "openFor": null,
+        "order": null
       },
       {
         "enabled": true,
         "engine": "google",
         "mode": "images",
         "queryTemplate": "{{pairName}} {{color}}",
-        "openFor": "onlyEmpty",
-        "order": 20
+        "openFor": null,
+        "order": null
       }
     ]
   },
