@@ -216,6 +216,14 @@
       {
         "schema": "xmlParser",
         "html": "<div APIhtmlGeneratorSchema=\"xmlParser\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+      },
+      {
+        "schema": "massArrayToMultipleColumns",
+        "html": null
+      },
+      {
+        "schema": "massMulticolumnToArray",
+        "html": null
       }
     ]
   },
