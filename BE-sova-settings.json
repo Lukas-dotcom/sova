@@ -209,6 +209,34 @@
       }
     ]
   },
+  "imageCollector": {
+    "columns": [
+      "enabled",
+      "engine",
+      "mode",
+      "queryTemplate",
+      "openFor",
+      "order"
+    ],
+    "rules": [
+      {
+        "enabled": true,
+        "engine": null,
+        "mode": null,
+        "queryTemplate": null,
+        "openFor": null,
+        "order": null
+      },
+      {
+        "enabled": true,
+        "engine": null,
+        "mode": null,
+        "queryTemplate": null,
+        "openFor": null,
+        "order": null
+      }
+    ]
+  },
   "shoptetElementHide": {
     "columns": [
       "selectorCss",
