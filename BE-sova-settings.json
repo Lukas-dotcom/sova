@@ -222,7 +222,7 @@
       {
         "enabled": true,
         "engine": "google",
-        "mode": null,
+        "mode": "all",
         "queryTemplate": null,
         "openFor": null,
         "order": null
