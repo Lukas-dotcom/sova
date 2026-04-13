@@ -219,11 +219,11 @@
       },
       {
         "schema": "massArrayToMultipleColumns",
-        "html": "<div APIhtmlGeneratorSchema=\"xmlParser\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+        "html": "<div APIhtmlGeneratorSchema=\"massArrayToMultipleColumns\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       },
       {
         "schema": "massMulticolumnToArray",
-        "html": "<div APIhtmlGeneratorSchema=\"xmlParser\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+        "html": "<div APIhtmlGeneratorSchema=\"massMulticolumnToArray\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       }
     ]
   },
