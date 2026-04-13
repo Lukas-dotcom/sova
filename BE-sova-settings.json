@@ -221,7 +221,7 @@
     "rules": [
       {
         "enabled": true,
-        "engine": null,
+        "engine": "google",
         "mode": null,
         "queryTemplate": null,
         "openFor": null,
