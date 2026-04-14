@@ -242,7 +242,7 @@
         "engine": "google",
         "mode": "all",
         "queryTemplate": "{{pairName}} {{color}}",
-        "openFor": "onlyEmpty ",
+        "openFor": "onlyEmpty",
         "order": 10
       }
     ]
