@@ -244,14 +244,6 @@
         "queryTemplate": "{{pairName}} {{color}}",
         "openFor": "onlyEmpty",
         "order": 10
-      },
-      {
-        "enabled": true,
-        "engine": "google",
-        "mode": "images",
-        "queryTemplate": "{{pairName}} {{color}}",
-        "openFor": "onlyEmpty",
-        "order": 20
       }
     ]
   },
