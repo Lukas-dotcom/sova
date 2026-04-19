@@ -2044,6 +2044,634 @@ ns.rules = ns.rules || {};
 })(SOVA);
 
 /*───────────────────────────────────────────────────────────────────────────*
+ * fpsGames – FPS blok na detailu herního produktu
+ *  - auto-run po context:ready
+ *  - zároveň registrováno jako SOVA.fn "fpsGames" pro řízení přes injectFunctions
+ *  - pageType = productDetail && ANY(parametrVyuziti) = Herní
+ *───────────────────────────────────────────────────────────────────────────*/
+(function registerFpsGames(ns){
+  if (!ns?.fn) return;
+  if (window.__SOVA_fpsGames_registered) return;
+  window.__SOVA_fpsGames_registered = true;
+
+  const TAG = '[fpsGames]';
+  const ROOT_ID = 'sova-fps-games';
+  const STYLE_ID = 'sova-fps-games-css';
+  const TEST = () => localStorage.getItem('SOVA.testSOVA.enabled') === '1';
+
+  const DEFAULT_CFG = {
+    autoBoot: true,
+    title: 'Jak dobře si zahrajete?',
+    anchorSelector: '.add-to-cart[data-testid="divAddToCart"], div.add-to-cart[data-testid="divAddToCart"]',
+    infoTitle: 'Co je to FPS...',
+    minFps: 1
+  };
+
+  const DEFAULT_GAMES = [
+    {
+      id: 'cs2',
+      title: 'Counter-Strike 2',
+      keys: ['parametrsovaHide_fps_cs2', 'parametrsovaHidefpscs2'],
+      image: 'https://www.pocitarna.cz/user/documents/upload/FPS_ikony_her/fps_cs2.jpg'
+    },
+    {
+      id: 'valo',
+      title: 'Valorant',
+      keys: ['parametrsovaHide_fps_valo', 'parametrsovaHidefpsvalo'],
+      image: 'https://www.pocitarna.cz/user/documents/upload/FPS_ikony_her/fps_valo.jpg'
+    },
+    {
+      id: 'fortnite',
+      title: 'Fortnite',
+      keys: ['parametrsovaHide_fps_fortnite', 'parametrsovaHidefpsfortnite'],
+      image: 'https://www.pocitarna.cz/user/documents/upload/FPS_ikony_her/fps_fortnite.jpg'
+    },
+    {
+      id: 'gta5',
+      title: 'GTA V',
+      keys: ['parametrsovaHide_fps_gta5', 'parametrsovaHidefpsgta5'],
+      image: 'https://www.pocitarna.cz/user/documents/upload/FPS_ikony_her/fps_gta5.jpg'
+    },
+    {
+      id: 'cp77',
+      title: 'Cyberpunk 2077',
+      keys: ['parametrsovaHide_fps_cp77', 'parametrsovaHidefpscp77'],
+      image: 'https://www.pocitarna.cz/user/documents/upload/FPS_ikony_her/fps_cp77.jpg'
+    },
+    {
+      id: 'bf6',
+      title: 'Battlefield 6',
+      keys: ['parametrsovaHide_fps_bf6', 'parametrsovaHidefpsbf6'],
+      image: 'https://www.pocitarna.cz/user/documents/upload/FPS_ikony_her/fps_bf6.jpg'
+    },
+    {
+      id: 'kcd2',
+      title: 'Kingdom Come: Deliverance II',
+      keys: ['parametrsovaHide_fps_kcd2', 'parametrsovaHidefpskcd2'],
+      image: 'https://www.pocitarna.cz/user/documents/upload/FPS_ikony_her/fps_kcd2.jpg'
+    },
+    {
+      id: 'mc',
+      title: 'Minecraft',
+      keys: ['parametrsovaHide_fps_mc', 'parametrsovaHidefpsmc'],
+      image: 'https://www.pocitarna.cz/user/documents/upload/FPS_ikony_her/fps_mc.jpg'
+    },
+    {
+      id: 'lol',
+      title: 'League of Legends',
+      keys: ['parametrsovaHide_fps_lol', 'parametrsovaHidefpslol'],
+      image: 'https://www.pocitarna.cz/user/documents/upload/FPS_ikony_her/fps_lol.jpg'
+    }
+  ];
+
+  const state = {
+    ro: null,
+    resizeHandler: null
+  };
+
+  const esc = (s) => String(s ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+
+  const norm = (s) => String(s ?? '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .toLowerCase();
+
+  const toArray = (v) => Array.isArray(v) ? v : (v == null ? [] : [v]);
+
+  function firstValue(v){
+    const arr = toArray(v);
+    return arr.length ? arr[0] : undefined;
+  }
+
+  function getConfig(params, settings){
+    const p = (params && typeof params === 'object' && !Array.isArray(params)) ? params : {};
+    const s = (settings && typeof settings === 'object' && !Array.isArray(settings)) ? settings : {};
+    const cfg = Object.assign({}, DEFAULT_CFG, s, p);
+    cfg.games = Array.isArray(cfg.games) ? cfg.games : DEFAULT_GAMES;
+    return cfg;
+  }
+
+  function normalizeGame(g){
+    if (!g || typeof g !== 'object') return null;
+
+    const keys = Array.isArray(g.keys)
+      ? g.keys
+      : [g.key || g.param || g.paramKey].filter(Boolean);
+
+    const image = g.image || g.img;
+
+    if (!keys.length || !image) return null;
+
+    return {
+      id: String(g.id || keys[0]).replace(/[^A-Za-z0-9_-]+/g, '').toLowerCase(),
+      title: String(g.title || g.name || g.id || keys[0]),
+      keys,
+      image: String(image)
+    };
+  }
+
+  function isProductDetail(ctx){
+    return String(ctx?.pageType || '') === 'productDetail';
+  }
+
+  function isGamingProduct(ctx){
+    return toArray(ctx?.parametrVyuziti).some(v => norm(v) === 'herni');
+  }
+
+  function parseFps(raw, minFps){
+    const value = firstValue(raw);
+    if (value == null) return null;
+
+    let s = String(value).replace(/\u00A0/g, ' ').trim();
+    if (!s || /^[-–—]+$/.test(s)) return null;
+
+    const clean = s.replace(',', '.');
+
+    const candidate = /^-?\d+(?:\.\d+)?$/.test(clean)
+      ? clean
+      : (clean.match(/-?\d+(?:\.\d+)?/)?.[0] || '');
+
+    if (!candidate) return null;
+
+    const n = Number(candidate);
+    if (!Number.isFinite(n) || n < minFps) return null;
+
+    return Math.round(n);
+  }
+
+  function readFpsForGame(ctx, game, minFps){
+    for (const key of game.keys){
+      if (!Object.prototype.hasOwnProperty.call(ctx || {}, key)) continue;
+
+      const fps = parseFps(ctx[key], minFps);
+      if (fps != null) return fps;
+    }
+
+    return null;
+  }
+
+  function collectGames(ctx, cfg){
+    return cfg.games
+      .map(normalizeGame)
+      .filter(Boolean)
+      .map(game => ({
+        ...game,
+        fps: readFpsForGame(ctx, game, cfg.minFps)
+      }))
+      .filter(game => game.fps != null);
+  }
+
+  function fpsTier(fps){
+    if (fps >= 120) return { key: 'excellent', label: 'Výborně' };
+    if (fps >= 60)  return { key: 'smooth',    label: 'Plynule' };
+    if (fps >= 40)  return { key: 'playable',  label: 'Hratelně' };
+    return { key: 'basic', label: 'Základně' };
+  }
+
+  function cleanupRuntime(){
+    try { state.ro?.disconnect?.(); } catch {}
+    state.ro = null;
+
+    if (state.resizeHandler){
+      try { window.removeEventListener('resize', state.resizeHandler); } catch {}
+      state.resizeHandler = null;
+    }
+  }
+
+  function removeExisting(){
+    cleanupRuntime();
+    document.getElementById(ROOT_ID)?.remove();
+  }
+
+  function ensureCSS(){
+    if (document.getElementById(STYLE_ID)) return;
+
+    const st = document.createElement('style');
+    st.id = STYLE_ID;
+    st.textContent = `
+#${ROOT_ID}{
+  margin:20px 0 0;
+  padding:16px;
+  border:1px solid rgba(0,110,107,.18);
+  border-radius:18px;
+  background:linear-gradient(135deg,#f4fbfb 0%,#fff 56%,#f7f7f7 100%);
+  box-shadow:0 10px 28px rgba(0,0,0,.06);
+  overflow:hidden;
+}
+#${ROOT_ID} *{ box-sizing:border-box; }
+
+#${ROOT_ID} .sova-fps__head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:12px;
+}
+
+#${ROOT_ID} .sova-fps__title-wrap{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  min-width:0;
+}
+
+#${ROOT_ID} .sova-fps__title{
+  margin:0;
+  color:#006e6b;
+  font-size:1.25rem;
+  line-height:1.2;
+  font-weight:800;
+}
+
+#${ROOT_ID} .trigger-fps{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:20px;
+  height:20px;
+  flex:0 0 20px;
+  border-radius:50%;
+  background:#006e6b;
+  color:#fff;
+  font-size:12px;
+  font-weight:800;
+  cursor:help;
+}
+#${ROOT_ID} .trigger-fps::before{ content:'i'; }
+
+#${ROOT_ID} .sova-fps__viewport{
+  position:relative;
+}
+
+#${ROOT_ID} .sova-fps__track{
+  display:flex;
+  gap:12px;
+  overflow-x:auto;
+  overflow-y:hidden;
+  scroll-snap-type:x proximity;
+  scroll-behavior:smooth;
+  scrollbar-width:thin;
+  padding:2px 2px 10px;
+  margin:0 -2px -10px;
+}
+
+#${ROOT_ID} .sova-fps__card{
+  flex:0 0 min(156px,42vw);
+  scroll-snap-align:start;
+  min-width:0;
+  overflow:hidden;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:15px;
+  background:#fff;
+  box-shadow:0 6px 18px rgba(0,0,0,.07);
+}
+
+#${ROOT_ID} .sova-fps__img-wrap{
+  position:relative;
+  aspect-ratio:1/1;
+  overflow:hidden;
+  background:#eee;
+}
+
+#${ROOT_ID} .sova-fps__img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  transform:scale(1.01);
+}
+
+#${ROOT_ID} .sova-fps__badge{
+  position:absolute;
+  left:8px;
+  bottom:8px;
+  display:flex;
+  align-items:baseline;
+  gap:4px;
+  padding:5px 8px;
+  border-radius:999px;
+  color:#fff;
+  background:rgba(0,0,0,.76);
+  box-shadow:0 4px 14px rgba(0,0,0,.25);
+  line-height:1;
+}
+
+#${ROOT_ID} .sova-fps__badge strong{
+  font-size:1.1rem;
+  line-height:1;
+  font-weight:900;
+}
+
+#${ROOT_ID} .sova-fps__badge span{
+  font-size:.7rem;
+  font-weight:800;
+  letter-spacing:.04em;
+}
+
+#${ROOT_ID} .sova-fps__body{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  padding:10px 10px 11px;
+}
+
+#${ROOT_ID} .sova-fps__game{
+  color:#202020;
+  font-size:.9rem;
+  line-height:1.18;
+  font-weight:800;
+}
+
+#${ROOT_ID} .sova-fps__tier{
+  width:max-content;
+  max-width:100%;
+  padding:3px 7px;
+  border-radius:999px;
+  background:#eef7f7;
+  color:#006e6b;
+  font-size:.72rem;
+  font-weight:800;
+  line-height:1.1;
+}
+
+#${ROOT_ID} .sova-fps__nav{
+  position:absolute;
+  top:50%;
+  z-index:2;
+  width:34px;
+  height:34px;
+  margin-top:-17px;
+  border:0;
+  border-radius:999px;
+  background:rgba(255,255,255,.95);
+  box-shadow:0 6px 18px rgba(0,0,0,.16);
+  color:#006e6b;
+  font-size:24px;
+  line-height:1;
+  font-weight:900;
+  cursor:pointer;
+}
+
+#${ROOT_ID} .sova-fps__nav[hidden]{
+  display:none !important;
+}
+
+#${ROOT_ID} .sova-fps__nav:disabled{
+  opacity:.35;
+  cursor:default;
+}
+
+#${ROOT_ID} .sova-fps__nav--prev{ left:2px; }
+#${ROOT_ID} .sova-fps__nav--next{ right:2px; }
+
+#${ROOT_ID}.is-slider .sova-fps__track{
+  padding-left:42px;
+  padding-right:42px;
+}
+
+@media (min-width:768px){
+  #${ROOT_ID}{
+    padding:18px;
+  }
+
+  #${ROOT_ID} .sova-fps__card{
+    flex-basis:calc((100% - 36px) / 4);
+  }
+}
+
+@media (min-width:1100px){
+  #${ROOT_ID} .sova-fps__card{
+    flex-basis:calc((100% - 48px) / 5);
+  }
+}
+
+@media (max-width:480px){
+  #${ROOT_ID}{
+    margin-top:16px;
+    padding:13px;
+    border-radius:15px;
+  }
+
+  #${ROOT_ID} .sova-fps__title{
+    font-size:1.08rem;
+  }
+
+  #${ROOT_ID} .sova-fps__track{
+    gap:10px;
+  }
+
+  #${ROOT_ID}.is-slider .sova-fps__track{
+    padding-left:0;
+    padding-right:0;
+  }
+
+  #${ROOT_ID} .sova-fps__nav{
+    display:none !important;
+  }
+}
+`;
+    document.head.appendChild(st);
+  }
+
+  function cardHTML(game){
+    const tier = fpsTier(game.fps);
+
+    return `<article class="sova-fps__card" role="listitem" data-game="${esc(game.id)}" data-tier="${tier.key}" aria-label="${esc(game.title)}: ${game.fps} FPS">
+  <div class="sova-fps__img-wrap">
+    <img class="sova-fps__img" src="${esc(game.image)}" alt="${esc(game.title)}" loading="lazy" decoding="async">
+    <div class="sova-fps__badge"><strong>${game.fps}</strong><span>FPS</span></div>
+  </div>
+  <div class="sova-fps__body">
+    <strong class="sova-fps__game">${esc(game.title)}</strong>
+    <span class="sova-fps__tier">${esc(tier.label)}</span>
+  </div>
+</article>`;
+  }
+
+  function setupSlider(root){
+    const track = root.querySelector('.sova-fps__track');
+    const prev = root.querySelector('.sova-fps__nav--prev');
+    const next = root.querySelector('.sova-fps__nav--next');
+
+    if (!track || !prev || !next) return;
+
+    let raf = 0;
+
+    const update = () => {
+      cancelAnimationFrame(raf);
+
+      raf = requestAnimationFrame(() => {
+        const overflows = track.scrollWidth > track.clientWidth + 4;
+
+        root.classList.toggle('is-slider', overflows);
+        prev.hidden = next.hidden = !overflows;
+
+        if (!overflows) return;
+
+        const maxLeft = track.scrollWidth - track.clientWidth - 2;
+
+        prev.disabled = track.scrollLeft <= 2;
+        next.disabled = track.scrollLeft >= maxLeft;
+      });
+    };
+
+    const scrollAmount = () => Math.max(180, Math.round(track.clientWidth * 0.82));
+
+    prev.addEventListener('click', () => {
+      track.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+    });
+
+    next.addEventListener('click', () => {
+      track.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
+    });
+
+    track.addEventListener('scroll', update, { passive:true });
+
+    state.resizeHandler = update;
+    window.addEventListener('resize', update, { passive:true });
+
+    if ('ResizeObserver' in window){
+      state.ro = new ResizeObserver(update);
+      state.ro.observe(root);
+      state.ro.observe(track);
+    }
+
+    update();
+    setTimeout(update, 120);
+  }
+
+  function mount(ctx, cfg, games){
+    const anchor = document.querySelector(cfg.anchorSelector);
+
+    if (!anchor){
+      if (TEST()) console.warn(TAG, 'anchor not found:', cfg.anchorSelector);
+      removeExisting();
+      return false;
+    }
+
+    removeExisting();
+    ensureCSS();
+
+    const root = document.createElement('section');
+    root.id = ROOT_ID;
+    root.className = 'sova-fps';
+    root.setAttribute('aria-labelledby', 'sova-fps-title');
+
+    root.innerHTML = `
+  <div class="sova-fps__head">
+    <div class="sova-fps__title-wrap">
+      <h2 class="sova-fps__title" id="sova-fps-title">${esc(cfg.title)}</h2>
+      <span class="trigger-fps fv-info-popup-target" data-popup-trigger="fps" title="" data-original-title="${esc(cfg.infoTitle)}"></span>
+    </div>
+  </div>
+  <div class="sova-fps__viewport">
+    <button class="sova-fps__nav sova-fps__nav--prev" type="button" aria-label="Předchozí hry" hidden>‹</button>
+    <div class="sova-fps__track" role="list">
+      ${games.map(cardHTML).join('')}
+    </div>
+    <button class="sova-fps__nav sova-fps__nav--next" type="button" aria-label="Další hry" hidden>›</button>
+  </div>`;
+
+    anchor.insertAdjacentElement('afterend', root);
+    setupSlider(root);
+
+    if (TEST()){
+      console.groupCollapsed(TAG, `rendered ${games.length} game(s)`);
+      try {
+        console.table(games.map(g => ({
+          id: g.id,
+          title: g.title,
+          fps: g.fps,
+          keys: g.keys.join(', ')
+        })));
+      } catch {
+        console.log(games);
+      }
+      console.groupEnd();
+    }
+
+    return true;
+  }
+
+  function runFpsGames({ params, settings } = {}, ctx = {}){
+    try {
+      const snap = (ctx && Object.keys(ctx).length)
+        ? ctx
+        : (ns.getContext?.snapshot?.() || {});
+
+      const cfg = getConfig(
+        params,
+        settings || ns.rules?.featureSettings?.('fpsGames') || window.fpsGames
+      );
+
+      if (!isProductDetail(snap) || !isGamingProduct(snap)){
+        removeExisting();
+
+        if (TEST()) {
+          console.log(TAG, 'skip', {
+            pageType: snap?.pageType,
+            parametrVyuziti: snap?.parametrVyuziti
+          });
+        }
+
+        return false;
+      }
+
+      const games = collectGames(snap, cfg);
+
+      if (!games.length){
+        removeExisting();
+
+        if (TEST()) console.log(TAG, 'skip: no numeric FPS values');
+
+        return false;
+      }
+
+      return mount(snap, cfg, games);
+    } catch(e){
+      console.error(TAG, 'failed', e);
+      return false;
+    }
+  }
+
+  ns.fn.register('fpsGames', runFpsGames);
+
+  // Auto-run, aby stačilo feature pouze vložit do SOVA FE.
+  // Pokud chceš spouštět výhradně přes injectFunctions, nastav window.fpsGames = { autoBoot:false }.
+  function autoRun(payload){
+    const settings = ns.rules?.featureSettings?.('fpsGames') || window.fpsGames;
+    const cfg = getConfig({}, settings);
+
+    if (cfg.autoBoot === false) return;
+
+    runFpsGames(
+      { settings: cfg },
+      payload?.snapshot || ns.getContext?.snapshot?.() || {}
+    );
+  }
+
+  try {
+    ns.bus?.once?.('context:ready', autoRun);
+
+    const snap = ns.getContext?.snapshot?.() || {};
+    if (Object.keys(snap).length) {
+      setTimeout(() => autoRun({ snapshot:snap }), 0);
+    }
+  } catch(e){
+    if (TEST()) console.warn(TAG, 'autoRun attach failed', e);
+  }
+
+})(window.SOVA || (window.SOVA = {}));
+
+  
+/*───────────────────────────────────────────────────────────────────────────*
  * additionalSaleCart – upsell v košíku (FAST, no-mute + mobile grid cell)
  *  + safe SOVAL debug (kompilace s try/catch, skip invalid, cache)
  *───────────────────────────────────────────────────────────────────────────*/
