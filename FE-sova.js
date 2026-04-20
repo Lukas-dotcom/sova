@@ -2257,6 +2257,9 @@ ns.rules = ns.rules || {};
     st.textContent = `
 #${ROOT_ID}{
   order:99;
+  width:100%;
+  max-width:100%;
+  min-width:0;
   margin:20px 0 0;
   padding:16px;
   border:1px solid rgba(0,110,107,.18);
@@ -2265,7 +2268,10 @@ ns.rules = ns.rules || {};
   overflow:hidden;
 }
 
-#${ROOT_ID} *{
+#${ROOT_ID},
+#${ROOT_ID} *,
+#${ROOT_ID} *::before,
+#${ROOT_ID} *::after{
   box-sizing:border-box;
 }
 
@@ -2275,6 +2281,7 @@ ns.rules = ns.rules || {};
   justify-content:space-between;
   gap:12px;
   margin-bottom:12px;
+  min-width:0;
 }
 
 #${ROOT_ID} .sova-fps__title-wrap{
@@ -2282,6 +2289,7 @@ ns.rules = ns.rules || {};
   align-items:center;
   gap:8px;
   min-width:0;
+  flex:1 1 auto;
 }
 
 #${ROOT_ID} .sova-fps__title{
@@ -2290,6 +2298,12 @@ ns.rules = ns.rules || {};
   font-size:1.25rem;
   line-height:1.2;
   font-weight:800;
+}
+
+#${ROOT_ID} .type.fv-lazy-visible{
+  display:flex;
+  align-items:center;
+  flex:0 0 auto;
 }
 
 #${ROOT_ID} .sova-fps__actions{
@@ -2361,12 +2375,19 @@ ns.rules = ns.rules || {};
 
 #${ROOT_ID} .sova-fps__viewport{
   position:relative;
+  width:100%;
+  max-width:100%;
+  min-width:0;
+  overflow:hidden;
 }
 
 #${ROOT_ID} .sova-fps__track{
   display:flex;
   align-items:flex-start;
   gap:12px;
+  width:100%;
+  max-width:100%;
+  min-width:0;
   overflow-x:auto;
   overflow-y:hidden;
   scroll-snap-type:x proximity;
@@ -2415,6 +2436,9 @@ ns.rules = ns.rules || {};
   border-radius:7px;
   background:#fff;
   box-shadow:0 6px 18px rgba(0,0,0,.07);
+  display:flex;
+  flex-direction:column;
+  align-self:flex-start;
 }
 
 #${ROOT_ID} .sova-fps__img-wrap{
@@ -2471,6 +2495,7 @@ ns.rules = ns.rules || {};
   flex-direction:column;
   gap:4px;
   padding:10px 10px 11px;
+  height:auto;
 }
 
 #${ROOT_ID} .sova-fps__game{
@@ -2558,21 +2583,32 @@ ns.rules = ns.rules || {};
 </article>`;
   }
 
-  function syncCardWidths(root){
-    root.querySelectorAll('.sova-fps__card').forEach(card => {
+  function syncCardLayout(root){
+    const cards = Array.from(root.querySelectorAll('.sova-fps__card'));
+    if (!cards.length) return;
+
+    // reset
+    cards.forEach(card => {
+      card.style.width = '';
+      const body = card.querySelector('.sova-fps__body');
+      if (body) body.style.height = '';
+    });
+
+    // 1) šířka karty podle reálně vykreslené šířky obrázku
+    cards.forEach(card => {
       const img = card.querySelector('.sova-fps__img');
       if (!img) return;
 
       const apply = () => {
         const rect = img.getBoundingClientRect();
         const width = Math.ceil(rect.width || 0);
-        if (width > 0){
+        if (width > 0) {
           card.style.width = `${width}px`;
         }
       };
 
-      if (!img.dataset.sovaFpsWidthBound){
-        img.dataset.sovaFpsWidthBound = '1';
+      if (!img.dataset.sovaFpsBound){
+        img.dataset.sovaFpsBound = '1';
 
         if (!img.complete){
           img.addEventListener('load', () => {
@@ -2584,6 +2620,23 @@ ns.rules = ns.rules || {};
 
       apply();
     });
+
+    // 2) výška body podle nejvyšší body části
+    let maxBodyHeight = 0;
+
+    cards.forEach(card => {
+      const body = card.querySelector('.sova-fps__body');
+      if (!body) return;
+      const h = Math.ceil(body.getBoundingClientRect().height || 0);
+      if (h > maxBodyHeight) maxBodyHeight = h;
+    });
+
+    if (maxBodyHeight > 0){
+      cards.forEach(card => {
+        const body = card.querySelector('.sova-fps__body');
+        if (body) body.style.height = `${maxBodyHeight}px`;
+      });
+    }
   }
 
   function setupDragScroll(track){
@@ -2597,9 +2650,7 @@ ns.rules = ns.rules || {};
     const endDrag = () => {
       if (!isDown) return;
 
-      if (moved) {
-        blockClickUntil = Date.now() + 120;
-      }
+      if (moved) blockClickUntil = Date.now() + 120;
 
       isDown = false;
       pointerId = null;
@@ -2615,12 +2666,9 @@ ns.rules = ns.rules || {};
       pointerId = e.pointerId;
       startX = e.clientX;
       startScrollLeft = track.scrollLeft;
-
       track.classList.add('is-dragging');
 
-      try {
-        track.setPointerCapture(pointerId);
-      } catch {}
+      try { track.setPointerCapture(pointerId); } catch {}
     }, { passive:true });
 
     track.addEventListener('pointermove', (e) => {
@@ -2628,10 +2676,7 @@ ns.rules = ns.rules || {};
 
       const dx = e.clientX - startX;
 
-      if (Math.abs(dx) > 3) {
-        moved = true;
-      }
-
+      if (Math.abs(dx) > 3) moved = true;
       if (!moved) return;
 
       e.preventDefault();
@@ -2665,7 +2710,7 @@ ns.rules = ns.rules || {};
       cancelAnimationFrame(raf);
 
       raf = requestAnimationFrame(() => {
-        syncCardWidths(root);
+        syncCardLayout(root);
 
         const overflows = track.scrollWidth > track.clientWidth + 4;
 
@@ -2674,7 +2719,6 @@ ns.rules = ns.rules || {};
         if (!overflows) return;
 
         const maxLeft = track.scrollWidth - track.clientWidth - 2;
-
         prev.disabled = track.scrollLeft <= 2;
         next.disabled = track.scrollLeft >= maxLeft;
       });
@@ -2705,6 +2749,7 @@ ns.rules = ns.rules || {};
 
     update();
     setTimeout(update, 120);
+    setTimeout(update, 320);
   }
 
   function mount(ctx, cfg, games){
@@ -2728,8 +2773,10 @@ ns.rules = ns.rules || {};
   <div class="sova-fps__head">
     <div class="sova-fps__title-wrap">
       <h2 class="sova-fps__title" id="sova-fps-title">${esc(cfg.title)}</h2>
-      <div class="type fv-lazy-visible"><span class="trigger-fps fv-info-popup-target" data-popup-trigger="fps" title="" data-original-title="${esc(cfg.infoTitle)}"></span>
-    </div></div>
+      <div class="type fv-lazy-visible">
+        <span class="trigger-fps fv-info-popup-target" data-popup-trigger="fps" title="" data-original-title="${esc(cfg.infoTitle)}"></span>
+      </div>
+    </div>
     <div class="sova-fps__actions" aria-hidden="false">
       <button class="sova-fps__nav sova-fps__nav--prev" type="button" aria-label="Předchozí hry" hidden></button>
       <button class="sova-fps__nav sova-fps__nav--next" type="button" aria-label="Další hry" hidden></button>
@@ -2790,9 +2837,7 @@ ns.rules = ns.rules || {};
 
       if (!games.length){
         removeExisting();
-
         if (TEST()) console.log(TAG, 'skip: no numeric FPS values');
-
         return false;
       }
 
@@ -2840,7 +2885,6 @@ ns.rules = ns.rules || {};
   }
 
 })(window.SOVA || (window.SOVA = {}));
-  
 /*───────────────────────────────────────────────────────────────────────────*
  * additionalSaleCart – upsell v košíku (FAST, no-mute + mobile grid cell)
  *  + safe SOVAL debug (kompilace s try/catch, skip invalid, cache)
