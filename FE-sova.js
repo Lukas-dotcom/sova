@@ -2268,9 +2268,9 @@ ns.rules = ns.rules || {};
   min-width:0;
   contain:inline-size;
   margin:20px 0 0;
-  padding:16px;
+  padding:0;
   border:1px solid rgba(0,110,107,.18);
-  background:linear-gradient(135deg,#f4fbfb 0%,#fff 56%,#f7f7f7 100%);
+  background:linear-gradient(0deg,#f7f7f7 0%,#fff 52%,#f4fbfb 100%);
   box-shadow:0 10px 28px rgba(0,0,0,.06);
   overflow:hidden;
 }
@@ -2287,8 +2287,8 @@ ns.rules = ns.rules || {};
   align-items:flex-start;
   justify-content:space-between;
   gap:12px;
-  margin-bottom:12px;
   min-width:0;
+  padding:16px 16px 12px;
 }
 
 #${ROOT_ID} .sova-fps__title-wrap{
@@ -2390,6 +2390,7 @@ ns.rules = ns.rules || {};
   min-inline-size:0;
   min-width:0;
   overflow:hidden;
+  background:transparent;
 }
 
 #${ROOT_ID} .sova-fps__track{
@@ -2407,8 +2408,7 @@ ns.rules = ns.rules || {};
   overflow-y:hidden;
   scroll-snap-type:x proximity;
   scroll-behavior:smooth;
-  scrollbar-color:var(--color-primary-hover, #005956) #f1f1f1;
-  padding:2px 2px 10px;
+  padding:2px 16px 16px;
   margin:0;
   cursor:grab;
   touch-action:pan-y;
@@ -2420,12 +2420,18 @@ ns.rules = ns.rules || {};
   width:10px;
   height:10px;
   background:#f1f1f1;
+  -webkit-appearance:none;
 }
 
 #${ROOT_ID} .sova-fps__track::-webkit-scrollbar-track{
   background:#f1f1f1;
   border-radius:0;
   box-shadow:none;
+}
+
+#${ROOT_ID} .sova-fps__track::-webkit-scrollbar-track-piece{
+  background:#f1f1f1;
+  border-radius:0;
 }
 
 #${ROOT_ID} .sova-fps__track::-webkit-scrollbar-thumb{
@@ -2444,11 +2450,17 @@ ns.rules = ns.rules || {};
   display:none !important;
   width:0 !important;
   height:0 !important;
+  min-width:0 !important;
+  min-height:0 !important;
+  max-width:0 !important;
+  max-height:0 !important;
   background:transparent !important;
+  -webkit-appearance:none !important;
 }
 
 #${ROOT_ID} .sova-fps__track::-webkit-scrollbar-corner{
   background:#f1f1f1;
+  border-radius:0;
 }
 
 #${ROOT_ID} .sova-fps__track.is-dragging{
@@ -2582,11 +2594,11 @@ ns.rules = ns.rules || {};
 @media (max-width:480px){
   #${ROOT_ID}{
     margin-top:16px;
-    padding:13px;
   }
 
   #${ROOT_ID} .sova-fps__head{
     align-items:flex-start;
+    padding:13px 13px 11px;
   }
 
   #${ROOT_ID} .sova-fps__title{
@@ -2595,6 +2607,7 @@ ns.rules = ns.rules || {};
 
   #${ROOT_ID} .sova-fps__track{
     gap:10px;
+    padding:2px 13px 16px;
   }
 
   #${ROOT_ID} .sova-fps__nav{
