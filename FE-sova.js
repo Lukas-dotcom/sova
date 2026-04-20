@@ -23,7 +23,7 @@
         restore(){ types.forEach(t => (console[t] = orig[t])); }
       };
     }catch(e){}
-  })();
+  })(); 
 
   /*───────────────────────────────────────────────────────────────────────────*
    * 1) SOVA root + BUS + URL helper
