@@ -2048,6 +2048,9 @@ ns.rules = ns.rules || {};
  *  - auto-run po context:ready
  *  - zároveň registrováno jako SOVA.fn "fpsGames" pro řízení přes injectFunctions
  *  - pageType = productDetail && ANY(parametrVyuziti) = Herní
+ *  - podporuje FPS podle rozlišení:
+ *      parametrsovaHidefps{klicHry}{rozliseni}
+ *      např. parametrsovaHidefpskcd22560x1440
  *───────────────────────────────────────────────────────────────────────────*/
 (function registerFpsGames(ns){
   if (!ns?.fn) return;
@@ -2059,6 +2062,8 @@ ns.rules = ns.rules || {};
   const STYLE_ID = 'sova-fps-games-css';
   const TEST = () => localStorage.getItem('SOVA.testSOVA.enabled') === '1';
 
+  const FPS_PARAM_PREFIX = 'parametrsovahidefps';
+
   const DEFAULT_CFG = {
     autoBoot: true,
     title: 'Jak dobře si zahrajete?',
@@ -2067,60 +2072,141 @@ ns.rules = ns.rules || {};
     minFps: 1
   };
 
+  const RESOLUTION_LABELS = {
+    '2560x1440': 'WQHD',
+    '4096x2160': 'UHD',
+    '3840x2400': '4K UHD',
+    '3840x2160': '4K UHD',
+    '5120x2330': '5K',
+    '5120x2880': '5K UHD',
+    '1920x1080': 'Full HD',
+    '1680x1050': 'WSXGA+',
+    '2560x1600': 'WQXGA',
+    '4096x2304': '4K UHD',
+    '1280x800': 'WXGA',
+    '2560x1080': 'UWHD',
+    '1920x1200': 'WUXGA',
+    '3840x1080': 'SUW',
+    '1366x768': 'HD',
+    '1280x720': 'HD',
+    '1440x900': 'WXGA+',
+    '1600x900': 'HD+',
+    '1280x1024': 'SXGA',
+    '1400x1050': 'SXGA+',
+    '1600x1200': 'UXGA',
+    '2160x1440': 'QHD+',
+    '2256x1504': 'QHD+',
+    '2304x1440': 'QHD+',
+    '2736x1824': 'QHD+',
+    '2880x1800': '2.8K',
+    '2944x1840': '2.8K',
+    '3000x2000': '3K',
+    '3072x1920': '3K',
+    '3200x1800': 'QHD+',
+    '3200x2000': '3.2K',
+    '3456x2160': '3.5K',
+    '3456x2234': '3.5K',
+    '4480x2520': '4.5K',
+    '4500x3000': '4.5K',
+    '6016x3384': '6K'
+  };
+
   const DEFAULT_GAMES = [
     {
       id: 'cs2',
       title: 'Counter-Strike 2',
-      keys: ['parametrsovaHide_fps_cs2', 'parametrsovaHidefpscs2'],
+      aliases: ['cs2', 'fpscs2'],
       image: 'https://www.pocitarna.cz/user/documents/upload/FPS_ikony_her/fps_cs2.jpg'
     },
     {
       id: 'valo',
       title: 'Valorant',
-      keys: ['parametrsovaHide_fps_valo', 'parametrsovaHidefpsvalo'],
+      aliases: ['valo', 'valorant', 'fpsvalo'],
       image: 'https://www.pocitarna.cz/user/documents/upload/FPS_ikony_her/fps_valo.jpg'
     },
     {
       id: 'fortnite',
       title: 'Fortnite',
-      keys: ['parametrsovaHide_fps_fortnite', 'parametrsovaHidefpsfortnite'],
+      aliases: ['fortnite', 'fpsfortnite'],
       image: 'https://www.pocitarna.cz/user/documents/upload/FPS_ikony_her/fps_fortnite.jpg'
     },
     {
       id: 'gta5',
       title: 'GTA V',
-      keys: ['parametrsovaHide_fps_gta5', 'parametrsovaHidefpsgta5'],
+      aliases: ['gta5', 'gtav', 'fpsgta5'],
       image: 'https://www.pocitarna.cz/user/documents/upload/FPS_ikony_her/fps_gta5.jpg'
     },
     {
       id: 'cp77',
       title: 'Cyberpunk 2077',
-      keys: ['parametrsovaHide_fps_cp77', 'parametrsovaHidefpscp77'],
+      aliases: ['cp77', 'cyberpunk2077', 'fpscp77'],
       image: 'https://www.pocitarna.cz/user/documents/upload/FPS_ikony_her/fps_cp77.jpg'
     },
     {
       id: 'bf6',
       title: 'Battlefield 6',
-      keys: ['parametrsovaHide_fps_bf6', 'parametrsovaHidefpsbf6'],
+      aliases: ['bf6', 'battlefield6', 'fpsbf6'],
       image: 'https://www.pocitarna.cz/user/documents/upload/FPS_ikony_her/fps_bf6.jpg'
     },
     {
       id: 'kcd2',
       title: 'Kingdom Come: Deliverance II',
-      keys: ['parametrsovaHide_fps_kcd2', 'parametrsovaHidefpskcd2'],
+      aliases: ['kcd2', 'kingdomcomedeliverance2', 'fpskcd2'],
       image: 'https://www.pocitarna.cz/user/documents/upload/FPS_ikony_her/fps_kcd2.jpg'
     },
     {
       id: 'mc',
       title: 'Minecraft',
-      keys: ['parametrsovaHide_fps_mc', 'parametrsovaHidefpsmc'],
+      aliases: ['mc', 'minecraft', 'fpsmc'],
       image: 'https://www.pocitarna.cz/user/documents/upload/FPS_ikony_her/fps_mc.jpg'
     },
     {
       id: 'lol',
       title: 'League of Legends',
-      keys: ['parametrsovaHide_fps_lol', 'parametrsovaHidefpslol'],
+      aliases: ['lol', 'leagueoflegends', 'fpslol'],
       image: 'https://www.pocitarna.cz/user/documents/upload/FPS_ikony_her/fps_lol.jpg'
+    },
+    {
+      id: 'codmw3',
+      title: 'Call of Duty: Modern Warfare III',
+      aliases: ['codmw3', 'mw3', 'callofdutymodernwarfare3', 'fpscodmw3'],
+      image: 'https://www.pocitarna.cz/user/documents/upload/FPS_ikony_her/fps_codmw3.jpg'
+    },
+    {
+      id: 'diablo4',
+      title: 'Diablo IV',
+      aliases: ['diablo4', 'diabloiv', 'fpsdiablo4'],
+      image: 'https://www.pocitarna.cz/user/documents/upload/FPS_ikony_her/fps_diablo4.jpg'
+    },
+    {
+      id: 'dota2',
+      title: 'Dota 2',
+      aliases: ['dota2', 'fpsdota2'],
+      image: 'https://www.pocitarna.cz/user/documents/upload/FPS_ikony_her/fps_dota2.jpg'
+    },
+    {
+      id: 'pubg',
+      title: 'PUBG',
+      aliases: ['pubg', 'fpspubg'],
+      image: 'https://www.pocitarna.cz/user/documents/upload/FPS_ikony_her/fps_pubg.jpg'
+    },
+    {
+      id: 'rl',
+      title: 'Rocket League',
+      aliases: ['rl', 'rocketleague', 'fpsrl'],
+      image: 'https://www.pocitarna.cz/user/documents/upload/FPS_ikony_her/fps_rl.jpg'
+    },
+    {
+      id: 'sims4',
+      title: 'The Sims 4',
+      aliases: ['sims4', 'thesims4', 'fpssims4'],
+      image: 'https://www.pocitarna.cz/user/documents/upload/FPS_ikony_her/fps_sims4.jpg'
+    },
+    {
+      id: 'wow',
+      title: 'World of Warcraft',
+      aliases: ['wow', 'worldofwarcraft', 'fpswow'],
+      image: 'https://www.pocitarna.cz/user/documents/upload/FPS_ikony_her/fps_wow.jpg'
     }
   ];
 
@@ -2143,6 +2229,12 @@ ns.rules = ns.rules || {};
     .trim()
     .toLowerCase();
 
+  const compactToken = (s) => String(s ?? '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '');
+
   const toArray = (v) => Array.isArray(v) ? v : (v == null ? [] : [v]);
 
   function firstValue(v){
@@ -2158,23 +2250,125 @@ ns.rules = ns.rules || {};
     return cfg;
   }
 
+  function normalizeResolution(raw){
+    const value = firstValue(raw);
+    if (value == null) return '';
+
+    const s = String(value)
+      .replace(/\u00A0/g, ' ')
+      .replace(/[×✕]/g, 'x')
+      .toLowerCase()
+      .trim();
+
+    const m = s.match(/(\d{3,4})\s*x\s*(\d{3,4})/);
+    if (!m) return '';
+
+    return `${parseInt(m[1], 10)}x${parseInt(m[2], 10)}`;
+  }
+
+  function getResolutionInfo(raw){
+    const key = normalizeResolution(raw);
+    const m = key.match(/^(\d{3,4})x(\d{3,4})$/);
+    if (!m) return null;
+
+    const width = parseInt(m[1], 10);
+    const height = parseInt(m[2], 10);
+
+    if (!Number.isFinite(width) || !Number.isFinite(height)) return null;
+
+    return {
+      key,
+      label: RESOLUTION_LABELS[key] || '',
+      width,
+      height,
+      pixels: width * height
+    };
+  }
+
+  function compareResolutionInfo(a, b){
+    return (a.pixels - b.pixels)
+      || (a.width - b.width)
+      || (a.height - b.height)
+      || a.key.localeCompare(b.key);
+  }
+
+  function formatResolutionLabel(res){
+    return `${res.label ? `${res.label} ` : ''}${res.key}`;
+  }
+
+  function parseFpsParamKey(rawKey){
+    const compact = compactToken(rawKey);
+
+    if (!compact.startsWith(FPS_PARAM_PREFIX)) return null;
+
+    const rest = compact.slice(FPS_PARAM_PREFIX.length);
+    if (!rest) return null;
+
+    const withResolution = rest.match(/^(.+?)(\d{3,4}x\d{3,4})$/);
+
+    if (withResolution){
+      return {
+        gameToken: withResolution[1],
+        resolution: normalizeResolution(withResolution[2])
+      };
+    }
+
+    return {
+      gameToken: rest,
+      resolution: ''
+    };
+  }
+
   function normalizeGame(g){
     if (!g || typeof g !== 'object') return null;
 
-    const keys = Array.isArray(g.keys)
-      ? g.keys
-      : [g.key || g.param || g.paramKey].filter(Boolean);
-
+    const idRaw = g.id || g.key || g.param || g.paramKey || g.name || g.title;
+    const id = compactToken(idRaw);
     const image = g.image || g.img;
 
-    if (!keys.length || !image) return null;
+    if (!id || !image) return null;
+
+    const aliases = new Set();
+
+    aliases.add(id);
+    aliases.add(`fps${id}`);
+
+    if (g.title) aliases.add(compactToken(g.title));
+    if (g.name) aliases.add(compactToken(g.name));
+
+    toArray(g.aliases).forEach(a => {
+      const c = compactToken(a);
+      if (c) aliases.add(c);
+    });
+
+    toArray(g.keys).forEach(key => {
+      const parsed = parseFpsParamKey(key);
+      const c = compactToken(parsed?.gameToken || key);
+      if (c) aliases.add(c);
+    });
 
     return {
-      id: String(g.id || keys[0]).replace(/[^A-Za-z0-9_-]+/g, '').toLowerCase(),
-      title: String(g.title || g.name || g.id || keys[0]),
-      keys,
-      image: String(image)
+      id,
+      title: String(g.title || g.name || g.id || id),
+      image: String(image),
+      aliases: Array.from(aliases).filter(Boolean)
     };
+  }
+
+  function buildGameRegistry(cfg){
+    const gameDefs = cfg.games
+      .map(normalizeGame)
+      .filter(Boolean);
+
+    const aliasMap = new Map();
+
+    gameDefs.forEach(game => {
+      game.aliases.forEach(alias => {
+        if (!aliasMap.has(alias)) aliasMap.set(alias, game);
+      });
+    });
+
+    return { gameDefs, aliasMap };
   }
 
   function isProductDetail(ctx){
@@ -2205,26 +2399,81 @@ ns.rules = ns.rules || {};
     return Math.round(n);
   }
 
-  function readFpsForGame(ctx, game, minFps){
-    for (const key of game.keys){
-      if (!Object.prototype.hasOwnProperty.call(ctx || {}, key)) continue;
+  function collectFpsData(ctx, cfg){
+    const { gameDefs, aliasMap } = buildGameRegistry(cfg);
 
-      const fps = parseFps(ctx[key], minFps);
-      if (fps != null) return fps;
-    }
+    const bucketMap = new Map();
+    const legacyFpsByGame = new Map();
 
-    return null;
-  }
+    Object.entries(ctx || {}).forEach(([key, rawValue]) => {
+      const parsed = parseFpsParamKey(key);
+      if (!parsed) return;
 
-  function collectGames(ctx, cfg){
-    return cfg.games
-      .map(normalizeGame)
-      .filter(Boolean)
+      const game = aliasMap.get(compactToken(parsed.gameToken));
+      if (!game) return;
+
+      const fps = parseFps(rawValue, cfg.minFps);
+      if (fps == null) return;
+
+      if (parsed.resolution){
+        const res = getResolutionInfo(parsed.resolution);
+        if (!res) return;
+
+        if (!bucketMap.has(res.key)){
+          bucketMap.set(res.key, {
+            ...res,
+            fpsByGame: new Map()
+          });
+        }
+
+        bucketMap.get(res.key).fpsByGame.set(game.id, fps);
+      } else {
+        legacyFpsByGame.set(game.id, fps);
+      }
+    });
+
+    const resolutions = Array.from(bucketMap.values())
+      .filter(res => res.fpsByGame.size > 0)
+      .sort(compareResolutionInfo);
+
+    const legacyGames = gameDefs
+      .filter(game => legacyFpsByGame.has(game.id))
       .map(game => ({
         ...game,
-        fps: readFpsForGame(ctx, game, cfg.minFps)
-      }))
-      .filter(game => game.fps != null);
+        fps: legacyFpsByGame.get(game.id)
+      }));
+
+    return {
+      gameDefs,
+      bucketMap,
+      resolutions,
+      legacyGames
+    };
+  }
+
+  function getInitialResolutionKey(ctx, data){
+    const productResolution = normalizeResolution(ctx?.parametrRozliseni);
+
+    if (productResolution && data.bucketMap.has(productResolution)){
+      return productResolution;
+    }
+
+    return data.resolutions[0]?.key || '';
+  }
+
+  function getGamesForResolution(data, resolutionKey){
+    if (resolutionKey && data.bucketMap.has(resolutionKey)){
+      const bucket = data.bucketMap.get(resolutionKey);
+
+      return data.gameDefs
+        .filter(game => bucket.fpsByGame.has(game.id))
+        .map(game => ({
+          ...game,
+          fps: bucket.fpsByGame.get(game.id)
+        }));
+    }
+
+    return data.legacyGames || [];
   }
 
   function fpsTier(fps){
@@ -2297,6 +2546,7 @@ ns.rules = ns.rules || {};
   gap:8px;
   min-width:0;
   flex:1 1 auto;
+  flex-wrap:wrap;
 }
 
 #${ROOT_ID} .sova-fps__title{
@@ -2305,6 +2555,43 @@ ns.rules = ns.rules || {};
   font-size:1.25rem;
   line-height:1.2;
   font-weight:800;
+}
+
+#${ROOT_ID} .sova-fps__resolutions{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:6px;
+  min-width:0;
+}
+
+#${ROOT_ID} .sova-fps__resolution-btn{
+  appearance:none;
+  -webkit-appearance:none;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:26px;
+  padding:4px 8px;
+  border:1px solid rgba(0,110,107,.45);
+  border-radius:2px;
+  background:#fff;
+  color:#006e6b;
+  font:700 .72rem/1.15 "Kumbh Sans", system-ui, sans-serif;
+  white-space:nowrap;
+  cursor:pointer;
+  transition:background-color .2s ease,color .2s ease,border-color .2s ease;
+}
+
+#${ROOT_ID} .sova-fps__resolution-btn:hover{
+  border-color:#006e6b;
+  background:#e3f6f5;
+}
+
+#${ROOT_ID} .sova-fps__resolution-btn.is-active{
+  border-color:#006e6b;
+  background:#006e6b;
+  color:#e3f6f5;
 }
 
 #${ROOT_ID} .type.fv-lazy-visible{
@@ -2408,7 +2695,7 @@ ns.rules = ns.rules || {};
   overflow-y:hidden;
   scroll-snap-type:x proximity;
   scroll-behavior:smooth;
-  padding:2px 16px 16px;
+  padding:2px 0 16px;
   margin:0;
   cursor:grab;
   touch-action:pan-y;
@@ -2489,6 +2776,16 @@ ns.rules = ns.rules || {};
   scroll-snap-align:start;
 }
 
+#${ROOT_ID} .sova-fps__card:first-child{
+  margin-left:16px;
+  scroll-margin-left:16px;
+}
+
+#${ROOT_ID} .sova-fps__card:last-child{
+  margin-right:16px;
+  scroll-margin-right:16px;
+}
+
 #${ROOT_ID} .sova-fps__img-wrap{
   position:relative;
   display:block;
@@ -2522,9 +2819,25 @@ ns.rules = ns.rules || {};
   padding:4px 7px;
   border-radius:999px;
   color:#fff;
-  background:rgba(0,0,0,.76);
+  background:#006e6b;
   box-shadow:0 4px 14px rgba(0,0,0,.25);
   line-height:1;
+}
+
+#${ROOT_ID} .sova-fps__card[data-tier="excellent"] .sova-fps__badge{
+  background:#0f8f3a;
+}
+
+#${ROOT_ID} .sova-fps__card[data-tier="smooth"] .sova-fps__badge{
+  background:#008b88;
+}
+
+#${ROOT_ID} .sova-fps__card[data-tier="playable"] .sova-fps__badge{
+  background:#d48900;
+}
+
+#${ROOT_ID} .sova-fps__card[data-tier="basic"] .sova-fps__badge{
+  background:#c0392b;
 }
 
 #${ROOT_ID} .sova-fps__badge strong{
@@ -2605,9 +2918,23 @@ ns.rules = ns.rules || {};
     font-size:1.08rem;
   }
 
+  #${ROOT_ID} .sova-fps__resolutions{
+    width:100%;
+  }
+
   #${ROOT_ID} .sova-fps__track{
     gap:10px;
-    padding:2px 13px 16px;
+    padding:2px 0 16px;
+  }
+
+  #${ROOT_ID} .sova-fps__card:first-child{
+    margin-left:13px;
+    scroll-margin-left:13px;
+  }
+
+  #${ROOT_ID} .sova-fps__card:last-child{
+    margin-right:13px;
+    scroll-margin-right:13px;
   }
 
   #${ROOT_ID} .sova-fps__nav{
@@ -2617,6 +2944,17 @@ ns.rules = ns.rules || {};
 }
 `;
     document.head.appendChild(st);
+  }
+
+  function resolutionButtonsHTML(data, activeResolutionKey){
+    if (!data.resolutions.length) return '';
+
+    return `<div class="sova-fps__resolutions" role="group" aria-label="Rozlišení">
+      ${data.resolutions.map(res => {
+        const active = res.key === activeResolutionKey;
+        return `<button class="sova-fps__resolution-btn${active ? ' is-active' : ''}" type="button" data-resolution="${esc(res.key)}" aria-pressed="${active ? 'true' : 'false'}">${esc(formatResolutionLabel(res))}</button>`;
+      }).join('')}
+    </div>`;
   }
 
   function cardHTML(game){
@@ -2651,7 +2989,8 @@ ns.rules = ns.rules || {};
 
     if (maxBodyHeight > 0){
       bodies.forEach(body => {
-        body.style.height = `${maxBodyHeight}px`;
+        const next = `${maxBodyHeight}px`;
+        if (body.style.height !== next) body.style.height = next;
       });
     }
   }
@@ -2725,6 +3064,54 @@ ns.rules = ns.rules || {};
     }, true);
   }
 
+  function renderCards(root, games){
+    const track = root.querySelector('.sova-fps__track');
+    if (!track) return;
+
+    track.innerHTML = games.map(cardHTML).join('');
+    track.scrollLeft = 0;
+
+    root.__sovaFpsRefreshAfterCards?.();
+  }
+
+  function setActiveResolution(root, data, resolutionKey){
+    if (!resolutionKey || !data.bucketMap.has(resolutionKey)) return false;
+
+    const games = getGamesForResolution(data, resolutionKey);
+    if (!games.length) return false;
+
+    root.dataset.activeResolution = resolutionKey;
+
+    root.querySelectorAll('.sova-fps__resolution-btn').forEach(btn => {
+      const active = btn.dataset.resolution === resolutionKey;
+      btn.classList.toggle('is-active', active);
+      btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+
+    renderCards(root, games);
+
+    if (TEST()){
+      console.log(TAG, 'resolution changed', {
+        resolution: resolutionKey,
+        games: games.map(g => ({ id:g.id, fps:g.fps }))
+      });
+    }
+
+    return true;
+  }
+
+  function setupResolutionControls(root, data){
+    root.addEventListener('click', e => {
+      const btn = e.target?.closest?.('.sova-fps__resolution-btn');
+      if (!btn || !root.contains(btn)) return;
+
+      const resolutionKey = btn.dataset.resolution;
+      if (!resolutionKey || btn.classList.contains('is-active')) return;
+
+      setActiveResolution(root, data, resolutionKey);
+    }, true);
+  }
+
   function setupSlider(root){
     const track = root.querySelector('.sova-fps__track');
     const prev = root.querySelector('.sova-fps__nav--prev');
@@ -2762,7 +3149,12 @@ ns.rules = ns.rules || {};
       });
     };
 
-    root.__sovaFpsUpdate = updateLayout;
+    root.__sovaFpsRefreshAfterCards = () => {
+      bindImageUpdates(root, updateLayout);
+      updateLayout();
+      setTimeout(updateLayout, 120);
+      setTimeout(updateLayout, 320);
+    };
 
     bindImageUpdates(root, updateLayout);
 
@@ -2783,7 +3175,6 @@ ns.rules = ns.rules || {};
 
     if ('ResizeObserver' in window){
       state.ro = new ResizeObserver(updateLayout);
-      state.ro.observe(root);
       state.ro.observe(track);
     }
 
@@ -2792,7 +3183,7 @@ ns.rules = ns.rules || {};
     setTimeout(updateLayout, 320);
   }
 
-  function mount(ctx, cfg, games){
+  function mount(ctx, cfg, data, activeResolutionKey, games){
     const anchor = document.querySelector(cfg.anchorSelector);
 
     if (!anchor){
@@ -2807,12 +3198,14 @@ ns.rules = ns.rules || {};
     const root = document.createElement('section');
     root.id = ROOT_ID;
     root.className = 'sova-fps';
+    root.dataset.activeResolution = activeResolutionKey || '';
     root.setAttribute('aria-labelledby', 'sova-fps-title');
 
     root.innerHTML = `
   <div class="sova-fps__head">
     <div class="sova-fps__title-wrap">
       <h2 class="sova-fps__title" id="sova-fps-title">${esc(cfg.title)}</h2>
+      ${resolutionButtonsHTML(data, activeResolutionKey)}
       <div class="type fv-lazy-visible"><span class="trigger-fps fv-info-popup-target" data-popup-trigger="fps" title="" data-original-title="${esc(cfg.infoTitle)}"></span>
       </div>
     </div>
@@ -2828,16 +3221,19 @@ ns.rules = ns.rules || {};
   </div>`;
 
     anchor.insertAdjacentElement('afterend', root);
+
+    setupResolutionControls(root, data);
     setupSlider(root);
 
     if (TEST()){
       console.groupCollapsed(TAG, `rendered ${games.length} game(s)`);
+      console.log('activeResolution:', activeResolutionKey || '(legacy)');
+      console.log('availableResolutions:', data.resolutions.map(formatResolutionLabel));
       try {
         console.table(games.map(g => ({
           id: g.id,
           title: g.title,
-          fps: g.fps,
-          keys: g.keys.join(', ')
+          fps: g.fps
         })));
       } catch {
         console.log(games);
@@ -2872,15 +3268,24 @@ ns.rules = ns.rules || {};
         return false;
       }
 
-      const games = collectGames(snap, cfg);
+      const data = collectFpsData(snap, cfg);
+      const activeResolutionKey = getInitialResolutionKey(snap, data);
+      const games = getGamesForResolution(data, activeResolutionKey);
 
       if (!games.length){
         removeExisting();
-        if (TEST()) console.log(TAG, 'skip: no numeric FPS values');
+
+        if (TEST()) {
+          console.log(TAG, 'skip: no numeric FPS values', {
+            foundResolutions: data.resolutions.map(r => r.key),
+            legacyCount: data.legacyGames.length
+          });
+        }
+
         return false;
       }
 
-      return mount(snap, cfg, games);
+      return mount(snap, cfg, data, activeResolutionKey, games);
     } catch(e){
       console.error(TAG, 'failed', e);
       return false;
@@ -2924,6 +3329,7 @@ ns.rules = ns.rules || {};
   }
 
 })(window.SOVA || (window.SOVA = {}));
+  
 /*───────────────────────────────────────────────────────────────────────────*
  * additionalSaleCart – upsell v košíku (FAST, no-mute + mobile grid cell)
  *  + safe SOVAL debug (kompilace s try/catch, skip invalid, cache)
