@@ -1,5 +1,5 @@
 (() => {
-  'use strict';
+  'use strict'; 
 
   /*───────────────────────────────────────────────────────────────────────────*
    * 0) testSOVA – perzistence + early console hook (stejné chování jako BE)
