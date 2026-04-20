@@ -2193,7 +2193,6 @@ ns.rules = ns.rules || {};
     if (!s || /^[-–—]+$/.test(s)) return null;
 
     const clean = s.replace(',', '.');
-
     const candidate = /^-?\d+(?:\.\d+)?$/.test(clean)
       ? clean
       : (clean.match(/-?\d+(?:\.\d+)?/)?.[0] || '');
@@ -2366,12 +2365,12 @@ ns.rules = ns.rules || {};
 
 #${ROOT_ID} .sova-fps__track{
   display:flex;
+  align-items:flex-start;
   gap:12px;
   overflow-x:auto;
   overflow-y:hidden;
   scroll-snap-type:x proximity;
   scroll-behavior:smooth;
-  scrollbar-width:thin;
   scrollbar-color:var(--color-primary-hover, #005956) #f1f1f1;
   padding:2px 2px 12px;
   margin:0 -2px -12px;
@@ -2408,8 +2407,8 @@ ns.rules = ns.rules || {};
 }
 
 #${ROOT_ID} .sova-fps__card{
-  flex:0 0 min(156px,42vw);
-  scroll-snap-align:start;
+  flex:0 0 auto;
+  width:auto;
   min-width:0;
   overflow:hidden;
   border:1px solid rgba(0,0,0,.08);
@@ -2420,18 +2419,20 @@ ns.rules = ns.rules || {};
 
 #${ROOT_ID} .sova-fps__img-wrap{
   position:relative;
-  aspect-ratio:1/1;
   display:flex;
   align-items:center;
   justify-content:center;
   overflow:hidden;
   background:#fff;
+  line-height:0;
 }
 
 #${ROOT_ID} .sova-fps__img{
-  width:100%;
-  height:100%;
   display:block;
+  width:auto;
+  height:auto;
+  max-width:min(220px,42vw);
+  max-height:220px;
   object-fit:contain;
   object-position:center;
   user-select:none;
@@ -2477,6 +2478,7 @@ ns.rules = ns.rules || {};
   font-size:.9rem;
   line-height:1.18;
   font-weight:800;
+  overflow-wrap:break-word;
 }
 
 #${ROOT_ID} .sova-fps__tier{
@@ -2509,22 +2511,6 @@ ns.rules = ns.rules || {};
   color:#9a2222;
 }
 
-@media (min-width:768px){
-  #${ROOT_ID}{
-    padding:18px;
-  }
-
-  #${ROOT_ID} .sova-fps__card{
-    flex-basis:calc((100% - 36px) / 4);
-  }
-}
-
-@media (min-width:1100px){
-  #${ROOT_ID} .sova-fps__card{
-    flex-basis:calc((100% - 48px) / 5);
-  }
-}
-
 @media (max-width:480px){
   #${ROOT_ID}{
     margin-top:16px;
@@ -2541,6 +2527,11 @@ ns.rules = ns.rules || {};
 
   #${ROOT_ID} .sova-fps__track{
     gap:10px;
+  }
+
+  #${ROOT_ID} .sova-fps__img{
+    max-width:min(210px,58vw);
+    max-height:210px;
   }
 
   #${ROOT_ID} .sova-fps__nav{
@@ -2565,6 +2556,34 @@ ns.rules = ns.rules || {};
     <span class="sova-fps__tier">${esc(tier.label)}</span>
   </div>
 </article>`;
+  }
+
+  function syncCardWidths(root){
+    root.querySelectorAll('.sova-fps__card').forEach(card => {
+      const img = card.querySelector('.sova-fps__img');
+      if (!img) return;
+
+      const apply = () => {
+        const rect = img.getBoundingClientRect();
+        const width = Math.ceil(rect.width || 0);
+        if (width > 0){
+          card.style.width = `${width}px`;
+        }
+      };
+
+      if (!img.dataset.sovaFpsWidthBound){
+        img.dataset.sovaFpsWidthBound = '1';
+
+        if (!img.complete){
+          img.addEventListener('load', () => {
+            apply();
+            root.__sovaFpsUpdate?.();
+          }, { once:true });
+        }
+      }
+
+      apply();
+    });
   }
 
   function setupDragScroll(track){
@@ -2646,9 +2665,10 @@ ns.rules = ns.rules || {};
       cancelAnimationFrame(raf);
 
       raf = requestAnimationFrame(() => {
+        syncCardWidths(root);
+
         const overflows = track.scrollWidth > track.clientWidth + 4;
 
-        root.classList.toggle('is-slider', overflows);
         prev.hidden = next.hidden = !overflows;
 
         if (!overflows) return;
@@ -2659,6 +2679,8 @@ ns.rules = ns.rules || {};
         next.disabled = track.scrollLeft >= maxLeft;
       });
     };
+
+    root.__sovaFpsUpdate = update;
 
     const scrollAmount = () => Math.max(180, Math.round(track.clientWidth * 0.82));
 
@@ -2706,8 +2728,8 @@ ns.rules = ns.rules || {};
   <div class="sova-fps__head">
     <div class="sova-fps__title-wrap">
       <h2 class="sova-fps__title" id="sova-fps-title">${esc(cfg.title)}</h2>
-      <span class="trigger-fps fv-info-popup-target" data-popup-trigger="fps" title="" data-original-title="${esc(cfg.infoTitle)}"></span>
-    </div>
+      <div class="type fv-lazy-visible"><span class="trigger-fps fv-info-popup-target" data-popup-trigger="fps" title="" data-original-title="${esc(cfg.infoTitle)}"></span>
+    </div></div>
     <div class="sova-fps__actions" aria-hidden="false">
       <button class="sova-fps__nav sova-fps__nav--prev" type="button" aria-label="Předchozí hry" hidden></button>
       <button class="sova-fps__nav sova-fps__nav--next" type="button" aria-label="Další hry" hidden></button>
@@ -2783,8 +2805,6 @@ ns.rules = ns.rules || {};
 
   ns.fn.register('fpsGames', runFpsGames);
 
-  // Auto-run, aby stačilo feature pouze vložit do SOVA FE.
-  // Pokud chceš spouštět výhradně přes injectFunctions, nastav window.fpsGames = { autoBoot:false }.
   function autoRun(payload){
     const settings = ns.rules?.featureSettings?.('fpsGames') || window.fpsGames;
     const cfg = getConfig({}, settings);
@@ -2820,7 +2840,6 @@ ns.rules = ns.rules || {};
   }
 
 })(window.SOVA || (window.SOVA = {}));
-
   
 /*───────────────────────────────────────────────────────────────────────────*
  * additionalSaleCart – upsell v košíku (FAST, no-mute + mobile grid cell)
