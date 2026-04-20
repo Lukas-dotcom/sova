@@ -2257,15 +2257,18 @@ ns.rules = ns.rules || {};
     st.id = STYLE_ID;
     st.textContent = `
 #${ROOT_ID}{
+  order:99;
   margin:20px 0 0;
   padding:16px;
   border:1px solid rgba(0,110,107,.18);
-  border-radius:18px;
   background:linear-gradient(135deg,#f4fbfb 0%,#fff 56%,#f7f7f7 100%);
   box-shadow:0 10px 28px rgba(0,0,0,.06);
   overflow:hidden;
 }
-#${ROOT_ID} *{ box-sizing:border-box; }
+
+#${ROOT_ID} *{
+  box-sizing:border-box;
+}
 
 #${ROOT_ID} .sova-fps__head{
   display:flex;
@@ -2290,21 +2293,72 @@ ns.rules = ns.rules || {};
   font-weight:800;
 }
 
-#${ROOT_ID} .trigger-fps{
-  display:inline-flex;
+#${ROOT_ID} .sova-fps__actions{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:6px;
+  flex:0 0 auto;
+}
+
+#${ROOT_ID} .sova-fps__nav{
+  appearance:none;
+  -webkit-appearance:none;
+  display:flex;
   align-items:center;
   justify-content:center;
-  width:20px;
-  height:20px;
-  flex:0 0 20px;
-  border-radius:50%;
-  background:#006e6b;
-  color:#fff;
-  font-size:12px;
-  font-weight:800;
-  cursor:help;
+  width:31px;
+  height:31px;
+  padding:0;
+  margin:0;
+  border:0;
+  border-radius:2px;
+  background-color:rgb(0,110,107);
+  color:rgb(227,246,245);
+  box-shadow:none;
+  font-family:"Kumbh Sans", sans-serif;
+  font-size:24px;
+  font-weight:600;
+  line-height:26.4px;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:background-color .3s ease;
+  box-sizing:content-box;
+  user-select:none;
 }
-#${ROOT_ID} .trigger-fps::before{ content:'i'; }
+
+#${ROOT_ID} .sova-fps__nav::before{
+  content:"";
+  display:flex;
+  width:7px;
+  height:11px;
+  background-color:rgb(227,246,245);
+  mask-image:url(https://cdn.myshoptet.com/usr/644482.myshoptet.com/user/documents/fv-studio/opti/assets/icons/caret-left.svg);
+  mask-repeat:no-repeat;
+  mask-size:contain;
+  mask-position:50% 50%;
+  -webkit-mask-image:url(https://cdn.myshoptet.com/usr/644482.myshoptet.com/user/documents/fv-studio/opti/assets/icons/caret-left.svg);
+  -webkit-mask-repeat:no-repeat;
+  -webkit-mask-size:contain;
+  -webkit-mask-position:50% 50%;
+}
+
+#${ROOT_ID} .sova-fps__nav--next::before{
+  transform:matrix(-1, 0, 0, -1, 0, 0);
+}
+
+#${ROOT_ID} .sova-fps__nav:hover:not(:disabled){
+  background-color:var(--color-primary-hover, #005956);
+}
+
+#${ROOT_ID} .sova-fps__nav:disabled{
+  opacity:.35;
+  cursor:default;
+}
+
+#${ROOT_ID} .sova-fps__nav[hidden]{
+  display:none !important;
+}
 
 #${ROOT_ID} .sova-fps__viewport{
   position:relative;
@@ -2318,8 +2372,39 @@ ns.rules = ns.rules || {};
   scroll-snap-type:x proximity;
   scroll-behavior:smooth;
   scrollbar-width:thin;
-  padding:2px 2px 10px;
-  margin:0 -2px -10px;
+  scrollbar-color:var(--color-primary-hover, #005956) #f1f1f1;
+  padding:2px 2px 12px;
+  margin:0 -2px -12px;
+  cursor:grab;
+  touch-action:pan-y;
+  -webkit-overflow-scrolling:touch;
+}
+
+#${ROOT_ID} .sova-fps__track::-webkit-scrollbar{
+  height:10px;
+}
+
+#${ROOT_ID} .sova-fps__track::-webkit-scrollbar-track{
+  background:#f1f1f1;
+  border-radius:0;
+}
+
+#${ROOT_ID} .sova-fps__track::-webkit-scrollbar-thumb{
+  background:var(--color-primary-hover, #005956);
+  border-radius:0;
+}
+
+#${ROOT_ID} .sova-fps__track::-webkit-scrollbar-button{
+  display:none;
+  width:0;
+  height:0;
+}
+
+#${ROOT_ID} .sova-fps__track.is-dragging{
+  cursor:grabbing;
+  scroll-snap-type:none;
+  scroll-behavior:auto;
+  user-select:none;
 }
 
 #${ROOT_ID} .sova-fps__card{
@@ -2328,7 +2413,7 @@ ns.rules = ns.rules || {};
   min-width:0;
   overflow:hidden;
   border:1px solid rgba(0,0,0,.08);
-  border-radius:15px;
+  border-radius:7px;
   background:#fff;
   box-shadow:0 6px 18px rgba(0,0,0,.07);
 }
@@ -2336,16 +2421,21 @@ ns.rules = ns.rules || {};
 #${ROOT_ID} .sova-fps__img-wrap{
   position:relative;
   aspect-ratio:1/1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   overflow:hidden;
-  background:#eee;
+  background:#fff;
 }
 
 #${ROOT_ID} .sova-fps__img{
   width:100%;
   height:100%;
   display:block;
-  object-fit:cover;
-  transform:scale(1.01);
+  object-fit:contain;
+  object-position:center;
+  user-select:none;
+  -webkit-user-drag:none;
 }
 
 #${ROOT_ID} .sova-fps__badge{
@@ -2394,46 +2484,29 @@ ns.rules = ns.rules || {};
   max-width:100%;
   padding:3px 7px;
   border-radius:999px;
-  background:#eef7f7;
-  color:#006e6b;
   font-size:.72rem;
   font-weight:800;
   line-height:1.1;
 }
 
-#${ROOT_ID} .sova-fps__nav{
-  position:absolute;
-  top:50%;
-  z-index:2;
-  width:34px;
-  height:34px;
-  margin-top:-17px;
-  border:0;
-  border-radius:999px;
-  background:rgba(255,255,255,.95);
-  box-shadow:0 6px 18px rgba(0,0,0,.16);
+#${ROOT_ID} .sova-fps__card[data-tier="excellent"] .sova-fps__tier{
+  background:#e7f8ed;
+  color:#127a32;
+}
+
+#${ROOT_ID} .sova-fps__card[data-tier="smooth"] .sova-fps__tier{
+  background:#e3f6f5;
   color:#006e6b;
-  font-size:24px;
-  line-height:1;
-  font-weight:900;
-  cursor:pointer;
 }
 
-#${ROOT_ID} .sova-fps__nav[hidden]{
-  display:none !important;
+#${ROOT_ID} .sova-fps__card[data-tier="playable"] .sova-fps__tier{
+  background:#fff4d8;
+  color:#8a6100;
 }
 
-#${ROOT_ID} .sova-fps__nav:disabled{
-  opacity:.35;
-  cursor:default;
-}
-
-#${ROOT_ID} .sova-fps__nav--prev{ left:2px; }
-#${ROOT_ID} .sova-fps__nav--next{ right:2px; }
-
-#${ROOT_ID}.is-slider .sova-fps__track{
-  padding-left:42px;
-  padding-right:42px;
+#${ROOT_ID} .sova-fps__card[data-tier="basic"] .sova-fps__tier{
+  background:#f7e4e4;
+  color:#9a2222;
 }
 
 @media (min-width:768px){
@@ -2456,7 +2529,10 @@ ns.rules = ns.rules || {};
   #${ROOT_ID}{
     margin-top:16px;
     padding:13px;
-    border-radius:15px;
+  }
+
+  #${ROOT_ID} .sova-fps__head{
+    align-items:flex-start;
   }
 
   #${ROOT_ID} .sova-fps__title{
@@ -2467,13 +2543,9 @@ ns.rules = ns.rules || {};
     gap:10px;
   }
 
-  #${ROOT_ID}.is-slider .sova-fps__track{
-    padding-left:0;
-    padding-right:0;
-  }
-
   #${ROOT_ID} .sova-fps__nav{
-    display:none !important;
+    width:29px;
+    height:29px;
   }
 }
 `;
@@ -2485,7 +2557,7 @@ ns.rules = ns.rules || {};
 
     return `<article class="sova-fps__card" role="listitem" data-game="${esc(game.id)}" data-tier="${tier.key}" aria-label="${esc(game.title)}: ${game.fps} FPS">
   <div class="sova-fps__img-wrap">
-    <img class="sova-fps__img" src="${esc(game.image)}" alt="${esc(game.title)}" loading="lazy" decoding="async">
+    <img class="sova-fps__img" src="${esc(game.image)}" alt="${esc(game.title)}" loading="lazy" decoding="async" draggable="false">
     <div class="sova-fps__badge"><strong>${game.fps}</strong><span>FPS</span></div>
   </div>
   <div class="sova-fps__body">
@@ -2495,12 +2567,78 @@ ns.rules = ns.rules || {};
 </article>`;
   }
 
+  function setupDragScroll(track){
+    let isDown = false;
+    let startX = 0;
+    let startScrollLeft = 0;
+    let moved = false;
+    let blockClickUntil = 0;
+    let pointerId = null;
+
+    const endDrag = () => {
+      if (!isDown) return;
+
+      if (moved) {
+        blockClickUntil = Date.now() + 120;
+      }
+
+      isDown = false;
+      pointerId = null;
+      track.classList.remove('is-dragging');
+    };
+
+    track.addEventListener('pointerdown', (e) => {
+      if (e.button != null && e.button !== 0) return;
+      if (e.target?.closest?.('button,a,input,select,textarea,label')) return;
+
+      isDown = true;
+      moved = false;
+      pointerId = e.pointerId;
+      startX = e.clientX;
+      startScrollLeft = track.scrollLeft;
+
+      track.classList.add('is-dragging');
+
+      try {
+        track.setPointerCapture(pointerId);
+      } catch {}
+    }, { passive:true });
+
+    track.addEventListener('pointermove', (e) => {
+      if (!isDown) return;
+
+      const dx = e.clientX - startX;
+
+      if (Math.abs(dx) > 3) {
+        moved = true;
+      }
+
+      if (!moved) return;
+
+      e.preventDefault();
+      track.scrollLeft = startScrollLeft - dx;
+    }, { passive:false });
+
+    track.addEventListener('pointerup', endDrag, { passive:true });
+    track.addEventListener('pointercancel', endDrag, { passive:true });
+    track.addEventListener('lostpointercapture', endDrag, { passive:true });
+
+    track.addEventListener('click', (e) => {
+      if (Date.now() <= blockClickUntil) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    }, true);
+  }
+
   function setupSlider(root){
     const track = root.querySelector('.sova-fps__track');
     const prev = root.querySelector('.sova-fps__nav--prev');
     const next = root.querySelector('.sova-fps__nav--next');
 
     if (!track || !prev || !next) return;
+
+    setupDragScroll(track);
 
     let raf = 0;
 
@@ -2570,13 +2708,15 @@ ns.rules = ns.rules || {};
       <h2 class="sova-fps__title" id="sova-fps-title">${esc(cfg.title)}</h2>
       <span class="trigger-fps fv-info-popup-target" data-popup-trigger="fps" title="" data-original-title="${esc(cfg.infoTitle)}"></span>
     </div>
+    <div class="sova-fps__actions" aria-hidden="false">
+      <button class="sova-fps__nav sova-fps__nav--prev" type="button" aria-label="Předchozí hry" hidden></button>
+      <button class="sova-fps__nav sova-fps__nav--next" type="button" aria-label="Další hry" hidden></button>
+    </div>
   </div>
   <div class="sova-fps__viewport">
-    <button class="sova-fps__nav sova-fps__nav--prev" type="button" aria-label="Předchozí hry" hidden>‹</button>
     <div class="sova-fps__track" role="list">
       ${games.map(cardHTML).join('')}
     </div>
-    <button class="sova-fps__nav sova-fps__nav--next" type="button" aria-label="Další hry" hidden>›</button>
   </div>`;
 
     anchor.insertAdjacentElement('afterend', root);
@@ -2664,6 +2804,17 @@ ns.rules = ns.rules || {};
     if (Object.keys(snap).length) {
       setTimeout(() => autoRun({ snapshot:snap }), 0);
     }
+
+    [
+      'ShoptetDOMContentLoaded',
+      'ShoptetDOMPageContentLoaded',
+      'ShoptetDOMProductRatingsLoaded',
+      'ShoptetDOMProductDiscussionsLoaded'
+    ].forEach(ev => {
+      document.addEventListener(ev, () => {
+        setTimeout(() => autoRun({ snapshot: ns.getContext?.snapshot?.() || {} }), 0);
+      }, true);
+    });
   } catch(e){
     if (TEST()) console.warn(TAG, 'autoRun attach failed', e);
   }
