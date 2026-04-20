@@ -2257,9 +2257,16 @@ ns.rules = ns.rules || {};
     st.textContent = `
 #${ROOT_ID}{
   order:99;
+  display:block;
+  flex:0 1 100%;
+  align-self:stretch;
+  inline-size:100%;
   width:100%;
+  max-inline-size:100%;
   max-width:100%;
+  min-inline-size:0;
   min-width:0;
+  contain:inline-size;
   margin:20px 0 0;
   padding:16px;
   border:1px solid rgba(0,110,107,.18);
@@ -2375,8 +2382,12 @@ ns.rules = ns.rules || {};
 
 #${ROOT_ID} .sova-fps__viewport{
   position:relative;
+  display:block;
+  inline-size:100%;
   width:100%;
+  max-inline-size:100%;
   max-width:100%;
+  min-inline-size:0;
   min-width:0;
   overflow:hidden;
 }
@@ -2384,40 +2395,60 @@ ns.rules = ns.rules || {};
 #${ROOT_ID} .sova-fps__track{
   display:flex;
   align-items:flex-start;
+  flex-wrap:nowrap;
   gap:12px;
+  inline-size:100%;
   width:100%;
+  max-inline-size:100%;
   max-width:100%;
+  min-inline-size:0;
   min-width:0;
-  overflow-x:auto;
+  overflow-x:scroll;
   overflow-y:hidden;
   scroll-snap-type:x proximity;
   scroll-behavior:smooth;
   scrollbar-color:var(--color-primary-hover, #005956) #f1f1f1;
-  padding:2px 2px 12px;
-  margin:0 -2px -12px;
+  padding:2px 2px 10px;
+  margin:0;
   cursor:grab;
   touch-action:pan-y;
+  overscroll-behavior-x:contain;
   -webkit-overflow-scrolling:touch;
 }
 
 #${ROOT_ID} .sova-fps__track::-webkit-scrollbar{
+  width:10px;
   height:10px;
+  background:#f1f1f1;
 }
 
 #${ROOT_ID} .sova-fps__track::-webkit-scrollbar-track{
   background:#f1f1f1;
   border-radius:0;
+  box-shadow:none;
 }
 
 #${ROOT_ID} .sova-fps__track::-webkit-scrollbar-thumb{
   background:var(--color-primary-hover, #005956);
   border-radius:0;
+  box-shadow:none;
+  border:0;
 }
 
-#${ROOT_ID} .sova-fps__track::-webkit-scrollbar-button{
-  display:none;
-  width:0;
-  height:0;
+#${ROOT_ID} .sova-fps__track::-webkit-scrollbar-button,
+#${ROOT_ID} .sova-fps__track::-webkit-scrollbar-button:single-button,
+#${ROOT_ID} .sova-fps__track::-webkit-scrollbar-button:start,
+#${ROOT_ID} .sova-fps__track::-webkit-scrollbar-button:end,
+#${ROOT_ID} .sova-fps__track::-webkit-scrollbar-button:horizontal:start:decrement,
+#${ROOT_ID} .sova-fps__track::-webkit-scrollbar-button:horizontal:end:increment{
+  display:none !important;
+  width:0 !important;
+  height:0 !important;
+  background:transparent !important;
+}
+
+#${ROOT_ID} .sova-fps__track::-webkit-scrollbar-corner{
+  background:#f1f1f1;
 }
 
 #${ROOT_ID} .sova-fps__track.is-dragging{
@@ -2428,9 +2459,13 @@ ns.rules = ns.rules || {};
 }
 
 #${ROOT_ID} .sova-fps__card{
-  flex:0 0 auto;
-  width:auto;
-  min-width:0;
+  flex:0 0 115px;
+  inline-size:115px;
+  width:115px;
+  max-inline-size:115px;
+  max-width:115px;
+  min-inline-size:115px;
+  min-width:115px;
   overflow:hidden;
   border:1px solid rgba(0,0,0,.08);
   border-radius:7px;
@@ -2439,13 +2474,14 @@ ns.rules = ns.rules || {};
   display:flex;
   flex-direction:column;
   align-self:flex-start;
+  scroll-snap-align:start;
 }
 
 #${ROOT_ID} .sova-fps__img-wrap{
   position:relative;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display:block;
+  inline-size:115px;
+  width:115px;
   overflow:hidden;
   background:#fff;
   line-height:0;
@@ -2453,10 +2489,11 @@ ns.rules = ns.rules || {};
 
 #${ROOT_ID} .sova-fps__img{
   display:block;
-  width:auto;
+  inline-size:115px;
+  width:115px;
+  max-inline-size:115px;
+  max-width:115px;
   height:auto;
-  max-width:min(220px,42vw);
-  max-height:220px;
   object-fit:contain;
   object-position:center;
   user-select:none;
@@ -2465,12 +2502,12 @@ ns.rules = ns.rules || {};
 
 #${ROOT_ID} .sova-fps__badge{
   position:absolute;
-  left:8px;
-  bottom:8px;
+  left:6px;
+  bottom:6px;
   display:flex;
   align-items:baseline;
-  gap:4px;
-  padding:5px 8px;
+  gap:3px;
+  padding:4px 7px;
   border-radius:999px;
   color:#fff;
   background:rgba(0,0,0,.76);
@@ -2479,13 +2516,13 @@ ns.rules = ns.rules || {};
 }
 
 #${ROOT_ID} .sova-fps__badge strong{
-  font-size:1.1rem;
+  font-size:1rem;
   line-height:1;
   font-weight:900;
 }
 
 #${ROOT_ID} .sova-fps__badge span{
-  font-size:.7rem;
+  font-size:.66rem;
   font-weight:800;
   letter-spacing:.04em;
 }
@@ -2493,25 +2530,31 @@ ns.rules = ns.rules || {};
 #${ROOT_ID} .sova-fps__body{
   display:flex;
   flex-direction:column;
+  align-items:flex-start;
   gap:4px;
-  padding:10px 10px 11px;
+  padding:9px 8px 10px;
   height:auto;
 }
 
 #${ROOT_ID} .sova-fps__game{
   color:#202020;
-  font-size:.9rem;
+  font-size:.82rem;
   line-height:1.18;
   font-weight:800;
   overflow-wrap:break-word;
 }
 
 #${ROOT_ID} .sova-fps__tier{
+  display:inline-flex;
+  align-items:center;
+  justify-content:flex-start;
   width:max-content;
   max-width:100%;
+  margin-top:auto;
+  align-self:flex-start;
   padding:3px 7px;
   border-radius:999px;
-  font-size:.72rem;
+  font-size:.68rem;
   font-weight:800;
   line-height:1.1;
 }
@@ -2554,11 +2597,6 @@ ns.rules = ns.rules || {};
     gap:10px;
   }
 
-  #${ROOT_ID} .sova-fps__img{
-    max-width:min(210px,58vw);
-    max-height:210px;
-  }
-
   #${ROOT_ID} .sova-fps__nav{
     width:29px;
     height:29px;
@@ -2583,60 +2621,39 @@ ns.rules = ns.rules || {};
 </article>`;
   }
 
-  function syncCardLayout(root){
-    const cards = Array.from(root.querySelectorAll('.sova-fps__card'));
-    if (!cards.length) return;
+  function syncBodyHeights(root){
+    const bodies = Array.from(root.querySelectorAll('.sova-fps__body'));
+    if (!bodies.length) return;
 
-    // reset
-    cards.forEach(card => {
-      card.style.width = '';
-      const body = card.querySelector('.sova-fps__body');
-      if (body) body.style.height = '';
+    bodies.forEach(body => {
+      body.style.height = '';
     });
 
-    // 1) šířka karty podle reálně vykreslené šířky obrázku
-    cards.forEach(card => {
-      const img = card.querySelector('.sova-fps__img');
-      if (!img) return;
-
-      const apply = () => {
-        const rect = img.getBoundingClientRect();
-        const width = Math.ceil(rect.width || 0);
-        if (width > 0) {
-          card.style.width = `${width}px`;
-        }
-      };
-
-      if (!img.dataset.sovaFpsBound){
-        img.dataset.sovaFpsBound = '1';
-
-        if (!img.complete){
-          img.addEventListener('load', () => {
-            apply();
-            root.__sovaFpsUpdate?.();
-          }, { once:true });
-        }
-      }
-
-      apply();
-    });
-
-    // 2) výška body podle nejvyšší body části
     let maxBodyHeight = 0;
 
-    cards.forEach(card => {
-      const body = card.querySelector('.sova-fps__body');
-      if (!body) return;
+    bodies.forEach(body => {
       const h = Math.ceil(body.getBoundingClientRect().height || 0);
       if (h > maxBodyHeight) maxBodyHeight = h;
     });
 
     if (maxBodyHeight > 0){
-      cards.forEach(card => {
-        const body = card.querySelector('.sova-fps__body');
-        if (body) body.style.height = `${maxBodyHeight}px`;
+      bodies.forEach(body => {
+        body.style.height = `${maxBodyHeight}px`;
       });
     }
+  }
+
+  function bindImageUpdates(root, updateLayout){
+    root.querySelectorAll('.sova-fps__img').forEach(img => {
+      if (img.dataset.sovaFpsBound) return;
+
+      img.dataset.sovaFpsBound = '1';
+
+      if (!img.complete){
+        img.addEventListener('load', updateLayout, { once:true });
+        img.addEventListener('error', updateLayout, { once:true });
+      }
+    });
   }
 
   function setupDragScroll(track){
@@ -2704,14 +2721,13 @@ ns.rules = ns.rules || {};
 
     setupDragScroll(track);
 
-    let raf = 0;
+    let navRaf = 0;
+    let layoutRaf = 0;
 
-    const update = () => {
-      cancelAnimationFrame(raf);
+    const updateNav = () => {
+      cancelAnimationFrame(navRaf);
 
-      raf = requestAnimationFrame(() => {
-        syncCardLayout(root);
-
+      navRaf = requestAnimationFrame(() => {
         const overflows = track.scrollWidth > track.clientWidth + 4;
 
         prev.hidden = next.hidden = !overflows;
@@ -2724,7 +2740,18 @@ ns.rules = ns.rules || {};
       });
     };
 
-    root.__sovaFpsUpdate = update;
+    const updateLayout = () => {
+      cancelAnimationFrame(layoutRaf);
+
+      layoutRaf = requestAnimationFrame(() => {
+        syncBodyHeights(root);
+        updateNav();
+      });
+    };
+
+    root.__sovaFpsUpdate = updateLayout;
+
+    bindImageUpdates(root, updateLayout);
 
     const scrollAmount = () => Math.max(180, Math.round(track.clientWidth * 0.82));
 
@@ -2736,20 +2763,20 @@ ns.rules = ns.rules || {};
       track.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
     });
 
-    track.addEventListener('scroll', update, { passive:true });
+    track.addEventListener('scroll', updateNav, { passive:true });
 
-    state.resizeHandler = update;
-    window.addEventListener('resize', update, { passive:true });
+    state.resizeHandler = updateLayout;
+    window.addEventListener('resize', updateLayout, { passive:true });
 
     if ('ResizeObserver' in window){
-      state.ro = new ResizeObserver(update);
+      state.ro = new ResizeObserver(updateLayout);
       state.ro.observe(root);
       state.ro.observe(track);
     }
 
-    update();
-    setTimeout(update, 120);
-    setTimeout(update, 320);
+    updateLayout();
+    setTimeout(updateLayout, 120);
+    setTimeout(updateLayout, 320);
   }
 
   function mount(ctx, cfg, games){
@@ -2773,8 +2800,7 @@ ns.rules = ns.rules || {};
   <div class="sova-fps__head">
     <div class="sova-fps__title-wrap">
       <h2 class="sova-fps__title" id="sova-fps-title">${esc(cfg.title)}</h2>
-      <div class="type fv-lazy-visible">
-        <span class="trigger-fps fv-info-popup-target" data-popup-trigger="fps" title="" data-original-title="${esc(cfg.infoTitle)}"></span>
+      <div class="type fv-lazy-visible"><span class="trigger-fps fv-info-popup-target" data-popup-trigger="fps" title="" data-original-title="${esc(cfg.infoTitle)}"></span>
       </div>
     </div>
     <div class="sova-fps__actions" aria-hidden="false">
