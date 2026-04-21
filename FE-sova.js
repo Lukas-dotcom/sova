@@ -2379,31 +2379,74 @@ ns.rules = ns.rules || {};
     return toArray(ctx?.parametrVyuziti).some(v => norm(v) === 'herni');
   }
 
-  function parseFps(raw, minFps){
-    const value = firstValue(raw);
-    if (value == null) return null;
+  function fpsTier(fps){
+    if (fps >= 120) return { key: 'excellent', label: 'Výborně' };
+    if (fps >= 60)  return { key: 'smooth',    label: 'Plynule' };
+    if (fps >= 40)  return { key: 'playable',  label: 'Hratelně' };
+    return { key: 'basic', label: 'Špatně' };
+  }
 
-    let s = String(value).replace(/\u00A0/g, ' ').trim();
-    if (!s || /^[-–—]+$/.test(s)) return null;
+  function parseFpsStatus(raw, minFps){
+    const value = firstValue(raw);
+
+    if (value == null){
+      return {
+        kind: 'unplayable',
+        tierKey: 'unplayable',
+        label: 'Nehratelné'
+      };
+    }
+
+    const s = String(value).replace(/\u00A0/g, ' ').trim();
+
+    if (!s || /^[-–—]+$/.test(s)){
+      return {
+        kind: 'unplayable',
+        tierKey: 'unplayable',
+        label: 'Nehratelné'
+      };
+    }
 
     const clean = s.replace(',', '.');
     const candidate = /^-?\d+(?:\.\d+)?$/.test(clean)
       ? clean
       : (clean.match(/-?\d+(?:\.\d+)?/)?.[0] || '');
 
-    if (!candidate) return null;
+    if (!candidate){
+      return {
+        kind: 'unplayable',
+        tierKey: 'unplayable',
+        label: 'Nehratelné'
+      };
+    }
 
     const n = Number(candidate);
-    if (!Number.isFinite(n) || n < minFps) return null;
 
-    return Math.round(n);
+    if (!Number.isFinite(n) || n < minFps){
+      return {
+        kind: 'unplayable',
+        tierKey: 'unplayable',
+        label: 'Nehratelné'
+      };
+    }
+
+    const fps = Math.round(n);
+    const tier = fpsTier(fps);
+
+    return {
+      kind: 'fps',
+      fps,
+      tierKey: tier.key,
+      label: tier.label
+    };
   }
 
   function collectFpsData(ctx, cfg){
     const { gameDefs, aliasMap } = buildGameRegistry(cfg);
 
     const bucketMap = new Map();
-    const legacyFpsByGame = new Map();
+    const legacyStatusByGame = new Map();
+    const allGameIds = new Set();
 
     Object.entries(ctx || {}).forEach(([key, rawValue]) => {
       const parsed = parseFpsParamKey(key);
@@ -2412,8 +2455,9 @@ ns.rules = ns.rules || {};
       const game = aliasMap.get(compactToken(parsed.gameToken));
       if (!game) return;
 
-      const fps = parseFps(rawValue, cfg.minFps);
-      if (fps == null) return;
+      allGameIds.add(game.id);
+
+      const status = parseFpsStatus(rawValue, cfg.minFps);
 
       if (parsed.resolution){
         const res = getResolutionInfo(parsed.resolution);
@@ -2422,65 +2466,45 @@ ns.rules = ns.rules || {};
         if (!bucketMap.has(res.key)){
           bucketMap.set(res.key, {
             ...res,
-            fpsByGame: new Map()
+            statusByGame: new Map()
           });
         }
 
-        bucketMap.get(res.key).fpsByGame.set(game.id, fps);
+        bucketMap.get(res.key).statusByGame.set(game.id, status);
       } else {
-        legacyFpsByGame.set(game.id, fps);
+        legacyStatusByGame.set(game.id, status);
       }
     });
 
     const resolutions = Array.from(bucketMap.values())
-      .filter(res => res.fpsByGame.size > 0)
+      .filter(res => res.statusByGame.size > 0)
       .sort(compareResolutionInfo);
 
-    const legacyGames = gameDefs
-      .filter(game => legacyFpsByGame.has(game.id))
-      .map(game => ({
-        ...game,
-        fps: legacyFpsByGame.get(game.id)
-      }));
+    const allGames = gameDefs.filter(game => allGameIds.has(game.id));
 
     return {
       gameDefs,
+      allGames,
       bucketMap,
       resolutions,
-      legacyGames
+      legacyStatusByGame
     };
   }
 
-  function getInitialResolutionKey(ctx, data){
-    const productResolution = normalizeResolution(ctx?.parametrRozliseni);
-
-    if (productResolution && data.bucketMap.has(productResolution)){
-      return productResolution;
-    }
-
+  function getInitialResolutionKey(data){
     return data.resolutions[0]?.key || '';
   }
 
-  function getGamesForResolution(data, resolutionKey){
+  function getStatusForGame(data, resolutionKey, gameId){
     if (resolutionKey && data.bucketMap.has(resolutionKey)){
-      const bucket = data.bucketMap.get(resolutionKey);
-
-      return data.gameDefs
-        .filter(game => bucket.fpsByGame.has(game.id))
-        .map(game => ({
-          ...game,
-          fps: bucket.fpsByGame.get(game.id)
-        }));
+      return data.bucketMap.get(resolutionKey).statusByGame.get(gameId) || null;
     }
 
-    return data.legacyGames || [];
-  }
+    if (!resolutionKey){
+      return data.legacyStatusByGame.get(gameId) || null;
+    }
 
-  function fpsTier(fps){
-    if (fps >= 120) return { key: 'excellent', label: 'Výborně' };
-    if (fps >= 60)  return { key: 'smooth',    label: 'Plynule' };
-    if (fps >= 40)  return { key: 'playable',  label: 'Hratelně' };
-    return { key: 'basic', label: 'Základně' };
+    return null;
   }
 
   function cleanupRuntime(){
@@ -2557,11 +2581,18 @@ ns.rules = ns.rules || {};
   font-weight:800;
 }
 
+#${ROOT_ID} .type.fv-lazy-visible{
+  display:flex;
+  align-items:center;
+  flex:0 0 auto;
+}
+
 #${ROOT_ID} .sova-fps__resolutions{
   display:flex;
   align-items:center;
   flex-wrap:wrap;
   gap:6px;
+  flex:0 0 100%;
   min-width:0;
 }
 
@@ -2592,12 +2623,6 @@ ns.rules = ns.rules || {};
   border-color:#006e6b;
   background:#006e6b;
   color:#e3f6f5;
-}
-
-#${ROOT_ID} .type.fv-lazy-visible{
-  display:flex;
-  align-items:center;
-  flex:0 0 auto;
 }
 
 #${ROOT_ID} .sova-fps__actions{
@@ -2824,6 +2849,11 @@ ns.rules = ns.rules || {};
   line-height:1;
 }
 
+#${ROOT_ID} .sova-fps__badge[hidden],
+#${ROOT_ID} .sova-fps__tier[hidden]{
+  display:none !important;
+}
+
 #${ROOT_ID} .sova-fps__card[data-tier="excellent"] .sova-fps__badge{
   background:#0f8f3a;
 }
@@ -2840,6 +2870,10 @@ ns.rules = ns.rules || {};
   background:#c0392b;
 }
 
+#${ROOT_ID} .sova-fps__card[data-tier="unplayable"] .sova-fps__badge{
+  background:#6b7280;
+}
+
 #${ROOT_ID} .sova-fps__badge strong{
   font-size:1rem;
   line-height:1;
@@ -2850,6 +2884,20 @@ ns.rules = ns.rules || {};
   font-size:.66rem;
   font-weight:800;
   letter-spacing:.04em;
+}
+
+#${ROOT_ID} .sova-fps__badge.is-unplayable{
+  align-items:center;
+  padding:5px 7px;
+}
+
+#${ROOT_ID} .sova-fps__badge.is-unplayable strong{
+  font-size:.68rem;
+  line-height:1;
+}
+
+#${ROOT_ID} .sova-fps__badge.is-unplayable span{
+  display:none;
 }
 
 #${ROOT_ID} .sova-fps__body{
@@ -2902,6 +2950,11 @@ ns.rules = ns.rules || {};
 #${ROOT_ID} .sova-fps__card[data-tier="basic"] .sova-fps__tier{
   background:#f7e4e4;
   color:#9a2222;
+}
+
+#${ROOT_ID} .sova-fps__card[data-tier="unplayable"] .sova-fps__tier{
+  background:#eceff3;
+  color:#6b7280;
 }
 
 @media (max-width:480px){
@@ -2958,18 +3011,84 @@ ns.rules = ns.rules || {};
   }
 
   function cardHTML(game){
-    const tier = fpsTier(game.fps);
-
-    return `<article class="sova-fps__card" role="listitem" data-game="${esc(game.id)}" data-tier="${tier.key}" aria-label="${esc(game.title)}: ${game.fps} FPS">
+    return `<article class="sova-fps__card" role="listitem" data-game="${esc(game.id)}" aria-label="${esc(game.title)}">
   <div class="sova-fps__img-wrap">
     <img class="sova-fps__img" src="${esc(game.image)}" alt="${esc(game.title)}" loading="lazy" decoding="async" draggable="false">
-    <div class="sova-fps__badge"><strong>${game.fps}</strong><span>FPS</span></div>
+    <div class="sova-fps__badge" hidden><strong></strong><span>FPS</span></div>
   </div>
   <div class="sova-fps__body">
     <strong class="sova-fps__game">${esc(game.title)}</strong>
-    <span class="sova-fps__tier">${esc(tier.label)}</span>
+    <span class="sova-fps__tier" hidden></span>
   </div>
 </article>`;
+  }
+
+  function applyCardStatus(card, status){
+    const badge = card.querySelector('.sova-fps__badge');
+    const badgeValue = badge?.querySelector('strong');
+    const badgeUnit = badge?.querySelector('span');
+    const tier = card.querySelector('.sova-fps__tier');
+
+    if (!status){
+      delete card.dataset.tier;
+
+      if (badge){
+        badge.hidden = true;
+        badge.classList.remove('is-unplayable');
+      }
+
+      if (badgeValue) badgeValue.textContent = '';
+      if (badgeUnit) badgeUnit.textContent = 'FPS';
+
+      if (tier){
+        tier.hidden = true;
+        tier.textContent = '';
+      }
+
+      return;
+    }
+
+    card.dataset.tier = status.tierKey || '';
+
+    if (status.kind === 'fps'){
+      if (badge){
+        badge.hidden = false;
+        badge.classList.remove('is-unplayable');
+      }
+
+      if (badgeValue) badgeValue.textContent = String(status.fps);
+      if (badgeUnit) badgeUnit.textContent = 'FPS';
+
+      if (tier){
+        tier.hidden = false;
+        tier.textContent = status.label || '';
+      }
+
+      return;
+    }
+
+    if (status.kind === 'unplayable'){
+      if (badge){
+        badge.hidden = false;
+        badge.classList.add('is-unplayable');
+      }
+
+      if (badgeValue) badgeValue.textContent = 'Nehratelné';
+      if (badgeUnit) badgeUnit.textContent = '';
+
+      if (tier){
+        tier.hidden = false;
+        tier.textContent = 'Nehratelné';
+      }
+    }
+  }
+
+  function applyCardsStatus(root, data, resolutionKey){
+    root.querySelectorAll('.sova-fps__card').forEach(card => {
+      const gameId = card.dataset.game;
+      const status = getStatusForGame(data, resolutionKey, gameId);
+      applyCardStatus(card, status);
+    });
   }
 
   function syncBodyHeights(root){
@@ -3064,21 +3183,8 @@ ns.rules = ns.rules || {};
     }, true);
   }
 
-  function renderCards(root, games){
-    const track = root.querySelector('.sova-fps__track');
-    if (!track) return;
-
-    track.innerHTML = games.map(cardHTML).join('');
-    track.scrollLeft = 0;
-
-    root.__sovaFpsRefreshAfterCards?.();
-  }
-
   function setActiveResolution(root, data, resolutionKey){
     if (!resolutionKey || !data.bucketMap.has(resolutionKey)) return false;
-
-    const games = getGamesForResolution(data, resolutionKey);
-    if (!games.length) return false;
 
     root.dataset.activeResolution = resolutionKey;
 
@@ -3088,13 +3194,11 @@ ns.rules = ns.rules || {};
       btn.setAttribute('aria-pressed', active ? 'true' : 'false');
     });
 
-    renderCards(root, games);
+    applyCardsStatus(root, data, resolutionKey);
+    root.__sovaFpsUpdate?.();
 
     if (TEST()){
-      console.log(TAG, 'resolution changed', {
-        resolution: resolutionKey,
-        games: games.map(g => ({ id:g.id, fps:g.fps }))
-      });
+      console.log(TAG, 'resolution changed', { resolution: resolutionKey });
     }
 
     return true;
@@ -3149,12 +3253,7 @@ ns.rules = ns.rules || {};
       });
     };
 
-    root.__sovaFpsRefreshAfterCards = () => {
-      bindImageUpdates(root, updateLayout);
-      updateLayout();
-      setTimeout(updateLayout, 120);
-      setTimeout(updateLayout, 320);
-    };
+    root.__sovaFpsUpdate = updateLayout;
 
     bindImageUpdates(root, updateLayout);
 
@@ -3183,7 +3282,7 @@ ns.rules = ns.rules || {};
     setTimeout(updateLayout, 320);
   }
 
-  function mount(ctx, cfg, data, activeResolutionKey, games){
+  function mount(ctx, cfg, data, activeResolutionKey){
     const anchor = document.querySelector(cfg.anchorSelector);
 
     if (!anchor){
@@ -3205,9 +3304,9 @@ ns.rules = ns.rules || {};
   <div class="sova-fps__head">
     <div class="sova-fps__title-wrap">
       <h2 class="sova-fps__title" id="sova-fps-title">${esc(cfg.title)}</h2>
-      ${resolutionButtonsHTML(data, activeResolutionKey)}
       <div class="type fv-lazy-visible"><span class="trigger-fps fv-info-popup-target" data-popup-trigger="fps" title="" data-original-title="${esc(cfg.infoTitle)}"></span>
       </div>
+      ${resolutionButtonsHTML(data, activeResolutionKey)}
     </div>
     <div class="sova-fps__actions" aria-hidden="false">
       <button class="sova-fps__nav sova-fps__nav--prev" type="button" aria-label="Předchozí hry" hidden></button>
@@ -3216,27 +3315,27 @@ ns.rules = ns.rules || {};
   </div>
   <div class="sova-fps__viewport">
     <div class="sova-fps__track" role="list">
-      ${games.map(cardHTML).join('')}
+      ${data.allGames.map(cardHTML).join('')}
     </div>
   </div>`;
 
     anchor.insertAdjacentElement('afterend', root);
 
+    applyCardsStatus(root, data, activeResolutionKey);
     setupResolutionControls(root, data);
     setupSlider(root);
 
     if (TEST()){
-      console.groupCollapsed(TAG, `rendered ${games.length} game(s)`);
+      console.groupCollapsed(TAG, `rendered ${data.allGames.length} game card(s)`);
       console.log('activeResolution:', activeResolutionKey || '(legacy)');
       console.log('availableResolutions:', data.resolutions.map(formatResolutionLabel));
       try {
-        console.table(games.map(g => ({
+        console.table(data.allGames.map(g => ({
           id: g.id,
-          title: g.title,
-          fps: g.fps
+          title: g.title
         })));
       } catch {
-        console.log(games);
+        console.log(data.allGames);
       }
       console.groupEnd();
     }
@@ -3269,23 +3368,21 @@ ns.rules = ns.rules || {};
       }
 
       const data = collectFpsData(snap, cfg);
-      const activeResolutionKey = getInitialResolutionKey(snap, data);
-      const games = getGamesForResolution(data, activeResolutionKey);
+      const activeResolutionKey = getInitialResolutionKey(data);
 
-      if (!games.length){
+      if (!data.allGames.length){
         removeExisting();
 
         if (TEST()) {
-          console.log(TAG, 'skip: no numeric FPS values', {
-            foundResolutions: data.resolutions.map(r => r.key),
-            legacyCount: data.legacyGames.length
+          console.log(TAG, 'skip: no FPS parameters for known games', {
+            foundResolutions: data.resolutions.map(r => r.key)
           });
         }
 
         return false;
       }
 
-      return mount(snap, cfg, data, activeResolutionKey, games);
+      return mount(snap, cfg, data, activeResolutionKey);
     } catch(e){
       console.error(TAG, 'failed', e);
       return false;
