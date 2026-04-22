@@ -4582,10 +4582,33 @@ window.shippingHideRules = [
       462,
       465
     ],
-    "exactCodes": [],
-    "startsWithCodes": [],
-    "startsWithUrl": [],
-    "containsName": []
+    "exactCodes": [
+      "KOL0001",
+      "KOL0002"
+    ],
+    "startsWithCodes": [
+      "PRT",
+      "AIO",
+      "LCD"
+    ],
+    "startsWithUrl": [
+      "/monitory/",
+      "/tiskarny/"
+    ],
+    "containsName": [
+      "AIO",
+      "IMAC",
+      "AiO",
+      "iMAC",
+      "iMac"
+    ]
+  },
+  {
+    "shippingIds": "#REF!",
+    "exactCodes": "#REF!",
+    "startsWithCodes": "#REF!",
+    "startsWithUrl": "#REF!",
+    "containsName": "#REF!"
   }
 ];
 
