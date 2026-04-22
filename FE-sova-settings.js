@@ -4576,6 +4576,16 @@ window.shippingHideRules = [
       "iMAC",
       "iMac"
     ]
+  },
+  {
+    "shippingIds": [
+      462,
+      465
+    ],
+    "exactCodes": [],
+    "startsWithCodes": [],
+    "startsWithUrl": [],
+    "containsName": []
   }
 ];
 
