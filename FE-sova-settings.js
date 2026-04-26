@@ -2468,6 +2468,30 @@ window.additionalSale = [
   }
 ];
 
+window.additionalSaleBox = [
+  {
+    "boxCategory": "Myši a klávesnice"
+  },
+  {
+    "boxCategory": "Sluchátka a reproduktory"
+  },
+  {
+    "boxCategory": "Dokovací stanice"
+  },
+  {
+    "boxCategory": "Tašky a batohy"
+  },
+  {
+    "boxCategory": "Monitory"
+  },
+  {
+    "boxCategory": "Další doplňky"
+  },
+  {
+    "boxCategory": "Software a Služby"
+  }
+];
+
 window.additionalSaleCart = [
   {
     "code": "ZAR2000DO2500R1",
