@@ -232,7 +232,7 @@
       },
       {
         "schema": "shoptetProductImport",
-        "html": "<div APIhtmlGeneratorSchema=\"massMulticolumnToArray\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+        "html": "<div APIhtmlGeneratorSchema=\"shoptetProductImport\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       }
     ]
   },
