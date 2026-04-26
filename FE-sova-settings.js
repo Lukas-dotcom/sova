@@ -2470,25 +2470,39 @@ window.additionalSale = [
 
 window.additionalSaleBox = [
   {
-    "boxCategory": "Myši a klávesnice"
+    "boxCategory": "Myši a klávesnice",
+    "conditions": "code startswith \"MYS\" OR code startswith \"KLA\" OR code =\"ACC0738\"",
+    "moreURL": "/mysi-k-pc/"
   },
   {
-    "boxCategory": "Sluchátka a reproduktory"
+    "boxCategory": "Sluchátka a reproduktory",
+    "conditions": "name contains \"sluchátka\"",
+    "moreURL": "/audio/"
   },
   {
-    "boxCategory": "Dokovací stanice"
+    "boxCategory": "Dokovací stanice",
+    "conditions": "code startswith \"DOC\" OR ANY ('[\"ACC0012\",\"ACC0121\",\"RED0028\",\"RED0027\",\"RED0026\"]', #this = code)",
+    "moreURL": "/dokovaci-stanice/"
   },
   {
-    "boxCategory": "Tašky a batohy"
+    "boxCategory": "Tašky a batohy",
+    "conditions": "code startswith \"BAG\"",
+    "moreURL": "/brasny-a-pouzdra/"
   },
   {
-    "boxCategory": "Monitory"
+    "boxCategory": "Monitory",
+    "conditions": "code startswith \"LCD\"",
+    "moreURL": "/monitory/"
   },
   {
-    "boxCategory": "Další doplňky"
+    "boxCategory": "Další doplňky",
+    "conditions": "všechno ostatní (not ...)",
+    "moreURL": "/doplnky-k-pocitaci/"
   },
   {
-    "boxCategory": "Software a Služby"
+    "boxCategory": "Software a Služby",
+    "conditions": "code startswith LIC SFW BLESK MAR VRP",
+    "moreURL": "/software-a-sluzby/"
   }
 ];
 
