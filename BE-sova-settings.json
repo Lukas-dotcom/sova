@@ -229,6 +229,10 @@
       {
         "schema": "massMulticolumnToArray",
         "html": "<div APIhtmlGeneratorSchema=\"massMulticolumnToArray\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+      },
+      {
+        "schema": "shoptetProductImport",
+        "html": "<div APIhtmlGeneratorSchema=\"massMulticolumnToArray\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       }
     ]
   },
