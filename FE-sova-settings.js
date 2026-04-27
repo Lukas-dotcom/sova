@@ -22,6 +22,7 @@ window.injectFunctions = [
     "conditionsSOVAL": "(customerGroupId = \"2\" OR customerGroupId = \"6\" OR customerGroupId = \"8\" OR customerGroupId = \"14\")"
   },
   {
+    "pageType": "productDetail",
     "conditionsSOVAL": "(parametrsovaHidedoplBox = \"true\")"
   }
 ];
