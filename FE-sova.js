@@ -1694,8 +1694,7 @@ ns.rules = ns.rules || {};
    *  - čte window.additionalSaleBox (nebo SOVA.rules.featureSettings('additionalSaleBox'))
    *  - rules používají `conditions` ve starém FE SOVALu
    *  - produkty mohou být ve více záložkách
-   *  - transformuje .products-related in-place, ale zachovává původní HTML karet
-   *  - podporuje nativní Shoptet i cizí slick variantu
+   *  - transformuje .products-related in-place, ale drží kompatibilní slick-like strukturu
    *───────────────────────────────────────────────────────────────────────────*/
   (function registerAdditionalSaleBox(ns){
     if (!ns?.fn) return;
@@ -1717,7 +1716,6 @@ ns.rules = ns.rules || {};
 
     const compiledCache = new Map();
 
-    const escCss = (s)=> String(s || '').replace(/"/g, '\\"');
     const textOf = (el)=> (el?.textContent || '').replace(/\u00A0/g, ' ').replace(/\s+/g, ' ').trim();
     const htmlOf = (el)=> el ? el.innerHTML.trim() : '';
     const toNum = v => { if (v == null) return undefined; const n = Number(v); return Number.isFinite(n) ? n : undefined; };
@@ -1733,150 +1731,175 @@ ns.rules = ns.rules || {};
         .products-related-header.sova-asb__header{
           display:flex;
           align-items:center;
-          justify-content:space-between;
+          justify-content:center;
           gap:16px;
-          margin:0;
-          padding:18px 22px;
+          margin-top:0;
+          margin-bottom:2rem;
+          padding:20px 88px 20px 24px;
+          position:relative;
           background:#2f7774;
           color:#fff;
-          text-transform:none;
+          text-transform:uppercase;
         }
-        .products-related-header.sova-asb__header .sova-asb__title{
+        .products-related-header.sova-asb__header .text.sova-asb__title{
           display:block;
           margin:0;
-          font-size:1.1em;
+          color:inherit;
+          font-size:1.75rem;
           font-weight:700;
           line-height:1.2;
           letter-spacing:0;
+          text-align:center;
+        }
+        .products-related-header.sova-asb__header .controls.sova-asb__controls{
+          position:absolute;
+          top:50%;
+          right:24px;
+          transform:translateY(-50%);
+          display:flex;
+          gap:10px;
+          padding:0;
+        }
+        .products-related-header.sova-asb__header .controls.sova-asb__controls .slick-prev,
+        .products-related-header.sova-asb__header .controls.sova-asb__controls .slick-next{
+          position:static;
+          margin:0;
+          display:flex !important;
+        }
+        .products-related-header.sova-asb__header .controls.sova-asb__controls button[disabled]{
+          opacity:.45;
+          pointer-events:none;
         }
         .products-related.sova-asb__host{
           display:block;
-          margin-top:0;
           padding:0;
-          background:#fff;
+          margin-top:0;
+          background:transparent;
+        }
+        .products-related.sova-asb__host > section.sova-asb__layout{
+          display:block;
+          width:100%;
+          max-width:100%;
+          margin:0;
+          padding:0;
+          border:0;
+          background:transparent;
         }
         .sova-asb__source{
           display:none !important;
         }
-        .sova-asb__layout{
-          display:grid;
-          grid-template-columns:minmax(220px, 280px) minmax(0, 1fr);
-          align-items:stretch;
-          border:1px solid #d9e3e2;
-          border-top:0;
-          background:#fff;
-        }
-        .sova-asb__tabs{
+        .accessory-box__content{
           display:flex;
-          flex-direction:column;
-          background:#f6f7f7;
-          border-right:1px solid #d9e3e2;
+          gap:0;
+          align-items:stretch;
+          width:100%;
+          border-left:1px solid #d7e0df;
         }
-        .sova-asb__tab{
-          appearance:none;
-          border:0;
-          border-bottom:1px solid #d9e3e2;
+        .accessory-box__categories{
+          flex:0 0 290px;
+          max-width:290px;
           background:#f6f7f7;
-          color:#1a1a1a;
-          text-align:left;
+          border-right:1px solid #d7e0df;
+        }
+        .accessory-box__categories ul{
+          list-style:none;
+          margin:0;
+          padding:0;
+        }
+        .accessory-box__categories li{
+          border-bottom:1px solid #d7e0df;
+        }
+        .accessory-box__tab{
+          display:block;
+          width:100%;
+          border:0;
+          background:#f6f7f7;
+          color:#111;
           font:inherit;
           font-weight:700;
-          line-height:1.25;
-          padding:20px 22px;
+          line-height:1.3;
+          text-align:left;
+          text-decoration:none;
+          padding:18px 22px;
           cursor:pointer;
           transition:background-color .18s ease,color .18s ease;
         }
-        .sova-asb__tab:hover{
-          background:#eef4f4;
+        .accessory-box__tab:hover{
+          background:#edf5f4;
         }
-        .sova-asb__tab.is-active{
+        .accessory-box__tab.is-active{
           background:#dfeeed;
           color:#2f7774;
           text-decoration:underline;
         }
-        .sova-asb__panes{
+        .accessory-box__products{
+          flex:1 1 auto;
           min-width:0;
-          background:#fff;
+          position:relative;
         }
-        .sova-asb__pane{
+        .products-category{
           display:none;
-          min-width:0;
         }
-        .sova-asb__pane.is-active{
+        .products-category.is-active{
           display:block;
         }
-        .sova-asb__track{
-          display:flex;
-          gap:0;
-          overflow-x:auto;
-          overflow-y:hidden;
-          min-width:0;
-          scrollbar-width:thin;
+        .accessory-box__products .products.slick-initialized.slick-slider{
+          display:block;
+          position:relative;
+          margin:0;
+          width:100%;
+          padding:0;
+          border:0;
+          background:#fff;
+        }
+        .accessory-box__products .products.slick-initialized.slick-slider > .slick-list{
+          display:block;
+          width:100% !important;
+          overflow-x:auto !important;
+          overflow-y:hidden !important;
+          scrollbar-width:none;
+          -ms-overflow-style:none;
+          cursor:grab;
+          padding:0 !important;
+          margin:0;
+          transform:none !important;
           scroll-behavior:smooth;
           -webkit-overflow-scrolling:touch;
-          cursor:grab;
         }
-        .sova-asb__track.is-dragging{
+        .accessory-box__products .products.slick-initialized.slick-slider > .slick-list::-webkit-scrollbar{
+          display:none;
+        }
+        .accessory-box__products .products.slick-initialized.slick-slider > .slick-list.is-dragging{
           cursor:grabbing;
           scroll-behavior:auto;
           user-select:none;
         }
-        .sova-asb__track > .product{
-          flex:0 0 300px;
-          width:300px;
-          max-width:300px;
-          margin:0;
-          padding:0;
-          border-right:1px solid #d9e3e2;
-          background:#fff;
+        .accessory-box__products .products.slick-initialized.slick-slider > .slick-list > .slick-track{
+          display:flex !important;
+          justify-content:flex-start;
+          margin-left:0 !important;
+          margin-right:0 !important;
+          left:0 !important;
+          top:0;
+          transform:none !important;
         }
-        .sova-asb__track > .product:last-child{
-          border-right:0;
-        }
-        .sova-asb__track > .product .p{
-          height:100%;
-        }
-        .sova-asb__controls{
-          display:flex;
-          align-items:center;
-          gap:10px;
-          flex:0 0 auto;
-        }
-        .sova-asb__control{
-          appearance:none;
-          border:0;
-          width:40px;
-          height:40px;
-          display:inline-flex;
-          align-items:center;
-          justify-content:center;
-          background:#0b7b78;
-          color:#fff;
-          cursor:pointer;
-          transition:opacity .18s ease, background-color .18s ease;
-        }
-        .sova-asb__control:hover{
-          background:#096a68;
-        }
-        .sova-asb__control[disabled]{
-          opacity:.45;
-          cursor:default;
-        }
-        .sova-asb__control::before{
-          content:'';
-          width:10px;
-          height:10px;
-          border-top:2px solid currentColor;
-          border-right:2px solid currentColor;
+        .accessory-box__products .products.slick-initialized.slick-slider > .slick-list > .slick-track > .slick-slide{
+          float:none !important;
+          height:auto !important;
+          min-height:1px;
           display:block;
+          visibility:visible;
         }
-        .sova-asb__control--prev::before{
-          transform:rotate(-135deg);
-          margin-left:4px;
+        .accessory-box__products .products.slick-initialized.slick-slider > .slick-list > .slick-track > .slick-slide > div{
+          height:100%;
+          box-sizing:border-box;
         }
-        .sova-asb__control--next::before{
-          transform:rotate(45deg);
-          margin-right:4px;
+        .accessory-box__products .products.slick-initialized.slick-slider > .slick-list > .slick-track > .slick-slide .product{
+          width:100% !important;
+          display:inline-block !important;
+        }
+        .accessory-box__products .products.slick-initialized.slick-slider > .slick-list > .slick-track > .slick-slide .product .p{
+          height:100%;
         }
         .sova-asb__more{
           display:block;
@@ -1915,36 +1938,57 @@ ns.rules = ns.rules || {};
           font-weight:700;
           line-height:1.35;
         }
-        .sova-asb__more:hover .sova-asb__more-plus{
-          background:#d2e6e4;
+        .sova-asb__empty{
+          padding:28px 24px;
+          color:#767676;
         }
         @media (max-width: 991.98px){
-          .sova-asb__layout{
-            grid-template-columns:1fr;
+          .products-related-header.sova-asb__header{
+            padding:18px 78px 18px 16px;
+            margin-bottom:1.5rem;
           }
-          .sova-asb__tabs{
-            flex-direction:row;
-            overflow:auto hidden;
+          .products-related-header.sova-asb__header .text.sova-asb__title{
+            font-size:1.3rem;
+          }
+          .accessory-box__content{
+            flex-direction:column;
+            border-left:0;
+          }
+          .accessory-box__categories{
+            flex:0 0 auto;
+            max-width:none;
             border-right:0;
-            border-bottom:1px solid #d9e3e2;
+            border-bottom:1px solid #d7e0df;
+            overflow-x:auto;
           }
-          .sova-asb__tab{
+          .accessory-box__categories ul{
+            display:flex;
+            min-width:max-content;
+          }
+          .accessory-box__categories li{
             min-width:max-content;
             border-bottom:0;
-            border-right:1px solid #d9e3e2;
+            border-right:1px solid #d7e0df;
+          }
+          .accessory-box__tab{
+            min-width:max-content;
           }
         }
         @media (max-width: 767.98px){
           .products-related-header.sova-asb__header{
-            padding:16px;
+            justify-content:flex-start;
+            text-align:left;
           }
-          .sova-asb__track > .product{
-            flex-basis:260px;
-            width:260px;
-            max-width:260px;
+          .products-related-header.sova-asb__header .text.sova-asb__title{
+            font-size:1.05rem;
+            line-height:1.25;
+            text-align:left;
           }
-          .sova-asb__more-body{
-            padding:24px 18px;
+          .products-related-header.sova-asb__header .controls.sova-asb__controls{
+            right:12px;
+          }
+          .accessory-box__tab{
+            padding:14px 16px;
           }
         }
       `;
@@ -2056,12 +2100,14 @@ ns.rules = ns.rules || {};
     function normalizeCardNode(card, mode){
       const clone = card.cloneNode(true);
       clone.removeAttribute('style');
-      clone.classList.remove('slick-slide', 'slick-cloned');
+      clone.classList.remove('slick-slide', 'slick-cloned', 'slick-current', 'slick-active');
       clone.querySelectorAll('[tabindex="-1"]').forEach(el => el.removeAttribute('tabindex'));
       clone.querySelectorAll('[aria-hidden="true"]').forEach(el => {
         if (el.classList.contains('star')) return;
         el.removeAttribute('aria-hidden');
       });
+      clone.style.width = '100%';
+      clone.style.display = 'inline-block';
       if (mode === 'source'){
         clone.setAttribute('data-sova-related-source', '1');
       } else {
@@ -2202,70 +2248,154 @@ ns.rules = ns.rules || {};
     }
 
     function buildMoreCard(category){
-      const wrap = document.createElement('div');
-      wrap.className = 'product col-sm-6 col-md-12 col-lg-6 sova-asb__more-card';
-      wrap.setAttribute('data-sova-related-more', '1');
+      const product = document.createElement('div');
+      product.className = 'product col-sm-6 col-md-12 col-lg-6 sova-asb__more-card';
+      product.setAttribute('data-sova-related-more', '1');
+      product.style.width = '100%';
+      product.style.display = 'inline-block';
 
-      const href = category.moreURL || '#';
-      wrap.innerHTML = `
-        <a class="sova-asb__more" href="${href}">
-          <div class="p">
-            <div class="sova-asb__more-body">
-              <div class="sova-asb__more-plus">+</div>
-              <div class="sova-asb__more-text">Více z kategorie ${category.boxCategory}</div>
-            </div>
-          </div>
-        </a>
-      `;
-      return wrap;
+      const link = document.createElement('a');
+      link.className = 'sova-asb__more';
+      link.href = category.moreURL || '#';
+
+      const p = document.createElement('div');
+      p.className = 'p';
+
+      const body = document.createElement('div');
+      body.className = 'sova-asb__more-body';
+
+      const plus = document.createElement('div');
+      plus.className = 'sova-asb__more-plus';
+      plus.textContent = '+';
+
+      const text = document.createElement('div');
+      text.className = 'sova-asb__more-text';
+      text.textContent = `Více z kategorie ${category.boxCategory}`;
+
+      body.append(plus, text);
+      p.appendChild(body);
+      link.appendChild(p);
+      product.appendChild(link);
+      return product;
+    }
+
+    function getSlidesToShow(){
+      const w = window.innerWidth || document.documentElement.clientWidth || 1440;
+      if (w <= 575.98) return 1;
+      if (w <= 767.98) return 2;
+      if (w <= 991.98) return 3;
+      return 4;
+    }
+
+    function createSlide(cardNode, index, slideWidth){
+      const slide = document.createElement('div');
+      slide.className = index === 0 ? 'slick-slide slick-current slick-active' : 'slick-slide';
+      slide.setAttribute('data-slick-index', String(index));
+      slide.setAttribute('aria-hidden', index === 0 ? 'false' : 'true');
+      slide.style.width = `${slideWidth}px`;
+
+      const inner = document.createElement('div');
+      inner.appendChild(cardNode);
+      slide.appendChild(inner);
+      return slide;
+    }
+
+    function buildSliderItems(category){
+      const items = category.items.map(item => item.visibleNode.cloneNode(true));
+      if (category.moreURL) items.push(buildMoreCard(category));
+      return items;
+    }
+
+    function createSlider(category){
+      const slider = document.createElement('div');
+      slider.className = 'products products-block products-related products-additional p-switchable slick-initialized slick-slider';
+      slider.setAttribute('data-editorid', 'productListing');
+      slider.setAttribute('data-sova-category', category.slug);
+
+      const list = document.createElement('div');
+      list.className = 'slick-list draggable';
+      slider.appendChild(list);
+
+      const track = document.createElement('div');
+      track.className = 'slick-track';
+      track.style.opacity = '1';
+      list.appendChild(track);
+
+      return slider;
+    }
+
+    function syncSliderMetrics(slider){
+      if (!slider) return;
+      const list = slider.querySelector('.slick-list');
+      const track = slider.querySelector('.slick-track');
+      const slides = Array.from(track?.children || []);
+      if (!list || !track || !slides.length) return;
+
+      const slidesToShow = getSlidesToShow();
+      const listWidth = Math.max(220, Math.round(list.getBoundingClientRect().width || slider.getBoundingClientRect().width || 0));
+      const slideWidth = Math.max(220, Math.floor(listWidth / slidesToShow));
+      slides.forEach(slide => { slide.style.width = `${slideWidth}px`; });
+      track.style.width = `${slideWidth * slides.length}px`;
+    }
+
+    function getActiveCategoryRoot(root){
+      return root.querySelector('.products-category.is-active');
     }
 
     function updateControls(root){
-      const activePane = root.querySelector('.sova-asb__pane.is-active');
-      const track = activePane?.querySelector('.sova-asb__track');
-      const prev = root.previousElementSibling?.querySelector('.sova-asb__control--prev');
-      const next = root.previousElementSibling?.querySelector('.sova-asb__control--next');
-      if (!track || !prev || !next) return;
-      const max = Math.max(0, track.scrollWidth - track.clientWidth);
-      prev.disabled = track.scrollLeft <= 4;
-      next.disabled = track.scrollLeft >= max - 4;
+      const activeCategory = getActiveCategoryRoot(root);
+      const list = activeCategory?.querySelector('.slick-list');
+      const prev = root.previousElementSibling?.querySelector('.sova-asb__controls .slick-prev');
+      const next = root.previousElementSibling?.querySelector('.sova-asb__controls .slick-next');
+      if (!list || !prev || !next) return;
+      const max = Math.max(0, list.scrollWidth - list.clientWidth);
+      prev.disabled = list.scrollLeft <= 4;
+      next.disabled = list.scrollLeft >= max - 4;
     }
 
     function activateTab(root, idx){
-      const tabs = Array.from(root.querySelectorAll('.sova-asb__tab'));
-      const panes = Array.from(root.querySelectorAll('.sova-asb__pane'));
+      const tabs = Array.from(root.querySelectorAll('.accessory-box__tab'));
+      const panes = Array.from(root.querySelectorAll('.products-category'));
+
       tabs.forEach((tab, i) => {
         const active = i === idx;
         tab.classList.toggle('is-active', active);
         tab.setAttribute('aria-selected', active ? 'true' : 'false');
         tab.tabIndex = active ? 0 : -1;
       });
-      panes.forEach((pane, i) => pane.classList.toggle('is-active', i === idx));
+
+      panes.forEach((pane, i) => {
+        pane.classList.toggle('is-active', i === idx);
+        pane.style.display = i === idx ? '' : 'none';
+        const slider = pane.querySelector('.products.slick-initialized.slick-slider');
+        if (i === idx && slider) syncSliderMetrics(slider);
+      });
+
       updateControls(root);
     }
 
-    function enableTrackDrag(track){
+    function enableListDrag(list, root){
       let pointerId = null;
       let startX = 0;
       let startScroll = 0;
       let moved = false;
 
-      track.addEventListener('pointerdown', (e)=>{
+      list.addEventListener('pointerdown', (e)=>{
         if (e.pointerType === 'mouse' && e.button !== 0) return;
         if (e.target.closest('a,button,input,select,textarea,label')) return;
         pointerId = e.pointerId;
         startX = e.clientX;
-        startScroll = track.scrollLeft;
+        startScroll = list.scrollLeft;
         moved = false;
-        track.classList.add('is-dragging');
-        try { track.setPointerCapture(pointerId); } catch {}
+        list.classList.add('is-dragging');
+        try { list.setPointerCapture(pointerId); } catch {}
       });
 
-      track.addEventListener('pointermove', (e)=>{
+      list.addEventListener('pointermove', (e)=>{
         if (pointerId == null || e.pointerId !== pointerId) return;
         const dx = e.clientX - startX;
         if (Math.abs(dx) > 5) moved = true;
-        track.scrollLeft = startScroll - dx;
+        list.scrollLeft = startScroll - dx;
         if (moved) e.preventDefault();
       });
 
@@ -2273,28 +2403,29 @@ ns.rules = ns.rules || {};
         if (pointerId == null || (e && e.pointerId !== pointerId)) return;
         const suppressClick = moved;
         pointerId = null;
-        track.classList.remove('is-dragging');
+        list.classList.remove('is-dragging');
         if (suppressClick){
           const stopper = (ev)=>{
             ev.preventDefault();
             ev.stopPropagation();
-            track.removeEventListener('click', stopper, true);
+            list.removeEventListener('click', stopper, true);
           };
-          track.addEventListener('click', stopper, true);
+          list.addEventListener('click', stopper, true);
         }
+        updateControls(root);
       };
 
-      track.addEventListener('pointerup', finish);
-      track.addEventListener('pointercancel', finish);
-      track.addEventListener('lostpointercapture', finish);
-      track.addEventListener('scroll', ()=> updateControls(track.closest('.products.products-related')), { passive:true });
+      list.addEventListener('pointerup', finish);
+      list.addEventListener('pointercancel', finish);
+      list.addEventListener('lostpointercapture', finish);
+      list.addEventListener('scroll', ()=> updateControls(root), { passive:true });
     }
 
     function renderBox(host, cfg, categories){
       const root = host.root;
       const header = host.header;
-      const title = cfg.title || readHeaderText(header) || 'Příslušenství';
-      const activeIndex = Math.max(0, categories.findIndex(cat => cat.items.length > 0));
+      const title = cfg.title || readHeaderText(header) || 'Doporučujeme přikoupit';
+      const activeIndex = Math.max(0, categories.findIndex(cat => cat.items.length > 0 || cat.moreURL));
 
       ensureCSS();
 
@@ -2302,21 +2433,25 @@ ns.rules = ns.rules || {};
       header.innerHTML = '';
 
       const titleEl = document.createElement('span');
-      titleEl.className = 'sova-asb__title';
+      titleEl.className = 'text sova-asb__title';
       titleEl.textContent = title;
 
       const controls = document.createElement('div');
-      controls.className = 'sova-asb__controls';
+      controls.className = 'controls sova-asb__controls';
       controls.innerHTML = `
-        <button type="button" class="sova-asb__control sova-asb__control--prev" aria-label="Předchozí"></button>
-        <button type="button" class="sova-asb__control sova-asb__control--next" aria-label="Další"></button>
+        <button type="button" class="slick-prev control-slick slick-arrow" aria-label="Previous"></button>
+        <button type="button" class="slick-next control-slick slick-arrow" aria-label="Next"></button>
       `;
+
       header.append(titleEl, controls);
 
       root.classList.add('sova-asb__host');
       root.classList.remove('slick-initialized', 'slick-slider');
       root.removeAttribute('style');
       root.innerHTML = '';
+
+      const wrapper = document.createElement('section');
+      wrapper.className = 'accessory-box sova-asb__layout';
 
       const source = document.createElement('div');
       source.className = 'sova-asb__source';
@@ -2325,64 +2460,76 @@ ns.rules = ns.rules || {};
         .filter((item, index, arr) => arr.findIndex(other => other.key === item.key) === index)
         .forEach(item => source.appendChild(item.sourceNode.cloneNode(true)));
 
-      const layout = document.createElement('div');
-      layout.className = 'sova-asb__layout';
+      const content = document.createElement('div');
+      content.className = 'accessory-box__content';
 
-      const tabs = document.createElement('div');
-      tabs.className = 'sova-asb__tabs';
-      tabs.setAttribute('role', 'tablist');
+      const tabsWrap = document.createElement('nav');
+      tabsWrap.className = 'accessory-box__categories';
+      tabsWrap.setAttribute('aria-label', 'Kategorie příslušenství');
+      const tabsList = document.createElement('ul');
+      tabsWrap.appendChild(tabsList);
 
-      const panes = document.createElement('div');
-      panes.className = 'sova-asb__panes';
+      const productsWrap = document.createElement('div');
+      productsWrap.className = 'accessory-box__products';
 
       categories.forEach((category, idx) => {
+        const li = document.createElement('li');
         const tab = document.createElement('button');
         tab.type = 'button';
-        tab.className = 'sova-asb__tab';
-        tab.setAttribute('role', 'tab');
+        tab.className = 'accessory-box__tab';
         tab.setAttribute('data-tab-index', String(idx));
+        tab.setAttribute('role', 'tab');
         tab.textContent = category.boxCategory;
-        tabs.appendChild(tab);
+        li.appendChild(tab);
+        tabsList.appendChild(li);
 
         const pane = document.createElement('div');
-        pane.className = 'sova-asb__pane';
+        pane.className = 'products-category';
+        pane.setAttribute('data-category-id', category.slug);
         pane.setAttribute('role', 'tabpanel');
-        pane.setAttribute('data-pane-index', String(idx));
 
-        const track = document.createElement('div');
-        track.className = 'products products-block products-additional p-switchable sova-asb__track';
-
-        category.items.forEach(item => {
-          track.appendChild(item.visibleNode.cloneNode(true));
-        });
-        if (category.moreURL){
-          track.appendChild(buildMoreCard(category));
+        const sliderItems = buildSliderItems(category);
+        if (!sliderItems.length){
+          const empty = document.createElement('div');
+          empty.className = 'sova-asb__empty';
+          empty.textContent = 'V této kategorii teď nemáme další položky.';
+          pane.appendChild(empty);
+        } else {
+          const slider = createSlider(category);
+          const list = slider.querySelector('.slick-list');
+          const track = slider.querySelector('.slick-track');
+          sliderItems.forEach((node, itemIdx) => {
+            track.appendChild(createSlide(node, itemIdx, 300));
+          });
+          pane.appendChild(slider);
+          enableListDrag(list, root);
         }
 
-        enableTrackDrag(track);
-        pane.appendChild(track);
-        panes.appendChild(pane);
+        productsWrap.appendChild(pane);
       });
 
-      layout.append(tabs, panes);
-      root.append(source, layout);
+      content.append(tabsWrap, productsWrap);
+      wrapper.append(source, content);
+      root.appendChild(wrapper);
 
-      tabs.addEventListener('click', (e)=>{
-        const btn = e.target.closest('.sova-asb__tab');
+      tabsWrap.addEventListener('click', (e)=>{
+        const btn = e.target.closest('.accessory-box__tab');
         if (!btn) return;
         activateTab(root, parseInt(btn.getAttribute('data-tab-index') || '0', 10) || 0);
       });
 
       controls.addEventListener('click', (e)=>{
-        const btn = e.target.closest('.sova-asb__control');
+        const btn = e.target.closest('.slick-prev, .slick-next');
         if (!btn) return;
-        const track = root.querySelector('.sova-asb__pane.is-active .sova-asb__track');
-        if (!track) return;
-        const dir = btn.classList.contains('sova-asb__control--prev') ? -1 : 1;
-        track.scrollBy({ left: dir * Math.max(240, Math.round(track.clientWidth * 0.82)), behavior:'smooth' });
-        setTimeout(()=> updateControls(root), 240);
+        const activeCategory = getActiveCategoryRoot(root);
+        const list = activeCategory?.querySelector('.slick-list');
+        if (!list) return;
+        const dir = btn.classList.contains('slick-prev') ? -1 : 1;
+        list.scrollBy({ left: dir * Math.max(240, Math.round(list.clientWidth * 0.82)), behavior: 'smooth' });
+        setTimeout(()=> updateControls(root), 260);
       });
 
+      root.querySelectorAll('.products.slick-initialized.slick-slider').forEach(syncSliderMetrics);
       activateTab(root, activeIndex >= 0 ? activeIndex : 0);
       updateControls(root);
     }
@@ -2485,7 +2632,6 @@ ns.rules = ns.rules || {};
       scheduleRender('fn.call');
     });
   })(SOVA);
-
 
   
 /*───────────────────────────────────────────────────────────────────────────*
