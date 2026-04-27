@@ -2496,12 +2496,12 @@ window.additionalSaleBox = [
   },
   {
     "boxCategory": "Monitory",
-    "conditions": "code startswith \"LCD\")",
+    "conditions": "(code startswith \"LCD\")",
     "moreURL": "/monitory/"
   },
   {
     "boxCategory": "Software a Služby",
-    "conditions": "code startswith \"LIC\" OR code startswith \"SFW\" OR code startswith \"BLESK\" OR code startswith \"MAR\" OR code startswith \"VRP\")",
+    "conditions": "(code startswith \"LIC\" OR code startswith \"SFW\" OR code startswith \"BLESK\" OR code startswith \"MAR\" OR code startswith \"VRP\")",
     "moreURL": "/software-a-sluzby/"
   },
   {
