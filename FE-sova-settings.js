@@ -24,7 +24,7 @@ window.injectFunctions = [
   {
     "function": "additionalSaleBox",
     "pageType": "productDetail",
-    "conditionsSOVAL": "(parametrsovaHidedoplBox = \"true\")"
+    "conditionsSOVAL": "(parametrsovaHidedoplBox = \"show\")"
   }
 ];
 
@@ -2481,7 +2481,7 @@ window.additionalSaleBox = [
   },
   {
     "boxCategory": "Sluchátka a reproduktory",
-    "conditions": "lower(name) contains \"sluchátka\" OR lower(name) contains \"reproduktor\")",
+    "conditions": "(lower(name) contains \"sluchátka\" OR lower(name) contains \"reproduktor\")",
     "moreURL": "/audio/"
   },
   {
