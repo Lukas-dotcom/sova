@@ -2476,7 +2476,7 @@ window.additionalSale = [
 window.additionalSaleBox = [
   {
     "boxCategory": "Myši a klávesnice",
-    "conditions": "code startswith \"MYS\" OR code startswith \"KLA\" OR code = \"ACC0738\"",
+    "conditions": "(code startswith \"MYS\" OR code startswith \"KLA\" OR code = \"ACC0738\")",
     "moreURL": "/mysi-k-pc/"
   },
   {
