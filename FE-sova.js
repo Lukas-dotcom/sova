@@ -1689,359 +1689,802 @@ ns.rules = ns.rules || {};
 
 
 
-/*───────────────────────────────────────────────────────────────────────────*
- * additionalSale – FE injekční funkce (s rozšířeným debug logem)
- *  - čte window.additionalSale (nebo SOVA.rules.featureSettings('additionalSale'))
- *  - filtruje pomocí SOVAL (bez aliasů)
- *  - renderuje 1:1 UI (#dvDoplUpgr) – checkboxy + selecty
- *  - exkluze checkboxů podle pairText (stejný pair = vždy jen 1)
- *  - po přidání hlavního produktu dopřidá vybrané kódy přes shoptet.cartShared.addToCart
- *  - DEBUG: pokud localStorage['SOVA.testSOVA.enabled'] === '1', loguje krok po kroku
- *───────────────────────────────────────────────────────────────────────────*/
-/*───────────────────────────────────────────────────────────────────────────*
- * additionalSale – FE injekční funkce (lepší logování SOVAL + fail-safe)
- *───────────────────────────────────────────────────────────────────────────*/
-(function registerAdditionalSale(ns){
-  if (!ns?.fn) return;
+  /*───────────────────────────────────────────────────────────────────────────*
+   * additionalSaleBox – kategorizovaný box z related products
+   *  - čte window.additionalSaleBox (nebo SOVA.rules.featureSettings('additionalSaleBox'))
+   *  - rules používají `conditions` ve starém FE SOVALu
+   *  - produkty mohou být ve více záložkách
+   *  - transformuje .products-related in-place, ale zachovává původní HTML karet
+   *  - podporuje nativní Shoptet i cizí slick variantu
+   *───────────────────────────────────────────────────────────────────────────*/
+  (function registerAdditionalSaleBox(ns){
+    if (!ns?.fn) return;
+    if (window.__SOVA_additionalSaleBox_initialized) return;
+    window.__SOVA_additionalSaleBox_initialized = true;
 
-  const TAG = '[additionalSale]';
-  const isTest = () => localStorage.getItem('SOVA.testSOVA.enabled') === '1';
+    const TAG = '[additionalSaleBox]';
+    const STYLE_ID = 'sova-additional-sale-box-css';
+    const TEST = () => localStorage.getItem('SOVA.testSOVA.enabled') === '1';
+    const now = () => performance.now();
 
-  // Bezpečné escapování pro HTML
-  const esc = (s)=> String(s??'')
-    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
-    .replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+    const state = {
+      enabled: false,
+      hooksStarted: false,
+      renderQueued: false,
+      rendering: false,
+      overrideSettings: null
+    };
 
-  // Slug (skupiny párů/selectů, popup triggry)
-  const slug = (s)=> String(s||'')
-    .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
-    .replace(/[^A-Za-z0-9]+/g,'_').replace(/^_+|_+$/g,'')
-    .toLowerCase();
+    const compiledCache = new Map();
 
-  function buildCheckboxRow(it){
-    const groupSlug = slug(it.pairText||it.name||'grp');
-    const id = 'doplnek_' + groupSlug;
-    const name = esc(it.name||'');
-    const code = esc(it.code||'');
-    const priceTxt = ' +' + esc(String(it.price ?? ''));
-    const trig = groupSlug;
-    return `<tr>
-  <td><label><input type="checkbox" class="doplnekUprade" id="${id}" value="${code}" data-pair="${trig}">${name} </label> <span class="trigger-${trig} fv-lazy-visible fv-info-popup-target" data-popup-trigger="${trig}" title="" data-original-title="Zjistit více..."></span></td>
-  <td>${priceTxt}</td>
-</tr>`;
-  }
+    const escCss = (s)=> String(s || '').replace(/"/g, '\\"');
+    const textOf = (el)=> (el?.textContent || '').replace(/\u00A0/g, ' ').replace(/\s+/g, ' ').trim();
+    const htmlOf = (el)=> el ? el.innerHTML.trim() : '';
+    const toNum = v => { if (v == null) return undefined; const n = Number(v); return Number.isFinite(n) ? n : undefined; };
+    const slug = (s)=> String(s || '')
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^A-Za-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '')
+      .toLowerCase() || 'tab';
 
-  function buildSelectRow(title, groupSlug, options){
-    const head = esc(title||'');
-    const selId = groupSlug; // pouze slug bez prefixů
-    const trig = groupSlug;
-    const opts = ['<option value="">vyberte variantu</option>']
-      .concat(options.map(o=> `<option value="${esc(o.code||'')}">${esc(o.name||'')} +${esc(String(o.price ?? ''))}</option>`))
-      .join('');
-    return `<tr>
-  <td>${head} <span class="trigger-${trig} fv-lazy-visible fv-info-popup-target" data-popup-trigger="${trig}" title="" data-original-title="Zjistit více..."></span></td>
-  <td><select class="doplnekUprade" id="${selId}">${opts}</select></td>
-</tr>`;
-  }
-
-  function mountUI(items){
-    const anchor = document.querySelector('.availability-value');
-    if (!anchor) {
-      if (isTest()) console.warn(TAG, 'anchor .availability-value not found – UI not mounted');
-      return;
-    }
-
-    // idempotentní render
-    document.getElementById('dvDoplUpgr')?.remove();
-    document.querySelector('.dvCenDph')?.remove();
-
-    // Rozdělení: checkbox vs select (pořadí zachováno)
-    const checkboxRows = [];
-    const selectGroups = new Map(); // slug → { title, slug, items: [] }
-    const selectOrder  = [];        // pořadí skupin dle prvního výskytu
-
-    items.forEach(it=>{
-      const t = (it.type||'').toLowerCase().trim();
-      if (t === 'select'){
-        const s = slug(it.pairText||'select');
-        if (!selectGroups.has(s)){
-          selectGroups.set(s, { title: it.pairText||'', slug:s, items: [] });
-          selectOrder.push(s);
+    function ensureCSS(){
+      if (document.getElementById(STYLE_ID)) return;
+      const css = `
+        .products-related-header.sova-asb__header{
+          display:flex;
+          align-items:center;
+          justify-content:space-between;
+          gap:16px;
+          margin:0;
+          padding:18px 22px;
+          background:#2f7774;
+          color:#fff;
+          text-transform:none;
         }
-        selectGroups.get(s).items.push({ code: it.code, name: it.name, price: it.price });
-      } else {
-        // default: checkbox
-        checkboxRows.push(buildCheckboxRow(it));
-      }
-    });
-
-    if (isTest()){
-      console.groupCollapsed(TAG, 'mount UI');
-      console.log('checkbox count:', checkboxRows.length);
-      console.log('select groups:', selectOrder.slice());
-      selectOrder.forEach(key=>{
-        const grp = selectGroups.get(key);
-        console.log(` - group "${key}" items:`, grp?.items?.length||0, grp);
-      });
-      console.groupEnd();
-    }
-
-    const wrap = document.createElement('div');
-    wrap.id = 'dvDoplUpgr';
-
-    if (checkboxRows.length){
-      const d = document.createElement('div');
-      d.id = 'dvDoplnky';
-      d.innerHTML = `<h2>Doplňkové služby</h2><table class="tblTypcena">${checkboxRows.join('')}</table>`;
-      wrap.appendChild(d);
-    }
-
-    if (selectOrder.length){
-      const u = document.createElement('div');
-      u.id = 'dvUpgr';
-      let rows = '';
-      selectOrder.forEach(key=>{
-        const grp = selectGroups.get(key);
-        if (grp?.items?.length){
-          rows += buildSelectRow(grp.title, grp.slug, grp.items);
+        .products-related-header.sova-asb__header .sova-asb__title{
+          display:block;
+          margin:0;
+          font-size:1.1em;
+          font-weight:700;
+          line-height:1.2;
+          letter-spacing:0;
         }
-      });
-      if (rows){
-        u.innerHTML = `<h2>Upgrade zařízení</h2><table class="tblTypselect">${rows}</table>`;
-        wrap.appendChild(u);
-      }
-    }
-
-    anchor.parentNode.insertBefore(wrap, anchor);
-
-    // Poznámka pod tabulkami
-    const note = document.createElement('div');
-    note.className = 'dvCenDph';
-    note.textContent = '(Ceny upgradů a doplňkových služeb jsou uvedeny s DPH)';
-    wrap.insertAdjacentElement('afterend', note);
-
-    // Exkluze checkboxů se stejným pairText (slugem)
-    wrap.addEventListener('change', (e)=>{
-      const t = e.target;
-      if (t && t.matches('input[type="checkbox"].doplnekUprade')){
-        const grp = t.getAttribute('data-pair');
-        if (grp){
-          if (isTest()){
-            console.log(TAG, 'pair exclusive change', { group: grp, id: t.id, checked: t.checked });
+        .products-related.sova-asb__host{
+          display:block;
+          margin-top:0;
+          padding:0;
+          background:#fff;
+        }
+        .sova-asb__source{
+          display:none !important;
+        }
+        .sova-asb__layout{
+          display:grid;
+          grid-template-columns:minmax(220px, 280px) minmax(0, 1fr);
+          align-items:stretch;
+          border:1px solid #d9e3e2;
+          border-top:0;
+          background:#fff;
+        }
+        .sova-asb__tabs{
+          display:flex;
+          flex-direction:column;
+          background:#f6f7f7;
+          border-right:1px solid #d9e3e2;
+        }
+        .sova-asb__tab{
+          appearance:none;
+          border:0;
+          border-bottom:1px solid #d9e3e2;
+          background:#f6f7f7;
+          color:#1a1a1a;
+          text-align:left;
+          font:inherit;
+          font-weight:700;
+          line-height:1.25;
+          padding:20px 22px;
+          cursor:pointer;
+          transition:background-color .18s ease,color .18s ease;
+        }
+        .sova-asb__tab:hover{
+          background:#eef4f4;
+        }
+        .sova-asb__tab.is-active{
+          background:#dfeeed;
+          color:#2f7774;
+          text-decoration:underline;
+        }
+        .sova-asb__panes{
+          min-width:0;
+          background:#fff;
+        }
+        .sova-asb__pane{
+          display:none;
+          min-width:0;
+        }
+        .sova-asb__pane.is-active{
+          display:block;
+        }
+        .sova-asb__track{
+          display:flex;
+          gap:0;
+          overflow-x:auto;
+          overflow-y:hidden;
+          min-width:0;
+          scrollbar-width:thin;
+          scroll-behavior:smooth;
+          -webkit-overflow-scrolling:touch;
+          cursor:grab;
+        }
+        .sova-asb__track.is-dragging{
+          cursor:grabbing;
+          scroll-behavior:auto;
+          user-select:none;
+        }
+        .sova-asb__track > .product{
+          flex:0 0 300px;
+          width:300px;
+          max-width:300px;
+          margin:0;
+          padding:0;
+          border-right:1px solid #d9e3e2;
+          background:#fff;
+        }
+        .sova-asb__track > .product:last-child{
+          border-right:0;
+        }
+        .sova-asb__track > .product .p{
+          height:100%;
+        }
+        .sova-asb__controls{
+          display:flex;
+          align-items:center;
+          gap:10px;
+          flex:0 0 auto;
+        }
+        .sova-asb__control{
+          appearance:none;
+          border:0;
+          width:40px;
+          height:40px;
+          display:inline-flex;
+          align-items:center;
+          justify-content:center;
+          background:#0b7b78;
+          color:#fff;
+          cursor:pointer;
+          transition:opacity .18s ease, background-color .18s ease;
+        }
+        .sova-asb__control:hover{
+          background:#096a68;
+        }
+        .sova-asb__control[disabled]{
+          opacity:.45;
+          cursor:default;
+        }
+        .sova-asb__control::before{
+          content:'';
+          width:10px;
+          height:10px;
+          border-top:2px solid currentColor;
+          border-right:2px solid currentColor;
+          display:block;
+        }
+        .sova-asb__control--prev::before{
+          transform:rotate(-135deg);
+          margin-left:4px;
+        }
+        .sova-asb__control--next::before{
+          transform:rotate(45deg);
+          margin-right:4px;
+        }
+        .sova-asb__more{
+          display:block;
+          height:100%;
+          text-decoration:none;
+          color:#2f7774;
+        }
+        .sova-asb__more .p{
+          height:100%;
+        }
+        .sova-asb__more-body{
+          min-height:100%;
+          display:flex;
+          flex-direction:column;
+          align-items:center;
+          justify-content:center;
+          gap:18px;
+          padding:32px 24px;
+          text-align:center;
+        }
+        .sova-asb__more-plus{
+          width:76px;
+          height:76px;
+          border-radius:50%;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          background:#e4f0ef;
+          color:#2f7774;
+          font-size:46px;
+          line-height:1;
+          font-weight:300;
+        }
+        .sova-asb__more-text{
+          font-size:1.05em;
+          font-weight:700;
+          line-height:1.35;
+        }
+        .sova-asb__more:hover .sova-asb__more-plus{
+          background:#d2e6e4;
+        }
+        @media (max-width: 991.98px){
+          .sova-asb__layout{
+            grid-template-columns:1fr;
           }
-          wrap.querySelectorAll(`input[type="checkbox"].doplnekUprade[data-pair="${grp}"]`).forEach(cb=>{
-            if (cb !== t) cb.checked = false;
-          });
+          .sova-asb__tabs{
+            flex-direction:row;
+            overflow:auto hidden;
+            border-right:0;
+            border-bottom:1px solid #d9e3e2;
+          }
+          .sova-asb__tab{
+            min-width:max-content;
+            border-bottom:0;
+            border-right:1px solid #d9e3e2;
+          }
         }
-      }
-    }, true);
-  }
-
-  function gatherSelectedCodes(){
-    const root = document.getElementById('dvDoplUpgr');
-    if (!root) return [];
-    const out = [];
-    root.querySelectorAll('input[type="checkbox"].doplnekUprade:checked').forEach(cb=>{
-      const v = cb.value; if (v) out.push(v);
-    });
-    root.querySelectorAll('select.doplnekUprade').forEach(sel=>{
-      const v = sel.value; if (v) out.push(v);
-    });
-    return out;
-  }
-
-  // Řetězení doplňků po přidání hlavní položky
-  let formSubmitted = false;
-  let addingExtras  = false;
-  function hookAddFlow(){
-    const form = document.querySelector('form#product-detail-form');
-    if (form){
-      form.addEventListener('submit', ()=>{
-        formSubmitted = true;
-        if (isTest()) console.log(TAG, 'form submit → will try add extras after main item');
-      }, true);
+        @media (max-width: 767.98px){
+          .products-related-header.sova-asb__header{
+            padding:16px;
+          }
+          .sova-asb__track > .product{
+            flex-basis:260px;
+            width:260px;
+            max-width:260px;
+          }
+          .sova-asb__more-body{
+            padding:24px 18px;
+          }
+        }
+      `;
+      const style = document.createElement('style');
+      style.id = STYLE_ID;
+      style.textContent = css;
+      document.head.appendChild(style);
     }
-    document.addEventListener('ShoptetCartAddCartItem', ()=>{
-      if (!formSubmitted || addingExtras) return;
-      const codes = gatherSelectedCodes();
-      if (isTest()){
-        console.log(TAG, 'ShoptetCartAddCartItem', { formSubmitted, addingExtras, selectedCodes: codes.slice() });
+
+    function normalizeConfig(raw){
+      if (Array.isArray(raw)){
+        return { rules: raw, title: '', source: 'array' };
       }
-      if (!codes.length){ formSubmitted = false; return; }
+      if (raw && typeof raw === 'object'){
+        const rules = Array.isArray(raw.rules) ? raw.rules
+          : Array.isArray(raw.categories) ? raw.categories
+          : Array.isArray(raw.items) ? raw.items
+          : [];
+        return {
+          rules,
+          title: raw.title || raw.boxTitle || raw.headerTitle || '',
+          source: 'object'
+        };
+      }
+      return { rules: [], title: '', source: 'none' };
+    }
 
-      const amount = parseInt(document.querySelector('form#product-detail-form input[name="amount"]')?.value||'1',10) || 1;
-      addingExtras = true;
+    function getSettings(){
+      const override = state.overrideSettings;
+      if (override != null) return normalizeConfig(override);
 
-      let i = 0;
-      const addNext = ()=>{
-        if (i >= codes.length){
-          addingExtras = false;
-          formSubmitted = false;
-          if (isTest()) console.log(TAG, 'done adding extras');
+      const fs = ns.rules?.featureSettings?.('additionalSaleBox');
+      if (fs != null) return normalizeConfig(fs);
+
+      return normalizeConfig(window.additionalSaleBox);
+    }
+
+    function ensureHeader(root){
+      if (!root) return null;
+      let header = root.previousElementSibling;
+      if (header?.matches?.('.products-related-header')) return header;
+      header = document.querySelector('.products-related-header');
+      if (header && header.nextElementSibling === root) return header;
+      header = document.createElement('h2');
+      header.className = 'products-related-header';
+      root.parentNode?.insertBefore(header, root);
+      return header;
+    }
+
+    function readHeaderText(header){
+      if (!header) return '';
+      const clone = header.cloneNode(true);
+      clone.querySelectorAll('.controls,.sova-asb__controls').forEach(el => el.remove());
+      return textOf(clone);
+    }
+
+    function findHost(){
+      const root = document.querySelector('.products.products-related');
+      if (!root) return null;
+      const header = ensureHeader(root);
+      return { root, header };
+    }
+
+    function sourceKeyForRow(row){
+      return String(row?.code || row?.id || row?.url || row?.name || '').trim();
+    }
+
+    function parseCardRow(card){
+      const p = card.querySelector('.p');
+      const code = textOf(card.querySelector('.p-code [data-micro="sku"]'));
+      const id = p?.getAttribute('data-micro-product-id') || '';
+      const aImg = card.querySelector('a.image');
+      const img = aImg?.querySelector('img');
+      const finalPrice = textOf(card.querySelector('.price.price-final strong'));
+      const additionalPrice = htmlOf(card.querySelector('.price-additional'));
+      const standardPrice = textOf(card.querySelector('.flags .price-standard span'));
+      const priceSave = textOf(card.querySelector('.flags .price-save'));
+      return {
+        code: code || undefined,
+        id: id || undefined,
+        url: aImg?.getAttribute('href') || undefined,
+        img: img?.getAttribute('src') || undefined,
+        imgBig: img?.getAttribute('data-micro-image') || undefined,
+        name: textOf(card.querySelector('[data-testid="productCardName"]')) || undefined,
+        finalPrice: finalPrice || undefined,
+        price: finalPrice || additionalPrice || undefined,
+        additionalPrice: additionalPrice || undefined,
+        standardPrice: standardPrice || undefined,
+        priceSave: priceSave || undefined,
+        availability: textOf(card.querySelector('.availability .show-tooltip')) || undefined,
+        availabilityAmount: textOf(card.querySelector('[data-testid="numberAvailabilityAmount"]')) || undefined,
+        priceId: toNum(card.querySelector('input[name="priceId"]')?.value),
+        productId: toNum(card.querySelector('input[name="productId"]')?.value) || toNum(id),
+        shortDescription: htmlOf(card.querySelector('[data-testid="productCardShortDescr"]')) || ''
+      };
+    }
+
+    function mergeRowData(base, extra){
+      const out = Object.assign({}, extra || {}, base || {});
+      if (extra && base){
+        Object.keys(extra).forEach(key => {
+          if (out[key] == null || out[key] === '') out[key] = extra[key];
+        });
+      }
+      out.price = out.price || out.finalPrice || out.additionalPrice || '';
+      return out;
+    }
+
+    function normalizeCardNode(card, mode){
+      const clone = card.cloneNode(true);
+      clone.removeAttribute('style');
+      clone.classList.remove('slick-slide', 'slick-cloned');
+      clone.querySelectorAll('[tabindex="-1"]').forEach(el => el.removeAttribute('tabindex'));
+      clone.querySelectorAll('[aria-hidden="true"]').forEach(el => {
+        if (el.classList.contains('star')) return;
+        el.removeAttribute('aria-hidden');
+      });
+      if (mode === 'source'){
+        clone.setAttribute('data-sova-related-source', '1');
+      } else {
+        clone.setAttribute('data-sova-related-clone', '1');
+      }
+      return clone;
+    }
+
+    function collectSourceCards(root, ctx){
+      if (!root) return [];
+
+      const ctxRows = Array.isArray(ctx?.relatedProducts) ? ctx.relatedProducts : [];
+      const ctxByKey = new Map();
+      ctxRows.forEach(row => {
+        [row?.code, row?.id, row?.url].filter(Boolean).forEach(key => {
+          if (!ctxByKey.has(String(key))) ctxByKey.set(String(key), row);
+        });
+      });
+
+      const fromSource = root.querySelectorAll('.sova-asb__source .product[data-sova-related-source="1"]');
+      const candidates = fromSource.length
+        ? Array.from(fromSource)
+        : Array.from(root.querySelectorAll('.product')).filter(card =>
+            !card.hasAttribute('data-sova-related-clone') &&
+            !card.hasAttribute('data-sova-related-more') &&
+            !card.closest('.slick-cloned')
+          );
+
+      const seen = new Set();
+      const out = [];
+
+      candidates.forEach(card => {
+        const parsed = parseCardRow(card);
+        const row = mergeRowData(parsed,
+          ctxByKey.get(String(parsed.code || '')) ||
+          ctxByKey.get(String(parsed.id || '')) ||
+          ctxByKey.get(String(parsed.url || '')) ||
+          null
+        );
+        const key = sourceKeyForRow(row);
+        if (!key || seen.has(key)) return;
+        seen.add(key);
+        out.push({
+          key,
+          row,
+          sourceNode: normalizeCardNode(card, 'source'),
+          visibleNode: normalizeCardNode(card, 'visible')
+        });
+      });
+
+      if (TEST()){
+        console.groupCollapsed(TAG, `source cards ${out.length}`);
+        try { console.table(out.map(x => ({ key:x.key, code:x.row.code, name:x.row.name, price:x.row.price }))); }
+        catch { console.log(out); }
+        console.groupEnd();
+      }
+
+      return out;
+    }
+
+    function getCompiled(cond){
+      const key = String(cond || '');
+      if (compiledCache.has(key)) return compiledCache.get(key);
+      let rec;
+      const t0 = now();
+      try {
+        rec = { fn: ns.calculateSOVAL.compile(key, { debug:false }), err:null, ms: now() - t0 };
+      } catch (err){
+        rec = { fn:null, err, ms: now() - t0 };
+      }
+      compiledCache.set(key, rec);
+      return rec;
+    }
+
+    function ctxForRelatedRow(row, baseCtx){
+      return Object.assign({}, baseCtx, {
+        row,
+        currentItem: row,
+        relatedProduct: row,
+        code: row?.code,
+        name: row?.name,
+        productName: row?.name,
+        price: row?.price || row?.finalPrice || row?.additionalPrice || '',
+        finalPrice: row?.finalPrice || '',
+        additionalPrice: row?.additionalPrice || '',
+        standardPrice: row?.standardPrice || '',
+        priceSave: row?.priceSave || '',
+        id: row?.id,
+        productId: row?.productId || row?.id,
+        URL: row?.url || '',
+        url: row?.url || '',
+        img: row?.img || '',
+        availability: row?.availability || '',
+        availabilityAmount: row?.availabilityAmount || ''
+      });
+    }
+
+    function evaluateRule(rule, row, baseCtx){
+      const cond = typeof rule?.conditions === 'string'
+        ? rule.conditions.trim()
+        : typeof rule?.condition === 'string'
+          ? rule.condition.trim()
+          : typeof rule?.conditionsSOVAL === 'string'
+            ? rule.conditionsSOVAL.trim()
+            : '';
+
+      if (!cond) return false;
+
+      const comp = getCompiled(cond);
+      if (comp.err){
+        console.error(TAG, 'conditions compile error:', cond, comp.err);
+        return false;
+      }
+
+      try {
+        return !!comp.fn(ctxForRelatedRow(row, baseCtx));
+      } catch (err){
+        console.error(TAG, 'conditions runtime error:', cond, err, row);
+        return false;
+      }
+    }
+
+    function buildCategories(sourceCards, rules, ctx){
+      return (rules || []).map((rule, idx) => {
+        const boxCategory = String(rule?.boxCategory || rule?.title || `Kategorie ${idx + 1}`).trim();
+        const matches = [];
+        sourceCards.forEach(item => {
+          if (evaluateRule(rule, item.row, ctx)) matches.push(item);
+        });
+        return {
+          idx,
+          slug: `${slug(boxCategory)}-${idx + 1}`,
+          boxCategory,
+          moreURL: rule?.moreURL || '',
+          items: matches
+        };
+      }).filter(cat => cat.boxCategory);
+    }
+
+    function buildMoreCard(category){
+      const wrap = document.createElement('div');
+      wrap.className = 'product col-sm-6 col-md-12 col-lg-6 sova-asb__more-card';
+      wrap.setAttribute('data-sova-related-more', '1');
+
+      const href = category.moreURL || '#';
+      wrap.innerHTML = `
+        <a class="sova-asb__more" href="${href}">
+          <div class="p">
+            <div class="sova-asb__more-body">
+              <div class="sova-asb__more-plus">+</div>
+              <div class="sova-asb__more-text">Více z kategorie ${category.boxCategory}</div>
+            </div>
+          </div>
+        </a>
+      `;
+      return wrap;
+    }
+
+    function updateControls(root){
+      const activePane = root.querySelector('.sova-asb__pane.is-active');
+      const track = activePane?.querySelector('.sova-asb__track');
+      const prev = root.previousElementSibling?.querySelector('.sova-asb__control--prev');
+      const next = root.previousElementSibling?.querySelector('.sova-asb__control--next');
+      if (!track || !prev || !next) return;
+      const max = Math.max(0, track.scrollWidth - track.clientWidth);
+      prev.disabled = track.scrollLeft <= 4;
+      next.disabled = track.scrollLeft >= max - 4;
+    }
+
+    function activateTab(root, idx){
+      const tabs = Array.from(root.querySelectorAll('.sova-asb__tab'));
+      const panes = Array.from(root.querySelectorAll('.sova-asb__pane'));
+      tabs.forEach((tab, i) => {
+        const active = i === idx;
+        tab.classList.toggle('is-active', active);
+        tab.setAttribute('aria-selected', active ? 'true' : 'false');
+        tab.tabIndex = active ? 0 : -1;
+      });
+      panes.forEach((pane, i) => pane.classList.toggle('is-active', i === idx));
+      updateControls(root);
+    }
+
+    function enableTrackDrag(track){
+      let pointerId = null;
+      let startX = 0;
+      let startScroll = 0;
+      let moved = false;
+
+      track.addEventListener('pointerdown', (e)=>{
+        if (e.pointerType === 'mouse' && e.button !== 0) return;
+        if (e.target.closest('a,button,input,select,textarea,label')) return;
+        pointerId = e.pointerId;
+        startX = e.clientX;
+        startScroll = track.scrollLeft;
+        moved = false;
+        track.classList.add('is-dragging');
+        try { track.setPointerCapture(pointerId); } catch {}
+      });
+
+      track.addEventListener('pointermove', (e)=>{
+        if (pointerId == null || e.pointerId !== pointerId) return;
+        const dx = e.clientX - startX;
+        if (Math.abs(dx) > 5) moved = true;
+        track.scrollLeft = startScroll - dx;
+        if (moved) e.preventDefault();
+      });
+
+      const finish = (e)=>{
+        if (pointerId == null || (e && e.pointerId !== pointerId)) return;
+        const suppressClick = moved;
+        pointerId = null;
+        track.classList.remove('is-dragging');
+        if (suppressClick){
+          const stopper = (ev)=>{
+            ev.preventDefault();
+            ev.stopPropagation();
+            track.removeEventListener('click', stopper, true);
+          };
+          track.addEventListener('click', stopper, true);
+        }
+      };
+
+      track.addEventListener('pointerup', finish);
+      track.addEventListener('pointercancel', finish);
+      track.addEventListener('lostpointercapture', finish);
+      track.addEventListener('scroll', ()=> updateControls(track.closest('.products.products-related')), { passive:true });
+    }
+
+    function renderBox(host, cfg, categories){
+      const root = host.root;
+      const header = host.header;
+      const title = cfg.title || readHeaderText(header) || 'Příslušenství';
+      const activeIndex = Math.max(0, categories.findIndex(cat => cat.items.length > 0));
+
+      ensureCSS();
+
+      header.classList.add('sova-asb__header');
+      header.innerHTML = '';
+
+      const titleEl = document.createElement('span');
+      titleEl.className = 'sova-asb__title';
+      titleEl.textContent = title;
+
+      const controls = document.createElement('div');
+      controls.className = 'sova-asb__controls';
+      controls.innerHTML = `
+        <button type="button" class="sova-asb__control sova-asb__control--prev" aria-label="Předchozí"></button>
+        <button type="button" class="sova-asb__control sova-asb__control--next" aria-label="Další"></button>
+      `;
+      header.append(titleEl, controls);
+
+      root.classList.add('sova-asb__host');
+      root.classList.remove('slick-initialized', 'slick-slider');
+      root.removeAttribute('style');
+      root.innerHTML = '';
+
+      const source = document.createElement('div');
+      source.className = 'sova-asb__source';
+      categories
+        .flatMap(cat => cat.items)
+        .filter((item, index, arr) => arr.findIndex(other => other.key === item.key) === index)
+        .forEach(item => source.appendChild(item.sourceNode.cloneNode(true)));
+
+      const layout = document.createElement('div');
+      layout.className = 'sova-asb__layout';
+
+      const tabs = document.createElement('div');
+      tabs.className = 'sova-asb__tabs';
+      tabs.setAttribute('role', 'tablist');
+
+      const panes = document.createElement('div');
+      panes.className = 'sova-asb__panes';
+
+      categories.forEach((category, idx) => {
+        const tab = document.createElement('button');
+        tab.type = 'button';
+        tab.className = 'sova-asb__tab';
+        tab.setAttribute('role', 'tab');
+        tab.setAttribute('data-tab-index', String(idx));
+        tab.textContent = category.boxCategory;
+        tabs.appendChild(tab);
+
+        const pane = document.createElement('div');
+        pane.className = 'sova-asb__pane';
+        pane.setAttribute('role', 'tabpanel');
+        pane.setAttribute('data-pane-index', String(idx));
+
+        const track = document.createElement('div');
+        track.className = 'products products-block products-additional p-switchable sova-asb__track';
+
+        category.items.forEach(item => {
+          track.appendChild(item.visibleNode.cloneNode(true));
+        });
+        if (category.moreURL){
+          track.appendChild(buildMoreCard(category));
+        }
+
+        enableTrackDrag(track);
+        pane.appendChild(track);
+        panes.appendChild(pane);
+      });
+
+      layout.append(tabs, panes);
+      root.append(source, layout);
+
+      tabs.addEventListener('click', (e)=>{
+        const btn = e.target.closest('.sova-asb__tab');
+        if (!btn) return;
+        activateTab(root, parseInt(btn.getAttribute('data-tab-index') || '0', 10) || 0);
+      });
+
+      controls.addEventListener('click', (e)=>{
+        const btn = e.target.closest('.sova-asb__control');
+        if (!btn) return;
+        const track = root.querySelector('.sova-asb__pane.is-active .sova-asb__track');
+        if (!track) return;
+        const dir = btn.classList.contains('sova-asb__control--prev') ? -1 : 1;
+        track.scrollBy({ left: dir * Math.max(240, Math.round(track.clientWidth * 0.82)), behavior:'smooth' });
+        setTimeout(()=> updateControls(root), 240);
+      });
+
+      activateTab(root, activeIndex >= 0 ? activeIndex : 0);
+      updateControls(root);
+    }
+
+    function scheduleRender(reason){
+      if (!state.enabled) return;
+      if (state.renderQueued) return;
+      state.renderQueued = true;
+      requestAnimationFrame(() => {
+        state.renderQueued = false;
+        doRender(reason);
+      });
+    }
+
+    function observeMutations(){
+      if (!state.enabled) return;
+      mo.observe(document.body, { childList:true, subtree:true });
+    }
+
+    function doRender(reason){
+      if (!state.enabled) return;
+      if (state.rendering) return;
+      state.rendering = true;
+      mo.disconnect();
+
+      try {
+        const ctx = ns.getContext?.snapshot?.() || {};
+        if (ctx.pageType && ctx.pageType !== 'productDetail') return;
+
+        const cfg = getSettings();
+        if (!cfg.rules.length) return;
+
+        const host = findHost();
+        if (!host?.root) return;
+
+        const sourceCards = collectSourceCards(host.root, ctx);
+        if (!sourceCards.length){
+          if (TEST()) console.warn(TAG, 'no related products found', reason);
           return;
         }
-        const code = codes[i++];
-        try {
-          if (isTest()) console.log(TAG, 'add extra', { idx: i, code, amount });
-          shoptet.cartShared.addToCart({ productCode: code, amount }, true);
-        } catch(e){
-          console.error(TAG, 'addToCart failed', code, e);
-        }
-        setTimeout(addNext, 350);
-      };
-      addNext();
-    }, true);
-  }
 
-  // ─── Pomocné „lint“ tipy k SOVALu (rychlá heuristika) ────────────────────
-  function lintSoval(cond){
-    const tips = [];
-    const open = (cond.match(/\(/g)||[]).length;
-    const close= (cond.match(/\)/g)||[]).length;
-    if (open !== close) tips.push(`Nevyvážené závorky: "("=${open} vs ")"=${close}`);
-    const dq = (cond.match(/(?<!\\)"/g)||[]).length; // jednoduchý odhad
-    const sq = (cond.match(/(?<!\\)'/g)||[]).length;
-    if (dq % 2 === 1) tips.push('Nesudý počet dvojitých uvozovek (")');
-    if (sq % 2 === 1) tips.push("Nesudý počet jednoduchých uvozovek (')");
-    if (/[^!<>=]\s+=\s+[^=]/.test(cond)) tips.push('Rovná se (=) mimo funkci? V SOVALu je "=" operátor equals.');
-    return tips;
-  }
+        const categories = buildCategories(sourceCards, cfg.rules, ctx);
+        if (!categories.length) return;
 
-  async function additionalSale({ params, settings }, ctx){
-    try{
-      // Načtení settings (priorita: featureSettings → window.additionalSale)
-      let cfg = [];
-      let source = 'none';
-      if (Array.isArray(settings)) { cfg = settings; source = 'featureSettings'; }
-      else if (Array.isArray(window.additionalSale)) { cfg = window.additionalSale; source = 'window.additionalSale'; }
-
-      if (isTest()){
-        console.groupCollapsed(TAG, 'init');
-        console.log('source:', source, 'count:', cfg.length);
-        console.log('ctx keys:', Object.keys(ctx||{}));
-        console.groupEnd();
-      }
-      if (!cfg.length) { if(isTest()) console.log(TAG,'no settings'); return; }
-
-      const TEST = isTest();
-      const DEEP_DEBUG = TEST && localStorage.getItem('SOVA.testSOVA.deep') === '1';
-      const CHUNK_SIZE = Math.max(0, parseInt(localStorage.getItem('SOVA.testSOVA.chunk') || '0', 10));
-
-      // Bezpečná kompilace – nevalidní pravidlo zaloguju a označím jako false
-      const compiled = new Array(cfg.length).fill(null);
-      const compileErrors = [];
-
-      cfg.forEach((it, idx) => {
-        const cond = (typeof it.SOVAL === 'string') ? it.SOVAL.trim() : '';
-        if (!cond) return;
-        try{
-          compiled[idx] = ns.calculateSOVAL.compile(cond, { debug:false });
-        }catch(e){
-          const rid = it.id ?? it.name ?? it.code ?? `#${idx+1}`;
-          const tips = lintSoval(cond);
-          if (TEST){
-            console.groupCollapsed(`${TAG} SOVAL syntax error in rule ${rid}`);
-            console.error(e);
-            console.log('SOVAL:', cond);
-            if (tips.length) console.log('hints:', tips);
-            console.log('rule object:', it);
-            console.groupEnd();
-          } else {
-            console.warn(`${TAG} SOVAL syntax error in rule ${rid}:`, e?.message||e);
-          }
-          compileErrors.push({ idx, rule: rid, message: e?.message||String(e), SOVAL: cond });
-          compiled[idx] = null; // → bude vyhodnoceno jako false
-        }
-      });
-
-      if (TEST && compileErrors.length){
-        console.groupCollapsed(TAG, `compile errors (${compileErrors.length})`);
-        try { console.table(compileErrors); } catch { console.log(compileErrors); }
-        console.groupEnd();
-      }
-
-      const eligible  = [];
-      const debugRows = [];
-
-      const evalOne = (it, idx) => {
-        const cond = (typeof it.SOVAL === 'string') ? it.SOVAL.trim() : '';
-        const meta = {
-          idx,
-          type: it.type || 'checkbox',
-          pairText: it.pairText || '',
-          code: it.code || '',
-          name: it.name || '',
-          price: String(it.price ?? '')
-        };
-
-        // Pokud kompilace selhala → false (a důvod)
-        if (cond && !compiled[idx]){
-          debugRows.push({ ok:false, reason:'compile-error', ...meta, SOVAL: cond, took: 0 });
-          return; // nepushujeme
-        }
-
-        let ok = true, t0, took = 0;
-        if (cond && compiled[idx]) {
-          t0 = performance.now();
+        if (TEST()){
+          console.groupCollapsed(TAG, `render ${reason || ''}`.trim());
           try {
-            ok = !!compiled[idx](ctx);
-          } catch (e) {
-            ok = false;
-            if (TEST) console.warn(TAG, `SOVAL runtime error @#${idx}`, e);
-          }
-          took = performance.now() - t0;
-
-          if (DEEP_DEBUG && ok) {
-            try { ns.calculateSOVAL.evalBool(cond, ctx, { debug:true }); }
-            catch (e){ if (TEST) console.warn(TAG, `deep debug failed @#${idx}`, e); }
-          }
+            console.table(categories.map(cat => ({
+              boxCategory: cat.boxCategory,
+              matches: cat.items.length,
+              moreURL: cat.moreURL
+            })));
+          } catch { console.log(categories); }
+          console.groupEnd();
         }
 
-        debugRows.push({ ok, reason: ok?'':'runtime-error', ...meta, SOVAL: cond, took: +took.toFixed(2) });
-        if (ok) eligible.push(it);
-      };
-
-      if (CHUNK_SIZE > 0) {
-        for (let i = 0; i < cfg.length; i += CHUNK_SIZE) {
-          const end = Math.min(i + CHUNK_SIZE, cfg.length);
-          for (let j = i; j < end; j++) evalOne(cfg[j], j);
-          await new Promise(requestAnimationFrame);
-        }
-      } else {
-        for (let i = 0; i < cfg.length; i++) evalOne(cfg[i], i);
+        renderBox(host, cfg, categories);
+      } catch (err){
+        console.error(TAG, 'render failed', err);
+      } finally {
+        state.rendering = false;
+        setTimeout(observeMutations, 0);
       }
-
-      if (TEST) {
-        console.groupCollapsed(TAG, `summary • eligible ${eligible.length}/${cfg.length}`);
-        try { console.table(debugRows); } catch { console.log(debugRows); }
-        console.groupEnd();
-      }
-
-      // render + hooky
-      mountUI(eligible);
-      hookAddFlow();
-
-      if (TEST){
-        console.groupCollapsed(TAG, 'rendered items');
-        try {
-          console.table(eligible.map(x=>({
-            type:x.type,
-            pairText:x.pairText,
-            code:x.code,
-            name:x.name,
-            price:String(x.price),
-            SOVAL:x.SOVAL||''
-          })));
-        } catch { console.log(eligible); }
-        console.groupEnd();
-      }
-    }catch(e){
-      console.error(TAG, 'failed', e);
     }
-  }
 
-  ns.fn.register('additionalSale', additionalSale);
-})(SOVA);
+    const mo = new MutationObserver((muts)=>{
+      if (state.rendering) return;
+      const relevant = muts.some(m => {
+        const target = m.target;
+        const nodes = [...(m.addedNodes || []), ...(m.removedNodes || [])];
+        const matchNode = (node) => !!(node && node.nodeType === 1 && (
+          node.matches?.('.products-related,.products-related-header,.slick-slider,.slick-track,.slick-slide') ||
+          node.querySelector?.('.products-related,.products-related-header,.slick-slider,.slick-track,.slick-slide')
+        ));
+        return matchNode(target) || nodes.some(matchNode);
+      });
+      if (relevant) scheduleRender('mutation');
+    });
+
+    function startReactiveHooks(){
+      if (state.hooksStarted) return;
+      state.hooksStarted = true;
+
+      observeMutations();
+
+      [
+        'ShoptetDOMAdvancedOrderLoaded',
+        'ShoptetDOMPageContentLoaded',
+        'ShoptetDOMContentLoaded'
+      ].forEach(ev => document.addEventListener(ev, ()=> scheduleRender(ev), true));
+
+      window.addEventListener('resize', ()=> scheduleRender('resize'), { passive:true });
+      ns.bus?.on?.('context:ready', ()=> scheduleRender('context:ready'));
+    }
+
+    ns.fn.register('additionalSaleBox', function({ settings } = {}){
+      if (settings != null) state.overrideSettings = settings;
+      state.enabled = true;
+      startReactiveHooks();
+      scheduleRender('fn.call');
+    });
+  })(SOVA);
 
 
   
