@@ -1729,45 +1729,109 @@ ns.rules = ns.rules || {};
       if (document.getElementById(STYLE_ID)) return;
       const css = `
         .products-related-header.sova-asb__header{
-          display:flex;
+          display:flex !important;
           align-items:center;
-          justify-content:center;
+          justify-content:flex-start;
           gap:16px;
-          margin-top:0;
-          margin-bottom:2rem;
-          padding:20px 88px 20px 24px;
-          position:relative;
-          background:#2f7774;
           color:#fff;
-          text-transform:uppercase;
+          font-size:1.125rem;
+          font-weight:700;
+          line-height:1.625rem;
+          padding:.5rem 1.25rem .5rem 1.25rem;
+          background:#006e6b;
+          border:.0625rem solid #006e6b;
+          margin:0;
+          position:relative;
+          text-transform:none;
+          visibility:visible !important;
+          opacity:1 !important;
+        }
+        .products-related-header.sova-asb__header.fv-lazy-hidden,
+        .products-related-header.sova-asb__header.fv-lazy-visible{
+          display:flex !important;
+          visibility:visible !important;
+          opacity:1 !important;
         }
         .products-related-header.sova-asb__header .text.sova-asb__title{
           display:block;
           margin:0;
           color:inherit;
-          font-size:1.75rem;
-          font-weight:700;
-          line-height:1.2;
+          font-size:inherit;
+          font-weight:inherit;
+          line-height:inherit;
           letter-spacing:0;
-          text-align:center;
+          text-align:left;
+          text-transform:none;
         }
-        .products-related-header.sova-asb__header .controls.sova-asb__controls{
+        .products-related-header.sova-asb__header .sova-asb__title-wrap{
+          display:flex;
+          align-items:center;
+          justify-content:flex-start;
+          gap:12px;
+          min-width:0;
+          flex:1 1 auto;
+        }
+        .products-related-header.sova-asb__header .sova-asb__actions{
           position:absolute;
           top:50%;
           right:24px;
           transform:translateY(-50%);
           display:flex;
-          gap:10px;
+          align-items:center;
+          justify-content:flex-end;
+          gap:6px;
+          flex:0 0 auto;
           padding:0;
         }
-        .products-related-header.sova-asb__header .controls.sova-asb__controls .slick-prev,
-        .products-related-header.sova-asb__header .controls.sova-asb__controls .slick-next{
-          position:static;
+        .products-related-header.sova-asb__header .sova-asb__nav{
+          appearance:none;
+          -webkit-appearance:none;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          width:31px;
+          height:31px;
+          padding:0;
           margin:0;
-          display:flex !important;
+          border:0;
+          border-radius:2px;
+          background-color:rgb(0,110,107);
+          color:rgb(227,246,245);
+          box-shadow:none;
+          font-family:"Kumbh Sans", sans-serif;
+          font-size:24px;
+          font-weight:600;
+          line-height:26.4px;
+          text-transform:uppercase;
+          cursor:pointer;
+          transition:background-color .3s ease;
+          box-sizing:content-box;
+          user-select:none;
         }
-        .products-related-header.sova-asb__header .controls.sova-asb__controls button[disabled]{
-          opacity:.45;
+        .products-related-header.sova-asb__header .sova-asb__nav::before{
+          content:"";
+          display:flex;
+          width:7px;
+          height:11px;
+          background-color:rgb(227,246,245);
+          mask-image:url(https://cdn.myshoptet.com/usr/644482.myshoptet.com/user/documents/fv-studio/opti/assets/icons/caret-left.svg);
+          mask-repeat:no-repeat;
+          mask-size:contain;
+          mask-position:50% 50%;
+          -webkit-mask-image:url(https://cdn.myshoptet.com/usr/644482.myshoptet.com/user/documents/fv-studio/opti/assets/icons/caret-left.svg);
+          -webkit-mask-repeat:no-repeat;
+          -webkit-mask-size:contain;
+          -webkit-mask-position:50% 50%;
+        }
+        .products-related-header.sova-asb__header .sova-asb__nav--next::before{
+          transform:matrix(-1, 0, 0, -1, 0, 0);
+        }
+        .products-related-header.sova-asb__header .sova-asb__nav:hover:not(:disabled){
+          background-color:var(--color-primary-hover, #005956);
+        }
+        .products-related-header.sova-asb__header .sova-asb__nav:disabled{
+          opacity:.35;
+          cursor:default;
           pointer-events:none;
         }
         .products-related.sova-asb__host{
@@ -1877,6 +1941,7 @@ ns.rules = ns.rules || {};
         .accessory-box__products .products.slick-initialized.slick-slider > .slick-list > .slick-track{
           display:flex !important;
           justify-content:flex-start;
+          align-items:stretch;
           margin-left:0 !important;
           margin-right:0 !important;
           left:0 !important;
@@ -1897,9 +1962,36 @@ ns.rules = ns.rules || {};
         .accessory-box__products .products.slick-initialized.slick-slider > .slick-list > .slick-track > .slick-slide .product{
           width:100% !important;
           display:inline-block !important;
+          height:100%;
         }
         .accessory-box__products .products.slick-initialized.slick-slider > .slick-list > .slick-track > .slick-slide .product .p{
+          display:flex;
+          flex-direction:column;
           height:100%;
+        }
+        .accessory-box__products .products.slick-initialized.slick-slider .product .p-in{
+          display:flex;
+          flex-direction:column;
+          flex:1 1 auto;
+          min-height:0;
+        }
+        .accessory-box__products .products.slick-initialized.slick-slider .product .p-in-in{
+          display:flex;
+          flex-direction:column;
+          flex:1 1 auto;
+          min-height:0;
+        }
+        .accessory-box__products .products.slick-initialized.slick-slider .product .ratings-wrapper{
+          margin-top:auto;
+        }
+        .accessory-box__products .products.slick-initialized.slick-slider .product .p-bottom{
+          margin-top:auto;
+        }
+        .accessory-box__products .products.slick-initialized.slick-slider .product .p-bottom div[data-micro="offer"]{
+          height:100%;
+        }
+        .accessory-box__products .products.slick-initialized.slick-slider .product .name{
+          min-height:0 !important;
         }
         .sova-asb__more{
           display:block;
@@ -1912,6 +2004,7 @@ ns.rules = ns.rules || {};
         }
         .sova-asb__more-body{
           min-height:100%;
+          height:100%;
           display:flex;
           flex-direction:column;
           align-items:center;
@@ -1919,6 +2012,12 @@ ns.rules = ns.rules || {};
           gap:18px;
           padding:32px 24px;
           text-align:center;
+        }
+        .sova-asb__more-card{
+          height:100%;
+        }
+        .sova-asb__more-card .p{
+          padding:0 !important;
         }
         .sova-asb__more-plus{
           width:76px;
@@ -1944,11 +2043,7 @@ ns.rules = ns.rules || {};
         }
         @media (max-width: 991.98px){
           .products-related-header.sova-asb__header{
-            padding:18px 78px 18px 16px;
-            margin-bottom:1.5rem;
-          }
-          .products-related-header.sova-asb__header .text.sova-asb__title{
-            font-size:1.3rem;
+            padding:.5rem 4.4rem .5rem 1rem;
           }
           .accessory-box__content{
             flex-direction:column;
@@ -1979,12 +2074,7 @@ ns.rules = ns.rules || {};
             justify-content:flex-start;
             text-align:left;
           }
-          .products-related-header.sova-asb__header .text.sova-asb__title{
-            font-size:1.05rem;
-            line-height:1.25;
-            text-align:left;
-          }
-          .products-related-header.sova-asb__header .controls.sova-asb__controls{
+          .products-related-header.sova-asb__header .sova-asb__actions{
             right:12px;
           }
           .accessory-box__tab{
@@ -2345,8 +2435,8 @@ ns.rules = ns.rules || {};
     function updateControls(root){
       const activeCategory = getActiveCategoryRoot(root);
       const list = activeCategory?.querySelector('.slick-list');
-      const prev = root.previousElementSibling?.querySelector('.sova-asb__controls .slick-prev');
-      const next = root.previousElementSibling?.querySelector('.sova-asb__controls .slick-next');
+      const prev = root.previousElementSibling?.querySelector('.sova-asb__actions .sova-asb__nav--prev');
+      const next = root.previousElementSibling?.querySelector('.sova-asb__actions .sova-asb__nav--next');
       if (!list || !prev || !next) return;
       const max = Math.max(0, list.scrollWidth - list.clientWidth);
       prev.disabled = list.scrollLeft <= 4;
@@ -2430,11 +2520,26 @@ ns.rules = ns.rules || {};
       ensureCSS();
 
       header.classList.add('sova-asb__header');
+      header.classList.remove('fv-lazy-visible', 'fv-lazy-hidden');
       header.innerHTML = '';
+
+      const titleWrap = document.createElement('div');
+      titleWrap.className = 'sova-asb__title-wrap';
 
       const titleEl = document.createElement('span');
       titleEl.className = 'text sova-asb__title';
       titleEl.textContent = title;
+
+      const actions = document.createElement('div');
+      actions.className = 'sova-asb__actions';
+      actions.setAttribute('aria-hidden', 'false');
+      actions.innerHTML = `
+        <button class="sova-asb__nav sova-asb__nav--prev" type="button" aria-label="Předchozí produkty"></button>
+        <button class="sova-asb__nav sova-asb__nav--next" type="button" aria-label="Další produkty"></button>
+      `;
+
+      titleWrap.appendChild(titleEl);
+      header.append(titleWrap, actions);
 
       const controls = document.createElement('div');
       controls.className = 'controls sova-asb__controls';
@@ -2442,8 +2547,8 @@ ns.rules = ns.rules || {};
         <button type="button" class="slick-prev control-slick slick-arrow" aria-label="Previous"></button>
         <button type="button" class="slick-next control-slick slick-arrow" aria-label="Next"></button>
       `;
-
-      header.append(titleEl, controls);
+      controls.style.display = 'none';
+      header.appendChild(controls);
 
       root.classList.add('sova-asb__host');
       root.classList.remove('slick-initialized', 'slick-slider');
@@ -2518,13 +2623,13 @@ ns.rules = ns.rules || {};
         activateTab(root, parseInt(btn.getAttribute('data-tab-index') || '0', 10) || 0);
       });
 
-      controls.addEventListener('click', (e)=>{
-        const btn = e.target.closest('.slick-prev, .slick-next');
+      actions.addEventListener('click', (e)=>{
+        const btn = e.target.closest('.sova-asb__nav--prev, .sova-asb__nav--next');
         if (!btn) return;
         const activeCategory = getActiveCategoryRoot(root);
         const list = activeCategory?.querySelector('.slick-list');
         if (!list) return;
-        const dir = btn.classList.contains('slick-prev') ? -1 : 1;
+        const dir = btn.classList.contains('sova-asb__nav--prev') ? -1 : 1;
         list.scrollBy({ left: dir * Math.max(240, Math.round(list.clientWidth * 0.82)), behavior: 'smooth' });
         setTimeout(()=> updateControls(root), 260);
       });
