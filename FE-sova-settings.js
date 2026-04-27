@@ -2491,7 +2491,7 @@ window.additionalSaleBox = [
   },
   {
     "boxCategory": "Tašky a batohy",
-    "conditions": "code startswith \"BAG\")",
+    "conditions": "(code startswith \"BAG\")",
     "moreURL": "/brasny-a-pouzdra/"
   },
   {
