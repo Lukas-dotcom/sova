@@ -2481,17 +2481,17 @@ window.additionalSaleBox = [
   },
   {
     "boxCategory": "Sluchátka a reproduktory",
-    "conditions": "lower(name) contains \"sluchátka\" OR lower(name) contains \"reproduktor\"",
+    "conditions": "lower(name) contains \"sluchátka\" OR lower(name) contains \"reproduktor\")",
     "moreURL": "/audio/"
   },
   {
     "boxCategory": "Dokovací stanice",
-    "conditions": "code startswith \"DOC\" OR code = \"ACC0012\" OR code = \"ACC0121\" OR code = \"RED0028\" OR code = \"RED0027\" OR code = \"RED0026\"",
+    "conditions": "code startswith \"DOC\" OR code = \"ACC0012\" OR code = \"ACC0121\" OR code = \"RED0028\" OR code = \"RED0027\" OR code = \"RED0026\")",
     "moreURL": "/dokovaci-stanice/"
   },
   {
     "boxCategory": "Tašky a batohy",
-    "conditions": "code startswith \"BAG\"",
+    "conditions": "code startswith \"BAG\")",
     "moreURL": "/brasny-a-pouzdra/"
   },
   {
