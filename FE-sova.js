@@ -1711,7 +1711,9 @@ ns.rules = ns.rules || {};
       hooksStarted: false,
       renderQueued: false,
       rendering: false,
-      overrideSettings: null
+      overrideSettings: null,
+      activeCategorySlug: '',
+      scrollByCategory: Object.create(null)
     };
 
     const compiledCache = new Map();
@@ -1728,24 +1730,30 @@ ns.rules = ns.rules || {};
     function ensureCSS(){
       if (document.getElementById(STYLE_ID)) return;
       const css = `
+        h2.products-related-header.sova-asb__header.products-block-wrapper,
         .products-related-header.sova-asb__header{
           display:flex !important;
           align-items:center;
-          justify-content:flex-start;
+          justify-content:flex-start !important;
           gap:16px;
           color:#fff;
+          font-family:"Kumbh Sans", sans-serif;
           font-size:1.125rem;
           font-weight:700;
           line-height:1.625rem;
           padding:.5rem 1.25rem .5rem 1.25rem;
           background:#006e6b;
           border:.0625rem solid #006e6b;
-          margin:0;
+          margin:0 !important;
           position:relative;
+          text-align:left !important;
           text-transform:none;
+          cursor:default;
           visibility:visible !important;
           opacity:1 !important;
         }
+        h2.products-related-header.sova-asb__header.products-block-wrapper.fv-lazy-hidden,
+        h2.products-related-header.sova-asb__header.products-block-wrapper.fv-lazy-visible,
         .products-related-header.sova-asb__header.fv-lazy-hidden,
         .products-related-header.sova-asb__header.fv-lazy-visible{
           display:flex !important;
@@ -1858,6 +1866,7 @@ ns.rules = ns.rules || {};
           align-items:stretch;
           width:100%;
           border-left:1px solid #d7e0df;
+          background:#fff;
         }
         .accessory-box__categories{
           flex:0 0 290px;
@@ -2428,6 +2437,83 @@ ns.rules = ns.rules || {};
       track.style.width = `${slideWidth * slides.length}px`;
     }
 
+    function rememberSliderPositions(root){
+      root?.querySelectorAll?.('.products-category[data-category-id]').forEach((pane) => {
+        const slug = pane.getAttribute('data-category-id');
+        const list = pane.querySelector('.slick-list');
+        if (!slug || !list) return;
+        state.scrollByCategory[slug] = list.scrollLeft || 0;
+      });
+    }
+
+    function measureAndLockLayoutHeight(root){
+      const wrapper = root.querySelector('.accessory-box.sova-asb__layout');
+      const content = wrapper?.querySelector('.accessory-box__content');
+      const tabsWrap = wrapper?.querySelector('.accessory-box__categories');
+      const productsWrap = wrapper?.querySelector('.accessory-box__products');
+      const panes = Array.from(wrapper?.querySelectorAll('.products-category') || []);
+      if (!wrapper || !content || !tabsWrap || !productsWrap || !panes.length) return;
+
+      wrapper.style.minHeight = '';
+      content.style.minHeight = '';
+      tabsWrap.style.minHeight = '';
+      productsWrap.style.minHeight = '';
+
+      const snapshots = panes.map((pane) => ({
+        pane,
+        display: pane.style.display,
+        position: pane.style.position,
+        top: pane.style.top,
+        left: pane.style.left,
+        right: pane.style.right,
+        bottom: pane.style.bottom,
+        visibility: pane.style.visibility,
+        pointerEvents: pane.style.pointerEvents,
+        active: pane.classList.contains('is-active')
+      }));
+
+      let maxPaneHeight = 0;
+      snapshots.forEach((snap) => {
+        const pane = snap.pane;
+        pane.classList.add('is-active');
+        pane.style.display = 'block';
+        pane.style.position = 'absolute';
+        pane.style.top = '0';
+        pane.style.left = '0';
+        pane.style.right = '0';
+        pane.style.bottom = '';
+        pane.style.visibility = 'hidden';
+        pane.style.pointerEvents = 'none';
+        const slider = pane.querySelector('.products.slick-initialized.slick-slider');
+        if (slider) syncSliderMetrics(slider);
+        maxPaneHeight = Math.max(maxPaneHeight, Math.ceil(pane.getBoundingClientRect().height || 0));
+      });
+
+      snapshots.forEach((snap) => {
+        const pane = snap.pane;
+        pane.style.display = snap.display;
+        pane.style.position = snap.position;
+        pane.style.top = snap.top;
+        pane.style.left = snap.left;
+        pane.style.right = snap.right;
+        pane.style.bottom = snap.bottom;
+        pane.style.visibility = snap.visibility;
+        pane.style.pointerEvents = snap.pointerEvents;
+        pane.classList.toggle('is-active', snap.active);
+      });
+
+      const categoriesHeight = Math.ceil(tabsWrap.scrollHeight || 0);
+      const productsHeight = Math.ceil(maxPaneHeight || productsWrap.getBoundingClientRect().height || 0);
+      const contentHeight = Math.max(categoriesHeight, productsHeight);
+
+      if (contentHeight > 0){
+        wrapper.style.minHeight = `${contentHeight}px`;
+        content.style.minHeight = `${contentHeight}px`;
+        tabsWrap.style.minHeight = `${contentHeight}px`;
+      }
+      if (productsHeight > 0) productsWrap.style.minHeight = `${productsHeight}px`;
+    }
+
     function getActiveCategoryRoot(root){
       return root.querySelector('.products-category.is-active');
     }
@@ -2458,9 +2544,19 @@ ns.rules = ns.rules || {};
         pane.classList.toggle('is-active', i === idx);
         pane.style.display = i === idx ? '' : 'none';
         const slider = pane.querySelector('.products.slick-initialized.slick-slider');
-        if (i === idx && slider) syncSliderMetrics(slider);
+        if (i === idx && slider){
+          syncSliderMetrics(slider);
+          const slug = pane.getAttribute('data-category-id') || '';
+          const list = slider.querySelector('.slick-list');
+          if (slug) state.activeCategorySlug = slug;
+          if (slug && list){
+            const remembered = state.scrollByCategory[slug];
+            list.scrollLeft = Number.isFinite(remembered) ? remembered : 0;
+          }
+        }
       });
 
+      measureAndLockLayoutHeight(root);
       updateControls(root);
     }
 
@@ -2508,14 +2604,23 @@ ns.rules = ns.rules || {};
       list.addEventListener('pointerup', finish);
       list.addEventListener('pointercancel', finish);
       list.addEventListener('lostpointercapture', finish);
-      list.addEventListener('scroll', ()=> updateControls(root), { passive:true });
+      list.addEventListener('scroll', ()=>{
+        const pane = list.closest('.products-category[data-category-id]');
+        const slug = pane?.getAttribute('data-category-id');
+        if (slug) state.scrollByCategory[slug] = list.scrollLeft || 0;
+        updateControls(root);
+      }, { passive:true });
     }
 
     function renderBox(host, cfg, categories){
       const root = host.root;
       const header = host.header;
       const title = cfg.title || readHeaderText(header) || 'Doporučujeme přikoupit';
-      const activeIndex = Math.max(0, categories.findIndex(cat => cat.items.length > 0 || cat.moreURL));
+      const previousActiveSlug = root.querySelector('.products-category.is-active')?.getAttribute('data-category-id') || state.activeCategorySlug || '';
+      rememberSliderPositions(root);
+      const fallbackIndex = Math.max(0, categories.findIndex(cat => cat.items.length > 0 || cat.moreURL));
+      const matchedIndex = previousActiveSlug ? categories.findIndex(cat => cat.slug === previousActiveSlug) : -1;
+      const activeIndex = matchedIndex >= 0 ? matchedIndex : fallbackIndex;
 
       ensureCSS();
 
@@ -2636,6 +2741,7 @@ ns.rules = ns.rules || {};
 
       root.querySelectorAll('.products.slick-initialized.slick-slider').forEach(syncSliderMetrics);
       activateTab(root, activeIndex >= 0 ? activeIndex : 0);
+      requestAnimationFrame(()=> measureAndLockLayoutHeight(root));
       updateControls(root);
     }
 
@@ -2737,7 +2843,6 @@ ns.rules = ns.rules || {};
       scheduleRender('fn.call');
     });
   })(SOVA);
-
   
 /*───────────────────────────────────────────────────────────────────────────*
  * fpsGames – FPS blok na detailu herního produktu
