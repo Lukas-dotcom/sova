@@ -2486,7 +2486,7 @@ window.additionalSaleBox = [
   },
   {
     "boxCategory": "Dokovací stanice",
-    "conditions": "code startswith \"DOC\" OR code = \"ACC0012\" OR code = \"ACC0121\" OR code = \"RED0028\" OR code = \"RED0027\" OR code = \"RED0026\")",
+    "conditions": "(code startswith \"DOC\" OR code = \"ACC0012\" OR code = \"ACC0121\" OR code = \"RED0028\" OR code = \"RED0027\" OR code = \"RED0026\")",
     "moreURL": "/dokovaci-stanice/"
   },
   {
