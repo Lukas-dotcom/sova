@@ -1714,7 +1714,9 @@ ns.rules = ns.rules || {};
       overrideSettings: null,
       activeCategorySlug: '',
       scrollByCategory: Object.create(null),
-      lastRenderSignature: ''
+      lastRenderSignature: '',
+      renderRetryCount: 0,
+      renderRetryTimer: null
     };
 
     const compiledCache = new Map();
@@ -1852,7 +1854,7 @@ ns.rules = ns.rules || {};
           margin-top:0;
           background:transparent;
         }
-        .products-related.sova-asb__host > section.sova-asb__layout{
+        .sova-asb__host > section.sova-asb__layout{
           display:block;
           width:100%;
           max-width:100%;
@@ -1877,6 +1879,11 @@ ns.rules = ns.rules || {};
           max-width:240px;
           background:#f6f7f7;
           border-right:1px solid #d7e0df;
+          cursor:default;
+        }
+        .accessory-box__categories.is-dragging{
+          cursor:default;
+          user-select:none;
         }
         .accessory-box__categories ul{
           list-style:none;
@@ -1920,7 +1927,7 @@ ns.rules = ns.rules || {};
         .products-category.is-active{
           display:block;
         }
-        .accessory-box__products .products.slick-initialized.slick-slider{
+        .accessory-box__products .sova-asb__slider{
           display:block;
           position:relative;
           margin:0;
@@ -1929,7 +1936,7 @@ ns.rules = ns.rules || {};
           border:0;
           background:#fff;
         }
-        .accessory-box__products .products.slick-initialized.slick-slider > .slick-list{
+        .accessory-box__products .sova-asb__viewport{
           display:block;
           width:100% !important;
           overflow-x:auto !important;
@@ -1943,15 +1950,15 @@ ns.rules = ns.rules || {};
           scroll-behavior:smooth;
           -webkit-overflow-scrolling:touch;
         }
-        .accessory-box__products .products.slick-initialized.slick-slider > .slick-list::-webkit-scrollbar{
+        .accessory-box__products .sova-asb__viewport::-webkit-scrollbar{
           display:none;
         }
-        .accessory-box__products .products.slick-initialized.slick-slider > .slick-list.is-dragging{
+        .accessory-box__products .sova-asb__viewport.is-dragging{
           cursor:default;
           scroll-behavior:auto;
           user-select:none;
         }
-        .accessory-box__products .products.slick-initialized.slick-slider > .slick-list > .slick-track{
+        .accessory-box__products .sova-asb__track{
           display:flex !important;
           justify-content:flex-start;
           align-items:stretch;
@@ -1961,50 +1968,69 @@ ns.rules = ns.rules || {};
           top:0;
           transform:none !important;
         }
-        .accessory-box__products .products.slick-initialized.slick-slider > .slick-list > .slick-track > .slick-slide{
+        .accessory-box__products .sova-asb__slide{
           float:none !important;
           height:auto !important;
           min-height:1px;
           display:block;
           visibility:visible;
         }
-        .accessory-box__products .products.slick-initialized.slick-slider > .slick-list > .slick-track > .slick-slide > div{
+        .accessory-box__products .sova-asb__slide > div{
           height:100%;
           box-sizing:border-box;
         }
-        .accessory-box__products .products.slick-initialized.slick-slider > .slick-list > .slick-track > .slick-slide .product{
+        .accessory-box__products .sova-asb__slide .product{
           width:100% !important;
           display:inline-block !important;
           height:100%;
         }
-        .accessory-box__products .products.slick-initialized.slick-slider > .slick-list > .slick-track > .slick-slide .product .p{
+        .accessory-box__products .sova-asb__slide .product .p{
           display:flex;
           flex-direction:column;
           height:100%;
         }
-        .accessory-box__products .products.slick-initialized.slick-slider .product .p-in{
+        .accessory-box__products .sova-asb__slider .product .p-in{
           display:flex;
           flex-direction:column;
           flex:1 1 auto;
           min-height:0;
         }
-        .accessory-box__products .products.slick-initialized.slick-slider .product .p-in-in{
+        .accessory-box__products .sova-asb__slider .product .p-in-in{
           display:flex;
           flex-direction:column;
           flex:1 1 auto;
           min-height:0;
         }
-        .accessory-box__products .products.slick-initialized.slick-slider .product .ratings-wrapper{
+        .accessory-box__products .sova-asb__slider .product .ratings-wrapper{
+          display:flex;
+          flex-wrap:wrap;
+          align-items:center;
+          gap:6px 12px;
+          margin-top:auto;
+          min-width:0;
+        }
+        .accessory-box__products .sova-asb__slider .product .ratings-wrapper > *{
+          max-width:100%;
+        }
+        .accessory-box__products .sova-asb__slider .product .ratings-wrapper .dvPor{
+          flex:0 1 auto;
+          min-width:0;
+        }
+        .accessory-box__products .sova-asb__slider .product .ratings-wrapper .stars-wrapper{
+          flex:0 1 auto;
+          min-width:0;
+        }
+        .accessory-box__products .sova-asb__slider .product .p-bottom{
           margin-top:auto;
         }
-        .accessory-box__products .products.slick-initialized.slick-slider .product .p-bottom{
-          margin-top:auto;
-        }
-        .accessory-box__products .products.slick-initialized.slick-slider .product .p-bottom div[data-micro="offer"]{
+        .accessory-box__products .sova-asb__slider .product .p-bottom div[data-micro="offer"]{
           height:100%;
         }
-        .accessory-box__products .products.slick-initialized.slick-slider .product .name{
+        .accessory-box__products .sova-asb__slider .product .name{
           min-height:0 !important;
+        }
+        .accessory-box__products .sova-asb__slider .product .p-desc{
+          display:none !important;
         }
         .sova-asb__more{
           display:block;
@@ -2072,6 +2098,13 @@ ns.rules = ns.rules || {};
             border-right:0;
             border-bottom:1px solid #d7e0df;
             overflow-x:auto;
+            overflow-y:hidden;
+            scrollbar-width:none;
+            -ms-overflow-style:none;
+            -webkit-overflow-scrolling:touch;
+          }
+          .accessory-box__categories::-webkit-scrollbar{
+            display:none;
           }
           .accessory-box__categories ul{
             display:flex;
@@ -2092,10 +2125,17 @@ ns.rules = ns.rules || {};
             text-align:left;
             padding:.5rem 1rem .5rem 1rem;
           }
+          .products-related-header.sova-asb__header .sova-asb__title-wrap,
+          .products-related-header.sova-asb__header .text.sova-asb__title{
+            font-size:1.125rem !important;
+            font-weight:700 !important;
+            line-height:1.625rem !important;
+            text-transform:none !important;
+          }
           .products-related-header.sova-asb__header .sova-asb__actions{
             display:none !important;
           }
-          .accessory-box__products .products.slick-initialized.slick-slider > .slick-list{
+          .accessory-box__products .sova-asb__viewport{
             overflow-x:auto !important;
           }
           .accessory-box__tab{
@@ -2157,7 +2197,7 @@ ns.rules = ns.rules || {};
     }
 
     function findHost(){
-      const root = document.querySelector('.products.products-related');
+      const root = document.querySelector('[data-sova-asb-host="1"]') || document.querySelector('.products.products-related');
       if (!root) return null;
       const header = ensureHeader(root);
       return { root, header };
@@ -2421,8 +2461,8 @@ ns.rules = ns.rules || {};
 
     function createSlide(cardNode, index, slideWidth){
       const slide = document.createElement('div');
-      slide.className = index === 0 ? 'slick-slide slick-current slick-active' : 'slick-slide';
-      slide.setAttribute('data-slick-index', String(index));
+      slide.className = index === 0 ? 'sova-asb__slide is-current is-active' : 'sova-asb__slide';
+      slide.setAttribute('data-sova-slide-index', String(index));
       slide.setAttribute('aria-hidden', index === 0 ? 'false' : 'true');
       slide.style.width = `${slideWidth}px`;
 
@@ -2440,16 +2480,17 @@ ns.rules = ns.rules || {};
 
     function createSlider(category){
       const slider = document.createElement('div');
-      slider.className = 'products products-block products-related products-additional p-switchable slick-initialized slick-slider';
+      slider.className = 'products products-block products-additional p-switchable sova-asb__slider';
       slider.setAttribute('data-editorid', 'productListing');
       slider.setAttribute('data-sova-category', category.slug);
+      slider.setAttribute('data-sova-slider', '1');
 
       const list = document.createElement('div');
-      list.className = 'slick-list draggable';
+      list.className = 'sova-asb__viewport';
       slider.appendChild(list);
 
       const track = document.createElement('div');
-      track.className = 'slick-track';
+      track.className = 'sova-asb__track';
       track.style.opacity = '1';
       list.appendChild(track);
 
@@ -2458,8 +2499,8 @@ ns.rules = ns.rules || {};
 
     function syncSliderMetrics(slider){
       if (!slider) return;
-      const list = slider.querySelector('.slick-list');
-      const track = slider.querySelector('.slick-track');
+      const list = slider.querySelector('.sova-asb__viewport');
+      const track = slider.querySelector('.sova-asb__track');
       const slides = Array.from(track?.children || []);
       if (!list || !track || !slides.length) return;
 
@@ -2473,7 +2514,7 @@ ns.rules = ns.rules || {};
     function rememberSliderPositions(root){
       root?.querySelectorAll?.('.products-category[data-category-id]').forEach((pane) => {
         const slug = pane.getAttribute('data-category-id');
-        const list = pane.querySelector('.slick-list');
+        const list = pane.querySelector('.sova-asb__viewport');
         if (!slug || !list) return;
         state.scrollByCategory[slug] = list.scrollLeft || 0;
       });
@@ -2517,7 +2558,7 @@ ns.rules = ns.rules || {};
         pane.style.bottom = '';
         pane.style.visibility = 'hidden';
         pane.style.pointerEvents = 'none';
-        const slider = pane.querySelector('.products.slick-initialized.slick-slider');
+        const slider = pane.querySelector('.sova-asb__slider');
         if (slider) syncSliderMetrics(slider);
         maxPaneHeight = Math.max(maxPaneHeight, Math.ceil(pane.getBoundingClientRect().height || 0));
       });
@@ -2537,12 +2578,15 @@ ns.rules = ns.rules || {};
 
       const categoriesHeight = Math.ceil(tabsWrap.scrollHeight || 0);
       const productsHeight = Math.ceil(maxPaneHeight || productsWrap.getBoundingClientRect().height || 0);
-      const contentHeight = Math.max(categoriesHeight, productsHeight);
+      const isStacked = (getComputedStyle(content).flexDirection || '').includes('column');
+      const contentHeight = isStacked
+        ? categoriesHeight + productsHeight
+        : Math.max(categoriesHeight, productsHeight);
 
       if (contentHeight > 0){
         wrapper.style.minHeight = `${contentHeight}px`;
         content.style.minHeight = `${contentHeight}px`;
-        tabsWrap.style.minHeight = `${contentHeight}px`;
+        tabsWrap.style.minHeight = isStacked ? '' : `${contentHeight}px`;
       }
       if (productsHeight > 0) productsWrap.style.minHeight = `${productsHeight}px`;
     }
@@ -2553,7 +2597,7 @@ ns.rules = ns.rules || {};
 
     function updateControls(root){
       const activeCategory = getActiveCategoryRoot(root);
-      const list = activeCategory?.querySelector('.slick-list');
+      const list = activeCategory?.querySelector('.sova-asb__viewport');
       const prev = root.previousElementSibling?.querySelector('.sova-asb__actions .sova-asb__nav--prev');
       const next = root.previousElementSibling?.querySelector('.sova-asb__actions .sova-asb__nav--next');
       if (!list || !prev || !next) return;
@@ -2564,9 +2608,17 @@ ns.rules = ns.rules || {};
 
     function refreshRenderedBox(root){
       if (!root?.querySelector('.sova-asb__layout')) return;
-      root.querySelectorAll('.products.slick-initialized.slick-slider').forEach(syncSliderMetrics);
+      root.querySelectorAll('.sova-asb__slider').forEach(syncSliderMetrics);
       measureAndLockLayoutHeight(root);
       updateControls(root);
+    }
+
+    function isRenderedBoxIntact(host){
+      const root = host?.root;
+      const header = host?.header;
+      if (!root?.querySelector(':scope > .sova-asb__layout')) return false;
+      if (!header?.querySelector('.sova-asb__title')) return false;
+      return !root.querySelector('.sova-asb__layout .slick-list, .sova-asb__layout .slick-track, .sova-asb__layout .slick-slide, .sova-asb__layout .slick-slider, .sova-asb__layout .slick-initialized');
     }
 
     function activateTab(root, idx){
@@ -2583,11 +2635,11 @@ ns.rules = ns.rules || {};
       panes.forEach((pane, i) => {
         pane.classList.toggle('is-active', i === idx);
         pane.style.display = i === idx ? '' : 'none';
-        const slider = pane.querySelector('.products.slick-initialized.slick-slider');
+        const slider = pane.querySelector('.sova-asb__slider');
         if (i === idx && slider){
           syncSliderMetrics(slider);
           const slug = pane.getAttribute('data-category-id') || '';
-          const list = slider.querySelector('.slick-list');
+          const list = slider.querySelector('.sova-asb__viewport');
           if (slug) state.activeCategorySlug = slug;
           if (slug && list){
             const remembered = state.scrollByCategory[slug];
@@ -2600,34 +2652,45 @@ ns.rules = ns.rules || {};
       updateControls(root);
     }
 
-    function enableListDrag(list, root){
+    function enableHorizontalDrag(list, { onScrollEnd, onScroll } = {}){
       let pointerId = null;
       let startX = 0;
+      let startY = 0;
       let startScroll = 0;
       let moved = false;
+      let dragging = false;
 
       list.addEventListener('pointerdown', (e)=>{
         if (e.pointerType === 'mouse' && e.button !== 0) return;
         pointerId = e.pointerId;
         startX = e.clientX;
+        startY = e.clientY;
         startScroll = list.scrollLeft;
         moved = false;
-        list.classList.add('is-dragging');
-        try { list.setPointerCapture(pointerId); } catch {}
+        dragging = false;
       });
 
       list.addEventListener('pointermove', (e)=>{
         if (pointerId == null || e.pointerId !== pointerId) return;
         const dx = e.clientX - startX;
-        if (Math.abs(dx) > 5) moved = true;
+        const dy = e.clientY - startY;
+        if (!dragging){
+          if (Math.abs(dx) < 6 && Math.abs(dy) < 6) return;
+          if (Math.abs(dx) < Math.abs(dy)) return;
+          dragging = true;
+          moved = true;
+          list.classList.add('is-dragging');
+          try { list.setPointerCapture(pointerId); } catch {}
+        }
         list.scrollLeft = startScroll - dx;
-        if (moved) e.preventDefault();
+        e.preventDefault();
       });
 
       const finish = (e)=>{
         if (pointerId == null || (e && e.pointerId !== pointerId)) return;
         const suppressClick = moved;
         pointerId = null;
+        dragging = false;
         list.classList.remove('is-dragging');
         if (suppressClick){
           const stopper = (ev)=>{
@@ -2637,17 +2700,14 @@ ns.rules = ns.rules || {};
           };
           list.addEventListener('click', stopper, true);
         }
-        updateControls(root);
+        if (typeof onScrollEnd === 'function') onScrollEnd();
       };
 
       list.addEventListener('pointerup', finish);
       list.addEventListener('pointercancel', finish);
       list.addEventListener('lostpointercapture', finish);
       list.addEventListener('scroll', ()=>{
-        const pane = list.closest('.products-category[data-category-id]');
-        const slug = pane?.getAttribute('data-category-id');
-        if (slug) state.scrollByCategory[slug] = list.scrollLeft || 0;
-        updateControls(root);
+        if (typeof onScroll === 'function') onScroll();
       }, { passive:true });
     }
 
@@ -2686,16 +2746,8 @@ ns.rules = ns.rules || {};
       titleWrap.appendChild(titleEl);
       header.append(titleWrap, actions);
 
-      const controls = document.createElement('div');
-      controls.className = 'controls sova-asb__controls';
-      controls.innerHTML = `
-        <button type="button" class="slick-prev control-slick slick-arrow" aria-label="Previous"></button>
-        <button type="button" class="slick-next control-slick slick-arrow" aria-label="Next"></button>
-      `;
-      controls.style.display = 'none';
-      header.appendChild(controls);
-
-      root.classList.add('sova-asb__host');
+      root.setAttribute('data-sova-asb-host', '1');
+      root.className = 'sova-asb__host';
       root.classList.remove('slick-initialized', 'slick-slider');
       root.removeAttribute('style');
       root.innerHTML = '';
@@ -2746,13 +2798,20 @@ ns.rules = ns.rules || {};
           pane.appendChild(empty);
         } else {
           const slider = createSlider(category);
-          const list = slider.querySelector('.slick-list');
-          const track = slider.querySelector('.slick-track');
+          const list = slider.querySelector('.sova-asb__viewport');
+          const track = slider.querySelector('.sova-asb__track');
           sliderItems.forEach((node, itemIdx) => {
             track.appendChild(createSlide(node, itemIdx, 300));
           });
           pane.appendChild(slider);
-          enableListDrag(list, root);
+          enableHorizontalDrag(list, {
+            onScroll: () => {
+              const slug = pane.getAttribute('data-category-id');
+              if (slug) state.scrollByCategory[slug] = list.scrollLeft || 0;
+              updateControls(root);
+            },
+            onScrollEnd: () => updateControls(root)
+          });
         }
 
         productsWrap.appendChild(pane);
@@ -2761,6 +2820,8 @@ ns.rules = ns.rules || {};
       content.append(tabsWrap, productsWrap);
       wrapper.append(source, content);
       root.appendChild(wrapper);
+
+      enableHorizontalDrag(tabsWrap);
 
       tabsWrap.addEventListener('click', (e)=>{
         const btn = e.target.closest('.accessory-box__tab');
@@ -2772,14 +2833,14 @@ ns.rules = ns.rules || {};
         const btn = e.target.closest('.sova-asb__nav--prev, .sova-asb__nav--next');
         if (!btn) return;
         const activeCategory = getActiveCategoryRoot(root);
-        const list = activeCategory?.querySelector('.slick-list');
+        const list = activeCategory?.querySelector('.sova-asb__viewport');
         if (!list) return;
         const dir = btn.classList.contains('sova-asb__nav--prev') ? -1 : 1;
         list.scrollBy({ left: dir * Math.max(240, Math.round(list.clientWidth * 0.82)), behavior: 'smooth' });
         setTimeout(()=> updateControls(root), 260);
       });
 
-      root.querySelectorAll('.products.slick-initialized.slick-slider').forEach(syncSliderMetrics);
+      root.querySelectorAll('.sova-asb__slider').forEach(syncSliderMetrics);
       activateTab(root, activeIndex >= 0 ? activeIndex : 0);
       requestAnimationFrame(()=> measureAndLockLayoutHeight(root));
       updateControls(root);
@@ -2793,6 +2854,24 @@ ns.rules = ns.rules || {};
         state.renderQueued = false;
         doRender(reason);
       });
+    }
+
+    function scheduleRenderRetry(reason){
+      if (!state.enabled || state.lastRenderSignature || state.renderRetryTimer) return;
+      if (state.renderRetryCount >= 8) return;
+      state.renderRetryCount += 1;
+      state.renderRetryTimer = setTimeout(() => {
+        state.renderRetryTimer = null;
+        scheduleRender(`${reason || 'retry'}.retry${state.renderRetryCount}`);
+      }, Math.min(2500, 180 + state.renderRetryCount * 220));
+    }
+
+    function clearRenderRetry(){
+      if (state.renderRetryTimer){
+        clearTimeout(state.renderRetryTimer);
+        state.renderRetryTimer = null;
+      }
+      state.renderRetryCount = 0;
     }
 
     function observeMutations(){
@@ -2814,18 +2893,24 @@ ns.rules = ns.rules || {};
         if (!cfg.rules.length) return;
 
         const host = findHost();
-        if (!host?.root) return;
+        if (!host?.root){
+          scheduleRenderRetry('no-host');
+          return;
+        }
 
         const sourceCards = collectSourceCards(host.root, ctx);
         if (!sourceCards.length){
           if (TEST()) console.warn(TAG, 'no related products found', reason);
+          scheduleRenderRetry('no-source-cards');
           return;
         }
 
         const renderSignature = renderSignatureFor(cfg, sourceCards);
         if (host.root.classList.contains('sova-asb__host') && state.lastRenderSignature === renderSignature){
-          refreshRenderedBox(host.root);
-          return;
+          if (isRenderedBoxIntact(host)){
+            refreshRenderedBox(host.root);
+            return;
+          }
         }
 
         const categories = buildCategories(sourceCards, cfg.rules, ctx);
@@ -2845,6 +2930,7 @@ ns.rules = ns.rules || {};
 
         renderBox(host, cfg, categories);
         state.lastRenderSignature = renderSignature;
+        clearRenderRetry();
       } catch (err){
         console.error(TAG, 'render failed', err);
       } finally {
@@ -2859,8 +2945,8 @@ ns.rules = ns.rules || {};
         const target = m.target;
         const nodes = [...(m.addedNodes || []), ...(m.removedNodes || [])];
         const matchNode = (node) => !!(node && node.nodeType === 1 && (
-          node.matches?.('.products-related,.products-related-header,.slick-slider,.slick-track,.slick-slide') ||
-          node.querySelector?.('.products-related,.products-related-header,.slick-slider,.slick-track,.slick-slide')
+          node.matches?.('[data-sova-asb-host="1"],.sova-asb__layout,.sova-asb__slider,.products-related,.products-related-header,.slick-slider,.slick-track,.slick-slide') ||
+          node.querySelector?.('[data-sova-asb-host="1"],.sova-asb__layout,.sova-asb__slider,.products-related,.products-related-header,.slick-slider,.slick-track,.slick-slide')
         ));
         return matchNode(target) || nodes.some(matchNode);
       });
