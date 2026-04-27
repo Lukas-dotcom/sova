@@ -1401,6 +1401,56 @@
         "conditionsSOVAL": null,
         "href": "%%\"https://cmp.pocitarna.com/order/code/\"&orderCode&\"/\"%%",
         "newTab": true
+      },
+      {
+        "buttonName": null,
+        "color": null,
+        "pageType": null,
+        "position": "rightSticky",
+        "order": 3,
+        "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\" OR userFullName = \"Lukáš Tejral\"%%",
+        "href": null,
+        "newTab": null
+      },
+      {
+        "buttonName": null,
+        "color": null,
+        "pageType": null,
+        "position": null,
+        "order": 4,
+        "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\" OR userFullName = \"Lukáš Tejral\"%%",
+        "href": null,
+        "newTab": null
+      },
+      {
+        "buttonName": null,
+        "color": null,
+        "pageType": null,
+        "position": null,
+        "order": 5,
+        "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\" OR userFullName = \"Lukáš Tejral\"%%",
+        "href": null,
+        "newTab": null
+      },
+      {
+        "buttonName": null,
+        "color": null,
+        "pageType": null,
+        "position": null,
+        "order": 6,
+        "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\" OR userFullName = \"Lukáš Tejral\"%%",
+        "href": null,
+        "newTab": null
+      },
+      {
+        "buttonName": null,
+        "color": null,
+        "pageType": null,
+        "position": null,
+        "order": 7,
+        "conditionsSOVAL": "%%userFullName = \"Dominik Němčanský\" OR userFullName = \"Lukáš Tejral\"%%",
+        "href": null,
+        "newTab": null
       }
     ]
   },
