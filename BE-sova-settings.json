@@ -1433,7 +1433,7 @@
         "newTab": null
       },
       {
-        "buttonName": null,
+        "buttonName": "Tablety",
         "color": null,
         "pageType": null,
         "position": "rightSticky",
@@ -1443,7 +1443,7 @@
         "newTab": null
       },
       {
-        "buttonName": null,
+        "buttonName": "Telefony",
         "color": null,
         "pageType": null,
         "position": "rightSticky",
