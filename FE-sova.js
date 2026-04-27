@@ -1713,7 +1713,8 @@ ns.rules = ns.rules || {};
       rendering: false,
       overrideSettings: null,
       activeCategorySlug: '',
-      scrollByCategory: Object.create(null)
+      scrollByCategory: Object.create(null),
+      lastRenderSignature: ''
     };
 
     const compiledCache = new Map();
@@ -1764,12 +1765,12 @@ ns.rules = ns.rules || {};
           display:block;
           margin:0;
           color:inherit;
-          font-size:inherit;
-          font-weight:inherit;
+          font-size:1.125rem !important;
+          font-weight:700 !important;
           line-height:inherit;
           letter-spacing:0;
           text-align:left;
-          text-transform:none;
+          text-transform:none !important;
         }
         .products-related-header.sova-asb__header .sova-asb__title-wrap{
           display:flex;
@@ -1778,6 +1779,9 @@ ns.rules = ns.rules || {};
           gap:12px;
           min-width:0;
           flex:1 1 auto;
+          font-size:1.125rem !important;
+          font-weight:700 !important;
+          text-transform:none !important;
         }
         .products-related-header.sova-asb__header .sova-asb__actions{
           position:absolute;
@@ -1803,7 +1807,7 @@ ns.rules = ns.rules || {};
           margin:0;
           border:0;
           border-radius:2px;
-          background-color:rgb(0,110,107);
+          background-color:rgb(88 159 157);
           color:rgb(227,246,245);
           box-shadow:none;
           font-family:"Kumbh Sans", sans-serif;
@@ -1869,8 +1873,8 @@ ns.rules = ns.rules || {};
           background:#fff;
         }
         .accessory-box__categories{
-          flex:0 0 290px;
-          max-width:290px;
+          flex:0 0 240px;
+          max-width:240px;
           background:#f6f7f7;
           border-right:1px solid #d7e0df;
         }
@@ -1932,7 +1936,7 @@ ns.rules = ns.rules || {};
           overflow-y:hidden !important;
           scrollbar-width:none;
           -ms-overflow-style:none;
-          cursor:grab;
+          cursor:default;
           padding:0 !important;
           margin:0;
           transform:none !important;
@@ -1943,7 +1947,7 @@ ns.rules = ns.rules || {};
           display:none;
         }
         .accessory-box__products .products.slick-initialized.slick-slider > .slick-list.is-dragging{
-          cursor:grabbing;
+          cursor:default;
           scroll-behavior:auto;
           user-select:none;
         }
@@ -2050,6 +2054,10 @@ ns.rules = ns.rules || {};
           padding:28px 24px;
           color:#767676;
         }
+        body.sova-asb-enabled.type-detail .content-wrapper .content-wrapper-in .content .p-detail .p-detail-inner{
+          border-bottom:0 !important;
+          margin-bottom:0 !important;
+        }
         @media (max-width: 991.98px){
           .products-related-header.sova-asb__header{
             padding:.5rem 4.4rem .5rem 1rem;
@@ -2082,9 +2090,13 @@ ns.rules = ns.rules || {};
           .products-related-header.sova-asb__header{
             justify-content:flex-start;
             text-align:left;
+            padding:.5rem 1rem .5rem 1rem;
           }
           .products-related-header.sova-asb__header .sova-asb__actions{
-            right:12px;
+            display:none !important;
+          }
+          .accessory-box__products .products.slick-initialized.slick-slider > .slick-list{
+            overflow-x:auto !important;
           }
           .accessory-box__tab{
             padding:14px 16px;
@@ -2380,10 +2392,31 @@ ns.rules = ns.rules || {};
 
     function getSlidesToShow(){
       const w = window.innerWidth || document.documentElement.clientWidth || 1440;
-      if (w <= 575.98) return 1;
-      if (w <= 767.98) return 2;
+      if (w <= 767.98) return 1.5;
       if (w <= 991.98) return 3;
       return 4;
+    }
+
+    function renderSignatureFor(cfg, sourceCards){
+      const rules = (cfg?.rules || []).map(rule => [
+        String(rule?.boxCategory || rule?.title || ''),
+        String(rule?.conditions || rule?.condition || rule?.conditionsSOVAL || ''),
+        String(rule?.moreURL || '')
+      ]);
+      const items = (sourceCards || []).map(item => [
+        item?.key || '',
+        item?.row?.code || '',
+        item?.row?.name || '',
+        item?.row?.price || item?.row?.finalPrice || item?.row?.additionalPrice || '',
+        item?.row?.availability || '',
+        item?.row?.priceId || '',
+        item?.row?.productId || ''
+      ]);
+      return JSON.stringify({
+        title: String(cfg?.title || ''),
+        rules,
+        items
+      });
     }
 
     function createSlide(cardNode, index, slideWidth){
@@ -2529,6 +2562,13 @@ ns.rules = ns.rules || {};
       next.disabled = list.scrollLeft >= max - 4;
     }
 
+    function refreshRenderedBox(root){
+      if (!root?.querySelector('.sova-asb__layout')) return;
+      root.querySelectorAll('.products.slick-initialized.slick-slider').forEach(syncSliderMetrics);
+      measureAndLockLayoutHeight(root);
+      updateControls(root);
+    }
+
     function activateTab(root, idx){
       const tabs = Array.from(root.querySelectorAll('.accessory-box__tab'));
       const panes = Array.from(root.querySelectorAll('.products-category'));
@@ -2568,7 +2608,6 @@ ns.rules = ns.rules || {};
 
       list.addEventListener('pointerdown', (e)=>{
         if (e.pointerType === 'mouse' && e.button !== 0) return;
-        if (e.target.closest('a,button,input,select,textarea,label')) return;
         pointerId = e.pointerId;
         startX = e.clientX;
         startScroll = list.scrollLeft;
@@ -2627,6 +2666,7 @@ ns.rules = ns.rules || {};
       header.classList.add('sova-asb__header');
       header.classList.remove('fv-lazy-visible', 'fv-lazy-hidden');
       header.innerHTML = '';
+      document.body.classList.add('sova-asb-enabled');
 
       const titleWrap = document.createElement('div');
       titleWrap.className = 'sova-asb__title-wrap';
@@ -2782,6 +2822,12 @@ ns.rules = ns.rules || {};
           return;
         }
 
+        const renderSignature = renderSignatureFor(cfg, sourceCards);
+        if (host.root.classList.contains('sova-asb__host') && state.lastRenderSignature === renderSignature){
+          refreshRenderedBox(host.root);
+          return;
+        }
+
         const categories = buildCategories(sourceCards, cfg.rules, ctx);
         if (!categories.length) return;
 
@@ -2798,6 +2844,7 @@ ns.rules = ns.rules || {};
         }
 
         renderBox(host, cfg, categories);
+        state.lastRenderSignature = renderSignature;
       } catch (err){
         console.error(TAG, 'render failed', err);
       } finally {
@@ -2833,7 +2880,6 @@ ns.rules = ns.rules || {};
       ].forEach(ev => document.addEventListener(ev, ()=> scheduleRender(ev), true));
 
       window.addEventListener('resize', ()=> scheduleRender('resize'), { passive:true });
-      ns.bus?.on?.('context:ready', ()=> scheduleRender('context:ready'));
     }
 
     ns.fn.register('additionalSaleBox', function({ settings } = {}){
