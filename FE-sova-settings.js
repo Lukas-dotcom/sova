@@ -2506,7 +2506,7 @@ window.additionalSaleBox = [
   },
   {
     "boxCategory": "Další doplňky",
-    "conditions": "NOT(code startswith \"MYS\" OR code startswith \"KLA\" OR code = \"ACC0738\" OR lower(name) contains \"sluchátka\" OR lower(name) contains \"reproduktor\" OR code startswith \"DOC\" OR code = \"ACC0012\" OR code = \"ACC0121\" OR code = \"RED0028\" OR code = \"RED0027\" OR code = \"RED0026\" OR code startswith \"BAG\" OR code startswith \"LCD\" OR code startswith \"LIC\" OR code startswith \"SFW\" OR code startswith \"BLESK\" OR code startswith \"MAR\" OR code startswith \"VRP\")",
+    "conditions": "(NOT(code startswith \"MYS\" OR code startswith \"KLA\" OR code = \"ACC0738\" OR lower(name) contains \"sluchátka\" OR lower(name) contains \"reproduktor\" OR code startswith \"DOC\" OR code = \"ACC0012\" OR code = \"ACC0121\" OR code = \"RED0028\" OR code = \"RED0027\" OR code = \"RED0026\" OR code startswith \"BAG\" OR code startswith \"LCD\" OR code startswith \"LIC\" OR code startswith \"SFW\" OR code startswith \"BLESK\" OR code startswith \"MAR\" OR code startswith \"VRP\"))",
     "moreURL": "/doplnky-k-pocitaci/"
   }
 ];
