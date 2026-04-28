@@ -1688,7 +1688,1802 @@ ns.rules = ns.rules || {};
 })(SOVA);
 
 
+/*───────────────────────────────────────────────────────────────────────────*
+ * additionalSale – FE injekční funkce (s rozšířeným debug logem)
+ *  - čte window.additionalSale (nebo SOVA.rules.featureSettings('additionalSale'))
+ *  - filtruje pomocí SOVAL (bez aliasů)
+ *  - renderuje 1:1 UI (#dvDoplUpgr) – checkboxy + selecty
+ *  - exkluze checkboxů podle pairText (stejný pair = vždy jen 1)
+ *  - po přidání hlavního produktu dopřidá vybrané kódy přes shoptet.cartShared.addToCart
+ *  - DEBUG: pokud localStorage['SOVA.testSOVA.enabled'] === '1', loguje krok po kroku
+ *───────────────────────────────────────────────────────────────────────────*/
+/*───────────────────────────────────────────────────────────────────────────*
+ * additionalSale – FE injekční funkce (lepší logování SOVAL + fail-safe)
+ *───────────────────────────────────────────────────────────────────────────*/
+(function registerAdditionalSale(ns){
+  if (!ns?.fn) return;
 
+  const TAG = '[additionalSale]';
+  const isTest = () => localStorage.getItem('SOVA.testSOVA.enabled') === '1';
+
+  // Bezpečné escapování pro HTML
+  const esc = (s)=> String(s??'')
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+
+  // Slug (skupiny párů/selectů, popup triggry)
+  const slug = (s)=> String(s||'')
+    .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .replace(/[^A-Za-z0-9]+/g,'_').replace(/^_+|_+$/g,'')
+    .toLowerCase();
+
+  function buildCheckboxRow(it){
+    const groupSlug = slug(it.pairText||it.name||'grp');
+    const id = 'doplnek_' + groupSlug;
+    const name = esc(it.name||'');
+    const code = esc(it.code||'');
+    const priceTxt = ' +' + esc(String(it.price ?? ''));
+    const trig = groupSlug;
+    return `<tr>
+  <td><label><input type="checkbox" class="doplnekUprade" id="${id}" value="${code}" data-pair="${trig}">${name} </label> <span class="trigger-${trig} fv-lazy-visible fv-info-popup-target" data-popup-trigger="${trig}" title="" data-original-title="Zjistit více..."></span></td>
+  <td>${priceTxt}</td>
+</tr>`;
+  }
+
+  function buildSelectRow(title, groupSlug, options){
+    const head = esc(title||'');
+    const selId = groupSlug; // pouze slug bez prefixů
+    const trig = groupSlug;
+    const opts = ['<option value="">vyberte variantu</option>']
+      .concat(options.map(o=> `<option value="${esc(o.code||'')}">${esc(o.name||'')} +${esc(String(o.price ?? ''))}</option>`))
+      .join('');
+    return `<tr>
+  <td>${head} <span class="trigger-${trig} fv-lazy-visible fv-info-popup-target" data-popup-trigger="${trig}" title="" data-original-title="Zjistit více..."></span></td>
+  <td><select class="doplnekUprade" id="${selId}">${opts}</select></td>
+</tr>`;
+  }
+
+  function mountUI(items){
+    const anchor = document.querySelector('.availability-value');
+    if (!anchor) {
+      if (isTest()) console.warn(TAG, 'anchor .availability-value not found – UI not mounted');
+      return;
+    }
+
+    // idempotentní render
+    document.getElementById('dvDoplUpgr')?.remove();
+    document.querySelector('.dvCenDph')?.remove();
+
+    // Rozdělení: checkbox vs select (pořadí zachováno)
+    const checkboxRows = [];
+    const selectGroups = new Map(); // slug → { title, slug, items: [] }
+    const selectOrder  = [];        // pořadí skupin dle prvního výskytu
+
+    items.forEach(it=>{
+      const t = (it.type||'').toLowerCase().trim();
+      if (t === 'select'){
+        const s = slug(it.pairText||'select');
+        if (!selectGroups.has(s)){
+          selectGroups.set(s, { title: it.pairText||'', slug:s, items: [] });
+          selectOrder.push(s);
+        }
+        selectGroups.get(s).items.push({ code: it.code, name: it.name, price: it.price });
+      } else {
+        // default: checkbox
+        checkboxRows.push(buildCheckboxRow(it));
+      }
+    });
+
+    if (isTest()){
+      console.groupCollapsed(TAG, 'mount UI');
+      console.log('checkbox count:', checkboxRows.length);
+      console.log('select groups:', selectOrder.slice());
+      selectOrder.forEach(key=>{
+        const grp = selectGroups.get(key);
+        console.log(` - group "${key}" items:`, grp?.items?.length||0, grp);
+      });
+      console.groupEnd();
+    }
+
+    const wrap = document.createElement('div');
+    wrap.id = 'dvDoplUpgr';
+
+    if (checkboxRows.length){
+      const d = document.createElement('div');
+      d.id = 'dvDoplnky';
+      d.innerHTML = `<h2>Doplňkové služby</h2><table class="tblTypcena">${checkboxRows.join('')}</table>`;
+      wrap.appendChild(d);
+    }
+
+    if (selectOrder.length){
+      const u = document.createElement('div');
+      u.id = 'dvUpgr';
+      let rows = '';
+      selectOrder.forEach(key=>{
+        const grp = selectGroups.get(key);
+        if (grp?.items?.length){
+          rows += buildSelectRow(grp.title, grp.slug, grp.items);
+        }
+      });
+      if (rows){
+        u.innerHTML = `<h2>Upgrade zařízení</h2><table class="tblTypselect">${rows}</table>`;
+        wrap.appendChild(u);
+      }
+    }
+
+    anchor.parentNode.insertBefore(wrap, anchor);
+
+    // Poznámka pod tabulkami
+    const note = document.createElement('div');
+    note.className = 'dvCenDph';
+    note.textContent = '(Ceny upgradů a doplňkových služeb jsou uvedeny s DPH)';
+    wrap.insertAdjacentElement('afterend', note);
+
+    // Exkluze checkboxů se stejným pairText (slugem)
+    wrap.addEventListener('change', (e)=>{
+      const t = e.target;
+      if (t && t.matches('input[type="checkbox"].doplnekUprade')){
+        const grp = t.getAttribute('data-pair');
+        if (grp){
+          if (isTest()){
+            console.log(TAG, 'pair exclusive change', { group: grp, id: t.id, checked: t.checked });
+          }
+          wrap.querySelectorAll(`input[type="checkbox"].doplnekUprade[data-pair="${grp}"]`).forEach(cb=>{
+            if (cb !== t) cb.checked = false;
+          });
+        }
+      }
+    }, true);
+  }
+
+  function gatherSelectedCodes(){
+    const root = document.getElementById('dvDoplUpgr');
+    if (!root) return [];
+    const out = [];
+    root.querySelectorAll('input[type="checkbox"].doplnekUprade:checked').forEach(cb=>{
+      const v = cb.value; if (v) out.push(v);
+    });
+    root.querySelectorAll('select.doplnekUprade').forEach(sel=>{
+      const v = sel.value; if (v) out.push(v);
+    });
+    return out;
+  }
+
+  // Řetězení doplňků po přidání hlavní položky
+  let formSubmitted = false;
+  let addingExtras  = false;
+  function hookAddFlow(){
+    const form = document.querySelector('form#product-detail-form');
+    if (form){
+      form.addEventListener('submit', ()=>{
+        formSubmitted = true;
+        if (isTest()) console.log(TAG, 'form submit → will try add extras after main item');
+      }, true);
+    }
+    document.addEventListener('ShoptetCartAddCartItem', ()=>{
+      if (!formSubmitted || addingExtras) return;
+      const codes = gatherSelectedCodes();
+      if (isTest()){
+        console.log(TAG, 'ShoptetCartAddCartItem', { formSubmitted, addingExtras, selectedCodes: codes.slice() });
+      }
+      if (!codes.length){ formSubmitted = false; return; }
+
+      const amount = parseInt(document.querySelector('form#product-detail-form input[name="amount"]')?.value||'1',10) || 1;
+      addingExtras = true;
+
+      let i = 0;
+      const addNext = ()=>{
+        if (i >= codes.length){
+          addingExtras = false;
+          formSubmitted = false;
+          if (isTest()) console.log(TAG, 'done adding extras');
+          return;
+        }
+        const code = codes[i++];
+        try {
+          if (isTest()) console.log(TAG, 'add extra', { idx: i, code, amount });
+          shoptet.cartShared.addToCart({ productCode: code, amount }, true);
+        } catch(e){
+          console.error(TAG, 'addToCart failed', code, e);
+        }
+        setTimeout(addNext, 350);
+      };
+      addNext();
+    }, true);
+  }
+
+  // ─── Pomocné „lint“ tipy k SOVALu (rychlá heuristika) ────────────────────
+  function lintSoval(cond){
+    const tips = [];
+    const open = (cond.match(/\(/g)||[]).length;
+    const close= (cond.match(/\)/g)||[]).length;
+    if (open !== close) tips.push(`Nevyvážené závorky: "("=${open} vs ")"=${close}`);
+    const dq = (cond.match(/(?<!\\)"/g)||[]).length; // jednoduchý odhad
+    const sq = (cond.match(/(?<!\\)'/g)||[]).length;
+    if (dq % 2 === 1) tips.push('Nesudý počet dvojitých uvozovek (")');
+    if (sq % 2 === 1) tips.push("Nesudý počet jednoduchých uvozovek (')");
+    if (/[^!<>=]\s+=\s+[^=]/.test(cond)) tips.push('Rovná se (=) mimo funkci? V SOVALu je "=" operátor equals.');
+    return tips;
+  }
+
+  async function additionalSale({ params, settings }, ctx){
+    try{
+      // Načtení settings (priorita: featureSettings → window.additionalSale)
+      let cfg = [];
+      let source = 'none';
+      if (Array.isArray(settings)) { cfg = settings; source = 'featureSettings'; }
+      else if (Array.isArray(window.additionalSale)) { cfg = window.additionalSale; source = 'window.additionalSale'; }
+
+      if (isTest()){
+        console.groupCollapsed(TAG, 'init');
+        console.log('source:', source, 'count:', cfg.length);
+        console.log('ctx keys:', Object.keys(ctx||{}));
+        console.groupEnd();
+      }
+      if (!cfg.length) { if(isTest()) console.log(TAG,'no settings'); return; }
+
+      const TEST = isTest();
+      const DEEP_DEBUG = TEST && localStorage.getItem('SOVA.testSOVA.deep') === '1';
+      const CHUNK_SIZE = Math.max(0, parseInt(localStorage.getItem('SOVA.testSOVA.chunk') || '0', 10));
+
+      // Bezpečná kompilace – nevalidní pravidlo zaloguju a označím jako false
+      const compiled = new Array(cfg.length).fill(null);
+      const compileErrors = [];
+
+      cfg.forEach((it, idx) => {
+        const cond = (typeof it.SOVAL === 'string') ? it.SOVAL.trim() : '';
+        if (!cond) return;
+        try{
+          compiled[idx] = ns.calculateSOVAL.compile(cond, { debug:false });
+        }catch(e){
+          const rid = it.id ?? it.name ?? it.code ?? `#${idx+1}`;
+          const tips = lintSoval(cond);
+          if (TEST){
+            console.groupCollapsed(`${TAG} SOVAL syntax error in rule ${rid}`);
+            console.error(e);
+            console.log('SOVAL:', cond);
+            if (tips.length) console.log('hints:', tips);
+            console.log('rule object:', it);
+            console.groupEnd();
+          } else {
+            console.warn(`${TAG} SOVAL syntax error in rule ${rid}:`, e?.message||e);
+          }
+          compileErrors.push({ idx, rule: rid, message: e?.message||String(e), SOVAL: cond });
+          compiled[idx] = null; // → bude vyhodnoceno jako false
+        }
+      });
+
+      if (TEST && compileErrors.length){
+        console.groupCollapsed(TAG, `compile errors (${compileErrors.length})`);
+        try { console.table(compileErrors); } catch { console.log(compileErrors); }
+        console.groupEnd();
+      }
+
+      const eligible  = [];
+      const debugRows = [];
+
+      const evalOne = (it, idx) => {
+        const cond = (typeof it.SOVAL === 'string') ? it.SOVAL.trim() : '';
+        const meta = {
+          idx,
+          type: it.type || 'checkbox',
+          pairText: it.pairText || '',
+          code: it.code || '',
+          name: it.name || '',
+          price: String(it.price ?? '')
+        };
+
+        // Pokud kompilace selhala → false (a důvod)
+        if (cond && !compiled[idx]){
+          debugRows.push({ ok:false, reason:'compile-error', ...meta, SOVAL: cond, took: 0 });
+          return; // nepushujeme
+        }
+
+        let ok = true, t0, took = 0;
+        if (cond && compiled[idx]) {
+          t0 = performance.now();
+          try {
+            ok = !!compiled[idx](ctx);
+          } catch (e) {
+            ok = false;
+            if (TEST) console.warn(TAG, `SOVAL runtime error @#${idx}`, e);
+          }
+          took = performance.now() - t0;
+
+          if (DEEP_DEBUG && ok) {
+            try { ns.calculateSOVAL.evalBool(cond, ctx, { debug:true }); }
+            catch (e){ if (TEST) console.warn(TAG, `deep debug failed @#${idx}`, e); }
+          }
+        }
+
+        debugRows.push({ ok, reason: ok?'':'runtime-error', ...meta, SOVAL: cond, took: +took.toFixed(2) });
+        if (ok) eligible.push(it);
+      };
+
+      if (CHUNK_SIZE > 0) {
+        for (let i = 0; i < cfg.length; i += CHUNK_SIZE) {
+          const end = Math.min(i + CHUNK_SIZE, cfg.length);
+          for (let j = i; j < end; j++) evalOne(cfg[j], j);
+          await new Promise(requestAnimationFrame);
+        }
+      } else {
+        for (let i = 0; i < cfg.length; i++) evalOne(cfg[i], i);
+      }
+
+      if (TEST) {
+        console.groupCollapsed(TAG, `summary • eligible ${eligible.length}/${cfg.length}`);
+        try { console.table(debugRows); } catch { console.log(debugRows); }
+        console.groupEnd();
+      }
+
+      // render + hooky
+      mountUI(eligible);
+      hookAddFlow();
+
+      if (TEST){
+        console.groupCollapsed(TAG, 'rendered items');
+        try {
+          console.table(eligible.map(x=>({
+            type:x.type,
+            pairText:x.pairText,
+            code:x.code,
+            name:x.name,
+            price:String(x.price),
+            SOVAL:x.SOVAL||''
+          })));
+        } catch { console.log(eligible); }
+        console.groupEnd();
+      }
+    }catch(e){
+      console.error(TAG, 'failed', e);
+    }
+  }
+
+  ns.fn.register('additionalSale', additionalSale);
+})(SOVA);
+
+ /*───────────────────────────────────────────────────────────────────────────*
+   * additionalSaleBox – kategorizovaný box z related products
+   *  - čte window.additionalSaleBox (nebo SOVA.rules.featureSettings('additionalSaleBox'))
+   *  - rules používají `conditions` ve starém FE SOVALu
+   *  - produkty mohou být ve více záložkách
+   *  - transformuje .products-related in-place, ale drží kompatibilní slick-like strukturu
+   *───────────────────────────────────────────────────────────────────────────*/
+  (function registerAdditionalSaleBox(ns){
+    if (!ns?.fn) return;
+    if (window.__SOVA_additionalSaleBox_initialized) return;
+    window.__SOVA_additionalSaleBox_initialized = true;
+
+    const TAG = '[additionalSaleBox]';
+    const STYLE_ID = 'sova-additional-sale-box-css';
+    const TEST = () => localStorage.getItem('SOVA.testSOVA.enabled') === '1';
+    const now = () => performance.now();
+
+    const state = {
+      enabled: false,
+      hooksStarted: false,
+      renderQueued: false,
+      rendering: false,
+      overrideSettings: null,
+      activeCategorySlug: '',
+      scrollByCategory: Object.create(null),
+      lastRenderSignature: '',
+      renderRetryCount: 0,
+      renderRetryTimer: null
+    };
+
+    const compiledCache = new Map();
+
+    const textOf = (el)=> (el?.textContent || '').replace(/\u00A0/g, ' ').replace(/\s+/g, ' ').trim();
+    const htmlOf = (el)=> el ? el.innerHTML.trim() : '';
+    const toNum = v => { if (v == null) return undefined; const n = Number(v); return Number.isFinite(n) ? n : undefined; };
+    const slug = (s)=> String(s || '')
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^A-Za-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '')
+      .toLowerCase() || 'tab';
+
+    function ensureCSS(){
+      if (document.getElementById(STYLE_ID)) return;
+      const css = `
+        h2.products-related-header.sova-asb__header.products-block-wrapper,
+        .products-related-header.sova-asb__header{
+          display:flex !important;
+          align-items:center;
+          justify-content:flex-start !important;
+          gap:16px;
+          color:#fff;
+          font-family:"Kumbh Sans", sans-serif;
+          font-size:1.125rem;
+          font-weight:700;
+          line-height:1.625rem;
+          padding:.5rem 1.25rem .5rem 1.25rem;
+          background:#006e6b;
+          border:.0625rem solid #006e6b;
+          margin:0 !important;
+          position:relative;
+          text-align:left !important;
+          text-transform:none;
+          cursor:default;
+          visibility:visible !important;
+          opacity:1 !important;
+        }
+        h2.products-related-header.sova-asb__header.products-block-wrapper.fv-lazy-hidden,
+        h2.products-related-header.sova-asb__header.products-block-wrapper.fv-lazy-visible,
+        .products-related-header.sova-asb__header.fv-lazy-hidden,
+        .products-related-header.sova-asb__header.fv-lazy-visible{
+          display:flex !important;
+          visibility:visible !important;
+          opacity:1 !important;
+        }
+        .products-related-header.sova-asb__header .text.sova-asb__title{
+          display:block;
+          margin:0;
+          color:inherit;
+          font-size:1.125rem !important;
+          font-weight:700 !important;
+          line-height:inherit;
+          letter-spacing:0;
+          text-align:left;
+          text-transform:none !important;
+        }
+        .products-related-header.sova-asb__header .sova-asb__title-wrap{
+          display:flex;
+          align-items:center;
+          justify-content:flex-start;
+          gap:12px;
+          min-width:0;
+          flex:1 1 auto;
+          font-size:1.125rem !important;
+          font-weight:700 !important;
+          text-transform:none !important;
+        }
+        .products-related-header.sova-asb__header .sova-asb__actions{
+          position:absolute;
+          top:50%;
+          right:24px;
+          transform:translateY(-50%);
+          display:flex;
+          align-items:center;
+          justify-content:flex-end;
+          gap:6px;
+          flex:0 0 auto;
+          padding:0;
+        }
+        .products-related-header.sova-asb__header .sova-asb__nav{
+          appearance:none;
+          -webkit-appearance:none;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          width:31px;
+          height:31px;
+          padding:0;
+          margin:0;
+          border:0;
+          border-radius:2px;
+          background-color:rgb(88 159 157);
+          color:rgb(227,246,245);
+          box-shadow:none;
+          font-family:"Kumbh Sans", sans-serif;
+          font-size:24px;
+          font-weight:600;
+          line-height:26.4px;
+          text-transform:uppercase;
+          cursor:pointer;
+          transition:background-color .3s ease;
+          box-sizing:content-box;
+          user-select:none;
+        }
+        .products-related-header.sova-asb__header .sova-asb__nav::before{
+          content:"";
+          display:flex;
+          width:7px;
+          height:11px;
+          background-color:rgb(227,246,245);
+          mask-image:url(https://cdn.myshoptet.com/usr/644482.myshoptet.com/user/documents/fv-studio/opti/assets/icons/caret-left.svg);
+          mask-repeat:no-repeat;
+          mask-size:contain;
+          mask-position:50% 50%;
+          -webkit-mask-image:url(https://cdn.myshoptet.com/usr/644482.myshoptet.com/user/documents/fv-studio/opti/assets/icons/caret-left.svg);
+          -webkit-mask-repeat:no-repeat;
+          -webkit-mask-size:contain;
+          -webkit-mask-position:50% 50%;
+        }
+        .products-related-header.sova-asb__header .sova-asb__nav--next::before{
+          transform:matrix(-1, 0, 0, -1, 0, 0);
+        }
+        .products-related-header.sova-asb__header .sova-asb__nav:hover:not(:disabled){
+          background-color:var(--color-primary-hover, #005956);
+        }
+        .products-related-header.sova-asb__header .sova-asb__nav:disabled{
+          opacity:.35;
+          cursor:default;
+          pointer-events:none;
+        }
+        .sova-asb__host,
+        .products-related.sova-asb__host{
+          display:block;
+          padding:0;
+          margin-top:0;
+          margin-bottom:50px;
+          background:transparent;
+        }
+        .sova-asb__host > section.sova-asb__layout{
+          display:block;
+          width:100%;
+          max-width:100%;
+          margin:0;
+          padding:0;
+          border:0;
+          background:transparent;
+        }
+        .sova-asb__source{
+          display:none !important;
+        }
+        .accessory-box__content{
+          display:flex;
+          gap:0;
+          align-items:stretch;
+          width:100%;
+          border-left:1px solid #d7e0df;
+          background:#fff;
+        }
+        .accessory-box__categories{
+          flex:0 0 240px;
+          max-width:240px;
+          background:#f6f7f7;
+          border-right:1px solid #d7e0df;
+          cursor:default;
+          touch-action:pan-y;
+        }
+        .accessory-box__categories.is-dragging{
+          cursor:default;
+          user-select:none;
+        }
+        .accessory-box__categories ul{
+          list-style:none;
+          margin:0;
+          padding:0;
+        }
+        .accessory-box__categories li{
+          border-bottom:1px solid #d7e0df;
+        }
+        .accessory-box__tab{
+          display:block;
+          width:100%;
+          border:0;
+          background:#f6f7f7;
+          color:#111;
+          font:inherit;
+          font-weight:700;
+          line-height:1.3;
+          text-align:left;
+          text-decoration:none;
+          padding:18px 22px;
+          cursor:pointer;
+          transition:background-color .18s ease,color .18s ease;
+        }
+        .accessory-box__tab:hover{
+          background:#edf5f4;
+        }
+        .accessory-box__tab.is-active{
+          background:#dfeeed;
+          color:#2f7774;
+          text-decoration:underline;
+        }
+        .accessory-box__products{
+          flex:1 1 auto;
+          min-width:0;
+          position:relative;
+        }
+        .products-category{
+          display:none;
+        }
+        .products-category.is-active{
+          display:block;
+        }
+        .accessory-box__products .sova-asb__slider{
+          display:block;
+          position:relative;
+          margin:0;
+          width:100%;
+          padding:0;
+          border:0;
+          background:#fff;
+        }
+        .accessory-box__products .sova-asb__viewport{
+          display:block;
+          width:100% !important;
+          overflow-x:auto !important;
+          overflow-y:hidden !important;
+          scrollbar-width:none;
+          -ms-overflow-style:none;
+          cursor:default;
+          padding:0 !important;
+          margin:0;
+          transform:none !important;
+          scroll-behavior:smooth;
+          -webkit-overflow-scrolling:touch;
+          touch-action:pan-y;
+        }
+        .accessory-box__products .sova-asb__viewport::-webkit-scrollbar{
+          display:none;
+        }
+        .accessory-box__products .sova-asb__viewport.is-dragging{
+          cursor:default;
+          scroll-behavior:auto;
+          user-select:none;
+        }
+        .accessory-box__products .sova-asb__track{
+          display:flex !important;
+          justify-content:flex-start;
+          align-items:stretch;
+          margin-left:0 !important;
+          margin-right:0 !important;
+          left:0 !important;
+          top:0;
+          transform:none !important;
+        }
+        .accessory-box__products .sova-asb__slide{
+          float:none !important;
+          height:auto !important;
+          min-height:1px;
+          display:block;
+          visibility:visible;
+        }
+        .accessory-box__products .sova-asb__slide > div{
+          height:100%;
+          box-sizing:border-box;
+        }
+        .accessory-box__products .sova-asb__slide .product{
+          width:100% !important;
+          display:inline-block !important;
+          height:100%;
+        }
+        .accessory-box__products .sova-asb__slide .product .p{
+          display:flex;
+          flex-direction:column;
+          height:100%;
+        }
+        .accessory-box__products .sova-asb__slider .product .p-in{
+          display:flex;
+          flex-direction:column;
+          flex:1 1 auto;
+          min-height:0;
+        }
+        .accessory-box__products .sova-asb__slider .product .p-in-in{
+          display:flex;
+          flex-direction:column;
+          flex:1 1 auto;
+          min-height:0;
+        }
+        .accessory-box__products .sova-asb__slider .product .ratings-wrapper{
+          display:flex;
+          flex-wrap:wrap;
+          align-items:center;
+          gap:0 .75rem;
+          width:100%;
+          height:max-content;
+          margin-top:auto;
+          min-height:unset;
+          min-width:0;
+          order:20;
+        }
+        .accessory-box__products .sova-asb__slider .product .ratings-wrapper > *{
+          max-width:100%;
+        }
+        .accessory-box__products .sova-asb__slider .product .ratings-wrapper .dvPor{
+          display:flex;
+          align-items:center;
+          justify-content:flex-end;
+          flex:1 1 6.5rem;
+          min-width:0;
+          font-weight:400;
+          font-size:.875rem;
+          line-height:1.25rem;
+          text-decoration:underline;
+        }
+        .accessory-box__products .sova-asb__slider .product .ratings-wrapper .stars-wrapper{
+          display:flex;
+          align-items:center;
+          justify-content:flex-start;
+          flex:1 1 6.5rem;
+          min-width:0;
+          width:auto;
+          margin:.75rem 0;
+          padding:0;
+        }
+        .accessory-box__products .sova-asb__slider .product .ratings-wrapper .stars-wrapper .stars{
+          display:flex;
+          gap:.75rem;
+        }
+        .accessory-box__products .sova-asb__slider .product .ratings-wrapper > .availability{
+          display:none !important;
+        }
+        .accessory-box__products .sova-asb__slider .product .p-bottom{
+          display:block;
+          margin-top:auto;
+          padding:1rem 0;
+          border-top:.0625rem solid #767676;
+        }
+        .accessory-box__products .sova-asb__slider .product .p-bottom div[data-micro="offer"]{
+          display:grid;
+          grid-template-areas:"desc desc" "quawarr quawarr" "availability availability" "price button";
+          grid-template-columns:1fr 1fr;
+          align-items:flex-end;
+          height:100%;
+        }
+        .accessory-box__products .sova-asb__slider .product .p-bottom div[data-micro="offer"] .availability{
+          all:unset;
+          grid-area:availability;
+          display:flex;
+          flex-wrap:wrap;
+          text-align:right;
+          margin-bottom:.5rem;
+          color:#009901;
+        }
+        .accessory-box__products .sova-asb__slider .product .p-bottom div[data-micro="offer"] .availability .availability-amount{
+          display:none;
+          margin-left:.25rem;
+        }
+        .accessory-box__products .sova-asb__slider .product .p-bottom div[data-micro="offer"] .fv-product-warranty-quality{
+          grid-area:quawarr;
+        }
+        .accessory-box__products .sova-asb__slider .product .p-bottom div[data-micro="offer"] .prices{
+          all:unset;
+          grid-area:price;
+          display:flex;
+          flex-direction:column;
+          text-align:left;
+          justify-content:flex-end;
+          margin-bottom:auto;
+        }
+        .accessory-box__products .sova-asb__slider .product .p-bottom div[data-micro="offer"] .prices .price-additional{
+          display:none;
+          order:2;
+          font-size:.75rem;
+          font-weight:400;
+          color:#767676;
+        }
+        body[fv-customer-status=b2b] .accessory-box__products .sova-asb__slider .product .p-bottom div[data-micro="offer"] .prices .price-additional,
+        [fv-customer-status=b2b] .accessory-box__products .sova-asb__slider .product .p-bottom div[data-micro="offer"] .prices .price-additional,
+        body.fv-vatchanger-apply .accessory-box__products .sova-asb__slider .product .p-bottom div[data-micro="offer"] .prices .price-additional{
+          display:flex;
+        }
+        .accessory-box__products .sova-asb__slider .product .p-bottom div[data-micro="offer"] .prices .price{
+          order:1;
+        }
+        .accessory-box__products .sova-asb__slider .product .p-bottom div[data-micro="offer"] .prices .price small{
+          font-size:.75rem;
+          font-weight:400;
+          color:#767676;
+          text-wrap:nowrap;
+        }
+        body[fv-customer-status=logged] .accessory-box__products .sova-asb__slider .product .p-bottom div[data-micro="offer"] .prices .price small.fv-vo-with-small,
+        body[fv-customer-status=unlogged] .accessory-box__products .sova-asb__slider .product .p-bottom div[data-micro="offer"] .prices .price small.fv-vo-with-small,
+        [fv-customer-status=logged] .accessory-box__products .sova-asb__slider .product .p-bottom div[data-micro="offer"] .prices .price small.fv-vo-with-small,
+        [fv-customer-status=unlogged] .accessory-box__products .sova-asb__slider .product .p-bottom div[data-micro="offer"] .prices .price small.fv-vo-with-small{
+          display:none;
+        }
+        .accessory-box__products .sova-asb__slider .product .p-bottom div[data-micro="offer"] .prices .price-discount{
+          grid-area:sale;
+          order:2;
+          display:flex;
+          flex-direction:row;
+          gap:0 .375rem;
+          align-items:center;
+        }
+        body[fv-customer-status=b2b] .accessory-box__products .sova-asb__slider .product .p-bottom div[data-micro="offer"] .prices .price-discount,
+        [fv-customer-status=b2b] .accessory-box__products .sova-asb__slider .product .p-bottom div[data-micro="offer"] .prices .price-discount,
+        body.fv-vatchanger-apply .accessory-box__products .sova-asb__slider .product .p-bottom div[data-micro="offer"] .prices .price-discount{
+          display:none !important;
+        }
+        .accessory-box__products .sova-asb__slider .product .p-bottom div[data-micro="offer"] .prices .price-discount .price-standard span{
+          position:relative;
+          font-size:.75rem;
+          font-weight:500;
+          color:#ac2424;
+          text-decoration:none;
+        }
+        .accessory-box__products .sova-asb__slider .product .p-bottom div[data-micro="offer"] .prices .price-discount .price-standard span::after{
+          content:"";
+          position:absolute;
+          left:0;
+          width:100%;
+          height:.0625rem;
+          background-color:#000;
+          transform:rotate(-12deg);
+          top:50%;
+        }
+        .accessory-box__products .sova-asb__slider .product .p-bottom div[data-micro="offer"] .prices .price-discount .price-save-num{
+          font-weight:600;
+          font-size:.75rem;
+          color:#363636;
+        }
+        .accessory-box__products .sova-asb__slider .product .p-bottom div[data-micro="offer"] .p-tools{
+          all:unset;
+          grid-area:button;
+          margin-top:auto;
+        }
+        .accessory-box__products .sova-asb__slider .product .p-bottom div[data-micro="offer"] .p-tools form .btn-cart{
+          width:100%;
+          padding:.75rem 0;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+        }
+        .accessory-box__products .sova-asb__slider .product .name{
+          min-height:0 !important;
+        }
+        .accessory-box__products .sova-asb__slider a,
+        .accessory-box__products .sova-asb__slider img{
+          -webkit-user-drag:none;
+          user-drag:none;
+        }
+        .accessory-box__products .sova-asb__slider .product .p-desc{
+          display:none !important;
+        }
+        .sova-asb__more{
+          display:block;
+          height:100%;
+          text-decoration:none;
+          color:#2f7774;
+        }
+        .sova-asb__more .p{
+          height:100%;
+        }
+        .sova-asb__more-body{
+          min-height:100%;
+          height:100%;
+          display:flex;
+          flex-direction:column;
+          align-items:center;
+          justify-content:center;
+          gap:18px;
+          padding:32px 24px;
+          text-align:center;
+        }
+        .sova-asb__more-card{
+          height:100%;
+        }
+        .sova-asb__more-card .p{
+          padding:0 !important;
+        }
+        .sova-asb__more-plus{
+          width:76px;
+          height:76px;
+          border-radius:50%;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          background:#e4f0ef;
+          color:#2f7774;
+          font-size:46px;
+          line-height:1;
+          font-weight:300;
+        }
+        .sova-asb__more-text{
+          font-size:1.05em;
+          font-weight:700;
+          line-height:1.35;
+        }
+        .sova-asb__empty{
+          padding:28px 24px;
+          color:#767676;
+        }
+        body.sova-asb-enabled.type-detail .content-wrapper .content-wrapper-in .content .p-detail .p-detail-inner{
+          border-bottom:0 !important;
+          margin-bottom:0 !important;
+        }
+        @media (max-width: 991.98px){
+          .products-related-header.sova-asb__header{
+            padding:.5rem 4.4rem .5rem 1rem;
+          }
+          .accessory-box__content{
+            flex-direction:column;
+            border-left:0;
+          }
+          .accessory-box__categories{
+            flex:0 0 auto;
+            max-width:none;
+            border-right:0;
+            border-bottom:1px solid #d7e0df;
+            overflow-x:auto;
+            overflow-y:hidden;
+            scrollbar-width:none;
+            -ms-overflow-style:none;
+            -webkit-overflow-scrolling:touch;
+          }
+          .accessory-box__categories::-webkit-scrollbar{
+            display:none;
+          }
+          .accessory-box__categories ul{
+            display:flex;
+            min-width:max-content;
+          }
+          .accessory-box__categories li{
+            min-width:max-content;
+            border-bottom:0;
+            border-right:1px solid #d7e0df;
+          }
+          .accessory-box__tab{
+            min-width:max-content;
+          }
+        }
+        @media (max-width: 767.98px){
+          .products-related-header.sova-asb__header{
+            justify-content:flex-start;
+            text-align:left;
+            padding:.5rem 1rem .5rem 1rem;
+          }
+          .products-related-header.sova-asb__header .sova-asb__title-wrap,
+          .products-related-header.sova-asb__header .text.sova-asb__title{
+            font-size:1.125rem !important;
+            font-weight:700 !important;
+            line-height:1.625rem !important;
+            text-transform:none !important;
+          }
+          .products-related-header.sova-asb__header .sova-asb__actions{
+            display:none !important;
+          }
+          .accessory-box__products .sova-asb__viewport{
+            overflow-x:auto !important;
+          }
+          .accessory-box__tab{
+            padding:14px 16px;
+          }
+        }
+      `;
+      const style = document.createElement('style');
+      style.id = STYLE_ID;
+      style.textContent = css;
+      document.head.appendChild(style);
+    }
+
+    function normalizeConfig(raw){
+      if (Array.isArray(raw)){
+        return { rules: raw, title: '', source: 'array' };
+      }
+      if (raw && typeof raw === 'object'){
+        const rules = Array.isArray(raw.rules) ? raw.rules
+          : Array.isArray(raw.categories) ? raw.categories
+          : Array.isArray(raw.items) ? raw.items
+          : [];
+        return {
+          rules,
+          title: raw.title || raw.boxTitle || raw.headerTitle || '',
+          source: 'object'
+        };
+      }
+      return { rules: [], title: '', source: 'none' };
+    }
+
+    function getSettings(){
+      const override = state.overrideSettings;
+      if (override != null) return normalizeConfig(override);
+
+      const fs = ns.rules?.featureSettings?.('additionalSaleBox');
+      if (fs != null) return normalizeConfig(fs);
+
+      return normalizeConfig(window.additionalSaleBox);
+    }
+
+    function ensureHeader(root){
+      if (!root) return null;
+      let header = root.previousElementSibling;
+      if (header?.matches?.('.products-related-header')) return header;
+      header = document.querySelector('.products-related-header');
+      if (header && header.nextElementSibling === root) return header;
+      header = document.createElement('h2');
+      header.className = 'products-related-header';
+      root.parentNode?.insertBefore(header, root);
+      return header;
+    }
+
+    function readHeaderText(header){
+      if (!header) return '';
+      const clone = header.cloneNode(true);
+      clone.querySelectorAll('.controls,.sova-asb__controls').forEach(el => el.remove());
+      return textOf(clone);
+    }
+
+    function findHost(){
+      const root = document.querySelector('[data-sova-asb-host="1"]') || document.querySelector('.products.products-related');
+      if (!root) return null;
+      const header = ensureHeader(root);
+      return { root, header };
+    }
+
+    function sourceKeyForRow(row){
+      return String(row?.code || row?.id || row?.url || row?.name || '').trim();
+    }
+
+    function parseCardRow(card){
+      const p = card.querySelector('.p');
+      const code = textOf(card.querySelector('.p-code [data-micro="sku"]'));
+      const id = p?.getAttribute('data-micro-product-id') || '';
+      const aImg = card.querySelector('a.image');
+      const img = aImg?.querySelector('img');
+      const finalPrice = textOf(card.querySelector('.price.price-final strong'));
+      const additionalPrice = htmlOf(card.querySelector('.price-additional'));
+      const standardPrice = textOf(card.querySelector('.flags .price-standard span'));
+      const priceSave = textOf(card.querySelector('.flags .price-save'));
+      return {
+        code: code || undefined,
+        id: id || undefined,
+        url: aImg?.getAttribute('href') || undefined,
+        img: img?.getAttribute('src') || undefined,
+        imgBig: img?.getAttribute('data-micro-image') || undefined,
+        name: textOf(card.querySelector('[data-testid="productCardName"]')) || undefined,
+        finalPrice: finalPrice || undefined,
+        price: finalPrice || additionalPrice || undefined,
+        additionalPrice: additionalPrice || undefined,
+        standardPrice: standardPrice || undefined,
+        priceSave: priceSave || undefined,
+        availability: textOf(card.querySelector('.availability .show-tooltip')) || undefined,
+        availabilityAmount: textOf(card.querySelector('[data-testid="numberAvailabilityAmount"]')) || undefined,
+        priceId: toNum(card.querySelector('input[name="priceId"]')?.value),
+        productId: toNum(card.querySelector('input[name="productId"]')?.value) || toNum(id),
+        shortDescription: htmlOf(card.querySelector('[data-testid="productCardShortDescr"]')) || ''
+      };
+    }
+
+    function mergeRowData(base, extra){
+      const out = Object.assign({}, extra || {}, base || {});
+      if (extra && base){
+        Object.keys(extra).forEach(key => {
+          if (out[key] == null || out[key] === '') out[key] = extra[key];
+        });
+      }
+      out.price = out.price || out.finalPrice || out.additionalPrice || '';
+      return out;
+    }
+
+    function prepareCardNodeForBox(clone){
+      clone.querySelectorAll('a,img').forEach(el => {
+        el.setAttribute('draggable', 'false');
+      });
+
+      const offer = clone.querySelector('.p-bottom div[data-micro="offer"]');
+      const ratingsAvailability = clone.querySelector('.p-in-in .ratings-wrapper > .availability');
+      if (offer && ratingsAvailability && !offer.querySelector(':scope > .availability')){
+        const prices = offer.querySelector(':scope > .prices');
+        offer.insertBefore(ratingsAvailability, prices || offer.firstChild);
+      }
+    }
+
+    function normalizeCardNode(card, mode){
+      const clone = card.cloneNode(true);
+      clone.removeAttribute('style');
+      clone.classList.remove('slick-slide', 'slick-cloned', 'slick-current', 'slick-active');
+      clone.querySelectorAll('[tabindex="-1"]').forEach(el => el.removeAttribute('tabindex'));
+      clone.querySelectorAll('[aria-hidden="true"]').forEach(el => {
+        if (el.classList.contains('star')) return;
+        el.removeAttribute('aria-hidden');
+      });
+      prepareCardNodeForBox(clone);
+      clone.style.width = '100%';
+      clone.style.display = 'inline-block';
+      if (mode === 'source'){
+        clone.setAttribute('data-sova-related-source', '1');
+      } else {
+        clone.setAttribute('data-sova-related-clone', '1');
+      }
+      return clone;
+    }
+
+    function collectSourceCards(root, ctx){
+      if (!root) return [];
+
+      const ctxRows = Array.isArray(ctx?.relatedProducts) ? ctx.relatedProducts : [];
+      const ctxByKey = new Map();
+      ctxRows.forEach(row => {
+        [row?.code, row?.id, row?.url].filter(Boolean).forEach(key => {
+          if (!ctxByKey.has(String(key))) ctxByKey.set(String(key), row);
+        });
+      });
+
+      const fromSource = root.querySelectorAll('.sova-asb__source .product[data-sova-related-source="1"]');
+      const candidates = fromSource.length
+        ? Array.from(fromSource)
+        : Array.from(root.querySelectorAll('.product')).filter(card =>
+            !card.hasAttribute('data-sova-related-clone') &&
+            !card.hasAttribute('data-sova-related-more') &&
+            !card.closest('.slick-cloned')
+          );
+
+      const seen = new Set();
+      const out = [];
+
+      candidates.forEach(card => {
+        const parsed = parseCardRow(card);
+        const row = mergeRowData(parsed,
+          ctxByKey.get(String(parsed.code || '')) ||
+          ctxByKey.get(String(parsed.id || '')) ||
+          ctxByKey.get(String(parsed.url || '')) ||
+          null
+        );
+        const key = sourceKeyForRow(row);
+        if (!key || seen.has(key)) return;
+        seen.add(key);
+        out.push({
+          key,
+          row,
+          sourceNode: normalizeCardNode(card, 'source'),
+          visibleNode: normalizeCardNode(card, 'visible')
+        });
+      });
+
+      if (TEST()){
+        console.groupCollapsed(TAG, `source cards ${out.length}`);
+        try { console.table(out.map(x => ({ key:x.key, code:x.row.code, name:x.row.name, price:x.row.price }))); }
+        catch { console.log(out); }
+        console.groupEnd();
+      }
+
+      return out;
+    }
+
+    function getCompiled(cond){
+      const key = String(cond || '');
+      if (compiledCache.has(key)) return compiledCache.get(key);
+      let rec;
+      const t0 = now();
+      try {
+        rec = { fn: ns.calculateSOVAL.compile(key, { debug:false }), err:null, ms: now() - t0 };
+      } catch (err){
+        rec = { fn:null, err, ms: now() - t0 };
+      }
+      compiledCache.set(key, rec);
+      return rec;
+    }
+
+    function ctxForRelatedRow(row, baseCtx){
+      return Object.assign({}, baseCtx, {
+        row,
+        currentItem: row,
+        relatedProduct: row,
+        code: row?.code,
+        name: row?.name,
+        productName: row?.name,
+        price: row?.price || row?.finalPrice || row?.additionalPrice || '',
+        finalPrice: row?.finalPrice || '',
+        additionalPrice: row?.additionalPrice || '',
+        standardPrice: row?.standardPrice || '',
+        priceSave: row?.priceSave || '',
+        id: row?.id,
+        productId: row?.productId || row?.id,
+        URL: row?.url || '',
+        url: row?.url || '',
+        img: row?.img || '',
+        availability: row?.availability || '',
+        availabilityAmount: row?.availabilityAmount || ''
+      });
+    }
+
+    function evaluateRule(rule, row, baseCtx){
+      const cond = typeof rule?.conditions === 'string'
+        ? rule.conditions.trim()
+        : typeof rule?.condition === 'string'
+          ? rule.condition.trim()
+          : typeof rule?.conditionsSOVAL === 'string'
+            ? rule.conditionsSOVAL.trim()
+            : '';
+
+      if (!cond) return false;
+
+      const comp = getCompiled(cond);
+      if (comp.err){
+        console.error(TAG, 'conditions compile error:', cond, comp.err);
+        return false;
+      }
+
+      try {
+        return !!comp.fn(ctxForRelatedRow(row, baseCtx));
+      } catch (err){
+        console.error(TAG, 'conditions runtime error:', cond, err, row);
+        return false;
+      }
+    }
+
+    function buildCategories(sourceCards, rules, ctx){
+      return (rules || []).map((rule, idx) => {
+        const boxCategory = String(rule?.boxCategory || rule?.title || `Kategorie ${idx + 1}`).trim();
+        const matches = [];
+        sourceCards.forEach(item => {
+          if (evaluateRule(rule, item.row, ctx)) matches.push(item);
+        });
+        return {
+          idx,
+          slug: `${slug(boxCategory)}-${idx + 1}`,
+          boxCategory,
+          moreURL: rule?.moreURL || '',
+          items: matches
+        };
+      }).filter(cat => cat.boxCategory);
+    }
+
+    function buildMoreCard(category){
+      const product = document.createElement('div');
+      product.className = 'product col-sm-6 col-md-12 col-lg-6 sova-asb__more-card';
+      product.setAttribute('data-sova-related-more', '1');
+      product.style.width = '100%';
+      product.style.display = 'inline-block';
+
+      const link = document.createElement('a');
+      link.className = 'sova-asb__more';
+      link.href = category.moreURL || '#';
+
+      const p = document.createElement('div');
+      p.className = 'p';
+
+      const body = document.createElement('div');
+      body.className = 'sova-asb__more-body';
+
+      const plus = document.createElement('div');
+      plus.className = 'sova-asb__more-plus';
+      plus.textContent = '+';
+
+      const text = document.createElement('div');
+      text.className = 'sova-asb__more-text';
+      text.textContent = `Více z kategorie ${category.boxCategory}`;
+
+      body.append(plus, text);
+      p.appendChild(body);
+      link.appendChild(p);
+      product.appendChild(link);
+      return product;
+    }
+
+    function getSlidesToShow(){
+      const w = window.innerWidth || document.documentElement.clientWidth || 1440;
+      if (w <= 767.98) return 1.5;
+      if (w <= 991.98) return 3;
+      return 4;
+    }
+
+    function renderSignatureFor(cfg, sourceCards){
+      const rules = (cfg?.rules || []).map(rule => [
+        String(rule?.boxCategory || rule?.title || ''),
+        String(rule?.conditions || rule?.condition || rule?.conditionsSOVAL || ''),
+        String(rule?.moreURL || '')
+      ]);
+      const items = (sourceCards || []).map(item => [
+        item?.key || '',
+        item?.row?.code || '',
+        item?.row?.name || '',
+        item?.row?.price || item?.row?.finalPrice || item?.row?.additionalPrice || '',
+        item?.row?.availability || '',
+        item?.row?.priceId || '',
+        item?.row?.productId || ''
+      ]);
+      return JSON.stringify({
+        title: String(cfg?.title || ''),
+        rules,
+        items
+      });
+    }
+
+    function createSlide(cardNode, index, slideWidth){
+      const slide = document.createElement('div');
+      slide.className = index === 0 ? 'sova-asb__slide is-current is-active' : 'sova-asb__slide';
+      slide.setAttribute('data-sova-slide-index', String(index));
+      slide.setAttribute('aria-hidden', index === 0 ? 'false' : 'true');
+      slide.style.width = `${slideWidth}px`;
+
+      const inner = document.createElement('div');
+      inner.appendChild(cardNode);
+      slide.appendChild(inner);
+      return slide;
+    }
+
+    function buildSliderItems(category){
+      const items = category.items.map(item => item.visibleNode.cloneNode(true));
+      if (category.moreURL) items.push(buildMoreCard(category));
+      return items;
+    }
+
+    function createSlider(category){
+      const slider = document.createElement('div');
+      slider.className = 'products products-block products-additional p-switchable sova-asb__slider';
+      slider.setAttribute('data-editorid', 'productListing');
+      slider.setAttribute('data-sova-category', category.slug);
+      slider.setAttribute('data-sova-slider', '1');
+
+      const list = document.createElement('div');
+      list.className = 'sova-asb__viewport';
+      slider.appendChild(list);
+
+      const track = document.createElement('div');
+      track.className = 'sova-asb__track';
+      track.style.opacity = '1';
+      list.appendChild(track);
+
+      return slider;
+    }
+
+    function syncSliderMetrics(slider){
+      if (!slider) return;
+      const list = slider.querySelector('.sova-asb__viewport');
+      const track = slider.querySelector('.sova-asb__track');
+      const slides = Array.from(track?.children || []);
+      if (!list || !track || !slides.length) return;
+
+      const slidesToShow = getSlidesToShow();
+      const listWidth = Math.max(220, Math.round(list.getBoundingClientRect().width || slider.getBoundingClientRect().width || 0));
+      const slideWidth = Math.max(220, Math.floor(listWidth / slidesToShow));
+      slides.forEach(slide => { slide.style.width = `${slideWidth}px`; });
+      track.style.width = `${slideWidth * slides.length}px`;
+    }
+
+    function rememberSliderPositions(root){
+      root?.querySelectorAll?.('.products-category[data-category-id]').forEach((pane) => {
+        const slug = pane.getAttribute('data-category-id');
+        const list = pane.querySelector('.sova-asb__viewport');
+        if (!slug || !list) return;
+        state.scrollByCategory[slug] = list.scrollLeft || 0;
+      });
+    }
+
+    function measureAndLockLayoutHeight(root){
+      const wrapper = root.querySelector('.accessory-box.sova-asb__layout');
+      const content = wrapper?.querySelector('.accessory-box__content');
+      const tabsWrap = wrapper?.querySelector('.accessory-box__categories');
+      const productsWrap = wrapper?.querySelector('.accessory-box__products');
+      const panes = Array.from(wrapper?.querySelectorAll('.products-category') || []);
+      if (!wrapper || !content || !tabsWrap || !productsWrap || !panes.length) return;
+
+      wrapper.style.minHeight = '';
+      content.style.minHeight = '';
+      tabsWrap.style.minHeight = '';
+      productsWrap.style.minHeight = '';
+
+      const snapshots = panes.map((pane) => ({
+        pane,
+        display: pane.style.display,
+        position: pane.style.position,
+        top: pane.style.top,
+        left: pane.style.left,
+        right: pane.style.right,
+        bottom: pane.style.bottom,
+        visibility: pane.style.visibility,
+        pointerEvents: pane.style.pointerEvents,
+        active: pane.classList.contains('is-active')
+      }));
+
+      let maxPaneHeight = 0;
+      snapshots.forEach((snap) => {
+        const pane = snap.pane;
+        pane.classList.add('is-active');
+        pane.style.display = 'block';
+        pane.style.position = 'absolute';
+        pane.style.top = '0';
+        pane.style.left = '0';
+        pane.style.right = '0';
+        pane.style.bottom = '';
+        pane.style.visibility = 'hidden';
+        pane.style.pointerEvents = 'none';
+        const slider = pane.querySelector('.sova-asb__slider');
+        if (slider) syncSliderMetrics(slider);
+        maxPaneHeight = Math.max(maxPaneHeight, Math.ceil(pane.getBoundingClientRect().height || 0));
+      });
+
+      snapshots.forEach((snap) => {
+        const pane = snap.pane;
+        pane.style.display = snap.display;
+        pane.style.position = snap.position;
+        pane.style.top = snap.top;
+        pane.style.left = snap.left;
+        pane.style.right = snap.right;
+        pane.style.bottom = snap.bottom;
+        pane.style.visibility = snap.visibility;
+        pane.style.pointerEvents = snap.pointerEvents;
+        pane.classList.toggle('is-active', snap.active);
+      });
+
+      const categoriesHeight = Math.ceil(tabsWrap.scrollHeight || 0);
+      const productsHeight = Math.ceil(maxPaneHeight || productsWrap.getBoundingClientRect().height || 0);
+      const isStacked = (getComputedStyle(content).flexDirection || '').includes('column');
+      const contentHeight = isStacked
+        ? categoriesHeight + productsHeight
+        : Math.max(categoriesHeight, productsHeight);
+
+      if (contentHeight > 0){
+        wrapper.style.minHeight = `${contentHeight}px`;
+        content.style.minHeight = `${contentHeight}px`;
+        tabsWrap.style.minHeight = isStacked ? '' : `${contentHeight}px`;
+      }
+      if (productsHeight > 0) productsWrap.style.minHeight = `${productsHeight}px`;
+    }
+
+    function getActiveCategoryRoot(root){
+      return root.querySelector('.products-category.is-active');
+    }
+
+    function updateControls(root){
+      const activeCategory = getActiveCategoryRoot(root);
+      const list = activeCategory?.querySelector('.sova-asb__viewport');
+      const prev = root.previousElementSibling?.querySelector('.sova-asb__actions .sova-asb__nav--prev');
+      const next = root.previousElementSibling?.querySelector('.sova-asb__actions .sova-asb__nav--next');
+      if (!list || !prev || !next) return;
+      const max = Math.max(0, list.scrollWidth - list.clientWidth);
+      prev.disabled = list.scrollLeft <= 4;
+      next.disabled = list.scrollLeft >= max - 4;
+    }
+
+    function refreshRenderedBox(root){
+      if (!root?.querySelector('.sova-asb__layout')) return;
+      root.querySelectorAll('.sova-asb__slider').forEach(syncSliderMetrics);
+      measureAndLockLayoutHeight(root);
+      updateControls(root);
+    }
+
+    function isRenderedBoxIntact(host){
+      const root = host?.root;
+      const header = host?.header;
+      if (!root?.querySelector(':scope > .sova-asb__layout')) return false;
+      if (!header?.querySelector('.sova-asb__title')) return false;
+      return !root.querySelector('.sova-asb__layout .slick-list, .sova-asb__layout .slick-track, .sova-asb__layout .slick-slide, .sova-asb__layout .slick-slider, .sova-asb__layout .slick-initialized');
+    }
+
+    function activateTab(root, idx){
+      const tabs = Array.from(root.querySelectorAll('.accessory-box__tab'));
+      const panes = Array.from(root.querySelectorAll('.products-category'));
+
+      tabs.forEach((tab, i) => {
+        const active = i === idx;
+        tab.classList.toggle('is-active', active);
+        tab.setAttribute('aria-selected', active ? 'true' : 'false');
+        tab.tabIndex = active ? 0 : -1;
+      });
+
+      panes.forEach((pane, i) => {
+        pane.classList.toggle('is-active', i === idx);
+        pane.style.display = i === idx ? '' : 'none';
+        const slider = pane.querySelector('.sova-asb__slider');
+        if (i === idx && slider){
+          syncSliderMetrics(slider);
+          const slug = pane.getAttribute('data-category-id') || '';
+          const list = slider.querySelector('.sova-asb__viewport');
+          if (slug) state.activeCategorySlug = slug;
+          if (slug && list){
+            const remembered = state.scrollByCategory[slug];
+            list.scrollLeft = Number.isFinite(remembered) ? remembered : 0;
+          }
+        }
+      });
+
+      measureAndLockLayoutHeight(root);
+      updateControls(root);
+    }
+
+    function enableHorizontalDrag(list, { onScrollEnd, onScroll } = {}){
+      let pointerId = null;
+      let startX = 0;
+      let startY = 0;
+      let startScroll = 0;
+      let moved = false;
+      let dragging = false;
+
+      list.addEventListener('pointerdown', (e)=>{
+        if (e.pointerType === 'mouse' && e.button !== 0) return;
+        if (e.target.closest('input,select,textarea,label')) return;
+        pointerId = e.pointerId;
+        startX = e.clientX;
+        startY = e.clientY;
+        startScroll = list.scrollLeft;
+        moved = false;
+        dragging = false;
+        try { list.setPointerCapture(pointerId); } catch {}
+      });
+
+      list.addEventListener('pointermove', (e)=>{
+        if (pointerId == null || e.pointerId !== pointerId) return;
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        if (!dragging){
+          if (Math.abs(dx) < 6 && Math.abs(dy) < 6) return;
+          if (Math.abs(dx) < Math.abs(dy)) return;
+          dragging = true;
+          moved = true;
+          list.classList.add('is-dragging');
+        }
+        list.scrollLeft = startScroll - dx;
+        e.preventDefault();
+      });
+
+      const finish = (e)=>{
+        if (pointerId == null || (e && e.pointerId !== pointerId)) return;
+        const suppressClick = moved;
+        pointerId = null;
+        dragging = false;
+        list.classList.remove('is-dragging');
+        if (suppressClick){
+          const stopper = (ev)=>{
+            ev.preventDefault();
+            ev.stopPropagation();
+            list.removeEventListener('click', stopper, true);
+          };
+          list.addEventListener('click', stopper, true);
+        }
+        if (typeof onScrollEnd === 'function') onScrollEnd();
+      };
+
+      list.addEventListener('pointerup', finish);
+      list.addEventListener('pointercancel', finish);
+      list.addEventListener('lostpointercapture', finish);
+      list.addEventListener('dragstart', (e)=> e.preventDefault());
+      list.addEventListener('scroll', ()=>{
+        if (typeof onScroll === 'function') onScroll();
+      }, { passive:true });
+    }
+
+    function renderBox(host, cfg, categories){
+      const root = host.root;
+      const header = host.header;
+      const title = cfg.title || readHeaderText(header) || 'Doporučujeme přikoupit';
+      const previousActiveSlug = root.querySelector('.products-category.is-active')?.getAttribute('data-category-id') || state.activeCategorySlug || '';
+      rememberSliderPositions(root);
+      const fallbackIndex = Math.max(0, categories.findIndex(cat => cat.items.length > 0 || cat.moreURL));
+      const matchedIndex = previousActiveSlug ? categories.findIndex(cat => cat.slug === previousActiveSlug) : -1;
+      const activeIndex = matchedIndex >= 0 ? matchedIndex : fallbackIndex;
+
+      ensureCSS();
+
+      header.classList.add('sova-asb__header');
+      header.classList.remove('fv-lazy-visible', 'fv-lazy-hidden');
+      header.innerHTML = '';
+      document.body.classList.add('sova-asb-enabled');
+
+      const titleWrap = document.createElement('div');
+      titleWrap.className = 'sova-asb__title-wrap';
+
+      const titleEl = document.createElement('span');
+      titleEl.className = 'text sova-asb__title';
+      titleEl.textContent = title;
+
+      const actions = document.createElement('div');
+      actions.className = 'sova-asb__actions';
+      actions.setAttribute('aria-hidden', 'false');
+      actions.innerHTML = `
+        <button class="sova-asb__nav sova-asb__nav--prev" type="button" aria-label="Předchozí produkty"></button>
+        <button class="sova-asb__nav sova-asb__nav--next" type="button" aria-label="Další produkty"></button>
+      `;
+
+      titleWrap.appendChild(titleEl);
+      header.append(titleWrap, actions);
+
+      root.setAttribute('data-sova-asb-host', '1');
+      root.className = 'sova-asb__host';
+      root.classList.remove('slick-initialized', 'slick-slider');
+      root.removeAttribute('style');
+      root.innerHTML = '';
+
+      const wrapper = document.createElement('section');
+      wrapper.className = 'accessory-box sova-asb__layout';
+
+      const source = document.createElement('div');
+      source.className = 'sova-asb__source';
+      categories
+        .flatMap(cat => cat.items)
+        .filter((item, index, arr) => arr.findIndex(other => other.key === item.key) === index)
+        .forEach(item => source.appendChild(item.sourceNode.cloneNode(true)));
+
+      const content = document.createElement('div');
+      content.className = 'accessory-box__content';
+
+      const tabsWrap = document.createElement('nav');
+      tabsWrap.className = 'accessory-box__categories';
+      tabsWrap.setAttribute('aria-label', 'Kategorie příslušenství');
+      const tabsList = document.createElement('ul');
+      tabsWrap.appendChild(tabsList);
+
+      const productsWrap = document.createElement('div');
+      productsWrap.className = 'accessory-box__products';
+
+      categories.forEach((category, idx) => {
+        const li = document.createElement('li');
+        const tab = document.createElement('button');
+        tab.type = 'button';
+        tab.className = 'accessory-box__tab';
+        tab.setAttribute('data-tab-index', String(idx));
+        tab.setAttribute('role', 'tab');
+        tab.textContent = category.boxCategory;
+        li.appendChild(tab);
+        tabsList.appendChild(li);
+
+        const pane = document.createElement('div');
+        pane.className = 'products-category';
+        pane.setAttribute('data-category-id', category.slug);
+        pane.setAttribute('role', 'tabpanel');
+
+        const sliderItems = buildSliderItems(category);
+        if (!sliderItems.length){
+          const empty = document.createElement('div');
+          empty.className = 'sova-asb__empty';
+          empty.textContent = 'V této kategorii teď nemáme další položky.';
+          pane.appendChild(empty);
+        } else {
+          const slider = createSlider(category);
+          const list = slider.querySelector('.sova-asb__viewport');
+          const track = slider.querySelector('.sova-asb__track');
+          sliderItems.forEach((node, itemIdx) => {
+            track.appendChild(createSlide(node, itemIdx, 300));
+          });
+          pane.appendChild(slider);
+          enableHorizontalDrag(list, {
+            onScroll: () => {
+              const slug = pane.getAttribute('data-category-id');
+              if (slug) state.scrollByCategory[slug] = list.scrollLeft || 0;
+              updateControls(root);
+            },
+            onScrollEnd: () => updateControls(root)
+          });
+        }
+
+        productsWrap.appendChild(pane);
+      });
+
+      content.append(tabsWrap, productsWrap);
+      wrapper.append(source, content);
+      root.appendChild(wrapper);
+
+      enableHorizontalDrag(tabsWrap);
+
+      tabsWrap.addEventListener('click', (e)=>{
+        const btn = e.target.closest('.accessory-box__tab');
+        if (!btn) return;
+        activateTab(root, parseInt(btn.getAttribute('data-tab-index') || '0', 10) || 0);
+      });
+
+      actions.addEventListener('click', (e)=>{
+        const btn = e.target.closest('.sova-asb__nav--prev, .sova-asb__nav--next');
+        if (!btn) return;
+        const activeCategory = getActiveCategoryRoot(root);
+        const list = activeCategory?.querySelector('.sova-asb__viewport');
+        if (!list) return;
+        const dir = btn.classList.contains('sova-asb__nav--prev') ? -1 : 1;
+        list.scrollBy({ left: dir * Math.max(240, Math.round(list.clientWidth * 0.82)), behavior: 'smooth' });
+        setTimeout(()=> updateControls(root), 260);
+      });
+
+      root.querySelectorAll('.sova-asb__slider').forEach(syncSliderMetrics);
+      activateTab(root, activeIndex >= 0 ? activeIndex : 0);
+      requestAnimationFrame(()=> measureAndLockLayoutHeight(root));
+      updateControls(root);
+    }
+
+    function scheduleRender(reason){
+      if (!state.enabled) return;
+      if (state.renderQueued) return;
+      state.renderQueued = true;
+      requestAnimationFrame(() => {
+        state.renderQueued = false;
+        doRender(reason);
+      });
+    }
+
+    function scheduleRenderRetry(reason){
+      if (!state.enabled || state.lastRenderSignature || state.renderRetryTimer) return;
+      if (state.renderRetryCount >= 8) return;
+      state.renderRetryCount += 1;
+      state.renderRetryTimer = setTimeout(() => {
+        state.renderRetryTimer = null;
+        scheduleRender(`${reason || 'retry'}.retry${state.renderRetryCount}`);
+      }, Math.min(2500, 180 + state.renderRetryCount * 220));
+    }
+
+    function clearRenderRetry(){
+      if (state.renderRetryTimer){
+        clearTimeout(state.renderRetryTimer);
+        state.renderRetryTimer = null;
+      }
+      state.renderRetryCount = 0;
+    }
+
+    function observeMutations(){
+      if (!state.enabled) return;
+      mo.observe(document.body, { childList:true, subtree:true });
+    }
+
+    function doRender(reason){
+      if (!state.enabled) return;
+      if (state.rendering) return;
+      state.rendering = true;
+      mo.disconnect();
+
+      try {
+        const ctx = ns.getContext?.snapshot?.() || {};
+        if (ctx.pageType && ctx.pageType !== 'productDetail') return;
+
+        const cfg = getSettings();
+        if (!cfg.rules.length) return;
+
+        const host = findHost();
+        if (!host?.root){
+          scheduleRenderRetry('no-host');
+          return;
+        }
+
+        const sourceCards = collectSourceCards(host.root, ctx);
+        if (!sourceCards.length){
+          if (TEST()) console.warn(TAG, 'no related products found', reason);
+          scheduleRenderRetry('no-source-cards');
+          return;
+        }
+
+        const renderSignature = renderSignatureFor(cfg, sourceCards);
+        if (host.root.classList.contains('sova-asb__host') && state.lastRenderSignature === renderSignature){
+          if (isRenderedBoxIntact(host)){
+            refreshRenderedBox(host.root);
+            return;
+          }
+        }
+
+        const categories = buildCategories(sourceCards, cfg.rules, ctx);
+        if (!categories.length) return;
+
+        if (TEST()){
+          console.groupCollapsed(TAG, `render ${reason || ''}`.trim());
+          try {
+            console.table(categories.map(cat => ({
+              boxCategory: cat.boxCategory,
+              matches: cat.items.length,
+              moreURL: cat.moreURL
+            })));
+          } catch { console.log(categories); }
+          console.groupEnd();
+        }
+
+        renderBox(host, cfg, categories);
+        state.lastRenderSignature = renderSignature;
+        clearRenderRetry();
+      } catch (err){
+        console.error(TAG, 'render failed', err);
+      } finally {
+        state.rendering = false;
+        setTimeout(observeMutations, 0);
+      }
+    }
+
+    const mo = new MutationObserver((muts)=>{
+      if (state.rendering) return;
+      const relevant = muts.some(m => {
+        const target = m.target;
+        const nodes = [...(m.addedNodes || []), ...(m.removedNodes || [])];
+        const matchNode = (node) => !!(node && node.nodeType === 1 && (
+          node.matches?.('[data-sova-asb-host="1"],.sova-asb__layout,.sova-asb__slider,.products-related,.products-related-header,.slick-slider,.slick-track,.slick-slide') ||
+          node.querySelector?.('[data-sova-asb-host="1"],.sova-asb__layout,.sova-asb__slider,.products-related,.products-related-header,.slick-slider,.slick-track,.slick-slide')
+        ));
+        return matchNode(target) || nodes.some(matchNode);
+      });
+      if (relevant) scheduleRender('mutation');
+    });
+
+    function startReactiveHooks(){
+      if (state.hooksStarted) return;
+      state.hooksStarted = true;
+
+      observeMutations();
+
+      [
+        'ShoptetDOMAdvancedOrderLoaded',
+        'ShoptetDOMPageContentLoaded',
+        'ShoptetDOMContentLoaded'
+      ].forEach(ev => document.addEventListener(ev, ()=> scheduleRender(ev), true));
+
+      window.addEventListener('resize', ()=> scheduleRender('resize'), { passive:true });
+    }
+
+    ns.fn.register('additionalSaleBox', function({ settings } = {}){
+      if (settings != null) state.overrideSettings = settings;
+      state.enabled = true;
+      startReactiveHooks();
+      scheduleRender('fn.call');
+    });
+  })(SOVA);
+  
 
   
 /*───────────────────────────────────────────────────────────────────────────*
