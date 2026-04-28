@@ -2234,7 +2234,8 @@ ns.rules = ns.rules || {};
           background-color:var(--color-primary-hover, #005956);
         }
         .accessory-box__products > .sova-asb__actions .sova-asb__nav:disabled{
-          opacity:.35;
+          opacity:0;
+          visibility:hidden;
           cursor:default;
           pointer-events:none;
         }
@@ -2550,6 +2551,9 @@ ns.rules = ns.rules || {};
           min-height:0 !important;
           font-size:1rem !important;
           line-height:1.3 !important;
+        }
+        .accessory-box__products .sova-asb__slider .product .p .p-in .p-in-in .name [data-testid=productCardName] .product-appendix{
+          margin:0 !important;
         }
         .accessory-box__products .sova-asb__slider a,
         .accessory-box__products .sova-asb__slider img{
