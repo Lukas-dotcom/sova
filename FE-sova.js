@@ -1088,14 +1088,47 @@ Object.assign(window.SOVAL, { calculateSOVAL });
     roots.forEach(r=> mo.observe(r,{childList:true,subtree:true}));
   })();
 
-  function rerunDL(reason){ queueMicrotask(()=>{ readDataLayer(reason); dlDone = true; maybeEmitContextReady(); scheduleDOM('DL merge'); }); }
+  function reparseDOMWhenReady(reason){
+    domDone = false;
+    const run = ()=> reparseDOMImmediate(reason || 'dom-after-dl');
+    if (document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', run, { once:true });
+    } else {
+      run();
+    }
+  }
+  function rerunDL(reason){ queueMicrotask(()=>{ readDataLayer(reason); dlDone = true; reparseDOMWhenReady('DL merge'); }); }
   hook('shoptet.tracking.updateDataLayerCartInfo', rerunDL);
   hook('shoptet.tracking.updateCartDataLayer',     rerunDL);
   document.addEventListener('ShoptetDataLayerUpdated', ()=>rerunDL('evt:ShoptetDataLayerUpdated'), true);
 
-  function when(cond, cb, tries=100){ if (cond()) return cb(); const t=setInterval(()=>{ if(cond()){ clearInterval(t); cb(); } },50); setTimeout(()=>clearInterval(t), tries*50); }
-  when(()=> !!window.dataLayer, ()=>{ readDataLayer('init:dl'); dlDone = true; maybeEmitContextReady(); });
-  domMs = 0; reparseDOMImmediate('init:dom');
+  function when(cond, cb, tries=100, fallback){
+    if (cond()) return cb();
+    let done = false;
+    const t = setInterval(()=>{
+      if (cond()){
+        done = true;
+        clearInterval(t);
+        cb();
+      }
+    }, 50);
+    setTimeout(()=>{
+      clearInterval(t);
+      if (!done && typeof fallback === 'function') fallback();
+    }, tries * 50);
+  }
+  domMs = 0;
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', ()=> reparseDOMImmediate('init:dom'), { once:true });
+  } else {
+    reparseDOMImmediate('init:dom');
+  }
+  when(
+    ()=> !!getLatestShoptetLayer(),
+    ()=>{ readDataLayer('init:dl'); dlDone = true; reparseDOMWhenReady('init:dom-after-dl'); },
+    120,
+    ()=>{ readDataLayer('init:dl:fallback'); dlDone = true; reparseDOMWhenReady('init:dom-after-dl-fallback'); }
+  );
 
   // ─── start paralelního merge injectVariables (NOVÉ) ───────────────────────
   if (SOVA.rules?.sourceInfo) {
@@ -1114,6 +1147,7 @@ Object.assign(window.SOVAL, { calculateSOVAL });
   const getContext = {
     onUpdate(fn){ /* jednoduchý live diff: vždy celé snapshoty */ const off = SOVA.bus.on('context:ready', p=>fn({snapshot:p?.snapshot||{}, reason:'ready', changedKeys:Object.keys(p?.snapshot||{})})); return off; },
     snapshot(){ return { ...ctx }; },
+    isReady(){ return !!readyEmitted; },
     ensure(){}, ensureAll(){}, ensureTableNow(){}
   };
   SOVA.getContext = getContext;
@@ -1276,8 +1310,9 @@ ns.rules = ns.rules || {};
       });
       const waitCtx = new Promise(res => {
         try {
-          const snap = ns.getContext?.snapshot?.() || {};
-          if (Object.keys(snap).length) return res({ snapshot: snap });
+          if (ns.getContext?.isReady?.()) {
+            return res({ snapshot: ns.getContext?.snapshot?.() || {} });
+          }
         } catch {}
         ns.bus.once('context:ready', res);
       });
@@ -3165,6 +3200,7 @@ ns.rules = ns.rules || {};
       let startScroll = 0;
       let moved = false;
       let dragging = false;
+      let captured = false;
 
       list.addEventListener('pointerdown', (e)=>{
         if (e.pointerType === 'mouse' && e.button !== 0) return;
@@ -3175,7 +3211,7 @@ ns.rules = ns.rules || {};
         startScroll = list.scrollLeft;
         moved = false;
         dragging = false;
-        try { list.setPointerCapture(pointerId); } catch {}
+        captured = false;
       });
 
       list.addEventListener('pointermove', (e)=>{
@@ -3188,6 +3224,10 @@ ns.rules = ns.rules || {};
           dragging = true;
           moved = true;
           list.classList.add('is-dragging');
+          try {
+            list.setPointerCapture(pointerId);
+            captured = true;
+          } catch {}
         }
         list.scrollLeft = startScroll - dx;
         e.preventDefault();
@@ -3196,8 +3236,12 @@ ns.rules = ns.rules || {};
       const finish = (e)=>{
         if (pointerId == null || (e && e.pointerId !== pointerId)) return;
         const suppressClick = moved;
+        if (captured){
+          try { list.releasePointerCapture(pointerId); } catch {}
+        }
         pointerId = null;
         dragging = false;
+        captured = false;
         list.classList.remove('is-dragging');
         if (suppressClick){
           const stopper = (ev)=>{
@@ -6224,4 +6268,3 @@ window.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
-
