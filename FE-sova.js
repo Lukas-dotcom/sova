@@ -2173,33 +2173,34 @@ ns.rules = ns.rules || {};
           font-weight:700 !important;
           text-transform:none !important;
         }
-        .products-related-header.sova-asb__header .sova-asb__actions{
+        .accessory-box__products > .sova-asb__actions{
           position:absolute;
           top:50%;
-          right:24px;
+          left:10px;
+          right:10px;
           transform:translateY(-50%);
           display:flex;
           align-items:center;
-          justify-content:flex-end;
-          gap:6px;
-          flex:0 0 auto;
+          justify-content:space-between;
           padding:0;
+          z-index:5;
+          pointer-events:none;
         }
-        .products-related-header.sova-asb__header .sova-asb__nav{
+        .accessory-box__products > .sova-asb__actions .sova-asb__nav{
           appearance:none;
           -webkit-appearance:none;
           display:flex;
           align-items:center;
           justify-content:center;
-          width:31px;
-          height:31px;
+          width:38px;
+          height:38px;
           padding:0;
           margin:0;
           border:0;
-          border-radius:2px;
+          border-radius:999px;
           background-color:rgb(88 159 157);
           color:rgb(227,246,245);
-          box-shadow:none;
+          box-shadow:0 4px 14px rgba(0,0,0,.16);
           font-family:"Kumbh Sans", sans-serif;
           font-size:24px;
           font-weight:600;
@@ -2209,8 +2210,9 @@ ns.rules = ns.rules || {};
           transition:background-color .3s ease;
           box-sizing:content-box;
           user-select:none;
+          pointer-events:auto;
         }
-        .products-related-header.sova-asb__header .sova-asb__nav::before{
+        .accessory-box__products > .sova-asb__actions .sova-asb__nav::before{
           content:"";
           display:flex;
           width:7px;
@@ -2225,13 +2227,13 @@ ns.rules = ns.rules || {};
           -webkit-mask-size:contain;
           -webkit-mask-position:50% 50%;
         }
-        .products-related-header.sova-asb__header .sova-asb__nav--next::before{
+        .accessory-box__products > .sova-asb__actions .sova-asb__nav--next::before{
           transform:matrix(-1, 0, 0, -1, 0, 0);
         }
-        .products-related-header.sova-asb__header .sova-asb__nav:hover:not(:disabled){
+        .accessory-box__products > .sova-asb__actions .sova-asb__nav:hover:not(:disabled){
           background-color:var(--color-primary-hover, #005956);
         }
-        .products-related-header.sova-asb__header .sova-asb__nav:disabled{
+        .accessory-box__products > .sova-asb__actions .sova-asb__nav:disabled{
           opacity:.35;
           cursor:default;
           pointer-events:none;
@@ -2375,6 +2377,8 @@ ns.rules = ns.rules || {};
           width:100% !important;
           display:inline-block !important;
           height:100%;
+          font-size:.875rem;
+          line-height:1.35;
         }
         .accessory-box__products .sova-asb__slide .product .p{
           display:flex;
@@ -2397,7 +2401,7 @@ ns.rules = ns.rules || {};
           display:flex;
           flex-wrap:wrap;
           align-items:center;
-          gap:0 .75rem;
+          gap:0 .5rem;
           width:100%;
           height:max-content;
           margin-top:auto;
@@ -2407,17 +2411,6 @@ ns.rules = ns.rules || {};
         }
         .accessory-box__products .sova-asb__slider .product .ratings-wrapper > *{
           max-width:100%;
-        }
-        .accessory-box__products .sova-asb__slider .product .ratings-wrapper .dvPor{
-          display:flex;
-          align-items:center;
-          justify-content:flex-end;
-          flex:1 1 6.5rem;
-          min-width:0;
-          font-weight:400;
-          font-size:.875rem;
-          line-height:1.25rem;
-          text-decoration:underline;
         }
         .accessory-box__products .sova-asb__slider .product .ratings-wrapper .stars-wrapper{
           display:flex;
@@ -2431,7 +2424,7 @@ ns.rules = ns.rules || {};
         }
         .accessory-box__products .sova-asb__slider .product .ratings-wrapper .stars-wrapper .stars{
           display:flex;
-          gap:.75rem;
+          gap:.45rem;
         }
         .accessory-box__products .sova-asb__slider .product .ratings-wrapper > .availability{
           display:none !important;
@@ -2439,7 +2432,7 @@ ns.rules = ns.rules || {};
         .accessory-box__products .sova-asb__slider .product .p-bottom{
           display:block;
           margin-top:auto;
-          padding:1rem 0;
+          padding:.75rem 0;
           border-top:.0625rem solid #767676;
         }
         .accessory-box__products .sova-asb__slider .product .p-bottom div[data-micro="offer"]{
@@ -2488,6 +2481,10 @@ ns.rules = ns.rules || {};
         }
         .accessory-box__products .sova-asb__slider .product .p-bottom div[data-micro="offer"] .prices .price{
           order:1;
+        }
+        .accessory-box__products .sova-asb__slider .product .p-bottom div[data-micro="offer"] .prices .price strong{
+          font-size:1.25rem;
+          line-height:1.2;
         }
         .accessory-box__products .sova-asb__slider .product .p-bottom div[data-micro="offer"] .prices .price small{
           font-size:.75rem;
@@ -2543,13 +2540,16 @@ ns.rules = ns.rules || {};
         }
         .accessory-box__products .sova-asb__slider .product .p-bottom div[data-micro="offer"] .p-tools form .btn-cart{
           width:100%;
-          padding:.75rem 0;
+          padding:.65rem 0;
           display:flex;
           align-items:center;
           justify-content:center;
+          font-size:.8125rem;
         }
         .accessory-box__products .sova-asb__slider .product .name{
           min-height:0 !important;
+          font-size:1rem !important;
+          line-height:1.3 !important;
         }
         .accessory-box__products .sova-asb__slider a,
         .accessory-box__products .sova-asb__slider img{
@@ -2659,7 +2659,7 @@ ns.rules = ns.rules || {};
             line-height:1.625rem !important;
             text-transform:none !important;
           }
-          .products-related-header.sova-asb__header .sova-asb__actions{
+          .accessory-box__products > .sova-asb__actions{
             display:none !important;
           }
           .accessory-box__products .sova-asb__viewport{
@@ -2719,7 +2719,7 @@ ns.rules = ns.rules || {};
     function readHeaderText(header){
       if (!header) return '';
       const clone = header.cloneNode(true);
-      clone.querySelectorAll('.controls,.sova-asb__controls').forEach(el => el.remove());
+      clone.querySelectorAll('.controls,.sova-asb__controls,.sova-asb__actions').forEach(el => el.remove());
       return textOf(clone);
     }
 
@@ -2776,6 +2776,8 @@ ns.rules = ns.rules || {};
     }
 
     function prepareCardNodeForBox(clone){
+      clone.querySelectorAll('.dvPor').forEach(el => el.remove());
+
       clone.querySelectorAll('a,img').forEach(el => {
         el.setAttribute('draggable', 'false');
       });
@@ -2975,7 +2977,7 @@ ns.rules = ns.rules || {};
       const w = window.innerWidth || document.documentElement.clientWidth || 1440;
       if (w <= 767.98) return 1.5;
       if (w <= 991.98) return 3;
-      return 4;
+      return 5;
     }
 
     function renderSignatureFor(cfg, sourceCards){
@@ -3047,7 +3049,8 @@ ns.rules = ns.rules || {};
 
       const slidesToShow = getSlidesToShow();
       const listWidth = Math.max(220, Math.round(list.getBoundingClientRect().width || slider.getBoundingClientRect().width || 0));
-      const slideWidth = Math.max(220, Math.floor(listWidth / slidesToShow));
+      const minSlideWidth = (window.innerWidth || document.documentElement.clientWidth || 1440) <= 767.98 ? 220 : 180;
+      const slideWidth = Math.max(minSlideWidth, Math.floor(listWidth / slidesToShow));
       slides.forEach(slide => { slide.style.width = `${slideWidth}px`; });
       track.style.width = `${slideWidth * slides.length}px`;
     }
@@ -3139,8 +3142,8 @@ ns.rules = ns.rules || {};
     function updateControls(root){
       const activeCategory = getActiveCategoryRoot(root);
       const list = activeCategory?.querySelector('.sova-asb__viewport');
-      const prev = root.previousElementSibling?.querySelector('.sova-asb__actions .sova-asb__nav--prev');
-      const next = root.previousElementSibling?.querySelector('.sova-asb__actions .sova-asb__nav--next');
+      const prev = root.querySelector('.sova-asb__actions .sova-asb__nav--prev');
+      const next = root.querySelector('.sova-asb__actions .sova-asb__nav--next');
       if (!list || !prev || !next) return;
       const max = Math.max(0, list.scrollWidth - list.clientWidth);
       prev.disabled = list.scrollLeft <= 4;
@@ -3297,7 +3300,7 @@ ns.rules = ns.rules || {};
       `;
 
       titleWrap.appendChild(titleEl);
-      header.append(titleWrap, actions);
+      header.append(titleWrap);
 
       root.setAttribute('data-sova-asb-host', '1');
       root.className = 'sova-asb__host';
@@ -3326,6 +3329,7 @@ ns.rules = ns.rules || {};
 
       const productsWrap = document.createElement('div');
       productsWrap.className = 'accessory-box__products';
+      productsWrap.appendChild(actions);
 
       categories.forEach((category, idx) => {
         const li = document.createElement('li');
