@@ -2270,7 +2270,7 @@ ns.rules = ns.rules || {};
           background:#f6f7f7;
           border-right:1px solid #d7e0df;
           cursor:default;
-          touch-action:pan-y;
+          touch-action:auto;
         }
         .accessory-box__categories.is-dragging{
           cursor:default;
@@ -2340,7 +2340,7 @@ ns.rules = ns.rules || {};
           transform:none !important;
           scroll-behavior:smooth;
           -webkit-overflow-scrolling:touch;
-          touch-action:pan-y;
+          touch-action:auto;
         }
         .accessory-box__products .sova-asb__viewport::-webkit-scrollbar{
           display:none;
@@ -3204,6 +3204,7 @@ ns.rules = ns.rules || {};
 
       list.addEventListener('pointerdown', (e)=>{
         if (e.pointerType === 'mouse' && e.button !== 0) return;
+        if (e.pointerType === 'touch') return;
         if (e.target.closest('input,select,textarea,label')) return;
         pointerId = e.pointerId;
         startX = e.clientX;
