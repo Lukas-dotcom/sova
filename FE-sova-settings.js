@@ -93,7 +93,8 @@ window.injectVariables = {
     "HP 14",
     "HP 15",
     "HP 17",
-    "Microsoft Surface"
+    "Microsoft Surface",
+    "Yoga"
   ],
   "DISKvylouceneCastiNazvu": [
     "Apple",
