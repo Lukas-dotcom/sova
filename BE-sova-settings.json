@@ -238,6 +238,10 @@
       {
         "schema": "shoptetProductImport",
         "html": "<div APIhtmlGeneratorSchema=\"shoptetProductImport\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+      },
+      {
+        "schema": "shoptetSftpUpload",
+        "html": null
       }
     ]
   },
