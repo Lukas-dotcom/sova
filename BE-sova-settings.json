@@ -176,6 +176,10 @@
         "html": null
       },
       {
+        "schema": "ARRAY",
+        "html": null
+      },
+      {
         "schema": "SOVALtransform",
         "html": "<div APIhtmlGeneratorSchema=\"SOVALtransform\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       },
