@@ -177,7 +177,7 @@
       },
       {
         "schema": "ARRAY",
-        "html": null
+        "html": "<div class=\"v2form\" data-sova-formid=\"#@variable@#\">\r\n  <h1>Množina: #@variable@#</h1>\r\n\r\n  <div class=\"v2formRow\">\r\n    <div class=\"v2FormField\">\r\n      <span class=\"v2FormField__label sova\">\r\n        <span class=\"v2FormField__labelText\">Hodnoty</span>\r\n        <span class=\"show-tooltip tooltip-icon\">\r\n          Zadej jednu nebo více hodnot. Enter potvrzuje položku.\r\n        </span>\r\n      </span>\r\n\r\n      <input type=\"hidden\"\r\n             data-sova-type=\"arrayTagger\"\r\n             data-sova-var=\"#@variable@#\"\r\n             data-sova-role=\"primary\">\r\n    </div>\r\n  </div>\r\n\r\n  <a systemorigin=\"sova\"\r\n     class=\"btn btn-sm sova-btn\"\r\n     href=\"#\"\r\n     style=\"background-color:var(--colors-interactive-action-enabled); float: right;\"\r\n     feature=\"APIinputSender\"\r\n     parameters='{\"closeModal\":true,\"sovaFormID\":\"#@variable@#\"}'>\r\n    Uložit\r\n  </a>\r\n</div>\r"
       },
       {
         "schema": "SOVALtransform",
