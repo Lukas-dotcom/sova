@@ -258,7 +258,7 @@
       },
       {
         "schema": "condition",
-        "html": null
+        "html": "<div APIhtmlGeneratorSchema=\"shoptetSftpUpload\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       }
     ]
   },
