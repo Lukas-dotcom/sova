@@ -257,7 +257,7 @@
         "html": "<div APIhtmlGeneratorSchema=\"shoptetSftpUpload\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       },
       {
-        "schema": "condition",
+        "schema": "condition ",
         "html": "<div APIhtmlGeneratorSchema=\"condition\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       }
     ]
