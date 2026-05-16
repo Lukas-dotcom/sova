@@ -290,11 +290,11 @@
       },
       {
         "schema": "timeTrigger",
-        "html": "<div APIhtmlGeneratorSchema=\"condition\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+        "html": "<div APIhtmlGeneratorSchema=\"timeTrigger\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       },
       {
         "schema": "waitTrigger",
-        "html": "<div APIhtmlGeneratorSchema=\"condition\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+        "html": "<div APIhtmlGeneratorSchema=\"waitTrigger\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       }
     ]
   },
