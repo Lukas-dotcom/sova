@@ -282,11 +282,11 @@
       },
       {
         "schema": "changeChecker",
-        "html": "<div APIhtmlGeneratorSchema=\"condition\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+        "html": "<div APIhtmlGeneratorSchema=\"changeChecker\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       },
       {
         "schema": "runChecker",
-        "html": "<div APIhtmlGeneratorSchema=\"condition\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+        "html": "<div APIhtmlGeneratorSchema=\"runChecker\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       },
       {
         "schema": "timeTrigger",
