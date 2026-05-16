@@ -282,19 +282,19 @@
       },
       {
         "schema": "changeChecker",
-        "html": null
+        "html": "<div APIhtmlGeneratorSchema=\"condition\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       },
       {
         "schema": "runChecker",
-        "html": null
+        "html": "<div APIhtmlGeneratorSchema=\"condition\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       },
       {
         "schema": "timeTrigger",
-        "html": null
+        "html": "<div APIhtmlGeneratorSchema=\"condition\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       },
       {
         "schema": "waitTrigger",
-        "html": null
+        "html": "<div APIhtmlGeneratorSchema=\"condition\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       }
     ]
   },
