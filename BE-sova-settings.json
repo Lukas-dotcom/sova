@@ -279,6 +279,22 @@
       {
         "schema": "condition",
         "html": "<div APIhtmlGeneratorSchema=\"condition\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+      },
+      {
+        "schema": "changeChecker",
+        "html": null
+      },
+      {
+        "schema": "runChecker",
+        "html": null
+      },
+      {
+        "schema": "timeTrigger",
+        "html": null
+      },
+      {
+        "schema": "waitTrigger",
+        "html": null
       }
     ]
   },
