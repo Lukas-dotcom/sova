@@ -484,7 +484,7 @@
       },
       {
         "Název": "Notebooky",
-        "Odkaz": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=673&f[chosenPricelistId]=1&f[itemTypeId]=2",
+        "Odkaz": "https://www.pocitarna.cz/admin/produkty/?f[stockState]=1&f[visibilityId]=0&f[defaultCategoryId]=673&f[chosenPricelistId]=1",
         "Barvička": null,
         "NovOkno": null,
         "Kdo": "Dominik Němčanský"
