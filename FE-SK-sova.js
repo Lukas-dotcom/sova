@@ -1796,7 +1796,7 @@ ns.rules = ns.rules || {};
     if (checkboxRows.length){
       const d = document.createElement('div');
       d.id = 'dvDoplnky';
-      d.innerHTML = `<h2>Doplnkové služby</h2><table class="tblTypcena">${checkboxRows.join('')}</table>`;
+      d.innerHTML = `<h2 id="services">Doplnkové služby</h2><table class="tblTypcena">${checkboxRows.join('')}</table>`;
       wrap.appendChild(d);
     }
 
@@ -1811,7 +1811,7 @@ ns.rules = ns.rules || {};
         }
       });
       if (rows){
-        u.innerHTML = `<h2>Upgrade zariadenia</h2><table class="tblTypselect">${rows}</table>`;
+        u.innerHTML = `<h2 id="upgrade">Upgrade zariadenia</h2><table class="tblTypselect">${rows}</table>`;
         wrap.appendChild(u);
       }
     }
