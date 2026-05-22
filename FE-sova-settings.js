@@ -39,6 +39,7 @@ window.injectVariables = {
     "Lenovo ThinkPad T480s",
     "Lenovo ThinkPad T490s",
     "Lenovo ThinkPad T495s",
+    "Lenovo ThinkPad P15s Gen 2",
     "Lenovo ThinkPad P52s",
     "Lenovo ThinkPad P53s"
   ],
