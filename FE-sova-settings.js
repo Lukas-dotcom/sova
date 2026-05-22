@@ -56,7 +56,6 @@ window.injectVariables = {
     "MSI Summit",
     "MSI Prestige",
     "Evo",
-    0,
     "2-IN-1",
     "Detachable",
     "x360",
