@@ -37,7 +37,8 @@ window.injectVariables = {
   ],
   "RAMvylouceneCastiNazvu": [
     "Lenovo ThinkPad T480s",
-    "Lenovo ThinkPad T490s"
+    "Lenovo ThinkPad T490s",
+    "Lenovo ThinkPad T495s"
   ],
   "DISKvylouceneCastiNazvu": [
     "Apple",
