@@ -57,7 +57,8 @@ window.injectVariables = {
     "MSI Prestige",
     "Evo",
     "2-IN-1",
-    "Detachable"
+    "Detachable",
+    "ENVY"
   ],
   "DISKvylouceneCastiNazvu": [
     "Apple",
