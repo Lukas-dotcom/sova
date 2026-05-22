@@ -58,7 +58,7 @@ window.injectVariables = {
     "Evo",
     "2-IN-1",
     "Detachable",
-    "ENVY"
+    "x360"
   ],
   "DISKvylouceneCastiNazvu": [
     "Apple",
