@@ -59,7 +59,8 @@ window.injectVariables = {
     "2-IN-1",
     "Detachable",
     "x360",
-    "x2"
+    "x2",
+    "OMEN Transcend"
   ],
   "DISKvylouceneCastiNazvu": [
     "Apple",
