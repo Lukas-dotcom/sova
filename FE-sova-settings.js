@@ -41,7 +41,8 @@ window.injectVariables = {
     "Lenovo ThinkPad T495s",
     "Lenovo ThinkPad P15s Gen 2",
     "Lenovo ThinkPad P52s",
-    "Lenovo ThinkPad P53s"
+    "Lenovo ThinkPad P53s",
+    "Lenovo ThinkPad L13 Yoga Gen 2"
   ],
   "DISKvylouceneCastiNazvu": [
     "Apple",
