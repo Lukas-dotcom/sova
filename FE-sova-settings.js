@@ -46,7 +46,7 @@ window.injectVariables = {
   ],
   "DISKvylouceneCastiNazvu": [
     "Apple",
-    "Chromebook",
+    "Chrome",
     "Microsoft Surface"
   ]
 };
