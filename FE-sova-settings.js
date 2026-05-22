@@ -36,7 +36,7 @@ window.injectVariables = {
     "Fujitsu H770"
   ],
   "RAMvylouceneCastiNazvu": [
-    0
+    "Lenovo ThinkPad T480s"
   ],
   "DISKvylouceneCastiNazvu": [
     "Apple",
