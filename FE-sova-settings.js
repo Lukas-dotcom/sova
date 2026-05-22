@@ -54,7 +54,8 @@ window.injectVariables = {
     "Lenovo ThinkPad T14s",
     "MSI Modern",
     "MSI Summit",
-    "MSI Prestige"
+    "MSI Prestige",
+    "Evo"
   ],
   "DISKvylouceneCastiNazvu": [
     "Apple",
