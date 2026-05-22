@@ -51,7 +51,6 @@ window.injectVariables = {
     "Lenovo ThinkPad X1 Extreme",
     "Lenovo ThinkPad P14s",
     "Lenovo IdeaPad Flex Chrome",
-    "Lenovo ThinkPad T14s",
     "MSI Modern",
     "MSI Summit",
     "MSI Prestige",
