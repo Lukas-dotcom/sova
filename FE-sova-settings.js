@@ -58,6 +58,7 @@ window.injectVariables = {
     "Evo",
     "Dell Latitude 7400",
     "Dell Latitude 7420",
+    "Dell Latitude 7430",
     "2-IN-1",
     "Detachable",
     "x360",
