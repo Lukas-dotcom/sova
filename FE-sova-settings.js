@@ -57,6 +57,7 @@ window.injectVariables = {
     "MSI Prestige",
     "Evo",
     "Dell Latitude 7400",
+    "Dell Latitude 7420",
     "2-IN-1",
     "Detachable",
     "x360",
