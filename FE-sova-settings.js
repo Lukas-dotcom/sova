@@ -55,7 +55,8 @@ window.injectVariables = {
     "MSI Modern",
     "MSI Summit",
     "MSI Prestige",
-    "Evo"
+    "Evo",
+    "2-IN-1"
   ],
   "DISKvylouceneCastiNazvu": [
     "Apple",
