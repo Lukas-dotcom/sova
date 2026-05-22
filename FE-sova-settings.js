@@ -42,7 +42,7 @@ window.injectVariables = {
     "Lenovo ThinkPad P15s",
     "Lenovo ThinkPad P52s",
     "Lenovo ThinkPad P53s",
-    "Lenovo ThinkPad L13 Yoga Gen 2",
+    "Lenovo ThinkPad L13 Yoga",
     "Lenovo ThinkPad X13 Gen 1",
     "Lenovo ThinkPad X380 Yoga",
     "Lenovo ThinkPad X390 Yoga",
