@@ -56,7 +56,7 @@ window.injectVariables = {
     "MSI Summit",
     "MSI Prestige",
     "Evo",
-    "Lenovo ThinkPad X380",
+    "Dell Latitude 7400",
     "2-IN-1",
     "Detachable",
     "x360",
