@@ -68,7 +68,8 @@ window.injectVariables = {
     "OMEN Transcend",
     "TravelMate Spin",
     "Swift Go",
-    "Switch"
+    "Switch",
+    "Toughbook"
   ],
   "DISKvylouceneCastiNazvu": [
     "Apple",
