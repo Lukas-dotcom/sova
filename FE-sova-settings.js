@@ -50,7 +50,8 @@ window.injectVariables = {
     "Lenovo ThinkPad X1 Carbon 7",
     "Lenovo ThinkPad X1 Yoga 3",
     "Lenovo ThinkPad X1 Extreme Gen 2",
-    "Lenovo ThinkPad X1 Extreme Gen 1"
+    "Lenovo ThinkPad X1 Extreme Gen 1",
+    "Lenovo ThinkPad P14s Gen 3"
   ],
   "DISKvylouceneCastiNazvu": [
     "Apple",
