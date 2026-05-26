@@ -59,7 +59,7 @@
         "htmlURL": null,
         "breadCrumb": "cz na sk",
         "position": "wholePage",
-        "condSoval": null
+        "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_telefony/\"%%"
       }
     ]
   },
