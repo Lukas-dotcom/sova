@@ -129,8 +129,8 @@
       },
       {
         "htmlURL": "html/doplneni_videa.html",
-        "breadCrumb": null,
-        "position": null,
+        "breadCrumb": "videa produktová",
+        "position": "wholePage",
         "condSoval": null
       }
     ]
