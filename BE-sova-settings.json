@@ -376,7 +376,7 @@
       },
       {
         "schema": "removeColumnsFromTable",
-        "html": "<div APIhtmlGeneratorSchema=\"waitTrigger\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+        "html": "<div APIhtmlGeneratorSchema=\"removeColumnsFromTable\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       },
       {
         "schema": "removeValuesFromTable",
