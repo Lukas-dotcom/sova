@@ -86,10 +86,34 @@
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_cz-sk/\"%%"
       },
       {
-        "htmlURL": "html/generovani_notebooky.html",
-        "breadCrumb": "cz na sk",
+        "htmlURL": "html/etl_monitory.html",
+        "breadCrumb": "monitory",
         "position": "wholePage",
-        "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_cz-sk/\"%%"
+        "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_monitory/\"%%"
+      },
+      {
+        "htmlURL": "html/etl_notebooky.html",
+        "breadCrumb": "notebooky",
+        "position": "wholePage",
+        "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_notebooky/\"%%"
+      },
+      {
+        "htmlURL": "html/etl_pocitace.html",
+        "breadCrumb": "pocitace",
+        "position": "wholePage",
+        "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_pocitace/\"%%"
+      },
+      {
+        "htmlURL": "html/etl_tablety.html",
+        "breadCrumb": "tablety",
+        "position": "wholePage",
+        "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_tablety/\"%%"
+      },
+      {
+        "htmlURL": "html/etl_telefony.html",
+        "breadCrumb": "telefony",
+        "position": "wholePage",
+        "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_telefony/\"%%"
       }
     ]
   },
