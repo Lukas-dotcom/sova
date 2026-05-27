@@ -86,6 +86,12 @@
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_ceny/\"%%"
       },
       {
+        "htmlURL": "html/b2b_feed.html",
+        "breadCrumb": null,
+        "position": null,
+        "condSoval": null
+      },
+      {
         "htmlURL": "html/generovani_monitory.html",
         "breadCrumb": "monitory",
         "position": "wholePage",
