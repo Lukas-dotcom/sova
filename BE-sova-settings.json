@@ -45,13 +45,13 @@
       },
       {
         "htmlURL": "html/etl_tablety.html",
-        "breadCrumb": "tablety",
+        "breadCrumb": "etl: tablety",
         "position": "wholePage",
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_tablety/\"%%"
       },
       {
         "htmlURL": "html/etl_telefony.html",
-        "breadCrumb": "telefony",
+        "breadCrumb": "etl: telefony",
         "position": "wholePage",
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_telefony/\"%%"
       },
