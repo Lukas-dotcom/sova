@@ -62,7 +62,7 @@
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_cz-sk/\"%%"
       },
       {
-        "htmlURL": "html/etl_cz-sk.html",
+        "htmlURL": "html/doplnky.html",
         "breadCrumb": "cz na sk",
         "position": "wholePage",
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_cz-sk/\"%%"
