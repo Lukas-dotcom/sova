@@ -77,7 +77,7 @@
         "htmlURL": "html/grafiky.html",
         "breadCrumb": "etl: gpu",
         "position": "wholePage",
-        "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_cz-sk/\"%%"
+        "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_gpu/\"%%"
       },
       {
         "htmlURL": "html/ceny.html",
