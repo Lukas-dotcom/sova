@@ -99,7 +99,7 @@
       },
       {
         "htmlURL": "html/generovani_pocitace.html",
-        "breadCrumb": "pocitace",
+        "breadCrumb": "počítače",
         "position": "wholePage",
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/generovani/generovani_pocitace/\"%%"
       },
