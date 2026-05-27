@@ -27,7 +27,7 @@
       },
       {
         "htmlURL": "html/etl_monitory.html",
-        "breadCrumb": "monitory",
+        "breadCrumb": "etl: monitory",
         "position": "wholePage",
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_monitory/\"%%"
       },
