@@ -86,7 +86,7 @@
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_ceny/\"%%"
       },
       {
-        "htmlURL": "html/b2b_feed.html",
+        "htmlURL": "html/etl_b2bFeed.html",
         "breadCrumb": "etl: B2B feed",
         "position": "wholePage",
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_b2bfeed/\"%%"
