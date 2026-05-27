@@ -114,6 +114,12 @@
         "breadCrumb": "telefony",
         "position": "wholePage",
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/generovani/generovani_telefony/\"%%"
+      },
+      {
+        "htmlURL": "html/generovani_doplnky.html",
+        "breadCrumb": "telefony",
+        "position": "wholePage",
+        "condSoval": "%%url=\"https://www.pocitarna.cz/admin/generovani/generovani_telefony/\"%%"
       }
     ]
   },
