@@ -69,13 +69,13 @@
       },
       {
         "htmlURL": "html/procesory.html",
-        "breadCrumb": "cz na sk",
+        "breadCrumb": "etl cpu",
         "position": "wholePage",
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_cz-sk/\"%%"
       },
       {
         "htmlURL": "html/grafiky.html",
-        "breadCrumb": "cz na sk",
+        "breadCrumb": "etl gpu",
         "position": "wholePage",
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_cz-sk/\"%%"
       },
