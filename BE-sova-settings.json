@@ -39,7 +39,7 @@
       },
       {
         "htmlURL": "html/etl_pocitace.html",
-        "breadCrumb": "etl: pocitace",
+        "breadCrumb": "etl: počítače",
         "position": "wholePage",
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_pocitace/\"%%"
       },
