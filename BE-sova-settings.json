@@ -56,7 +56,7 @@
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_telefony/\"%%"
       },
       {
-        "htmlURL": "html/doplnky.html",
+        "htmlURL": "html/etl_doplnky.html",
         "breadCrumb": "etl: doplňky",
         "position": "wholePage",
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_doplnky/\"%%"
