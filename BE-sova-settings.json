@@ -380,7 +380,7 @@
       },
       {
         "schema": "removeValuesFromTable",
-        "html": "<div APIhtmlGeneratorSchema=\"waitTrigger\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+        "html": "<div APIhtmlGeneratorSchema=\"removeValuesFromTable\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       }
     ]
   },
