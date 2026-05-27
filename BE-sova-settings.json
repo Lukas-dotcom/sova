@@ -364,23 +364,23 @@
       },
       {
         "schema": "clearTable",
-        "html": null
+        "html": "<div APIhtmlGeneratorSchema=\"waitTrigger\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       },
       {
         "schema": "clearArray",
-        "html": null
+        "html": "<div APIhtmlGeneratorSchema=\"waitTrigger\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       },
       {
         "schema": "clearSimple",
-        "html": null
+        "html": "<div APIhtmlGeneratorSchema=\"waitTrigger\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       },
       {
         "schema": "removeColumnsFromTable",
-        "html": null
+        "html": "<div APIhtmlGeneratorSchema=\"waitTrigger\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       },
       {
         "schema": "removeValuesFromTable",
-        "html": null
+        "html": "<div APIhtmlGeneratorSchema=\"waitTrigger\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       }
     ]
   },
