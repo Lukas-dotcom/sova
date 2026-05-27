@@ -368,11 +368,11 @@
       },
       {
         "schema": "clearArray",
-        "html": "<div APIhtmlGeneratorSchema=\"waitTrigger\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+        "html": "<div APIhtmlGeneratorSchema=\"clearArray\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       },
       {
         "schema": "clearSimple",
-        "html": "<div APIhtmlGeneratorSchema=\"waitTrigger\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+        "html": "<div APIhtmlGeneratorSchema=\"clearSimple\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       },
       {
         "schema": "removeColumnsFromTable",
