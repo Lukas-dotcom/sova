@@ -87,8 +87,8 @@
       },
       {
         "htmlURL": "html/b2b_feed.html",
-        "breadCrumb": null,
-        "position": null,
+        "breadCrumb": "etl: B2B feed",
+        "position": "wholePage",
         "condSoval": null
       },
       {
