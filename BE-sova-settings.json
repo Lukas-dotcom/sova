@@ -364,7 +364,7 @@
       },
       {
         "schema": "clearTable",
-        "html": "<div APIhtmlGeneratorSchema=\"waitTrigger\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+        "html": "<div APIhtmlGeneratorSchema=\"clearTable\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       },
       {
         "schema": "clearArray",
