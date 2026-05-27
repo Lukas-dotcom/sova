@@ -63,7 +63,7 @@
       },
       {
         "htmlURL": "html/doplnky.html",
-        "breadCrumb": "cz na sk",
+        "breadCrumb": "etl doplňky",
         "position": "wholePage",
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/doplnky/\"%%"
       },
