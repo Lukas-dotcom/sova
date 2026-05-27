@@ -126,6 +126,12 @@
         "breadCrumb": "doplňky",
         "position": "wholePage",
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/generovani/generovani_doplnky/\"%%"
+      },
+      {
+        "htmlURL": "html/doplneni_videa.html",
+        "breadCrumb": null,
+        "position": null,
+        "condSoval": null
       }
     ]
   },
