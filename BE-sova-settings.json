@@ -89,7 +89,7 @@
         "htmlURL": "html/b2b_feed.html",
         "breadCrumb": "etl: B2B feed",
         "position": "wholePage",
-        "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/b2b_feed/\"%%"
+        "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_b2bfeed/\"%%"
       },
       {
         "htmlURL": "html/generovani_monitory.html",
