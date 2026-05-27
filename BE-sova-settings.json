@@ -63,19 +63,19 @@
       },
       {
         "htmlURL": "html/doplnky.html",
-        "breadCrumb": "etl doplňky",
+        "breadCrumb": "etl: doplňky",
         "position": "wholePage",
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/doplnky/\"%%"
       },
       {
         "htmlURL": "html/procesory.html",
-        "breadCrumb": "etl cpu",
+        "breadCrumb": "etl: cpu",
         "position": "wholePage",
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_cz-sk/\"%%"
       },
       {
         "htmlURL": "html/grafiky.html",
-        "breadCrumb": "etl gpu",
+        "breadCrumb": "etl: gpu",
         "position": "wholePage",
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_cz-sk/\"%%"
       },
