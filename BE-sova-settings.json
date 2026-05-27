@@ -117,7 +117,7 @@
       },
       {
         "htmlURL": "html/generovani_doplnky.html",
-        "breadCrumb": "telefony",
+        "breadCrumb": "doplňky",
         "position": "wholePage",
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/generovani/generovani_doplnky/\"%%"
       }
