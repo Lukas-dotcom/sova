@@ -33,7 +33,7 @@
       },
       {
         "htmlURL": "html/etl_notebooky.html",
-        "breadCrumb": "notebooky",
+        "breadCrumb": "etl: notebooky",
         "position": "wholePage",
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_notebooky/\"%%"
       },
