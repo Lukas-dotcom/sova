@@ -71,7 +71,7 @@
         "htmlURL": "html/procesory.html",
         "breadCrumb": "etl: cpu",
         "position": "wholePage",
-        "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_cz-sk/\"%%"
+        "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_cpu/\"%%"
       },
       {
         "htmlURL": "html/grafiky.html",
