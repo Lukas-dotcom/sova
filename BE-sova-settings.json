@@ -80,7 +80,7 @@
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_gpu/\"%%"
       },
       {
-        "htmlURL": "html/ceny.html",
+        "htmlURL": "html/etl_ceny.html",
         "breadCrumb": "etl: ceny",
         "position": "wholePage",
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_ceny/\"%%"
