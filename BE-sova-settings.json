@@ -81,7 +81,7 @@
       },
       {
         "htmlURL": "html/ceny.html",
-        "breadCrumb": "cz na sk",
+        "breadCrumb": "etl ceny",
         "position": "wholePage",
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_cz-sk/\"%%"
       },
