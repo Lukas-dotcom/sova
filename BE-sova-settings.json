@@ -80,7 +80,7 @@
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_cz-sk/\"%%"
       },
       {
-        "htmlURL": "html/procesory.html",
+        "htmlURL": "html/ceny.html",
         "breadCrumb": "cz na sk",
         "position": "wholePage",
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_cz-sk/\"%%"
