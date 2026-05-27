@@ -361,6 +361,26 @@
       {
         "schema": "waitTrigger",
         "html": "<div APIhtmlGeneratorSchema=\"waitTrigger\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+      },
+      {
+        "schema": "clearTable",
+        "html": null
+      },
+      {
+        "schema": "clearArray",
+        "html": null
+      },
+      {
+        "schema": "clearSimple",
+        "html": null
+      },
+      {
+        "schema": "removeColumnsFromTable",
+        "html": null
+      },
+      {
+        "schema": "removeValuesFromTable",
+        "html": null
       }
     ]
   },
