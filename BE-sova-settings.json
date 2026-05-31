@@ -431,11 +431,11 @@
       },
       {
         "schema": "generateArray",
-        "html": null
+        "html": "<div APIhtmlGeneratorSchema=\"generateArray\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       },
       {
         "schema": "arrayToTable",
-        "html": null
+        "html": "<div APIhtmlGeneratorSchema=\"removeValuesFromTable\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       }
     ]
   },
