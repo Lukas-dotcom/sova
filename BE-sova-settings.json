@@ -428,6 +428,14 @@
       {
         "schema": "removeValuesFromTable",
         "html": "<div APIhtmlGeneratorSchema=\"removeValuesFromTable\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+      },
+      {
+        "schema": "generateArray",
+        "html": null
+      },
+      {
+        "schema": "arrayToTable",
+        "html": null
       }
     ]
   },
