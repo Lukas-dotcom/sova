@@ -441,6 +441,10 @@
       {
         "schema": "arrayToTable",
         "html": "<div APIhtmlGeneratorSchema=\"arrayToTable\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+      },
+      {
+        "schema": "generateSimple",
+        "html": "<div APIhtmlGeneratorSchema=\"arrayToTable\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       }
     ]
   },
