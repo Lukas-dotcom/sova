@@ -135,8 +135,8 @@
       },
       {
         "htmlURL": "html_editor_grapes.html",
-        "breadCrumb": null,
-        "position": null,
+        "breadCrumb": "html editor",
+        "position": "wholePage",
         "condSoval": null
       }
     ]
