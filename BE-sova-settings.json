@@ -137,7 +137,7 @@
         "htmlURL": "html_editor_grapes.html",
         "breadCrumb": "html editor",
         "position": "wholePage",
-        "condSoval": "%%url=\"https://www.pocitarna.cz/admin/generovani/videa/\"%%"
+        "condSoval": "%%url=\"https://www.pocitarna.cz/admin/html-editor/\"%%"
       }
     ]
   },
