@@ -132,6 +132,12 @@
         "breadCrumb": "videa produktová",
         "position": "wholePage",
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/generovani/videa/\"%%"
+      },
+      {
+        "htmlURL": "generovani_doplnky.html",
+        "breadCrumb": null,
+        "position": null,
+        "condSoval": null
       }
     ]
   },
