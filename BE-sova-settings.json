@@ -453,7 +453,7 @@
         "html": "<div APIhtmlGeneratorSchema=\"generateSimple\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       },
       {
-        "schema": "generateSimple",
+        "schema": "generateTable",
         "html": "<div APIhtmlGeneratorSchema=\"generateSimple\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       }
     ]
