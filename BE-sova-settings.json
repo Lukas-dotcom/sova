@@ -454,7 +454,7 @@
       },
       {
         "schema": "generateTable",
-        "html": "<div APIhtmlGeneratorSchema=\"generateSimple\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+        "html": "<div APIhtmlGeneratorSchema=\"generateTable\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       }
     ]
   },
