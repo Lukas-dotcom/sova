@@ -451,6 +451,10 @@
       {
         "schema": "generateSimple",
         "html": "<div APIhtmlGeneratorSchema=\"generateSimple\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
+      },
+      {
+        "schema": "generateSimple",
+        "html": "<div APIhtmlGeneratorSchema=\"generateSimple\" APIhtmlGeneratorVariable = \"#@variable@#\"></div>"
       }
     ]
   },
