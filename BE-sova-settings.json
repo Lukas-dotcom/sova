@@ -1357,6 +1357,17 @@
         "position": "buttonsHeaderLeft",
         "order": 2,
         "conditionsSOVAL": "%%url contains \"https://www.pocitarna.cz/admin/sablona-exportu-objednavky/?id=315\"%%"
+      },
+      {
+        "variableName": "zobrazCompetitorCeny",
+        "showName": null,
+        "controlType": null,
+        "selectOptions": null,
+        "saveType": null,
+        "pageType": null,
+        "position": null,
+        "order": null,
+        "conditionsSOVAL": null
       }
     ]
   },
