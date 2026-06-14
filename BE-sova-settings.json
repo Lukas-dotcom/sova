@@ -1360,13 +1360,13 @@
       },
       {
         "variableName": "zobrazCompetitorCeny",
-        "showName": null,
-        "controlType": null,
+        "showName": "Konkurence",
+        "controlType": "checkbox",
         "selectOptions": null,
-        "saveType": null,
-        "pageType": null,
-        "position": null,
-        "order": null,
+        "saveType": "local",
+        "pageType": "ceny",
+        "position": "buttonsHeaderLeft",
+        "order": -1,
         "conditionsSOVAL": null
       }
     ]
