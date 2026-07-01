@@ -2022,7 +2022,8 @@
           "Chytré hodinky",
           "Herní konzole",
           "Grafické karty",
-          "Tiskárny"
+          "Tiskárny",
+          "Grafické karty"
         ],
         "forbiddenProducts": [
           "MAR",
@@ -2043,7 +2044,8 @@
           2141,
           1080,
           1694,
-          799
+          799,
+          1080
         ]
       }
     ]
