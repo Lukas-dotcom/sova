@@ -1067,7 +1067,7 @@ window.additionalSale = [
     "price": "€26,35",
     "pairText": "BLESK2",
     "type": "checkbox",
-    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\"))) AND (( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND ((parametroptdisableupgradeblesk = \"false\" OR parametrsovaupgradeblesk2 = \"ANO\")) AND (CONTAINS(parametrOperacnysystem, \"Windows\") OR CONTAINS(parametrSystem, \"WINDOWS\")) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") AND (parametrKapacitadisku = \"16 GB\" OR parametrKapacitadisku = \"32 GB\") )))"
+    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\"))) AND (( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND ((parametroptdisableupgradeblesk = \"false\" OR parametrsovaupgradeBLESK2 = \"ANO\")) AND (CONTAINS(parametrOperacnysystem, \"Windows\") OR CONTAINS(parametrSystem, \"WINDOWS\")) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") AND (parametrKapacitadisku = \"16 GB\" OR parametrKapacitadisku = \"32 GB\") )))"
   },
   {
     "code": "BLESK3",
@@ -1075,7 +1075,7 @@ window.additionalSale = [
     "price": "€28,50",
     "pairText": "BLESK2",
     "type": "checkbox",
-    "SOVAL": "((parametrVyuzitie CONTAINS \"Herné\") AND (NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\"))) AND (( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND ((parametroptdisableupgradeblesk = \"false\" OR parametrsovaupgradeblesk3 = \"ANO\")) AND (CONTAINS(parametrOperacnysystem, \"Windows\") OR CONTAINS(parametrSystem, \"WINDOWS\")) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") AND (parametrKapacitadisku = \"16 GB\" OR parametrKapacitadisku = \"32 GB\") )))"
+    "SOVAL": "((parametrVyuzitie CONTAINS \"Herné\") AND (NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\"))) AND (( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND ((parametroptdisableupgradeblesk = \"false\" OR parametrsovaupgradeBLESK3 = \"ANO\")) AND (CONTAINS(parametrOperacnysystem, \"Windows\") OR CONTAINS(parametrSystem, \"WINDOWS\")) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") AND (parametrKapacitadisku = \"16 GB\" OR parametrKapacitadisku = \"32 GB\") )))"
   },
   {
     "code": "SERVIS006",
@@ -1139,7 +1139,7 @@ window.additionalSale = [
     "price": "€22,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
-    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Počítače\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradevrp0022 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR3\")))"
+    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Počítače\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradeVRP0022 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR3\")))"
   },
   {
     "code": "VRP0024",
@@ -1147,7 +1147,7 @@ window.additionalSale = [
     "price": "€36,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
-    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Počítače\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradevrp0024 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR3\")))"
+    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Počítače\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradeVRP0024 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR3\")))"
   },
   {
     "code": "VRP0026",
@@ -1155,7 +1155,7 @@ window.additionalSale = [
     "price": "€65,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
-    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Počítače\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradevrp0026 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR3\")))"
+    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Počítače\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradeVRP0026 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR3\")))"
   },
   {
     "code": "VRP0020",
@@ -1163,7 +1163,7 @@ window.additionalSale = [
     "price": "€102,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
-    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Počítače\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradevrp0020 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR3\")))"
+    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Počítače\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradeVRP0020 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR3\")))"
   },
   {
     "code": "VRP0025",
@@ -1171,7 +1171,7 @@ window.additionalSale = [
     "price": "€57,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
-    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Počítače\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradevrp0025 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR4\")))"
+    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Počítače\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradeVRP0025 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR4\")))"
   },
   {
     "code": "VRP0027",
@@ -1179,7 +1179,7 @@ window.additionalSale = [
     "price": "€81,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
-    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Počítače\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradevrp0027 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR4\")))"
+    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Počítače\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradeVRP0027 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR4\")))"
   },
   {
     "code": "VRP0021",
@@ -1187,7 +1187,7 @@ window.additionalSale = [
     "price": "€142,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
-    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Počítače\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradevrp0021 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR4\")))"
+    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Počítače\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradeVRP0021 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR4\")))"
   },
   {
     "code": "VRP0034",
@@ -1195,7 +1195,7 @@ window.additionalSale = [
     "price": "€122,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
-    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Počítače\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradevrp0034 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR5\")))"
+    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Počítače\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradeVRP0034 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR5\")))"
   },
   {
     "code": "VRP0036",
@@ -1203,7 +1203,7 @@ window.additionalSale = [
     "price": "€408,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
-    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Počítače\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradevrp0036 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR5\")))"
+    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Počítače\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradeVRP0036 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR5\")))"
   },
   {
     "code": "VRP0001",
@@ -1211,7 +1211,7 @@ window.additionalSale = [
     "price": "€22,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
-    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Notebooky\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradevrp0001 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR3\")))"
+    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Notebooky\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradeVRP0001 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR3\")))"
   },
   {
     "code": "VRP0002",
@@ -1219,7 +1219,7 @@ window.additionalSale = [
     "price": "€36,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
-    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Notebooky\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradevrp0002 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR3\")))"
+    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Notebooky\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradeVRP0002 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR3\")))"
   },
   {
     "code": "VRP0003",
@@ -1227,7 +1227,7 @@ window.additionalSale = [
     "price": "€44,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
-    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Notebooky\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradevrp0003 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR3\")))"
+    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Notebooky\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradeVRP0003 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR3\")))"
   },
   {
     "code": "VRP0004",
@@ -1235,7 +1235,7 @@ window.additionalSale = [
     "price": "€69,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
-    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Notebooky\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradevrp0004 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR3\")))"
+    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Notebooky\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradeVRP0004 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR3\")))"
   },
   {
     "code": "VRP0006",
@@ -1243,7 +1243,7 @@ window.additionalSale = [
     "price": "€73,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
-    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Notebooky\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradevrp0006 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR4\")))"
+    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Notebooky\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradeVRP0006 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR4\")))"
   },
   {
     "code": "VRP0007",
@@ -1251,7 +1251,7 @@ window.additionalSale = [
     "price": "€81,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
-    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Notebooky\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradevrp0007 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR4\")))"
+    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Notebooky\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradeVRP0007 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR4\")))"
   },
   {
     "code": "VRP0008",
@@ -1259,7 +1259,7 @@ window.additionalSale = [
     "price": "€142,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
-    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Notebooky\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradevrp0008 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR4\")))"
+    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Notebooky\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradeVRP0008 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR4\")))"
   },
   {
     "code": "VRP0031",
@@ -1267,7 +1267,7 @@ window.additionalSale = [
     "price": "€122,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
-    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Notebooky\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradevrp0031 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR5\")))"
+    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Notebooky\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradeVRP0031 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR5\")))"
   },
   {
     "code": "VRP0032",
@@ -1275,7 +1275,7 @@ window.additionalSale = [
     "price": "€204,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
-    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Notebooky\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradevrp0032 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR5\")))"
+    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Notebooky\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradeVRP0032 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR5\")))"
   },
   {
     "code": "VRP0033",
@@ -1283,7 +1283,7 @@ window.additionalSale = [
     "price": "€408,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
-    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Notebooky\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradevrp0033 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR5\"))) "
+    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Notebooky\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradeVRP0033 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR5\")))"
   },
   {
     "code": "VRP0015",
@@ -1291,7 +1291,7 @@ window.additionalSale = [
     "price": "€73,00",
     "pairText": "Výmena disku",
     "type": "select",
-    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(DISKvylouceneCastiNazvu, NOT CONTAINS(productName, DISKvylouceneCastiNazvu)))AND (((category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory,\"Notebooky\") OR CONTAINS(productCurrentCategory,\"Počítače\")) AND ((parametroptdisableupgradedisc = \"false\" OR parametrsovaupgradevrp0015 = \"ANO\")) AND NOT CONTAINS(productName,\"All in One\") AND NOT CONTAINS(parametrTypdisku,\"eMMC\") AND (CONTAINS(parametrKapacitadisku,\"+\") OR (regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\") = \"\") OR CONTAINS(parametrTypdisku,\"HDD\") OR (256 > if(CONTAINS(parametrKapacitadisku,\"TB\"), regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\")*1000, regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\"))))))"
+    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(DISKvylouceneCastiNazvu, NOT CONTAINS(productName, DISKvylouceneCastiNazvu)))AND (((category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory,\"Notebooky\") OR CONTAINS(productCurrentCategory,\"Počítače\")) AND ((parametroptdisableupgradedisc = \"false\" OR parametrsovaupgradeVRP0015 = \"ANO\")) AND NOT CONTAINS(productName,\"All in One\") AND NOT CONTAINS(parametrTypdisku,\"eMMC\") AND (CONTAINS(parametrKapacitadisku,\"+\") OR (regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\") = \"\") OR CONTAINS(parametrTypdisku,\"HDD\") OR (256 > if(CONTAINS(parametrKapacitadisku,\"TB\"), regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\")*1000, regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\"))))))"
   },
   {
     "code": "VRP0016",
@@ -1299,7 +1299,7 @@ window.additionalSale = [
     "price": "€106,00",
     "pairText": "Výmena disku",
     "type": "select",
-    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(DISKvylouceneCastiNazvu, NOT CONTAINS(productName, DISKvylouceneCastiNazvu)))AND (((category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory,\"Notebooky\") OR CONTAINS(productCurrentCategory,\"Počítače\")) AND ((parametroptdisableupgradedisc = \"false\" OR parametrsovaupgradevrp0016 = \"ANO\")) AND NOT CONTAINS(productName,\"All in One\") AND NOT CONTAINS(parametrTypdisku,\"eMMC\") AND (CONTAINS(parametrKapacitadisku,\"+\") OR (regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\") = \"\") OR CONTAINS(parametrTypdisku,\"HDD\") OR (512 > if(CONTAINS(parametrKapacitadisku,\"TB\"), regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\")*1000, regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\"))))))"
+    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(DISKvylouceneCastiNazvu, NOT CONTAINS(productName, DISKvylouceneCastiNazvu)))AND (((category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory,\"Notebooky\") OR CONTAINS(productCurrentCategory,\"Počítače\")) AND ((parametroptdisableupgradedisc = \"false\" OR parametrsovaupgradeVRP0016 = \"ANO\")) AND NOT CONTAINS(productName,\"All in One\") AND NOT CONTAINS(parametrTypdisku,\"eMMC\") AND (CONTAINS(parametrKapacitadisku,\"+\") OR (regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\") = \"\") OR CONTAINS(parametrTypdisku,\"HDD\") OR (512 > if(CONTAINS(parametrKapacitadisku,\"TB\"), regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\")*1000, regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\"))))))"
   },
   {
     "code": "VRP0017",
@@ -1307,7 +1307,7 @@ window.additionalSale = [
     "price": "€155,00",
     "pairText": "Výmena disku",
     "type": "select",
-    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(DISKvylouceneCastiNazvu, NOT CONTAINS(productName, DISKvylouceneCastiNazvu)))AND (((category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory,\"Notebooky\") OR CONTAINS(productCurrentCategory,\"Počítače\")) AND ((parametroptdisableupgradedisc = \"false\" OR parametrsovaupgradevrp0017 = \"ANO\")) AND NOT CONTAINS(productName,\"All in One\") AND NOT CONTAINS(parametrTypdisku,\"eMMC\") AND (CONTAINS(parametrKapacitadisku,\"+\") OR (regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\") = \"\") OR CONTAINS(parametrTypdisku,\"HDD\") OR (1000 > if(CONTAINS(parametrKapacitadisku,\"TB\"), regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\")*1000, regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\"))))))"
+    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(DISKvylouceneCastiNazvu, NOT CONTAINS(productName, DISKvylouceneCastiNazvu)))AND (((category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory,\"Notebooky\") OR CONTAINS(productCurrentCategory,\"Počítače\")) AND ((parametroptdisableupgradedisc = \"false\" OR parametrsovaupgradeVRP0017 = \"ANO\")) AND NOT CONTAINS(productName,\"All in One\") AND NOT CONTAINS(parametrTypdisku,\"eMMC\") AND (CONTAINS(parametrKapacitadisku,\"+\") OR (regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\") = \"\") OR CONTAINS(parametrTypdisku,\"HDD\") OR (1000 > if(CONTAINS(parametrKapacitadisku,\"TB\"), regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\")*1000, regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\"))))))"
   },
   {
     "code": "VRP0018",
@@ -1315,7 +1315,7 @@ window.additionalSale = [
     "price": "€240,00",
     "pairText": "Výmena disku",
     "type": "select",
-    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(DISKvylouceneCastiNazvu, NOT CONTAINS(productName, DISKvylouceneCastiNazvu)))AND (((category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory,\"Notebooky\") OR CONTAINS(productCurrentCategory,\"Počítače\")) AND ((parametroptdisableupgradedisc = \"false\" OR parametrsovaupgradevrp0018 = \"ANO\")) AND NOT CONTAINS(productName,\"All in One\") AND NOT CONTAINS(parametrTypdisku,\"eMMC\") AND (CONTAINS(parametrKapacitadisku,\"+\") OR (regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\") = \"\") OR CONTAINS(parametrTypdisku,\"HDD\") OR (2000 > if(CONTAINS(parametrKapacitadisku,\"TB\"), regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\")*1000, regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\")))))) "
+    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(DISKvylouceneCastiNazvu, NOT CONTAINS(productName, DISKvylouceneCastiNazvu)))AND (((category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory,\"Notebooky\") OR CONTAINS(productCurrentCategory,\"Počítače\")) AND ((parametroptdisableupgradedisc = \"false\" OR parametrsovaupgradeVRP0018 = \"ANO\")) AND NOT CONTAINS(productName,\"All in One\") AND NOT CONTAINS(parametrTypdisku,\"eMMC\") AND (CONTAINS(parametrKapacitadisku,\"+\") OR (regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\") = \"\") OR CONTAINS(parametrTypdisku,\"HDD\") OR (2000 > if(CONTAINS(parametrKapacitadisku,\"TB\"), regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\")*1000, regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\"))))))"
   },
   {
     "code": "VRP0019",
@@ -1323,7 +1323,7 @@ window.additionalSale = [
     "price": "€408,00",
     "pairText": "Výmena disku",
     "type": "select",
-    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(DISKvylouceneCastiNazvu, NOT CONTAINS(productName, DISKvylouceneCastiNazvu)))AND (((category = \"Počítače\") OR CONTAINS(productCurrentCategory,\"Počítače\")) AND ((parametroptdisableupgradedisc = \"false\" OR parametrsovaupgradevrp0019 = \"ANO\")) AND NOT (category = \"Notebooky\" OR CONTAINS(productCurrentCategory,\"Notebooky\")) AND NOT CONTAINS(productName,\"All in One\") AND NOT CONTAINS(parametrTypdisku,\"eMMC\") AND (CONTAINS(parametrKapacitadisku,\"+\") OR (regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\") = \"\") OR CONTAINS(parametrTypdisku,\"HDD\") OR (4000 > if(CONTAINS(parametrKapacitadisku,\"TB\"), regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\")*1000, regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\"))))))"
+    "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(DISKvylouceneCastiNazvu, NOT CONTAINS(productName, DISKvylouceneCastiNazvu)))AND (((category = \"Počítače\") OR CONTAINS(productCurrentCategory,\"Počítače\")) AND ((parametroptdisableupgradedisc = \"false\" OR parametrsovaupgradeVRP0019 = \"ANO\")) AND NOT (category = \"Notebooky\" OR CONTAINS(productCurrentCategory,\"Notebooky\")) AND NOT CONTAINS(productName,\"All in One\") AND NOT CONTAINS(parametrTypdisku,\"eMMC\") AND (CONTAINS(parametrKapacitadisku,\"+\") OR (regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\") = \"\") OR CONTAINS(parametrTypdisku,\"HDD\") OR (4000 > if(CONTAINS(parametrKapacitadisku,\"TB\"), regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\")*1000, regexextract(parametrKapacitadisku,\"([0-9]+(?:[.,][0-9]+)?)\"))))))"
   }
 ];
 
