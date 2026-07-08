@@ -24,37 +24,18 @@ jobs:
       - name: Výpis dostupných souborů
         run: ls -la
 
-      - name: Install sshpass
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y sshpass
-
-      - name: Check secrets
-        run: |
-          set -euo pipefail
-
-          if [ -n "${SSHPASS:-}" ]; then
-            echo "::add-mask::$SSHPASS"
-          fi
-
-          test -n "${FTP_HOST:-}" || (echo "FTP_HOST missing" && exit 10)
-          test -n "${FTP_USER:-}" || (echo "FTP_USER missing" && exit 11)
-          test -n "${SSHPASS:-}" || (echo "FTP_PASS missing" && exit 12)
-
-          echo "FTP_HOST present"
-          echo "FTP_USER present"
-          echo "FTP_PASS present"
-
       - name: Create remote directory if missing
         run: |
           set -euo pipefail
+
+          sudo apt-get update
+          sudo apt-get install -y sshpass
+
           echo "::add-mask::$SSHPASS"
 
-          {
-            echo "-mkdir /upload"
-            echo "-mkdir /upload/sova"
-            echo "bye"
-          } > sftp_mkdir.txt
+          echo "-mkdir /upload" > sftp_mkdir.txt
+          echo "-mkdir /upload/sova" >> sftp_mkdir.txt
+          echo "bye" >> sftp_mkdir.txt
 
           sshpass -e sftp \
             -P 22 \
@@ -67,6 +48,7 @@ jobs:
       - name: Upload selected files if they exist
         run: |
           set -euo pipefail
+
           echo "::add-mask::$SSHPASS"
 
           FILES=""
@@ -74,32 +56,31 @@ jobs:
           [ -f FE-sova.css ] && FILES="$FILES FE-sova.css"
           [ -f FE-sova-settings.js ] && FILES="$FILES FE-sova-settings.js"
 
-          if [ -z "$FILES" ]; then
+          if [ -n "$FILES" ]; then
+            echo "Nahrávám soubory: $FILES"
+
+            for i in 1 2 3 4 5; do
+              echo "Upload attempt $i/5"
+
+              if sshpass -e scp \
+                -P 22 \
+                -o StrictHostKeyChecking=no \
+                -o PreferredAuthentications=password \
+                -o PubkeyAuthentication=no \
+                -o NumberOfPasswordPrompts=1 \
+                $FILES \
+                "$FTP_USER@$FTP_HOST:/upload/sova/"
+              then
+                echo "Upload OK"
+                exit 0
+              fi
+
+              echo "Upload failed, retrying..."
+              sleep $((i * 15))
+            done
+
+            echo "Upload failed after retries"
+            exit 1
+          else
             echo "Žádné z cílových souborů neexistují, nic se nenahrává."
-            exit 0
           fi
-
-          echo "Nahrávám soubory: $FILES"
-
-          for i in 1 2 3 4 5; do
-            echo "Upload attempt $i/5"
-
-            if sshpass -e scp \
-              -P 22 \
-              -o StrictHostKeyChecking=no \
-              -o PreferredAuthentications=password \
-              -o PubkeyAuthentication=no \
-              -o NumberOfPasswordPrompts=1 \
-              $FILES \
-              "$FTP_USER@$FTP_HOST:/upload/sova/"
-            then
-              echo "Upload OK"
-              exit 0
-            fi
-
-            echo "Upload failed, retrying..."
-            sleep $((i * 15))
-          done
-
-          echo "Upload failed after retries"
-          exit 1
