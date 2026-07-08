@@ -4,44 +4,102 @@ on:
   push:
     branches: [ "main" ]
 
+concurrency:
+  group: shoptet-sftp-deploy
+  cancel-in-progress: false
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
+    env:
+      FTP_HOST: ${{ secrets.FTP_HOST }}
+      FTP_USER: ${{ secrets.FTP_USER }}
+      SSHPASS: ${{ secrets.FTP_PASS }}
+
     steps:
       - name: Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      # Ověření existujících souborů
       - name: Výpis dostupných souborů
         run: ls -la
 
-      # Vytvoření cílové složky na SFTP, pokud neexistuje
-      - name: Create remote directory if missing
+      - name: Install sshpass
         run: |
           sudo apt-get update
           sudo apt-get install -y sshpass
 
-          echo "mkdir /upload/sova" > sftp_mkdir.txt
-          echo "bye" >> sftp_mkdir.txt
+      - name: Check secrets
+        run: |
+          set -euo pipefail
 
-          sshpass -p "${{ secrets.FTP_PASS }}" \
-            sftp -P 22 -o StrictHostKeyChecking=no \
-            ${{ secrets.FTP_USER }}@${{ secrets.FTP_HOST }} < sftp_mkdir.txt
+          if [ -n "${SSHPASS:-}" ]; then
+            echo "::add-mask::$SSHPASS"
+          fi
 
-      # Nahrání pouze těch souborů, které v repozitáři existují
+          test -n "${FTP_HOST:-}" || (echo "FTP_HOST missing" && exit 10)
+          test -n "${FTP_USER:-}" || (echo "FTP_USER missing" && exit 11)
+          test -n "${SSHPASS:-}" || (echo "FTP_PASS missing" && exit 12)
+
+          echo "FTP_HOST present"
+          echo "FTP_USER present"
+          echo "FTP_PASS present"
+
+      - name: Create remote directory if missing
+        run: |
+          set -euo pipefail
+          echo "::add-mask::$SSHPASS"
+
+          {
+            echo "-mkdir /upload"
+            echo "-mkdir /upload/sova"
+            echo "bye"
+          } > sftp_mkdir.txt
+
+          sshpass -e sftp \
+            -P 22 \
+            -o StrictHostKeyChecking=no \
+            -o PreferredAuthentications=password \
+            -o PubkeyAuthentication=no \
+            -o NumberOfPasswordPrompts=1 \
+            "$FTP_USER@$FTP_HOST" < sftp_mkdir.txt
+
       - name: Upload selected files if they exist
         run: |
+          set -euo pipefail
+          echo "::add-mask::$SSHPASS"
+
           FILES=""
           [ -f FE-sova.js ] && FILES="$FILES FE-sova.js"
           [ -f FE-sova.css ] && FILES="$FILES FE-sova.css"
           [ -f FE-sova-settings.js ] && FILES="$FILES FE-sova-settings.js"
 
-          if [ -n "$FILES" ]; then
-            echo "Nahrávám soubory: $FILES"
-            sshpass -p "${{ secrets.FTP_PASS }}" \
-              scp -P 22 -o StrictHostKeyChecking=no $FILES \
-              ${{ secrets.FTP_USER }}@${{ secrets.FTP_HOST }}:/upload/sova
-          else
+          if [ -z "$FILES" ]; then
             echo "Žádné z cílových souborů neexistují, nic se nenahrává."
+            exit 0
           fi
+
+          echo "Nahrávám soubory: $FILES"
+
+          for i in 1 2 3 4 5; do
+            echo "Upload attempt $i/5"
+
+            if sshpass -e scp \
+              -P 22 \
+              -o StrictHostKeyChecking=no \
+              -o PreferredAuthentications=password \
+              -o PubkeyAuthentication=no \
+              -o NumberOfPasswordPrompts=1 \
+              $FILES \
+              "$FTP_USER@$FTP_HOST:/upload/sova/"
+            then
+              echo "Upload OK"
+              exit 0
+            fi
+
+            echo "Upload failed, retrying..."
+            sleep $((i * 15))
+          done
+
+          echo "Upload failed after retries"
+          exit 1
