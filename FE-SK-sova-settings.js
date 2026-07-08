@@ -32,37 +32,37 @@ window.additionalSaleBox = [
   {
     "boxCategory": "Myši a klávesnice",
     "conditions": "(code startswith \"MYS\" OR code startswith \"KLA\" OR code = \"ACC0738\")",
-    "moreURL": "/mysi-k-pc/"
+    "moreURL": "/mysi-a-klavesnica/"
   },
   {
-    "boxCategory": "Sluchátka a reproduktory",
-    "conditions": "(lower(name) contains \"sluchátka\" OR lower(name) contains \"reproduktor\")",
+    "boxCategory": "Slúchadlá a reproduktory",
+    "conditions": "(lower(name) contains \"slúchadl\" OR lower(name) contains \"sluchadl\" OR lower(name) contains \"sluchátk\" OR lower(name) contains \"sluchatk\" OR lower(name) contains \"reproduktor\")",
     "moreURL": "/audio/"
   },
   {
-    "boxCategory": "Dokovací stanice",
+    "boxCategory": "Dokovacie stanice",
     "conditions": "(code startswith \"DOC\" OR code = \"ACC0012\" OR code = \"ACC0121\" OR code = \"RED0028\" OR code = \"RED0027\" OR code = \"RED0026\")",
-    "moreURL": "/dokovaci-stanice/"
+    "moreURL": "/dokovacia-stanica/"
   },
   {
-    "boxCategory": "Tašky a batohy",
+    "boxCategory": "Tašky a puzdrá",
     "conditions": "(code startswith \"BAG\")",
-    "moreURL": "/brasny-a-pouzdra/"
+    "moreURL": "/tasky-a-puzdra/"
   },
   {
     "boxCategory": "Monitory",
     "conditions": "(code startswith \"LCD\")",
-    "moreURL": "/monitory/"
+    "moreURL": "/monitory-2/"
   },
   {
-    "boxCategory": "Software a Služby",
+    "boxCategory": "Software a služby",
     "conditions": "(code startswith \"LIC\" OR code startswith \"SFW\" OR code startswith \"BLESK\" OR code startswith \"MAR\" OR code startswith \"VRP\")",
     "moreURL": "/software-a-sluzby/"
   },
   {
-    "boxCategory": "Další doplňky",
-    "conditions": "(NOT(code startswith \"MYS\" OR code startswith \"KLA\" OR code = \"ACC0738\" OR lower(name) contains \"sluchátka\" OR lower(name) contains \"reproduktor\" OR code startswith \"DOC\" OR code = \"ACC0012\" OR code = \"ACC0121\" OR code = \"RED0028\" OR code = \"RED0027\" OR code = \"RED0026\" OR code startswith \"BAG\" OR code startswith \"LCD\" OR code startswith \"LIC\" OR code startswith \"SFW\" OR code startswith \"BLESK\" OR code startswith \"MAR\" OR code startswith \"VRP\"))",
-    "moreURL": "/doplnky-k-pocitaci/"
+    "boxCategory": "Ďalšie doplnky",
+    "conditions": "(NOT(code startswith \"MYS\" OR code startswith \"KLA\" OR code = \"ACC0738\" OR lower(name) contains \"slúchadl\" OR lower(name) contains \"sluchadl\" OR lower(name) contains \"sluchátk\" OR lower(name) contains \"sluchatk\" OR lower(name) contains \"reproduktor\" OR code startswith \"DOC\" OR code = \"ACC0012\" OR code = \"ACC0121\" OR code = \"RED0028\" OR code = \"RED0027\" OR code = \"RED0026\" OR code startswith \"BAG\" OR code startswith \"LCD\" OR code startswith \"LIC\" OR code startswith \"SFW\" OR code startswith \"BLESK\" OR code startswith \"MAR\" OR code startswith \"VRP\"))",
+    "moreURL": "/dalsie-doplnky/"
   }
 ];
 
