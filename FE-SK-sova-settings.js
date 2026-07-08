@@ -20,6 +20,11 @@ window.injectFunctions = [
     "function": "hideNewwLetterOut",
     "pageType": "customerDetails",
     "conditionsSOVAL": "(customerGroupId = \"2\" OR customerGroupId = \"6\" OR customerGroupId = \"21\")"
+  },
+  {
+    "function": "additionalSaleBox",
+    "pageType": "productDetail",
+    "conditionsSOVAL": "(parametrsovaHidedoplBox = \"show\")"
   }
 ];
 
