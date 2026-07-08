@@ -85,7 +85,7 @@ window.additionalSale = [
     "price": "129 Kč",
     "pairText": "wifi",
     "type": "checkbox",
-    "SOVAL": "(currency=\"CZK\" AND category = \"Počítače\" AND parametrWifi !=\"ANO\")"
+    "SOVAL": "(currency=\"CZK\" AND category = \"Počítače\" AND parametrWifi !=\"ANO\") "
   },
   {
     "code": "NET0036",
