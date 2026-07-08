@@ -117,7 +117,7 @@ window.additionalSale = [
     "price": "699 Kč",
     "pairText": "BLESK2",
     "type": "checkbox",
-    "SOVAL": "(currency=\"CZK\" AND (parametrVyuziti CONTAINS \"Herní\") AND (NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnisystem, \"Chrome\"))) AND (( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND ((parametroptdisableupgradeblesk = \"false\") OR (parametrsovaupgradeBLESK3 = \"ANO\")) AND (CONTAINS(parametrOperacnisystem, \"Windows\") OR CONTAINS(parametrSystem, \"WINDOWS\")) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") AND (parametrKapacitadisku = \"16 GB\" OR parametrKapacitadisku = \"32 GB\") )))"
+    "SOVAL": "(currency=\"CZK\" AND (parametrVyuziti CONTAINS \"Herní\") AND (NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnisystem, \"Chrome\"))) AND (( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND ((parametroptdisableupgradeblesk = \"false\") OR (parametrsovaupgradeBLESK3 = \"ANO\")) AND (CONTAINS(parametrOperacnisystem, \"Windows\") OR CONTAINS(parametrSystem, \"WINDOWS\")) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") AND (parametrKapacitadisku = \"16 GB\" OR parametrKapacitadisku = \"32 GB\") ))) "
   },
   {
     "code": "SERVIS006",
