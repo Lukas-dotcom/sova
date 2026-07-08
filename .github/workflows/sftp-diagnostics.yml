@@ -1,0 +1,133 @@
+name: SFTP Diagnostics
+
+on:
+  workflow_dispatch:
+    inputs:
+      do_test_upload:
+        description: "Zkusit upload malého testovacího souboru?"
+        required: true
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+
+concurrency:
+  group: shoptet-sftp-diagnostics
+  cancel-in-progress: false
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    env:
+      SFTP_HOST: ${{ secrets.SHOPTET_SFTP_HOST }}
+      SFTP_PORT: ${{ secrets.SHOPTET_SFTP_PORT || '22' }}
+      SFTP_USER: ${{ secrets.SHOPTET_SFTP_USER }}
+      SSHPASS: ${{ secrets.SHOPTET_SFTP_PASSWORD }}
+      REMOTE_DIR: /user/documents/upload/sova
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y sshpass netcat-openbsd
+
+      - name: Print run context
+        run: |
+          echo "event_name=${{ github.event_name }}"
+          echo "ref=${{ github.ref }}"
+          echo "sha=${{ github.sha }}"
+          echo "actor=${{ github.actor }}"
+          echo "run_id=${{ github.run_id }}"
+          echo "attempt=${{ github.run_attempt }}"
+          echo "runner_os=${{ runner.os }}"
+          date -u +"utc=%Y-%m-%dT%H:%M:%SZ"
+
+      - name: Check secrets are present without revealing them
+        run: |
+          set -euo pipefail
+          echo "::add-mask::$SSHPASS"
+          python3 - <<'PY'
+          import os
+
+          keys = ["SFTP_HOST", "SFTP_PORT", "SFTP_USER", "SSHPASS", "REMOTE_DIR"]
+          for k in keys:
+              v = os.environ.get(k, "")
+              print(f"{k}: present={bool(v)} len={len(v)} has_cr={chr(13) in v} has_lf={chr(10) in v} leading_or_trailing_ws={v != v.strip()}")
+          PY
+
+          test -n "$SFTP_HOST" || (echo "SFTP_HOST missing" && exit 10)
+          test -n "$SFTP_PORT" || (echo "SFTP_PORT missing" && exit 11)
+          test -n "$SFTP_USER" || (echo "SFTP_USER missing" && exit 12)
+          test -n "$SSHPASS" || (echo "SFTP password missing" && exit 13)
+
+      - name: DNS and TCP check
+        run: |
+          set -euo pipefail
+          echo "DNS:"
+          getent ahosts "$SFTP_HOST" || true
+
+          echo "TCP port check:"
+          nc -vz -w 15 "$SFTP_HOST" "$SFTP_PORT"
+
+      - name: SSH host key scan
+        run: |
+          set -euo pipefail
+          ssh-keyscan -p "$SFTP_PORT" -T 15 "$SFTP_HOST" 2>&1 | sed 's/^/keyscan: /'
+
+      - name: SFTP login and remote path check
+        run: |
+          set +e
+          echo "::add-mask::$SSHPASS"
+
+          sshpass -e sftp -vvv \
+            -o StrictHostKeyChecking=accept-new \
+            -o PreferredAuthentications=password \
+            -o PubkeyAuthentication=no \
+            -o NumberOfPasswordPrompts=1 \
+            -o ConnectTimeout=20 \
+            -P "$SFTP_PORT" \
+            "$SFTP_USER@$SFTP_HOST" <<EOF
+          pwd
+          ls -la
+          ls -la "$REMOTE_DIR"
+          bye
+          EOF
+
+          status=$?
+          echo "SFTP_STATUS=$status"
+
+          if [ "$status" -ne 0 ]; then
+            echo "SFTP login/path check failed with status $status"
+            exit "$status"
+          fi
+
+      - name: Optional test upload
+        if: ${{ inputs.do_test_upload == 'true' }}
+        run: |
+          set -euo pipefail
+          echo "::add-mask::$SSHPASS"
+
+          TEST_FILE="sova-debug-${{ github.run_id }}-${{ github.run_attempt }}.txt"
+          printf "SOVA deploy debug\nrun_id=${{ github.run_id }}\nattempt=${{ github.run_attempt }}\nsha=${{ github.sha }}\n" > "/tmp/$TEST_FILE"
+
+          sshpass -e sftp \
+            -o StrictHostKeyChecking=accept-new \
+            -o PreferredAuthentications=password \
+            -o PubkeyAuthentication=no \
+            -o NumberOfPasswordPrompts=1 \
+            -o ConnectTimeout=20 \
+            -P "$SFTP_PORT" \
+            "$SFTP_USER@$SFTP_HOST" <<EOF
+          put "/tmp/$TEST_FILE" "$REMOTE_DIR/$TEST_FILE"
+          ls -la "$REMOTE_DIR/$TEST_FILE"
+          bye
+          EOF
+
+          echo "Trying public URL:"
+          curl -fsSL "https://www.pocitarna.cz/user/documents/upload/sova/$TEST_FILE?t=$(date +%s)" || true
