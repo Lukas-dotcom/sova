@@ -2,138 +2,46 @@ name: Deploy only specific files to SFTP
 
 on:
   push:
-    branches: ["main"]
-
-concurrency:
-  group: shoptet-sftp-deploy
-  cancel-in-progress: false
+    branches: [ "main" ]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
-
-    env:
-      SFTP_HOST: ${{ secrets.FTP_HOST }}
-      SFTP_PORT: 22
-      SFTP_USER: ${{ secrets.FTP_USER }}
-      SSHPASS: ${{ secrets.FTP_PASS }}
-      REMOTE_DIR: /upload/sova
 
     steps:
       - name: Check out code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
+      # Ověření existujících souborů
       - name: Výpis dostupných souborů
-        run: |
-          ls -la
+        run: ls -la
 
-      - name: Install tools
+      # Vytvoření cílové složky na SFTP, pokud neexistuje
+      - name: Create remote directory if missing
         run: |
           sudo apt-get update
           sudo apt-get install -y sshpass
 
-      - name: Check SFTP secrets
-        run: |
-          set -euo pipefail
+          echo "mkdir /upload/sova" > sftp_mkdir.txt
+          echo "bye" >> sftp_mkdir.txt
 
-          if [ -n "${SSHPASS:-}" ]; then
-            echo "::add-mask::$SSHPASS"
-          fi
+          sshpass -p "${{ secrets.FTP_PASS }}" \
+            sftp -P 22 -o StrictHostKeyChecking=no \
+            ${{ secrets.FTP_USER }}@${{ secrets.FTP_HOST }} < sftp_mkdir.txt
 
-          test -n "${SFTP_HOST:-}" || (echo "FTP_HOST missing" && exit 10)
-          test -n "${SFTP_USER:-}" || (echo "FTP_USER missing" && exit 11)
-          test -n "${SSHPASS:-}" || (echo "FTP_PASS missing" && exit 12)
-
-          echo "SFTP secrets are present."
-
-      - name: Build SFTP batch
-        run: |
-          set -euo pipefail
-
-          {
-            echo "-mkdir /upload"
-            echo "-mkdir $REMOTE_DIR"
-            echo "cd $REMOTE_DIR"
-          } > sftp_upload.txt
-
-          UPLOADED_ANY=0
-          UPLOADED_SETTINGS=0
-
-          if [ -f FE-sova.js ]; then
-            echo "put FE-sova.js" >> sftp_upload.txt
-            UPLOADED_ANY=1
-          fi
-
-          if [ -f FE-sova.css ]; then
-            echo "put FE-sova.css" >> sftp_upload.txt
-            UPLOADED_ANY=1
-          fi
-
-          if [ -f FE-sova-settings.js ]; then
-            echo "put FE-sova-settings.js" >> sftp_upload.txt
-            UPLOADED_ANY=1
-            UPLOADED_SETTINGS=1
-          fi
-
-          echo "bye" >> sftp_upload.txt
-
-          echo "UPLOADED_ANY=$UPLOADED_ANY" >> "$GITHUB_ENV"
-          echo "UPLOADED_SETTINGS=$UPLOADED_SETTINGS" >> "$GITHUB_ENV"
-
-          echo "SFTP batch:"
-          sed 's/^/  /' sftp_upload.txt
-
+      # Nahrání pouze těch souborů, které v repozitáři existují
       - name: Upload selected files if they exist
-        if: env.UPLOADED_ANY == '1'
         run: |
-          set -euo pipefail
-          echo "::add-mask::$SSHPASS"
+          FILES=""
+          [ -f FE-sova.js ] && FILES="$FILES FE-sova.js"
+          [ -f FE-sova.css ] && FILES="$FILES FE-sova.css"
+          [ -f FE-sova-settings.js ] && FILES="$FILES FE-sova-settings.js"
 
-          for i in 1 2 3 4 5; do
-            echo "SFTP upload attempt $i/5"
-
-            if sshpass -e sftp \
-              -P "$SFTP_PORT" \
-              -o StrictHostKeyChecking=no \
-              -o PreferredAuthentications=password \
-              -o PubkeyAuthentication=no \
-              -o NumberOfPasswordPrompts=1 \
-              -o ConnectTimeout=20 \
-              -b sftp_upload.txt \
-              "$SFTP_USER@$SFTP_HOST"
-            then
-              echo "Upload OK"
-              exit 0
-            fi
-
-            echo "Upload failed, retrying..."
-            sleep $((i * 15))
-          done
-
-          echo "Upload failed after retries"
-          exit 1
-
-      - name: Nothing to upload
-        if: env.UPLOADED_ANY != '1'
-        run: |
-          echo "Žádné z cílových souborů neexistují, nic se nenahrává."
-
-      - name: Verify deployed FE settings
-        if: env.UPLOADED_SETTINGS == '1'
-        run: |
-          set -euo pipefail
-
-          echo "Ověřuji veřejně dostupný FE-sova-settings.js..."
-
-          curl -fsSL "https://www.pocitarna.cz/user/documents/upload/sova/FE-sova-settings.js?t=$(date +%s)" \
-            -o /tmp/deployed-FE-sova-settings.js
-
-          if grep -q "parametrsovaupgradeBLESK2" /tmp/deployed-FE-sova-settings.js; then
-            echo "OK: web servíruje FE-sova-settings.js s parametrsovaupgradeBLESK2"
+          if [ -n "$FILES" ]; then
+            echo "Nahrávám soubory: $FILES"
+            sshpass -p "${{ secrets.FTP_PASS }}" \
+              scp -P 22 -o StrictHostKeyChecking=no $FILES \
+              ${{ secrets.FTP_USER }}@${{ secrets.FTP_HOST }}:/upload/sova
           else
-            echo "ERROR: web stále neservíruje očekávanou verzi FE-sova-settings.js"
-            echo "Ukázka BLESK2 výskytů:"
-            grep -n "BLESK2\|sovaupgrade" /tmp/deployed-FE-sova-settings.js | head -40 || true
-            exit 20
+            echo "Žádné z cílových souborů neexistují, nic se nenahrává."
           fi
