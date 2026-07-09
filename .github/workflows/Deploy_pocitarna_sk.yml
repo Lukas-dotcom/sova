@@ -33,8 +33,6 @@ jobs:
       - name: Upload selected SK files if they exist
         run: |
           FILES=""
-          [ -f FE-SK-sova.js ] && FILES="$FILES FE-SK-sova.js"
-          [ -f FE-SK-sova.css ] && FILES="$FILES FE-SK-sova.css"
           [ -f FE-SK-sova-settings.js ] && FILES="$FILES FE-SK-sova-settings.js"
 
           if [ -n "$FILES" ]; then
