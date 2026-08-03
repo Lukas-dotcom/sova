@@ -1102,32 +1102,8 @@ window.additionalSale = [
     "SOVAL": "(neco =\"tohleSkryva\" AND (( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND ( CONTAINS(parametrOperacnysystem, \"Windows\") OR CONTAINS(parametrSystem, \"WINDOWS\") )))"
   },
   {
-    "code": "MAR0012",
-    "name": "Windows 10 Home",
-    "price": "€21,00",
-    "pairText": "Lepší Windows",
-    "type": "select",
-    "SOVAL": "((( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND ( CONTAINS(parametrOperacnysystem, \"Windows\") OR CONTAINS(parametrSystem, \"WINDOWS\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrOperacnysystem, \"Windows 7 Home\")))"
-  },
-  {
-    "code": "MAR0013",
-    "name": "Windows 10 PRO",
-    "price": "€21,00",
-    "pairText": "Lepší Windows",
-    "type": "select",
-    "SOVAL": "((( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND ( CONTAINS(parametrOperacnysystem, \"Windows\") OR CONTAINS(parametrSystem, \"WINDOWS\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrOperacnysystem, \"Windows 7 Pro\")))"
-  },
-  {
-    "code": "MAR0008",
-    "name": "Windows 10 PRO",
-    "price": "€37,00",
-    "pairText": "Lepší Windows",
-    "type": "select",
-    "SOVAL": "((( (category = \"Notebooky\" OR category = \"Počítače\") OR CONTAINS(productCurrentCategory, \"Notebooky\") OR CONTAINS(productCurrentCategory, \"Počítače\") ) AND ( CONTAINS(parametrOperacnysystem, \"Windows\") OR CONTAINS(parametrSystem, \"WINDOWS\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND ( CONTAINS(parametrOperacnysystem, \"Windows 7 Home\") OR CONTAINS(parametrOperacnysystem, \"Windows 7 Ultimate\") OR CONTAINS(parametrOperacnysystem, \"Windows 10 Home\") )))"
-  },
-  {
     "code": "MAR0021",
-    "name": "Windows 11 PRO",
+    "name": "Windows 11 PRO ",
     "price": "€37,00",
     "pairText": "Lepší Windows",
     "type": "select",
