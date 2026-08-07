@@ -1175,7 +1175,7 @@ window.additionalSale = [
   },
   {
     "code": "VRP0035",
-    "name": "+ 8GB RAM",
+    "name": "+ 16GB RAM",
     "price": "€122,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
