@@ -1168,7 +1168,7 @@ window.additionalSale = [
   {
     "code": "VRP0034",
     "name": "+ 8GB RAM",
-    "price": "€122,00",
+    "price": "€142,00",
     "pairText": "Rozšírenie RAM",
     "type": "select",
     "SOVAL": "((NOT (contains (productName, \"Chromebook\") OR contains (parametrOperacnysystem, \"Chrome\") OR contains (productName, \"Apple\") OR contains (productName, \"Macbook\") OR contains (productName, \"iMac\") OR parametrVyrobce = \"Apple\" OR contains(productCode,\"AIO\"))) AND (ALL(RAMvylouceneCastiNazvu, NOT CONTAINS(productName, RAMvylouceneCastiNazvu))) AND (category = \"Počítače\" AND ((parametroptdisableupgraderam = \"false\" OR parametrsovaupgradeVRP0034 = \"ANO\")) AND NOT ( CONTAINS(productName, \"All in One\") ) AND NOT ( CONTAINS(parametrTypdisku, \"eMMC\") ) AND CONTAINS(parametrTypoperacnejpamate, \"DDR5\")))"
