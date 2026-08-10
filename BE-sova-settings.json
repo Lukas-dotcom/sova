@@ -98,6 +98,12 @@
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_b2bfeed/\"%%"
       },
       {
+        "htmlURL": null,
+        "breadCrumb": null,
+        "position": null,
+        "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_VOceny/\"%%"
+      },
+      {
         "htmlURL": "html/generovani_monitory.html",
         "breadCrumb": "monitory",
         "position": "wholePage",
