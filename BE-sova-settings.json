@@ -1046,7 +1046,7 @@
         "pageType": null,
         "position": "topHeader",
         "order": 2,
-        "conditionsSOVAL": "%%userFullName=\"Petr Hudlík\" OR userFullName=\"Roman Bielik\" OR userFullName=\"Lukáš Tejral\"%%",
+        "conditionsSOVAL": "%%userFullName=\"Petr Hudlík\" OR userFullName=\"Roman Bielik\"%%",
         "sovaGates": null,
         "pairButton": null
       },
