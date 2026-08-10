@@ -104,7 +104,7 @@
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_voceny/\"%%"
       },
       {
-        "htmlURL": "html/generovani_monitory.html",
+        "htmlURL": "html/generovani_monitory.html ",
         "breadCrumb": "monitory",
         "position": "wholePage",
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/generovani/generovani_monitory/\"%%"
