@@ -99,7 +99,7 @@
       },
       {
         "htmlURL": null,
-        "breadCrumb": "etl: CO ceny",
+        "breadCrumb": "etl: VO ceny",
         "position": "wholePage",
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_VOceny/\"%%"
       },
