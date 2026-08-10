@@ -101,7 +101,7 @@
         "htmlURL": "html/etl_VOceny.html",
         "breadCrumb": "etl: VO ceny",
         "position": "wholePage",
-        "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_VOceny/\"%%"
+        "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_voceny/\"%%"
       },
       {
         "htmlURL": "html/generovani_monitory.html",
