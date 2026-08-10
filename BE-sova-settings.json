@@ -99,8 +99,8 @@
       },
       {
         "htmlURL": null,
-        "breadCrumb": null,
-        "position": null,
+        "breadCrumb": "etl: B2B feed",
+        "position": "wholePage",
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_VOceny/\"%%"
       },
       {
