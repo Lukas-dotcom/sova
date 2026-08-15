@@ -104,6 +104,12 @@
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/etl/etl_voceny/\"%%"
       },
       {
+        "htmlURL": "html/luc12345.html",
+        "breadCrumb": "L ",
+        "position": "wholePage",
+        "condSoval": "%%url=\"https://www.pocitarna.cz/admin/luc12345/\"%%"
+      },
+      {
         "htmlURL": "html/generovani_monitory.html",
         "breadCrumb": "monitory",
         "position": "wholePage",
@@ -150,12 +156,6 @@
         "breadCrumb": "html editor",
         "position": "wholePage",
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/html-editor/\"%%"
-      },
-      {
-        "htmlURL": "html/sova/html/luc12345.html",
-        "breadCrumb": "L",
-        "position": "wholePage",
-        "condSoval": "%%url=\"https://www.pocitarna.cz/admin/luc12345/\"%%"
       }
     ]
   },
