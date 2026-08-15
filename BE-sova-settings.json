@@ -105,7 +105,7 @@
       },
       {
         "htmlURL": "html/luc12345.html",
-        "breadCrumb": "L",
+        "breadCrumb": "L ",
         "position": "wholePage",
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/luc12345/\"%%"
       },
