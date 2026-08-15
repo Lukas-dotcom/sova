@@ -155,7 +155,7 @@
         "htmlURL": "html/sova/html/luc12345.html",
         "breadCrumb": "L",
         "position": "wholePage",
-        "condSoval": "%%url=\"https://www.pocitarna.cz/admin/html-editor/\"%%"
+        "condSoval": "%%url=\"https://www.pocitarna.cz/admin/luc12345/\"%%"
       }
     ]
   },
