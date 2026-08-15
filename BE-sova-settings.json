@@ -150,6 +150,12 @@
         "breadCrumb": "html editor",
         "position": "wholePage",
         "condSoval": "%%url=\"https://www.pocitarna.cz/admin/html-editor/\"%%"
+      },
+      {
+        "htmlURL": "html/sova/html/luc12345.html",
+        "breadCrumb": "L",
+        "position": "wholePage",
+        "condSoval": null
       }
     ]
   },
